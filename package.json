@@ -1,13 +1,18 @@
 {
-  "name": "h3.prj.builder",
+  "name": "gulp3fy",
   "version": "1.0.0",
-  "description": "H3 Project Builder",
+  "description": "Gulp Front-End builder",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "H3JILgaH4uk",
   "license": "ISC",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/H3JILgaH4uk/Gulp3fy"
+    },
+
   "devDependencies": {
     "browser-sync": "^2.26.13",
     "del": "^5.1.0",
@@ -23,8 +28,10 @@
     "gulp-file-include": "^2.2.2",
     "gulp-fonter": "^0.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-html-prettify": "^0.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
     "gulp-svg-sprite": "^1.5.0",
@@ -34,8 +41,11 @@
     "gulp-webp": "^4.0.1",
     "gulp-webp-html": "^1.0.2",
     "gulp-webpcss": "^1.1.1",
-    "prettier": "^2.1.2"
+    "prettier": "^2.1.2",
+    "webp-converter": "^2.2.3"
   },
-  "dependencies": {},
-  "keywords": []
+  "keywords": [],
+  "dependencies": {
+    "npm": "^7.5.6"
+  }
 }
