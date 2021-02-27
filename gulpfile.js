@@ -280,6 +280,8 @@ let build = gulp.series(clean, gulp.parallel(js, css, Pug, images, fonts, csslib
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 // Объявление переменных для Gulp
+exports.jslib      = jslib;
+exports.csslib     = csslib;
 exports.fontsStyle = fontsStyle;
 exports.fonts      = fonts;
 exports.favicon    = favicon;
