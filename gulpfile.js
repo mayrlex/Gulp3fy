@@ -1,61 +1,76 @@
-//? Глобальные переменные
+'use strict';
+
+// Folders
 let prj_folder = require("path").basename(__dirname);
 let src_folder = 'src';
 
-//? File sistem
+// File sistem
 let fs = require('fs');
 
 let path = {
+    // Compiled
     build: {
-        html: prj_folder + '/',
+        // html: prj_folder + '/',
+        pug: prj_folder + '/',
         css: prj_folder + '/assets/css/',
         js: prj_folder + '/assets/js/',
         img: prj_folder + '/assets/img/',
         fonts: prj_folder + '/assets/fonts/',
+        csslib: prj_folder + '/assets/css/lib/',
+        jslib: prj_folder + '/assets/js/lib/',
     },
-
+    // Source
     src: {
-        html: [src_folder + '/*.html', '!' + src_folder + '/_*.html'],
-        css: [src_folder + '/scss/*.scss', '!' + src_folder + '/_*.scss'],
-        js: src_folder + "/js/*.js",
-        favicon: src_folder + "/img/favicon.{jpg,png,svg,gif,ico,webp}",
-        img: [src_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}', '!**/favicon.*'],
-        fonts: src_folder + '/fonts/*.ttf',
+        // html: src_folder + '/html/*.html',
+        pug: src_folder + '/pug/*.pug',
+        css: src_folder + '/static/scss/*.scss',
+        js: src_folder + "/static/js/*.js",
+        favicon: src_folder + '/static/img/favicon.{jpg,png,svg,gif,ico,webp}',
+        img: [src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}', '!**/favicon.*'],
+        fonts: src_folder + '/static/fonts/*.ttf',
+        csslib: src_folder + '/static/libs/css/*.css',
+        jslib: src_folder + '/static/libs/js/*.js',
     },
-
+    // Watching
     watch: {
-        html: src_folder + '/**/*.html',
-        css: src_folder + '/scss/**/*.scss',
-        js: src_folder + '/js/**/*.js',
-        img: src_folder + '/img/**/*.{jpg,png,svg,gif,ico,webp}',
+        // html: src_folder + '/**/*.html',
+        pug: src_folder + '/**/*.pug',
+        css: src_folder + '/static/scss/*.scss',
+        js: src_folder + "/static/js/*.js",
+        img: src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}',
+        csslib: src_folder + '/static/libs/css/*.css',
+        jslib: src_folder + '/static/libs/js/*.js',
     },
 
+    // Удаление папки проекта при запуске Gulp
     clean: './' + prj_folder + '/'
 };
 
-//? Обявление расширений
+// Переменные расширений
 let { src, dest } = require('gulp'),
-    gulp = require('gulp'),
-    browsersync = require('browser-sync').create(),
-    fileinclude = require('gulp-file-include'),
-    del = require('del'),
-    scss = require('gulp-sass'),
-    autoprefixer = require('gulp-autoprefixer'),
-    group_media = require('gulp-group-css-media-queries'),
-    clean_css = require('gulp-clean-css'),
-    rename = require('gulp-rename'),
-    uglify = require('gulp-uglify-es').default,
-    imagemin = require('gulp-imagemin'),
-    webp = require('gulp-webp'),
-    webphtml = require('gulp-webp-html'),
-    webpcss = require('gulp-webpcss'),
-    svgSprite = require('gulp-svg-sprite'),
-    ttf2woff = require('gulp-ttf2woff'),
-    ttf2woff2 = require('gulp-ttf2woff2'),
-    fonter = require('gulp-fonter'),
-    plumber = require('gulp-plumber');
+    gulp          = require('gulp'),
+    browsersync   = require('browser-sync').create(),        // Автообновление браузера
+    fileinclude   = require('gulp-file-include'),            // Включение нескольких html файлов в один
+    del           = require('del'),                          // Удаление папки проекта с последующей перезаписью для избавления от лишних файлов
+    scss          = require('gulp-sass'),                    // Компиляция scss в css
+    autoprefixer  = require('gulp-autoprefixer'),            // Автоматическое дописывание вендорных префиксов в scss
+    group_media   = require('gulp-group-css-media-queries'), // Группирование всех @media запросов в конце css файла
+    clean_css     = require('gulp-clean-css'),               // Минификация css файла на выходе
+    rename        = require('gulp-rename'),                  // Переименование файла перед выгрузкой
+    uglify        = require('gulp-uglify-es').default,       // Сжатие js файла
+    imagemin      = require('gulp-imagemin'),                // Сжатие изображений
+    webp          = require('gulp-webp'),                    // Конвертация изображений в webp
+    webphtml      = require('gulp-webp-html'),               // Автоподключение изображений в html
+    webpcss       = require('gulp-webpcss'),                 // Автоподключение изображений в css
+    svgSprite     = require('gulp-svg-sprite'),              // Создание спрайта из svg
+    ttf2woff      = require('gulp-ttf2woff'),                // Конвертация ttf в woff
+    ttf2woff2     = require('gulp-ttf2woff2'),               // Конвертация ttf в woff2
+    fonter        = require('gulp-fonter'),                  // Конвертация шрифтов
+    plumber       = require('gulp-plumber'),                 // Предотвращает разрыв труб
+    pug           = require('gulp-pug'),                     // Компиляция pug в html
+    prettify      = require('gulp-html-prettify');           // Форматирование html на выходе
 
-//? Синхронизация с браузером
+    // Обновление браузера при изменении файлов
 function browserSync(params) {
     browsersync.init({
         server: {
@@ -66,17 +81,28 @@ function browserSync(params) {
     });
 }
 
-//? Обработка HTML
-function html() {
-    return src(path.src.html)
+// // Обработка HTML
+// function html() {
+//     return src(path.src.html)
+//         .pipe(plumber())
+//         .pipe(fileinclude())
+//         .pipe(webphtml())
+//         .pipe(dest(path.build.html))
+//         .pipe(browsersync.stream());
+// }
+
+// Обработка Pug
+function Pug() {
+    return src(path.src.pug)
         .pipe(plumber())
-        .pipe(fileinclude())
-        .pipe(webphtml())
-        .pipe(dest(path.build.html))
+        .pipe(pug())
+        .pipe(prettify({indent_char: ' ', indent_size: 4}))
+        // .pipe(webphtml()) Проблема из-за которой html код компилится в строку, в поисках этой неполадки я потратил целый день
+        .pipe(dest(path.build.pug))
         .pipe(browsersync.stream());
 }
 
-//? Обработка CSS
+// Обработка CSS
 function css() {
     return src(path.src.css)
         .pipe(plumber())
@@ -104,7 +130,16 @@ function css() {
         .pipe(browsersync.stream());
 }
 
-//? Обработка JS
+// Обработка CSS Библиотек
+function csslib() {
+    return src(path.src.csslib)
+        .pipe(plumber())
+        .pipe(clean_css())
+        .pipe(dest(path.build.csslib))
+        .pipe(browsersync.stream());
+}
+
+// Обработка JS
 function js() {
     return src(path.src.js)
         .pipe(plumber())
@@ -120,7 +155,18 @@ function js() {
         .pipe(browsersync.stream());
 }
 
-//? Обработка фавайкона
+// Обработка JS Библиотек
+function jslib() {
+    return src(path.src.js)
+        .pipe(plumber())
+        .pipe(fileinclude())
+        .pipe(uglify())
+        .pipe(dest(path.build.jslib))
+        .pipe(browsersync.stream());
+}
+
+
+// Обработка фавайкона
 function favicon() {
 	return src(path.src.favicon)
 		.pipe(plumber())
@@ -132,7 +178,7 @@ function favicon() {
 		.pipe(dest(path.build.html));
 }
 
-//? Обработка изображений
+// Обработка изображений
 function images() {
     return src(path.src.img)
         .pipe(
@@ -154,7 +200,7 @@ function images() {
         .pipe(browsersync.stream());
 }
 
-//? Конвертация .TTF to .WOFF and .TTF to .WOFF2
+// Конвертация .TTF to .WOFF and .TTF to .WOFF2
 function fonts() {
     src(path.src.fonts)
         .pipe(plumber())
@@ -165,19 +211,19 @@ function fonts() {
         .pipe(dest(path.build.fonts));
 }
 
-//? Конвертация .OTF to .TTF
-//* Функция запускается через терминал
+// Конвертация .OTF to .TTF
+// Функция запускается через терминал
 gulp.task('otf2ttf', function() {
-    return src([src_folder + '/fonts/*.otf'])
+    return src([src_folder + '/static/fonts/*.otf'])
         .pipe(fonter({
             formats: ['ttf']
         }))
-        .pipe(dest(src_folder + '/fonts/'));
+        .pipe(dest(src_folder + '/static/fonts/'));
 });
-//? Создание спрайта
-//* Функция запускается через терминал
+// Создание спрайта
+// Функция запускается через терминал
 gulp.task('svgSprite', function() {
-    return gulp.src([src_folder + '/iconsprite/*.svg'])
+    return gulp.src([src_folder + '/static/img/iconsprite/*.svg'])
         .pipe(svgSprite({
             mode: {
                 stack: {
@@ -190,7 +236,7 @@ gulp.task('svgSprite', function() {
         .pipe(dest(path.build.img));
 });
 
-//? Запись и подключение шрифтов
+// Запись и подключение шрифтов
 function fontsStyle(params) {
     let file_content = fs.readFileSync(src_folder + '/includes/scss/_fonts.scss'); 
     if (file_content == '') { 
@@ -213,29 +259,35 @@ function fontsStyle(params) {
 
 function cb() {}
 
-//? Слежка за файлами
+// Слежка за файлами
 function watchFiles(params) {
-    gulp.watch([path.watch.html], html);
+    // gulp.watch([path.watch.html], html);
+    gulp.watch([path.watch.pug], Pug);
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.img], images);
+    gulp.watch([path.watch.csslib], csslib);
+    gulp.watch([path.watch.jslib], jslib);
+
 }
 
-//? Чистка билда
+// Удаление папки проекта с последующей перезаписью
 function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(js, css, Pug, images, fonts, csslib, jslib), fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
+// Объявление переменных для Gulp
 exports.fontsStyle = fontsStyle;
-exports.fonts = fonts;
-exports.favicon = favicon;
-exports.images = images;
-exports.js = js;
-exports.css = css;
-exports.html = html;
-exports.build = build;
-exports.watch = watch;
-exports.default = watch;
+exports.fonts      = fonts;
+exports.favicon    = favicon;
+exports.images     = images;
+exports.js         = js;
+exports.css        = css;
+exports.pug        = Pug;
+// exports.html       = html;
+exports.build      = build;
+exports.watch      = watch;
+exports.default    = watch;

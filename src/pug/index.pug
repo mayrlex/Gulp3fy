@@ -1,0 +1,22 @@
+extends ../template/pug/layout.pug
+
+//- Объявление переменных
+block vars
+    - const title = 'Главная';
+    - const lang = 'ru';
+    //- - const description = '';
+    //- - const keywords = '';
+
+//- Header
+block header
+    include ../includes/pug/header.pug 
+    main.main
+        .main-content.container
+            
+//- Footer
+block footer
+    include ../includes/pug/footer.pug
+
+//- JS
+block scripts
+    include ../includes/pug/scripts.pug
