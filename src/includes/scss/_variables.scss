@@ -1,8 +1,20 @@
-$fontFamily: '';
-$maxWidth: 1920;
-$minWidth: 320px;
-$maxWidthContainer: 1170;
-$md1: $maxWidthContainer + 12;
-$md2: 991.98;
-$md3: 767.98;
-$md4: 479.98;
+// Base / Start
+
+// Шрифт поумолчанию
+$ff: "";
+// Max Width
+$mxw: 1920;
+// Min Width
+$mnw: 320px;
+// Max Width Container
+$mxwContainer: 1170;
+// Breackpoint 1
+$bp1: $mxwContainer + 12;
+// Breackpoint 2
+$bp2: 991.98;
+// Breackpoint 3
+$bp3: 767.98;
+// Breackpoint 4
+$bp4: 479.98;
+
+// Base / End

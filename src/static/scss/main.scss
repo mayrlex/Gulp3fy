@@ -1,0 +1,55 @@
+// Миксины
+@import "../../includes/scss/mixins";
+
+// Переменные
+@import "../../includes/scss/variables";
+
+// Шрифты
+@import "../../includes/scss/fonts";
+
+// Чистка стилей
+@import "../../includes/scss/eraser";
+
+body {
+    color: #000000;
+    font-size: 14px;
+}
+
+//  Wrapper / Start
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+//  Wrapper / End
+
+// Container / Start
+.container {
+    max-width: $mxwContainer + px;
+    margin: 0 auto;
+    @media (max-width: $bp1+px) {
+        max-width: 970px;
+    }
+    @media (max-width: $bp2+px) {
+        max-width: 750px;
+    }
+    @media (max-width: $bp3+px) {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+// Container / End
+
+// Шапка
+@import "../../includes/scss/header";
+
+// Подвал
+@import "../../includes/scss/footer";
+
+// Формы
+@import "../../includes/scss/forms";
+
+// GUI
+@import "../../includes/scss/ui";
