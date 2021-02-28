@@ -1,10 +1,9 @@
 'use strict';
 
-// Folders
+// Folders path
 let prj_folder = require("path").basename(__dirname);
 let src_folder = 'src';
 
-// File sistem
 let fs = require('fs');
 
 let path = {
@@ -16,8 +15,8 @@ let path = {
         js: prj_folder + '/assets/js/',
         img: prj_folder + '/assets/img/',
         fonts: prj_folder + '/assets/fonts/',
-        csslib: prj_folder + '/assets/css/lib/',
-        jslib: prj_folder + '/assets/js/lib/',
+        cssLib: prj_folder + '/assets/css/lib/',
+        jsLib: prj_folder + '/assets/js/lib/',
     },
     // Source
     src: {
@@ -28,8 +27,10 @@ let path = {
         favicon: src_folder + '/static/img/favicon.{jpg,png,svg,gif,ico,webp}',
         img: [src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}', '!**/favicon.*'],
         fonts: src_folder + '/static/fonts/*.ttf',
-        csslib: src_folder + '/static/libs/css/*.css',
-        jslib: src_folder + '/static/libs/js/*.js',
+        cssInc: src_folder + '/includes/scss/*.scss',
+        jsInc: src_folder + '/includes/js/*.js',
+        cssLib: src_folder + '/static/libs/css/*.css',
+        jsLib: src_folder + '/static/libs/js/*.js',
     },
     // Watching
     watch: {
@@ -38,8 +39,10 @@ let path = {
         css: src_folder + '/static/scss/*.scss',
         js: src_folder + "/static/js/*.js",
         img: src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}',
-        csslib: src_folder + '/static/libs/css/*.css',
-        jslib: src_folder + '/static/libs/js/*.js',
+        cssInc: src_folder + '/includes/scss/*.scss',
+        jsInc: src_folder + '/includes/js/*.js',
+        cssLib: src_folder + '/static/libs/css/*.css',
+        jsLib: src_folder + '/static/libs/js/*.js',
     },
 
     // Удаление папки проекта при запуске Gulp
@@ -130,12 +133,19 @@ function css() {
         .pipe(browsersync.stream());
 }
 
-// Обработка CSS Библиотек
-function csslib() {
-    return src(path.src.csslib)
+// Обработка CSS Libs
+function cssLib() {
+    return src(path.src.cssLib)
         .pipe(plumber())
         .pipe(clean_css())
-        .pipe(dest(path.build.csslib))
+        .pipe(dest(path.build.cssLib))
+        .pipe(browsersync.stream());
+}
+
+// Обработка SCSS Includes
+function cssInc() {
+    return src(path.src.cssInc)
+        .pipe(plumber())
         .pipe(browsersync.stream());
 }
 
@@ -155,16 +165,22 @@ function js() {
         .pipe(browsersync.stream());
 }
 
-// Обработка JS Библиотек
-function jslib() {
-    return src(path.src.js)
+// Обработка JS Libs
+function jsLib() {
+    return src(path.src.jsLib)
         .pipe(plumber())
-        .pipe(fileinclude())
         .pipe(uglify())
-        .pipe(dest(path.build.jslib))
+        .pipe(dest(path.build.jsLib))
         .pipe(browsersync.stream());
 }
 
+// Обработка JS Includes
+function jsInc() {
+    return src(path.src.jsInc)
+        .pipe(plumber())
+        .pipe(fileinclude())
+        .pipe(browsersync.stream());
+}
 
 // Обработка фавайкона
 function favicon() {
@@ -238,16 +254,16 @@ gulp.task('svgSprite', function() {
 
 // Запись и подключение шрифтов
 function fontsStyle(params) {
-    let file_content = fs.readFileSync(src_folder + '/includes/scss/_fonts.scss'); 
+    let file_content = fs.readFileSync(src_folder + '/includes/scss/fonts.scss'); 
     if (file_content == '') { 
-        fs.writeFile(src_folder + '/includes/scss/_fonts.scss', '', cb); return fs.readdir(path.build.fonts, function (err, items) {
+        fs.writeFile(src_folder + '/includes/scss/fonts.scss', '', cb); return fs.readdir(path.build.fonts, function (err, items) {
             if (items) {
                 let c_fontname;
                 for (var i = 0; i < items.length; i++) {
                     let fontname = items[i].split('.');
                     fontname = fontname[0];
                     if (c_fontname != fontname) {
-                        fs.appendFile(src_folder + '/includes/scss/_fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
+                        fs.appendFile(src_folder + '/includes/scss/fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
                     }
                     c_fontname = fontname;
                 }
@@ -266,8 +282,10 @@ function watchFiles(params) {
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.img], images);
-    gulp.watch([path.watch.csslib], csslib);
-    gulp.watch([path.watch.jslib], jslib);
+    gulp.watch([path.watch.cssInc], cssInc);
+    gulp.watch([path.watch.jsInc], jsInc);
+    gulp.watch([path.watch.cssLib], cssLib);
+    gulp.watch([path.watch.jsLib], jsLib);
 
 }
 
@@ -276,12 +294,14 @@ function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, Pug, images, fonts, csslib, jslib), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(js, css, Pug, images, fonts, cssInc, jsInc), cssLib, jsLib, fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 // Объявление переменных для Gulp
-exports.jslib      = jslib;
-exports.csslib     = csslib;
+exports.cssInc     = cssInc;
+exports.jsInc      = jsInc;
+exports.jsLib      = jsLib;
+exports.cssLib     = cssLib;
 exports.fontsStyle = fontsStyle;
 exports.fonts      = fonts;
 exports.favicon    = favicon;
