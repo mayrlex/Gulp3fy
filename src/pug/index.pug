@@ -1,6 +1,6 @@
 extends ../template/pug/layout.pug
 
-//- Объявление переменных
+//- Page settings
 block vars
     - const title = 'Главная';
     - const lang = 'ru';
@@ -9,10 +9,13 @@ block vars
 
 //- Header
 block header
-    include ../includes/pug/header.pug 
+    include ../includes/pug/header.pug
+
+    //- Main content
     main.main
-        .main-content.container
-            
+        .main__content.container
+            .content.
+                Hi Pug. How are you?
 //- Footer
 block footer
     include ../includes/pug/footer.pug
