@@ -1,13 +1,13 @@
-// Миксины
+// Mixins
 @import "../../includes/scss/mixins";
 
-// Переменные
-@import "../../includes/scss/variables";
+// Variables
+@import "../../includes/scss/vars";
 
-// Шрифты
+// Fonts
 @import "../../includes/scss/fonts";
 
-// Чистка стилей
+// Clear styles
 @import "../../includes/scss/eraser";
 
 body {
@@ -15,7 +15,9 @@ body {
     font-size: 14px;
 }
 
-//  Wrapper / Start
+// General / Start
+
+//  Wrapper
 .wrapper {
     width: 100%;
     min-height: 100%;
@@ -23,9 +25,8 @@ body {
     display: flex;
     flex-direction: column;
 }
-//  Wrapper / End
 
-// Container / Start
+// Container
 .container {
     max-width: $mxwContainer + px;
     margin: 0 auto;
@@ -40,15 +41,20 @@ body {
         padding: 0 10px;
     }
 }
-// Container / End
 
-// Шапка
+// General / End
+
+// Header
 @import "../../includes/scss/header";
 
-// Подвал
+// Main / Start
+
+// Main / End
+
+// Footer
 @import "../../includes/scss/footer";
 
-// Формы
+// Forms
 @import "../../includes/scss/forms";
 
 // GUI
