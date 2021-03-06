@@ -1,0 +1,61 @@
+// Mixins
+@import "utils/mixins";
+
+// Variables
+@import "utils/vars";
+
+// Fonts
+@import "utils/fonts";
+
+// Clear styles
+@import "utils/eraser";
+
+body {
+    color: #000000;
+    font-size: 14px;
+}
+
+// General / Start
+
+//  Wrapper
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+// Container
+.container {
+    max-width: $mxwContainer + px;
+    margin: 0 auto;
+    @media (max-width: $bp1+px) {
+        max-width: 970px;
+    }
+    @media (max-width: $bp2+px) {
+        max-width: 750px;
+    }
+    @media (max-width: $bp3+px) {
+        max-width: none;
+        padding: 0 10px;
+    }
+}
+
+// General / End
+
+// Header
+@import "includes/header";
+
+// Main / Start
+
+// Main / End
+
+// Footer
+@import "includes/footer";
+
+// Forms
+@import "includes/forms";
+
+// GUI
+@import "utils/ui";
