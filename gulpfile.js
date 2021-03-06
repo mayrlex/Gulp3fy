@@ -1,55 +1,12 @@
 'use strict';
 
 // Folders path
-let prj_folder = require("path").basename(__dirname);
-let src_folder = 'src';
+let compiled      = require("path").basename(__dirname);
+let source        = 'src';
 
-let fs = require('fs');
+let fs            = require('fs');
 
-let path = {
-    // Compiled
-    build: {
-        // html: prj_folder + '/',
-        pug: prj_folder + '/',
-        css: prj_folder + '/assets/css/',
-        js: prj_folder + '/assets/js/',
-        img: prj_folder + '/assets/img/',
-        fonts: prj_folder + '/assets/fonts/',
-        cssLib: prj_folder + '/assets/css/lib/',
-        jsLib: prj_folder + '/assets/js/lib/',
-    },
-    // Source
-    src: {
-        // html: src_folder + '/html/*.html',
-        pug: src_folder + '/pug/*.pug',
-        css: src_folder + '/static/scss/*.scss',
-        js: src_folder + "/static/js/*.js",
-        favicon: src_folder + '/static/img/favicon.{jpg,png,svg,gif,ico,webp}',
-        img: [src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}', '!**/favicon.*'],
-        fonts: src_folder + '/static/fonts/*.ttf',
-        cssInc: src_folder + '/includes/scss/*.scss',
-        jsInc: src_folder + '/includes/js/*.js',
-        cssLib: src_folder + '/static/libs/css/*.css',
-        jsLib: src_folder + '/static/libs/js/*.js',
-    },
-    // Watching
-    watch: {
-        // html: src_folder + '/**/*.html',
-        pug: src_folder + '/**/*.pug',
-        css: src_folder + '/static/scss/*.scss',
-        js: src_folder + "/static/js/*.js",
-        img: src_folder + '/static/img/**/*.{jpg,png,svg,gif,ico,webp}',
-        cssInc: src_folder + '/includes/scss/*.scss',
-        jsInc: src_folder + '/includes/js/*.js',
-        cssLib: src_folder + '/static/libs/css/*.css',
-        jsLib: src_folder + '/static/libs/js/*.js',
-    },
-
-    // Удаление папки проекта при запуске Gulp
-    clean: './' + prj_folder + '/'
-};
-
-// Переменные расширений
+// Plugins
 let { src, dest } = require('gulp'),
     gulp          = require('gulp'),
     browsersync   = require('browser-sync').create(),        // Автообновление браузера
@@ -73,26 +30,52 @@ let { src, dest } = require('gulp'),
     pug           = require('gulp-pug'),                     // Компиляция pug в html
     prettify      = require('gulp-html-prettify');           // Форматирование html на выходе
 
-    // Обновление браузера при изменении файлов
+// Paths
+let path = {
+    // Compiled
+    build: {
+        pug:     compiled + '/',
+        css:     compiled + '/assets/css/',
+        js:      compiled + '/assets/js/',
+        img:     compiled + '/assets/img/',
+        fonts:   compiled + '/assets/fonts/',
+        cssLib:  compiled + '/assets/css/libs/',
+        jsLib:   compiled + '/assets/js/libs/',
+    },
+    // Source
+    src: {
+        pug:     source + '/pages/pug/*.pug',
+        css:     source + '/styles/*.scss',
+        js:      source + "/scripts/*.js",
+        img:    [source + '/images/**/*.{jpg,png,svg,gif,ico,webp}', '!**/favicon.*'],
+        favicon: source + '/images/general/favicon.{jpg,png,svg,gif,ico,webp}',
+        fonts:   source + '/fonts/*.ttf',
+        cssLib:  source + '/styles/libs/*.css',
+        jsLib:   source + '/scripts/libs/*.js',
+    },
+    // Watching
+    watch: {
+        pug:     source + '/pages/pug/**/*.pug',
+        css:     source + '/styles/**/*.scss',
+        js:      source + "/scripts/**/*.js",
+        img:     source + '/images/**/*.{jpg,png,svg,gif,ico,webp}',
+        cssLib:  source + '/styles/libs/*.css',
+        jsLib:   source + '/scripts/libs/*.js',
+    },
+    // Clean
+    clean: './' + compiled + '/'
+};
+
+// Обновление браузера при изменении файлов
 function browserSync(params) {
     browsersync.init({
         server: {
-            baseDir: './' + prj_folder + '/'
+            baseDir: './' + compiled + '/'
         },
         port: 3000,
         notify: false
     });
 }
-
-// // Обработка HTML
-// function html() {
-//     return src(path.src.html)
-//         .pipe(plumber())
-//         .pipe(fileinclude())
-//         .pipe(webphtml())
-//         .pipe(dest(path.build.html))
-//         .pipe(browsersync.stream());
-// }
 
 // Обработка Pug
 function Pug() {
@@ -100,12 +83,11 @@ function Pug() {
         .pipe(plumber())
         .pipe(pug())
         .pipe(prettify({indent_char: ' ', indent_size: 4}))
-        // .pipe(webphtml()) Проблема из-за которой html код компилится в строку, в поисках этой неполадки я потратил целый день
         .pipe(dest(path.build.pug))
         .pipe(browsersync.stream());
 }
 
-// Обработка CSS
+// Обработка SCSS
 function css() {
     return src(path.src.css)
         .pipe(plumber())
@@ -142,13 +124,6 @@ function cssLib() {
         .pipe(browsersync.stream());
 }
 
-// Обработка SCSS Includes
-function cssInc() {
-    return src(path.src.cssInc)
-        .pipe(plumber())
-        .pipe(browsersync.stream());
-}
-
 // Обработка JS
 function js() {
     return src(path.src.js)
@@ -174,26 +149,6 @@ function jsLib() {
         .pipe(browsersync.stream());
 }
 
-// Обработка JS Includes
-function jsInc() {
-    return src(path.src.jsInc)
-        .pipe(plumber())
-        .pipe(fileinclude())
-        .pipe(browsersync.stream());
-}
-
-// Обработка фавайкона
-function favicon() {
-	return src(path.src.favicon)
-		.pipe(plumber())
-		.pipe(
-			rename({
-				extname: ".ico"
-			})
-		)
-		.pipe(dest(path.build.html));
-}
-
 // Обработка изображений
 function images() {
     return src(path.src.img)
@@ -216,6 +171,18 @@ function images() {
         .pipe(browsersync.stream());
 }
 
+// Обработка favicon
+function favicon() {
+	return src(path.src.favicon)
+		.pipe(plumber())
+		.pipe(
+			rename({
+				extname: ".ico"
+			})
+		)
+		.pipe(dest(path.build.img));
+}
+
 // Конвертация .TTF to .WOFF and .TTF to .WOFF2
 function fonts() {
     src(path.src.fonts)
@@ -228,18 +195,17 @@ function fonts() {
 }
 
 // Конвертация .OTF to .TTF
-// Функция запускается через терминал
 gulp.task('otf2ttf', function() {
-    return src([src_folder + '/static/fonts/*.otf'])
+    return src([source + '/fonts/*.otf'])
         .pipe(fonter({
             formats: ['ttf']
         }))
-        .pipe(dest(src_folder + '/static/fonts/'));
+        .pipe(dest(source + '/fonts/'));
 });
+
 // Создание спрайта
-// Функция запускается через терминал
 gulp.task('svgSprite', function() {
-    return gulp.src([src_folder + '/static/img/iconsprite/*.svg'])
+    return gulp.src([source + '/images/iconsprite/*.svg'])
         .pipe(svgSprite({
             mode: {
                 stack: {
@@ -254,16 +220,17 @@ gulp.task('svgSprite', function() {
 
 // Запись и подключение шрифтов
 function fontsStyle(params) {
-    let file_content = fs.readFileSync(src_folder + '/includes/scss/fonts.scss'); 
+    let file_content = fs.readFileSync(source + '/styles/utils/fonts.scss'); 
     if (file_content == '') { 
-        fs.writeFile(src_folder + '/includes/scss/fonts.scss', '', cb); return fs.readdir(path.build.fonts, function (err, items) {
+        fs.writeFile(source + '/styles/utils/fonts.scss', '', cb);
+        return fs.readdir(path.build.fonts, function (err, items) {
             if (items) {
                 let c_fontname;
                 for (var i = 0; i < items.length; i++) {
                     let fontname = items[i].split('.');
                     fontname = fontname[0];
                     if (c_fontname != fontname) {
-                        fs.appendFile(src_folder + '/includes/scss/fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
+                        fs.appendFile(source + '/styles/utils/fonts.scss', '@include font("' + fontname + '", "' + fontname + '", "400", "normal");\r\n', cb);
                     }
                     c_fontname = fontname;
                 }
@@ -282,24 +249,19 @@ function watchFiles(params) {
     gulp.watch([path.watch.css], css);
     gulp.watch([path.watch.js], js);
     gulp.watch([path.watch.img], images);
-    gulp.watch([path.watch.cssInc], cssInc);
-    gulp.watch([path.watch.jsInc], jsInc);
     gulp.watch([path.watch.cssLib], cssLib);
     gulp.watch([path.watch.jsLib], jsLib);
 
 }
 
-// Удаление папки проекта с последующей перезаписью
+// Delete build folder
 function clean(params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, Pug, images, fonts, cssInc, jsInc), cssLib, jsLib, fontsStyle);
+let build = gulp.series(clean, gulp.parallel( Pug, css, js, images, fonts ), cssLib, jsLib, fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
-// Объявление переменных для Gulp
-exports.cssInc     = cssInc;
-exports.jsInc      = jsInc;
 exports.jsLib      = jsLib;
 exports.cssLib     = cssLib;
 exports.fontsStyle = fontsStyle;
