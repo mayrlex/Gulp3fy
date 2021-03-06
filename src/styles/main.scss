@@ -1,14 +1,14 @@
 // Mixins
-@import "../../includes/scss/mixins";
+@import "utils/mixins";
 
 // Variables
-@import "../../includes/scss/vars";
+@import "utils/vars";
 
 // Fonts
-@import "../../includes/scss/fonts";
+@import "utils/fonts";
 
 // Clear styles
-@import "../../includes/scss/eraser";
+@import "utils/eraser";
 
 body {
     color: #000000;
@@ -45,17 +45,17 @@ body {
 // General / End
 
 // Header
-@import "../../includes/scss/header";
+@import "includes/header";
 
 // Main / Start
 
 // Main / End
 
 // Footer
-@import "../../includes/scss/footer";
+@import "includes/footer";
 
 // Forms
-@import "../../includes/scss/forms";
+@import "includes/forms";
 
 // GUI
-@import "../../includes/scss/ui";
+@import "utils/ui";

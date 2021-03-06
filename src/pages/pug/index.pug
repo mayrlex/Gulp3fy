@@ -1,4 +1,4 @@
-extends ../template/pug/layout.pug
+extends template/layout.pug
 
 //- Page settings
 block vars
@@ -6,10 +6,12 @@ block vars
     - const lang = 'ru';
     //- - const description = '';
     //- - const keywords = '';
+    - const style = 'assets/css/main.min.css'
+    - const script = 'assets/js/main.min.js'
 
 //- Header
 block header
-    include ../includes/pug/header.pug
+    include includes/header.pug
 
     //- Main content
     main.main
@@ -18,8 +20,8 @@ block header
                 Hi Pug. How are you?
 //- Footer
 block footer
-    include ../includes/pug/footer.pug
+    include includes/footer.pug
 
 //- JS
 block scripts
-    include ../includes/pug/scripts.pug
+    include includes/scripts.pug
