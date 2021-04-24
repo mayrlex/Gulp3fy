@@ -1,0 +1,16 @@
+- const pageTitle = pageName ? `${pageName} — ${brandName}` : brandName
+
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+//- meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+meta(name='description', content=pageDescription)
+meta(name='keywords', content=pageKeywords)
+meta(name='format-detection', content='telephone=no, date=no, address=no, email=no')
+meta(name='robots', content=pageRobots)
+
+//- TAB
+title= pageTitle
+link(rel='shortcut icon', href='assets/images/common/favicon.ico?v=' + siteVersion)
+
+//- Styles
+link(rel='stylesheet', href='assets/css/main.min.css?v=' + siteVersion)

@@ -1,7 +1,8 @@
 # Main
 Gulp3fy
-Gulp
-src/pages/html
+build
+src/styles/components
+src/.htaccess
 
 # Windows thumbnail cache files
 Thumbs.db

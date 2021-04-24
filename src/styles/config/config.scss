@@ -1,0 +1,111 @@
+@import "normalize.css/normalize";
+
+@include focus-visible;
+
+// Global
+* {
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+html {
+    height: 100%;
+
+    font-size: 16px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    min-height: 100%;
+
+    font-family: $ff-primary;
+    line-height: 1;
+}
+
+// Semantic tags
+aside,
+nav,
+footer,
+header,
+section {
+    display: block;
+}
+
+// Links
+a {
+    &:visited,
+    &:hover {
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+}
+
+// Forms
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+
+    &:-moz-focus-inner {
+        padding: 0;
+
+        border: 0;
+    }
+}
+
+// Images
+img {
+    max-width: 100%;
+    height: auto;
+
+    vertical-align: top;
+}
+
+// Lists
+ul li {
+    list-style: none;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+// .container {
+// }
+
+.main {
+    flex-grow: 1;
+}
+
+@each $heading, $font-size in $font-size-headings {
+    #{$heading} {
+        font-size: $font-size;
+        font-family: $ff-secondary;
+    }
+}
