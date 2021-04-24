@@ -1,0 +1,13 @@
+extends layouts/default.pug
+
+//- Page settings
+block variables
+    - const pageLang  = 'ru'
+    - const pageName = 'How to learn to code?'
+    - const pageDescription = 'World pugramming reference'
+    - const pageKeywords = 'HTML, CSS, JS, PUG, SASS, MD5, SHA256 H3, CRC32'
+    - const pageRobots = 'index, follow'
+
+//- Page content
+block content
+    include pages/index/**/*.pug

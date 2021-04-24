@@ -1,0 +1,29 @@
+// Colors
+$theme-colors: (
+    "primary": #6c63ff,
+    "secondary": #1e1e1e,
+    "white": #fff,
+    "black": #000,
+    "succes": #12c091,
+    "error": #f4206c,
+    "error-dark": #b40041,
+    "error-bg": #ffd4e4,
+    "error-light": #fff3f8,
+    "warning": #ffcd00,
+);
+
+// Fonts
+$ff-primary: "Poppins", sans-serif;
+$ff-secondary: "Nunito", sans-serif;
+
+// Font sizes
+$font-size-base: 1rem;
+
+$font-size-headings: (
+    h1: $font-size-base * 4,
+    h2: $font-size-base * 3,
+    h3: $font-size-base * 2,
+    h4: $font-size-base * 1.5,
+    h5: $font-size-base * 1.25,
+    h6: $font-size-base,
+);

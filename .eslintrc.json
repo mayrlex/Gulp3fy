@@ -1,15 +1,19 @@
 {
+    "extends": "airbnb-base",
+    "parser": "@babel/eslint-parser",
     "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 12,
-        "sourceType": "module"
+        "browser": true
+        // "jquery": true
+        // "es2021": true
     },
     "rules": {
-        "semi": "error"
+        "indent": ["error", 4],
+        "no-console": "off",
+        "linebreak-style": "off",
+        "eol-last": "off",
+        "no-unused-vars": "off",
+        "no-trailing-spaces": "off",
+        // "comma-dangle": ["error", "never"],
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": ["gulpfile.babel.js", "gulp/**/*"]}]
     }
 }
-
-//"extends": "eslint:recommended"
