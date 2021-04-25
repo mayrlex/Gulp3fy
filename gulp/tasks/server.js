@@ -4,14 +4,14 @@ import path from '../config';
 const server = (callback) => {
     sync.create().init({
         server: {
-            baseDir: path.dest.root,
+            baseDir: path.dest,
         },
         files: [
-            `${path.dest.html}/*.html`,
-            `${path.dest.css}/*.css`,
-            `${path.dest.js}/*.js`,
+            path.dest,
+            path.styles.dest,
+            path.scripts.dest,
             {
-                match: `${path.dest.images}/**/*`,
+                match: path.images.dest,
                 fn() {
                     this.reload();
                 },
