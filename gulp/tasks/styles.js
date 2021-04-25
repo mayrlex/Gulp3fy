@@ -19,7 +19,10 @@ const sassBuild = () => (
         }))
 
         .pipe(gulpif(path.isProd, gulpGroup()))
-        .pipe(gulpif(path.isProd, autoprefixer()))
+        .pipe(gulpif(path.isProd, autoprefixer({
+            overrideBrowserslist: ['last 5 version'],
+        })))
+
         .pipe(gulpif(path.isProd, gulp.dest(path.styles.dest)))
         .pipe(gulpif(path.isProd, cleanCSS({
             level: 1,

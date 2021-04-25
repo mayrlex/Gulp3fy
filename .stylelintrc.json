@@ -12,7 +12,7 @@
         "declaration-empty-line-before": null,
         "order/properties-order": [],
         "indentation": 4,
-        "no-missing-end-of-source-newline": null,
+        "no-missing-end-of-source-newline": true,
         "plugin/rational-order": [true, {
         "empty-line-between-groups": true
         }]
