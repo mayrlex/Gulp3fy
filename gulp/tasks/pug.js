@@ -36,7 +36,7 @@ export const pugWatch = () => {
     global.isPugWatch = true;
 
     gulp.watch(path.puges.watch, pugBuild)
-        .on('all', (filepath, stats) => {
+        .on('all', (event, filepath, stats) => {
             global.emittyChangedFile = {
                 path: filepath,
                 stats,

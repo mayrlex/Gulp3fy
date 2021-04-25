@@ -7,11 +7,11 @@ const server = (callback) => {
             baseDir: path.dest,
         },
         files: [
-            path.dest,
+            path.puges.dest,
             path.styles.dest,
             path.scripts.dest,
             {
-                match: path.images.dest,
+                match: `${path.images.dest}/**/*`,
                 fn() {
                     this.reload();
                 },
