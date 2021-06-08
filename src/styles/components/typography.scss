@@ -1,0 +1,62 @@
+.headline {
+    color: $title;
+    font-weight: 700;
+    font-size: 32px;
+    font-family: $font-family-secondary;
+
+    // < 768px
+    @include media-min(md) {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    // < 1200px
+    @include media-min(xl) {
+        font-size: 42px;
+        line-height: 55px;
+    }
+}
+
+.subheading {
+    color: $body;
+    font-size: 18px;
+    line-height: 30px;
+    text-align: center;
+
+    // < 768px
+    @include media-min(md) {
+        font-size: 20px;
+        letter-spacing: 0.025em;
+    }
+
+    // < 1200px
+    @include media-min(xl) {
+        font-size: 24px;
+    }
+}
+
+.title {
+    color: $title;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: $font-family-secondary;
+    line-height: 26px;
+    text-align: center;
+
+    @include media-min(md) {
+        font-size: 18px;
+    }
+
+    @include media-min(xl) {
+        font-size: 20px;
+    }
+}
+
+.subtitle {
+}
+
+.text {
+    color: $body;
+    font-size: 14px;
+    line-height: 21px;
+}
