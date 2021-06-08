@@ -9,33 +9,49 @@ import gulpif from 'gulp-if';
 import sassGlob from 'gulp-sass-glob';
 import path from '../config';
 
-const sassBuild = () => (
-    gulp.src(path.styles.src, { sourcemaps: path.isDev })
+const sassBuild = () =>
+    gulp
+        .src(path.styles.src, { sourcemaps: path.isDev })
         .pipe(plumber())
         .pipe(sassGlob())
-        .pipe(sass({
-            outputStyle: 'expanded',
-            includePaths: ['./node_modules'],
-        }))
+        .pipe(
+            sass({
+                outputStyle: 'expanded',
+                includePaths: ['./node_modules'],
+            })
+        )
 
         .pipe(gulpif(path.isProd, gulpGroup()))
-        .pipe(gulpif(path.isProd, autoprefixer({
-            overrideBrowserslist: ['last 5 version'],
-        })))
+        .pipe(
+            gulpif(
+                path.isProd,
+                autoprefixer({
+                    overrideBrowserslist: ['last 5 version'],
+                })
+            )
+        )
 
         .pipe(gulpif(path.isProd, gulp.dest(path.styles.dest)))
-        .pipe(gulpif(path.isProd, cleanCSS({
-            level: 1,
-        })))
+        .pipe(
+            gulpif(
+                path.isProd,
+                cleanCSS({
+                    level: 1,
+                })
+            )
+        )
 
-        .pipe(rename({
-            suffix: '.min',
-        }))
+        .pipe(
+            rename({
+                suffix: '.min',
+            })
+        )
 
-        .pipe(gulp.dest(path.styles.dest, {
-            sourcemaps: path.isDev,
-        }))
-);
+        .pipe(
+            gulp.dest(path.styles.dest, {
+                sourcemaps: path.isDev,
+            })
+        );
 
 export const stylesBuild = gulp.series(sassBuild);
 

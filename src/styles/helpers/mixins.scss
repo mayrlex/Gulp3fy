@@ -1,13 +1,15 @@
-@mixin focus-visible {
-    @if (&) {
-        .js-focus-visible &:focus:not(.focus-visible) {
-            @content;
-        }
+@mixin media-min($key) {
+    $breakpoint: map-get($breakpoints, $key);
+
+    @media (min-width: $breakpoint) {
+        @content;
     }
-    //
-    @else {
-        .js-focus-visible :focus:not(.focus-visible) {
-            outline: none;
-        }
+}
+
+@mixin media-max($key) {
+    $breakpoint: map-get($breakpoints, $key);
+
+    @media (max-width: $breakpoint) {
+        @content;
     }
 }

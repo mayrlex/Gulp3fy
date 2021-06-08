@@ -1,6 +1,9 @@
-// Theme color
-@function get-theme-color($key) {
-    @return map-get($theme-colors, $key);
+@function get-breakpoint($key) {
+    @return map-get($breakpoints, $key);
+}
+
+@function mxwContainer($key) {
+    @return map-get($containerMaxWidth, $key);
 }
 
 // PX to REM

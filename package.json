@@ -1,20 +1,10 @@
 {
     "name": "gulp3fy",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Web builder based on the gulp",
     "scripts": {
         "dev": "gulp watch",
         "prod": "gulp build --prod"
-    },
-    "lint-staged": {
-        "*.pug": "pug-lint",
-        "*.scss": "stylelint",
-        "*.js": "eslint"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
     },
     "repository": {
         "type": "git",
@@ -51,6 +41,7 @@
         "gulp-changed": "^4.0.2",
         "gulp-clean-css": "^4.3.0",
         "gulp-group-css-media-queries": "^1.2.2",
+        "gulp-html-beautify": "^1.0.1",
         "gulp-if": "^3.0.0",
         "gulp-imagemin": "^7.1.0",
         "gulp-plumber": "^1.2.1",
@@ -77,7 +68,6 @@
         "vinyl-source-stream": "^2.0.0"
     },
     "dependencies": {
-        "normalize.css": "^8.0.1",
         "vanilla-lazyload": "^17.3.1"
     }
 }

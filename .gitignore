@@ -1,8 +1,5 @@
 # Main
-Gulp3fy
 build
-src/styles/components
-src/.htaccess
 
 # Windows thumbnail cache files
 Thumbs.db

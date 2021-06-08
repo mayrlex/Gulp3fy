@@ -1,8 +1,4 @@
-@import "normalize.css/normalize";
-
-@include focus-visible;
-
-// Global
+// Tags / Start
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +7,9 @@
 }
 
 *,
-*::before,
-*::after {
-    box-sizing: inherit;
+*:before,
+*:after {
+    box-sizing: border-box;
 }
 
 :focus,
@@ -21,36 +17,34 @@
     outline: none;
 }
 
-html {
-    height: 100%;
-
-    font-size: 16px;
-}
-
 body {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
 
     min-height: 100%;
 
-    font-family: $ff-primary;
-    line-height: $line-height;
+    color: $black;
+    font-size: $font-size-base;
+    font-family: $font-family-primary;
+
+    background: $bg;
+
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+
+    // Lock body at open burger
+    &.--lock {
+        overflow: hidden;
+    }
 }
 
-// Semantic tags
-aside,
-nav,
-footer,
-header,
-section {
-    display: block;
-}
-
-// Links
 a {
-    &:visited,
-    &:hover {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:visited {
         text-decoration: none;
     }
 
@@ -58,11 +52,6 @@ a {
     &:active {
         outline: none;
     }
-}
-
-// Forms
-input::-ms-clear {
-    display: none;
 }
 
 button {
@@ -75,18 +64,50 @@ button {
     }
 }
 
-// Images
-img {
-    max-width: 100%;
-    height: auto;
-
-    vertical-align: top;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
 }
 
-// Lists
 ul li {
     list-style: none;
 }
+
+img {
+    vertical-align: top;
+}
+// Tags / End
+
+// Pseudo / Start
+// stylelint-disable no-descending-specificity
+
+// width
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+// Handle
+::-webkit-scrollbar-thumb {
+    background: $scrollBar;
+    border-radius: 10px;
+}
+
+// Handle on hover
+::-webkit-scrollbar-thumb:hover {
+    background: $scrollBarHover;
+}
+
+::-webkit-resizer {
+    display: none;
+}
+
+// stylelint-enable no-descending-specificity
+// Pseudo / End
 
 .wrapper {
     display: flex;
@@ -96,16 +117,37 @@ ul li {
     overflow: hidden;
 }
 
-// .container {
-// }
+.container {
+    margin: 0 auto;
 
-.main {
-    flex-grow: 1;
-}
+    // > 576px
+    @include media-max(sm) {
+        max-width: mxwContainer(fluid);
+        padding: $fields !important;
+    }
 
-@each $heading, $font-size in $font-size-headings {
-    #{$heading} {
-        font-size: $font-size;
-        font-family: $ff-secondary;
+    // < 576px
+    @include media-min(sm) {
+        max-width: mxwContainer(sm);
+    }
+
+    // < 768px
+    @include media-min(md) {
+        max-width: mxwContainer(md);
+    }
+
+    // < 992px
+    @include media-min(lg) {
+        max-width: mxwContainer(lg);
+    }
+
+    // < 1200px
+    @include media-min(xl) {
+        max-width: mxwContainer(xl);
+    }
+
+    // < 1400px
+    @include media-min(xxl) {
+        max-width: mxwContainer(xxl);
     }
 }

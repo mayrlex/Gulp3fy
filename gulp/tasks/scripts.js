@@ -9,7 +9,7 @@ import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
 import path from '../config';
 
-export const scriptsBuild = () => (
+export const scriptsBuild = () =>
     browserify(path.scripts.src, { debug: true })
         .transform('babelify', { presets: ['@babel/preset-env'] })
         .bundle()
@@ -25,7 +25,6 @@ export const scriptsBuild = () => (
         .pipe(gulpif(path.isDev, sourcemaps.init({ loadMaps: true })))
         .pipe(gulpif(path.isDev, sourcemaps.write()))
 
-        .pipe(gulp.dest(path.scripts.dest))
-);
+        .pipe(gulp.dest(path.scripts.dest));
 
 export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);

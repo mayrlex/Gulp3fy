@@ -1,31 +1,67 @@
-// Colors
-$theme-colors: (
-    'primary': #6c63ff,
-    'secondary': #1e1e1e,
-    'white': #fff,
-    'black': #000,
-    'succes': #12c091,
-    'error': #f4206c,
-    'error-dark': #b40041,
-    'error-bg': #ffd4e4,
-    'error-light': #fff3f8,
-    'warning': #ffcd00,
+// Breaks / Start
+// Breakpoints
+$breakpoints: (
+    xs: 320px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
 );
 
-// Fonts
-$ff-primary: 'Poppins', sans-serif;
-$ff-secondary: 'Nunito', sans-serif;
-
-// Font sizes
-$font-size-base: 1rem;
-
-$font-size-headings: (
-    h1: $font-size-base * 4,
-    h2: $font-size-base * 3,
-    h3: $font-size-base * 2,
-    h4: $font-size-base * 1.5,
-    h5: $font-size-base * 1.25,
-    h6: $font-size-base,
+$containerMaxWidth: (
+    sm: get-breakpoint(sm) - 30px,
+    md: get-breakpoint(md) - 30px,
+    lg: get-breakpoint(lg) - 40px,
+    xl: get-breakpoint(xl) - 60px,
+    xxl: get-breakpoint(xxl) - 80px,
+    fluid: 100%,
 );
 
-$line-height: rem(16);
+$fields: 0 15px;
+// Breaks / End
+
+// Colors / Start
+$white: #fff;
+$black: #000;
+
+// Primary
+$primary: #6c63ff;
+
+// Secondary
+$secondary: #1e1e1e;
+
+// Grayscale
+$title: #14142b;
+$body: #4e4b66;
+$label: #6e7191;
+$placeholder: #a0a3bd;
+$line: #d9dbe9;
+$input: #eff0f6;
+$bg: #f7f7fc;
+$link: #ffffffb3;
+
+// Succes
+$success: #12c091;
+$successDark: #00966d;
+$successDarkMode: #34eab9;
+$successBg: #dffff6;
+$successLight: #f2fffb;
+
+// Error
+$error: #f4206c;
+$errorDark: #b40041;
+$errorDarkMode: #ff84b7;
+$errorBg: #ffd4e4;
+$errorLight: #fff3f8;
+// Colors / End
+
+// Fonts / Start
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Nunito', sans-serif;
+
+$font-size-base: 14px;
+// Fonts / End
+
+$scrollBar: #909090;
+$scrollBarHover: #ccc;
