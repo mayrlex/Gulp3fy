@@ -7,7 +7,7 @@ const server = (callback) => {
             baseDir: path.dest,
         },
         files: [
-            path.puges.dest,
+            path.views.dest,
             path.styles.dest,
             path.scripts.dest,
             {

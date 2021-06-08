@@ -1,4 +1,9 @@
-@import "./helpers/**/*";
-@import "./config/config.scss";
-@import "./pages/**/*";
-@import "./components/**/*";
+@import './helpers/variables.scss';
+@import './helpers/functions.scss';
+@import './helpers/mixins.scss';
+@import './helpers/fonts.scss';
+@import './config/config.scss';
+@import './parts/header.scss';
+@import './parts/footer.scss';
+@import './components/**/*';
+@import './pages/**/*';

@@ -1,0 +1,19 @@
+extends layouts/default.pug
+
+//- Page settings
+block variables
+    - const pageLang  = 'ru'
+    - const pageName = 'Front-End builder'
+    - const pageDescription = ''
+    - const pageKeywords = ''
+    //- - const pageRobots = 'noindex, nofollow'
+
+block cdnStyles
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css')
+
+//- Page content
+block content
+    include pages/index/**/*.pug
+
+block sdnScripts
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js')

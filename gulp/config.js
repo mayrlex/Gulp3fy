@@ -5,11 +5,11 @@ const path = {
     src: source,
     dest: compiled,
 
-    puges: {
-        src: `${source}/puges/*.pug`,
+    views: {
+        src: `${source}/views/*.pug`,
         dest: compiled,
-        emitty: `${source}/puges`,
-        watch: `${source}/puges/**/*.pug`,
+        emitty: `${source}/views`,
+        watch: `${source}/views/**/*.pug`,
     },
 
     styles: {
@@ -39,22 +39,16 @@ const path = {
 
     icons: {
         srcMono: `${source}/assets/icons/mono/*.svg`,
-        srcMulti: `${source}/assets/icons/multi/*.{jpg,png,svg,gif,ico,webp}`,
-        dest: `${compiled}/assets/icons`,
-        watchMono: `${source}/assets/icons/mono/*.{jpg,png,svg,gif,ico,webp}`,
-        watchMulti: `${source}/assets/icons/multi/*.{jpg,png,svg,gif,ico,webp}`,
+        srcMulti: `${source}/assets/icons/multi/*.svg`,
+        dest: `${compiled}/assets/images`,
+        watchMono: `${source}/assets/icons/mono/*.svg`,
+        watchMulti: `${source}/assets/icons/multi/*.svg`,
     },
 
     favicon: {
         src: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
         dest: `${compiled}/assets/images/common/`,
         watch: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
-    },
-
-    backEnd: {
-        src: `${source}/.htaccess`,
-        dest: compiled,
-        watch: `${source}/.htaccess`,
     },
 
     setEnv() {
