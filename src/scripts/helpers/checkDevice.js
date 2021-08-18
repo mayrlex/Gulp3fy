@@ -18,25 +18,25 @@ const isMobile = {
 if (isMobile.any()) {
     document.body.classList.add('--mob');
 
-    const menuArrows = document.querySelectorAll('.menu__arrow');
-    if (menuArrows.length > 0) {
-        for (let index = 0; index < menuArrows.length; index++) {
-            const menuArrow = menuArrows[index];
-            menuArrow.addEventListener('click', (e) => {
-                menuArrow.parrentElements.classList.toggle('active');
-            });
-        }
-    }
+    // const menuArrows = document.querySelectorAll('.menu__arrow');
+    // if (menuArrows.length > 0) {
+    //     for (let index = 0; index < menuArrows.length; index++) {
+    //         const menuArrow = menuArrows[index];
+    //         menuArrow.addEventListener('click', (e) => {
+    //             menuArrow.parrentElements.classList.toggle('active');
+    //         });
+    //     }
+    // }
 } else {
     document.body.classList.add('--pc');
 
-    const menuArrows = document.querySelectorAll('.arrow');
-    if (menuArrows.length > 0) {
-        for (let index = 0; index < menuArrows.length; index++) {
-            const menuArrow = menuArrows[index];
-            menuArrow.addEventListener('click', (e) => {
-                menuArrow.parrentElements.classList.toggle('active');
-            });
-        }
-    }
+    // const menuArrows = document.querySelectorAll('.arrow');
+    // if (menuArrows.length > 0) {
+    //     for (let index = 0; index < menuArrows.length; index++) {
+    //         const menuArrow = menuArrows[index];
+    //         menuArrow.addEventListener('click', (e) => {
+    //             menuArrow.parrentElements.classList.toggle('active');
+    //         });
+    //     }
+    // }
 }

@@ -20,6 +20,7 @@
         "no-plusplus": "off",
         "operator-linebreak": ["error", "after"],
         "implicit-arrow-linebreak": "off",
-        "comma-dangle": "off"
+        "comma-dangle": "off",
+        "no-restricted-globals": "off"
     }
 }
