@@ -1,5 +1,4 @@
-// Breaks / Start
-// Breakpoints
+// Breakpoints / Start
 $breakpoints: (
     xs: 320px,
     sm: 576px,
@@ -19,50 +18,72 @@ $containerMaxWidth: (
 );
 
 $fields: 0 15px;
-// Breaks / End
+// Breakpoints / End
 
 // Colors / Start
+
+// Base
 $white: #fff;
 $black: #000;
+$light: #f1f4f8;
+$dark: #161c2d;
 
 // Primary
-$primary: #6c63ff;
+$primary: #ff5c29;
+$primaryLight: #ffe6db;
+$primaryDark: #c8642f;
+$primaryBg: #fff6f2;
 
 // Secondary
-$secondary: #1e1e1e;
+$secondary: #334756;
+$secondaryLight: #6a91ad;
+$secondaryDark: #1d2830;
+$secondaryBg: #b3babf;
 
 // UI
-$title: #14142b;
-$body: #4e4b66;
-$label: #6e7191;
-$placeholder: #a0a3bd;
-$line: #d9dbe9;
-$input: #eff0f6;
 $bg: #f7f7fc;
-$link: #ffffffb3;
+$bgHeader: #082032;
+$scrollBar: #909090;
+$scrollBarHover: #ccc;
+
+// Typography
+$headline: #14142b;
+$title: $headline;
+$text: #4e4b66;
+$link: $text;
+$hover: $primaryDark;
+$disabled: #e5e5e5;
+$placeholder: #a0a3bd;
 
 // Succes
-$success: #12c091;
-$successDark: #00966d;
-$successDarkMode: #34eab9;
-$successBg: #dffff6;
-$successLight: #f2fffb;
+$success: #10ba96;
+$successLight: #dbfff7;
+$successDark: #108b71;
+$successBg: #f2fffc;
+
+// Warning
+$warning: #ffc107;
+$warningLight: #fffcdb;
+$warningDark: #b39417;
+$warningBg: #fffdf2;
 
 // Error
-$error: #f4206c;
-$errorDark: #b40041;
-$errorDarkMode: #ff84b7;
-$errorBg: #ffd4e4;
-$errorLight: #fff3f8;
+$error: #df4759;
+$errorLight: #ffdbdf;
+$errorDark: #8b101d;
+$errorBg: #fff2f4;
+
+// Info
+$info: #407fd0;
+$infoLight: #dbebff;
+$infoDark: #104a8b;
+$infoBg: #f2f8ff;
 // Colors / End
 
 // Fonts / Start
-$font-family-primary: 'Montserrat', sans-serif;
-$font-family-secondary: 'Nunito', sans-serif;
+$ff-primary: 'Montserrat', sans-serif;
+$ff-secondary: 'Nunito', sans-serif;
 
-$font-size-base: 14px;
+$fz-base: 14px;
+$lh-base: 32px;
 // Fonts / End
-
-// Scrollbar
-$scrollBar: #909090;
-$scrollBarHover: #ccc;
