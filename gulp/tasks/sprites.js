@@ -13,27 +13,27 @@ const spriteMono = () =>
                     },
                 },
                 shape: {
-                    transform: [
-                        {
-                            svgo: {
-                                plugins: [
-                                    {
-                                        removeAttrs: {
-                                            attrs: ['class', 'data-name', 'fill.*', 'stroke.*'],
-                                        },
-                                    },
-                                ],
-                            },
+                    transform: [{
+                        svgo: {
+                            plugins: [{
+                                removeAttrs: {
+                                    attrs: [
+                                        'class',
+                                        'data-name',
+                                        'fill.*',
+                                        'stroke.*',
+                                    ],
+                                },
+                            }],
                         },
-                    ],
+                    }],
                 },
             })
         )
         .pipe(gulp.dest(path.icons.dest));
 
 const spriteMulti = () =>
-    gulp
-        .src(path.icons.srcMulti)
+    gulp.src(path.icons.srcMulti)
         .pipe(
             svgSprite({
                 mode: {
@@ -42,24 +42,23 @@ const spriteMulti = () =>
                     },
                 },
                 shape: {
-                    transform: [
-                        {
-                            svgo: {
-                                plugins: [
-                                    {
-                                        removeAttrs: {
-                                            attrs: ['class', 'data-name'],
-                                        },
-                                    },
-                                    { removeUselessStrokeAndFill: false },
-                                    { inlineStyles: true },
-                                ],
+                    transform: [{
+                        svgo: {
+                            plugins: [{
+                                removeAttrs: {
+                                    attrs: ['class', 'data-name'],
+                                },
                             },
+
+                            { removeUselessStrokeAndFill: false },
+
+                            { inlineStyles: true }]
                         },
-                    ],
+                    }],
                 },
             })
         )
+
         .pipe(gulp.dest(path.icons.dest));
 
 export const spritesBuild = gulp.parallel(spriteMono, spriteMulti);

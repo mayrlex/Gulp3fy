@@ -9,9 +9,8 @@ import gulpif from 'gulp-if';
 import sassGlob from 'gulp-sass-glob';
 import path from '../config';
 
-const sassBuild = () =>
-    gulp
-        .src(path.styles.src, { sourcemaps: path.isDev })
+const StylesBuild = () =>
+    gulp.src(path.styles.src, { sourcemaps: path.isDev })
         .pipe(plumber())
         .pipe(sassGlob())
         .pipe(
@@ -53,6 +52,5 @@ const sassBuild = () =>
             })
         );
 
-export const stylesBuild = gulp.series(sassBuild);
-
-export const stylesWatch = () => gulp.watch(path.styles.watch, sassBuild);
+export const stylesBuild = gulp.series(StylesBuild);
+export const stylesWatch = () => gulp.watch(path.styles.watch, StylesBuild);
