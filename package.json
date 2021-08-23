@@ -1,6 +1,6 @@
 {
     "name": "gulp3fy",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Web builder based on the gulp",
     "scripts": {
         "dev": "gulp watch",
@@ -68,6 +68,7 @@
         "vinyl-source-stream": "^2.0.0"
     },
     "dependencies": {
+        "baron": "^3.0.3",
         "vanilla-lazyload": "^17.3.1"
     }
 }
