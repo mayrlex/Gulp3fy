@@ -19,6 +19,8 @@
         "selector-pseudo-element-colon-notation": "single",
         "block-no-empty": null,
         "function-name-case": null,
-        "no-empty-source": null
+        "no-empty-source": null,
+        "length-zero-no-unit": null,
+        "no-eol-whitespace": null
     }
 }

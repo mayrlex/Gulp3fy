@@ -1,8 +1,9 @@
-@import './helpers/variables.scss';
+@import './config/variables.scss';
 @import './helpers/**/*';
 @import './config/config.scss';
+@import './config/typography.scss';
+@import './components/**/*';
 @import './parts/header.scss';
 @import './parts/footer.scss';
-@import './components/**/*';
-@import './themes/**/*';
+// @import './themes/**/*';
 @import './pages/**/*';
