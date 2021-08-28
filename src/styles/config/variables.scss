@@ -22,44 +22,44 @@ $fields:                       0 15px;
 
 // Colors / Start
 // Base
-$white:                      #fff;
-$black:                      #000;
-$light:                      #f1f4f8;
-$dark:                       #161c2d;
+$white:                        #fff;
+$black:                        #000;
+$light:                        #f1f4f8;
+$dark:                         #161c2d;
 
 // color / Primary
-$primary:                    #fff;
-$primary_light:              #fff;
-$primary_dark:               #fff;
+$primary:                      #fff;
+$primary_light:                #fff;
+$primary_dark:                 #fff;
 
 // color / Secondary
-$secondary:                  #fff;
-$secondary_light:            #fff;
-$secondary_dark:             #fff;
+$secondary:                    #fff;
+$secondary_light:              #fff;
+$secondary_dark:               #fff;
 
 // Succes
-$success:                    #10ba96;
-$successLight:               #dbfff7;
-$successDark:                #108b71;
-$successBg:                  #f2fffc;
+$success:                      #10ba96;
+$successLight:                 #dbfff7;
+$successDark:                  #108b71;
+$successBg:                    #f2fffc;
 
 // Warning
-$warning:                    #ffc107;
-$warningLight:               #fffcdb;
-$warningDark:                #b39417;
-$warningBg:                  #fffdf2;
+$warning:                      #ffc107;
+$warningLight:                 #fffcdb;
+$warningDark:                  #b39417;
+$warningBg:                    #fffdf2;
 
 // Error
-$error:                      #df4759;
-$errorLight:                 #ffdbdf;
-$errorDark:                  #8b101d;
-$errorBg:                    #fff2f4;
+$error:                        #df4759;
+$errorLight:                   #ffdbdf;
+$errorDark:                    #8b101d;
+$errorBg:                      #fff2f4;
 
 // Info
-$info:                       #407fd0;
-$infoLight:                  #dbebff;
-$infoDark:                   #104a8b;
-$infoBg:                     #f2f8ff;
+$info:                         #407fd0;
+$infoLight:                    #dbebff;
+$infoDark:                     #104a8b;
+$infoBg:                       #f2f8ff;
 // Colors / End
 
 // Typography / Start
@@ -70,43 +70,43 @@ $fontFamily_primary:           'Montserrat', sans-serif;
 $fontFamily_secondary:         'Nunito', sans-serif;
 
 // Headline
-$headline__color:            #fff;
+$headline__color:              #fff;
 $headline__weight:             700;
 $headline__size:               16px;
 
 // Subheading
-$subheading__color:          #fff;
+$subheading__color:            #fff;
 $subheading__weight:           500;
 $subheading__size:             16px;
 $subheading__lineHeight:       $lineHeight_primary;
 
 // Title
-$title__color:               #fff;
+$title__color:                 #fff;
 $title__weight:                500;
 $title__size:                  16px;
 
 // Subtitle
-$subtitle__color:            #fff;
+$subtitle__color:              #fff;
 $subtitle__weight:             500;
 $subtitle__size:               16px;
 $subtitle__lineHeight:         $lineHeight_primary;
 
 // Text
-$text__color:                #fff;
+$text__color:                  #fff;
 $text__size:                   16px;
 $text__lineHeight:             $lineHeight_primary;
 // Typography / End
 
 // UI / Start
 // background
-$background__primary:        #fff;
-$background__secondary:      #fff;
-$background__header:         #fff;
+$background__primary:          #fff;
+$background__secondary:        #fff;
+$background__header:           #fff;
 
 // States
 $hovered:                      $primary_dark;
-$actived:                    #fff;
-$focused:                    #fff;
-$visited:                    #fff;
-$disabled:                   #fff;
+$actived:                      #fff;
+$focused:                      #fff;
+$visited:                      #fff;
+$disabled:                     #fff;
 // UI / End
