@@ -1,0 +1,112 @@
+// Breakpoints / Start
+$breakpoints: (
+    xs:                        320px,
+    sm:                        576px,
+    md:                        768px,
+    lg:                        992px,
+    xl:                        1200px,
+    xxl:                       1400px,
+);
+
+$containerMaxWidth: (
+    sm:                        get-breakpoint(sm) - 30px,
+    md:                        get-breakpoint(md) - 30px,
+    lg:                        get-breakpoint(lg) - 40px,
+    xl:                        get-breakpoint(xl) - 60px,
+    xxl:                       get-breakpoint(xxl) - 80px,
+    fluid:                     100%,
+);
+
+$fields:                       0 15px;
+// Breakpoints / End
+
+// Colors / Start
+// Base
+$white:                      #fff;
+$black:                      #000;
+$light:                      #f1f4f8;
+$dark:                       #161c2d;
+
+// color / Primary
+$primary:                    #fff;
+$primary_light:              #fff;
+$primary_dark:               #fff;
+
+// color / Secondary
+$secondary:                  #fff;
+$secondary_light:            #fff;
+$secondary_dark:             #fff;
+
+// Succes
+$success:                    #10ba96;
+$successLight:               #dbfff7;
+$successDark:                #108b71;
+$successBg:                  #f2fffc;
+
+// Warning
+$warning:                    #ffc107;
+$warningLight:               #fffcdb;
+$warningDark:                #b39417;
+$warningBg:                  #fffdf2;
+
+// Error
+$error:                      #df4759;
+$errorLight:                 #ffdbdf;
+$errorDark:                  #8b101d;
+$errorBg:                    #fff2f4;
+
+// Info
+$info:                       #407fd0;
+$infoLight:                  #dbebff;
+$infoDark:                   #104a8b;
+$infoBg:                     #f2f8ff;
+// Colors / End
+
+// Typography / Start
+// Base
+$fontSize_primary:             14px;
+$lineHeight_primary:           1;
+$fontFamily_primary:           'Montserrat', sans-serif;
+$fontFamily_secondary:         'Nunito', sans-serif;
+
+// Headline
+$headline__color:            #fff;
+$headline__weight:             700;
+$headline__size:               16px;
+
+// Subheading
+$subheading__color:          #fff;
+$subheading__weight:           500;
+$subheading__size:             16px;
+$subheading__lineHeight:       $lineHeight_primary;
+
+// Title
+$title__color:               #fff;
+$title__weight:                500;
+$title__size:                  16px;
+
+// Subtitle
+$subtitle__color:            #fff;
+$subtitle__weight:             500;
+$subtitle__size:               16px;
+$subtitle__lineHeight:         $lineHeight_primary;
+
+// Text
+$text__color:                #fff;
+$text__size:                   16px;
+$text__lineHeight:             $lineHeight_primary;
+// Typography / End
+
+// UI / Start
+// background
+$background__primary:        #fff;
+$background__secondary:      #fff;
+$background__header:         #fff;
+
+// States
+$hovered:                      $primary_dark;
+$actived:                    #fff;
+$focused:                    #fff;
+$visited:                    #fff;
+$disabled:                   #fff;
+// UI / End

@@ -1,0 +1,66 @@
+.headline {
+    color: $headline__color;
+    font-weight: $headline__weight;
+    font-size: $headline__size;
+    font-family: $fontFamily_secondary;
+
+    // < 768px
+    @include media-min(md) {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    // < 1200px
+    @include media-min(xl) {
+        font-size: 42px;
+        line-height: 55px;
+    }
+}
+
+.subheading {
+    color: $subheading__color;
+    font-size: $subheading__size;
+    line-height: $subheading__lineHeight;
+    text-align: center;
+
+    // < 768px
+    @include media-min(md) {
+        font-size: 20px;
+        letter-spacing: 0.025em;
+    }
+
+    // < 1200px
+    @include media-min(xl) {
+        font-size: 24px;
+    }
+}
+
+.title {
+    color: $title__color;
+    font-weight: $title__weight;
+    font-size: $title__size;
+    font-family: $fontFamily_secondary;
+    text-align: center;
+
+    @include media-min(md) {
+        font-size: 18px;
+    }
+
+    @include media-min(xl) {
+        font-size: 20px;
+    }
+}
+
+.subtitle {
+    color: $subtitle__color;
+    font-weight: $subtitle__weight;
+    font-size: $subtitle__size;
+    font-family: $fontFamily_secondary;
+    line-height: $subtitle__lineHeight;
+}
+
+.text {
+    color: $text__color;
+    font-size: $text__size;
+    line-height: $text__lineHeight;
+}
