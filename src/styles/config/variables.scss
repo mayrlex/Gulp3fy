@@ -20,8 +20,13 @@ $containerMaxWidth: (
 $fields:                       0 15px;
 // Breakpoints / End
 
-// Colors / Start
-// Base
+// z-layers
+$z-layers: (
+	default: 1,
+	header: 10,
+	dropdown: 50,
+	modal: 100,
+);
 $white:                        #fff;
 $black:                        #000;
 $light:                        #f1f4f8;
