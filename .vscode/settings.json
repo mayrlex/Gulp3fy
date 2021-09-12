@@ -1,6 +1,13 @@
 {
-    "files.exclude": {
-        "**/.vscode": true,
-        "**/node_modules": true
-    }
+	"files.exclude": {
+		"**/.vscode": true,
+		"**/node_modules": true
+	},
+
+	"scss.validate": false,
+	"css.validate": false,
+
+	"editor.codeActionsOnSave": {
+		"source.fixAll.stylelint": true
+	}
 }
