@@ -1,9 +1,12 @@
 @function get-breakpoint($key) {
-    @return map-get($breakpoints, $key);
-}
+	@if map-has-key($breakpoints, $key) {
+		@return map-get($breakpoints, $key);
+	}
 
 @function mxwContainer($key) {
-    @return map-get($containerMaxWidth, $key);
+	@if map-has-key($containerMaxWidth, $key) {
+		@return map-get($containerMaxWidth, $key);
+	}
 }
 
 // PX to REM
