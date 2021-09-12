@@ -1,0 +1,15 @@
+module.exports = {
+	validateExtensions: true,
+	validateDivTags: true,
+	validateAttributeSeparator: { separator: ', ', multiLineSeparator: ',\n ' },
+	validateAttributeQuoteMarks: true,
+	requireSpecificAttributes: [{ img: ['src', 'alt'] }],
+	requireSpaceAfterCodeOperator: true,
+	requireLowerCaseTags: true,
+	requireClassLiteralsBeforeIdLiterals: true,
+	requireClassLiteralsBeforeAttributes: true,
+	disallowTrailingSpaces: true,
+	disallowSpacesInsideAttributeBrackets: true,
+	disallowLegacyMixinCall: true,
+	disallowDuplicateAttributes: true,
+};
