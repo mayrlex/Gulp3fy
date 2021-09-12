@@ -10,21 +10,21 @@ import gulpif from 'gulp-if';
 import path from '../config';
 
 export const scriptsBuild = () =>
-    browserify(path.scripts.src, { debug: true })
-        .transform('babelify', { presets: ['@babel/preset-env'] })
-        .bundle()
-        .pipe(plumber())
-        .pipe(gulpif(path.isProd, vinylStream('main.js')))
-        .pipe(gulpif(path.isProd, vinylBuffer()))
-        .pipe(gulpif(path.isProd, gulp.dest(path.scripts.dest)))
-        .pipe(gulpif(path.isProd, rename({ suffix: '.min' })))
-        .pipe(gulpif(path.isProd, uglify()))
+	browserify(path.scripts.src, { debug: true })
+		.transform('babelify', { presets: ['@babel/preset-env'] })
+		.bundle()
+		.pipe(plumber())
+		.pipe(gulpif(path.isProd, vinylStream('main.js')))
+		.pipe(gulpif(path.isProd, vinylBuffer()))
+		.pipe(gulpif(path.isProd, gulp.dest(path.scripts.dest)))
+		.pipe(gulpif(path.isProd, rename({ suffix: '.min' })))
+		.pipe(gulpif(path.isProd, uglify()))
 
-        .pipe(gulpif(path.isDev, vinylStream('main.min.js')))
-        .pipe(gulpif(path.isDev, vinylBuffer()))
-        .pipe(gulpif(path.isDev, sourcemaps.init({ loadMaps: true })))
-        .pipe(gulpif(path.isDev, sourcemaps.write()))
+		.pipe(gulpif(path.isDev, vinylStream('main.min.js')))
+		.pipe(gulpif(path.isDev, vinylBuffer()))
+		.pipe(gulpif(path.isDev, sourcemaps.init({ loadMaps: true })))
+		.pipe(gulpif(path.isDev, sourcemaps.write()))
 
-        .pipe(gulp.dest(path.scripts.dest));
+		.pipe(gulp.dest(path.scripts.dest));
 
 export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);

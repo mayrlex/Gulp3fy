@@ -4,17 +4,17 @@ import rename from 'gulp-rename';
 import path from '../config';
 
 const FaviconBuild = () =>
-    gulp
-        .src(path.favicon.src)
-        .pipe(plumber())
-        .pipe(
-            rename({
-                extname: '.ico',
-            })
-        )
-        .pipe(gulp.dest(path.favicon.dest));
+	gulp
+		.src(path.favicon.src)
+		.pipe(plumber())
+		.pipe(
+			rename({
+				extname: '.ico',
+			})
+		)
+		.pipe(gulp.dest(path.favicon.dest));
 
 export const faviconBuild = gulp.parallel(FaviconBuild);
 export const faviconWatch = () => {
-    gulp.watch(path.favicon.watch, FaviconBuild);
+	gulp.watch(path.favicon.watch, FaviconBuild);
 };

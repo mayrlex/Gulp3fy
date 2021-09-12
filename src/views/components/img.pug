@@ -1,11 +1,9 @@
 mixin img(src)
-    img(class='lazy', data-src=src, src='assets/images/common/placeholder.png', alt='')&attributes(attributes)
-
+	img(class='lazy', data-src=src, src='assets/images/common/placeholder.png', alt='')&attributes(attributes)
 
 mixin pic(src, srcPlaceholder='assets/images/common/placeholder.png')
-    - const srcParts = src.split('.')
-    - const [srcFirstPart, extname] = srcParts
-
-    picture
-        source(type='image/webp', data-srcset=`${srcFirstPart}.webp`, srcset=srcPlaceholder)
-        img(class='lazy', data-src=`${srcFirstPart}.${extname}`, src=srcPlaceholder, alt='')&attributes(attributes)
+	- const srcParts = src.split('.')
+	- const [srcFirstPart, extname] = srcParts
+	picture
+		source(type='image/webp', data-srcset=`${srcFirstPart}.webp`, srcset=srcPlaceholder)
+		img(class='lazy', data-src=`${srcFirstPart}.${extname}`, src=srcPlaceholder, alt='')&attributes(attributes)

@@ -13,28 +13,28 @@ import { faviconBuild, faviconWatch } from './gulp/tasks/favicon';
 path.setEnv();
 
 export const build = gulp.series(
-    clean,
-    gulp.parallel(
-        viewsBuild,
-        stylesBuild,
-        scriptsBuild,
-        fontsBuild,
-        imagesBuild,
-        spritesBuild,
-        faviconBuild
-    )
+	clean,
+	gulp.parallel(
+		viewsBuild,
+		stylesBuild,
+		scriptsBuild,
+		fontsBuild,
+		imagesBuild,
+		spritesBuild,
+		faviconBuild
+	)
 );
 
 export const watch = gulp.series(
-    build,
-    server,
-    gulp.parallel(
-        viewsWatch,
-        stylesWatch,
-        scriptsWatch,
-        fontsWatch,
-        imagesWatch,
-        spritesWatch,
-        faviconWatch
-    )
+	build,
+	server,
+	gulp.parallel(
+		viewsWatch,
+		stylesWatch,
+		scriptsWatch,
+		fontsWatch,
+		imagesWatch,
+		spritesWatch,
+		faviconWatch
+	)
 );
