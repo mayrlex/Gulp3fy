@@ -1,17 +1,19 @@
+// Media min queries map
 @mixin media-min($key) {
-    $breakpoint: map-get($breakpoints, $key);
+	$breakpoint: map-get($breakpoints, $key);
 
-    @media (min-width: $breakpoint) {
-        @content;
-    }
+	@media (min-width: $breakpoint) {
+		@content;
+	}
 }
 
+// Media max queries map
 @mixin media-max($key) {
-    $breakpoint: map-get($breakpoints, $key);
+	$breakpoint: map-get($breakpoints, $key);
 
-    @media (max-width: $breakpoint) {
-        @content;
-    }
+	@media (max-width: $breakpoint) {
+		@content;
+	}
 }
 
 // Themes map

@@ -1,22 +1,31 @@
+// Get breakpoints map
 @function get-breakpoint($key) {
 	@if map-has-key($breakpoints, $key) {
 		@return map-get($breakpoints, $key);
 	}
 
+	@warn 'Size `#{$key}` not found in $breakpoints map.';
+	@return null;
+}
+
+// Get max width container map
 @function mxwContainer($key) {
 	@if map-has-key($containerMaxWidth, $key) {
 		@return map-get($containerMaxWidth, $key);
 	}
+
+	@warn 'Size `#{$key}` not found in $containerMaxWidt map.';
+	@return null;
 }
 
 // PX to REM
 @function rem($px) {
-    @return ($px / 16) + rem;
+	@return ($px / 16) + rem;
 }
 
 // PX to EM
 @function em($px) {
-    @return ($px / 16) + em;
+	@return ($px / 16) + em;
 }
 
 // Get theme colors Light/Dark map

@@ -3,17 +3,21 @@
 		color: get-theme('headline__color');
 	}
 
-    // < 768px
-    @include media-min(md) {
-        font-size: 36px;
-        line-height: 40px;
-    }
+	font-weight: $headline__weight;
+	font-size: $headline__size;
+	font-family: $fontFamily_secondary;
 
-    // < 1200px
-    @include media-min(xl) {
-        font-size: 42px;
-        line-height: 55px;
-    }
+	// < 768px
+	@include media-min(md) {
+		font-size: 36px;
+		line-height: 40px;
+	}
+
+	// < 1200px
+	@include media-min(xl) {
+		font-size: 42px;
+		line-height: 55px;
+	}
 }
 
 .subheading {
@@ -21,16 +25,20 @@
 		color: get-theme('subheading__color');
 	}
 
-    // < 768px
-    @include media-min(md) {
-        font-size: 20px;
-        letter-spacing: 0.025em;
-    }
+	font-size: $subheading__size;
+	line-height: $subheading__lineHeight;
+	text-align: center;
 
-    // < 1200px
-    @include media-min(xl) {
-        font-size: 24px;
-    }
+	// < 768px
+	@include media-min(md) {
+		font-size: 20px;
+		letter-spacing: 0.025em;
+	}
+
+	// < 1200px
+	@include media-min(xl) {
+		font-size: 24px;
+	}
 }
 
 .title {
@@ -38,23 +46,36 @@
 		color: get-theme('title__color');
 	}
 
-    @include media-min(md) {
-        font-size: 18px;
-    }
+	font-weight: $title__weight;
+	font-size: $title__size;
+	font-family: $fontFamily_secondary;
+	text-align: center;
 
-    @include media-min(xl) {
-        font-size: 20px;
-    }
+	@include media-min(md) {
+		font-size: 18px;
+	}
+
+	@include media-min(xl) {
+		font-size: 20px;
+	}
 }
 
 .subtitle {
 	@include theme($themes) {
 		color: get-theme('subtitle__color');
 	}
+
+	font-weight: $subtitle__weight;
+	font-size: $subtitle__size;
+	font-family: $fontFamily_secondary;
+	line-height: $subtitle__lineHeight;
 }
 
 .text {
 	@include theme($themes) {
 		color: get-theme('text__color');
 	}
+
+	font-size: $text__size;
+	line-height: $text__lineHeight;
 }

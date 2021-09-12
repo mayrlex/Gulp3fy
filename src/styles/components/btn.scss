@@ -1,39 +1,40 @@
 .btn {
-    display: inline-flex;
-    padding: 0px 0px;
+	display: inline-flex;
+	padding: 0px 0px;
 
-    &-fluid {
-        width: 100%;
-    }
+	&-fluid {
+		width: 100%;
+	}
 
-    &-primary {
-        padding: 10px 26px;
+	&-primary {
+		padding: 10px 26px;
 
-        color: #fff;
-        font-weight: 500;
-        font-size: 20px;
+		color: #fff;
+		font-weight: 500;
+		font-size: 20px;
 
 		@include theme($themes) {
 			background: get-theme('primary');
 		}
+		border-radius: 5px;
 
-        // < 992px
-        @include media-min(lg) {
-            &:hover {
-            }
-        }
-    }
+		// < 992px
+		@include media-min(lg) {
+			&:hover {
+			}
+		}
+	}
 
-    &-secondary {
-        padding: 11px 35px;
+	&-secondary {
+		padding: 11px 35px;
 
-        border: 1px solid $white;
-        border-radius: 8px;
+		border: 1px solid $white;
+		border-radius: 8px;
 
-        // < 992px
-        @include media-min(lg) {
-            &:hover {
-            }
-        }
-    }
+		// < 992px
+		@include media-min(lg) {
+			&:hover {
+			}
+		}
+	}
 }
