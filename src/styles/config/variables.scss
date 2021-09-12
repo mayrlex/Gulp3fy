@@ -27,40 +27,131 @@ $black:                        #000;
 $light:                        #f1f4f8;
 $dark:                         #161c2d;
 
-// color / Primary
-$primary:                      #fff;
-$primary_light:                #fff;
-$primary_dark:                 #fff;
+$themes: (
+	light: (
+		// color / Primary
+		primary:                  #fff,
+		primary_light:            #fff,
+		primary_dark:             #fff,
 
-// color / Secondary
-$secondary:                    #fff;
-$secondary_light:              #fff;
-$secondary_dark:               #fff;
+		// color / Secondary
+		secondary:                #fff,
+		secondary_light:          #fff,
+		secondary_dark:           #fff,
 
-// Succes
-$success:                      #10ba96;
-$successLight:                 #dbfff7;
-$successDark:                  #108b71;
-$successBg:                    #f2fffc;
+		// Succes
+		success:                  #10ba96,
+		success_light:            #dbfff7,
+		success_dark:             #108b71,
+		successBg:                #f2fffc,
 
-// Warning
-$warning:                      #ffc107;
-$warningLight:                 #fffcdb;
-$warningDark:                  #b39417;
-$warningBg:                    #fffdf2;
+		// Warning
+		warning:                  #ffc107,
+		warning_light:            #fffcdb,
+		warning_dark:             #b39417,
+		warningBg:                #fffdf2,
 
-// Error
-$error:                        #df4759;
-$errorLight:                   #ffdbdf;
-$errorDark:                    #8b101d;
-$errorBg:                      #fff2f4;
+		// Error
+		error:                    #df4759,
+		error_light:              #ffdbdf,
+		error_dark:               #8b101d,
+		errorBg:                  #fff2f4,
 
-// Info
-$info:                         #407fd0;
-$infoLight:                    #dbebff;
-$infoDark:                     #104a8b;
-$infoBg:                       #f2f8ff;
-// Colors / End
+		// Info
+		info:                     #407fd0,
+		info_light:               #dbebff,
+		info_dark:                #104a8b,
+		infoBg:                   #f2f8ff,
+
+		// Tupography / Start
+		headline__color:          #fff,
+		subheading__color:        #fff,
+		title__color:             #fff,
+		subtitle__color:          #fff,
+		text__color:              #fff,
+		// Tupography / End
+
+		// UI / Start
+		background__primary:      #1e1f26,
+		background__secondary:    #fff,
+		background__header:       #fff,
+
+		// States
+		hovered:                  #fff,
+		actived:                  #fff,
+		focused:                  #fff,
+		visited:                  #fff,
+		disabled:                 #fff,
+
+		// Theme switcher
+		switcher__body:           #fff,
+		switcher__ball:           #191a25,
+		// UI / End
+
+	),
+
+	dark: (
+		// color / Primary
+		primary:                  #fff,
+		primary_light:            #fff,
+		primary_dark:             #fff,
+
+		// color / Secondary
+		secondary:                #fff,
+		secondary_light:          #fff,
+		secondary_dark:           #fff,
+
+		// Succes
+		success:                  #10ba96,
+		success_light:            #dbfff7,
+		success_dark:             #108b71,
+		successBg:                #f2fffc,
+
+		// Warning
+		warning:                  #ffc107,
+		warning_light:            #fffcdb,
+		warning_dark:             #b39417,
+		warningBg:                #fffdf2,
+
+		// Error
+		error:                    #df4759,
+		error_light:              #ffdbdf,
+		error_dark:               #8b101d,
+		errorBg:                  #fff2f4,
+
+		// Info
+		info:                     #407fd0,
+		info_light:               #dbebff,
+		info_dark:                #104a8b,
+		infoBg:                   #f2f8ff,
+
+		// Tupography / Start
+		headline__color:          #fff,
+		subheading__color:        #fff,
+		title__color:             #fff,
+		subtitle__color:          #fff,
+		text__color:              #fff,
+		// Tupography / End
+
+		// UI / Start
+		background__primary:      #000,
+		background__secondary:    #fff,
+		background__header:       #fff,
+
+		// States
+		hovered:                  #fff,
+		actived:                  #fff,
+		focused:                  #fff,
+		visited:                  #fff,
+		disabled:                 #fff,
+
+		// Theme switcher
+		switcher__body:           #191a25,
+		switcher__ball:           #f5f5f5,
+		// UI / End
+
+	)
+);
 
 // Typography / Start
 // Base

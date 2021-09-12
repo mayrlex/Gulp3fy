@@ -13,8 +13,9 @@
         font-weight: 500;
         font-size: 20px;
 
-        background: $primary;
-        border-radius: 5px;
+		@include theme($themes) {
+			background: get-theme('primary');
+		}
 
         // < 992px
         @include media-min(lg) {

@@ -1,8 +1,7 @@
 .headline {
-    color: $headline__color;
-    font-weight: $headline__weight;
-    font-size: $headline__size;
-    font-family: $fontFamily_secondary;
+	@include theme($themes) {
+		color: get-theme('headline__color');
+	}
 
     // < 768px
     @include media-min(md) {
@@ -18,10 +17,9 @@
 }
 
 .subheading {
-    color: $subheading__color;
-    font-size: $subheading__size;
-    line-height: $subheading__lineHeight;
-    text-align: center;
+	@include theme($themes) {
+		color: get-theme('subheading__color');
+	}
 
     // < 768px
     @include media-min(md) {
@@ -36,11 +34,9 @@
 }
 
 .title {
-    color: $title__color;
-    font-weight: $title__weight;
-    font-size: $title__size;
-    font-family: $fontFamily_secondary;
-    text-align: center;
+	@include theme($themes) {
+		color: get-theme('title__color');
+	}
 
     @include media-min(md) {
         font-size: 18px;
@@ -52,15 +48,13 @@
 }
 
 .subtitle {
-    color: $subtitle__color;
-    font-weight: $subtitle__weight;
-    font-size: $subtitle__size;
-    font-family: $fontFamily_secondary;
-    line-height: $subtitle__lineHeight;
+	@include theme($themes) {
+		color: get-theme('subtitle__color');
+	}
 }
 
 .text {
-    color: $text__color;
-    font-size: $text__size;
-    line-height: $text__lineHeight;
+	@include theme($themes) {
+		color: get-theme('text__color');
+	}
 }

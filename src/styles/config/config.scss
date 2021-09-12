@@ -56,7 +56,9 @@ body {
     font-family: $fontFamily_primary;
     line-height: $lineHeight_primary;
 
-    background: $background__primary;
+	@include theme($themes) {
+		background: get-theme('background__primary');
+	}
 
     -ms-text-size-adjust: 100%;
     -moz-text-size-adjust: 100%;

@@ -13,3 +13,26 @@
         @content;
     }
 }
+
+// Themes map
+@mixin theme($themes: $themes) {
+	@each $theme, $map in $themes {
+		html[data-theme='#{$theme}'] & {
+			$theme-map: () !global;
+			// transition: ease-in 0.3s !default;
+
+			@each $key, $submap in $map {
+				$value: map-get(map-get($themes, $theme), '#{$key}');
+				$theme-map: map-merge(
+					$theme-map,
+					(
+						$key: $value,
+					)
+				) !global;
+			}
+
+			@content;
+			$theme-map: null !global;
+		}
+	}
+}
