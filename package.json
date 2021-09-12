@@ -4,25 +4,11 @@
     "description": "Web builder based on the gulp",
     "scripts": {
         "dev": "gulp watch",
-        "prod": "gulp build --prod"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/H3JILgaH4uk/Gulp3fy.git"
-    },
-    "keywords": [],
-    "author": "H3JILgaH4uk",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/H3JILgaH4uk/Gulp3fy/issues"
-    },
-    "homepage": "https://github.com/H3JILgaH4uk/Gulp3fy#readme",
-    "browserslist": [
-        "> 1%",
-        "last 2 versions",
-        "not dead",
-        "not IE 11"
-    ],
+		"prod": "gulp build --prod",
+		"eslint": "eslint src/scripts --ext .js",
+		"eslint:fix": "npm run eslint -- --fix",
+		"stylelint": "stylelint src/styles .scss",
+		"stylelint:fix": "npm run stylelint -- --fix"
     "devDependencies": {
         "@babel/core": "^7.12.13",
         "@babel/eslint-parser": "^7.12.13",
