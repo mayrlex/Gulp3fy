@@ -38,11 +38,15 @@ const path = {
 	},
 
 	icons: {
-		srcMono: `${source}/assets/icons/mono/*.svg`,
-		srcMulti: `${source}/assets/icons/multi/*.svg`,
+		src: {
+			mono: `${source}/assets/icons/mono/*.svg`,
+			multi: `${source}/assets/icons/multi/*.svg`,
+		},
 		dest: `${compiled}/assets/images`,
-		watchMono: `${source}/assets/icons/mono/*.svg`,
-		watchMulti: `${source}/assets/icons/multi/*.svg`,
+		watch: {
+			mono: `${source}/assets/icons/mono/*.svg`,
+			multi: `${source}/assets/icons/multi/*.svg`,
+		},
 	},
 
 	favicon: {
