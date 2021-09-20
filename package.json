@@ -4,7 +4,8 @@
 	"description": "Gulp TaskManager for Front-End",
 	"scripts": {
 		"dev": "gulp watch",
-		"prod": "gulp build --prod",
+		"build:dev": "gulp build",
+		"build:prod": "gulp build --prod",
 		"eslint": "eslint src/scripts --ext .js",
 		"eslint:fix": "npm run eslint -- --fix",
 		"stylelint": "stylelint src/styles .scss",
