@@ -1,5 +1,6 @@
 import gulp from 'gulp';
-import sass from 'gulp-sass';
+import compiler from 'sass';
+import gulpSass from 'gulp-sass';
 import plumber from 'gulp-plumber';
 import autoprefixer from 'gulp-autoprefixer';
 import gulpGroup from 'gulp-group-css-media-queries';
@@ -8,6 +9,8 @@ import rename from 'gulp-rename';
 import gulpif from 'gulp-if';
 import sassGlob from 'gulp-sass-glob';
 import path from '../config';
+
+const sass = gulpSass( compiler );
 
 const StylesBuild = () =>
 	gulp.src(path.styles.src, { sourcemaps: path.isDev })
