@@ -4,7 +4,7 @@ import path from '../config';
 
 const spriteMono = () =>
 	gulp
-		.src(path.icons.srcMono)
+		.src(path.icons.src.mono)
 		.pipe(
 			svgSprite({
 				mode: {
@@ -38,7 +38,7 @@ const spriteMono = () =>
 
 const spriteMulti = () =>
 	gulp
-		.src(path.icons.srcMulti)
+		.src(path.icons.src.multi)
 		.pipe(
 			svgSprite({
 				mode: {
@@ -73,6 +73,6 @@ const spriteMulti = () =>
 export const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
 
 export const spritesWatch = () => {
-	gulp.watch(path.icons.watchMono, spriteMono);
-	gulp.watch(path.icons.watchMulti, spriteMulti);
+	gulp.watch(path.icons.watch.mono, spriteMono);
+	gulp.watch(path.icons.watch.multi, spriteMulti);
 };
