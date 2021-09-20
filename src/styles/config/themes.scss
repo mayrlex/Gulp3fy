@@ -1,0 +1,209 @@
+// #2C3040
+// #60B1CA
+// #F9F6EE
+// #F03F2E
+// #DC3953
+// #13181C
+// #293746
+// #507F88
+// #EEEEE5
+
+// Base colors
+$white:                      #fff;
+$black:                      #000;
+$light:                      #f1f4f8;
+$dark:                       #161c2d;
+
+// color / Primary
+$primary:                    #6961ff;
+$primaryLight:               #9994ff;
+$primaryLighter:             #cac7ff;
+$primaryDark:                #382eff;
+$primaryDarker:              #0c00fa;
+
+// color / Secondary
+$secondary:                  #fff;
+$secondaryLight:             #fff;
+$secondaryDark:              #fff;
+
+// color / Secondary
+$accent:                     #FF6961;
+$secondaryLight:             #ff9994;
+$secondaryLight:             #ffcac7;
+$secondaryDark:              #ff382e;
+$secondaryDark:              #fa0c00;
+
+// Succes
+$success:                    #10ba96;
+$successLight:               #dbfff7;
+$successDark:                #108b71;
+$successBg:                  #f2fffc;
+
+// Warning
+$warning:                    #ffc107;
+$warningLight:               #fffcdb;
+$warningDark:                #b39417;
+$warningBg:                  #fffdf2;
+
+// Error
+$error:                      #df4759;
+$errorLight:                 #ffdbdf;
+$errorDark:                  #8b101d;
+$errorBg:                    #fff2f4;
+
+// Info
+$info:                       #407fd0;
+$infoLight:                  #dbebff;
+$infoDark:                   #104a8b;
+$infoBg:                     #f2f8ff;
+
+// Tupography / Start
+$headlineColor:              #fff;
+$subheadingColor:            #fff;
+$titleColor:                 #fff;
+$subtitleColor:              #fff;
+$textColor:                  #fff;
+// Tupography / End
+
+// UI / Start
+$bgPrimary:                  #fff;
+$bgSecondary:                #fff;
+$bgHeader:                   #fff;
+
+// States
+$hovered:                    #fff;
+$actived:                    #fff;
+$focused:                    #fff;
+$visited:                    #fff;
+$disabled:                   #fff;
+
+// Theme switcher
+$switcherBody:               #fff;
+$switcherBall:               #191a25;
+// UI / End
+
+$themes: (
+	light: (
+		// color / Primary
+		primary:             #fff,
+		primaryLight:        #fff,
+		primaryDark:         #fff,
+
+		// color / Secondary
+		secondary:           #fff,
+		secondaryLight:      #fff,
+		secondaryDark:       #fff,
+
+		// Succes
+		success:             #10ba96,
+		successLight:        #dbfff7,
+		successDark:         #108b71,
+		successBg:           #f2fffc,
+
+		// Warning
+		warning:             #ffc107,
+		warningLight:        #fffcdb,
+		warningDark:         #b39417,
+		warningBg:           #fffdf2,
+
+		// Error
+		error:               #df4759,
+		errorLight:          #ffdbdf,
+		errorDark:           #8b101d,
+		errorBg:             #fff2f4,
+
+		// Info
+		info:                #407fd0,
+		infoLight:           #dbebff,
+		infoDark:            #104a8b,
+		infoBg:              #f2f8ff,
+
+		// Tupography / Start
+		headlineColor:       #fff,
+		subheadingColor:     #fff,
+		titleColor:          #fff,
+		subtitleColor:       #fff,
+		textColor:           #fff,
+		// Tupography / End
+
+		// UI / Start
+		bgPrimary:           #1e1f26,
+		bgSecondary:         #fff,
+		bgHeader:            #fff,
+
+		// States
+		hovered:             #fff,
+		actived:             #fff,
+		focused:             #fff,
+		visited:             #fff,
+		disabled:            #fff,
+
+		// Theme switcher
+		switcherBody:        #fff,
+		switcherBall:        #191a25,
+		// UI / End
+
+	),
+
+	dark: (
+		// color / Primary
+		primary:             #fff,
+		primaryLight:        #fff,
+		primaryDark:         #fff,
+
+		// color / Secondary
+		secondary:           #fff,
+		secondaryLight:      #fff,
+		secondaryDark:       #fff,
+
+		// Succes
+		success:             #10ba96,
+		successLight:        #dbfff7,
+		successDark:         #108b71,
+		successBg:           #f2fffc,
+
+		// Warning
+		warning:             #ffc107,
+		warningLight:        #fffcdb,
+		warningDark:         #b39417,
+		warningBg:           #fffdf2,
+
+		// Error
+		error:               #df4759,
+		errorLight:          #ffdbdf,
+		errorDark:           #8b101d,
+		errorBg:             #fff2f4,
+
+		// Info
+		info:                #407fd0,
+		infoLight:           #dbebff,
+		infoDark:            #104a8b,
+		infoBg:              #f2f8ff,
+
+		// Tupography / Start
+		headlineColor:       #fff,
+		subheadingColor:     #fff,
+		titleColor:          #fff,
+		subtitleColor:       #fff,
+		textColor:           #fff,
+		// Tupography / End
+
+		// UI / Start
+		bgPrimary:           #fff,
+		bgSecondary:         #fff,
+		bgHeader:            #fff,
+
+		// States
+		hovered:             #fff,
+		actived:             #fff,
+		focused:             #fff,
+		visited:             #fff,
+		disabled:            #fff,
+
+		// Theme switcher
+		switcherBody:        #191a25,
+		switcherBall:        #f5f5f5,
+		// UI / End
+
+	)
+);

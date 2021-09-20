@@ -46,9 +46,6 @@ body {
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-
 	min-height: 100%;
 
 	color: $black;
@@ -56,9 +53,11 @@ body {
 	font-family: $fontFamily_primary;
 	line-height: $lineHeight_primary;
 
-	@include theme($themes) {
-		background: get-theme('background__primary');
-	}
+	// If theme isMulti === true
+	// @include theme($themes) {
+	// 	background: get-theme('bgPrimary');
+	// }
+	background: $bgPrimary;
 
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;

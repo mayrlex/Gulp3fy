@@ -1,191 +1,59 @@
 // Breakpoints / Start
 $breakpoints: (
-	xs:                        320px,
-	sm:                        576px,
-	md:                        768px,
-	lg:                        992px,
-	xl:                        1200px,
-	xxl:                       1400px,
+	xs:                      320px,
+	sm:                      576px,
+	md:                      768px,
+	lg:                      992px,
+	xl:                      1200px,
+	xxl:                     1400px,
 );
 
 $containerMaxWidth: (
-	sm:                        get-breakpoint(sm) - 30px,
-	md:                        get-breakpoint(md) - 30px,
-	lg:                        get-breakpoint(lg) - 40px,
-	xl:                        get-breakpoint(xl) - 60px,
-	xxl:                       get-breakpoint(xxl) - 80px,
-	fluid:                     100%,
+	sm:                      get-breakpoint(sm) - 30px,
+	md:                      get-breakpoint(md) - 30px,
+	lg:                      get-breakpoint(lg) - 40px,
+	xl:                      get-breakpoint(xl) - 60px,
+	xxl:                     get-breakpoint(xxl) - 80px,
+	fluid:                   100%,
 );
 
-$fields:                       0 15px;
+$fields:                     0 15px;
 // Breakpoints / End
 
 // z-layers
 $z-layers: (
-	default: 1,
-	header: 10,
-	dropdown: 50,
-	modal: 100,
-);
-
-// Base colors
-$white:                        #fff;
-$black:                        #000;
-$light:                        #f1f4f8;
-$dark:                         #161c2d;
-
-$themes: (
-	light: (
-		// color / Primary
-		primary:                  #fff,
-		primary_light:            #fff,
-		primary_dark:             #fff,
-
-		// color / Secondary
-		secondary:                #fff,
-		secondary_light:          #fff,
-		secondary_dark:           #fff,
-
-		// Succes
-		success:                  #10ba96,
-		success_light:            #dbfff7,
-		success_dark:             #108b71,
-		successBg:                #f2fffc,
-
-		// Warning
-		warning:                  #ffc107,
-		warning_light:            #fffcdb,
-		warning_dark:             #b39417,
-		warningBg:                #fffdf2,
-
-		// Error
-		error:                    #df4759,
-		error_light:              #ffdbdf,
-		error_dark:               #8b101d,
-		errorBg:                  #fff2f4,
-
-		// Info
-		info:                     #407fd0,
-		info_light:               #dbebff,
-		info_dark:                #104a8b,
-		infoBg:                   #f2f8ff,
-
-		// Tupography / Start
-		headline__color:          #fff,
-		subheading__color:        #fff,
-		title__color:             #fff,
-		subtitle__color:          #fff,
-		text__color:              #fff,
-		// Tupography / End
-
-		// UI / Start
-		background__primary:      #1e1f26,
-		background__secondary:    #fff,
-		background__header:       #fff,
-
-		// States
-		hovered:                  #fff,
-		actived:                  #fff,
-		focused:                  #fff,
-		visited:                  #fff,
-		disabled:                 #fff,
-
-		// Theme switcher
-		switcher__body:           #fff,
-		switcher__ball:           #191a25,
-		// UI / End
-
-	),
-
-	dark: (
-		// color / Primary
-		primary:                  #fff,
-		primary_light:            #fff,
-		primary_dark:             #fff,
-
-		// color / Secondary
-		secondary:                #fff,
-		secondary_light:          #fff,
-		secondary_dark:           #fff,
-
-		// Succes
-		success:                  #10ba96,
-		success_light:            #dbfff7,
-		success_dark:             #108b71,
-		successBg:                #f2fffc,
-
-		// Warning
-		warning:                  #ffc107,
-		warning_light:            #fffcdb,
-		warning_dark:             #b39417,
-		warningBg:                #fffdf2,
-
-		// Error
-		error:                    #df4759,
-		error_light:              #ffdbdf,
-		error_dark:               #8b101d,
-		errorBg:                  #fff2f4,
-
-		// Info
-		info:                     #407fd0,
-		info_light:               #dbebff,
-		info_dark:                #104a8b,
-		infoBg:                   #f2f8ff,
-
-		// Tupography / Start
-		headline__color:          #fff,
-		subheading__color:        #fff,
-		title__color:             #fff,
-		subtitle__color:          #fff,
-		text__color:              #fff,
-		// Tupography / End
-
-		// UI / Start
-		background__primary:      #000,
-		background__secondary:    #fff,
-		background__header:       #fff,
-
-		// States
-		hovered:                  #fff,
-		actived:                  #fff,
-		focused:                  #fff,
-		visited:                  #fff,
-		disabled:                 #fff,
-
-		// Theme switcher
-		switcher__body:           #191a25,
-		switcher__ball:           #f5f5f5,
-		// UI / End
-
-	)
+	default:                 1,
+	header:                  10,
+	dropdown:                50,
+	modal:                   100,
 );
 
 // Typography / Start
 // Base
-$fontSize_primary:             14px;
-$lineHeight_primary:           1;
-$fontFamily_primary:           'Montserrat', sans-serif;
-$fontFamily_secondary:         'Nunito', sans-serif;
+$fontSize_primary:           14px;
+$lineHeight_primary:         1;
+$fontFamily_primary:         'Montserrat', sans-serif;
+$fontFamily_secondary:       'Nunito', sans-serif;
 
 // Headline
-$headline__weight:             700;
-$headline__size:               16px;
+$headline__weight:           700;
+$headline__size:             16px;
 
 // Subheading
-$subheading__weight:           500;
-$subheading__size:             16px;
-$subheading__lineHeight:       $lineHeight_primary;
+$subheading__weight:         500;
+$subheading__size:           16px;
+$subheading__lineHeight:     $lineHeight_primary;
 
 // Title
-$title__weight:                500;
-$title__size:                  16px;
+$title__weight:              500;
+$title__size:                16px;
 
 // Subtitle
-$subtitle__weight:             500;
-$subtitle__size:               16px;
-$subtitle__lineHeight:         $lineHeight_primary;
+$subtitle__weight:           500;
+$subtitle__size:             16px;
+$subtitle__lineHeight:       $lineHeight_primary;
 
 // Text
-$text__size:                   16px;
-$text__lineHeight:             $lineHeight_primary;
+$text__size:                 16px;
+$text__lineHeight:           $lineHeight_primary;
 // Typography / End

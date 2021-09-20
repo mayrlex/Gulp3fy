@@ -1,7 +1,9 @@
 .headline {
-	@include theme($themes) {
-		color: get-theme('headline__color');
-	}
+	// If theme isMulti === true
+	// @include theme($themes) {
+	// 	color: get-theme('headlineColor');
+	// }
+	color: $headlineColor;
 
 	font-weight: $headline__weight;
 	font-size: $headline__size;
@@ -21,9 +23,11 @@
 }
 
 .subheading {
-	@include theme($themes) {
-		color: get-theme('subheading__color');
-	}
+	// If theme isMulti === true
+	// @include theme($themes) {
+	// 	color: get-theme('subheadingColor');
+	// }
+	color: $subheadingColor;
 
 	font-size: $subheading__size;
 	line-height: $subheading__lineHeight;
@@ -42,9 +46,11 @@
 }
 
 .title {
-	@include theme($themes) {
-		color: get-theme('title__color');
-	}
+	// If theme isMulti === true
+	// @include theme($themes) {
+	// 	color: get-theme('titleColor');
+	// }
+	color: $titleColor;
 
 	font-weight: $title__weight;
 	font-size: $title__size;
@@ -61,9 +67,11 @@
 }
 
 .subtitle {
-	@include theme($themes) {
-		color: get-theme('subtitle__color');
-	}
+	// If theme isMulti === true
+	// @include theme($themes) {
+	// 	color: get-theme('subtitleColor');
+	// }
+	color: $subtitleColor;
 
 	font-weight: $subtitle__weight;
 	font-size: $subtitle__size;
@@ -72,9 +80,10 @@
 }
 
 .text {
-	@include theme($themes) {
-		color: get-theme('text__color');
-	}
+	// @include theme($themes) {
+	// 	color: get-theme('textColor');
+	// }
+	color: $textColor;
 
 	font-size: $text__size;
 	line-height: $text__lineHeight;
