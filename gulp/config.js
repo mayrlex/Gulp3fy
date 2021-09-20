@@ -8,8 +8,8 @@ const path = {
 	views: {
 		src: `${source}/views/*.pug`,
 		dest: compiled,
-		emitty: `${source}/views`,
 		watch: `${source}/views/**/*.pug`,
+		emitty: `${source}/views`,
 	},
 
 	styles: {
