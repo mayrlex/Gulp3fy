@@ -13,7 +13,7 @@ const server = (callback) => {
 			{
 				match: `${path.images.dest}/**/*`,
 				fn() {
-					this.reload();
+					this.stream();
 				},
 			},
 		],
