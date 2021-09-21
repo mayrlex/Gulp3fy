@@ -1,0 +1,54 @@
+include ../config/config.pug
+include ../components/**/*.pug
+
+block variables
+
+doctype html
+html(lang=pageLang)
+	head
+		include ../parts/head.pug
+
+	body.body
+		.wrapper
+			header.header
+				.header__inner
+					.header__logo
+					nav.header__nav
+
+						ul.header__list
+							li.header__item
+							li.header__item
+							li.header__item
+							li.header__item
+							li.header__item
+
+					.header__auth
+						.header__login
+						.header__sign
+
+			main.main
+				section.hero
+					.hero__inner
+
+				section.price
+					.price__inner
+
+				section.news
+					.news__inner
+
+				section.features
+					.features__inner
+
+				section.about
+					.about__inner
+
+			footer.foorer
+				.footer__inner.container
+
+
+			block footer
+				include ../parts/footer.pug
+
+		block scripts
+			block sdnScripts
+			script(src='assets/js/main.min.js?v=' + siteVersion)
