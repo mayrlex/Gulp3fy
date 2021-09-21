@@ -7,6 +7,7 @@ import * as checkDevice from './helpers/checkDevice';
 // import * as aos from './modules/aos.settings';
 import * as header from './parts/header';
 // import * as smoothScroll from './components/smoothScroll';
+import * as swiperRc from './config/swiperrc';
 
 documentReady(() => {
 	lazyImages();
