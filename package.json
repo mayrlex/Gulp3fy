@@ -43,7 +43,7 @@
 		]
 	},
 	"dependencies": {
-		"baron": "^3.0.3",
+		"overlayscrollbars": "^1.13.1",
 		"vanilla-lazyload": "^17.4.0"
 	},
 	"devDependencies": {
