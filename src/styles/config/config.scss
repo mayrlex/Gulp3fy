@@ -12,30 +12,9 @@
 	box-sizing: border-box;
 }
 
-// Scrollbar width
-::-webkit-scrollbar {
-	width: 8px;
-}
-
-::-webkit-resizer {
-	display: none;
-}
-
-// Scrollbar handle
-::-webkit-scrollbar-thumb {
-	// background: $scrollBar;
-	border-radius: 10px;
-}
-
 :focus,
 :active {
 	outline: none;
-}
-
-// Scrollbar handle on hover
-::-webkit-scrollbar-thumb:hover {
-	// background: $scrollBarHover;
-	// background: $scrollBarHover;
 }
 // Pseudo / End
 
@@ -49,9 +28,9 @@ body {
 	min-height: 100%;
 
 	color: $black;
-	font-size: $fontSize_primary;
-	font-family: $fontFamily_primary;
-	line-height: $lineHeight_primary;
+	font-size: $fontSizePrimary;
+	font-family: $fontFamilyPrimary;
+	line-height: $lineHeightPrimary;
 
 	// If theme isMulti === true
 	// @include theme($themes) {
@@ -64,7 +43,7 @@ body {
 	-webkit-text-size-adjust: 100%;
 
 	// Open dropdown menu in a PC devices
-	&.--pc .menu__list > .menu__item:hover .menu__sub-list {
+	&.-Pc .menu__list > .menu__item:hover .menu__sub-list {
 		transform: translate(0, 0);
 		visibility: visible;
 		opacity: 1;
@@ -96,7 +75,7 @@ a {
 input,
 button,
 textarea {
-	font-family: $fontFamily-primary;
+	font-family: $fontFamilyPrimary;
 }
 
 button {

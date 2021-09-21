@@ -30,30 +30,30 @@ $z-layers: (
 
 // Typography / Start
 // Base
-$fontSize_primary:           14px;
-$lineHeight_primary:         1;
-$fontFamily_primary:         'Montserrat', sans-serif;
-$fontFamily_secondary:       'Nunito', sans-serif;
+$fontSizePrimary:           14px;
+$lineHeightPrimary:         1;
+$fontFamilyPrimary:         'Montserrat', sans-serif;
+$fontFamilySecondary:       'Nunito', sans-serif;
 
 // Headline
-$headline__weight:           700;
-$headline__size:             16px;
+$headlineWeight:           700;
+$headlineSize:             16px;
 
 // Subheading
-$subheading__weight:         500;
-$subheading__size:           16px;
-$subheading__lineHeight:     $lineHeight_primary;
+$subheadingWeight:         500;
+$subheadingSize:           16px;
+$subheadingLineHeight:     $lineHeightPrimary;
 
 // Title
-$title__weight:              500;
-$title__size:                16px;
+$titleWeight:              500;
+$titleSize:                16px;
 
 // Subtitle
-$subtitle__weight:           500;
-$subtitle__size:             16px;
-$subtitle__lineHeight:       $lineHeight_primary;
+$subtitleWeight:           500;
+$subtitleSize:             16px;
+$subtitleLineHeight:       $lineHeightPrimary;
 
 // Text
-$text__size:                 16px;
-$text__lineHeight:           $lineHeight_primary;
+$textSize:                 16px;
+$textLineHeight:           $lineHeightPrimary;
 // Typography / End

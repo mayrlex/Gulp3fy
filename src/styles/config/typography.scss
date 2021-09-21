@@ -5,9 +5,9 @@
 	// }
 	color: $headlineColor;
 
-	font-weight: $headline__weight;
-	font-size: $headline__size;
-	font-family: $fontFamily_secondary;
+	font-weight: $headlineWeight;
+	font-size: $headlineSize;
+	font-family: $fontFamilySecondary;
 
 	// < 768px
 	@include media-min(md) {
@@ -29,8 +29,8 @@
 	// }
 	color: $subheadingColor;
 
-	font-size: $subheading__size;
-	line-height: $subheading__lineHeight;
+	font-size: $subheadingSize;
+	line-height: $subheadingLineHeight;
 	text-align: center;
 
 	// < 768px
@@ -52,9 +52,9 @@
 	// }
 	color: $titleColor;
 
-	font-weight: $title__weight;
-	font-size: $title__size;
-	font-family: $fontFamily_secondary;
+	font-weight: $titleWeight;
+	font-size: $titleSize;
+	font-family: $fontFamilySecondary;
 	text-align: center;
 
 	@include media-min(md) {
@@ -73,10 +73,10 @@
 	// }
 	color: $subtitleColor;
 
-	font-weight: $subtitle__weight;
-	font-size: $subtitle__size;
-	font-family: $fontFamily_secondary;
-	line-height: $subtitle__lineHeight;
+	font-weight: $subtitleWeight;
+	font-size: $subtitleSize;
+	font-family: $fontFamilySecondary;
+	line-height: $subtitleLineHeight;
 }
 
 .text {
@@ -85,6 +85,6 @@
 	// }
 	color: $textColor;
 
-	font-size: $text__size;
-	line-height: $text__lineHeight;
+	font-size: $textSize;
+	line-height: $textLineHeight;
 }
