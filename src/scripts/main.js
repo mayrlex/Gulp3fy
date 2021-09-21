@@ -1,6 +1,4 @@
-'use-strict';
-
-import lazyImages from './modules/lazyImages';
+import lazyImages from './helpers/lazyImages';
 import documentReady from './helpers/documentReady';
 import * as checkDevice from './helpers/checkDevice';
 // import * as themeSwitcher from './components/themeSwitcher';

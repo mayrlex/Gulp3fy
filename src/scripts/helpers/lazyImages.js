@@ -1,5 +1,5 @@
 import LazyLoad from 'vanilla-lazyload';
-import canUseWebp from '../helpers/canUseWebp';
+import canUseWebp from './canUseWebp';
 
 export default () => {
 	if (canUseWebp() === false) {
