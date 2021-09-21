@@ -1,6 +1,8 @@
+@import './helpers/functions.scss';
 @import './config/variables.scss';
 @import './config/themes.scss';
-@import './helpers/**/*';
+@import './helpers/mixins.scss';
+@import './helpers/fonts.scss';
 @import './config/config.scss';
 @import './config/typography.scss';
 // @import './components/btn.scss';
