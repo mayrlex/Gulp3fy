@@ -8,12 +8,13 @@ import cleanCSS from 'gulp-clean-css';
 import rename from 'gulp-rename';
 import gulpif from 'gulp-if';
 import sassGlob from 'gulp-sass-glob';
-import path from '../config';
+import path from '../config.js';
 
-const sass = gulpSass( compiler );
+const sass = gulpSass(compiler);
 
 const StylesBuild = () =>
-	gulp.src(path.styles.src, { sourcemaps: path.isDev })
+	gulp
+		.src(path.styles.src, { sourcemaps: path.isDev })
 		.pipe(plumber())
 		.pipe(sassGlob())
 		.pipe(

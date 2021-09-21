@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
-import path from '../config';
+import path from '../config.js';
 
 const FaviconBuild = () =>
 	gulp

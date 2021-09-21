@@ -2,6 +2,7 @@
 	"name": "gulp3fy",
 	"version": "0.1.1",
 	"description": "Gulp TaskManager for Front-End",
+	"type": "module",
 	"scripts": {
 		"dev": "gulp watch",
 		"build:dev": "gulp build",

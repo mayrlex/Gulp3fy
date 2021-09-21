@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import svgSprite from 'gulp-svg-sprite';
-import path from '../config';
+import path from '../config.js';
 
 const spriteMono = () =>
 	gulp
@@ -19,12 +19,7 @@ const spriteMono = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: [
-												'class',
-												'data-name',
-												'fill.*',
-												'stroke.*',
-											],
+											attrs: ['class', 'data-name', 'fill.*', 'stroke.*'],
 										},
 									},
 								],

@@ -1,14 +1,14 @@
 import gulp from 'gulp';
-import path from './gulp/config';
-import clean from './gulp/tasks/clean';
-import server from './gulp/tasks/server';
-import { viewsBuild, viewsWatch } from './gulp/tasks/views';
-import { stylesBuild, stylesWatch } from './gulp/tasks/styles';
-import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts';
-import { fontsBuild, fontsWatch } from './gulp/tasks/fonts';
-import { imagesBuild, imagesWatch } from './gulp/tasks/images';
-import { spritesBuild, spritesWatch } from './gulp/tasks/sprites';
-import { faviconBuild, faviconWatch } from './gulp/tasks/favicon';
+import path from './gulp/config.js';
+import clean from './gulp/tasks/clean.js';
+import server from './gulp/tasks/server.js';
+import { viewsBuild, viewsWatch } from './gulp/tasks/views.js';
+import { stylesBuild, stylesWatch } from './gulp/tasks/styles.js';
+import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts.js';
+import { fontsBuild, fontsWatch } from './gulp/tasks/fonts.js';
+import { imagesBuild, imagesWatch } from './gulp/tasks/images.js';
+import { spritesBuild, spritesWatch } from './gulp/tasks/sprites.js';
+import { faviconBuild, faviconWatch } from './gulp/tasks/favicon.js';
 
 path.setEnv();
 

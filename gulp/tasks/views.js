@@ -5,7 +5,7 @@ import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import { setup as emittySetup } from '@zoxon/emitty';
 import pugIncludeGlob from 'pug-include-glob';
-import path from '../config';
+import path from '../config.js';
 
 const emittyPug = emittySetup(path.views.emitty, 'pug', {
 	makeVinylFile: true,
@@ -22,13 +22,7 @@ export const viewsBuild = () =>
 		.src(path.views.src)
 		.pipe(plumber())
 		.pipe(
-			gulpif(
-				global.isPugWatch,
-				emittyPug.stream(
-					global.emittyChangedFile.path,
-					global.emittyChangedFile.stats
-				)
-			)
+			gulpif(global.isPugWatch, emittyPug.stream(global.emittyChangedFile.path, global.emittyChangedFile.stats))
 		)
 		.pipe(pug({ plugins: [pugIncludeGlob()] }))
 		.pipe(
@@ -42,13 +36,10 @@ export const viewsBuild = () =>
 export const viewsWatch = () => {
 	global.isPugWatch = true;
 
-	gulp.watch(path.views.watch, viewsBuild).on(
-		'all',
-		(event, filepath, stats) => {
-			global.emittyChangedFile = {
-				path: filepath,
-				stats,
-			};
-		}
-	);
+	gulp.watch(path.views.watch, viewsBuild).on('all', (event, filepath, stats) => {
+		global.emittyChangedFile = {
+			path: filepath,
+			stats,
+		};
+	});
 };

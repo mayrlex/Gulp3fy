@@ -7,7 +7,8 @@ function onMenuLinkClick(e) {
 
 	if (menuLink.dataset.anchor && document.querySelector(menuLink.dataset.anchor)) {
 		const anchorBlock = document.querySelector(menuLink.dataset.anchor);
-		const anchorBlockValue = anchorBlock.getBoundingClientRect().top + pageYOffset - document.querySelector('header').offsetHeight;
+		const anchorBlockValue =
+			anchorBlock.getBoundingClientRect().top + scrollY - document.querySelector('header').offsetHeight;
 
 		if (menuIcon.classList.contains('--active')) {
 			document.body.classList.remove('--lock');
