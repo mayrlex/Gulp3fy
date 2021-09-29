@@ -1,0 +1,9 @@
+// Get z-index map
+@function z($key) {
+	@if map-has-key($z-layers, $key) {
+		@return map-get($z-layers, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $z-layers map.';
+	@return null;
+}

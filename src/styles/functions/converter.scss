@@ -1,0 +1,9 @@
+// PX to REM
+@function rem($px) {
+	@return ($px / 16) + rem;
+}
+
+// PX to EM
+@function em($px) {
+	@return ($px / 16) + em;
+}

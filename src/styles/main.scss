@@ -1,5 +1,8 @@
 // @import 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.css';
-@import './helpers/functions.scss';
+
+@import './functions/**/*';
+@import './mixins/**/*';
+@import './helpers/**/*';
 @import './config/variables.scss';
 @import './config/themes.scss';
 @import './helpers/mixins.scss';
