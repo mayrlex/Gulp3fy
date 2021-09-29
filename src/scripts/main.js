@@ -1,7 +1,6 @@
 import lazyImages from './helpers/lazyImages';
 import documentReady from './helpers/documentReady';
-import * as checkDevice from './helpers/checkDevice';
-// import * as themeSwitcher from './components/themeSwitcher';
+// import * as themeSwitcher from '../components/themeSwitcher/themeSwitcher';
 import scrollBar from 'overlayscrollbars';
 import scrollBarRc from './config/scrollbarsrc';
 // import * as header from './parts/header';
