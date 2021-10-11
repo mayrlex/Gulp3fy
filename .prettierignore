@@ -1,3 +1,4 @@
 src/styles/config/themes.scss
 src/styles/config/variables.scss
 gulpfile.babel.js
+config.js
