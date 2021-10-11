@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import svgSprite from 'gulp-svg-sprite';
-import { path } from '../../config.js';
+import { path } from '../config.js';
 
 const spriteMono = () =>
 	gulp

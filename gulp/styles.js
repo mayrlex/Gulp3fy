@@ -8,7 +8,7 @@ import cleanCSS from 'gulp-clean-css';
 import rename from 'gulp-rename';
 import gulpif from 'gulp-if';
 import sassGlob from 'gulp-sass-glob';
-import { path } from '../../config.js';
+import { path } from '../config.js';
 
 const sass = gulpSass(compiler);
 

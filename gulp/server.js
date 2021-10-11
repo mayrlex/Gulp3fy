@@ -1,5 +1,5 @@
 import sync from 'browser-sync';
-import { path, srv } from '../../config.js';
+import { path, srv } from '../config.js';
 
 const server = (callback) => {
 	sync.create().init({

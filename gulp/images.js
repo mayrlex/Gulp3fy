@@ -5,7 +5,7 @@ import imgMinPng from 'imagemin-pngquant';
 import imgMinWebp from 'imagemin-webp';
 import gulpif from 'gulp-if';
 import rename from 'gulp-rename';
-import { path, quality } from '../../config.js';
+import { path, quality } from '../config.js';
 
 const copyImages = () =>
 	gulp

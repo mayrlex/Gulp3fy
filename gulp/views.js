@@ -5,7 +5,7 @@ import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import { setup as emittySetup } from '@zoxon/emitty';
 import pugGlob from 'pug-include-glob';
-import { path, pretty } from '../../config.js';
+import { path, pretty } from '../config.js';
 
 const emittyPug = emittySetup(path.views.emitty, 'pug', {
 	makeVinylFile: true,
