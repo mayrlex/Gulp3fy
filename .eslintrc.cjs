@@ -24,5 +24,7 @@ module.exports = {
 		'no-restricted-globals': 'off',
 		'no-tabs': 'off',
 		'func-names': 'off',
+		'spaced-comment': 'off',
+		'import/extensions': 'off',
 	},
 };
