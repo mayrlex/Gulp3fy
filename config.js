@@ -1,3 +1,6 @@
+//##############################
+// 1. PATHS
+//##############################
 const source = 'src';
 const compiled = 'build';
 
@@ -61,4 +64,38 @@ const path = {
 	},
 };
 
-export default path;
+//##############################
+// 2. SERVER
+//##############################
+const srv = {
+	port: 3300,
+	path: path.dest,
+	open: false,
+	notify: false,
+};
+
+//##############################
+// 3. Pretty
+//##############################
+const pretty = {
+	indent_size: 4,
+	indent_char: ' ',
+	unformatted: ['code', 'pre', 'em', 'strong', 'i', 'b', 'br', 'span'],
+};
+
+//##############################
+// 4. Image quality
+//##############################
+const quality = {
+	jpeg: 80,
+	png: [0.8, 0.9],
+	webp: 80,
+};
+
+//##############################
+// 5. Exports
+//##############################
+export { path };
+export { srv };
+export { pretty };
+export { quality };

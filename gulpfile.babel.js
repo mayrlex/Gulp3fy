@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import path from './gulp/config.js';
+import { path } from './config.js';
 import clean from './gulp/tasks/clean.js';
 import server from './gulp/tasks/server.js';
 import { viewsBuild, viewsWatch } from './gulp/tasks/views.js';

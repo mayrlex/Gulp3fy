@@ -7,7 +7,7 @@ import rename from 'gulp-rename';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import gulpif from 'gulp-if';
-import path from '../config.js';
+import { path } from '../../config.js';
 
 export const scriptsBuild = () =>
 	browserify(path.scripts.src, { debug: true })

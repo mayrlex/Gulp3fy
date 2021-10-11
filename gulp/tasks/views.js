@@ -1,11 +1,11 @@
 import gulp from 'gulp';
 import pug from 'gulp-pug';
-import beautify from 'gulp-html-beautify';
+import prettify from 'gulp-pretty-html';
 import gulpif from 'gulp-if';
 import plumber from 'gulp-plumber';
 import { setup as emittySetup } from '@zoxon/emitty';
-import pugIncludeGlob from 'pug-include-glob';
-import path from '../config.js';
+import pugGlob from 'pug-include-glob';
+import { path, pretty } from '../../config.js';
 
 const emittyPug = emittySetup(path.views.emitty, 'pug', {
 	makeVinylFile: true,
@@ -24,13 +24,8 @@ export const viewsBuild = () =>
 		.pipe(
 			gulpif(global.isPugWatch, emittyPug.stream(global.emittyChangedFile.path, global.emittyChangedFile.stats))
 		)
-		.pipe(pug({ plugins: [pugIncludeGlob()] }))
-		.pipe(
-			beautify({
-				indent_size: 4,
-				inline: ['code', 'pre', 'em', 'strong', 'i', 'b', 'br', 'span'],
-			})
-		)
+		.pipe(pug({ plugins: [pugGlob()] }))
+		.pipe(prettify(pretty))
 		.pipe(gulp.dest(path.views.dest));
 
 export const viewsWatch = () => {

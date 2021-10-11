@@ -1,10 +1,10 @@
 import sync from 'browser-sync';
-import path from '../config.js';
+import { path, srv } from '../../config.js';
 
 const server = (callback) => {
 	sync.create().init({
 		server: {
-			baseDir: path.dest,
+			baseDir: srv.path,
 		},
 		files: [
 			path.views.dest,
@@ -13,12 +13,13 @@ const server = (callback) => {
 			{
 				match: `${path.images.dest}/**/*`,
 				fn() {
-					this.stream();
+					this.reload();
 				},
 			},
 		],
-		open: false,
-		notify: false,
+		port: srv.port,
+		open: srv.open,
+		notify: srv.notify,
 	});
 
 	callback();
