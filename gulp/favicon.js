@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import rename from 'gulp-rename';
 import { path } from '../config.js';
 
-const FaviconBuild = () =>
+const faviconsBuild = () =>
 	gulp
 		.src(path.favicon.src)
 		.pipe(plumber())
@@ -14,7 +14,7 @@ const FaviconBuild = () =>
 		)
 		.pipe(gulp.dest(path.favicon.dest));
 
-export const faviconBuild = gulp.parallel(FaviconBuild);
+export const faviconBuild = gulp.parallel(faviconsBuild);
 export const faviconWatch = () => {
-	gulp.watch(path.favicon.watch, FaviconBuild);
+	gulp.watch(path.favicon.watch, faviconsBuild);
 };

@@ -12,7 +12,7 @@ import { path } from '../config.js';
 
 const sass = gulpSass(compiler);
 
-const StylesBuild = () =>
+const styleBuild = () =>
 	gulp
 		.src(path.styles.src, { sourcemaps: path.isDev })
 		.pipe(plumber())
@@ -56,5 +56,5 @@ const StylesBuild = () =>
 			})
 		);
 
-export const stylesBuild = gulp.series(StylesBuild);
-export const stylesWatch = () => gulp.watch(path.styles.watch, StylesBuild);
+export const stylesBuild = gulp.series(styleBuild);
+export const stylesWatch = () => gulp.watch(path.styles.watch, styleBuild);
