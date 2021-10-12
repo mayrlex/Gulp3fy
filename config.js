@@ -1,5 +1,18 @@
 //##############################
-// 1. PATHS
+// Tasks
+//##############################
+const task = {
+	views: true,
+	styles: true,
+	scripts: true,
+	fonts: true,
+	images: true,
+	sprites: true,
+	favicon: true,
+}
+
+//##############################
+// Paths
 //##############################
 const source = 'src';
 const compiled = 'build';
@@ -65,7 +78,7 @@ const path = {
 };
 
 //##############################
-// 2. SERVER
+// Server
 //##############################
 const srv = {
 	port: 3300,
@@ -75,7 +88,7 @@ const srv = {
 };
 
 //##############################
-// 3. Pretty
+// PRETTY
 //##############################
 const pretty = {
 	indent_size: 4,
@@ -84,7 +97,7 @@ const pretty = {
 };
 
 //##############################
-// 4. Image quality
+// IMAGE QUALITY
 //##############################
 const quality = {
 	jpeg: 80,
@@ -93,8 +106,9 @@ const quality = {
 };
 
 //##############################
-// 5. Exports
+// EXPORTS
 //##############################
+export { task };
 export { path };
 export { srv };
 export { pretty };
