@@ -88,7 +88,7 @@ const srv = {
 };
 
 //##############################
-// PRETTY
+// Pretty
 //##############################
 const pretty = {
 	indent_size: 4,
@@ -97,7 +97,7 @@ const pretty = {
 };
 
 //##############################
-// IMAGE QUALITY
+// Image quality
 //##############################
 const quality = {
 	jpeg: 80,
@@ -106,7 +106,7 @@ const quality = {
 };
 
 //##############################
-// EXPORTS
+// Exports
 //##############################
 export { task };
 export { path };
