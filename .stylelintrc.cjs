@@ -1,5 +1,5 @@
 module.exports = {
-	extends: ['stylelint-config-standard', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
+	extends: ['stylelint-config-standard-scss', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
 	plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-config-rational-order/plugin'],
 	rules: {
 		// Property Order
