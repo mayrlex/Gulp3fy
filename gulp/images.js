@@ -1,8 +1,8 @@
 import gulp from 'gulp';
 import changed from 'gulp-changed';
-import imgMin from 'gulp-imagemin';
-import imgMinPng from 'imagemin-pngquant';
-import imgMinWebp from 'imagemin-webp';
+import imageMin, { mozjpeg, svgo } from 'gulp-imagemin';
+import imageMinPng from 'imagemin-pngquant';
+import imageMinWebp from 'imagemin-webp';
 import gulpif from 'gulp-if';
 import rename from 'gulp-rename';
 import { path, quality } from '../config.js';
@@ -14,14 +14,14 @@ const copyImages = () =>
 		.pipe(
 			gulpif(
 				path.isProd,
-				imgMin([
-					imgMin.mozjpeg({
+				imageMin([
+					mozjpeg({
 						quality: quality.jpeg,
 					}),
-					imgMinPng({
+					imageMinPng({
 						quality: quality.png,
 					}),
-					imgMin.svgo(
+					svgo(
 						{ removeComments: true },
 						{ removeEmptyAttrs: true },
 						{ removeEmptyText: true },
@@ -37,8 +37,8 @@ const convertImagesToWebp = () =>
 		.src(path.images.webp)
 		.pipe(changed(path.images.dest, { extension: '.webp' }))
 		.pipe(
-			imgMin([
-				imgMinWebp({
+			imageMin([
+				imageMinWebp({
 					quality: quality.webp,
 				}),
 			])
