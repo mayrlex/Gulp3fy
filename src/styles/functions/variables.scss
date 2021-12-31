@@ -1,0 +1,49 @@
+// Z Layers
+@function z-layers($key) {
+	@if map-has-key($z-layers, $key) {
+		@return map-get($z-layers, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $z-layers map.';
+	@return null;
+}
+
+// Font weight
+@function font-weight($key) {
+	@if map-has-key($font-weight, $key) {
+		@return map-get($font-weight, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $font-weight map.';
+	@return null;
+}
+
+// Font size
+@function font-size($key, $value: max) {
+	@if map-has-key($font-size, $key, $value) {
+		@return map-get($font-size, $key, $value);
+	}
+
+	@warn 'Key `#{$key}` not found in $font-size map.';
+	@return null;
+}
+
+// Line height
+@function line-height($key, $value: max) {
+	@if map-has-key($line-height, $key, $value) {
+		@return map-get($line-height, $key, $value);
+	}
+
+	@warn 'Key `#{$key}` not found in $line-height map.';
+	@return null;
+}
+
+// Font family
+// @function font-family($key) {
+// 	@if map-has-key($font-family, $key) {
+// 		@return map-get($font-family, $key);
+// 	}
+
+// 	@warn 'Key `#{$key}` not found in $font-family map.';
+// 	@return null;
+// }
