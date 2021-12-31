@@ -25,7 +25,7 @@ export default () => {
 		// 	}
 		// }
 	} else {
-		document.body.classList.add('--pc');
+		document.body.classList.add('---desk');
 
 		// const menuArrows = document.querySelectorAll('.arrow');
 		// if (menuArrows.length > 0) {
