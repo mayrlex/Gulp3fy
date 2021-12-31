@@ -1,9 +1,20 @@
-// PX to REM
+// To Rem
 @function rem($px) {
-	@return ($px / 16) + rem;
+	$result: math.div($px, 16) + rem;
+
+	@return $result;
 }
 
-// PX to EM
+// To Em
 @function em($px) {
-	@return ($px / 16) + em;
+	$result: math.div($px, 16) + em;
+
+	@return $result;
+}
+
+// To %
+@function prc($pxOne, $pxTwo) {
+	$result: math.div($pxOne, $pxTwo) * 100%;
+
+	@return $result;
 }
