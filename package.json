@@ -46,6 +46,7 @@
 	},
 	"dependencies": {
 		"overlayscrollbars": "^1.13.1",
+		"swiper": "^7.4.1",
 		"vanilla-lazyload": "^17.5.0"
 	},
 	"devDependencies": {
