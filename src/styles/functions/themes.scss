@@ -7,3 +7,83 @@
 	@warn 'Key `#{$key}` not found in $themes map.';
 	@return null;
 }
+
+// Primary
+@function primary($key) {
+	@if map-has-key($primary, $key) {
+		@return map-get($primary, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $primary map.';
+	@return null;
+}
+
+// Secondary
+@function secondary($key) {
+	@if map-has-key($secondary, $key) {
+		@return map-get($secondary, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $secondary map.';
+	@return null;
+}
+
+// Accent
+@function accent($key) {
+	@if map-has-key($accent, $key) {
+		@return map-get($accent, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $accent map.';
+	@return null;
+}
+
+// Success
+@function success($key) {
+	@if map-has-key($success, $key) {
+		@return map-get($success, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $success map.';
+	@return null;
+}
+
+// Warning
+@function warning($key) {
+	@if map-has-key($warning, $key) {
+		@return map-get($warning, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $warning map.';
+	@return null;
+}
+
+// Error
+@function error($key) {
+	@if map-has-key($error, $key) {
+		@return map-get($error, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $error map.';
+	@return null;
+}
+
+// Info
+@function info($key) {
+	@if map-has-key($info, $key) {
+		@return map-get($info, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $info map.';
+	@return null;
+}
+
+// Typography
+@function typography($key) {
+	@if map-has-key($typography, $key) {
+		@return map-get($typography, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $typography map.';
+	@return null;
+}
