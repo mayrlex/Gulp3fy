@@ -1,4 +1,4 @@
-// Themes map
+// Light/Dark connect
 @mixin theme($themes: $themes) {
 	@each $theme, $map in $themes {
 		html[data-theme='#{$theme}'] & {
