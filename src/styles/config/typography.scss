@@ -1,90 +1,69 @@
 .headline {
-	// If theme isMulti === true
+	color: typography(headline);
+
+	//* If using Light/Dark theme
 	// @include theme($themes) {
-	// 	color: get-theme('headlineColor');
+	// 	color: get-theme('headline');
 	// }
-	color: $headlineColor;
 
-	font-weight: $headlineWeight;
-	font-size: $headlineSize;
-	font-family: $fontFamilySecondary;
-
-	// < 768px
-	@include media-min(md) {
-		font-size: 36px;
-		line-height: 40px;
-	}
-
-	// < 1200px
-	@include media-min(xl) {
-		font-size: 42px;
-		line-height: 55px;
-	}
+	font-weight: font-weight(headline);
+	@include adaptive-value('font-size', 16, 14, 3);
+	font-family: $fontFamilyPrimary;
+	// @include adaptive-value('line-height', 32, 24, 3);
 }
 
 .subheading {
-	// If theme isMulti === true
+	color: typography(subheading);
+
+	//* If using Light/Dark theme
 	// @include theme($themes) {
-	// 	color: get-theme('subheadingColor');
+	// 	color: get-theme('subheading');
 	// }
-	color: $subheadingColor;
 
-	font-size: $subheadingSize;
-	line-height: $subheadingLineHeight;
-	text-align: center;
-
-	// < 768px
-	@include media-min(md) {
-		font-size: 20px;
-		letter-spacing: 0.025em;
-	}
-
-	// < 1200px
-	@include media-min(xl) {
-		font-size: 24px;
-	}
+	font-weight: font-weight(subheading);
+	@include adaptive-value('font-size', 16, 14, 3);
+	// @include adaptive-value('line-height', 28, 20, 3);
+	font-family: $fontFamilyPrimary;
 }
 
 .title {
-	// If theme isMulti === true
+	color: typography(title);
+
+	//* If using Light/Dark theme
 	// @include theme($themes) {
-	// 	color: get-theme('titleColor');
+	// 	color: get-theme('title');
 	// }
-	color: $titleColor;
 
-	font-weight: $titleWeight;
-	font-size: $titleSize;
-	font-family: $fontFamilySecondary;
-	text-align: center;
-
-	@include media-min(md) {
-		font-size: 18px;
-	}
-
-	@include media-min(xl) {
-		font-size: 20px;
-	}
+	font-weight: font-weight(title);
+	@include adaptive-value('font-size', 16, 14, 3);
+	font-family: $fontFamilyPrimary;
+	// @include adaptive-value('line-height', 24, 18, 3);
 }
 
 .subtitle {
-	// If theme isMulti === true
-	// @include theme($themes) {
-	// 	color: get-theme('subtitleColor');
-	// }
-	color: $subtitleColor;
+	color: typography(subtitle);
 
-	font-weight: $subtitleWeight;
-	font-size: $subtitleSize;
-	font-family: $fontFamilySecondary;
-	line-height: $subtitleLineHeight;
+	//* If using Light/Dark theme
+	// @include theme($themes) {
+	// 	color: get-theme('subtitle');
+	// }
+
+	font-weight: font-weight(subtitle);
+	@include adaptive-value('font-size', 16, 14, 3);
+	font-family: $fontFamilyPrimary;
+	// @include adaptive-value('line-height', 24, 18, 3);
 }
 
 .text {
-	// @include theme($themes) {
-	// 	color: get-theme('textColor');
-	// }
-	color: $textColor;
+	color: typography(text);
 
-	font-size: $textSize;
-	line-height: $textLineHeight;
+	//* If using Light/Dark theme
+	// @include theme($themes) {
+	// 	color: get-theme('text');
+	// }
+
+	font-weight: font-weight(default);
+	@include adaptive-value('font-size', 16, 14, 3);
+	font-family: $fontFamilyPrimary;
+	// @include adaptive-value('line-height', 22, 18, 3);
 }
