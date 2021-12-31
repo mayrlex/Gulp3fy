@@ -9,7 +9,7 @@
 }
 
 // Get max width container map
-@function mxwContainer($key) {
+@function mxw-container($key) {
 	@if map-has-key($containerMaxWidth, $key) {
 		@return map-get($containerMaxWidth, $key);
 	}
