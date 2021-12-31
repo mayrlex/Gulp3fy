@@ -29,5 +29,13 @@ module.exports = {
 		'value-list-max-empty-lines': null,
 		'color-hex-case': null,
 		'no-descending-specificity': null,
+		'scss/dollar-variable-pattern': null,
+		'scss/dollar-variable-colon-space-after': null,
+		'scss/double-slash-comment-empty-line-before': null,
+		'scss/dollar-variable-empty-line-before': null,
+		'selector-class-pattern': null,
+		'scss/no-global-function-names': null,
+		'color-function-notation': null,
+		'scss/double-slash-comment-whitespace-inside': null,
 	},
 };
