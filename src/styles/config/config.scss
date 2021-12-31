@@ -1,4 +1,8 @@
-// Pseudo / Start
+// Montserrat
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito:wght@300;400;600;700&display=swap');
+// Nunito
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,34 +20,30 @@
 :active {
 	outline: none;
 }
-// Pseudo / End
 
-// Tags / Start
 html,
 body {
 	height: 100%;
 }
 
 body {
-	min-height: 100%;
+	color: typography(default);
+	// font-size: font-size(default);
+	@include adaptive-value('font-size', 16, 14, 3);
+	font-family: $fontFamilyDefault;
+	@include adaptive-value('line-height', 18, 16, 3);
 
-	color: $black;
-	font-size: $fontSizePrimary;
-	font-family: $fontFamilyPrimary;
-	line-height: $lineHeightPrimary;
-
-	// If theme isMulti === true
+	//* If using Light/Dark theme
 	// @include theme($themes) {
-	// 	background: get-theme('bgPrimary');
+	// 	background: get-theme('primary-500');
 	// }
-	background: $bgPrimary;
 
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+	background: $white;
+
+	text-size-adjust: 100%;
 
 	// Open dropdown menu in a PC devices
-	&.-Pc .menu__list > .menu__item:hover .menu__sub-list {
+	&.--desk .menu__list > .menu__item:hover .menu__sub-list {
 		transform: translate(0, 0);
 		visibility: visible;
 		opacity: 1;
@@ -57,25 +57,28 @@ body {
 	}
 }
 
-a {
-	// color: inherit;
-	text-decoration: none;
-
-	&:hover,
-	&:visited {
-		text-decoration: none;
-	}
-
-	&:focus,
-	&:active {
-		outline: none;
-	}
-}
-
+// Forms / Start
 input,
 button,
 textarea {
-	font-family: $fontFamilyPrimary;
+	font-family: $fontFamilyDefault;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+input[type='email'],
+input[type='text'],
+input[type='tel'],
+textarea {
+	appearance: none;
+}
+
+textarea.input {
+	padding: 0;
+
+	resize: none;
 }
 
 button {
@@ -87,10 +90,7 @@ button {
 		border: 0;
 	}
 }
-
-input::-ms-clear {
-	display: none;
-}
+// Forms / End
 
 h1,
 h2,
@@ -106,25 +106,23 @@ ul li {
 	list-style: none;
 }
 
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
 img {
 	vertical-align: top;
 }
-
-input[type='email'],
-input[type='text'],
-input[type='tel'],
-textarea {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-}
-
-textarea.input {
-	padding: 0 0;
-
-	resize: none;
-}
-// Tags / End
 
 .wrapper {
 	display: flex;
@@ -141,40 +139,40 @@ textarea.input {
 .container {
 	margin: 0 auto;
 
-	// > 576px
+	// < 576px
 	@include media-max(sm) {
-		max-width: mxwContainer(fluid);
+		max-width: mxw-container(fluid);
 		padding: $fields !important;
 	}
 
-	// < 576px
+	// > 576px
 	@include media-min(sm) {
-		max-width: mxwContainer(sm);
+		max-width: mxw-container(sm);
 	}
 
-	// < 768px
+	// > 768px
 	@include media-min(md) {
-		max-width: mxwContainer(md);
+		max-width: mxw-container(md);
 	}
 
-	// < 992px
+	// > 992px
 	@include media-min(lg) {
-		max-width: mxwContainer(lg);
+		max-width: mxw-container(lg);
 	}
 
-	// < 1200px
+	// > 1200px
 	@include media-min(xl) {
-		max-width: mxwContainer(xl);
+		max-width: mxw-container(xl);
 	}
 
-	// < 1400px
+	// > 1400px
 	@include media-min(xxl) {
-		max-width: mxwContainer(xxl);
+		max-width: mxw-container(xxl);
 	}
 }
 
-// by FLS
 // Responsive image
+// by FLS
 .--ibg {
 	position: relative;
 
