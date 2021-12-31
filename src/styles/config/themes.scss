@@ -1,207 +1,311 @@
-// #2C3040
-// #60B1CA
-// #F9F6EE
-// #F03F2E
-// #DC3953
-// #13181C
-// #293746
+$white: #fff;
+$black: #000;
 
-// Base colors
-$white:                      #fff;
-$black:                      #000;
-$light:                      #f1f4f8;
-$dark:                       #161c2d;
+// Primary
+$primary: (
+	100: #EAEFF4,
+	200: #D7DFEA,
+	300: #A9B2C0,
+	400: #6E7581,
+	500: #25282E,
+	600: #1B1E27,
+	700: #121621,
+	800: #0B0F1A,
+	900: #070A16,
+);
 
-// color / Primary
-$primary:                    #6961ff;
-$primaryLight:               #9994ff;
-$primaryLighter:             #cac7ff;
-$primaryDark:                #382eff;
-$primaryDarker:              #0c00fa;
+// Secondary
+$secondary: (
+	100: #fff,
+	200: #fff,
+	300: #fff,
+	400: #fff,
+	500: #fff,
+	600: #fff,
+	700: #fff,
+	800: #fff,
+	900: #fff,
+);
 
-// color / Secondary
-$secondary:                  #fff;
-$secondaryLight:             #fff;
-$secondaryDark:              #fff;
+// Accent
+$accent: (
+	100: #E1DFFF,
+	200: #C4BFFF,
+	300: #A6A0FF,
+	400: #8F88FF,
+	500: #6961FF,
+	600: #4D46DB,
+	700: #3630B7,
+	800: #231E93,
+	900: #15127A,
+);
 
-// color / Secondary
-$accent:                     #FF6961;
-$secondaryLight:             #ff9994;
-$secondaryLight:             #ffcac7;
-$secondaryDark:              #ff382e;
-$secondaryDark:              #fa0c00;
-
-// Succes
-$success:                    #10ba96;
-$successLight:               #dbfff7;
-$successDark:                #108b71;
-$successBg:                  #f2fffc;
+// Success
+$success: (
+	100: #D6FCD4,
+	200: #AAF9AE,
+	300: #7CED8D,
+	400: #59DB79,
+	500: #29C45F,
+	600: #1DA85B,
+	700: #148D56,
+	800: #0D714D,
+	900: #075E47,
+);
 
 // Warning
-$warning:                    #ffc107;
-$warningLight:               #fffcdb;
-$warningDark:                #b39417;
-$warningBg:                  #fffdf2;
+$warning: (
+	100: #FEF8D8,
+	200: #FEF0B2,
+	300: #FEE58B,
+	400: #FDDA6E,
+	500: #FCC93F,
+	600: #D8A52E,
+	700: #B5841F,
+	800: #926514,
+	900: #784F0C,
+);
 
 // Error
-$error:                      #df4759;
-$errorLight:                 #ffdbdf;
-$errorDark:                  #8b101d;
-$errorBg:                    #fff2f4;
+$error: (
+	100: #FFE7D6,
+	200: #FFC9AD,
+	300: #FFA483,
+	400: #FF8165,
+	500: #FF4732,
+	600: #DB2824,
+	700: #B71922,
+	800: #930F22,
+	900: #7A0922,
+);
 
 // Info
-$info:                       #407fd0;
-$infoLight:                  #dbebff;
-$infoDark:                   #104a8b;
-$infoBg:                     #f2f8ff;
+$info: (
+	100: #D7F3FE,
+	200: #B0E4FE,
+	300: #88D1FE,
+	400: #6BBDFD,
+	500: #3A9EFC,
+	600: #2A7BD8,
+	700: #1D5CB5,
+	800: #124092,
+	900: #0B2D78,
+);
 
-// Tupography / Start
-$headlineColor:              #fff;
-$subheadingColor:            #fff;
-$titleColor:                 #fff;
-$subtitleColor:              #fff;
-$textColor:                  #fff;
-// Tupography / End
-
-// UI / Start
-$bgPrimary:                  #fff;
-$bgSecondary:                #fff;
-$bgHeader:                   #fff;
+// Typography
+$typography: (
+	default:    $black,
+	headline:   $black,
+	subheading: $black,
+	title:      $black,
+	subtitle:   $black,
+	text:       $black,
+);
 
 // States
-$hovered:                    #fff;
-$actived:                    #fff;
-$focused:                    #fff;
-$visited:                    #fff;
-$disabled:                   #fff;
+$states: (
+	hover:    #fff,
+	active:   #fff,
+	focus:    #fff,
+	disabled: #fff,
+);
 
-// Theme switcher
-$switcherBody:               #fff;
-$switcherBall:               #191a25;
-// UI / End
+$switcher: (
+	ball: #191a25,
+	body: #fff,
+	border: none,
+);
 
 $themes: (
 	light: (
-		// color / Primary
-		primary:             #fff,
-		primaryLight:        #fff,
-		primaryDark:         #fff,
+		// Primary
+		primary-100: primary(100),
+		primary-200: primary(200),
+		primary-300: primary(300),
+		primary-400: primary(400),
+		primary-500: primary(500),
+		primary-600: primary(600),
+		primary-700: primary(700),
+		primary-800: primary(800),
+		primary-900: primary(900),
 
-		// color / Secondary
-		secondary:           #fff,
-		secondaryLight:      #fff,
-		secondaryDark:       #fff,
+		// Secondary
+		secondary-100: secondary(100),
+		secondary-200: secondary(200),
+		secondary-300: secondary(300),
+		secondary-400: secondary(400),
+		secondary-500: secondary(500),
+		secondary-600: secondary(600),
+		secondary-700: secondary(700),
+		secondary-800: secondary(800),
+		secondary-900: secondary(900),
 
-		// Succes
-		success:             #10ba96,
-		successLight:        #dbfff7,
-		successDark:         #108b71,
-		successBg:           #f2fffc,
+		// Accent
+		accent-100: accent(100),
+		accent-200: accent(200),
+		accent-300: accent(300),
+		accent-400: accent(400),
+		accent-500: accent(500),
+		accent-600: accent(600),
+		accent-700: accent(700),
+		accent-800: accent(800),
+		accent-900: accent(900),
+
+		// Success
+		success-100: success(100),
+		success-200: success(200),
+		success-300: success(300),
+		success-400: success(400),
+		success-500: success(500),
+		success-600: success(600),
+		success-700: success(700),
+		success-800: success(800),
+		success-900: success(900),
 
 		// Warning
-		warning:             #ffc107,
-		warningLight:        #fffcdb,
-		warningDark:         #b39417,
-		warningBg:           #fffdf2,
+		warning-100: warning(100),
+		warning-200: warning(200),
+		warning-300: warning(300),
+		warning-400: warning(400),
+		warning-500: warning(500),
+		warning-600: warning(600),
+		warning-700: warning(700),
+		warning-800: warning(800),
+		warning-900: warning(900),
 
 		// Error
-		error:               #df4759,
-		errorLight:          #ffdbdf,
-		errorDark:           #8b101d,
-		errorBg:             #fff2f4,
+		error-100: error(100),
+		error-200: error(200),
+		error-300: error(300),
+		error-400: error(400),
+		error-500: error(500),
+		error-600: error(600),
+		error-700: error(700),
+		error-800: error(800),
+		error-900: error(900),
 
 		// Info
-		info:                #407fd0,
-		infoLight:           #dbebff,
-		infoDark:            #104a8b,
-		infoBg:              #f2f8ff,
+		info-100: info(100),
+		info-200: info(200),
+		info-300: info(300),
+		info-400: info(400),
+		info-500: info(500),
+		info-600: info(600),
+		info-700: info(700),
+		info-800: info(800),
+		info-900: info(900),
 
-		// Tupography / Start
-		headlineColor:       #fff,
-		subheadingColor:     #fff,
-		titleColor:          #fff,
-		subtitleColor:       #fff,
-		textColor:           #fff,
-		// Tupography / End
-
-		// UI / Start
-		bgPrimary:           #1e1f26,
-		bgSecondary:         #fff,
-		bgHeader:            #fff,
+		// Typography
+		headline:   typography(headline),
+		subheading: typography(subheading),
+		title:      typography(title),
+		subtitle:   typography(subtitle),
+		text:       typography(text),
 
 		// States
-		hovered:             #fff,
-		actived:             #fff,
-		focused:             #fff,
-		visited:             #fff,
-		disabled:            #fff,
+		hover:    states(hover),
+		active:   states(active),
+		focus:    states(focus),
+		disabled: states(disabled),
 
-		// Theme switcher
-		switcherBody:        #fff,
-		switcherBall:        #191a25,
-		// UI / End
-
+		switcher-ball: switcher(ball),
+		switcher-body: switcher(body),
+		switcher-border: switcher(border),
 	),
 
 	dark: (
-		// color / Primary
-		primary:             #fff,
-		primaryLight:        #fff,
-		primaryDark:         #fff,
+		// Primary
+		primary-100: #EAEFF4,
+		primary-200: #D7DFEA,
+		primary-300: #A9B2C0,
+		primary-400: #6E7581,
+		primary-500: #25282E,
+		primary-600: #1B1E27,
+		primary-700: #121621,
+		primary-800: #0B0F1A,
+		primary-900: #070A16,
 
-		// color / Secondary
-		secondary:           #fff,
-		secondaryLight:      #fff,
-		secondaryDark:       #fff,
+		// Secondary
+		secondary-100: #fff,
+		secondary-200: #fff,
+		secondary-300: #fff,
+		secondary-400: #fff,
+		secondary-500: #fff,
+		secondary-600: #fff,
+		secondary-700: #fff,
+		secondary-800: #fff,
+		secondary-900: #fff,
 
-		// Succes
-		success:             #10ba96,
-		successLight:        #dbfff7,
-		successDark:         #108b71,
-		successBg:           #f2fffc,
+		// Accent
+		accent-100: #E1DFFF,
+		accent-200: #C4BFFF,
+		accent-300: #A6A0FF,
+		accent-400: #8F88FF,
+		accent-500: #6961FF,
+		accent-600: #4D46DB,
+		accent-700: #3630B7,
+		accent-800: #231E93,
+		accent-900: #15127A,
+
+		// Success
+		success-100: #D6FCD4,
+		success-200: #AAF9AE,
+		success-300: #7CED8D,
+		success-400: #59DB79,
+		success-500: #29C45F,
+		success-600: #1DA85B,
+		success-700: #148D56,
+		success-800: #0D714D,
+		success-900: #075E47,
 
 		// Warning
-		warning:             #ffc107,
-		warningLight:        #fffcdb,
-		warningDark:         #b39417,
-		warningBg:           #fffdf2,
+		warning-100: #FEF8D8,
+		warning-200: #FEF0B2,
+		warning-300: #FEE58B,
+		warning-400: #FDDA6E,
+		warning-500: #FCC93F,
+		warning-600: #D8A52E,
+		warning-700: #B5841F,
+		warning-800: #926514,
+		warning-900: #784F0C,
 
 		// Error
-		error:               #df4759,
-		errorLight:          #ffdbdf,
-		errorDark:           #8b101d,
-		errorBg:             #fff2f4,
+		error-100: #FFE7D6,
+		error-200: #FFC9AD,
+		error-300: #FFA483,
+		error-400: #FF8165,
+		error-500: #FF4732,
+		error-600: #DB2824,
+		error-700: #B71922,
+		error-800: #930F22,
+		error-900: #7A0922,
 
 		// Info
-		info:                #407fd0,
-		infoLight:           #dbebff,
-		infoDark:            #104a8b,
-		infoBg:              #f2f8ff,
+		info-100: #D7F3FE,
+		info-200: #B0E4FE,
+		info-300: #88D1FE,
+		info-400: #6BBDFD,
+		info-500: #3A9EFC,
+		info-600: #2A7BD8,
+		info-700: #1D5CB5,
+		info-800: #124092,
+		info-900: #0B2D78,
 
-		// Tupography / Start
-		headlineColor:       #fff,
-		subheadingColor:     #fff,
-		titleColor:          #fff,
-		subtitleColor:       #fff,
-		textColor:           #fff,
-		// Tupography / End
-
-		// UI / Start
-		bgPrimary:           #fff,
-		bgSecondary:         #fff,
-		bgHeader:            #fff,
+		// Typography
+		headline:   #fff,
+		subheading: #fff,
+		title:      #fff,
+		subtitle:   #fff,
+		text:       #fff,
 
 		// States
-		hovered:             #fff,
-		actived:             #fff,
-		focused:             #fff,
-		visited:             #fff,
-		disabled:            #fff,
+		hover:    #fff,
+		active:   #fff,
+		focus:    #fff,
+		disabled: #fff,
 
-		// Theme switcher
-		switcherBody:        #191a25,
-		switcherBall:        #f5f5f5,
-		// UI / End
-
-	)
+		switcher-ball: #191a25,
+		switcher-body: #fff,
+		switcher-border: none,
+	),
 );
