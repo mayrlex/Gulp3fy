@@ -1,12 +1,20 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
 import rename from 'gulp-rename';
-import { path } from '../config.js';
+import { path } from '../config/path.js';
 
 const faviconsBuild = () =>
 	gulp
 		.src(path.favicon.src)
-		.pipe(plumber())
+		.pipe(
+			plumber(
+				notify.onError({
+					title: 'FONTS',
+					message: 'Error: <%= error.message %>',
+				})
+			)
+		)
 		.pipe(
 			rename({
 				extname: '.ico',
@@ -14,7 +22,4 @@ const faviconsBuild = () =>
 		)
 		.pipe(gulp.dest(path.favicon.dest));
 
-export const faviconBuild = gulp.parallel(faviconsBuild);
-export const faviconWatch = () => {
-	gulp.watch(path.favicon.watch, faviconsBuild);
-};
+export default faviconsBuild;
