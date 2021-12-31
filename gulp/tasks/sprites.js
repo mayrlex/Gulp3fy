@@ -1,15 +1,27 @@
 import gulp from 'gulp';
+import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
-import { path } from '../config.js';
+import { path } from '../config/path.js';
+import { spriteConfig } from '../../config.js';
 
 const spriteMono = () =>
 	gulp
 		.src(path.icons.src.mono)
 		.pipe(
+			plumber(
+				notify.onError({
+					title: 'SPRITES',
+					message: 'Error: <%= error.message %>',
+				})
+			)
+		)
+		.pipe(
 			svgSprite({
 				mode: {
-					symbol: {
+					stack: {
 						sprite: '../sprites/sprite-mono.svg',
+						example: spriteConfig.example.mono,
 					},
 				},
 				shape: {
@@ -19,7 +31,7 @@ const spriteMono = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: ['class', 'data-name', 'fill.*', 'stroke.*'],
+											attrs: spriteConfig.removeAttrs.mono,
 										},
 									},
 								],
@@ -35,10 +47,19 @@ const spriteMulti = () =>
 	gulp
 		.src(path.icons.src.multi)
 		.pipe(
+			plumber(
+				notify.onError({
+					title: 'SPRITES',
+					message: 'Error: <%= error.message %>',
+				})
+			)
+		)
+		.pipe(
 			svgSprite({
 				mode: {
-					symbol: {
+					stack: {
 						sprite: '../sprites/sprite-multi.svg',
+						example: spriteConfig.example.multi,
 					},
 				},
 				shape: {
@@ -48,7 +69,7 @@ const spriteMulti = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: ['class', 'data-name'],
+											attrs: spriteConfig.removeAttrs.multi,
 										},
 									},
 
@@ -65,9 +86,5 @@ const spriteMulti = () =>
 
 		.pipe(gulp.dest(path.icons.dest));
 
-export const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
-
-export const spritesWatch = () => {
-	gulp.watch(path.icons.watch.mono, spriteMono);
-	gulp.watch(path.icons.watch.multi, spriteMulti);
-};
+const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
+export default spritesBuild;
