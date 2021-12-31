@@ -1,59 +1,102 @@
 // Breakpoints / Start
 $breakpoints: (
-	xs:                      320px,
-	sm:                      576px,
-	md:                      768px,
-	lg:                      992px,
-	xl:                      1200px,
-	xxl:                     1400px,
+	xs:  320px,
+	sm:  576px,
+	md:  768px,
+	lg:  992px,
+	xl:  1200px,
+	xxl: 1400px,
 );
 
 $containerMaxWidth: (
-	sm:                      get-breakpoint(sm) - 30px,
-	md:                      get-breakpoint(md) - 30px,
-	lg:                      get-breakpoint(lg) - 40px,
-	xl:                      get-breakpoint(xl) - 60px,
-	xxl:                     get-breakpoint(xxl) - 80px,
-	fluid:                   100%,
+	sm:    get-breakpoint(sm) - 30px,
+	md:    get-breakpoint(md) - 30px,
+	lg:    get-breakpoint(lg) - 40px,
+	xl:    get-breakpoint(xl) - 60px,
+	xxl:   get-breakpoint(xxl) - 80px,
+	fluid: 100%,
 );
 
-$fields:                     0 15px;
+$fields: 0 15px;
 // Breakpoints / End
 
 // z-layers
 $z-layers: (
-	default:                 1,
-	header:                  10,
-	dropdown:                50,
-	modal:                   100,
+	default:  1,
+	header:   15,
+	dropdown: 50,
+	popup:    100,
 );
 
-// Typography / Start
-// Base
-$fontSizePrimary:           14px;
-$lineHeightPrimary:         1;
-$fontFamilyPrimary:         'Montserrat', sans-serif;
-$fontFamilySecondary:       'Nunito', sans-serif;
+$font-weight: (
+	default:    400,
+	headline:   400,
+	subheading: 400,
+	title:      400,
+	subtitle:   400,
+);
 
-// Headline
-$headlineWeight:           700;
-$headlineSize:             16px;
+// $font-size: (
+// 	default: 14px,
+// 	headline: 16px,
+// 	subheading: 16px,
+// 	title: 16px,
+// 	subtitle: 16px,
+// );
 
-// Subheading
-$subheadingWeight:         500;
-$subheadingSize:           16px;
-$subheadingLineHeight:     $lineHeightPrimary;
+$font-size: (
+	default: (
+		min: 14,
+		max: 16,
+	),
 
-// Title
-$titleWeight:              500;
-$titleSize:                16px;
+	headline: (
+		min: 14,
+		max: 16,
+	),
 
-// Subtitle
-$subtitleWeight:           500;
-$subtitleSize:             16px;
-$subtitleLineHeight:       $lineHeightPrimary;
+	subheading: (
+		min: 14,
+		max: 16,
+	),
 
-// Text
-$textSize:                 16px;
-$textLineHeight:           $lineHeightPrimary;
-// Typography / End
+	title: (
+		min: 14,
+		max: 16,
+	),
+
+	subtitle: (
+		min: 14,
+		max: 16,
+	),
+);
+
+$line-height: (
+	default: (
+		min: 1,
+		max: 1.2,
+	),
+
+	headline: (
+		min: 1,
+		max: 1.2,
+	),
+
+	subheading: (
+		min: 1,
+		max: 1.2,
+	),
+
+	title: (
+		min: 1,
+		max: 1.2,
+	),
+
+	subtitle: (
+		min: 1,
+		max: 1.2,
+	),
+);
+
+$fontFamilyDefault: 'Montserrat', sans-serif;
+$fontFamilyPrimary: 'Nunito', sans-serif;
