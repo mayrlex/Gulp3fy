@@ -1,12 +1,12 @@
-import scrollBar from 'overlayscrollbars';
-import lazyImages from './helpers/lazyImages';
-import documentReady from './helpers/documentReady';
+import lazyImages from './helpers/lazyImages.js';
+import documentReady from './helpers/documentReady.js';
 // import checkDevice from './helpers/checkDevice';
 // import * as themeSwitcher from '../components/themeSwitcher/themeSwitcher';
-import scrollBarRc from './config/scrollbarsrc';
+// import * as scrollbars from './modules/scrollbars.js';
 // import * as header from './parts/header';
 // import * as smoothScroll from './modules/smoothScroll';
-import * as swiperRc from './config/swiperrc';
+// import * as swiper from './modules/swiper.js';
+import * as homepage from './pages/home/main.js';
 
 documentReady(() => {
 	lazyImages();
