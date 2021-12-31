@@ -1,40 +1,83 @@
 .btn {
-	display: inline-flex;
-	padding: 0px 0px;
+	display: inline-block;
+	max-width: 100%;
+	// padding: $padding-btn;
+	overflow: hidden;
 
-	&-fluid {
-		width: 100%;
+	color: $white;
+	font-size: font-size(default, xl);
+	font-family: inherit;
+	line-height: line-height(default, xl);
+	white-space: nowrap;
+	text-align: center;
+	text-transform: none;
+	text-decoration: none;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+
+	// background-color: $gray-lightest;
+	background-image: none;
+	// border: 1px solid $gray-lighter;
+	border: 0;
+	// border-radius: $border-radius;
+	cursor: pointer;
+
+	user-select: none;
+
+	&:hover,
+	&:focus {
+		color: $white;
+		text-decoration: none;
+
+		background-color: darken($gray-lightest, 10%);
+		// border-color: darken($gray-lighter, 12%);
 	}
 
-	&-primary {
-		padding: 10px 26px;
+	// &:visited {
+	//   color: $text-color;
+	// }
 
-		color: #fff;
-		font-weight: 500;
-		font-size: 20px;
+	// &:active,
+	// &:focus {
+	// 	@include field-focus;
+	// }
 
-		@include theme($themes) {
-			background: get-theme('primary');
-		}
-		border-radius: 5px;
+	&--disabled,
+	&:disabled {
+		color: $white;
 
-		// < 992px
-		@include media-min(lg) {
-			&:hover {
-			}
-		}
-	}
+		// background-color: ;
+		cursor: not-allowed;
+		opacity: $opacity;
+		// border-color: $gray-lighter;
 
-	&-secondary {
-		padding: 11px 35px;
-
-		border: 1px solid $white;
-		border-radius: 8px;
-
-		// < 992px
-		@include media-min(lg) {
-			&:hover {
-			}
+		@at-root a.btn--disabled {
+			pointer-events: none;
 		}
 	}
+
+	// &__icon {
+	//   display: inline-block;
+	//   vertical-align: middle;
+	// }
+
+	// &--main {
+	//   color: #fff;
+	//   background-color: $color-main;
+	//   // border: 1px solid $color-main;
+
+	//   &:hover,
+	//   &:focus {
+	//     color: #fff;
+	//     background-color: darken($color-main, 10%);
+	//     // border-color: darken($color-main, 12%);
+	//   }
+
+	//   &--disabled,
+	//   &:disabled {
+	//     color: #fff;
+	//     background-color: $color-main;
+	//     // border-color: $color-main;
+	//   }
+	// }
 }

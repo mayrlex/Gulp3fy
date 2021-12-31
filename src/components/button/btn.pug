@@ -1,0 +1,29 @@
+mixin btn(text, mods, isInput)
+
+	//- text    {string}
+	//- mods    {string}
+	//- isInput {boolean}
+	//-
+		+btn('Link')(href='/')
+		+btn('Input', '', true)
+		+btn('Button', 'success')
+-
+	let allMods = '';
+	if(typeof(mods) !== 'undefined' && mods) {
+		const modsList = mods.split(',');
+		for (let i = 0; i < modsList.length; i++) {
+			allMods = `${allMods} btn-- ${modsList[i].trim()}`;
+		}
+	}
+
+	if (attributes.href) {
+		a.btn(class=allMods)&attributes(attributes)!= text
+			block
+	}
+
+	else if (typeof(isInput) !== 'undefined' && isInput)
+		input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+
+	else
+		button.btn(class=allMods)&attributes(attributes)!= text
+		block
