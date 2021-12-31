@@ -1,21 +1,27 @@
+/* eslint-disable import/no-mutable-exports */
+/* eslint-disable prefer-const */
 //##############################
 // Tasks
 //##############################
 const task = {
-	views: true,
+	markup: true,
 	styles: true,
 	scripts: true,
-	fonts: true,
+	fonts: false,
 	images: true,
 	sprites: true,
 	favicon: true,
+	files: true,
 }
 
 //##############################
-// Paths
+// Server settings
 //##############################
-const source = 'src';
-const compiled = 'build';
+const serverConfig = {
+	port: 3000,
+	open: false,
+	notify: false,
+}
 
 //##############################
 // FTP Settings
@@ -29,38 +35,58 @@ let ftpConfig = {
 };
 
 //##############################
-// Server
+// Imagemin settings
 //##############################
-const srv = {
-	port: 3300,
-	path: path.dest,
-	open: false,
-	notify: false,
-};
+const imgminConfig = {
+	progressive: true,
+	svg: {
+		removeViewBox: false,
+	},
+	interlaced: true,
+	optimizationLevel: 3,
+}
 
 //##############################
-// Pretty
+// Markup settings
 //##############################
-const pretty = {
-	indent_size: 4,
-	indent_char: ' ',
-	unformatted: ['code', 'pre', 'em', 'strong', 'i', 'b', 'br', 'span'],
-};
+const markupConfig = {
+	pretty: true,
+	verbose: true,
+}
 
 //##############################
-// Image quality
+// Styles settings
 //##############################
-const quality = {
-	jpeg: 80,
-	png: [0.8, 0.9],
-	webp: 80,
-};
+const stylesConfig = {
+	sass: {
+		outputStyle: 'expanded',
+	},
+	autoprefixer: {
+		grid: true,
+		cascade: true,
+		overrideBrowserlist: 'last 5 version',
+	},
+	cleanlvl: 1,
+}
 
 //##############################
-// Exports
+// Sprites settings
 //##############################
+const spriteConfig = {
+	example: {
+		mono: true,
+		multi: true,
+	},
+	removeAttrs: {
+		mono: ['class', 'data-name', 'fill.*', 'stroke.*'],
+		multi: ['class', 'data-name'],
+	}
+}
+
 export { task };
-export { path };
-export { srv };
-export { pretty };
-export { quality };
+export { serverConfig };
+export { ftpConfig };
+export { imgminConfig };
+export { markupConfig };
+export { stylesConfig };
+export { spriteConfig };
