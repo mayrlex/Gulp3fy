@@ -1,14 +1,16 @@
+// ### Swiper styles
+// @import 'https://unpkg.com/swiper@7/swiper-bundle.min.css';
 // @import 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.css';
 
-@import './functions/**/*';
 @import './mixins/**/*';
+@import './functions/**/*';
 @import './helpers/**/*';
-@import './config/variables.scss';
-@import './config/themes.scss';
-@import './config/config.scss';
-@import './config/typography.scss';
-// @import '../components/button/btn.scss';
-// @import '../components/themeSwitcher/themeSwitcher.scss';
-@import './parts/header.scss';
-@import './parts/footer.scss';
+@import './config/variables';
+@import './config/themes';
+@import './config/config';
+@import './config/typography';
+// @import '../components/button/btn';
+// @import '../components/themeSwitcher/themeSwitcher';
+@import './parts/header';
+@import './parts/footer';
 @import './pages/**/*';
