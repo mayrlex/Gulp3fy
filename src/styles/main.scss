@@ -1,16 +1,26 @@
-// ### Swiper styles
+//? ### Swiper styles
 // @import 'https://unpkg.com/swiper@7/swiper-bundle.min.css';
+
+//? ### OverlayScrollbars styles
 // @import 'https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.css';
 
+//? ### Mixins / Functions
 @import './mixins/**/*';
 @import './functions/**/*';
-@import './helpers/**/*';
+
+//? ### Configs
 @import './config/variables';
 @import './config/themes';
 @import './config/config';
 @import './config/typography';
-// @import '../components/button/btn';
-// @import '../components/themeSwitcher/themeSwitcher';
+
+//? ### Parts
 @import './parts/header';
 @import './parts/footer';
+
+//? ### Components
+// @import '../components/button/btn';
+// @import '../components/themeSwitcher/themeSwitcher';
+
+//? ### Pages
 @import './pages/home/hero';
