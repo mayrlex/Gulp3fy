@@ -4,21 +4,21 @@
 // Tasks
 //##############################
 const task = {
-	markup: true,
-	styles: true,
+	markup:  true,
+	styles:  true,
 	scripts: true,
-	fonts: false,
-	images: true,
+	fonts:   false,
+	images:  true,
 	sprites: true,
 	favicon: true,
-	files: true,
+	files:   true,
 }
 
 //##############################
 // Server settings
 //##############################
 const serverConfig = {
-	port: 3000,
+	port: 3300,
 	open: false,
 	notify: false,
 }
@@ -33,18 +33,6 @@ let ftpConfig = {
 	password: '',   // Password
 	parallel: 5,    // Number of concurrent streams
 };
-
-//##############################
-// Imagemin settings
-//##############################
-const imgminConfig = {
-	progressive: true,
-	svg: {
-		removeViewBox: false,
-	},
-	interlaced: true,
-	optimizationLevel: 3,
-}
 
 //##############################
 // Markup settings
@@ -70,11 +58,23 @@ const stylesConfig = {
 }
 
 //##############################
+// Imagemin settings
+//##############################
+const imgminConfig = {
+	progressive: true,
+	svg: {
+		removeViewBox: false,
+	},
+	interlaced: true,
+	optimizationLevel: 3,
+}
+
+//##############################
 // Sprites settings
 //##############################
 const spriteConfig = {
 	example: {
-		mono: true,
+		mono:  true,
 		multi: true,
 	},
 	removeAttrs: {
