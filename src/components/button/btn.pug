@@ -1,33 +1,31 @@
+//- Arguments:
+	text    {string}  - Button text
+	mods    {string}  - Modificator('s)
+	isInput {boolean} - Flag true/false
+//- Call:
+	+btn('Link text')(href='/')    - Have href — link
+	+btn('Input text', '', true)   - Have flag turned 'true' — input
+	+btn('Button text', 'success') - Excludes href / isInput — button
 mixin btn(text, mods, isInput)
-
-	//- Arguments:
-	//-   text    {string} - Button text
-	//-   mods    {string} - Modificator('s)
-	//-   isInput {bool}   - Flag true/false
-
-	//- Call:
-			+btn('Link text')(href='/')    - Have href — link
-			+btn('Input text', '', true)   - Have flag turned 'true' — input
-			+btn('Button text', 'success') - Excludes href / isInput — button
 	-
 		// Modificators list
 		let allMods = '';
 		if(typeof(mods) !== 'undefined' && mods) {
-			var modsList = mods.split(',');
+			const modsList = mods.split(',');
 			for (let i = 0; i < modsList.length; i++) {
 				allMods = allMods + ' btn--' + modsList[i].trim();
 			}
 		}
-		//- If mod 'href' — link
-		if (attributes.href)
-			a.btn(class=allMods)&attributes(attributes)!= text
-				block
+	//- If mod 'href' — link
+	if (attributes.href)
+		a.btn(class=allMods)&attributes(attributes)!= text
+			block
 
-		//- Else if mod 'isInput' and flag 'true' — input
-		else if (typeof(isInput) !== 'undefined' && isInput)
-			input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+	//- Else if mod 'isInput' turned 'true' — input
+	else if (typeof(isInput) !== 'undefined' && isInput)
+		input.btn(class=allMods, value=text, type='button')&attributes(attributes)
 
-		//- Else if — button
-		else
-			button.btn(class=allMods)&attributes(attributes)!= text
-				block
+	//- Else if — button
+	else
+		button.btn(class=allMods)&attributes(attributes)!= text
+			block
