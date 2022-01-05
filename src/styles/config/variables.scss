@@ -28,6 +28,15 @@ $z-layers: (
 	popup:    100,
 );
 
+$padding: (
+	btn_default: rem(10) rem(16),
+	btn_outline: rem(8) rem(14),
+);
+
+$radius: (
+	btn: rem(4),
+);
+
 $font-weight: (
 	default:    400,
 	headline:   400,
@@ -36,67 +45,31 @@ $font-weight: (
 	subtitle:   400,
 );
 
-// $font-size: (
-// 	default: 14px,
-// 	headline: 16px,
-// 	subheading: 16px,
-// 	title: 16px,
-// 	subtitle: 16px,
-// );
+$font_size_default:    14;
+$font_size_headline:   16;
+$font_size_subheading: 16;
+$font_size_title:      16;
+$font_size_subtitle:   16;
+$font_size_btn:        16;
 
-$font-size: (
-	default: (
-		min: 14,
-		max: 16,
-	),
-
-	headline: (
-		min: 14,
-		max: 16,
-	),
-
-	subheading: (
-		min: 14,
-		max: 16,
-	),
-
-	title: (
-		min: 14,
-		max: 16,
-	),
-
-	subtitle: (
-		min: 14,
-		max: 16,
-	),
+$font_size: (
+	default:    rem($font_size_default),
+	headline:   rem($font_size_headline),
+	subheading: rem($font_size_subheading),
+	title:      rem($font_size_title),
+	subtitle:   rem($font_size_subtitle),
+	btn:        rem($font_size_btn),
 );
 
-$line-height: (
-	default: (
-		min: 1,
-		max: 1.2,
-	),
-
-	headline: (
-		min: 1,
-		max: 1.2,
-	),
-
-	subheading: (
-		min: 1,
-		max: 1.2,
-	),
-
-	title: (
-		min: 1,
-		max: 1.2,
-	),
-
-	subtitle: (
-		min: 1,
-		max: 1.2,
-	),
+$line_height: (
+	default:    prc(24, $font_size_default),
+	headline:   prc(24, $font_size_headline),
+	subheading: prc(24, $font_size_subheading),
+	title:      prc(24, $font_size_title),
+	subtitle:   prc(24, $font_size_subtitle),
 );
+
+
 
 $fontFamilyDefault: 'Montserrat', sans-serif;
 $fontFamilyPrimary: 'Nunito', sans-serif;

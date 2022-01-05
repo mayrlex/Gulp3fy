@@ -16,28 +16,28 @@ $primary: (
 
 // Secondary
 $secondary: (
-	100: #fff,
-	200: #fff,
-	300: #fff,
-	400: #fff,
-	500: #fff,
-	600: #fff,
-	700: #fff,
-	800: #fff,
-	900: #fff,
+	100: #F3F7F8,
+	200: #E8EEF1,
+	300: #C9D1D5,
+	400: #A0A7AC,
+	500: #6B7176,
+	600: #4E5965,
+	700: #354354,
+	800: #222F44,
+	900: #142038,
 );
 
 // Accent
 $accent: (
-	100: #E1DFFF,
-	200: #C4BFFF,
-	300: #A6A0FF,
-	400: #8F88FF,
-	500: #6961FF,
-	600: #4D46DB,
-	700: #3630B7,
-	800: #231E93,
-	900: #15127A,
+	100: #E8DAFE,
+	200: #CFB6FE,
+	300: #B391FC,
+	400: #9C76FA,
+	500: #7749F8,
+	600: #5B35D5,
+	700: #4224B2,
+	800: #2D178F,
+	900: #1E0E77,
 );
 
 // Success
@@ -81,15 +81,40 @@ $error: (
 
 // Info
 $info: (
-	100: #D7F3FE,
-	200: #B0E4FE,
-	300: #88D1FE,
-	400: #6BBDFD,
-	500: #3A9EFC,
-	600: #2A7BD8,
-	700: #1D5CB5,
-	800: #124092,
-	900: #0B2D78,
+	100: #CBEFFD,
+	200: #98DBFC,
+	300: #64BFF7,
+	400: #3EA3F0,
+	500: #0378E6,
+	600: #025CC5,
+	700: #0145A5,
+	800: #003085,
+	900: #00226E,
+);
+
+// Gray
+$gray: (
+	100: #F8F9FA,
+	200: #e9ecef,
+	300: #dee2e6,
+	400: #ced4da,
+	500: #adb5bd,
+	600: #6c757d,
+	700: #495057,
+	800: #343a40,
+	900: #212529,
+);
+
+// Light
+$light: (
+	1: #F8F9FA,
+	2: #E2E6EA,
+);
+
+// Dark
+$dark: (
+	1: #343A40,
+	2: #23272B,
 );
 
 // Typography
@@ -100,14 +125,6 @@ $typography: (
 	title:      $black,
 	subtitle:   $black,
 	text:       $black,
-);
-
-// States
-$states: (
-	hover:    #fff,
-	active:   #fff,
-	focus:    #fff,
-	disabled: #fff,
 );
 
 $switcher: (
