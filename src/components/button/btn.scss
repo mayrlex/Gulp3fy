@@ -1,83 +1,264 @@
+/* stylelint-disable prettier/prettier */
 .btn {
 	display: inline-block;
 	max-width: 100%;
-	// padding: $padding-btn;
 	overflow: hidden;
 
 	color: $white;
-	font-size: font-size(default, xl);
+	font-weight: 500;
+	font-size: font-size(btn);
 	font-family: inherit;
-	line-height: line-height(default, xl);
 	white-space: nowrap;
 	text-align: center;
 	text-transform: none;
-	text-decoration: none;
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	// background-color: $gray-lightest;
 	background-image: none;
-	// border: 1px solid $gray-lighter;
-	border: 0;
-	// border-radius: $border-radius;
+	border-radius: radius(btn);
 	cursor: pointer;
+
+	transition: 0.1s;
 
 	user-select: none;
 
-	&:hover,
-	&:focus {
-		color: $white;
-		text-decoration: none;
+	// Primary
+	&__primary {
+		@include btn_default(
+			padding(btn_default),  // Padding
+			accent(500),           // Background color
+			accent(600),           // Background color on hover
+			accent(600),           // Background color on focus visible
+			3px solid accent(200)  // Outline
+		);
 
-		background-color: darken($gray-lightest, 10%);
-		// border-color: darken($gray-lighter, 12%);
+		@include btn_outline(
+			padding(btn_outline),  // Padding
+			accent(500),           // Color
+			transparent,           // Background color
+			2px solid accent(500), // Border
+			$white,                // Color on hover
+			accent(500),           // Background color on hover
+			$white,                // Color on focus visible
+			accent(500),           // Background color on focus visible
+			2px solid transparent, // Border on focus visible
+			3px solid accent(200)  // Outline on focus visible
+		);
 	}
 
-	// &:visited {
-	//   color: $text-color;
-	// }
+	// Secondary
+	&__secondary {
+		@include btn_default(
+			padding(btn_default),     // Padding
+			secondary(500),           // Background color
+			secondary(600),           // Background color on hover
+			secondary(600),           // Background color on focus visible
+			3px solid secondary(300)  // Outline
+		);
 
-	// &:active,
-	// &:focus {
-	// 	@include field-focus;
-	// }
+		@include btn_outline(
+			padding(btn_outline),     // Padding
+			secondary(500),           // Color
+			transparent,              // Background color
+			2px solid secondary(500), // Border
+			$white,                   // Color on hover
+			secondary(500),           // Background color on hover
+			$white,                   // Color on focus visible
+			secondary(500),           // Background color on focus visible
+			2px solid transparent,    // Border on focus visible
+			3px solid secondary(300)  // Outline on focus visible
+		);
+	}
 
+	// Success
+	&__success {
+		@include btn_default(
+			padding(btn_default),  // Padding
+			success(500),          // Background color
+			success(600),          // Background color on hover
+			success(600),          // Background color on focus visible
+			3px solid success(300) // Outline
+		);
+
+		@include btn_outline(
+			padding(btn_outline),   // Padding
+			success(500),           // Color
+			transparent,            // Background color
+			2px solid success(500), // Border
+			$white,                 // Color on hover
+			success(500),           // Background color on hover
+			$white,                 // Color on focus visible
+			success(500),           // Background color on focus visible
+			2px solid transparent,  // Border on focus visible
+			3px solid success(300)  // Outline on focus visible
+		);
+	}
+
+	// Warning
+	&__warning {
+		@include btn_default(
+			padding(btn_default),  // Padding
+			warning(500),          // Background color
+			warning(600),          // Background color on hover
+			warning(600),          // Background color on focus visible
+			3px solid warning(300) // Outline
+		);
+
+		@include btn_outline(
+			padding(btn_outline),   // Padding
+			warning(500),           // Color
+			transparent,            // Background color
+			2px solid warning(500), // Border
+			$white,                 // Color on hover
+			warning(500),           // Background color on hover
+			$white,                 // Color on focus visible
+			warning(500),           // Background color on focus visible
+			2px solid transparent,  // Border on focus visible
+			3px solid warning(300)  // Outline on focus visible
+		);
+	}
+
+	// Error
+	&__error {
+		@include btn_default(
+			padding(btn_default), // Padding
+			error(500),           // Background color
+			error(600),           // Background color on hover
+			error(600),           // Background color on focus visible
+			3px solid error(300)  // Outline
+		);
+
+		@include btn_outline(
+			padding(btn_outline),  // Padding
+			error(500),            // Color
+			transparent,           // Background color
+			2px solid error(500),  // Border
+			$white,                // Color on hover
+			error(500),            // Background color on hover
+			$white,                // Color on focus visible
+			error(500),            // Background color on focus visible
+			2px solid transparent, // Border on focus visible
+			3px solid error(300)   // Outline on focus visible
+		);
+	}
+
+	// Info
+	&__info {
+		@include btn_default(
+			padding(btn_default), // Padding
+			info(500),           // Background color
+			info(600),           // Background color on hover
+			info(600),           // Background color on focus visible
+			3px solid info(300)  // Outline
+		);
+
+		@include btn_outline(
+			padding(btn_outline),  // Padding
+			info(500),            // Color
+			transparent,           // Background color
+			2px solid info(500),  // Border
+			$white,                // Color on hover
+			info(500),            // Background color on hover
+			$white,                // Color on focus visible
+			info(500),            // Background color on focus visible
+			2px solid transparent, // Border on focus visible
+			3px solid info(300)   // Outline on focus visible
+		);
+	}
+
+	// Light
+	&__light {
+		&-default {
+			padding: padding(btn_default);
+
+			color: dark(1);
+
+			background-color: light(1);
+
+			&:hover {
+				background-color: light(2);
+			}
+
+			&:focus-visible {
+				background-color: light(2);
+				outline: 3px solid dark(1);
+			}
+		}
+
+		&-outline {
+			padding: padding(btn_outline);
+
+			color: secondary(500);
+
+			background-color: $white;
+			border: 2px solid light(1);
+
+			&:hover {
+				color: dark(1);
+
+				background-color: light(1);
+			}
+
+			&:focus-visible {
+				background-color: light(1);
+				border: 2px solid transparent;
+				outline: 3px solid dark(1);
+			}
+		}
+	}
+
+	// Dark
+	&__dark {
+		&-default {
+			padding: padding(btn_default);
+
+			background-color: dark(1);
+
+			&:hover {
+				background-color: dark(2);
+			}
+
+			&:focus-visible {
+				background-color: dark(2);
+				outline: 3px solid light(2);
+			}
+		}
+
+		&-outline {
+			padding: padding(btn_outline);
+
+			color: dark(1);
+
+			background-color: transparent;
+			border: 2px solid dark(1);
+
+			&:hover {
+				color: $white;
+
+				background-color: dark(1);
+				border: 2px solid transparent;
+			}
+
+			&:focus-visible {
+				color: $white;
+
+				background-color: dark(1);
+				border: 2px solid transparent;
+				outline: 3px solid light(2);
+			}
+		}
+	}
+
+	// Disabled
 	&--disabled,
 	&:disabled {
-		color: $white;
+		padding: padding(btn_default);
 
-		// background-color: ;
+		background-color: gray(500);
 		cursor: not-allowed;
-		opacity: $opacity;
-		// border-color: $gray-lighter;
 
 		@at-root a.btn--disabled {
 			pointer-events: none;
 		}
 	}
-
-	// &__icon {
-	//   display: inline-block;
-	//   vertical-align: middle;
-	// }
-
-	// &--main {
-	//   color: #fff;
-	//   background-color: $color-main;
-	//   // border: 1px solid $color-main;
-
-	//   &:hover,
-	//   &:focus {
-	//     color: #fff;
-	//     background-color: darken($color-main, 10%);
-	//     // border-color: darken($color-main, 12%);
-	//   }
-
-	//   &--disabled,
-	//   &:disabled {
-	//     color: #fff;
-	//     background-color: $color-main;
-	//     // border-color: $color-main;
-	//   }
-	// }
 }

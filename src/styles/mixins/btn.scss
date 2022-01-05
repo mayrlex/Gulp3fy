@@ -1,0 +1,52 @@
+@mixin btn-default($btn__padding, $btn__bg, $btn__bg--hover, $btn__bg--focus, $btn__outline) {
+	&-default {
+		padding: #{$btn__padding};
+
+		background-color: #{$btn__bg};
+
+		&:hover {
+			background-color: #{$btn__bg--hover};
+		}
+
+		&:focus-visible {
+			background-color: #{$btn__bg--focus};
+			outline: #{$btn__outline};
+		}
+	}
+}
+
+@mixin btn-outline(
+	$btn__padding,
+	$btn__color,
+	$btn__bg,
+	$btn__border,
+	$btn__color--hover,
+	$btn__bg--hover,
+	$btn__color--focus,
+	$btn__bg--focus,
+	$btn__border--focus,
+	$btn__outline
+) {
+	&-outline {
+		padding: #{$btn__padding};
+
+		color: #{$btn__color};
+
+		background-color: #{$btn__bg};
+		border: #{$btn__border};
+
+		&:hover {
+			color: #{$btn__color--hover};
+
+			background-color: #{$btn__bg--hover};
+		}
+
+		&:focus-visible {
+			color: #{$btn__color--focus};
+
+			background-color: #{$btn__bg--focus};
+			border: #{$btn__border--focus};
+			outline: #{$btn__outline};
+		}
+	}
+}
