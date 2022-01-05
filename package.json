@@ -32,6 +32,7 @@
 		"vanilla-lazyload": "^17.5.0"
 	},
 	"devDependencies": {
+		"@prettier/plugin-pug": "^1.19.0",
 		"browser-sync": "latest",
 		"del": "^6.0.0",
 		"eslint": "^8.5.0",
