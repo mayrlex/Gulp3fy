@@ -8,26 +8,6 @@
 	@return null;
 }
 
-// Padding
-@function padding($key) {
-	@if map-has-key($padding, $key) {
-		@return map-get($padding, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $padding map.';
-	@return null;
-}
-
-// Border radius
-@function radius($key) {
-	@if map-has-key($radius, $key) {
-		@return map-get($radius, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $radius map.';
-	@return null;
-}
-
 // Font weight
 @function font-weight($key) {
 	@if map-has-key($font-weight, $key) {
@@ -37,33 +17,3 @@
 	@warn 'Key `#{$key}` not found in $font-weight map.';
 	@return null;
 }
-
-// Font size
-@function font-size($key) {
-	@if map-has-key($font-size, $key) {
-		@return map-get($font-size, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $font-size map.';
-	@return null;
-}
-
-// Line height
-@function line-height($key) {
-	@if map-has-key($line-height, $key) {
-		@return map-get($line-height, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $line-height map.';
-	@return null;
-}
-
-// Font family
-// @function font-family($key) {
-// 	@if map-has-key($font-family, $key) {
-// 		@return map-get($font-family, $key);
-// 	}
-
-// 	@warn 'Key `#{$key}` not found in $font-family map.';
-// 	@return null;
-// }

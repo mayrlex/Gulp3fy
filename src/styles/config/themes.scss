@@ -119,12 +119,11 @@ $dark: (
 
 // Typography
 $typography: (
-	default:    $black,
-	headline:   $black,
-	subheading: $black,
-	title:      $black,
-	subtitle:   $black,
-	text:       $black,
+	headline:   #152536,
+	subheading: #152536,
+	title:      #152536,
+	subtitle:   #152536,
+	body:       #68717A,
 );
 
 $switcher: (
@@ -217,13 +216,7 @@ $themes: (
 		subheading: typography(subheading),
 		title:      typography(title),
 		subtitle:   typography(subtitle),
-		text:       typography(text),
-
-		// States
-		hover:    states(hover),
-		active:   states(active),
-		focus:    states(focus),
-		disabled: states(disabled),
+		body:       typography(body),
 
 		switcher-ball: switcher(ball),
 		switcher-body: switcher(body),
@@ -309,17 +302,11 @@ $themes: (
 		info-900: #0B2D78,
 
 		// Typography
+		default:    #fff,
 		headline:   #fff,
 		subheading: #fff,
 		title:      #fff,
 		subtitle:   #fff,
-		text:       #fff,
-
-		// States
-		hover:    #fff,
-		active:   #fff,
-		focus:    #fff,
-		disabled: #fff,
 
 		switcher-ball: #191a25,
 		switcher-body: #fff,

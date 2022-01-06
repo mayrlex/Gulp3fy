@@ -77,6 +77,7 @@
 	@warn 'Key `#{$key}` not found in $info map.';
 	@return null;
 }
+
 // Gray
 @function gray($key) {
 	@if map-has-key($gray, $key) {
@@ -86,6 +87,7 @@
 	@warn 'Key `#{$key}` not found in $gray map.';
 	@return null;
 }
+
 // Light
 @function light($key) {
 	@if map-has-key($light, $key) {
@@ -95,6 +97,7 @@
 	@warn 'Key `#{$key}` not found in $light map.';
 	@return null;
 }
+
 // Dark
 @function dark($key) {
 	@if map-has-key($dark, $key) {

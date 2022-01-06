@@ -8,6 +8,7 @@
 
 	font-weight: font-weight(headline);
 	@include adaptive('font-size', 40, 36, 1);
+	font-family: $font_family_primary;
 }
 
 .subheading {
@@ -20,6 +21,7 @@
 
 	font-weight: font-weight(subheading);
 	@include adaptive('font-size', 32, 26, 1);
+	font-family: $font_family_primary;
 }
 
 .title {
@@ -32,6 +34,7 @@
 
 	font-weight: font-weight(title);
 	@include adaptive('font-size', 28, 24, 1);
+	font-family: $font_family_primary;
 }
 
 .subtitle {
@@ -44,4 +47,5 @@
 
 	font-weight: font-weight(subtitle);
 	@include adaptive('font-size', 24, 20, 1);
+	font-family: $font_family_primary;
 }
