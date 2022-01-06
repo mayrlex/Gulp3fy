@@ -5,15 +5,18 @@
 //- Call:
 	+btn('Link text')(href='/')    - Have href — link
 	+btn('Input text', '', true)   - Have flag turned 'true' — input
-	+btn('Button text', 'success') - Excludes href / isInput — button
+	+btn('Button text', 'primary--solid') - Excludes href / isInput — button
+
 mixin btn(text, mods, isInput)
 	-
 		// Modificators list
 		let allMods = '';
+
 		if(typeof(mods) !== 'undefined' && mods) {
 			const modsList = mods.split(',');
+
 			for (let i = 0; i < modsList.length; i++) {
-				allMods = allMods + ' btn--' + modsList[i].trim();
+				allMods = `${allMods} btn__${modsList[i].trim()}`;
 			}
 		}
 	//- If mod 'href' — link

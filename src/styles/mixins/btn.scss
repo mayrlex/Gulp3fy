@@ -1,52 +1,50 @@
-@mixin btn-default($btn__padding, $btn__bg, $btn__bg--hover, $btn__bg--focus, $btn__outline) {
-	&-default {
-		padding: #{$btn__padding};
-
+@mixin btn-solid($btn__bg, $btn__bg--hover, $btn__bg--focus, $btn__outline) {
+	&--solid {
 		background-color: #{$btn__bg};
 
-		&:hover {
-			background-color: #{$btn__bg--hover};
-		}
+		@include media-min(lg) {
+			&:hover {
+				background-color: #{$btn__bg--hover};
+			}
 
-		&:focus-visible {
-			background-color: #{$btn__bg--focus};
-			outline: #{$btn__outline};
+			&:focus-visible {
+				background-color: #{$btn__bg--focus};
+				outline: #{$btn__outline};
+			}
 		}
 	}
 }
 
 @mixin btn-outline(
-	$btn__padding,
 	$btn__color,
 	$btn__bg,
-	$btn__border,
+	$btn__outline,
 	$btn__color--hover,
 	$btn__bg--hover,
 	$btn__color--focus,
 	$btn__bg--focus,
-	$btn__border--focus,
-	$btn__outline
+	$btn__border--focus
 ) {
-	&-outline {
-		padding: #{$btn__padding};
-
+	&--outline {
 		color: #{$btn__color};
 
 		background-color: #{$btn__bg};
-		border: #{$btn__border};
+		outline: #{$btn__outline};
+		outline-offset: -2px;
 
-		&:hover {
-			color: #{$btn__color--hover};
+		@include media-min(lg) {
+			&:hover {
+				color: #{$btn__color--hover};
 
-			background-color: #{$btn__bg--hover};
-		}
+				background-color: #{$btn__bg--hover};
+			}
 
-		&:focus-visible {
-			color: #{$btn__color--focus};
+			&:focus-visible {
+				color: #{$btn__color--focus};
 
-			background-color: #{$btn__bg--focus};
-			border: #{$btn__border--focus};
-			outline: #{$btn__outline};
+				background-color: #{$btn__bg--focus};
+				outline: #{$btn__border--focus};
+			}
 		}
 	}
 }
