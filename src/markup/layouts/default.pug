@@ -12,13 +12,13 @@ html(lang=pageLang)
 	body.body
 		.wrapper
 			block header
-				include ../parts/header.pug
+				include ../../components/header/header.pug
 
 			main.main
 				block content
 
 			block footer
-				include ../parts/footer.pug
+				include ../../components/footer/footer.pug
 
 		block scripts
 			script(src='assets/js/app.min.js')

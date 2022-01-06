@@ -14,11 +14,9 @@
 @import './config/config';
 @import './config/typography';
 
-//? ### Parts
-@import './parts/header';
-@import './parts/footer';
-
 //? ### Components
+@import '../components/header/header';
+@import '../components/footer/footer';
 // @import '../components/button/btn';
 // @import '../components/themeSwitcher/themeSwitcher';
 
