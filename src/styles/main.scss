@@ -10,7 +10,10 @@
 
 //? ### Configs
 @import './config/variables';
+@import './helpers/adaptive';
 @import './config/themes';
+
+//? ### Style configs
 @import './config/config';
 @import './config/typography';
 

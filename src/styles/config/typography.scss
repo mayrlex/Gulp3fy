@@ -7,9 +7,7 @@
 	// }
 
 	font-weight: font-weight(headline);
-	@include adaptive-value('font-size', 16, 14, 3);
-	font-family: $fontFamilyPrimary;
-	// @include adaptive-value('line-height', 32, 24, 3);
+	@include adaptive('font-size', 40, 36, 1);
 }
 
 .subheading {
@@ -21,9 +19,7 @@
 	// }
 
 	font-weight: font-weight(subheading);
-	@include adaptive-value('font-size', 16, 14, 3);
-	// @include adaptive-value('line-height', 28, 20, 3);
-	font-family: $fontFamilyPrimary;
+	@include adaptive('font-size', 32, 26, 1);
 }
 
 .title {
@@ -35,9 +31,7 @@
 	// }
 
 	font-weight: font-weight(title);
-	@include adaptive-value('font-size', 16, 14, 3);
-	font-family: $fontFamilyPrimary;
-	// @include adaptive-value('line-height', 24, 18, 3);
+	@include adaptive('font-size', 28, 24, 1);
 }
 
 .subtitle {
@@ -49,21 +43,5 @@
 	// }
 
 	font-weight: font-weight(subtitle);
-	@include adaptive-value('font-size', 16, 14, 3);
-	font-family: $fontFamilyPrimary;
-	// @include adaptive-value('line-height', 24, 18, 3);
-}
-
-.text {
-	color: typography(text);
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// 	color: get-theme('text');
-	// }
-
-	font-weight: font-weight(default);
-	@include adaptive-value('font-size', 16, 14, 3);
-	font-family: $fontFamilyPrimary;
-	// @include adaptive-value('line-height', 22, 18, 3);
+	@include adaptive('font-size', 24, 20, 1);
 }

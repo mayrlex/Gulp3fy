@@ -1,75 +1,20 @@
-// Breakpoints / Start
-$breakpoints: (
-	xs:  320px,
-	sm:  576px,
-	md:  768px,
-	lg:  992px,
-	xl:  1200px,
-	xxl: 1400px,
-);
-
-$containerMaxWidth: (
-	sm:    get-breakpoint(sm) - 30px,
-	md:    get-breakpoint(md) - 30px,
-	lg:    get-breakpoint(lg) - 40px,
-	xl:    get-breakpoint(xl) - 60px,
-	xxl:   get-breakpoint(xxl) - 80px,
-	fluid: 100%,
-);
-
-$fields: 0 15px;
-// Breakpoints / End
+$fields: 0 10px;
 
 // z-layers
-$z-layers: (
+$z_layers: (
 	default:  1,
 	header:   15,
 	dropdown: 50,
 	popup:    100,
 );
 
-$padding: (
-	btn_default: rem(10) rem(16),
-	btn_outline: rem(8) rem(14),
-);
-
-$radius: (
-	btn: rem(4),
-);
-
-$font-weight: (
+$font_weight: (
 	default:    400,
-	headline:   400,
-	subheading: 400,
-	title:      400,
-	subtitle:   400,
+	headline:   700,
+	subheading: 600,
+	title:      600,
+	subtitle:   500,
 );
 
-$font_size_default:    14;
-$font_size_headline:   16;
-$font_size_subheading: 16;
-$font_size_title:      16;
-$font_size_subtitle:   16;
-$font_size_btn:        16;
-
-$font_size: (
-	default:    rem($font_size_default),
-	headline:   rem($font_size_headline),
-	subheading: rem($font_size_subheading),
-	title:      rem($font_size_title),
-	subtitle:   rem($font_size_subtitle),
-	btn:        rem($font_size_btn),
-);
-
-$line_height: (
-	default:    prc(24, $font_size_default),
-	headline:   prc(24, $font_size_headline),
-	subheading: prc(24, $font_size_subheading),
-	title:      prc(24, $font_size_title),
-	subtitle:   prc(24, $font_size_subtitle),
-);
-
-
-
-$fontFamilyDefault: 'Montserrat', sans-serif;
-$fontFamilyPrimary: 'Nunito', sans-serif;
+$font_family_default: 'Montserrat', sans-serif;
+$font_family_primary: 'Nunito', sans-serif;
