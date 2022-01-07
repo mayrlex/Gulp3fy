@@ -1,0 +1,82 @@
+.spoiler {
+	@include adaptive('margin-bottom', 30, 15, 1);
+
+	&__item {
+		@include adaptive('margin-bottom', 10, 5, 1);
+		background-color: primary(500);
+
+		border-radius: radius(default);
+	}
+
+	&__title {
+		position: relative;
+
+		width: 100%;
+		@include adaptive('padding', 20, 10, 1);
+
+		color: $white;
+		font-weight: font-weight(title);
+
+		@include adaptive('font-size', 18, 16, 1);
+		text-align: left;
+
+		border-radius: radius(default);
+	}
+
+	&._init &__title {
+		&:before,
+		&:after {
+			position: absolute;
+			@include adaptive('top', 30, 17, 1);
+			@include adaptive('right', 20, 10, 1);
+
+			@include adaptive('width', 24, 16, 1);
+			@include adaptive('height', 4, 2, 1);
+
+			background: $white;
+			border-radius: radius(default);
+
+			transition: transform 0.3s ease 0s;
+
+			content: '';
+		}
+
+		&:after {
+			transform: rotate(-90deg);
+		}
+
+		&._active:after {
+			transform: rotate(0deg);
+		}
+	}
+
+	&__text {
+		@include adaptive('padding-top', 30, 15, 1);
+		@include adaptive('padding-right', 20, 10, 1);
+		@include adaptive('padding-bottom', 30, 15, 1);
+		@include adaptive('padding-left', 20, 10, 1);
+
+		color: $white;
+		@include adaptive('font-size', 16, 14, 1);
+
+		line-height: 130%;
+	}
+
+	&_1 {
+		& .spoiler__title {
+			background-color: accent(500);
+		}
+	}
+
+	&_2 {
+		& .spoiler__title {
+			background-color: success(500);
+		}
+	}
+
+	&_3 {
+		& .spoiler__title {
+			background-color: info(500);
+		}
+	}
+}
