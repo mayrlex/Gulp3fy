@@ -17,3 +17,13 @@
 	@warn 'Key `#{$key}` not found in $font-weight map.';
 	@return null;
 }
+
+// Borber
+@function radius($key) {
+	@if map-has-key($radius, $key) {
+		@return map-get($radius, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $radius map.';
+	@return null;
+}
