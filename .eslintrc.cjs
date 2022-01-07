@@ -1,12 +1,11 @@
 module.exports = {
 	extends: ['airbnb-base', 'prettier'],
 
-	// parser: '@babel/eslint-parser',
-
 	env: {
 		browser: true,
 		es6: true,
 		node: true,
+		es2021: true,
 	},
 
 	rules: {
@@ -32,5 +31,6 @@ module.exports = {
 		'arrow-body-style': 0,
 		'import/first': 0,
 		'no-use-before-define': 0,
+		'no-unused-expressions': 0,
 	},
 };
