@@ -1,0 +1,45 @@
+//- Arguments:
+	mods        {string}  - Modificator('s)
+	media       {string}  - Media queries
+	isAccordion {boolean} - Flag true/false
+	title       {string}  - Spoiler title
+
+//- Call:
+	Spoiler
+		+spoiler('Class', '', false)        - Default spoiler
+		+spoiler('Class', '', true)         - Default spoiler + Accordion mode
+		+spoiler('Class', '840,min', false) - Adaptive spoiler
+		+spoiler('Class', '640,max', true)  - Adaptive spoiler + Accordion mode
+
+	Spoiler item
+		+spoiler-item('Title') - Spoiler item
+			[Any content]
+
+
+mixin spoiler(mods, media, isAccordion)
+	-
+	//- If data-spoilers attribute is empty and not including accordion attribute
+	if (typeof(attributes.data-spoilers) === 'undefined' && !isAccordion)
+		.spoiler(class=mods, data-spoilers)&attributes(attributes)
+			block
+
+	//- If data-spoilers attribute is empty and including accordion attribute
+	else if (typeof(attributes.data-spoilers) === 'undefined' && isAccordion)
+		.spoiler(class=mods, data-spoilers, accordion)&attributes(attributes)
+			block
+
+	//- If data-spoilers attribute is not empty and not including accordion attribute
+	else if (typeof(attributes.data-spoilers) !== 'undefined' && !isAccordion)
+		.spoiler(class=mods, data-spoilers=media)&attributes(attributes)
+			block
+
+	//- If data-spoilers attribute is not empty and including accordion attribute
+	else
+		.spoiler(class=mods, data-spoilers=media, accordion)&attributes(attributes)
+			block
+
+mixin spoiler-item(title)
+	.spoiler__item
+		button.spoiler__title(tabinxex='-1', type='button', data-spoiler)&attributes(attributes)= title
+		.spoiler__content
+			block

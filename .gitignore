@@ -2,7 +2,6 @@
 dist
 gulp/version.json
 package-lock.json
-src/components/spoiler/spoiler.pug
 
 # Windows thumbnail cache files
 Thumbs.db

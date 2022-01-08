@@ -48,7 +48,7 @@ const setSpoilerAction = (e) => {
 	if (el.hasAttribute('data-spoiler') || el.closest('[data-spoiler]')) {
 		const spoilerTitle = el.hasAttribute('data-spoiler') ? el : el.closest('[data-spoiler]');
 		const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
-		const oneSpoiler = !!spoilersBlock.hasAttribute('data-one-spoiler');
+		const oneSpoiler = !!spoilersBlock.hasAttribute('accordion');
 
 		if (!spoilersBlock.querySelectorAll('._slide').length) {
 			if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {

@@ -50,7 +50,7 @@
 		}
 	}
 
-	&__text {
+	&__content {
 		@include adaptive('padding-top', 30, 15, 1);
 		@include adaptive('padding-right', 20, 10, 1);
 		@include adaptive('padding-bottom', 30, 15, 1);
@@ -60,23 +60,5 @@
 		@include adaptive('font-size', 16, 14, 1);
 
 		line-height: 130%;
-	}
-
-	&_1 {
-		& .spoiler__title {
-			background-color: accent(500);
-		}
-	}
-
-	&_2 {
-		& .spoiler__title {
-			background-color: success(500);
-		}
-	}
-
-	&_3 {
-		& .spoiler__title {
-			background-color: info(500);
-		}
 	}
 }
