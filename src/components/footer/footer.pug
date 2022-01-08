@@ -1,7 +1,20 @@
-footer.footer
-	.footer__inner.container
-		//- .footer__copy
-		//-	 script.
-		//-		 document.write('&copy; '+ new Date().getFullYear()+ ' #{brandName}. Все права защищены.');
-		//- .footer__version
-		//-	 p= siteVersion
+mixin footer(mods)
+	-
+		var allMods = '';
+		if(typeof(mods) !== 'undefined' && mods) {
+			var modsList = mods.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = allMods + ' footer--' + modsList[i].trim();
+			}
+		}
+
+	footer.footer(class=allMods, role='contentinfo')&attributes(attributes)
+		.footer__inner.container
+			block
+
+			//- .footer__c
+				script.
+					document.write('&copy; ' + new Date().getFullYear() + ' #{brandName}. Все права защищены.');
+
+//- If footer is enabled by default for all pages
++footer('')
