@@ -1,4 +1,4 @@
-export default () => {
+const checkDevice = () => {
 	// Platforms
 	const isMobile = {
 		Android: () => navigator.userAgent.match(/Android/i),
@@ -8,7 +8,11 @@ export default () => {
 		Windows: () => navigator.userAgent.match(/IEMobile/i),
 
 		any: () =>
-			isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows(),
+			isMobile.Android() ||
+			isMobile.BlackBerry() ||
+			isMobile.iOS() ||
+			isMobile.Opera() ||
+			isMobile.Windows(),
 	};
 
 	// Check platform
@@ -20,21 +24,23 @@ export default () => {
 		// 	for (let index = 0; index < menuArrows.length; index++) {
 		// 		const menuArrow = menuArrows[index];
 		// 		menuArrow.addEventListener('click', (e) => {
-		// 			menuArrow.parrentElements.classList.toggle('active');
+		// 			menuArrow.parentElement.classList.toggle('--active');
 		// 		});
 		// 	}
 		// }
 	} else {
-		document.body.classList.add('---desk');
+		document.body.classList.add('--desk');
 
-		// const menuArrows = document.querySelectorAll('.arrow');
+		// const menuArrows = document.querySelectorAll('.menu__arrow');
 		// if (menuArrows.length > 0) {
 		// 	for (let index = 0; index < menuArrows.length; index++) {
 		// 		const menuArrow = menuArrows[index];
 		// 		menuArrow.addEventListener('click', (e) => {
-		// 			menuArrow.parrentElements.classList.toggle('active');
+		// 			menuArrow.parentElement.classList.toggle('--active');
 		// 		});
 		// 	}
 		// }
 	}
 };
+
+export default checkDevice;

@@ -1,5 +1,5 @@
-// Montserrat
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito:wght@300;400;600;700&display=swap');
+// Inter
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 // Nunito
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
@@ -30,7 +30,7 @@ body {
 	color: typography(body);
 	@include adaptive('font-size', 16, 14, 1);
 	font-family: $font_family_default;
-	@include adaptive('line-height', 28, 24, 1);
+	@include adaptive('line-height', 26, 20, 1);
 
 	//* If using Light/Dark theme
 	// @include theme($themes) {
