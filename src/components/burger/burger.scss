@@ -1,0 +1,143 @@
+.burger {
+	@include media-max(lg) {
+		&__icon {
+			@include media-max(lg) {
+				position: relative;
+				z-index: z_layers(logo);
+
+				display: block;
+				width: rem(35);
+				height: rem(24);
+
+				cursor: pointer;
+
+				& span,
+				&:before,
+				&:after {
+					position: absolute;
+					left: 0;
+
+					width: 100%;
+					height: rem(4);
+
+					background: $white;
+					border-radius: rem(8);
+
+					transition: all 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+				}
+
+				&:before,
+				&:after {
+					content: '';
+				}
+
+				&:before {
+					top: 0;
+				}
+
+				&:after {
+					bottom: 0;
+				}
+
+				& span {
+					top: 50%;
+
+					transform: scale(1) translate(0px, -50%);
+				}
+
+				&.--show {
+					& span {
+						transform: scale(0) translate(0px, -50%);
+					}
+
+					&:before {
+						top: 50%;
+
+						transform: rotate(45deg) translate(0px, -55%);
+					}
+
+					&:after {
+						bottom: 50%;
+
+						transform: rotate(-45deg) translate(0px, 55%);
+					}
+
+					// Menu item when menu__icon includes class --show
+					& ~ .menu__body .menu__item {
+						transform: translateX(0px);
+						opacity: 1;
+
+						@for $item from 1 to 6 {
+							&:nth-child(#{$item}) {
+								transition-delay: $item * 0.15s;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&__body {
+			position: fixed;
+			top: 0;
+			right: -100%;
+
+			width: auto;
+			height: 100%;
+			padding: rem(100) rem(150) 0 rem(30);
+			overflow: auto;
+
+			background: gray(900);
+
+			transition: right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+			// Menu body overlay
+			&:before {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: 2;
+
+				width: 100%;
+				height: rem(70);
+
+				background: dark(1);
+
+				content: '';
+			}
+
+			&.--show {
+				right: 0;
+			}
+		}
+	}
+
+	@include media-max(sm) {
+		&__body {
+			width: 100%;
+			padding-right: rem(30);
+		}
+	}
+}
+
+// Burger overlay
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+
+	width: 100%;
+	height: 100%;
+
+	background-color: dark(2);
+	visibility: hidden;
+	opacity: 0;
+
+	transition: all 0.3s ease-in-out;
+
+	&.--show {
+		visibility: visible;
+		opacity: 0.8;
+	}
+}
