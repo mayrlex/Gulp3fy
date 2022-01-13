@@ -122,22 +122,24 @@
 
 // Burger overlay
 .overlay {
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: -1;
+	@include media-max(lg) {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: -1;
 
-	width: 100%;
-	height: 100%;
+		width: 100%;
+		height: 100%;
 
-	background-color: dark(2);
-	visibility: hidden;
-	opacity: 0;
+		background-color: dark(2);
+		visibility: hidden;
+		opacity: 0;
 
-	transition: all 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
 
-	&.--show {
-		visibility: visible;
-		opacity: 0.8;
+		&.--show {
+			visibility: visible;
+			opacity: 0.8;
+		}
 	}
 }
