@@ -1,0 +1,57 @@
+//- Arguments:
+	mods        {string}  - Modificator('s)
+
+//- Call:
+	+nav('burger') - Navbar
+
+		+nav-item('Home', 'http://localhost:3300/') - Default nav item-link
+		+nav-item('Contacst', 'javascript:void(0);', false, '.section__1') - Nav item, when clicked smoothly rewind to the given anchor
+		+nav-item('Products', '', true) - Nav item, includes dropdown menu
+
+			+nav-sub-item('Utils', 'http://localhost:3300/') - Nav sub-item (Only if nav-item has true flag set)
+
+//- Navbar mixin
+mixin nav(mods)
+	-
+		// Modificators list
+		let allMods = '';
+
+		if(typeof(mods) !== 'undefined' && mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				allMods = `${allMods}${modsList[i].trim()}__body`;
+			}
+		}
+
+	nav.menu__body(class=allMods)&attributes(attributes)
+		ul.menu__list(data-burger-accordion='')
+			block
+
+//- Nav item mixin
+mixin nav-item(title, link, isDropdown, anchor)
+	-
+
+	//- Nav item includes dropdown
+	if (typeof(isDropdown) !== 'undefined' && isDropdown)
+		li.menu__item&attributes(attributes)
+			button.menu__title(tabinxex='-1', type='button', data-dropdown-btn='')= title
+			ul.menu__sub-list
+				block
+
+	//- Nav item includes anchor mode
+	else if (typeof(anchor) !== 'undefined' && anchor)
+		li.menu__item&attributes(attributes)
+			a.menu__title(href=link, data-anchor=anchor)= title
+				block
+
+	//- Default nav item
+	else
+		li.menu__item&attributes(attributes)
+			a.menu__title(href=link)= title
+				block
+
+//- Nav sub-item mixin
+mixin nav-sub-item(title, link)
+	li.menu__sub-item&attributes(attributes)
+		a.menu__sub-link(href=link)= title
