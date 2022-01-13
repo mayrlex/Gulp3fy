@@ -1,3 +1,5 @@
+import { hideAnim, toggleAnim } from '../../scripts/modules/showHideAnimation.js';
+
 //* ### Functions ###
 //* ################################
 
@@ -56,7 +58,7 @@ const setSpoilerAction = (e) => {
 			}
 
 			spoilerTitle.classList.toggle('_active');
-			slideToggle(spoilerTitle.nextElementSibling, 500);
+			toggleAnim(spoilerTitle.nextElementSibling, 500);
 		}
 
 		e.preventDefault();
@@ -69,82 +71,10 @@ const hideSpoilersBody = (spoilersBlock) => {
 
 	if (spoilerActiveTitle) {
 		spoilerActiveTitle.classList.remove('_active');
-		slideUp(spoilerActiveTitle.nextElementSibling, 500);
+		hideAnim(spoilerActiveTitle.nextElementSibling, 500);
 	}
 };
 
-//* ### Animations ###
-let slideUp = (target, duration = 500) => {
-	const t = target;
-	if (!target.classList.contains('_slide')) {
-		t.classList.add('_slide');
-		t.style.transitionProperty = 'height, margin, padding';
-		t.style.transitionDuration = `${duration}ms`;
-		t.style.height = `${t.offsetHeight}px`;
-		t.offsetHeight;
-		t.style.overflow = 'hidden';
-		t.style.height = 0;
-		t.style.paddingTop = 0;
-		t.style.paddingBottom = 0;
-		t.style.marginTop = 0;
-		t.style.marginBottom = 0;
-		window.setTimeout(() => {
-			t.hidden = true;
-			t.style.removeProperty('height');
-			t.style.removeProperty('padding-top');
-			t.style.removeProperty('padding-bottom');
-			t.style.removeProperty('margin-top');
-			t.style.removeProperty('margin-bottom');
-			t.style.removeProperty('overflow');
-			t.style.removeProperty('transition-duration');
-			t.style.removeProperty('transition-property');
-			t.classList.remove('_slide');
-		}, duration);
-	}
-};
-
-const slideDown = (target, duration = 500) => {
-	const t = target;
-	if (!target.classList.contains('_slide')) {
-		target.classList.add('_slide');
-
-		if (target.hidden) {
-			t.hidden = false;
-		}
-
-		const height = target.offsetHeight;
-
-		t.style.overflow = 'hidden';
-		t.style.height = 0;
-		t.style.paddingTop = 0;
-		t.style.paddingBottom = 0;
-		t.style.marginTop = 0;
-		t.style.marginBottom = 0;
-		t.offsetHeight;
-		t.style.transitionProperty = 'height, margin, padding';
-		t.style.transitionDuration = `${duration}ms`;
-		t.style.height = `${height}px`;
-		t.style.removeProperty('padding-top');
-		t.style.removeProperty('padding-bottom');
-		t.style.removeProperty('margin-top');
-		t.style.removeProperty('margin-bottom');
-
-		window.setTimeout(() => {
-			t.style.removeProperty('height');
-			t.style.removeProperty('overflow');
-			t.style.removeProperty('transition-duration');
-			t.style.removeProperty('transition-property');
-			t.classList.remove('_slide');
-		}, duration);
-	}
-};
-
-let slideToggle = (target, duration = 500) => {
-	if (target.hidden) {
-		return slideDown(target, duration);
-	}
-	return slideUp(target, duration);
-};
 //* ################################
 
 // Get all spoiler containers, includes attribute [data-spoilers]
