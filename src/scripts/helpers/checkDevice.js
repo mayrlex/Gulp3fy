@@ -1,46 +1,21 @@
-const checkDevice = () => {
-	// Platforms
-	const isMobile = {
-		Android: () => navigator.userAgent.match(/Android/i),
-		BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
-		iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
-		Opera: () => navigator.userAgent.match(/Opera/i),
-		Windows: () => navigator.userAgent.match(/IEMobile/i),
+// Check platform
+const isMobile = {
+	Android: () => navigator.userAgent.match(/Android/i),
+	BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
+	iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
+	Opera: () => navigator.userAgent.match(/Opera/i),
+	Windows: () => navigator.userAgent.match(/IEMobile/i),
 
-		any: () =>
-			isMobile.Android() ||
-			isMobile.BlackBerry() ||
-			isMobile.iOS() ||
-			isMobile.Opera() ||
-			isMobile.Windows(),
-	};
-
-	// Check platform
-	if (isMobile.any()) {
-		document.body.classList.add('--mob');
-
-		// const menuArrows = document.querySelectorAll('.menu__arrow');
-		// if (menuArrows.length > 0) {
-		// 	for (let index = 0; index < menuArrows.length; index++) {
-		// 		const menuArrow = menuArrows[index];
-		// 		menuArrow.addEventListener('click', (e) => {
-		// 			menuArrow.parentElement.classList.toggle('--active');
-		// 		});
-		// 	}
-		// }
-	} else {
-		document.body.classList.add('--desk');
-
-		// const menuArrows = document.querySelectorAll('.menu__arrow');
-		// if (menuArrows.length > 0) {
-		// 	for (let index = 0; index < menuArrows.length; index++) {
-		// 		const menuArrow = menuArrows[index];
-		// 		menuArrow.addEventListener('click', (e) => {
-		// 			menuArrow.parentElement.classList.toggle('--active');
-		// 		});
-		// 	}
-		// }
-	}
+	any: () =>
+		isMobile.Android() ||
+		isMobile.BlackBerry() ||
+		isMobile.iOS() ||
+		isMobile.Opera() ||
+		isMobile.Windows(),
 };
 
+const checkDevice = () =>
+	isMobile.any() ? document.body.classList.add('--mob') : document.body.classList.add('--desk');
+
 export default checkDevice;
+export { isMobile };
