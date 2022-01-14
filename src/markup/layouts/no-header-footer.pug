@@ -1,0 +1,26 @@
+//- Config & mixin
+include ../config/config.pug
+include ../mixins/**/*.pug
+
+//- Components mixins
+//- include ../../components/btn/btn.pug
+//- include ../../components/spoiler/spoiler.pug
+
+block variables
+
+doctype html
+html(lang=pageLang)
+	head
+		include ../config/head.pug
+
+	body.body
+		.wrapper
+			block header
+
+			main.main
+				block content
+
+			block footer
+
+		block scripts
+			script(src='assets/js/app.min.js')
