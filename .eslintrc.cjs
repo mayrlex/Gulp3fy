@@ -32,5 +32,6 @@ module.exports = {
 		'import/first': 0,
 		'no-use-before-define': 0,
 		'no-unused-expressions': 0,
+		'no-param-reassign': [2, { props: false }],
 	},
 };
