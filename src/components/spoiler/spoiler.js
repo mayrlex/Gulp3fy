@@ -52,7 +52,7 @@ const setSpoilerAction = (e) => {
 		const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
 		const oneSpoiler = !!spoilersBlock.hasAttribute('accordion');
 
-		if (!spoilersBlock.querySelectorAll('._slide').length) {
+		if (!spoilersBlock.querySelectorAll('.--slide').length) {
 			if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {
 				hideSpoilersBody(spoilersBlock);
 			}
