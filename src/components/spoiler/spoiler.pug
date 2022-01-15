@@ -20,12 +20,12 @@ mixin spoiler(mods, media, isAccordion)
 	-
 	//- If data-spoilers attribute is empty and not including accordion attribute
 	if (typeof(attributes.data-spoilers) === 'undefined' && !isAccordion)
-		.spoiler(class=mods, data-spoilers)&attributes(attributes)
+		.spoiler(class=mods, data-spoilers='')&attributes(attributes)
 			block
 
 	//- If data-spoilers attribute is empty and including accordion attribute
 	else if (typeof(attributes.data-spoilers) === 'undefined' && isAccordion)
-		.spoiler(class=mods, data-spoilers, accordion)&attributes(attributes)
+		.spoiler(class=mods, data-spoilers='', accordion='')&attributes(attributes)
 			block
 
 	//- If data-spoilers attribute is not empty and not including accordion attribute
@@ -35,11 +35,11 @@ mixin spoiler(mods, media, isAccordion)
 
 	//- If data-spoilers attribute is not empty and including accordion attribute
 	else
-		.spoiler(class=mods, data-spoilers=media, accordion)&attributes(attributes)
+		.spoiler(class=mods, data-spoilers=media, accordion='')&attributes(attributes)
 			block
 
 mixin spoiler-item(title)
 	.spoiler__item
-		button.spoiler__title(tabinxex='-1', type='button', data-spoiler)&attributes(attributes)= title
+		button.spoiler__title(tabinxex='-1', type='button', data-spoiler='')&attributes(attributes)= title
 		.spoiler__content
 			block

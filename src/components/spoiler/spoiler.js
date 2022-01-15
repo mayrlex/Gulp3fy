@@ -1,20 +1,23 @@
 import { hideAnim, toggleAnim } from '../../scripts/modules/showHideAnimation.js';
 
+// Get all spoiler containers, includes attribute [data-spoilers]
+const spoilersArray = document.querySelectorAll('[data-spoilers]');
+
 //* ### Functions ###
 //* ################################
 
 // Initialization
-const initSpoilers = (initSpoilersArray, matchMedia = false) => {
-	initSpoilersArray.forEach((spoilersBlock) => {
-		let initItem = spoilersBlock;
-		initItem = matchMedia ? spoilersBlock.item : spoilersBlock;
+const initSpoilers = (block, matchMedia = false) => {
+	block.forEach((spoiler) => {
+		let initItem = spoiler;
+		initItem = matchMedia ? spoiler.item : spoiler;
 
 		if (matchMedia.matches || !matchMedia) {
-			initItem.classList.add('_init');
+			initItem.classList.add('--init');
 			initSpoilerBody(initItem);
 			initItem.addEventListener('click', setSpoilerAction);
 		} else {
-			initItem.classList.remove('_init');
+			initItem.classList.remove('--init');
 			initSpoilerBody(initItem, false);
 			initItem.removeEventListener('click', setSpoilerAction);
 		}
@@ -22,22 +25,20 @@ const initSpoilers = (initSpoilersArray, matchMedia = false) => {
 };
 
 // Working with content
-const initSpoilerBody = (spoilersBlock, hideSpoilerBody = true) => {
-	const spoilerTitles = spoilersBlock.querySelectorAll('[data-spoiler]');
+const initSpoilerBody = (block, hidden = true) => {
+	const spoilerTitles = block.querySelectorAll('[data-spoiler]');
 
 	if (spoilerTitles.length > 0) {
-		spoilerTitles.forEach((spoilerTitle) => {
-			const titleItem = spoilerTitle;
+		spoilerTitles.forEach((title) => {
+			if (hidden) {
+				title.removeAttribute('tabindex');
 
-			if (hideSpoilerBody) {
-				titleItem.removeAttribute('tabindex');
-
-				if (!titleItem.classList.contains('_active')) {
-					titleItem.nextElementSibling.hidden = true;
+				if (!title.classList.contains('--show')) {
+					title.nextElementSibling.hidden = true;
 				}
 			} else {
-				titleItem.setAttribute('tabindex', '-1');
-				titleItem.nextElementSibling.hidden = false;
+				title.setAttribute('tabindex', '-1');
+				title.nextElementSibling.hidden = false;
 			}
 		});
 	}
@@ -53,11 +54,11 @@ const setSpoilerAction = (e) => {
 		const oneSpoiler = !!spoilersBlock.hasAttribute('accordion');
 
 		if (!spoilersBlock.querySelectorAll('.--slide').length) {
-			if (oneSpoiler && !spoilerTitle.classList.contains('_active')) {
+			if (oneSpoiler && !spoilerTitle.classList.contains('--show')) {
 				hideSpoilersBody(spoilersBlock);
 			}
 
-			spoilerTitle.classList.toggle('_active');
+			spoilerTitle.classList.toggle('--show');
 			toggleAnim(spoilerTitle.nextElementSibling, 500);
 		}
 
@@ -67,30 +68,25 @@ const setSpoilerAction = (e) => {
 
 // Hide inactive spoilers content
 const hideSpoilersBody = (spoilersBlock) => {
-	const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler]._active');
+	const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler].--show');
 
 	if (spoilerActiveTitle) {
-		spoilerActiveTitle.classList.remove('_active');
+		spoilerActiveTitle.classList.remove('--show');
 		hideAnim(spoilerActiveTitle.nextElementSibling, 500);
 	}
 };
-
-//* ################################
-
-// Get all spoiler containers, includes attribute [data-spoilers]
-const spoilersArray = document.querySelectorAll('[data-spoilers]');
 
 //* ### Body ###
 //* ################################
 if (spoilersArray.length > 0) {
 	// Getting the default spoilers
-	const spoilersRegular = Array.from(spoilersArray).filter((item, index, self) => {
+	const spoilersDefault = Array.from(spoilersArray).filter((item, index, self) => {
 		return !item.dataset.spoilers.split(',')[0];
 	});
 
 	// Initializing default spoilers
-	if (spoilersRegular.length > 0) {
-		initSpoilers(spoilersRegular);
+	if (spoilersDefault.length > 0) {
+		initSpoilers(spoilersDefault);
 	}
 
 	// Getting spoilers from media queriesasm
@@ -130,7 +126,7 @@ if (spoilersArray.length > 0) {
 			const matchMedia = window.matchMedia(paramsArray[0]);
 
 			// Objects with suitable conditions
-			const spoilersArrayFn = breakpointsArray.filter((item) => {
+			const spoilersArrayMedia = breakpointsArray.filter((item) => {
 				if (item.value === mediaBreakpoint && item.type === mediaType) {
 					return true;
 				}
@@ -140,10 +136,10 @@ if (spoilersArray.length > 0) {
 
 			// Change on resolution change
 			matchMedia.addEventListener('change', () => {
-				initSpoilers(spoilersArrayFn, matchMedia);
+				initSpoilers(spoilersArrayMedia, matchMedia);
 			});
 
-			initSpoilers(spoilersArrayFn, matchMedia);
+			initSpoilers(spoilersArrayMedia, matchMedia);
 		});
 	}
 }

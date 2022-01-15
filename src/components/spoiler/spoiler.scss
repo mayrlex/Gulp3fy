@@ -23,7 +23,7 @@
 		border-radius: radius(default);
 	}
 
-	&._init &__title {
+	&.--init &__title {
 		&:before,
 		&:after {
 			position: absolute;
@@ -45,7 +45,7 @@
 			transform: rotate(-90deg);
 		}
 
-		&._active:after {
+		&.--show:after {
 			transform: rotate(0deg);
 		}
 	}
