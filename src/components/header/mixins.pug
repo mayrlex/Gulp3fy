@@ -11,15 +11,13 @@
 //- ==================
 //- Arguments:
 	mods        {string}  - Modificator('s)
-	isAccordion {boolean} - Enable/Disable accordion mode (Default true)
 	title       {string}  - Menu title
 	link        {string}  - Menu link (If nav item is not dropdown)
 	isDropdown  {boolean} - Toggle between dropdown and link
 	anchor      {string}  - Set acnhor for smooth scrolling
 
 //- Call:
-	+nav('burger')        - Navbar (Accordion mode enabled)
-	+nav('burger', false) - Navbar with disabled accordion mode
+	+nav('burger') - Navbar
 
 		+nav-item('Home', 'http://localhost:3300/')                        - Default nav item-link
 		+nav-item('Contacst', 'javascript:void(0);', false, '.section__1') - Nav item, when clicked smoothly rewind to the given anchor
@@ -43,7 +41,7 @@ mixin header(mods)
 			block
 
 //- Navbar
-mixin nav(mods, isAccordion)
+mixin nav(mods)
 	-
 		let allMods = '';
 
@@ -56,16 +54,9 @@ mixin nav(mods, isAccordion)
 		}
 
 	//- Nav item with *enabled* accordion mode
-	if (typeof(isAccordion) === 'undefined' || isAccordion)
-		nav.menu__body(class=allMods)&attributes(attributes)
-			ul.menu__list(data-burger='', accordion='')
-				block
-
-	//- Nav item with *disabled* accordion mode
-	else
-		nav.menu__body(class=allMods)&attributes(attributes)
-			ul.menu__list(data-burger='')
-				block
+	nav.menu__body(class=allMods)&attributes(attributes)
+		ul.menu__list(data-burger='')
+			block
 
 //- Nav item
 mixin nav-item(title, link, isDropdown, anchor)
@@ -74,7 +65,7 @@ mixin nav-item(title, link, isDropdown, anchor)
 	//- Nav item includes dropdown
 	if (typeof(isDropdown) !== 'undefined' && isDropdown)
 		li.menu__item(data-dropdown='')&attributes(attributes)
-			button.menu__title(tabinxex='-1', type='button', data-dropdown-btn='')= title
+			button.menu__title(type='button', data-dropdown-btn='')= title
 			ul.menu__sub-list
 				block
 

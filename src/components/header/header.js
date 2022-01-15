@@ -1,5 +1,9 @@
 import { hideAnim, toggleAnim } from '../../scripts/modules/showHideAnimation.js';
-import { isMobile } from '../../scripts/helpers/checkDevice.js';
+
+const header = document.querySelector('header');
+const main = document.querySelector('main');
+const burgerIcon = document.querySelector('.burger__icon');
+const burgerDropdown = document.querySelector('[data-burger]');
 
 //* ### Functions ###
 //* ################################
@@ -10,16 +14,10 @@ const initBurgerDropdownBody = (block, hidden = true) => {
 
 	if (buttons.length > 0) {
 		buttons.forEach((btn) => {
-			if (hidden) {
-				btn.removeAttribute('tabindex');
-
-				if (!btn.classList.contains('--show')) {
-					btn.nextElementSibling.hidden = true;
-				}
-			} else {
-				btn.setAttribute('tabindex', '-1');
+			// prettier-ignore
+			hidden && !btn.classList.contains('--show') ?
+				btn.nextElementSibling.hidden = true :
 				btn.nextElementSibling.hidden = false;
-			}
 		});
 	}
 };
@@ -27,22 +25,20 @@ const initBurgerDropdownBody = (block, hidden = true) => {
 // Sets action accordion for burger dropdowns
 const setBurgerDropdownAction = (e) => {
 	const el = e.target;
-	// console.log(e);
 
 	if (el.hasAttribute('data-dropdown-btn') || el.closest('[data-dropdown-btn]')) {
 		// prettier-ignore
 		const button = el.hasAttribute('data-dropdown-btn') ? el : el.closest('[data-dropdown-btn]');
 		const block = button.closest('[data-burger]');
-		const isAccordion = !!block.hasAttribute('accordion');
 
-		// if (!block.querySelectorAll('.--slide').length) {
-		if (isAccordion && !button.classList.contains('--show')) {
-			hideBurgerDropdownsBody(block);
+		if (!block.querySelectorAll('.--slide').length) {
+			if (!button.classList.contains('--show')) {
+				hideBurgerDropdownsBody(block);
+			}
+
+			button.classList.toggle('--show');
+			toggleAnim(button.nextElementSibling, 500);
 		}
-
-		button.classList.toggle('--show');
-		toggleAnim(button.nextElementSibling, 500);
-		// }
 
 		e.preventDefault();
 	}
@@ -50,91 +46,71 @@ const setBurgerDropdownAction = (e) => {
 
 // Hide inactive burger dropdowns
 const hideBurgerDropdownsBody = (block) => {
-	const activeButton = block.querySelector('[data-dropdown-btn].--show');
+	const activedButton = block.querySelector('[data-dropdown-btn].--show');
 
-	if (activeButton) {
-		activeButton.classList.remove('--show');
-		hideAnim(activeButton.nextElementSibling, 500);
+	if (activedButton) {
+		activedButton.classList.remove('--show');
+		hideAnim(activedButton.nextElementSibling, 500);
 	}
 };
 
-// // Initialization burger dropdowns
-// const initBurgerDropdowns = (block) => {
-// 	initBurgerDropdownBody(block);
-// 	block.addEventListener('click', setBurgerDropdownAction);
-// };
-//* ################################
-
-const menuIcon = document.querySelector('.burger__icon');
-const burgerDropdownsArray = document.querySelector('[data-burger]');
+// Initialization burger dropdowns
+const initBurgerDropdowns = (block) => {
+	initBurgerDropdownBody(block);
+	block.addEventListener('click', setBurgerDropdownAction);
+};
 
 //* ### Body ###
 //* ################################
+// If the header is fixed, indent main by the height of the header
+main.style.marginTop = `${header.offsetHeight}px`;
 
 // Menu icon
-if (menuIcon) {
+if (burgerIcon) {
 	const burgerBody = document.querySelector('.burger__body');
 	const menuTitle = document.querySelectorAll('.menu__title');
 	const menuSubList = document.querySelectorAll('.menu__sub-list');
 	const overlay = document.querySelector('.overlay');
 
-	menuIcon.addEventListener('click', (e) => {
+	burgerIcon.addEventListener('click', () => {
 		document.body.classList.toggle('--lock');
-		menuIcon.classList.toggle('--show');
+		burgerIcon.classList.toggle('--show');
 		burgerBody.classList.toggle('--show');
 		overlay.classList.toggle('--show');
 
-		if (!menuIcon.classList.contains('--show')) {
-			menuTitle.forEach((item) => {
-				item.classList.remove('--show');
+		if (!burgerIcon.classList.contains('--show')) {
+			menuTitle.forEach((title) => {
+				title.classList.remove('--show');
 
-				menuSubList.forEach((bItem) => {
-					hideAnim(bItem, 500);
+				menuSubList.forEach((list) => {
+					hideAnim(list, 500);
 				});
 			});
 		}
 	});
 }
 
-// Initialization burger dropdowns
-// const initBurgerDropdowns = (block) => {
-// 	initBurgerDropdownBody(block);
-// 	block.addEventListener('click', setBurgerDropdownAction);
-// };
-
 // Init burger (Only for max width 992px)
-// if (burgerDropdownsArray && window.matchMedia('(max-width: 991.98px)').matches) {
-// 	initBurgerDropdowns(burgerDropdownsArray);
-// }
+if (burgerDropdown && window.matchMedia('(max-width: 991.98px)').matches) {
+	initBurgerDropdowns(burgerDropdown);
+}
 
-document.addEventListener('click', (e) => {
-	const isDropdownButton = e.target.matches('[data-dropdown-btn]');
+// Init dropdown (Only for min width 992px)
+if (window.matchMedia('(min-width: 991.98px)').matches) {
+	document.addEventListener('click', (e) => {
+		const isDropdownButton = e.target.matches('[data-dropdown-btn]');
+		let currentDropdown;
 
-	if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
+		if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
 
-	let currentDropdown;
-	if (isDropdownButton) {
-		currentDropdown = e.target.closest('[data-dropdown]');
-		currentDropdown.classList.toggle('--show');
-	}
+		if (isDropdownButton) {
+			currentDropdown = e.target.closest('[data-dropdown]');
+			currentDropdown.classList.toggle('--show');
+		}
 
-	if (
-		burgerDropdownsArray &&
-		isMobile.any() &&
-		window.matchMedia('(max-width: 991.98px)').matches
-	) {
-		initBurgerDropdownBody(burgerDropdownsArray);
-		setBurgerDropdownAction(e);
-	}
-
-	document.querySelectorAll('[data-dropdown].--show').forEach((dropdown) => {
-		if (dropdown === currentDropdown) return;
-		dropdown.classList.remove('--show');
+		document.querySelectorAll('[data-dropdown].--show').forEach((dropdown) => {
+			if (dropdown === currentDropdown) return;
+			dropdown.classList.remove('--show');
+		});
 	});
-
-	document.querySelectorAll('[data-dropdown-btn].--show').forEach((dropdownBtn) => {
-		if (dropdownBtn === currentDropdown) return;
-		// dropdownBtn.classList.remove('--show');
-		hideAnim(dropdownBtn.nextElementSibling, 500);
-	});
-});
+}
