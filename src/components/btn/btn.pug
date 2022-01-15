@@ -4,9 +4,9 @@
 	isInput {boolean} - Flag true/false
 
 //- Call:
-	+btn('Link text')(href='/')    - Have href — link
-	+btn('Input text', '', true)   - Have flag turned 'true' — input
-	+btn('Button text', 'primary--solid') - Excludes href / isInput — button
+	+btn('Link text', 'accent--solid')(href='/') - Have href — link
+	+btn('Input text', 'danger--outline', true)  - Have flag turned 'true' — input
+	+btn('Button text', 'primary--solid')        - Excludes href / isInput — button
 
 mixin btn(text, mods, isInput)
 	-

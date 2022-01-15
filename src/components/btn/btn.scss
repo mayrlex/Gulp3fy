@@ -1,4 +1,6 @@
 /* stylelint-disable prettier/prettier */
+@import 'mixins';
+
 .btn {
 	display: inline-block;
 	max-width: 100%;
@@ -27,126 +29,126 @@
 	// Primary
 	&__primary {
 		@include btn-solid(
-			accent(500),           // Background color
-			accent(600),           // Background color on hover
-			accent(600),           // Background color on focus visible
-			6px solid accent(100)  // Outline
+			accent(500),              // Background color
+			accent(600),              // Background color on hover
+			accent(600),              // Background color on focus visible
+			rem(6) solid accent(100)  // Outline
 		);
 
 		@include btn-outline(
-			accent(500),           // Color
-			transparent,           // Background color
-			2px solid accent(500), // Border
-			$white,                // Color on hover
-			accent(500),           // Background color on hover
-			$white,                // Color on focus visible
-			accent(500),           // Background color on focus visible
-			6px solid accent(100), // Outline on focus visible
+			accent(500),              // Color
+			transparent,              // Background color
+			rem(2) solid accent(500), // Border
+			$white,                   // Color on hover
+			accent(500),              // Background color on hover
+			$white,                   // Color on focus visible
+			accent(500),              // Background color on focus visible
+			rem(6) solid accent(100), // Outline on focus visible
 		)
 	}
 
 	// Secondary
 	&__secondary {
 		@include btn-solid(
-			secondary(500),           // Background color
-			secondary(600),           // Background color on hover
-			secondary(600),           // Background color on focus visible
-			6px solid secondary(200)  // Outline
+			secondary(500),              // Background color
+			secondary(600),              // Background color on hover
+			secondary(600),              // Background color on focus visible
+			rem(6) solid secondary(200)  // Outline
 		);
 
 		@include btn-outline(
-			secondary(500),           // Color
-			transparent,              // Background color
-			2px solid secondary(500), // Border
-			$white,                   // Color on hover
-			secondary(500),           // Background color on hover
-			$white,                   // Color on focus visible
-			secondary(500),           // Background color on focus visible
-			6px solid secondary(200), // Outline on focus visible
+			secondary(500),              // Color
+			transparent,                 // Background color
+			rem(2) solid secondary(500), // Border
+			$white,                      // Color on hover
+			secondary(500),              // Background color on hover
+			$white,                      // Color on focus visible
+			secondary(500),              // Background color on focus visible
+			rem(6) solid secondary(200), // Outline on focus visible
 		)
 	}
 
 	// Success
 	&__success {
 		@include btn-solid(
-			success(500),           // Background color
-			success(600),           // Background color on hover
-			success(600),           // Background color on focus visible
-			6px solid success(200)  // Outline
+			success(500),              // Background color
+			success(600),              // Background color on hover
+			success(600),              // Background color on focus visible
+			rem(6) solid success(200)  // Outline
 		);
 
 		@include btn-outline(
-			success(500),           // Color
-			transparent,            // Background color
-			2px solid success(500), // Border
-			$white,                 // Color on hover
-			success(500),           // Background color on hover
-			$white,                 // Color on focus visible
-			success(500),           // Background color on focus visible
-			6px solid success(200), // Outline on focus visible
+			success(500),              // Color
+			transparent,               // Background color
+			rem(2) solid success(500), // Border
+			$white,                    // Color on hover
+			success(500),              // Background color on hover
+			$white,                    // Color on focus visible
+			success(500),              // Background color on focus visible
+			rem(6) solid success(200), // Outline on focus visible
 		)
 	}
 
 	// Warning
 	&__warning {
 		@include btn-solid(
-			warning(500),           // Background color
-			warning(600),           // Background color on hover
-			warning(600),           // Background color on focus visible
-			6px solid warning(200)  // Outline
+			warning(500),              // Background color
+			warning(600),              // Background color on hover
+			warning(600),              // Background color on focus visible
+			rem(6) solid warning(200)  // Outline
 		);
 
 		@include btn-outline(
-			warning(500),           // Color
-			transparent,            // Background color
-			2px solid warning(500), // Border
-			$white,                 // Color on hover
-			warning(500),           // Background color on hover
-			$white,                 // Color on focus visible
-			warning(500),           // Background color on focus visible
-			6px solid warning(200), // Outline on focus visible
+			warning(500),              // Color
+			transparent,               // Background color
+			rem(2) solid warning(500), // Border
+			$white,                    // Color on hover
+			warning(500),              // Background color on hover
+			$white,                    // Color on focus visible
+			warning(500),              // Background color on focus visible
+			rem(6) solid warning(200), // Outline on focus visible
 		)
 	}
 
 	// Error
 	&__error {
 		@include btn-solid(
-			error(500),           // Background color
-			error(600),           // Background color on hover
-			error(600),           // Background color on focus visible
-			6px solid error(200)  // Outline
+			error(500),              // Background color
+			error(600),              // Background color on hover
+			error(600),              // Background color on focus visible
+			rem(6) solid error(200)  // Outline
 		);
 
 		@include btn-outline(
-			error(500),           // Color
-			transparent,          // Background color
-			2px solid error(500), // Border
-			$white,               // Color on hover
-			error(500),           // Background color on hover
-			$white,               // Color on focus visible
-			error(500),           // Background color on focus visible
-			6px solid error(200), // Outline on focus visible
+			error(500),              // Color
+			transparent,             // Background color
+			rem(2) solid error(500), // Border
+			$white,                  // Color on hover
+			error(500),              // Background color on hover
+			$white,                  // Color on focus visible
+			error(500),              // Background color on focus visible
+			rem(6) solid error(200), // Outline on focus visible
 		)
 	}
 
 	// Info
 	&__info {
 		@include btn-solid(
-			info(500),           // Background color
-			info(600),           // Background color on hover
-			info(600),           // Background color on focus visible
-			6px solid info(100)  // Outline
+			info(500),              // Background color
+			info(600),              // Background color on hover
+			info(600),              // Background color on focus visible
+			rem(6) solid info(100)  // Outline
 		);
 
 		@include btn-outline(
-			info(500),           // Color
-			transparent,         // Background color
-			2px solid info(500), // Border
-			$white,              // Color on hover
-			info(500),           // Background color on hover
-			$white,              // Color on focus visible
-			info(500),           // Background color on focus visible
-			6px solid info(100), // Outline on focus visible
+			info(500),              // Color
+			transparent,            // Background color
+			rem(2) solid info(500), // Border
+			$white,                 // Color on hover
+			info(500),              // Background color on hover
+			$white,                 // Color on focus visible
+			info(500),              // Background color on focus visible
+			rem(6) solid info(100), // Outline on focus visible
 		)
 	}
 
@@ -164,7 +166,7 @@
 
 				&:focus-visible {
 					background-color: light(2);
-					outline: 6px solid secondary(200);
+					outline: rem(6) solid secondary(200);
 				}
 			}
 		}
@@ -174,8 +176,8 @@
 			color: secondary(500);
 
 			background-color: $white;
-			outline: 2px solid light(1);
-			outline-offset: -2px;
+			outline: rem(2) solid light(1);
+			outline-offset: rem(-2);
 
 			@include media-min(lg) {
 				&:hover {
@@ -188,7 +190,7 @@
 					color: dark(1);
 
 					background-color: light(1);
-					outline: 6px solid secondary(200);
+					outline: rem(6) solid secondary(200);
 				}
 			}
 		}
@@ -207,7 +209,7 @@
 
 				&:focus-visible {
 					background-color: dark(2);
-					outline: 6px solid light(2);
+					outline: rem(6) solid light(2);
 				}
 			}
 		}
@@ -217,8 +219,8 @@
 			color: dark(1);
 
 			background-color: transparent;
-			outline: 2px solid dark(1);
-			outline-offset: -2px;
+			outline: rem(2) solid dark(1);
+			outline-offset: rem(-2);
 
 			@include media-min(lg) {
 				&:hover {
@@ -231,7 +233,7 @@
 					color: $white;
 
 					background-color: dark(1);
-					outline: 6px solid light(2);
+					outline: rem(6) solid light(2);
 				}
 			}
 		}
