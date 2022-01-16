@@ -29,6 +29,12 @@ $containerMaxWidth: (
 	fluid: 100%,
 );
 
+// $fields: 0 15px;
+$fields: (
+	default: 0 30px,
+	min: 0 15px,
+);
+
 // Get max width container map
 @function mxw-container($key) {
 	@if map-has-key($containerMaxWidth, $key) {
@@ -36,6 +42,15 @@ $containerMaxWidth: (
 	}
 
 	@warn 'Size `#{$key}` not found in $containerMaxWidt map.';
+	@return null;
+}
+
+@function fields($key) {
+	@if map-has-key($fields, $key) {
+		@return map-get($fields, $key);
+	}
+
+	@warn 'Size `#{$key}` not found in $fields map.';
 	@return null;
 }
 
