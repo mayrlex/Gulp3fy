@@ -114,3 +114,8 @@ if (window.matchMedia('(min-width: 991.98px)').matches) {
 		});
 	});
 }
+
+// Don't ask why it's here :3
+window
+	.matchMedia('(min-width: 991.98px)')
+	.addEventListener('change', () => window.location.reload(true));
