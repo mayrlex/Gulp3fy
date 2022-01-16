@@ -30,7 +30,6 @@ body {
 	color: typography(body);
 	@include adaptive('font-size', 16, 14, 1);
 	font-family: $font_family_default;
-	@include adaptive('line-height', 26, 20, 1);
 
 	//* If using Light/Dark theme
 	// @include theme($themes) {
@@ -42,15 +41,6 @@ body {
 	background: $white;
 
 	text-size-adjust: 100%;
-
-	// Open dropdown menu in a PC devices
-	&.--desk .menu__list > .menu__item:hover .menu__sub-list {
-		transform: translate(0, 0);
-		visibility: visible;
-		opacity: 1;
-
-		pointer-events: all;
-	}
 
 	// Lock body at open burger
 	&.--lock {
@@ -145,17 +135,13 @@ img {
 	// < 576px
 	@include media-max(sm) {
 		max-width: mxw-container(fluid);
-		padding: $fields !important;
+		padding: fields(min) !important;
 	}
 
-	// > 576px
-	@include media-min(sm) {
-		max-width: rem(mxw-container(sm));
-	}
-
-	// > 768px
-	@include media-min(md) {
-		max-width: rem(mxw-container(md));
+	// < 992px
+	@include media-max(lg) {
+		max-width: mxw-container(fluid);
+		padding: fields(default);
 	}
 
 	// > 992px
