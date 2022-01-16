@@ -4,8 +4,10 @@ import documentReady from './helpers/documentReady.js';
 // import checkDevice from './helpers/checkDevice.js';
 
 //? ### Modules
-// import * as scrollbars from './modules/scrollbars.js';
-// import * as smoothScroll from './modules/smoothScroll.js';
+// import * as smoothScroll from './config/smoothScroll.js';
+
+//? ### Configs
+// import * as scrollbars from './config/scrollbars.js';
 // import * as swiper from './modules/swiper.js';
 
 //? ### Components
