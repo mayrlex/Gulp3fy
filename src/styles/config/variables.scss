@@ -16,8 +16,9 @@ $font_weight: (
 );
 
 $radius: (
-	default: rem(8),
-	min: rem(4),
+	default: rem(4),
+	min: rem(2),
+	max: rem(8),
 );
 
 $font_family_default: 'Inter', sans-serif;
