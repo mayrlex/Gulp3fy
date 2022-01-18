@@ -33,5 +33,6 @@ module.exports = {
 		'no-use-before-define': 0,
 		'no-unused-expressions': 0,
 		'no-param-reassign': [2, { props: false }],
+		'no-nested-ternary': 0,
 	},
 };
