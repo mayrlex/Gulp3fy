@@ -1,0 +1,33 @@
+.tab {
+	&__menu {
+		&-list {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		&-item {
+		}
+
+		&-btn {
+			&:focus-visible {
+			}
+
+			&.--active {
+			}
+		}
+	}
+
+	&__wrap {
+	}
+
+	&__content {
+		display: none;
+
+		&:focus-visible {
+		}
+
+		&.--active {
+			display: block;
+		}
+	}
+}

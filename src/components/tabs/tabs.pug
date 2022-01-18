@@ -1,0 +1,43 @@
+//- === Tab mixins ===
+//- ==================
+//- Arguments:
+	tabName {string} - Unique tab name
+	prefix  {string} - Prefixes
+	title   {string} - Tab button title
+
+
+//- Call:
+	+tab('products', 'shop')
+		block buttons
+			+tab-btn('Sweatshirt')
+
+		block contents
+			+tab-content
+				[Any content]
+//- ==============================
+
+//- Tab
+mixin tab(tabName, prefix)
+	-
+		var allMods = '';
+		if(typeof(prefix) !== 'undefined' && prefix) {
+			var modsList = prefix.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = `${allMods} ${modsList[i].trim()}__tab`;
+			}
+		}
+
+	.tab(class=allMods, data-tab=tabName)&attributes(attributes)
+		nav.tab__menu(role='tablist')
+			block buttons
+		.tab__wrap
+			block contents
+
+//- Button
+mixin tab-btn(title)
+	button.tab__menu-btn(type='button')&attributes(attributes)= title
+
+//- Content
+mixin tab-content
+	.tab__content(role='tabpanel')&attributes(attributes)
+		block
