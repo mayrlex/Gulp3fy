@@ -1,0 +1,26 @@
+.breadcrumbs {
+	&__item {
+		display: inline-flex;
+
+		white-space: nowrap;
+
+		&:not(:last-child) {
+			@include adaptive('margin-right', 10, 8, 1);
+
+			&:after {
+				display: inline-flex;
+				@include adaptive('margin-left', 15, 10, 1);
+
+				content: '/';
+			}
+		}
+
+		&.--current {
+		}
+	}
+
+	&__link {
+		&:hover {
+		}
+	}
+}

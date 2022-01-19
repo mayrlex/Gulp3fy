@@ -1,0 +1,36 @@
+//- === Breadcrumbs mixins ===
+//- ==================
+//- Arguments:
+	prefix {string} - Prefix
+	title  {string} - Breadcrumb title
+	link   {string} - Breadcrumb link
+
+//- Call:
+	+breadcrumbs
+			+breadcrumbs-item('News', '/news/')
+			+breadcrumbs-item('Recent', '/news/recent/')
+			+breadcrumbs-item('Amazing news')
+//- ==============================
+
+//- Breadcrumbs
+mixin breadcrumbs(prefix)
+	-
+		var allMods = '';
+		if(typeof(prefix) !== 'undefined' && prefix) {
+			var modsList = prefix.split(',');
+			for (var i = 0; i < modsList.length; i++) {
+				allMods = `${allMods} ${modsList[i].trim()}__breadcrumbs`;
+			}
+		}
+
+	nav(class=allMods, aria-label='breadcrumb')&attributes(attributes)
+		ol.breadcrumbs
+			block
+
+//- Breadcrumbs item
+mixin breadcrumbs-item(title, link)
+	if (typeof(link) !== 'undefined' && link)
+		li.breadcrumbs__item
+			a.breadcrumbs__link(href=link)= title
+	else
+		li.breadcrumbs__item.--current(aria-current=title)= title
