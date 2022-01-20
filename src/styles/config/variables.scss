@@ -21,5 +21,21 @@ $radius: (
 	max: rem(8),
 );
 
-$font_family_default: 'Inter', sans-serif;
-$font_family_primary: 'Nunito', sans-serif;
+// COMPONENTS
+// ==========
+
+
+// Button params
+$btn_outline_width: 2;  // PX
+$btn_color: $white;
+$btn_fontSize_max:  18; // PX
+$btn_fontSize_min:  14; // PX
+$btn_fontWeight:    500;
+$btn_borderRadius:  radius(default);
+$btn_padding:       rem(10) rem(25);
+$btn_transition:    0.1s;
+
+// Button group items params
+$btn_group_padding:            rem(10) rem(15);
+$btn_group_borderRadius_first: radius(default) 0 0 radius(default);
+$btn_group_borderRadius_last:  0 radius(default) radius(default) 0;

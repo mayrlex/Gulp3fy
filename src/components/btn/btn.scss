@@ -1,18 +1,13 @@
-/* stylelint-disable prettier/prettier */
-@import 'mixins';
+@use 'sass:color';
 
 .btn {
 	display: inline-block;
-	max-width: 100%;
 	overflow: hidden;
-	@include adaptive('padding-top', 16, 8, 1);
-	@include adaptive('padding-right', 36, 24, 1);
-	@include adaptive('padding-bottom', 16, 8, 1);
-	@include adaptive('padding-left', 36, 24, 1);
 
 	color: $white;
-	font-weight: 500;
-	@include adaptive('font-size', 18, 14, 1);
+
+	font-weight: $btn_fontWeight;
+	@include adaptive('font-size', $btn_fontSize_max, $btn_fontSize_min, 1);
 	white-space: nowrap;
 	text-align: center;
 	text-transform: none;
@@ -20,235 +15,159 @@
 	vertical-align: middle;
 
 	background-image: none;
-	border-radius: radius(default);
 
-	transition: 0.1s;
+	transition: $btn_transition;
 
 	user-select: none;
 
-	// Primary
-	&__primary {
-		@include btn-solid(
-			accent(500),              // Background color
-			accent(600),              // Background color on hover
-			accent(600),              // Background color on focus visible
-			rem(6) solid accent(100)  // Outline
-		);
+	// Exclude buttons, included in the group
+	&:not(.btn-group__item) {
+		padding: $btn_padding;
 
-		@include btn-outline(
-			accent(500),              // Color
-			transparent,              // Background color
-			rem(2) solid accent(500), // Border
-			$white,                   // Color on hover
-			accent(500),              // Background color on hover
-			$white,                   // Color on focus visible
-			accent(500),              // Background color on focus visible
-			rem(6) solid accent(100), // Outline on focus visible
-		)
+		border-radius: $btn_borderRadius;
 	}
 
-	// Secondary
-	&__secondary {
-		@include btn-solid(
-			secondary(500),              // Background color
-			secondary(600),              // Background color on hover
-			secondary(600),              // Background color on focus visible
-			rem(6) solid secondary(200)  // Outline
-		);
+	// Solib button
+	&__solid {
+		color: $btn_color;
 
-		@include btn-outline(
-			secondary(500),              // Color
-			transparent,                 // Background color
-			rem(2) solid secondary(500), // Border
-			$white,                      // Color on hover
-			secondary(500),              // Background color on hover
-			$white,                      // Color on focus visible
-			secondary(500),              // Background color on focus visible
-			rem(6) solid secondary(200), // Outline on focus visible
-		)
-	}
-
-	// Success
-	&__success {
-		@include btn-solid(
-			success(500),              // Background color
-			success(600),              // Background color on hover
-			success(600),              // Background color on focus visible
-			rem(6) solid success(200)  // Outline
-		);
-
-		@include btn-outline(
-			success(500),              // Color
-			transparent,               // Background color
-			rem(2) solid success(500), // Border
-			$white,                    // Color on hover
-			success(500),              // Background color on hover
-			$white,                    // Color on focus visible
-			success(500),              // Background color on focus visible
-			rem(6) solid success(200), // Outline on focus visible
-		)
-	}
-
-	// Warning
-	&__warning {
-		@include btn-solid(
-			warning(500),              // Background color
-			warning(600),              // Background color on hover
-			warning(600),              // Background color on focus visible
-			rem(6) solid warning(200)  // Outline
-		);
-
-		@include btn-outline(
-			warning(500),              // Color
-			transparent,               // Background color
-			rem(2) solid warning(500), // Border
-			$white,                    // Color on hover
-			warning(500),              // Background color on hover
-			$white,                    // Color on focus visible
-			warning(500),              // Background color on focus visible
-			rem(6) solid warning(200), // Outline on focus visible
-		)
-	}
-
-	// Error
-	&__error {
-		@include btn-solid(
-			error(500),              // Background color
-			error(600),              // Background color on hover
-			error(600),              // Background color on focus visible
-			rem(6) solid error(200)  // Outline
-		);
-
-		@include btn-outline(
-			error(500),              // Color
-			transparent,             // Background color
-			rem(2) solid error(500), // Border
-			$white,                  // Color on hover
-			error(500),              // Background color on hover
-			$white,                  // Color on focus visible
-			error(500),              // Background color on focus visible
-			rem(6) solid error(200), // Outline on focus visible
-		)
-	}
-
-	// Info
-	&__info {
-		@include btn-solid(
-			info(500),              // Background color
-			info(600),              // Background color on hover
-			info(600),              // Background color on focus visible
-			rem(6) solid info(100)  // Outline
-		);
-
-		@include btn-outline(
-			info(500),              // Color
-			transparent,            // Background color
-			rem(2) solid info(500), // Border
-			$white,                 // Color on hover
-			info(500),              // Background color on hover
-			$white,                 // Color on focus visible
-			info(500),              // Background color on focus visible
-			rem(6) solid info(100), // Outline on focus visible
-		)
-	}
-
-	// Light
-	&__light {
-		&--solid {
-			color: dark(1);
-
-			background-color: light(1);
-
-			@include media-min(lg) {
-				&:hover {
-					background-color:light(2);
-				}
-
-				&:focus-visible {
-					background-color: light(2);
-					outline: rem(6) solid secondary(200);
-				}
+		background-color: primary(500);
+		@include media-min(lg) {
+			&:hover {
+				background-color: primary(600);
 			}
-		}
 
-		&--outline {
+			&:active {
+				background-color: primary(500);
+			}
 
-			color: secondary(500);
+			&:focus-visible {
+				background-color: primary(600);
+				box-shadow: 0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.5);
+			}
 
-			background-color: $white;
-			outline: rem(2) solid light(1);
-			outline-offset: rem(-2);
-
-			@include media-min(lg) {
-				&:hover {
-					color: dark(1);
-
-					background-color: light(1);
-				}
-
-				&:focus-visible {
-					color: dark(1);
-
-					background-color: light(1);
-					outline: rem(6) solid secondary(200);
-				}
+			&.--disabled,
+			&:disabled {
+				background-color: primary(200);
+				cursor: not-allowed;
 			}
 		}
 	}
 
-	// Dark
-	&__dark {
-		&--solid {
+	// Outline button
+	&__outline {
+		color: secondary(500);
 
-			background-color: dark(1);
+		outline: rem($btn_outline_width) solid secondary(500);
+		outline-offset: rem(-$btn_outline_width);
 
-			@include media-min(lg) {
-				&:hover {
-					background-color: dark(2);
-				}
-
-				&:focus-visible {
-					background-color: dark(2);
-					outline: rem(6) solid light(2);
-				}
-			}
-		}
-
-		&--outline {
-
-			color: dark(1);
-
-			background-color: transparent;
-			outline: rem(2) solid dark(1);
-			outline-offset: rem(-2);
-
-			@include media-min(lg) {
+		@include media-min(lg) {
+			&:not(:disabled) {
 				&:hover {
 					color: $white;
 
-					background-color: dark(1);
+					background-color: secondary(600);
+					outline: rem($btn_outline_width) solid secondary(600);
 				}
+			}
 
-				&:focus-visible {
-					color: $white;
+			&:active {
+				background-color: secondary(500) !important;
+				outline: rem($btn_outline_width) solid secondary(500) !important;
+			}
 
-					background-color: dark(1);
-					outline: rem(6) solid light(2);
-				}
+			&:focus-visible {
+				box-shadow: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.5);
+			}
+
+			&:disabled {
+				color: secondary(300);
+
+				outline: rem($btn_outline_width) solid secondary(300);
+				cursor: not-allowed;
 			}
 		}
 	}
 
-	// Disabled
-	&--disabled,
-	&:disabled {
-		padding: padding(btn_default);
+	// Text button
+	&__text {
+		color: secondary(500);
 
-		background-color: gray(500);
-		cursor: not-allowed;
+		@include media-min(lg) {
+			&:not(:disabled) {
+				&:hover {
+					color: secondary(600);
+				}
+			}
 
-		@at-root a.btn--disabled {
-			pointer-events: none;
+			&:active {
+				color: secondary(400) !important;
+			}
+
+			&:focus-visible {
+				background-color: color.adjust(secondary(500), $alpha: -0.9);
+			}
+
+			&:disabled {
+				color: secondary(300);
+
+				cursor: not-allowed;
+			}
+		}
+	}
+
+	// Close button
+	&__close {
+		position: relative;
+
+		display: block;
+		width: rem(24);
+		height: rem(24);
+
+		cursor: pointer;
+
+		&:before,
+		&:after {
+			position: absolute;
+			left: 0;
+
+			width: 100%;
+			height: rem(3);
+
+			background: secondary(600);
+
+			content: '';
+		}
+
+		&:before {
+			transform: rotate(45deg);
+		}
+
+		&:after {
+			transform: rotate(-45deg);
+		}
+	}
+
+	// Group buttons
+	&-group {
+		font-size: 0;
+
+		&__item {
+			position: relative;
+
+			padding: $btn_group_padding;
+
+			&:first-child {
+				border-radius: $btn_group_borderRadius_first;
+			}
+
+			&:last-child {
+				border-radius: $btn_group_borderRadius_last;
+			}
+
+			&:focus-visible {
+				z-index: 2;
+			}
 		}
 	}
 }

@@ -8,9 +8,9 @@
 	+btn('Input text', 'danger--outline', true)  - Have flag turned 'true' — input
 	+btn('Button text', 'primary--solid')        - Excludes href / isInput — button
 
+//- Single button
 mixin btn(text, mods, isInput)
 	-
-		// Modificators list
 		let allMods = '';
 
 		if(typeof(mods) !== 'undefined' && mods) {
@@ -33,3 +33,36 @@ mixin btn(text, mods, isInput)
 	else
 		button.btn(class=allMods)&attributes(attributes)!= text
 			block
+
+//- Button group
+mixin btn-group(label, mods)
+	-
+		let allMods = '';
+
+		if(typeof(mods) !== 'undefined' && mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				allMods = `${allMods} ${modsList[i].trim()}__btn-group`;
+			}
+		}
+	.btn-group(class=allMods, role='group', aria-label=label)
+		block
+
+//- Button group item
+mixin btn-group-item(title, mods, link)
+	-
+		let allMods = '';
+
+		if(typeof(mods) !== 'undefined' && mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				allMods = `${allMods} btn__${modsList[i].trim()}`;
+			}
+		}
+
+	if (typeof(link) !== 'undefined' && link)
+		a.btn.btn-group__item(class=allMods, href=link)&attributes(attributes)= title
+	else
+		button.btn.btn-group__item(class=allMods)&attributes(attributes)= title
