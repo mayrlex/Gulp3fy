@@ -29,17 +29,9 @@ body {
 body {
 	color: typography(body);
 	@include adaptive('font-size', 16, 14, 1);
-	font-family: $font_family_default;
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// color: get-theme('body');
-
-	// 	background: get-theme('primary-500');
-	// }
+	font-family: $fontFamily_primary;
 
 	background: $white;
-
 	text-size-adjust: 100%;
 
 	// Lock body at open burger
@@ -52,7 +44,7 @@ body {
 input,
 button,
 textarea {
-	font-family: $font_family_default;
+	font-family: $fontFamily_primary;
 }
 
 input::-ms-clear {

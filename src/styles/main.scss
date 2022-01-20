@@ -9,9 +9,9 @@
 @import './functions/**/*';
 
 //? ### Configs
+@import './config/themes';
 @import './config/variables';
 @import './helpers/adaptive';
-@import './config/themes';
 
 //? ### Style configs
 @import './config/config';

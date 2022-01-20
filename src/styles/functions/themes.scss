@@ -28,16 +28,6 @@
 	@return null;
 }
 
-// Accent
-@function accent($key) {
-	@if map-has-key($accent, $key) {
-		@return map-get($accent, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $accent map.';
-	@return null;
-}
-
 // Success
 @function success($key) {
 	@if map-has-key($success, $key) {
