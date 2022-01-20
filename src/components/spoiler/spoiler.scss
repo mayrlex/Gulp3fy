@@ -3,7 +3,7 @@
 
 	&__item {
 		@include adaptive('margin-bottom', 10, 5, 1);
-		background-color: primary(500);
+		background-color: dark(1);
 
 		border-radius: radius(default);
 	}
@@ -12,22 +12,24 @@
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding', 20, 10, 1);
 
 		color: $white;
 		font-weight: font-weight(title);
-
-		@include adaptive('font-size', 18, 16, 1);
 		text-align: left;
 
+		background-color: primary(500);
+
 		border-radius: radius(default);
+		@include adaptive('padding', 20, 10, 1);
+
+		@include adaptive('font-size', 18, 16, 1);
 	}
 
 	&.--init &__title {
 		&:before,
 		&:after {
 			position: absolute;
-			@include adaptive('top', 30, 17, 1);
+			@include adaptive('top', 30, 19, 1);
 			@include adaptive('right', 20, 10, 1);
 
 			@include adaptive('width', 24, 16, 1);
