@@ -1,13 +1,16 @@
 @use 'sass:color';
 
 .btn {
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	overflow: hidden;
 
 	color: $white;
 
 	font-weight: $btn_fontWeight;
 	@include adaptive('font-size', $btn_fontSize_max, $btn_fontSize_min, 1);
+	font-family: $fontFamily_secondary;
+	letter-spacing: $btn_letterSpacing;
 	white-space: nowrap;
 	text-align: center;
 	text-transform: none;
@@ -15,35 +18,170 @@
 	vertical-align: middle;
 
 	background-image: none;
+	border-radius: $btn_borderRadius;
 
 	transition: $btn_transition;
 
 	user-select: none;
 
-	// Exclude buttons, included in the group
-	&:not(.btn-group__item) {
-		padding: $btn_padding;
+	// Primary button
+	&__primary {
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
-		border-radius: $btn_borderRadius;
-	}
-
-	// Solib button
-	&__solid {
-		color: $btn_color;
+		color: $white;
 
 		background-color: primary(500);
+
 		@include media-min(lg) {
 			&:hover {
 				background-color: primary(600);
 			}
 
 			&:active {
-				background-color: primary(500);
+				background-color: primary(700);
 			}
 
 			&:focus-visible {
 				background-color: primary(600);
-				box-shadow: 0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.5);
+				box-shadow: $focus_primary;
+			}
+		}
+
+		&.--disabled,
+		&:disabled {
+			background-color: primary(200);
+			cursor: not-allowed;
+		}
+
+		.icon {
+			@include adaptive('margin-left', $btn_margin_icon_max, $btn_margin_icon_min, 1);
+
+			fill: $white;
+		}
+	}
+
+	// Secondary button
+	&__secondary {
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
+
+		color: secondary(500);
+
+		outline: rem($btn_outline_width) solid secondary(500);
+		outline-offset: rem(-$btn_outline_width);
+
+		@include media-min(lg) {
+			&:hover {
+				color: $white;
+
+				background-color: secondary(500);
+				outline: rem($btn_outline_width) solid secondary(500);
+
+				.icon {
+					fill: $white;
+				}
+			}
+
+			&:active {
+				background-color: secondary(600);
+				outline: rem($btn_outline_width) solid secondary(600);
+			}
+
+			&:focus-visible {
+				box-shadow: $focus_secondary;
+			}
+		}
+
+		&.--disabled,
+		&:disabled {
+			color: secondary(300);
+
+			background: none;
+			outline: rem($btn_outline_width) solid secondary(300);
+			cursor: not-allowed;
+		}
+
+		.icon {
+			@include adaptive('margin-left', $btn_margin_icon_max, $btn_margin_icon_min, 1);
+
+			fill: secondary(500);
+		}
+	}
+
+	// Text button
+	&__text {
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
+
+		color: primary(500);
+
+		@include media-min(lg) {
+			&:hover {
+				background-color: color.adjust(primary(500), $alpha: -0.9);
+			}
+
+			&:active {
+				background-color: color.adjust(primary(500), $alpha: -0.85);
+			}
+
+			&:focus-visible {
+				box-shadow: $focus_text;
+			}
+		}
+
+		&.--disabled,
+		&:disabled {
+			color: primary(200);
+
+			background: none;
+
+			cursor: not-allowed;
+		}
+
+		.icon {
+			@include adaptive('margin-left', $btn_margin_icon_max, $btn_margin_icon_min, 1);
+
+			fill: primary(500);
+		}
+	}
+
+	// Icon button
+	&__icon {
+		display: inline-flex;
+
+		background-image: none;
+		border-radius: $btn_borderRadius_icon;
+
+		transition: $btn_transition;
+
+		user-select: none;
+
+		// Icon primary button
+		&-primary {
+			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
+
+			background-color: primary(500);
+
+			@include media-min(lg) {
+				&:hover {
+					background-color: primary(600);
+				}
+
+				&:active {
+					background-color: primary(700);
+				}
+
+				&:focus-visible {
+					background-color: primary(600);
+					box-shadow: $focus_primary;
+				}
 			}
 
 			&.--disabled,
@@ -51,67 +189,86 @@
 				background-color: primary(200);
 				cursor: not-allowed;
 			}
+
+			.icon {
+				fill: $white;
+			}
 		}
-	}
 
-	// Outline button
-	&__outline {
-		color: secondary(500);
+		// Icon secondary button
+		&-secondary {
+			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
 
-		outline: rem($btn_outline_width) solid secondary(500);
-		outline-offset: rem(-$btn_outline_width);
+			outline: rem($btn_outline_width) solid secondary(500);
+			outline-offset: rem(-$btn_outline_width);
 
-		@include media-min(lg) {
-			&:not(:disabled) {
+			@include media-min(lg) {
 				&:hover {
 					color: $white;
 
+					background-color: secondary(500);
+					outline: rem($btn_outline_width) solid secondary(500);
+
+					.icon {
+						fill: $white;
+					}
+				}
+
+				&:active {
 					background-color: secondary(600);
 					outline: rem($btn_outline_width) solid secondary(600);
 				}
-			}
 
-			&:active {
-				background-color: secondary(500) !important;
-				outline: rem($btn_outline_width) solid secondary(500) !important;
-			}
-
-			&:focus-visible {
-				box-shadow: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.5);
-			}
-
-			&:disabled {
-				color: secondary(300);
-
-				outline: rem($btn_outline_width) solid secondary(300);
-				cursor: not-allowed;
-			}
-		}
-	}
-
-	// Text button
-	&__text {
-		color: secondary(500);
-
-		@include media-min(lg) {
-			&:not(:disabled) {
-				&:hover {
-					color: secondary(600);
+				&:focus-visible {
+					box-shadow: $focus_secondary;
 				}
 			}
 
-			&:active {
-				color: secondary(400) !important;
-			}
-
-			&:focus-visible {
-				background-color: color.adjust(secondary(500), $alpha: -0.9);
-			}
-
+			&.--disabled,
 			&:disabled {
-				color: secondary(300);
+				background: none;
+				outline: rem($btn_outline_width) solid secondary(300);
+				cursor: not-allowed;
+
+				.icon {
+					fill: secondary(300);
+				}
+			}
+
+			.icon {
+				fill: secondary(500);
+			}
+		}
+
+		// Icon text button
+		&-text {
+			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
+
+			@include media-min(lg) {
+				&:hover {
+					background-color: color.adjust(primary(500), $alpha: -0.9);
+				}
+
+				&:active {
+					background-color: color.adjust(primary(500), $alpha: -0.85);
+				}
+
+				&:focus-visible {
+					box-shadow: $focus_text;
+				}
+			}
+
+			&.--disabled,
+			&:disabled {
+				color: primary(300);
+
+				background: none;
 
 				cursor: not-allowed;
+			}
+
+			.icon {
+				fill: primary(500);
 			}
 		}
 	}
@@ -147,27 +304,27 @@
 			transform: rotate(-45deg);
 		}
 	}
+}
 
-	// Group buttons
-	&-group {
-		font-size: 0;
+// Group buttons
+.btn-group {
+	font-size: 0;
 
-		&__item {
-			position: relative;
+	&__item {
+		position: relative;
 
-			padding: $btn_group_padding;
+		padding: $btn_group_padding;
 
-			&:first-child {
-				border-radius: $btn_group_borderRadius_first;
-			}
+		&:first-child {
+			border-radius: $btn_group_borderRadius_first;
+		}
 
-			&:last-child {
-				border-radius: $btn_group_borderRadius_last;
-			}
+		&:last-child {
+			border-radius: $btn_group_borderRadius_last;
+		}
 
-			&:focus-visible {
-				z-index: 2;
-			}
+		&:focus-visible {
+			z-index: 2;
 		}
 	}
 }

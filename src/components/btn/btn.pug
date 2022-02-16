@@ -1,20 +1,27 @@
 //- Arguments:
-	text    {string}  - Button text
-	mods    {string}  - Modificator('s)
-	isInput {boolean} - Flag true/false
+	text           {string}  - Button text
+	prefix/postfix {string}  - Modificator('s)
+	icon           {string}  - Icon name
+	isInput        {boolean} - Flag true/false
+	value          {string}  - Just value :3
 
 //- Call:
-	+btn('Link text', 'accent--solid')(href='/') - Have href — link
-	+btn('Input text', 'danger--outline', true)  - Have flag turned 'true' — input
-	+btn('Button text', 'primary--solid')        - Excludes href / isInput — button
+	//- Button
+	+btn('Link text', 'primary')(href='/')  - Have href — link
+	+btn('Input text', 'secondary', true)   - Have flag turned 'true' — input
+	+btn('Button text', 'text')             - Excludes href / isInput — button
+	+btn('Button text', 'primary', 'arrow') - Includes icon
+
+	//- Icon button
+	+btn-icon('bell', 'primary') - Button with only icon
 
 //- Single button
-mixin btn(text, mods, isInput)
+mixin btn(text, postfix, icon, isInput)
 	-
 		let allMods = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
-			const modsList = mods.split(',');
+		if(typeof(postfix) !== 'undefined' && postfix) {
+			const modsList = postfix.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
 				allMods = `${allMods} btn__${modsList[i].trim()}`;
@@ -22,40 +29,85 @@ mixin btn(text, mods, isInput)
 		}
 	//- If mod 'href' — link
 	if (attributes.href)
-		a.btn(class=allMods)&attributes(attributes)!= text
+		if (typeof(icon) !== 'undefined')
+			a.btn(class=allMods)&attributes(attributes)!= text
+				+icon-mono(icon)
+				block
+		else
+			a.btn(class=allMods)&attributes(attributes)!= text
+				block
+
+	//- Else if mod 'isInput' turned 'true' — input
+	else if (typeof(isInput) !== 'undefined' && isInput)
+		if (typeof(icon) !== 'undefined')
+			input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+			+icon-mono(icon)
+		else
+			input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+
+	//- Else if — button
+	else
+		if (typeof(icon) !== 'undefined')
+			button.btn(class=allMods)&attributes(attributes)!= text
+				+icon-mono(icon)
+				block
+
+		else
+			button.btn(class=allMods)&attributes(attributes)!= text
+				block
+
+//- Button icon
+mixin btn-icon(icon, postfix, isInput, value)
+	-
+		let allMods = '';
+
+		if(typeof(postfix) !== 'undefined' && postfix) {
+			const modsList = postfix.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				allMods = `${allMods} btn__icon-${modsList[i].trim()}`;
+			}
+		}
+
+	//- If mod 'href' — link
+	if (attributes.href)
+		a.btn__icon(class=allMods)&attributes(attributes)
+			+icon-mono(icon)
 			block
 
 	//- Else if mod 'isInput' turned 'true' — input
 	else if (typeof(isInput) !== 'undefined' && isInput)
-		input.btn(class=allMods, value=text, type='button')&attributes(attributes)
+		input.btn__icon(class=allMods, value=value, type='button')&attributes(attributes)
+		+icon-mono(icon)
 
 	//- Else if — button
 	else
-		button.btn(class=allMods)&attributes(attributes)!= text
+		button.btn__icon(class=allMods)&attributes(attributes)
+			+icon-mono(icon)
 			block
 
 //- Button group
-mixin btn-group(label, mods)
+mixin btn-group(areaLabel, prefix)
 	-
 		let allMods = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
-			const modsList = mods.split(',');
+		if(typeof(prefix) !== 'undefined' && prefix) {
+			const modsList = prefix.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
 				allMods = `${allMods} ${modsList[i].trim()}__btn-group`;
 			}
 		}
-	.btn-group(class=allMods, role='group', aria-label=label)
+	.btn-group(class=allMods, role='group', aria-label=areaLabel)
 		block
 
 //- Button group item
-mixin btn-group-item(title, mods, link)
+mixin btn-group-item(title, postfix, link)
 	-
 		let allMods = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
-			const modsList = mods.split(',');
+		if(typeof(postfix) !== 'undefined' && postfix) {
+			const modsList = postfix.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
 				allMods = `${allMods} btn__${modsList[i].trim()}`;

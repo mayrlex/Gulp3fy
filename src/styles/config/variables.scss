@@ -18,7 +18,12 @@ $radius: (
 $fontFamily_primary:   'Inter', sans-serif;
 $fontFamily_secondary: 'Nunito', sans-serif;
 
-$focus_primary: 0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
+$focus_primary:   0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
+$focus_secondary: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.75);
+$focus_text:      0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
+
+$icon_width: rem(16);
+$icon_height: $icon_width;
 
 // COMPONENTS
 // ==========
@@ -38,17 +43,26 @@ $breadcrumbs_fontSize_min:     16;
 $breadcrumbs_letterSpacing:    rem(1);
 $breadcrumbs_transition:       0.1s;
 
-// Button params
-$btn_outline_width: 2;  // PX
-$btn_color: $white;
-$btn_fontSize_max:  18; // PX
-$btn_fontSize_min:  14; // PX
-$btn_fontWeight:    500;
-$btn_borderRadius:  radius(default);
-$btn_padding:       rem(10) rem(25);
-$btn_transition:    0.1s;
+// Button
+$btn_margin_icon_max:   12;
+$btn_margin_icon_min:   8;
+$btn_padding_y_max:     10;
+$btn_padding_y_min:     8;
+$btn_padding_x_max:     25;
+$btn_padding_x_min:     20;
+$btn_padding_icon_max:  14;
+$btn_padding_icon_min:  11;
+$btn_outline_width:     2;
+$btn_color:             $white;
+$btn_fontWeight:        600;
+$btn_fontSize_max:      18;
+$btn_fontSize_min:      16;
+$btn_letterSpacing:     rem(1);
+$btn_borderRadius:      radius(sm);
+$btn_borderRadius_icon: radius(xxl);
+$btn_transition:        0.1s;
 
-// Button group items params
+// Group button
 $btn_group_padding:            rem(10) rem(15);
-$btn_group_borderRadius_first: radius(default) 0 0 radius(default);
-$btn_group_borderRadius_last:  0 radius(default) radius(default) 0;
+$btn_group_borderRadius_first: radius(sm) 0 0 radius(sm);
+$btn_group_borderRadius_last:  0 radius(sm) radius(sm) 0;
