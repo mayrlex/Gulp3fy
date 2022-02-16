@@ -7,9 +7,9 @@
 
 //- Call:
 	+breadcrumbs
-			+breadcrumbs-item('News', '/news/')
-			+breadcrumbs-item('Recent', '/news/recent/')
-			+breadcrumbs-item('Amazing news')
+			+breadcrumbs-item('Home', 'http://example.com/')
+			+breadcrumbs-item('News', 'http://example.com/news/')
+			+breadcrumbs-item('Recent')
 //- ==============================
 
 //- Breadcrumbs
@@ -32,5 +32,6 @@ mixin breadcrumbs-item(title, link)
 	if (typeof(link) !== 'undefined' && link)
 		li.breadcrumbs__item
 			a.breadcrumbs__link(href=link)= title
+			span.breadcrumbs__divider
 	else
 		li.breadcrumbs__item.--current(aria-current=title)= title

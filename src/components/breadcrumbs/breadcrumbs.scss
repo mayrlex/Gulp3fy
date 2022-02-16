@@ -1,26 +1,109 @@
 .breadcrumbs {
+	padding: $breadcrumbs_padding;
+
+	font-weight: $breadcrumbs_fontWeight;
+	font-family: $fontFamily_secondary;
+	@include adaptive('font-size', $breadcrumbs_fontSize_max, $breadcrumbs_fontSize_min, 1);
+
 	&__item {
+		position: relative;
+
 		display: inline-flex;
 
 		white-space: nowrap;
 
-		&:not(:last-child) {
-			@include adaptive('margin-right', 10, 8, 1);
-
-			&:after {
-				display: inline-flex;
-				@include adaptive('margin-left', 15, 10, 1);
-
-				content: '/';
-			}
-		}
-
 		&.--current {
+			padding: $breadcrumbs_padding_link;
+
+			@include adaptive(
+				'padding-right',
+				$breadcrumbs_padding_link_max,
+				$breadcrumbs_padding_link_min,
+				1
+			);
+
+			@include adaptive(
+				'padding-left',
+				$breadcrumbs_padding_link_max,
+				$breadcrumbs_padding_link_min,
+				1
+			);
+
+			color: $breadcrumbs_color_current;
 		}
 	}
 
 	&__link {
+		padding: $breadcrumbs_padding_link;
+
+		@include adaptive(
+			'padding-right',
+			$breadcrumbs_padding_link_max,
+			$breadcrumbs_padding_link_min,
+			1
+		);
+
+		@include adaptive(
+			'padding-left',
+			$breadcrumbs_padding_link_max,
+			$breadcrumbs_padding_link_min,
+			1
+		);
+
+		color: $breadcrumbs_color;
+		letter-spacing: $breadcrumbs_letterSpacing;
+
+		border-radius: radius(sm);
+
+		transition: $breadcrumbs_transition;
+
 		&:hover {
+			color: primary(500);
+		}
+
+		&:active {
+			color: primary(600);
+		}
+
+		&:focus-visible {
+			box-shadow: $focus_primary;
+		}
+	}
+
+	// Divider
+	&__divider {
+		position: relative;
+
+		width: $breadcrumbs_width_divider;
+
+		&:before {
+			position: absolute;
+			top: 35%;
+
+			display: inline-flex;
+			width: $breadcrumbs_width_divider;
+			height: $breadcrumbs_height_divider;
+
+			background: primary(500);
+			border-radius: radius(xs);
+			transform: rotate(45deg);
+
+			content: '';
+		}
+
+		&:after {
+			position: absolute;
+			top: 55%;
+
+			display: inline-flex;
+			width: $breadcrumbs_width_divider;
+			height: $breadcrumbs_height_divider;
+
+			background: primary(500);
+			border-radius: radius(xs);
+			transform: rotate(-45deg);
+
+			content: '';
 		}
 	}
 }
