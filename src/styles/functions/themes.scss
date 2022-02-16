@@ -97,13 +97,3 @@
 	@warn 'Key `#{$key}` not found in $dark map.';
 	@return null;
 }
-
-// Typography
-@function typography($key) {
-	@if map-has-key($typography, $key) {
-		@return map-get($typography, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $typography map.';
-	@return null;
-}

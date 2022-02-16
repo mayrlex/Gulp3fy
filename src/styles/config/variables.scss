@@ -103,8 +103,12 @@ $dark: (
 	1: #343A40,
 	2: #23272B,
 );
+
+// z-index
 $z_layers: (
 	default:  1,
+	tooltip:  3,
+	popover:  4,
 	logo:     5,
 	header:   15,
 	dropdown: 50,
@@ -117,6 +121,7 @@ $radius: (
 	md: rem(6),
 	lg: rem(8),
 	xl: rem(16),
+	xxl: 50%,
 );
 
 $color_body:  #68717A;

@@ -5,13 +5,14 @@
 		@include adaptive('margin-bottom', 10, 5, 1);
 		background-color: dark(1);
 
-		border-radius: radius(default);
+		border-radius: radius(sm);
 	}
 
 	&__title {
 		position: relative;
 
 		width: 100%;
+		@include adaptive('padding', 20, 10, 1);
 
 		color: $white;
 		font-weight: font-weight(title);
@@ -19,8 +20,7 @@
 
 		background-color: primary(500);
 
-		border-radius: radius(default);
-		@include adaptive('padding', 20, 10, 1);
+		border-radius: radius(sm);
 
 		@include adaptive('font-size', 18, 16, 1);
 	}
@@ -36,7 +36,7 @@
 			@include adaptive('height', 4, 2, 1);
 
 			background: $white;
-			border-radius: radius(default);
+			border-radius: radius(sm);
 
 			transition: transform 0.3s ease 0s;
 

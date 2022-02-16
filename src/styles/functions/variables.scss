@@ -8,16 +8,6 @@
 	@return null;
 }
 
-// Font weight
-@function font-weight($key) {
-	@if map-has-key($font-weight, $key) {
-		@return map-get($font-weight, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $font-weight map.';
-	@return null;
-}
-
 // Borber
 @function radius($key) {
 	@if map-has-key($radius, $key) {

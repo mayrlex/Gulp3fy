@@ -1,50 +1,26 @@
 .headline {
-	color: typography(headline);
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// 	color: get-theme('headline');
-	// }
-
+	color: $color_title;
 	font-weight: font-weight(headline);
 	@include adaptive('font-size', 40, 36, 1);
 	font-family: $fontFamily_secondary;
 }
 
 .subheading {
-	color: typography(subheading);
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// 	color: get-theme('subheading');
-	// }
-
+	color: $color_title;
 	font-weight: font-weight(subheading);
 	@include adaptive('font-size', 32, 26, 1);
 	font-family: $fontFamily_secondary;
 }
 
 .title {
-	color: typography(title);
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// 	color: get-theme('title');
-	// }
-
+	color: $color_title;
 	font-weight: font-weight(title);
 	@include adaptive('font-size', 28, 24, 1);
 	font-family: $fontFamily_secondary;
 }
 
 .subtitle {
-	color: typography(subtitle);
-
-	//* If using Light/Dark theme
-	// @include theme($themes) {
-	// 	color: get-theme('subtitle');
-	// }
-
+	color: $color_title;
 	font-weight: font-weight(subtitle);
 	@include adaptive('font-size', 24, 20, 1);
 	font-family: $fontFamily_secondary;
