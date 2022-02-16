@@ -1,4 +1,108 @@
-// z-layers
+$white: #fff;
+$black: #000;
+
+// Primary
+$primary: (
+	100: #E8DAFE,
+	200: #CFB6FE,
+	300: #B391FC,
+	400: #9C76FA,
+	500: #7749F8,
+	600: #5B35D5,
+	700: #4224B2,
+	800: #2D178F,
+	900: #1E0E77,
+);
+
+// Secondary
+$secondary: (
+	100: #F3F7F8,
+	200: #E8EEF1,
+	300: #C9D1D5,
+	400: #A0A7AC,
+	500: #6B7176,
+	600: #4E5965,
+	700: #354354,
+	800: #222F44,
+	900: #142038,
+);
+
+// Success
+$success: (
+	100: #D6FCD4,
+	200: #AAF9AE,
+	300: #7CED8D,
+	400: #59DB79,
+	500: #29C45F,
+	600: #1DA85B,
+	700: #148D56,
+	800: #0D714D,
+	900: #075E47,
+);
+
+// Warning
+$warning: (
+	100: #FEF8D8,
+	200: #FEF0B2,
+	300: #FEE58B,
+	400: #FDDA6E,
+	500: #FCC93F,
+	600: #D8A52E,
+	700: #B5841F,
+	800: #926514,
+	900: #784F0C,
+);
+
+// Error
+$error: (
+	100: #FFE7D6,
+	200: #FFC9AD,
+	300: #FFA483,
+	400: #FF8165,
+	500: #FF4732,
+	600: #DB2824,
+	700: #B71922,
+	800: #930F22,
+	900: #7A0922,
+);
+
+// Info
+$info: (
+	100: #CBEFFD,
+	200: #98DBFC,
+	300: #64BFF7,
+	400: #3EA3F0,
+	500: #0378E6,
+	600: #025CC5,
+	700: #0145A5,
+	800: #003085,
+	900: #00226E,
+);
+
+// Gray
+$gray: (
+	100: #F8F9FA,
+	200: #e9ecef,
+	300: #dee2e6,
+	400: #ced4da,
+	500: #adb5bd,
+	600: #6c757d,
+	700: #495057,
+	800: #343a40,
+	900: #212529,
+);
+
+// Light
+$light: (
+	1: #F8F9FA,
+	2: #E2E6EA,
+);
+
+// Dark
+$dark: (
+	1: #343A40,
+	2: #23272B,
+);
 $z_layers: (
 	default:  1,
 	logo:     5,
@@ -14,6 +118,9 @@ $radius: (
 	lg: rem(8),
 	xl: rem(16),
 );
+
+$color_body:  #68717A;
+$color_title: #152536;
 
 $fontFamily_primary:   'Inter', sans-serif;
 $fontFamily_secondary: 'Nunito', sans-serif;
