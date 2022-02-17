@@ -211,3 +211,23 @@ $spoiler_borderRadius:         radius(sm);
 $spoiler_borderRadius_title:   $spoiler_borderRadius;
 $spoiler_transition:           $transition_default;
 $spoiler_transition_title:     transform 0.3s ease 0s;
+
+// Tab
+$tab_height_btn_divider:        2;
+$tab_marginTop_btn_divider_max: 10;
+$tab_marginTop_btn_divider_min: 2;
+$tab_marginBottom_menu:         rem(10);
+$tab_padding_btn_max:           10;
+$tab_padding_btn_min:           5;
+$tab_paddingRight_btn_max:      15;
+$tab_paddingRight_btn_min:      10;
+$tab_paddingLeft_btn_max:       15;
+$tab_paddingLeft_btn_min:       10;
+$tab_marginBottom_btn_focus:    rem($tab_padding_btn_max + $tab_height_btn_divider);
+$tab_color:                     gray(600);
+$tab_color_hover:               dark(1);
+$tab_fontWeight:                600;
+$tab_fontSize_max:              18;
+$tab_fontSize_min:              16;
+$tab_borderRadius:              radius(sm);
+$tab_transition:                color $transition_default;

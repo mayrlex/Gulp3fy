@@ -8,8 +8,8 @@ Params:
 		console.log('TabName');
 	},
 
-	?Query selector
-	('#TabName + number of tab')
+	?Select default active tab ('#TabName + number of tab')
+	tab.switchTabs(document.querySelector('#tab3'));
 
 Call:
 	import Tabs from '../../../components/tabs/tabs.js';
@@ -17,9 +17,6 @@ Call:
 	const tab = new Tabs('TabName', {
 		...
 	});
-
-	?Select default active tab
-	tab.switchTabs(document.querySelector('#tab3'));
 */
 
 class Tabs {
@@ -32,9 +29,9 @@ class Tabs {
 		this.tab = document.querySelector(`[data-tab="${selector}"]`);
 
 		if (this.tab) {
-			this.tabMenu = this.tab.querySelector('.tab__menu');
-			this.tabButtons = this.tabMenu.querySelectorAll('.tab__menu-btn');
-			this.tabContent = this.tab.querySelectorAll('.tab__content');
+			this.tabMenu = this.tab.querySelector('.tabs__menu');
+			this.tabButtons = this.tabMenu.querySelectorAll('.tabs__menu-btn');
+			this.tabContent = this.tab.querySelectorAll('.tabs__content');
 		} else {
 			console.error('selector "data-tab" does not exist!');
 			return;
@@ -81,7 +78,8 @@ class Tabs {
 				const currentTab = this.tabMenu.querySelector('[aria-selected]');
 
 				// prettier-ignore
-				e.currentTarget !== currentTab ? this.switchTabs(e.currentTarget, currentTab) : null;
+				e.currentTarget !== currentTab ?
+					this.switchTabs(e.currentTarget, currentTab) : null;
 			});
 
 			el.addEventListener('keydown', (e) => {

@@ -1,29 +1,83 @@
-.tab {
+.tabs {
 	&__menu {
-		&-list {
-			display: flex;
-			flex-wrap: wrap;
-		}
+		margin-bottom: $tab_marginBottom_menu;
 
-		&-item {
-		}
+		font-size: 0;
 
 		&-btn {
-			&:focus-visible {
+			@include adaptive('padding', $tab_padding_btn_max, $tab_padding_btn_min, 1);
+			@include adaptive(
+				'padding-right',
+				$tab_paddingRight_btn_max,
+				$tab_paddingRight_btn_min,
+				1
+			);
+			@include adaptive(
+				'padding-left',
+				$tab_paddingLeft_btn_max,
+				$tab_paddingLeft_btn_min,
+				1
+			);
+
+			color: $tab_color;
+			font-weight: $tab_fontWeight;
+			font-family: $fontFamily_secondary;
+
+			border-radius: $tab_borderRadius;
+
+			transition: $tab_transition;
+			@include adaptive('font-size', $tab_fontSize_max, $tab_fontSize_min, 1);
+
+			@include media-min(lg) {
+				&:hover {
+					color: $tab_color_hover;
+				}
+
+				&:focus-visible {
+					margin-bottom: $tab_marginBottom_btn_focus;
+
+					box-shadow: $focus_primary;
+				}
 			}
 
-			&.--active {
+			&:not(.--active) {
+				padding-bottom: rem($tab_padding_btn_max);
+			}
+
+			&.--active:not(:focus-visible) {
+				color: $tab_color_hover;
+
+				&:after {
+					display: block;
+					width: 100%;
+					height: rem($tab_height_btn_divider);
+					@include adaptive(
+						'margin-top',
+						$tab_marginTop_btn_divider_max,
+						$tab_marginTop_btn_divider_min,
+						1
+					);
+
+					background: primary(500);
+					border-radius: radius(xs);
+
+					content: '';
+				}
 			}
 		}
 	}
 
-	&__wrap {
+	&__wrapper {
 	}
 
 	&__content {
 		display: none;
+		overflow: hidden;
 
-		&:focus-visible {
+		@include media-min(lg) {
+			&:focus-visible {
+				box-shadow: $focus_primary;
+			}
 		}
 
 		&.--active {

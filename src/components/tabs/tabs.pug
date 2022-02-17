@@ -17,7 +17,7 @@
 //- ==============================
 
 //- Tab
-mixin tab(tabName, prefix)
+mixin tabs(tabName, prefix)
 	-
 		var allMods = '';
 		if(typeof(prefix) !== 'undefined' && prefix) {
@@ -27,17 +27,17 @@ mixin tab(tabName, prefix)
 			}
 		}
 
-	.tab(class=allMods, data-tab=tabName)&attributes(attributes)
-		nav.tab__menu(role='tablist')
+	.tabs(class=allMods, data-tab=tabName)&attributes(attributes)
+		nav.tabs__menu(role='tablist')
 			block buttons
-		.tab__wrap
+		.tabs__wrapper
 			block contents
 
 //- Button
-mixin tab-btn(title)
-	button.tab__menu-btn(type='button')&attributes(attributes)= title
+mixin tabs-btn(title)
+	button.tabs__menu-btn(type='button')&attributes(attributes)= title
 
 //- Content
-mixin tab-content
-	.tab__content(role='tabpanel')&attributes(attributes)
+mixin tabs-content
+	.tabs__content(role='tabpanel')&attributes(attributes)
 		block
