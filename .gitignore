@@ -3,6 +3,7 @@ dist
 gulp/version.json
 package-lock.json
 *.zip
+src/assets/icons/**/*.svg
 
 # Windows thumbnail cache files
 Thumbs.db

@@ -156,8 +156,8 @@ $breadcrumbs_color_current:    gray(500);
 $breadcrumbs_fontWeight:       600;
 $breadcrumbs_fontSize_max:     18;
 $breadcrumbs_fontSize_min:     16;
-$breadcrumbs_letterSpacing:    rem(1);
-$breadcrumbs_transition:       0.1s;
+$breadcrumbs_letterSpacing:    $letterSpacing_default;
+$breadcrumbs_transition:       $transition_default;
 
 // Button
 $btn_margin_icon_max:   12;
@@ -173,10 +173,10 @@ $btn_color:             $white;
 $btn_fontWeight:        600;
 $btn_fontSize_max:      18;
 $btn_fontSize_min:      16;
-$btn_letterSpacing:     rem(1);
+$btn_letterSpacing:     $letterSpacing_default;
 $btn_borderRadius:      radius(sm);
 $btn_borderRadius_icon: radius(xxl);
-$btn_transition:        0.1s;
+$btn_transition:        $transition_default;
 
 // Group button
 $btn_group_padding:            rem(10) rem(15);
