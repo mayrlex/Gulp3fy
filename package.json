@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "gulp dev",
 		"build": "gulp prod --prod",
-		"zip": "gulp zip --prod",
+		"zip": "gulp archiving --prod",
 		"deploy": "gulp deploy --prod",
 		"sprite": "gulp spritesBuild",
 		"eslint": "eslint src/scripts --ext .js",

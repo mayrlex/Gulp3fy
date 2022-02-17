@@ -9,7 +9,7 @@ const zip = () => {
 	del(path.zip.del);
 
 	return gulp
-		.src(path.compiled, {})
+		.src(path.zip.compiled, {})
 		.pipe(
 			plumber(
 				notify.onError({

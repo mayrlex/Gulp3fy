@@ -84,7 +84,7 @@ export const path = {
 	zip: {
 		compiled: `${compiled}/**/*.*`,
 		del: `./${root}.zip`,
-		root: `${root}.zip`,
+		root: `./${root}.zip`,
 	},
 
 	ftp: {

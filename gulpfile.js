@@ -8,12 +8,12 @@ import { builds, watchers } from './gulp/config/tasks.js';
 
 const dev = gulp.series(clean, builds, gulp.parallel(watchers, server));
 const prod = gulp.series(clean, builds);
-// const archiving = gulp.series(clean, mainTasks, zip);
+const archiving = gulp.series(clean, builds, zip);
 const deploy = gulp.series(clean, builds, ftp);
 
 export { spritesBuild };
 
 export { dev };
 export { prod };
-export { zip };
+export { archiving };
 export { deploy };

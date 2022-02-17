@@ -2,6 +2,7 @@
 dist
 gulp/version.json
 package-lock.json
+*.zip
 
 # Windows thumbnail cache files
 Thumbs.db
