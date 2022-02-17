@@ -137,6 +137,10 @@ $focus_text:      0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
 $icon_width: rem(16);
 $icon_height: $icon_width;
 
+$transition_default: 0.1s;
+
+$letterSpacing_default: rem(1);
+
 // COMPONENTS
 // ==========
 
@@ -178,3 +182,32 @@ $btn_transition:        0.1s;
 $btn_group_padding:            rem(10) rem(15);
 $btn_group_borderRadius_first: radius(sm) 0 0 radius(sm);
 $btn_group_borderRadius_last:  0 radius(sm) radius(sm) 0;
+
+
+// Spoiler
+$spoiler_top_icon_max:         25;
+$spoiler_top_icon_min:         15;
+$spoiler_right_icon_max:       20;
+$spoiler_right_icon_min:       10;
+$spoiler_width_icon_max:       20;
+$spoiler_width_icon_min:       16;
+$spoiler_height_icon:          rem(3);
+$spoiler_gap_max:              10;
+$spoiler_gap_min:              5;
+$spoiler_padding_title_max:    15;
+$spoiler_padding_title_min:    10;
+$spoiler_padding_Y_max:        25;
+$spoiler_padding_Y_min:        15;
+$spoiler_padding_X_max:        15;
+$spoiler_padding_X_min:        10;
+$spoiler_fontWeight_title:     600;
+$spoiler_fontSize_title_max:   18;
+$spoiler_fontSize_title_min:   16;
+$spoiler_fontSize_content_max: 16;
+$spoiler_fontSize_content_min: 14;
+$spoiler_letterSpacing:        $letterSpacing_default;
+$spoiler_background:                   dark(1);
+$spoiler_borderRadius:         radius(sm);
+$spoiler_borderRadius_title:   $spoiler_borderRadius;
+$spoiler_transition:           $transition_default;
+$spoiler_transition_title:     transform 0.3s ease 0s;

@@ -1,44 +1,64 @@
 .spoiler {
-	@include adaptive('margin-bottom', 30, 15, 1);
-
 	&__item {
-		@include adaptive('margin-bottom', 10, 5, 1);
-		background-color: dark(1);
+		background-color: $spoiler_background;
 
-		border-radius: radius(sm);
+		border-radius: $spoiler_borderRadius;
+
+		&:not(:last-child) {
+			@include adaptive('margin-bottom', $spoiler_gap_max, $spoiler_gap_min, 1);
+		}
+
+		@include media-min(lg) {
+			&:hover .spoiler__title:not(.--show) {
+				background-color: primary(600);
+			}
+		}
 	}
 
 	&__title {
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding', 20, 10, 1);
+		@include adaptive('padding', $spoiler_padding_title_max, $spoiler_padding_title_min, 1);
 
 		color: $white;
-		font-weight: font-weight(title);
+		font-weight: $spoiler_fontWeight_title;
+		@include adaptive('font-size', $spoiler_fontSize_title_max, $spoiler_fontSize_title_min, 1);
+		font-family: $fontFamily_secondary;
+		letter-spacing: $spoiler_letterSpacing;
 		text-align: left;
 
 		background-color: primary(500);
 
-		border-radius: radius(sm);
+		border-radius: $spoiler_borderRadius_title;
 
-		@include adaptive('font-size', 18, 16, 1);
+		transition: $spoiler_transition;
+
+		@include media-min(lg) {
+			&:focus-visible {
+				box-shadow: $focus_primary;
+			}
+		}
+
+		&.--show {
+			background-color: primary(600);
+		}
 	}
 
 	&.--init &__title {
 		&:before,
 		&:after {
 			position: absolute;
-			@include adaptive('top', 30, 19, 1);
-			@include adaptive('right', 20, 10, 1);
+			@include adaptive('top', $spoiler_top_icon_max, $spoiler_top_icon_min, 1);
+			@include adaptive('right', $spoiler_right_icon_max, $spoiler_right_icon_min, 1);
 
-			@include adaptive('width', 24, 16, 1);
-			@include adaptive('height', 4, 2, 1);
+			@include adaptive('width', $spoiler_width_icon_max, $spoiler_width_icon_min, 1);
+			height: $spoiler_height_icon;
 
 			background: $white;
 			border-radius: radius(sm);
 
-			transition: transform 0.3s ease 0s;
+			transition: $spoiler_transition_title;
 
 			content: '';
 		}
@@ -53,14 +73,17 @@
 	}
 
 	&__content {
-		@include adaptive('padding-top', 30, 15, 1);
-		@include adaptive('padding-right', 20, 10, 1);
-		@include adaptive('padding-bottom', 30, 15, 1);
-		@include adaptive('padding-left', 20, 10, 1);
+		@include adaptive('padding-top', $spoiler_padding_Y_max, $spoiler_padding_Y_min, 1);
+		@include adaptive('padding-right', $spoiler_padding_X_max, $spoiler_padding_X_min, 1);
+		@include adaptive('padding-bottom', $spoiler_padding_Y_max, $spoiler_padding_Y_min, 1);
+		@include adaptive('padding-left', $spoiler_padding_X_max, $spoiler_padding_X_min, 1);
 
 		color: $white;
-		@include adaptive('font-size', 16, 14, 1);
-
-		line-height: 130%;
+		@include adaptive(
+			'font-size',
+			$spoiler_fontSize_content_max,
+			$spoiler_fontSize_content_min,
+			1
+		);
 	}
 }
