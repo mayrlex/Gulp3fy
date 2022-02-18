@@ -121,7 +121,8 @@ $radius: (
 	md: rem(6),
 	lg: rem(8),
 	xl: rem(16),
-	xxl: 50%,
+	xxl: em(160),
+	circle: 50%,
 );
 
 $color_body:  #68717A;
@@ -231,3 +232,14 @@ $tab_fontSize_max:              18;
 $tab_fontSize_min:              16;
 $tab_borderRadius:              radius(sm);
 $tab_transition:                color $transition_default;
+
+// Badges
+$badges_minWidth_num:  1.5;
+$badges_size_dot:      rem(10);
+$badges_padding_num:   em(4);
+$badges_padding_text:  rem(2) rem(6);
+$badges_color:         $white;
+$badges_fontWeight:    700;
+$badges_fontSize:      rem(14);
+$badges_outline_width: rem(1);
+$badges_letterSpacing: $letterSpacing_default;
