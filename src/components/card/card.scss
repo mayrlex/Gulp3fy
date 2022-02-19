@@ -1,0 +1,288 @@
+.card {
+	display: flex;
+	flex-direction: column;
+	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
+	align-items: start;
+	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+	overflow: hidden;
+
+	background: $white;
+	border: $card_border;
+	border-radius: $card_borderRadius;
+	box-shadow: $card_boxShadow;
+
+	// If card_header comes first
+	& &__header:first-child {
+		@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: $card_gap_container_min;
+
+		@include media-minmax(sm, lg) {
+			padding: $card_padding_container;
+		}
+
+		@include media-min(md) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media-min(lg) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		@include media-min(xl) {
+			grid-gap: $card_gap_container_max;
+		}
+
+		@include media-min(xxl) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	&__preview {
+		position: relative;
+
+		width: 100%;
+		min-height: $card_minHeight_preview_min;
+		overflow: hidden;
+
+		@include media-minmax(sm, md) {
+			min-height: $card_minHeight_preview_minmax;
+		}
+
+		@include media-min(md) {
+			min-height: $card_minHeight_preview_max;
+		}
+
+		@include media-min(lg) {
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 2;
+
+				color: $card_color_preview_overlay;
+				font-weight: $card_fontWeight_preview_overlay;
+				font-size: $card_fontSize_preview_overlay;
+				font-family: $fontFamily_secondary;
+				white-space: nowrap;
+
+				transform: translate(-50%, -50%);
+				opacity: 0;
+
+				transition: $card_transition_preview_overlay;
+
+				content: $card_content_preview_overlay;
+			}
+
+			&:hover {
+				&:before {
+					opacity: 1;
+				}
+
+				& img {
+					filter: $card_filter_preview_overlay_hover;
+				}
+			}
+
+			& img {
+				filter: $card_filter_preview_overlay;
+
+				transition: $card_transition_preview_overlay;
+			}
+		}
+	}
+
+	&__header,
+	&__content,
+	&__footer {
+		@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__title {
+		margin-right: auto;
+
+		color: $card_color_title;
+		font-weight: $card_fontWeight_title;
+		font-size: $card_fontSize_title;
+		letter-spacing: $card_letterSpacing;
+	}
+
+	&__content {
+		flex: 1 1 auto;
+
+		color: $card_color_content;
+		font-size: $card_fontSize_content;
+		line-height: $card_lineHeight_content;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+
+		& .card__date {
+			margin-right: auto;
+		}
+	}
+
+	&__date {
+		color: $card_color_date;
+		font-size: $card_fontSize_date;
+		white-space: nowrap;
+	}
+}
+
+.row-card {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	@include adaptive('gap', $rowCard_gap_max, $rowCard_gap_min, 1);
+	overflow: hidden;
+
+	background: $white;
+	border: $rowCard_border;
+	border-radius: $rowCard_borderRadius;
+	box-shadow: $rowCard_boxShadow;
+
+	@include media-min(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	& &__inner {
+		// If card_inner comes first
+		&:first-child {
+			@include adaptive('margin-left', $rowCard_gap_max, $rowCard_gap_min, 1);
+		}
+
+		// If card_inner comes last
+		&:last-child {
+			@include adaptive('margin-right', $rowCard_gap_max, $rowCard_gap_min, 1);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		gap: $rowCard_gap_container_min;
+
+		@include media-min(lg) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include media-min(xl) {
+			grid-gap: $rowCard_gap_container_max;
+		}
+	}
+
+	&__preview {
+		position: relative;
+
+		width: 100%;
+		min-height: $card_minHeight_preview_min;
+		overflow: hidden;
+
+		@include media-min(md) {
+			min-height: $card_minHeight_preview_max;
+		}
+		@include media-min(lg) {
+			&:before {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				z-index: 2;
+
+				color: $rowCard_color_preview_overlay;
+				font-weight: $rowCard_fontWeight_preview_overlay;
+				font-size: $rowCard_fontSize_preview_overlay;
+				font-family: $fontFamily_secondary;
+				white-space: nowrap;
+
+				transform: translate(-50%, -50%);
+				opacity: 0;
+
+				transition: $rowCard_transition_preview_overlay;
+
+				content: $rowCard_content_preview_overlay;
+			}
+
+			&:hover {
+				&:before {
+					opacity: 1;
+				}
+
+				& img {
+					filter: $rowCard_filter_preview_overlay_hover;
+				}
+			}
+
+			& img {
+				filter: $rowCard_filter_preview_overlay;
+
+				transition: $rowCard_transition_preview_overlay;
+			}
+		}
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		@include adaptive('gap', $rowCard_gap_max, $rowCard_gap_min, 1);
+		@include adaptive('padding-top', $rowCard_gap_max, $rowCard_gap_min, 1);
+		@include adaptive('padding-bottom', $rowCard_gap_max, $rowCard_gap_min, 1);
+
+		@include media-max(sm) {
+			@include adaptive('padding-right', $rowCard_gap_max, $rowCard_gap_min, 1);
+			@include adaptive('padding-left', $rowCard_gap_max, $rowCard_gap_min, 1);
+		}
+	}
+
+	&__header {
+		display: flex;
+		align-items: center;
+	}
+
+	&__title {
+		margin-right: auto;
+
+		color: $rowCard_color_title;
+		font-weight: $rowCard_fontWeight_title;
+		font-size: $rowCard_fontSize_title;
+		letter-spacing: $rowCard_letterSpacing;
+	}
+
+	&__content {
+		flex: 1 1 auto;
+
+		color: $rowCard_color_content;
+		font-size: $rowCard_fontSize_content;
+		line-height: $rowCard_lineHeight_content;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+
+		& .row-card__date {
+			margin-right: auto;
+		}
+	}
+
+	&__date {
+		color: $rowCard_color_date;
+		font-size: $rowCard_fontSize_date;
+		white-space: nowrap;
+	}
+}

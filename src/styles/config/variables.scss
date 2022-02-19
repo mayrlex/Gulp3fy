@@ -142,6 +142,10 @@ $transition_default: 0.1s;
 
 $letterSpacing_default: rem(1);
 
+$border_default: rem(1) solid gray(200);
+
+$boxShadow_default: 0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
+
 // COMPONENTS
 // ==========
 
@@ -243,3 +247,60 @@ $badges_fontWeight:    700;
 $badges_fontSize:      rem(14);
 $badges_outline_width: rem(1);
 $badges_letterSpacing: $letterSpacing_default;
+
+// Card
+$card_gap_max:                      25;
+$card_gap_min:                      15;
+$card_gap_container_max:            rem(20);
+$card_gap_container_min:            rem(10);
+$card_minHeight_preview_max:        rem(200);
+$card_minHeight_preview_minmax:     rem(300);
+$card_minHeight_preview_min:        rem(170);
+$card_padding_container:            0 rem(30);
+$card_color_content:                gray(700);
+$card_color_date:                   gray(500);
+$card_color_preview_overlay:        $white;
+$card_color_title:                  dark(1);
+$card_fontWeight_preview_overlay:   700;
+$card_fontWeight_title:             700;
+$card_fontSize_content:             rem(14);
+$card_fontSize_date:                rem(14);
+$card_fontSize_preview_overlay:     rem(28);
+$card_fontSize_title:               rem(20);
+$card_lineHeight_content:           rem(20);
+$card_letterSpacing:                $letterSpacing_default;
+$card_background:                   $white;
+$card_border:                       $border_default;
+$card_borderRadius:                 radius(sm);
+$card_boxShadow:                    $boxShadow_default;
+$card_transition_preview_overlay:   0.3s;
+$card_filter_preview_overlay:       brightness(1);
+$card_filter_preview_overlay_hover: brightness(0.5);
+$card_content_preview_overlay:      'Learn more';
+
+$rowCard_gap_max:                      $card_gap_max;
+$rowCard_gap_min:                      $card_gap_min;
+$rowCard_gap_container_max:            $card_gap_container_max;
+$rowCard_gap_container_min:            $card_gap_container_min;
+$rowCard_minHeight_preview_max:        $card_minHeight_preview_max;
+$rowCard_minHeight_preview_min:        $card_minHeight_preview_min;
+$rowCard_color_content:                $card_color_content;
+$rowCard_color_date:                   $card_color_date;
+$rowCard_color_preview_overlay:        $card_color_preview_overlay;
+$rowCard_color_title:                  $card_color_title;
+$rowCard_fontWeight_preview_overlay:   $card_fontWeight_preview_overlay;
+$rowCard_fontWeight_title:             $card_fontWeight_title;
+$rowCard_fontSize_content:             $card_fontSize_content;
+$rowCard_fontSize_date:                $card_fontSize_date;
+$rowCard_fontSize_preview_overlay:     $card_fontSize_preview_overlay;
+$rowCard_fontSize_title:               $card_fontSize_title;
+$rowCard_lineHeight_content:           $card_lineHeight_content;
+$rowCard_letterSpacing:                $card_letterSpacing;
+$rowCard_background:                   $card_background;
+$rowCard_border:                       $card_border;
+$rowCard_borderRadius:                 $card_borderRadius;
+$rowCard_boxShadow:                    $card_boxShadow;
+$rowCard_transition_preview_overlay:   $card_transition_preview_overlay;
+$rowCard_filter_preview_overlay:       $card_filter_preview_overlay;
+$rowCard_filter_preview_overlay_hover: $card_filter_preview_overlay_hover;
+$rowCard_content_preview_overlay:      $card_content_preview_overlay;
