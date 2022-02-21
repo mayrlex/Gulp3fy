@@ -17,6 +17,7 @@
 
 	background-image: none;
 	border-radius: $btn_borderRadius;
+	cursor: pointer;
 
 	transition: $btn_transition;
 
@@ -68,15 +69,17 @@
 
 		color: secondary(500);
 
-		outline: rem($btn_outline_width) solid secondary(500);
-		outline-offset: rem(-$btn_outline_width);
+		background: transparent;
 
 		@include media-min(lg) {
 			&:hover {
 				color: $white;
 
 				background-color: secondary(500);
-				outline: rem($btn_outline_width) solid secondary(500);
+
+				input[type='button'] {
+					color: $white;
+				}
 
 				.icon {
 					fill: $white;
@@ -102,6 +105,10 @@
 			cursor: not-allowed;
 		}
 
+		input[type='button'] {
+			color: secondary(500);
+		}
+
 		.icon {
 			fill: secondary(500);
 		}
@@ -115,6 +122,8 @@
 		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
 		color: primary(500);
+
+		background: transparent;
 
 		@include media-min(lg) {
 			&:hover {
@@ -139,6 +148,10 @@
 			cursor: not-allowed;
 		}
 
+		input[type='button'] {
+			color: primary(500);
+		}
+
 		.icon {
 			fill: primary(500);
 		}
@@ -149,7 +162,7 @@
 		display: inline-flex;
 
 		background-image: none;
-		border-radius: $btn_borderRadius_icon;
+		cursor: pointer;
 
 		transition: $btn_transition;
 
