@@ -1,146 +1,160 @@
 //- Arguments:
-	link -      Link to page
-	src  -      Path to image
-	alt  -      Alternate text
-	date -      Date
-	validDate - Valid date for search robots
-	title -     Card title
-	text -      Button text
+	link      {string} - Link to page
+	src       {string} - Path to image
+	alt       {string} - Alternate text
+	date      {string} - Date
+	validDate {string} - Valid date for search robots
+	title     {string} - Card title
+	text      {string} - Button text
+	type      'row'    - Row card type
 
 //-Call
 	//- Column
 	.card__grid
-		article.card
+		+card({})
 			+card-preview({
-				link:'https://example.com/',
+				link: 'https://example.com/news/page',
 				src: 'assets/images/card-preview.jpg',
-				alt:'Card preview',
+				alt: 'Preview'
 			})
 
-			+card-header({ title:'Card title'})
+			+card-header({ title: 'Card title' })
 			.card__content
 				p Some text
 
 			+card-footer({
-				date: '19 Feb. 2022',
-				validDate: '2022-02-19',
-				text: 'More',
-				link: 'https://example.com/'
+				date:'19 Feb. 2022',
+				validDate:'2022-02-19',
+				text:'More', link:'https://example.com/news/page'
 			})
 
 	//- Row
 	.row-card__grid
-		article.row-card
-			+row-card-preview({
-				link: 'https://example.com/',
+		+card({ type: 'row' })
+			+card-preview({
+				link: 'https://example.com/news/page',
 				src: 'assets/images/card-preview.jpg',
-				alt: 'Card preview'
-				})
+				alt: 'Preview',
+				type: 'row'
+			})
 
 			.row-card__inner
-				+row-card-header({ title: 'Card title' })
+				+card-header({
+					title: 'Card title',
+					type: 'row'
+				})
+
 				.row-card__content
 					p Some text
 
-				+row-card-footer({
+				+card-footer({
 					date:'19 Feb. 2022',
 					validDate:'2022-02-19',
 					text:'More',
-					link:'https://example.com/',
+					link:'https://example.com/news/page',
+					type: 'row'
 				})
 
-// ### Column card
 //- Card
-mixin card(mods)
+mixin card(data)
 	-
 		let modsArray = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
-			const modsList = mods.split(',');
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}__card`;
+				if (typeof(data.type) !== 'undefined' && data.type === 'row') {
+					modsArray = `${modsArray} ${modsList[i].trim()}__row-card`;
+
+				} else {
+					modsArray = `${modsArray} ${modsList[i].trim()}__card`;
+				}
 			}
 		}
 
-	article.card(class=modsArray)&attributes(attributes)
-		block
+	//- Row card
+	if (data.type === 'row')
+		article.row-card(class=modsArray)&attributes(attributes)
+			block
+
+	//- Col card
+	else
+		article.card(class=modsArray)&attributes(attributes)
+			block
 
 //- Preview
 mixin card-preview(data)
-	.card__preview.--ibg
-		a(href=data.link)
-			+pic(data.src)(alt=data.alt)
+	//- Row card preview
+	if (data.type === 'row')
+		.row-card__preview.--ibg
+			a(href=data.link)
+				+pic(data.src)(alt=data.alt)
+
+	//- Col card preview
+	else
+		.card__preview.--ibg
+			a(href=data.link)
+				+pic(data.src)(alt=data.alt)
 
 //- Header
 mixin card-header(data)
-	if (typeof(data.date) !== 'undefined')
-		.card__header
-			h3.card__title!= data.title
-			time.card__date(datetime=data.validDate)!= data.date
+	//- Row card header
+	if (data.type === 'row')
+		//- If the date in the header
+		if (typeof(data.date) !== 'undefined')
+			.row-card__header
+				h3.row-card__title!= data.title
+				time.row-card__date(datetime=data.validDate)!= data.date
+		else
+			.row-card__header
+				h3.row-card__title!= data.title
+
+	//- Col card header
 	else
-		.card__header
-			h3.card__title!= data.title
+		//- If the date in the header
+		if (typeof(data.date) !== 'undefined')
+			.card__header
+				h3.card__title!= data.title
+				time.card__date(datetime=data.validDate)!= data.date
+		else
+			.card__header
+				h3.card__title!= data.title
 
 //- Footer
 mixin card-footer(data)
-	if (typeof(data.date) === 'undefined')
-		.card__footer
-			+btn(data.text, 'text', 'arrow-right')(href=data.link)
+	//- Row card footer
+	if (data.type === 'row')
+		//- If the footer contains only the button
+		if (typeof(data.date) === 'undefined')
+			.row-card__footer
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
 
-	else if (typeof(data.date) !== 'undefined' && typeof(data.text) === 'undefined')
-		.card__footer
-			time.card__date(datetime=data.validDate)!= data.date
+		//- If the footer contains only the date
+		else if (typeof(data.date) !== 'undefined' && typeof(data.text) === 'undefined')
+			.row-card__footer
+				time.row-card__date(datetime=data.validDate)!= data.date
 
+		//- If the footer contains both date and button
+		else
+			.row-card__footer
+				time.row-card__date(datetime=data.validDate)!= data.date
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
+
+	//- Col card footer
 	else
-		.card__footer
-			time.card__date(datetime=data.validDate)!= data.date
-			+btn(data.text, 'text', 'arrow-right')(href=data.link)
+		//- If the footer contains only the button
+		if (typeof(data.date) === 'undefined')
+			.card__footer
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
 
-// ### Row card
-//- Card
-mixin row-card(mods)
-	-
-		let modsArray = '';
+		//- If the footer contains only the date
+		else if (typeof(data.date) !== 'undefined' && typeof(data.text) === 'undefined')
+			.card__footer
+				time.card__date(datetime=data.validDate)!= data.date
 
-		if(typeof(mods) !== 'undefined' && mods) {
-			const modsList = mods.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}__row-card`;
-			}
-		}
-
-	article.row-card(class=modsArray)&attributes(attributes)
-		block
-
-//- Preview
-mixin row-card-preview(data)
-	.row-card__preview.--ibg
-		a(href=data.link)
-			+pic(data.src)(alt=data.alt)
-
-//- Header
-mixin row-card-header(data)
-	if (typeof(data.date) !== 'undefined')
-		.row-card__header
-			h3.row-card__title!= data.title
-			time.row-card__date(datetime=data.validDate)!= data.date
-	else
-		.row-card__header
-			h3.row-card__title!= data.title
-
-//- Footer
-mixin row-card-footer(data)
-	if (typeof(data.date) === 'undefined')
-		.row-card__footer
-			+btn(data.text, 'text', 'arrow-right')(href=data.link)
-
-	else if (typeof(data.date) !== 'undefined' && typeof(data.text) === 'undefined')
-		.row-card__footer
-			time.row-card__date(datetime=data.validDate)!= data.date
-
-	else
-		.row-card__footer
-			time.row-card__date(datetime=data.validDate)!= data.date
-			+btn(data.text, 'text', 'arrow-right')(href=data.link)
+		//- If the footer contains both date and button
+		else
+			.card__footer
+				time.card__date(datetime=data.validDate)!= data.date
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
