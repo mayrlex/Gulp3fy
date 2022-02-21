@@ -1,20 +1,37 @@
-mixin footer(mods)
+//- Arguments:
+	mods {string} - Mod('s)
+	copy 'true'   - Turn on copyright block
+
+//- Call:
+	+footer({}) - Without copyright
+	+footer({ copy: true }) - With copyright
+
+mixin footer(data)
 	-
-		var allMods = '';
-		if(typeof(mods) !== 'undefined' && mods) {
-			var modsList = mods.split(',');
-			for (var i = 0; i < modsList.length; i++) {
-				allMods = allMods + ' footer--' + modsList[i].trim();
+		let modsArray = '';
+
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} footer--${modsList[i].trim()}`;
 			}
 		}
 
-	footer.footer(class=allMods, role='contentinfo')&attributes(attributes)
-		.footer__inner.container
-			block
+	//- Footer with copyright
+	if (typeof(data.copy) !== 'undefined')
+		footer.footer(class=modsArray, role='contentinfo')&attributes(attributes)
+			.footer__inner.container
+				block
 
-			//- .footer__c
-				script.
-					document.write('&copy; ' + new Date().getFullYear() + ' #{brandName}. Все права защищены.');
+				.footer__copy
+					script.
+						document.write(`&copy; ${new Date().getFullYear()} #{brandName}. #{copyText}`);
 
-//- If footer is enabled by default for all pages
-+footer('')
+	//- Footer without copyright
+	else
+		footer.footer(class=modsArray, role='contentinfo')&attributes(attributes)
+			.footer__inner.container
+				block
+
++footer({})
