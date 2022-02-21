@@ -1,120 +1,105 @@
 //- Arguments:
-	text           {string}  - Button text
-	prefix/postfix {string}  - Modificator('s)
-	icon           {string}  - Icon name
-	isInput        {boolean} - Flag true/false
-	value          {string}  - Just value :3
+	text    {string}  - Text
+	mods    {string}  - Mod('s)
+	icon    {string}  - Icon name
+	link    {string}  - Link
+	isInput {boolean} - If is input
 
 //- Call:
-	//- Button
-	+btn('Link text', 'primary')(href='/')  - Have href — link
-	+btn('Input text', 'secondary', true)   - Have flag turned 'true' — input
-	+btn('Button text', 'text')             - Excludes href / isInput — button
-	+btn('Button text', 'primary', 'arrow') - Includes icon
+	//- Button type 'link'
+	+btn({
+		text: 'Button',
+		mods: 'primary'
+		link: '#',
+	})
+
+	//- Button type 'input'
+	+btn({
+		text: 'Button',
+		mods: 'secondary',
+		isInput: 'true'
+	})
+
+	//- Button type 'button'
+	+btn({
+		text: 'Button',
+		mods: 'text'
+		icon: 'arrow-right',
+	})
 
 	//- Icon button
-	+btn-icon('bell', 'primary') - Button with only icon
+	+btn({
+		mods: 'primary',
+		icon: 'bell',
+	})
 
-//- Single button
-mixin btn(text, postfix, icon, isInput)
+//- Button
+mixin btn(data)
 	-
-		let allMods = '';
+		let modsArray = '';
 
-		if(typeof(postfix) !== 'undefined' && postfix) {
-			const modsList = postfix.split(',');
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} btn__${modsList[i].trim()}`;
+				if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined') {
+					modsArray = `${modsArray} btn__icon-${modsList[i].trim()}`;
+
+				} else {
+					modsArray = `${modsArray} btn__${modsList[i].trim()}`;
+				}
 			}
 		}
-	//- If mod 'href' — link
-	if (attributes.href)
-		if (typeof(icon) !== 'undefined')
-			a.btn(class=allMods)&attributes(attributes)!= text
-				+icon-mono(icon)
-				block
-		else
-			a.btn(class=allMods)&attributes(attributes)!= text
+
+	//- If argument 'link' not empty — is link
+	if (typeof(data.link) !== 'undefined')
+		//- If the button has an icon
+		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
+			a.btn(class=modsArray, href=data.link)&attributes(attributes)!= data.text
+				+icon-mono(data.icon)
 				block
 
-	//- Else if mod 'isInput' turned 'true' — input
-	else if (typeof(isInput) !== 'undefined' && isInput)
-		if (typeof(icon) !== 'undefined')
-			input.btn(class=allMods, value=text, type='button')&attributes(attributes)
-			+icon-mono(icon)
-		else
-			input.btn(class=allMods, value=text, type='button')&attributes(attributes)
-
-	//- Else if — button
-	else
-		if (typeof(icon) !== 'undefined')
-			button.btn(class=allMods)&attributes(attributes)!= text
-				+icon-mono(icon)
+		//- If the button has only an icon
+		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
+			a.btn__icon(class=modsArray)&attributes(attributes)
+				+icon-mono(data.icon)
 				block
 
 		else
-			button.btn(class=allMods)&attributes(attributes)!= text
+			a.btn(class=modsArray, href=data.link)&attributes(attributes)!= data.text
 				block
 
-//- Button icon
-mixin btn-icon(icon, postfix, isInput, value)
-	-
-		let allMods = '';
+	//- If 'isInput' argument is true — is input
+	else if (typeof(data.isInput) !== 'undefined')
+		//- If the button has an icon
+		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
+			label.btn(class=modsArray)
+				input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
+				+icon-mono(data.icon)
 
-		if(typeof(postfix) !== 'undefined' && postfix) {
-			const modsList = postfix.split(',');
+		//- If the button has only an icon
+		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
+			label.btn__icon(class=modsArray)
+				input(value=data.text, type='button')&attributes(attributes)
+				+icon-mono(data.icon)
 
-			for (let i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} btn__icon-${modsList[i].trim()}`;
-			}
-		}
+		else
+			input.btn(class=modsArray, value=data.text, type='button')&attributes(attributes)
 
-	//- If mod 'href' — link
-	if (attributes.href)
-		a.btn__icon(class=allMods)&attributes(attributes)
-			+icon-mono(icon)
-			block
-
-	//- Else if mod 'isInput' turned 'true' — input
-	else if (typeof(isInput) !== 'undefined' && isInput)
-		input.btn__icon(class=allMods, value=value, type='button')&attributes(attributes)
-		+icon-mono(icon)
-
-	//- Else if — button
+	//- Just button
 	else
-		button.btn__icon(class=allMods)&attributes(attributes)
-			+icon-mono(icon)
-			block
+		//- If the button has an icon
+		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
+			button.btn(class=modsArray)&attributes(attributes)!= data.text
+				+icon-mono(data.icon)
+				block
 
-//- Button group
-mixin btn-group(areaLabel, prefix)
-	-
-		let allMods = '';
+		//- If the button has only an icon
+		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
+			button.btn__icon(class=modsArray)&attributes(attributes)
+				+icon-mono(data.icon)
+				block
 
-		if(typeof(prefix) !== 'undefined' && prefix) {
-			const modsList = prefix.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} ${modsList[i].trim()}__btn-group`;
-			}
-		}
-	.btn-group(class=allMods, role='group', aria-label=areaLabel)
-		block
-
-//- Button group item
-mixin btn-group-item(title, postfix, link)
-	-
-		let allMods = '';
-
-		if(typeof(postfix) !== 'undefined' && postfix) {
-			const modsList = postfix.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} btn__${modsList[i].trim()}`;
-			}
-		}
-
-	if (typeof(link) !== 'undefined' && link)
-		a.btn.btn-group__item(class=allMods, href=link)&attributes(attributes)= title
-	else
-		button.btn.btn-group__item(class=allMods)&attributes(attributes)= title
+		else
+			button.btn(class=modsArray)&attributes(attributes)!= data.text
+				block
