@@ -1,37 +1,36 @@
-//- === Breadcrumbs mixins ===
-//- ==================
 //- Arguments:
-	prefix {string} - Prefix
-	title  {string} - Breadcrumb title
-	link   {string} - Breadcrumb link
+	mods {string} - Breadcrumbs container mod(s)
+	text {string} - Breadcrumb link text
+	link {string} - Breadcrumb link
 
 //- Call:
 	+breadcrumbs
-			+breadcrumbs-item('Home', 'http://example.com/')
-			+breadcrumbs-item('News', 'http://example.com/news/')
-			+breadcrumbs-item('Recent')
-//- ==============================
+		+breadcrumbs-item({ text: 'Home', link: 'http://example.com/' })
+		+breadcrumbs-item({ text: 'News', link: 'http://example.com/news' })
+		+breadcrumbs-item({ text: 'Current' })
 
 //- Breadcrumbs
-mixin breadcrumbs(prefix)
+mixin breadcrumbs(mods)
 	-
-		var allMods = '';
-		if(typeof(prefix) !== 'undefined' && prefix) {
-			var modsList = prefix.split(',');
-			for (var i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} ${modsList[i].trim()}__breadcrumbs`;
+		let modsArray = '';
+
+		if(typeof(mods) !== 'undefined' && mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}__breadcrumbs`;
 			}
 		}
 
-	nav(class=allMods, aria-label='breadcrumb')&attributes(attributes)
+	nav(class=modsArray, aria-label='breadcrumb')&attributes(attributes)
 		ol.breadcrumbs
 			block
 
 //- Breadcrumbs item
-mixin breadcrumbs-item(title, link)
-	if (typeof(link) !== 'undefined' && link)
+mixin breadcrumbs-item(data)
+	if (typeof(data.link) !== 'undefined' && data.link)
 		li.breadcrumbs__item
-			a.breadcrumbs__link(href=link)= title
+			a.breadcrumbs__link(href=data.link)= data.text
 			span.breadcrumbs__divider
 	else
-		li.breadcrumbs__item.--current(aria-current=title)= title
+		li.breadcrumbs__item.--current(aria-current=data.text)= data.text

@@ -1,87 +1,94 @@
-//- === Header mixin ===
-//- ====================
 //- Arguments:
-	mods {string} - Modificator('s)
+	mods       {string} - Mod('s)
+	title      {string} - Item title
+	link       {string} - Item link
+	isDropdown 'true'   - Set nav item as dropdown button
+	anchor     {string} - Smooth scrolling to the specified block
 
 //- Call:
-	+header('sticky')
-//- ==============================
+	//- Header
+	+header
 
-//- === Nav mixins ===
-//- ==================
-//- Arguments:
-	mods        {string}  - Modificator('s)
-	title       {string}  - Menu title
-	link        {string}  - Menu link (If nav item is not dropdown)
-	isDropdown  {boolean} - Toggle between dropdown and link
-	anchor      {string}  - Set acnhor for smooth scrolling
+	//- Navbar
+	+nav()
+		### Nav item
+		+nav-item({
+			title: 'Home',
+			link: 'https://example.com'
+		})
 
-//- Call:
-	+nav('burger') - Navbar
+		### Nav item with smooth scroll mode
+		+nav-item({
+			title: 'About',
+			anchor: '.section__about'
+		})
 
-		+nav-item('Home', 'http://localhost:3300/')                        - Default nav item-link
-		+nav-item('Contacst', 'javascript:void(0);', false, '.section__1') - Nav item, when clicked smoothly rewind to the given anchor
-		+nav-item('Products', '', true)                                    - Nav item, includes dropdown menu
-
-			+nav-sub-item('Utils', 'http://localhost:3300/') - Nav sub-item (Only if nav-item has true flag set)
-//- ==============================
+		### Nav item as dropdown button
+		+nav-item({
+			title: 'Products',
+			isDropdown: 'true'
+		})
+			### Nav sub item
+			+nav-sub-item({
+				title: 'Category name',
+				link: 'https://example.com'
+			}
 
 mixin header(mods)
 	-
-		var allMods = '';
+		let modsArray = '';
+
 		if(typeof(mods) !== 'undefined' && mods) {
-			var modsList = mods.split(',');
-			for (var i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} header--${modsList[i].trim()}`;
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} header--${modsList[i].trim()}`;
 			}
 		}
 
-	header.header(class=allMods, role='banner')&attributes(attributes)
+	header.header(class=modsArray, role='banner')&attributes(attributes)
 		.header__inner.container
 			block
 
 //- Navbar
 mixin nav(mods)
 	-
-		let allMods = '';
+		let modsArray = '';
 
 		if(typeof(mods) !== 'undefined' && mods) {
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				allMods = `${allMods}${modsList[i].trim()}__body`;
+				modsArray = `${modsArray} ${modsList[i].trim()}__body`;
 			}
 		}
 
-	//- Nav item with *enabled* accordion mode
-	nav.menu__body(class=allMods)&attributes(attributes)
+	nav.menu__body(class=modsArray)&attributes(attributes)
 		ul.menu__list(data-burger='')
 			block
 
 //- Nav item
-mixin nav-item(title, link, isDropdown, anchor)
-	-
-
+mixin nav-item(data)
 	//- Nav item includes dropdown
-	if (typeof(isDropdown) !== 'undefined' && isDropdown)
+	if (typeof(data.isDropdown) !== 'undefined')
 		li.menu__item(data-dropdown='')&attributes(attributes)
-			button.menu__title(type='button', data-dropdown-btn='')= title
+			button.menu__title(type='button', data-dropdown-btn='')= data.title
 			ul.menu__sub-list
 				block
 
 	//- Nav item includes anchor mode
-	else if (typeof(anchor) !== 'undefined' && anchor)
+	else if (typeof(data.anchor) !== 'undefined')
 		li.menu__item&attributes(attributes)
-			a.menu__title(href=link, data-anchor=anchor)= title
+			a.menu__title(href=data.link, data-anchor=data.anchor)= data.title
 				block
 
-	//- Default nav item
+	//- Nav item
 	else
 		li.menu__item&attributes(attributes)
-			a.menu__title(href=link)= title
+			a.menu__title(href=data.link)= data.title
 				block
 
 //- Nav sub-item mixin
-mixin nav-sub-item(title, link)
+mixin nav-sub-item(data)
 	li.menu__sub-item&attributes(attributes)
-		a.menu__sub-link(href=link)= title
+		a.menu__sub-link(href=data.link)= data.title

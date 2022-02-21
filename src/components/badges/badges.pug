@@ -1,35 +1,35 @@
 //- Arguments:
 	text {string} - Badge content
-	mod  {string} - Badge modificator (solid / outline)
-	type 'num' - Indicates that the badge is numeric
+	mods {string} - Badge modificator (solid / outline)
+	type 'num'    - Indicates that the badge is numeric
 
 //- Call:
-	+badge                   - Dot badge
-	+badge('10', '', 'num')  - Numeric badge
-	+badge('Badge', 'solid') - Text badge
+	+badge({})                               - Dot badge
+	+badge({ text: '10', type: 'num' })      - Numeric badge
+	+badge({ text: 'Badge', mods: 'solid' }) - Text badge
 
-mixin badge(text, mod, type)
+mixin badge(data)
 	-
-		let badgeMod = '';
+		let modsArray = '';
 
-		if(typeof(mod) !== 'undefined' && mod) {
-			const modsList = mod.split(',');
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				badgeMod = `${badgeMod} badge__text badge--${modsList[i].trim()}`;
+				modsArray = `${modsArray} badge__text badge--${modsList[i].trim()}`;
 			}
 		}
 
 	//- If badge is empty
-	if (typeof(text) === 'undefined')
-		.badge(class=badgePrefix)&attributes(attributes)
+	if (typeof(data.text) === 'undefined')
+		.badge&attributes(attributes)
 			.badge__dot
 
 	//- If badge is numeric
-	else if (type === 'num')
-		.badge(class=prefix)&attributes(attributes)
-			span.badge__num!= text
+	else if (data.type === 'num')
+		.badge&attributes(attributes)
+			span.badge__num!= data.text
 
 	else
-		.badge(class=prefix)&attributes(attributes)
-			span(class=badgeMod)!= text
+		.badge&attributes(attributes)
+			span(class=modsArray)!= data.text

@@ -1,41 +1,64 @@
 //- Arguments:
-	mods        {string}  - Modificator('s)
-	media       {string}  - Media queries
-	isAccordion {boolean} - Flag true/false
-	title       {string}  - Spoiler title
+	mods        {string} - Mod('s)
+	media       {string} - Media queries '[size],[min/max]'
+	isAccordion 'true'   - Enable accordion mode
+	title       {string} - Spoiler title
 
 //- Call:
-	Spoiler
-		+spoiler('Class', '', false)        - Default spoiler
-		+spoiler('Class', '', true)         - Default spoiler + Accordion mode
-		+spoiler('Class', '840,min', false) - Adaptive spoiler
-		+spoiler('Class', '640,max', true)  - Adaptive spoiler + Accordion mode
+	### With accordion mode
+	+spoiler({
+		mods: 'hero',
+		isAccordion: 'true'
+	})
+		+spoiler-item('Spoiler title')
+			...
 
-	Spoiler item
-		+spoiler-item('Title') - Spoiler item
-			[Any content]
+	### Default spoiler
+	+spoiler({ mods: 'hero' })
 
+	### With media queries
+	+spoiler({
+		mods: 'hero',
+		media: '840,min'
+	})
 
-mixin spoiler(mods, media, isAccordion)
+	### With accordion mode and media queries
+	+spoiler({
+		mods: 'hero',
+		isAccordion: 'true',
+		media: '840,max'
+	})
+
+mixin spoiler(data)
 	-
-	//- If data-spoilers attribute is empty and not including accordion attribute
-	if (typeof(attributes.data-spoilers) === 'undefined' && !isAccordion)
-		.spoiler(class=mods, data-spoilers='')&attributes(attributes)
+		let modsArray = '';
+
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}__spoiler`;
+			}
+		}
+
+	//- If accordion mode is disabled and there are no media queries
+	if (typeof(data.isAccordion) === 'undefined' && typeof(data.media) === 'undefined')
+		.spoiler(class=modsArray, data-spoilers='')&attributes(attributes)
 			block
 
-	//- If data-spoilers attribute is empty and including accordion attribute
-	else if (typeof(attributes.data-spoilers) === 'undefined' && isAccordion)
-		.spoiler(class=mods, data-spoilers='', accordion='')&attributes(attributes)
+	//- If accordion mode is disabled but there are media queries
+	else if (typeof(data.isAccordion) === 'undefined' && typeof(data.media) !== 'undefined')
+		.spoiler(class=modsArray, data-spoilers=data.media)&attributes(attributes)
 			block
 
-	//- If data-spoilers attribute is not empty and not including accordion attribute
-	else if (typeof(attributes.data-spoilers) !== 'undefined' && !isAccordion)
-		.spoiler(class=mods, data-spoilers=media)&attributes(attributes)
+	//- If accordion mode is enabled and there are media queries
+	else if (typeof(data.isAccordion) !== 'undefined' && typeof(data.media) !== 'undefined')
+		.spoiler(class=modsArray, data-spoilers=data.media, accordion='')&attributes(attributes)
 			block
 
-	//- If data-spoilers attribute is not empty and including accordion attribute
+	//- If accordion mode is enabled and there are no media queries
 	else
-		.spoiler(class=mods, data-spoilers=media, accordion='')&attributes(attributes)
+		.spoiler(class=modsArray, data-spoilers='', accordion='')&attributes(attributes)
 			block
 
 mixin spoiler-item(title)

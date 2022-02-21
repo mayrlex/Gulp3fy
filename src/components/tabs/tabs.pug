@@ -1,43 +1,46 @@
-//- === Tab mixins ===
-//- ==================
 //- Arguments:
-	tabName {string} - Unique tab name
-	prefix  {string} - Prefixes
-	title   {string} - Tab button title
-
+	tab  {string} - Unique tab name
+	mods {string} - Mod('s)
+	text {string} - Tab button text
 
 //- Call:
-	+tab('products', 'shop')
+	+tab({ tab: 'tabName' })
 		block buttons
-			+tab-btn('Sweatshirt')
+			+tab-btn('Tab')
 
 		block contents
 			+tab-content
-				[Any content]
-//- ==============================
+				...
 
 //- Tab
-mixin tabs(tabName, prefix)
+mixin tab(data)
 	-
-		var allMods = '';
-		if(typeof(prefix) !== 'undefined' && prefix) {
-			var modsList = prefix.split(',');
-			for (var i = 0; i < modsList.length; i++) {
-				allMods = `${allMods} ${modsList[i].trim()}__tab`;
+		let modsArray = '';
+
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined') {
+					modsArray = `${modsArray} btn__icon-${modsList[i].trim()}`;
+
+				} else {
+					modsArray = `${modsArray} btn__${modsList[i].trim()}`;
+				}
 			}
 		}
 
-	.tabs(class=allMods, data-tab=tabName)&attributes(attributes)
+	.tabs(class=modsArray, data-tab=data.tab)&attributes(attributes)
 		nav.tabs__menu(role='tablist')
 			block buttons
-		.tabs__wrapper
+		.tabs__inner
 			block contents
 
 //- Button
-mixin tabs-btn(title)
-	button.tabs__menu-btn(type='button')&attributes(attributes)= title
+mixin tab-btn(text)
+	button.tabs__menu-btn(type='button')&attributes(attributes)= text
 
 //- Content
-mixin tabs-content
+mixin tab-content
 	.tabs__content(role='tabpanel')&attributes(attributes)
 		block
