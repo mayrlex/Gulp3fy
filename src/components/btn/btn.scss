@@ -25,10 +25,10 @@
 
 	// Primary button
 	&__primary {
-		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
-		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
 
 		color: $white;
 
@@ -62,20 +62,23 @@
 
 	// Secondary button
 	&__secondary {
-		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
-		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
 
 		color: secondary(500);
 
 		background: transparent;
+		outline: rem($btn_outlineWidth) solid secondary(500);
+		outline-offset: rem(-$btn_outlineWidth);
 
 		@include media-min(lg) {
 			&:hover {
 				color: $white;
 
 				background-color: secondary(500);
+				outline: rem($btn_outlineWidth) solid secondary(500);
 
 				input[type='button'] {
 					color: $white;
@@ -88,7 +91,7 @@
 
 			&:active {
 				background-color: secondary(600);
-				outline: rem($btn_outline_width) solid secondary(600);
+				outline: rem($btn_outlineWidth) solid secondary(600);
 			}
 
 			&:focus-visible {
@@ -101,7 +104,7 @@
 			color: secondary(300);
 
 			background: none;
-			outline: rem($btn_outline_width) solid secondary(300);
+			outline: rem($btn_outlineWidth) solid secondary(300);
 			cursor: not-allowed;
 		}
 
@@ -116,10 +119,10 @@
 
 	// Text button
 	&__text {
-		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
-		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
-		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
+		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
 
 		color: primary(500);
 
@@ -162,6 +165,7 @@
 		display: inline-flex;
 
 		background-image: none;
+		border-radius: $btn_icon_borderRadius;
 		cursor: pointer;
 
 		transition: $btn_transition;
@@ -170,7 +174,7 @@
 
 		// Icon primary button
 		&-primary {
-			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
+			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
 
 			background-color: primary(500);
 
@@ -202,17 +206,17 @@
 
 		// Icon secondary button
 		&-secondary {
-			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
+			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
 
-			outline: rem($btn_outline_width) solid secondary(500);
-			outline-offset: rem(-$btn_outline_width);
+			outline: rem($btn_outlineWidth) solid secondary(500);
+			outline-offset: rem(-$btn_outlineWidth);
 
 			@include media-min(lg) {
 				&:hover {
 					color: $white;
 
 					background-color: secondary(500);
-					outline: rem($btn_outline_width) solid secondary(500);
+					outline: rem($btn_outlineWidth) solid secondary(500);
 
 					.icon {
 						fill: $white;
@@ -221,7 +225,7 @@
 
 				&:active {
 					background-color: secondary(600);
-					outline: rem($btn_outline_width) solid secondary(600);
+					outline: rem($btn_outlineWidth) solid secondary(600);
 				}
 
 				&:focus-visible {
@@ -232,7 +236,7 @@
 			&.--disabled,
 			&:disabled {
 				background: none;
-				outline: rem($btn_outline_width) solid secondary(300);
+				outline: rem($btn_outlineWidth) solid secondary(300);
 				cursor: not-allowed;
 
 				.icon {
@@ -247,7 +251,7 @@
 
 		// Icon text button
 		&-text {
-			@include adaptive('padding', $btn_padding_icon_max, $btn_padding_icon_min, 1);
+			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
 
 			@include media-min(lg) {
 				&:hover {
@@ -314,7 +318,7 @@
 	&__secondary,
 	&__text {
 		.icon {
-			@include adaptive('margin-left', $btn_margin_icon_max, $btn_margin_icon_min, 1);
+			@include adaptive('margin-left', $btn_icon_margin_max, $btn_icon_margin_min, 1);
 		}
 	}
 }

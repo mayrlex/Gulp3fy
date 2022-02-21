@@ -1,21 +1,21 @@
 .tabs {
 	&__menu {
-		margin-bottom: $tab_marginBottom_menu;
+		margin-bottom: $tab_menu_marginBottom;
 
 		font-size: 0;
 
 		&-btn {
-			@include adaptive('padding', $tab_padding_btn_max, $tab_padding_btn_min, 1);
+			@include adaptive('padding', $tab_btn_padding_max, $tab_btn_padding_min, 1);
 			@include adaptive(
 				'padding-right',
-				$tab_paddingRight_btn_max,
-				$tab_paddingRight_btn_min,
+				$tab_btn_paddingRight_max,
+				$tab_btn_paddingRight_min,
 				1
 			);
 			@include adaptive(
 				'padding-left',
-				$tab_paddingLeft_btn_max,
-				$tab_paddingLeft_btn_min,
+				$tab_btn_paddingLeft_max,
+				$tab_btn_paddingLeft_min,
 				1
 			);
 
@@ -34,14 +34,14 @@
 				}
 
 				&:focus-visible {
-					margin-bottom: $tab_marginBottom_btn_focus;
+					margin-bottom: $tab_btn_marginBottom_focus;
 
 					box-shadow: $focus_primary;
 				}
 			}
 
 			&:not(.--active) {
-				padding-bottom: rem($tab_padding_btn_max);
+				padding-bottom: rem($tab_btn_padding_max);
 			}
 
 			&.--active:not(:focus-visible) {
@@ -50,11 +50,11 @@
 				&:after {
 					display: block;
 					width: 100%;
-					height: rem($tab_height_btn_divider);
+					height: rem($tab_btn_divider_height);
 					@include adaptive(
 						'margin-top',
-						$tab_marginTop_btn_divider_max,
-						$tab_marginTop_btn_divider_min,
+						$tab_btn_divider_marginTop_max,
+						$tab_btn_divider_marginTop_min,
 						1
 					);
 
@@ -67,7 +67,7 @@
 		}
 	}
 
-	&__wrapper {
+	&__inner {
 	}
 
 	&__content {

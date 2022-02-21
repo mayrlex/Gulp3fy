@@ -19,18 +19,18 @@
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding', $spoiler_padding_title_max, $spoiler_padding_title_min, 1);
+		@include adaptive('padding', $spoiler_title_padding_max, $spoiler_title_padding_min, 1);
 
 		color: $white;
-		font-weight: $spoiler_fontWeight_title;
-		@include adaptive('font-size', $spoiler_fontSize_title_max, $spoiler_fontSize_title_min, 1);
+		font-weight: $spoiler_title_fontWeight;
+		@include adaptive('font-size', $spoiler_title_fontSize_max, $spoiler_title_fontSize_min, 1);
 		font-family: $fontFamily_secondary;
 		letter-spacing: $spoiler_letterSpacing;
 		text-align: left;
 
 		background-color: primary(500);
 
-		border-radius: $spoiler_borderRadius_title;
+		border-radius: $spoiler_title_borderRadius;
 
 		transition: $spoiler_transition;
 
@@ -49,16 +49,16 @@
 		&:before,
 		&:after {
 			position: absolute;
-			@include adaptive('top', $spoiler_top_icon_max, $spoiler_top_icon_min, 1);
-			@include adaptive('right', $spoiler_right_icon_max, $spoiler_right_icon_min, 1);
+			@include adaptive('top', $spoiler_icon_top_max, $spoiler_icon_top_min, 1);
+			@include adaptive('right', $spoiler_icon_right_max, $spoiler_icon_right_min, 1);
 
-			@include adaptive('width', $spoiler_width_icon_max, $spoiler_width_icon_min, 1);
-			height: $spoiler_height_icon;
+			@include adaptive('width', $spoiler_icon_width_max, $spoiler_icon_width_min, 1);
+			height: $spoiler_icon_height;
 
 			background: $white;
 			border-radius: radius(sm);
 
-			transition: $spoiler_transition_title;
+			transition: $spoiler_title_transition;
 
 			content: '';
 		}
@@ -73,16 +73,16 @@
 	}
 
 	&__content {
-		@include adaptive('padding-top', $spoiler_padding_Y_max, $spoiler_padding_Y_min, 1);
-		@include adaptive('padding-right', $spoiler_padding_X_max, $spoiler_padding_X_min, 1);
-		@include adaptive('padding-bottom', $spoiler_padding_Y_max, $spoiler_padding_Y_min, 1);
-		@include adaptive('padding-left', $spoiler_padding_X_max, $spoiler_padding_X_min, 1);
+		@include adaptive('padding-top', $spoiler_y_padding_max, $spoiler_y_padding_min, 1);
+		@include adaptive('padding-right', $spoiler_x_padding_max, $spoiler_x_padding_min, 1);
+		@include adaptive('padding-bottom', $spoiler_y_padding_max, $spoiler_y_padding_min, 1);
+		@include adaptive('padding-left', $spoiler_x_padding_max, $spoiler_x_padding_min, 1);
 
 		color: $white;
 		@include adaptive(
 			'font-size',
-			$spoiler_fontSize_content_max,
-			$spoiler_fontSize_content_min,
+			$spoiler_content_fontSize_max,
+			$spoiler_content_fontSize_min,
 			1
 		);
 	}

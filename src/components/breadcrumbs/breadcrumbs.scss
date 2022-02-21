@@ -13,40 +13,40 @@
 		white-space: nowrap;
 
 		&.--current {
-			padding: $breadcrumbs_padding_link;
+			padding: $breadcrumbs_link_padding;
 
 			@include adaptive(
 				'padding-right',
-				$breadcrumbs_padding_link_max,
-				$breadcrumbs_padding_link_min,
+				$breadcrumbs_link_padding_max,
+				$breadcrumbs_link_padding_min,
 				1
 			);
 
 			@include adaptive(
 				'padding-left',
-				$breadcrumbs_padding_link_max,
-				$breadcrumbs_padding_link_min,
+				$breadcrumbs_link_padding_max,
+				$breadcrumbs_link_padding_min,
 				1
 			);
 
-			color: $breadcrumbs_color_current;
+			color: $breadcrumbs_current_color;
 		}
 	}
 
 	&__link {
-		padding: $breadcrumbs_padding_link;
+		padding: $breadcrumbs_link_padding;
 
 		@include adaptive(
 			'padding-right',
-			$breadcrumbs_padding_link_max,
-			$breadcrumbs_padding_link_min,
+			$breadcrumbs_link_padding_max,
+			$breadcrumbs_link_padding_min,
 			1
 		);
 
 		@include adaptive(
 			'padding-left',
-			$breadcrumbs_padding_link_max,
-			$breadcrumbs_padding_link_min,
+			$breadcrumbs_link_padding_max,
+			$breadcrumbs_link_padding_min,
 			1
 		);
 
@@ -74,15 +74,15 @@
 	&__divider {
 		position: relative;
 
-		width: $breadcrumbs_width_divider;
+		width: $breadcrumbs_divider_width;
 
 		&:before {
 			position: absolute;
 			top: 35%;
 
 			display: inline-flex;
-			width: $breadcrumbs_width_divider;
-			height: $breadcrumbs_height_divider;
+			width: $breadcrumbs_divider_width;
+			height: $breadcrumbs_divider_height;
 
 			background: primary(500);
 			border-radius: radius(xs);
@@ -96,8 +96,8 @@
 			top: 55%;
 
 			display: inline-flex;
-			width: $breadcrumbs_width_divider;
-			height: $breadcrumbs_height_divider;
+			width: $breadcrumbs_divider_width;
+			height: $breadcrumbs_divider_height;
 
 			background: primary(500);
 			border-radius: radius(xs);
