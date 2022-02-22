@@ -146,6 +146,9 @@ $border_default: rem(1) solid gray(200);
 
 $boxShadow_default: 0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
 
+$disabled_color: gray(600);
+$disabled_background: gray(200);
+
 // COMPONENTS
 // ==========
 
@@ -304,3 +307,26 @@ $rowCard_preview_overlay_transition:   $card_preview_overlay_transition;
 $rowCard_title_fontSize:               $card_title_fontSize;
 $rowCard_title_fontWeight:             $card_title_fontWeight;
 $rowCard_title_color:                  $card_title_color;
+
+// Pagination
+$pagination_color:               dark(1);
+$pagination_color_hover:         $white;
+$pagination_fontWeight:          700;
+$pagination_fontSize:            rem(16);
+$pagination_fontFamily:          $fontFamily_secondary;
+$pagination_letterSpacing:       $letterSpacing_default;
+$pagination_padding:             rem(5) rem(10);
+$pagination_inner_background:    $white;
+$pagination_border:              $border_default;
+$pagination_borderRadius:        radius(sm);
+$pagination_boxShadow:           $boxShadow_default;
+$pagination_item_marginRight:    rem(5);
+$pagination_transition:          $transition_default;
+$pagination_focus:               $focus_primary;
+$pagination_background_hover:    primary(500);
+$pagination_controls_padding:    rem(7);
+$pagination_disabled_color:      $disabled_color;
+$pagination_disabled_background: $disabled_background;
+$pagination_controls_margin:     rem(10);
+$pagination_current_color:       $white;
+$pagination_current_background:  primary(600);
