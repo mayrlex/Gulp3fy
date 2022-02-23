@@ -70,6 +70,8 @@ button {
 
 button,
 input[type='button'] {
+	font-family: inherit;
+
 	cursor: pointer;
 }
 
