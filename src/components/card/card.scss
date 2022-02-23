@@ -24,7 +24,8 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: $card_container_gap_min;
+		gap: $card_grid_gap_min;
+		row-gap: $card_grid_rowGap_min;
 
 		@include media-minmax(sm, lg) {
 			padding: $card_container_padding;
@@ -39,7 +40,8 @@
 		}
 
 		@include media-min(xl) {
-			grid-gap: $card_container_gap_max;
+			gap: $card_grid_gap_max;
+			row-gap: $card_grid_rowGap_max;
 		}
 
 		@include media-min(xxl) {
@@ -77,6 +79,7 @@
 				white-space: nowrap;
 
 				transform: translate(-50%, -50%);
+				cursor: pointer;
 				opacity: 0;
 
 				transition: $card_preview_overlay_transition;
@@ -180,14 +183,14 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: $rowCard_container_gap_min;
+		gap: $rowcard_grid_gap_min;
 
 		@include media-min(lg) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
 		@include media-min(xl) {
-			grid-gap: $rowCard_container_gap_max;
+			grid-gap: $rowcard_grid_gap_max;
 		}
 	}
 
@@ -215,6 +218,7 @@
 				white-space: nowrap;
 
 				transform: translate(-50%, -50%);
+				cursor: pointer;
 				opacity: 0;
 
 				transition: $rowCard_preview_overlay_transition;
