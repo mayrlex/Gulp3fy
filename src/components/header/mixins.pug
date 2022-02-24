@@ -1,38 +1,33 @@
 //- Arguments:
 	mods       {string} - Mod('s)
-	title      {string} - Item title
-	link       {string} - Item link
+	text       {string} - Link title
+	link       {string} - Link
 	isDropdown 'true'   - Set nav item as dropdown button
 	anchor     {string} - Smooth scrolling to the specified block
 
 //- Call:
-	//- Header
 	+header
+		.header__logo
 
-	//- Navbar
-	+nav()
-		### Nav item
-		+nav-item({
-			title: 'Home',
-			link: 'https://example.com'
-		})
+		nav.header__nav.menu
+			+menu
+				+menu-item({ text: 'Home', link: '#' }).--current
+				+menu-item({ text: 'About', link: '#' })
 
-		### Nav item with smooth scroll mode
-		+nav-item({
-			title: 'About',
-			anchor: '.section__about'
-		})
+				+menu-item({ text: 'Products', link: '#', isDropdown: 'true' })
+					+menu-sub-item({ text: 'Laptops', link: '#' })
+					+menu-sub-item({ text: 'Headphones', link: '#' })
+					+menu-sub-item({ text: 'Keyboards', link: '#' }).--disabled
+					+menu-sub-item({ text: 'Mouses', link: '#' })
 
-		### Nav item as dropdown button
-		+nav-item({
-			title: 'Products',
-			isDropdown: 'true'
-		})
-			### Nav sub item
-			+nav-sub-item({
-				title: 'Category name',
-				link: 'https://example.com'
-			}
+				+menu-item({ text: 'News', link: '#' })
+
+				+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
+
+		.header__burger.burger
+			span
+
+		.overlay
 
 mixin header(mods)
 	-
@@ -51,7 +46,7 @@ mixin header(mods)
 			block
 
 //- Navbar
-mixin nav(mods)
+mixin menu(mods)
 	-
 		let modsArray = '';
 
@@ -59,36 +54,40 @@ mixin nav(mods)
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}__body`;
+				modsArray = `${modsArray} menu__list--${modsList[i].trim()}`;
 			}
 		}
 
-	nav.menu__body(class=modsArray)&attributes(attributes)
-		ul.menu__list(data-burger='')
+	//- If attr mods not empty
+	if (typeof(mods) !== 'undefined')
+		ul.menu__list(class=modsArray)
+			block
+
+	else
+		ul.menu__list
 			block
 
 //- Nav item
-mixin nav-item(data)
+mixin menu-item(data)
 	//- Nav item includes dropdown
 	if (typeof(data.isDropdown) !== 'undefined')
-		li.menu__item(data-dropdown='')&attributes(attributes)
-			button.menu__title(type='button', data-dropdown-btn='')= data.title
-			ul.menu__sub-list
+		li.menu__item(data-dropdown='')
+			button.menu__link(type='button', data-dropdown-btn='')&attributes(attributes)= data.text
+			ul.menu__sub-list(class=data.active)
 				block
 
 	//- Nav item includes anchor mode
 	else if (typeof(data.anchor) !== 'undefined')
-		li.menu__item&attributes(attributes)
-			a.menu__title(href=data.link, data-anchor=data.anchor)= data.title
+		li.menu__item
+			a.menu__link(href=data.link, data-anchor=data.anchor)&attributes(attributes)= data.text
 				block
 
-	//- Nav item
 	else
-		li.menu__item&attributes(attributes)
-			a.menu__title(href=data.link)= data.title
+		li.menu__item
+			a.menu__link(href=data.link)&attributes(attributes)= data.text
 				block
 
 //- Nav sub-item mixin
-mixin nav-sub-item(data)
-	li.menu__sub-item&attributes(attributes)
-		a.menu__sub-link(href=data.link)= data.title
+mixin menu-sub-item(data)
+	li.menu__sub-item
+		a.menu__sub-link(href=data.link)&attributes(attributes)= data.text

@@ -1,140 +1,377 @@
 .header {
+	position: $header_position;
+	z-index: zindex(header);
+
+	width: 100%;
+
+	background: $header_background;
+	border-bottom: $border_default;
+	box-shadow: $boxShadow_default;
+
 	&__inner {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		min-height: $header_height;
+	}
+
+	&__logo {
+		z-index: zindex(default);
+
+		margin-right: auto;
+	}
+
+	&__nav {
+	}
+
+	&__burger {
 	}
 }
 
 .menu {
-	&__body {
+	font-family: $header_menu_fontFamily;
+
+	@include media-max(lg) {
+		position: fixed;
+		top: 0;
+		right: -100%;
+
+		width: 100%;
+
+		max-width: $header_burger_maxWidth;
+		height: 100%;
+		padding: $header_burger_padding;
+		@include adaptive(
+			'padding-left',
+			$header_burger_x_padding_max,
+			$header_burger_x_padding_min,
+			1
+		);
+		@include adaptive(
+			'padding-right',
+			$header_burger_x_padding_max,
+			$header_burger_x_padding_min,
+			1
+		);
+		overflow: auto;
+
+		background: $header_burger_menu_background;
+		border-left: $header_border;
+		box-shadow: $header_boxShadow;
+
+		transition: $header_burger_transition;
+
+		// Menu body overlay
+		&:before {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: zindex(default);
+
+			width: 100%;
+			height: $header_height;
+
+			background: $header_background;
+			border-bottom: $header_border;
+
+			content: '';
+		}
+
+		&.--show {
+			right: 0;
+		}
 	}
 
 	&__list {
+		@include media-min(lg) {
+			display: flex;
+		}
 	}
 
 	&__item {
+		position: relative;
+
+		@include media-min(lg) {
+			&:not(:last-child) {
+				margin-right: $header_item_margin;
+			}
+		}
 	}
 
-	&__title {
+	&__link {
+		padding: $header_link_padding;
+
+		color: $header_link_color;
+		font-weight: $header_link_fontWeight;
+
+		letter-spacing: $header_link_letterSpacing;
+
+		@include media-max(lg) {
+			display: inline-block;
+			padding-left: $header_burger_paddingLeft;
+
+			font-size: $header_burger_link_fontSize;
+
+			// Icon 'Minus'
+			&:before {
+				position: absolute;
+				top: $header_link_icon_top;
+				left: 0;
+
+				width: $header_link_icon_width;
+				height: $header_link_icon_height;
+
+				background: $header_link_color;
+				border-radius: $header_borderRadius;
+
+				content: '';
+			}
+
+			// Icon 'Plus' for dropdown buttons
+			&[data-dropdown-btn] {
+				&:after {
+					position: absolute;
+					top: $header_link_icon_top;
+					left: 0;
+
+					width: $header_link_icon_width;
+					height: $header_link_icon_height;
+
+					background: $header_link_color;
+					border-radius: $header_borderRadius;
+					transform: rotate(-90deg);
+
+					transition: $header_transition_min;
+
+					content: '';
+				}
+			}
+
+			&.--current {
+				&:before {
+					background: $header_link_color_current;
+				}
+			}
+
+			&.--show {
+				&:before,
+				&:after {
+					background: $header_link_color_hover;
+				}
+
+				&:after {
+					transform: rotate(0deg);
+				}
+
+				& ~ .menu__sub-list {
+					display: block;
+				}
+			}
+		}
+
+		@include media-min(lg) {
+			display: flex;
+			align-items: center;
+
+			font-size: $header_link_fontSize;
+
+			transition: $header_transition_min;
+
+			&[data-dropdown-btn] {
+				&:after {
+					margin-left: $header_link_icon_marginLeft;
+
+					border-top: 6px solid $header_link_color;
+					border-right: 6px solid transparent;
+					border-left: 6px solid transparent;
+					border-radius: radius(sm);
+
+					transition: $header_transition_max;
+
+					content: '';
+				}
+
+				&.--show {
+					&:after {
+						border-top: 6px solid $header_link_color_hover;
+						transform: rotate(-180deg);
+					}
+
+					& ~ .menu__sub-list {
+						transform: translateY(0px);
+						visibility: visible;
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		// Only for devices supports hover
+		@include media-hov {
+			&:hover {
+				color: $header_link_color_hover;
+
+				&[data-dropdown-btn]:after {
+					border-top: 6px solid $header_link_color_hover;
+				}
+			}
+
+			&:active {
+				color: $header_link_color_active;
+			}
+		}
+
+		&.--current {
+			color: $header_link_color_current;
+
+			pointer-events: none;
+		}
+
+		&.--show {
+			color: $header_link_color_hover;
+		}
 	}
 
 	&__sub {
 		&-list {
+			@include media-max(lg) {
+				display: none;
+			}
+
+			@include media-min(lg) {
+				position: absolute;
+				top: 100%;
+				z-index: zindex(dropdown);
+
+				padding: $header_subList_padding;
+
+				background: $white;
+				border: $header_subList_border;
+				border-radius: $header_borderRadius;
+				transform: translateY(10px);
+				visibility: hidden;
+				opacity: 0;
+
+				transition: $header_transition_max;
+			}
+		}
+
+		&-item {
 		}
 
 		&-link {
-		}
-	}
-}
-
-.burger {
-	@include media-max(lg) {
-		&__icon {
-			position: relative;
-			z-index: z_layers(logo);
-
-			display: block;
-			width: rem(35);
-			height: rem(24);
-
-			cursor: pointer;
-
-			& span,
-			&:before,
-			&:after {
-				position: absolute;
-				left: 0;
-
-				width: 100%;
-				height: rem(4);
-
-				background: $white;
-				border-radius: radius(sm);
-
-				transition: all 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
-			}
-
-			&:before,
-			&:after {
-				content: '';
-			}
-
-			&:before {
-				top: 0;
-			}
-
-			&:after {
-				bottom: 0;
-			}
-
-			& span {
-				top: 50%;
-
-				transform: scale(1) translate(0px, -50%);
-			}
-
-			&.--show {
-				& span {
-					transform: scale(0) translate(0px, -50%);
-				}
-
-				&:before {
-					top: 50%;
-
-					transform: rotate(45deg) translate(0px, -55%);
-				}
-
-				&:after {
-					bottom: 50%;
-
-					transform: rotate(-45deg) translate(0px, 55%);
-				}
-			}
-		}
-
-		&__body {
-			position: fixed;
-			top: 0;
-			right: -100%;
-
+			display: inline-block;
 			width: 100%;
 
-			max-width: rem(450);
-			height: 100%;
-			padding: rem(100) rem(150) 0 0;
-			@include adaptive('padding-left', 70, 30, 1);
-			overflow: auto;
+			color: $header_link_color;
+			font-weight: $header_subLink_fontWeight;
+			letter-spacing: $header_link_letterSpacing;
 
-			background: gray(900);
+			@include media-max(lg) {
+				padding: $header_subLink_padding_mob;
 
-			transition: right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-
-			// Menu body overlay
-			&:before {
-				position: fixed;
-				top: 0;
-				left: 0;
-				z-index: 2;
-
-				width: 100%;
-				height: rem(70);
-
-				background: dark(1);
-
-				content: '';
+				font-size: $header_subLink_fontSize_mob;
 			}
 
-			&.--show {
-				right: 0;
+			@include media-min(lg) {
+				padding: $header_subLink_padding_desk;
+
+				font-size: $header_subLink_fontSize_desk;
+
+				border-radius: radius(sm);
+
+				transition: $header_transition_min;
+			}
+
+			// Only for devices supports hover
+			@include media-hov {
+				&:hover {
+					color: $header_link_color_hover;
+
+					background: color.adjust($header_link_color_hover, $alpha: -0.9);
+				}
+
+				&:active {
+					background: color.adjust($header_link_color_hover, $alpha: -0.85);
+				}
+
+				&:focus-visible {
+					box-shadow: $header_link_focus;
+				}
+			}
+
+			&.--disabled {
+				color: $header_link_color_disabled;
+
+				pointer-events: none;
 			}
 		}
 	}
 }
 
-// Burger overlay
-.overlay {
-	@include media-max(lg) {
+@include media-max(lg) {
+	.burger {
+		position: relative;
+		z-index: zindex(default);
+
+		width: $header_burger_icon_width;
+		height: $header_burger_icon_height;
+
+		cursor: pointer;
+
+		& span,
+		&:before,
+		&:after {
+			position: absolute;
+			left: 0;
+
+			width: 100%;
+			height: $header_burger_icon_line_height;
+
+			background: $header_burger_icon_background;
+			border-radius: radius(sm);
+
+			transition: $header_burger_icon_transition;
+		}
+
+		&:before,
+		&:after {
+			content: '';
+		}
+
+		&:before {
+			top: 0;
+		}
+
+		&:after {
+			bottom: 0;
+		}
+
+		& span {
+			top: 50%;
+
+			transform: scale(1) translate(0px, -50%);
+		}
+
+		&.--show {
+			& span {
+				transform: scale(0) translate(0px, -50%);
+			}
+
+			&:before {
+				top: 50%;
+
+				transform: rotate(45deg) translate(0px, -55%);
+			}
+
+			&:after {
+				bottom: 50%;
+
+				transform: rotate(-45deg) translate(0px, 80%);
+			}
+		}
+	}
+
+	.overlay {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -143,7 +380,7 @@
 		width: 100%;
 		height: 100%;
 
-		background-color: dark(2);
+		background-color: $header_burger_overlay_background;
 		visibility: hidden;
 		opacity: 0;
 

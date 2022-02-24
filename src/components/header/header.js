@@ -1,121 +1,62 @@
-import { hideAnim, toggleAnim } from '../../scripts/modules/showHideAnimation.js';
+if (document.querySelector('header')) {
+	const header = document.querySelector('header');
+	const main = document.querySelector('main');
+	const burger = document.querySelector('.burger');
+	const dropdown = document.querySelectorAll('.menu__item[data-dropdown]');
+	const hasFixed = window.getComputedStyle(header).position === 'fixed';
 
-const header = document.querySelector('header');
-const main = document.querySelector('main');
-const burgerIcon = document.querySelector('.burger__icon');
-const burgerDropdown = document.querySelector('[data-burger]');
+	// If the header is fixed, indent main by the height of the header
+	if (hasFixed) {
+		main.style.marginTop = `${header.offsetHeight}px`;
+	}
 
-//* ### Functions ###
-//* ################################
+	// Burger menu
+	if (burger) {
+		const menu = document.querySelector('.menu');
+		const menuLink = document.querySelectorAll('.menu__link');
+		const overlay = document.querySelector('.overlay');
 
-// Working with burger dropdown body
-const initBurgerDropdownBody = (block, hidden = true) => {
-	const buttons = block.querySelectorAll('[data-dropdown-btn]');
+		burger.addEventListener('click', () => {
+			document.body.classList.toggle('--lock');
+			burger.classList.toggle('--show');
+			menu.classList.toggle('--show');
+			overlay.classList.toggle('--show');
 
-	if (buttons.length > 0) {
-		buttons.forEach((btn) => {
-			// prettier-ignore
-			hidden && !btn.classList.contains('--show') ?
-				btn.nextElementSibling.hidden = true :
-				btn.nextElementSibling.hidden = false;
+			// Hide all opened dropdown lists when closing burger menu
+			if (!burger.classList.contains('--show')) {
+				menuLink.forEach((title) => {
+					title.classList.remove('--show');
+				});
+			}
 		});
 	}
-};
 
-// Sets action accordion for burger dropdowns
-const setBurgerDropdownAction = (e) => {
-	const el = e.target;
+	// Dropdown list
+	if (dropdown.length > 0) {
+		const isDisabled = document.querySelectorAll('.menu__sub-link.--disabled');
 
-	if (el.hasAttribute('data-dropdown-btn') || el.closest('[data-dropdown-btn]')) {
-		// prettier-ignore
-		const button = el.hasAttribute('data-dropdown-btn') ? el : el.closest('[data-dropdown-btn]');
-		const block = button.closest('[data-burger]');
-
-		if (!block.querySelectorAll('.--slide').length) {
-			if (!button.classList.contains('--show')) {
-				hideBurgerDropdownsBody(block);
-			}
-
-			button.classList.toggle('--show');
-			toggleAnim(button.nextElementSibling, 500);
-		}
-
-		e.preventDefault();
-	}
-};
-
-// Hide inactive burger dropdowns
-const hideBurgerDropdownsBody = (block) => {
-	const activedButton = block.querySelector('[data-dropdown-btn].--show');
-
-	if (activedButton) {
-		activedButton.classList.remove('--show');
-		hideAnim(activedButton.nextElementSibling, 500);
-	}
-};
-
-// Initialization burger dropdowns
-const initBurgerDropdowns = (block) => {
-	initBurgerDropdownBody(block);
-	block.addEventListener('click', setBurgerDropdownAction);
-};
-
-//* ### Body ###
-//* ################################
-// If the header is fixed, indent main by the height of the header
-main.style.marginTop = `${header.offsetHeight}px`;
-
-// Menu icon
-if (burgerIcon) {
-	const burgerBody = document.querySelector('.burger__body');
-	const menuTitle = document.querySelectorAll('.menu__title');
-	const menuSubList = document.querySelectorAll('.menu__sub-list');
-	const overlay = document.querySelector('.overlay');
-
-	burgerIcon.addEventListener('click', () => {
-		document.body.classList.toggle('--lock');
-		burgerIcon.classList.toggle('--show');
-		burgerBody.classList.toggle('--show');
-		overlay.classList.toggle('--show');
-
-		if (!burgerIcon.classList.contains('--show')) {
-			menuTitle.forEach((title) => {
-				title.classList.remove('--show');
-
-				menuSubList.forEach((list) => {
-					hideAnim(list, 500);
-				});
+		// If there is a disabled item
+		if (isDisabled.length > 0) {
+			isDisabled.forEach((link) => {
+				link.setAttribute('tabindex', '-1');
 			});
 		}
-	});
-}
 
-// Init burger (Only for max width 992px)
-if (burgerDropdown && window.matchMedia('(max-width: 991.98px)').matches) {
-	initBurgerDropdowns(burgerDropdown);
-}
+		document.addEventListener('click', (e) => {
+			const isDropdownButton = e.target.matches('[data-dropdown-btn]');
+			let currentDropdown;
 
-// Init dropdown (Only for min width 992px)
-if (window.matchMedia('(min-width: 991.98px)').matches) {
-	document.addEventListener('click', (e) => {
-		const isDropdownButton = e.target.matches('[data-dropdown-btn]');
-		let currentDropdown;
+			if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
 
-		if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
+			if (isDropdownButton) {
+				currentDropdown = e.target.closest('[data-dropdown-btn]');
+				currentDropdown.classList.toggle('--show');
+			}
 
-		if (isDropdownButton) {
-			currentDropdown = e.target.closest('[data-dropdown]');
-			currentDropdown.classList.toggle('--show');
-		}
-
-		document.querySelectorAll('[data-dropdown].--show').forEach((dropdown) => {
-			if (dropdown === currentDropdown) return;
-			dropdown.classList.remove('--show');
+			document.querySelectorAll('[data-dropdown-btn].--show').forEach((btn) => {
+				if (btn === currentDropdown) return;
+				btn.classList.remove('--show');
+			});
 		});
-	});
+	}
 }
-
-// Don't ask why it's here :3
-window
-	.matchMedia('(min-width: 991.98px)')
-	.addEventListener('change', () => window.location.reload(true));
