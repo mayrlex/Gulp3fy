@@ -1,7 +1,7 @@
 // Z Layers
-@function z-layers($key) {
-	@if map-has-key($z-layers, $key) {
-		@return map-get($z-layers, $key);
+@function zindex($key) {
+	@if map-has-key($zIndex, $key) {
+		@return map-get($zIndex, $key);
 	}
 
 	@warn 'Key `#{$key}` not found in $z-layers map.';
