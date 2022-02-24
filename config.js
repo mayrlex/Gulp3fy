@@ -11,15 +11,15 @@ const task = {
 	images:  true,
 	sprites: true,
 	favicon: true,
-	files:   true,
+	files:   false,
 }
 
 //##############################
 // Server settings
 //##############################
 const serverConfig = {
-	port: 3300,
-	open: false,
+	port:   3300,
+	open:   false,
 	notify: false,
 }
 
@@ -27,18 +27,18 @@ const serverConfig = {
 // FTP Settings
 //##############################
 let ftpConfig = {
-	folder: `test`, // Folder on the server
-	host: '',       // Address
-	user: '',       // Username
-	password: '',   // Password
-	parallel: 5,    // Number of concurrent streams
+	folder:   `test`, // Folder on the server
+	host:     '',     // Address
+	user:     '',     // Username
+	password: '',     // Password
+	parallel: 5,      // Number of concurrent streams
 };
 
 //##############################
 // Markup settings
 //##############################
 const markupConfig = {
-	pretty: true,
+	pretty:  true,
 	verbose: true,
 }
 
@@ -47,25 +47,25 @@ const markupConfig = {
 //##############################
 const stylesConfig = {
 	sass: {
-		outputStyle: 'expanded',
+		outputStyle:         'expanded',
 	},
 	autoprefixer: {
-		grid: true,
-		cascade: true,
+		grid:                true,
+		cascade:             true,
 		overrideBrowserlist: 'last 5 version',
 	},
-	cleanlvl: 1,
+	cleanlvl:                1,
 }
 
 //##############################
 // Imagemin settings
 //##############################
 const imgminConfig = {
-	progressive: true,
+	progressive:       true,
 	svg: {
 		removeViewBox: false,
 	},
-	interlaced: true,
+	interlaced:        true,
 	optimizationLevel: 3,
 }
 
@@ -78,7 +78,7 @@ const spriteConfig = {
 		multi: true,
 	},
 	removeAttrs: {
-		mono: ['class', 'data-name', 'fill.*', 'stroke.*'],
+		mono:  ['class', 'data-name', 'fill.*', 'stroke.*'],
 		multi: ['class', 'data-name'],
 	}
 }
