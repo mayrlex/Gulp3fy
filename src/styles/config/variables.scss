@@ -193,12 +193,16 @@ $btn_group_padding:            rem(10) rem(15);
 
 
 // Spoiler
-$spoiler_background:           dark(1);
+$spoiler_background:           $white;
+$spoiler_border:               $border_default;
 $spoiler_borderRadius:         radius(sm);
+$spoiler_boxShadow:            $boxShadow_default;
+$spoiler_content_color:        gray(700);
 $spoiler_content_fontSize_max: 16;
 $spoiler_content_fontSize_min: 14;
 $spoiler_gap_max:              10;
 $spoiler_gap_min:              5;
+$spoiler_focus:                $focus_primary;
 $spoiler_icon_right_max:       20;
 $spoiler_icon_right_min:       10;
 $spoiler_icon_top_max:         25;
@@ -207,7 +211,9 @@ $spoiler_icon_height:          rem(3);
 $spoiler_icon_width_max:       20;
 $spoiler_icon_width_min:       16;
 $spoiler_letterSpacing:        $letterSpacing_default;
-$spoiler_title_borderRadius:   $spoiler_borderRadius;
+$spoiler_title_background:     $white;
+$spoiler_title_color:          dark(1);
+$spoiler_title_color_hover:    primary(500);
 $spoiler_title_fontSize_max:   18;
 $spoiler_title_fontSize_min:   16;
 $spoiler_title_fontWeight:     600;

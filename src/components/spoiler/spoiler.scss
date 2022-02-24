@@ -1,17 +1,12 @@
 .spoiler {
 	&__item {
-		background-color: $spoiler_background;
-
+		background: $spoiler_background;
+		border: $spoiler_border;
 		border-radius: $spoiler_borderRadius;
+		box-shadow: $spoiler_boxShadow;
 
 		&:not(:last-child) {
 			@include adaptive('margin-bottom', $spoiler_gap_max, $spoiler_gap_min, 1);
-		}
-
-		@include media-min(lg) {
-			&:hover .spoiler__title:not(.--show) {
-				background-color: primary(600);
-			}
 		}
 	}
 
@@ -21,27 +16,34 @@
 		width: 100%;
 		@include adaptive('padding', $spoiler_title_padding_max, $spoiler_title_padding_min, 1);
 
-		color: $white;
+		color: $spoiler_title_color;
 		font-weight: $spoiler_title_fontWeight;
 		@include adaptive('font-size', $spoiler_title_fontSize_max, $spoiler_title_fontSize_min, 1);
 		font-family: $fontFamily_secondary;
 		letter-spacing: $spoiler_letterSpacing;
 		text-align: left;
 
-		background-color: primary(500);
-
-		border-radius: $spoiler_title_borderRadius;
+		background: $spoiler_title_background;
+		border-radius: $spoiler_borderRadius;
 
 		transition: $spoiler_transition;
 
-		@include media-min(lg) {
+		@include media-hov {
+			&:hover {
+				color: $spoiler_title_color_hover;
+
+				background: color.adjust($spoiler_title_color_hover, $alpha: -0.9);
+			}
+
 			&:focus-visible {
-				box-shadow: $focus_primary;
+				box-shadow: $spoiler_focus;
 			}
 		}
 
 		&.--show {
-			background-color: primary(600);
+			color: $spoiler_title_color_hover;
+
+			background: color.adjust($spoiler_title_color_hover, $alpha: -0.85);
 		}
 	}
 
@@ -55,7 +57,7 @@
 			@include adaptive('width', $spoiler_icon_width_max, $spoiler_icon_width_min, 1);
 			height: $spoiler_icon_height;
 
-			background: $white;
+			background: $spoiler_title_color;
 			border-radius: radius(sm);
 
 			transition: $spoiler_title_transition;
@@ -67,8 +69,24 @@
 			transform: rotate(-90deg);
 		}
 
-		&.--show:after {
-			transform: rotate(0deg);
+		&.--show {
+			&:before,
+			&:after {
+				background: $spoiler_title_color_hover;
+			}
+
+			&:after {
+				transform: rotate(0deg);
+			}
+		}
+
+		@include media-hov {
+			&:hover {
+				&:before,
+				&:after {
+					background: $spoiler_title_color_hover;
+				}
+			}
 		}
 	}
 
@@ -78,7 +96,7 @@
 		@include adaptive('padding-bottom', $spoiler_y_padding_max, $spoiler_y_padding_min, 1);
 		@include adaptive('padding-left', $spoiler_x_padding_max, $spoiler_x_padding_min, 1);
 
-		color: $white;
+		color: $spoiler_content_color;
 		@include adaptive(
 			'font-size',
 			$spoiler_content_fontSize_max,
