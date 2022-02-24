@@ -81,6 +81,12 @@ $fields: (
 	}
 }
 
+@mixin media-hov {
+	@media (any-hover: hover) {
+		@content;
+	}
+}
+
 // Adaptive mixin
 $maxWidth: 1920;
 $mxwContainer: mxw-container(xxl);
