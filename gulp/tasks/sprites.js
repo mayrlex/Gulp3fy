@@ -86,5 +86,7 @@ const spriteMulti = () =>
 
 		.pipe(gulp.dest(path.icons.dest));
 
-const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
-export default spritesBuild;
+export const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
+export const spritesWatch = () => {
+	gulp.watch([path.icons.watch.mono, path.icons.watch.multi], spritesBuild);
+};

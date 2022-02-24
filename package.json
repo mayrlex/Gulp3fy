@@ -9,7 +9,6 @@
 		"build": "gulp prod --prod",
 		"zip": "gulp archiving --prod",
 		"deploy": "gulp deploy --prod",
-		"sprite": "gulp spritesBuild",
 		"eslint": "eslint src/scripts --ext .js",
 		"eslint:fix": "npm run eslint -- --fix",
 		"stylelint": "stylelint src/styles .scss",
