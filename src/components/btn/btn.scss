@@ -106,6 +106,10 @@
 			background: none;
 			outline: rem($btn_outlineWidth) solid secondary(300);
 			cursor: not-allowed;
+
+			.icon {
+				fill: $disabled_secondary;
+			}
 		}
 
 		input[type='button'] {
@@ -149,6 +153,10 @@
 			background: none;
 
 			cursor: not-allowed;
+
+			.icon {
+				fill: $disabled_primary;
+			}
 		}
 
 		input[type='button'] {
@@ -274,6 +282,10 @@
 				background: none;
 
 				cursor: not-allowed;
+
+				.icon {
+					fill: $disabled_primary;
+				}
 			}
 
 			.icon {
