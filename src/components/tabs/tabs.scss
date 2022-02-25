@@ -5,64 +5,35 @@
 		font-size: 0;
 
 		&-btn {
-			@include adaptive('padding', $tab_btn_padding_max, $tab_btn_padding_min, 1);
-			@include adaptive(
-				'padding-right',
-				$tab_btn_paddingRight_max,
-				$tab_btn_paddingRight_min,
-				1
-			);
-			@include adaptive(
-				'padding-left',
-				$tab_btn_paddingLeft_max,
-				$tab_btn_paddingLeft_min,
-				1
-			);
+			padding: $tab_btn_padding;
+			@include adaptive('padding-right', $tab_btn_padding_x_max, $tab_btn_padding_x_min, 1);
+			@include adaptive('padding-left', $tab_btn_padding_x_max, $tab_btn_padding_x_min, 1);
 
 			color: $tab_color;
 			font-weight: $tab_fontWeight;
-			font-family: $fontFamily_secondary;
+			@include adaptive('font-size', $tab_fontSize_max, $tab_fontSize_min, 1);
+			font-family: $tab_fontFamily;
 
 			border-radius: $tab_borderRadius;
 
 			transition: $tab_transition;
-			@include adaptive('font-size', $tab_fontSize_max, $tab_fontSize_min, 1);
 
 			@include media-min(lg) {
 				&:hover {
 					color: $tab_color_hover;
+
+					background: $tab_background_hover;
 				}
 
 				&:focus-visible {
-					margin-bottom: $tab_btn_marginBottom_focus;
-
-					box-shadow: $focus_primary;
+					box-shadow: $tab_focus;
 				}
 			}
 
-			&:not(.--active) {
-				padding-bottom: rem($tab_btn_padding_max);
-			}
-
-			&.--active:not(:focus-visible) {
+			&.--active {
 				color: $tab_color_hover;
 
-				&:after {
-					display: block;
-					width: 100%;
-					height: rem($tab_btn_divider_height);
-					@include adaptive(
-						'margin-top',
-						$tab_btn_divider_marginTop_max,
-						$tab_btn_divider_marginTop_min,
-						1
-					);
-
-					background: primary(500);
-					border-radius: radius(xs);
-
-					content: '';
-				}
+				background: $tab_active;
 			}
 		}
 	}
@@ -76,7 +47,7 @@
 
 		@include media-min(lg) {
 			&:focus-visible {
-				box-shadow: $focus_primary;
+				box-shadow: $tab_focus;
 			}
 		}
 

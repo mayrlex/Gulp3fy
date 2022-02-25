@@ -134,6 +134,8 @@ $fontFamily_secondary: 'Nunito', sans-serif;
 $focus_primary:   0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
 $focus_secondary: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.75);
 $focus_text:      0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
+$hover_color: color.adjust(primary(500), $alpha: -0.9);
+$active_color: color.adjust(primary(500), $alpha: -0.8);
 
 $icon_width: rem(16);
 $icon_height: $icon_width;
@@ -227,24 +229,25 @@ $spoiler_y_padding_max:        25;
 $spoiler_y_padding_min:        15;
 
 // Tab
-$tab_borderRadius:              radius(sm);
+$tab_active:                    $active_color;
+$tab_borderRadius:              radius(sm) radius(sm) 0 0;
 $tab_btn_divider_height:        2;
 $tab_btn_divider_marginTop_max: 10;
 $tab_btn_divider_marginTop_min: 2;
-$tab_btn_padding_max:           10;
-$tab_btn_marginBottom_focus:    rem($tab_btn_padding_max + $tab_btn_divider_height);
+$tab_btn_padding:               rem(10);
 $tab_btn_padding_min:           5;
-$tab_btn_paddingLeft_max:       15;
-$tab_btn_paddingLeft_min:       10;
-$tab_btn_paddingRight_max:      15;
-$tab_btn_paddingRight_min:      10;
+$tab_btn_padding_x_max:         25;
+$tab_btn_padding_x_min:         15;
+$tab_background_hover:          $hover_color;
 $tab_color:                     gray(600);
-$tab_color_hover:               dark(1);
+$tab_color_hover:               primary(500);
+$tab_focus:                     $focus_primary;
+$tab_fontFamily:                $fontFamily_secondary;
 $tab_fontSize_max:              18;
 $tab_fontSize_min:              16;
 $tab_fontWeight:                600;
 $tab_menu_marginBottom:         rem(10);
-$tab_transition:                color $transition_default;
+$tab_transition:                $transition_default;
 
 // Badges
 $badges_color:         $white;
