@@ -134,6 +134,8 @@ $fontFamily_secondary: 'Nunito', sans-serif;
 $focus_primary:   0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
 $focus_secondary: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.75);
 $focus_text:      0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75);
+$disabled_primary: primary(200);
+$disabled_secondary: secondary(300);
 $hover_color: color.adjust(primary(500), $alpha: -0.9);
 $active_color: color.adjust(primary(500), $alpha: -0.8);
 
@@ -170,29 +172,40 @@ $breadcrumbs_padding:          rem(5) rem(15);
 $breadcrumbs_transition:       $transition_default;
 
 // Button
-$btn_borderRadius:      radius(sm);
-$btn_color:             $white;
-$btn_fontSize_max:      18;
-$btn_fontSize_min:      16;
-$btn_fontWeight:        600;
-$btn_icon_borderRadius: radius(xxl);
-$btn_icon_margin_max:   12;
-$btn_icon_margin_min:   8;
-$btn_icon_padding_max:  14;
-$btn_icon_padding_min:  11;
-$btn_letterSpacing:     $letterSpacing_default;
-$btn_outlineWidth:      2;
-$btn_transition:        $transition_default;
-$btn_x_padding_max:     25;
-$btn_x_padding_min:     20;
-$btn_y_padding_max:     10;
-$btn_y_padding_min:     8;
-
-// Group button
-$btn_group_borderRadius_first: radius(sm) 0 0 radius(sm);
-$btn_group_borderRadius_last:  0 radius(sm) radius(sm) 0;
-$btn_group_padding:            rem(10) rem(15);
-
+$btn_borderRadius:         radius(sm);
+$btn_fontSize_max:         18;
+$btn_fontSize_min:         16;
+$btn_fontWeight:           600;
+$btn_icon_borderRadius:    radius(xxl);
+$btn_icon_margin_max:      12;
+$btn_icon_margin_min:      8;
+$btn_icon_padding_max:     14;
+$btn_icon_padding_min:     11;
+$btn_letterSpacing:        $letterSpacing_default;
+$btn_outlineWidth:         2;
+$btn_primary_background:   primary(500);
+$btn_primary_color:        $white;
+$btn_primary_active:       primary(700);
+$btn_primary_hover:        primary(600);
+$btn_primary_disabled:     $disabled_primary;
+$btn_primary_focus:        $focus_primary;
+$btn_secondary_active:     secondary(600);
+$btn_secondary_background: transparent;
+$btn_secondary_color:      secondary(500);
+$btn_secondary_disabled:   $disabled_secondary;
+$btn_secondary_focus:      $focus_secondary;
+$btn_secondary_hover:      $white;
+$btn_secondary_outline:    $btn_secondary_color;
+$btn_text_active:          $active_color;
+$btn_text_color:           primary(500);
+$btn_text_disabled:        $btn_primary_disabled;
+$btn_text_focus:           $focus_text;
+$btn_text_hover:           $hover_color;
+$btn_transition:           $transition_default;
+$btn_padding_x_max:        25;
+$btn_padding_x_min:        20;
+$btn_padding_y_max:        10;
+$btn_padding_y_min:        8;
 
 // Spoiler
 $spoiler_background:           $white;

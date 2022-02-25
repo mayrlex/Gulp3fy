@@ -1,9 +1,6 @@
 .btn {
-	display: inline-flex;
 	align-items: center;
 	overflow: hidden;
-
-	color: $white;
 
 	font-weight: $btn_fontWeight;
 	@include adaptive('font-size', $btn_fontSize_max, $btn_fontSize_min, 1);
@@ -15,315 +12,69 @@
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	background-image: none;
 	border-radius: $btn_borderRadius;
-	cursor: pointer;
-
-	transition: $btn_transition;
-
-	user-select: none;
 
 	// Primary button
 	&__primary {
-		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
-		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
-		color: $white;
-
-		background-color: primary(500);
-
-		@include media-min(lg) {
-			&:hover {
-				background-color: primary(600);
-			}
-
-			&:active {
-				background-color: primary(700);
-			}
-
-			&:focus-visible {
-				background-color: primary(600);
-				box-shadow: $focus_primary;
-			}
-		}
-
-		&.--disabled,
-		&:disabled {
-			background-color: primary(200);
-			cursor: not-allowed;
-		}
-
-		.icon {
-			fill: $white;
-		}
+		color: $btn_primary_color;
 	}
 
 	// Secondary button
 	&__secondary {
-		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
-		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
-		color: secondary(500);
+		color: $btn_secondary_color;
 
-		background: transparent;
-		outline: rem($btn_outlineWidth) solid secondary(500);
-		outline-offset: rem(-$btn_outlineWidth);
-
-		@include media-min(lg) {
+		@include media-hov {
 			&:hover {
-				color: $white;
-
-				background-color: secondary(500);
-				outline: rem($btn_outlineWidth) solid secondary(500);
+				color: $btn_secondary_hover;
 
 				input[type='button'] {
-					color: $white;
+					color: $btn_secondary_hover;
 				}
-
-				.icon {
-					fill: $white;
-				}
-			}
-
-			&:active {
-				background-color: secondary(600);
-				outline: rem($btn_outlineWidth) solid secondary(600);
-			}
-
-			&:focus-visible {
-				box-shadow: $focus_secondary;
 			}
 		}
 
-		&.--disabled,
-		&:disabled {
-			color: secondary(300);
-
-			background: none;
-			outline: rem($btn_outlineWidth) solid secondary(300);
-			cursor: not-allowed;
-
-			.icon {
-				fill: $disabled_secondary;
-			}
+		&.--disabled {
+			color: $disabled_secondary;
 		}
 
 		input[type='button'] {
-			color: secondary(500);
-		}
-
-		.icon {
-			fill: secondary(500);
+			color: $btn_secondary_color;
 		}
 	}
 
 	// Text button
 	&__text {
-		@include adaptive('padding-top', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-right', $btn_x_padding_max, $btn_x_padding_min, 1);
-		@include adaptive('padding-bottom', $btn_y_padding_max, $btn_y_padding_min, 1);
-		@include adaptive('padding-left', $btn_x_padding_max, $btn_x_padding_min, 1);
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min, 1);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
-		color: primary(500);
+		color: $btn_text_color;
 
-		background: transparent;
-
-		@include media-min(lg) {
-			&:hover {
-				background-color: color.adjust(primary(500), $alpha: -0.9);
-			}
-
-			&:active {
-				background-color: color.adjust(primary(500), $alpha: -0.85);
-			}
-
-			&:focus-visible {
-				box-shadow: $focus_text;
-			}
-		}
-
-		&.--disabled,
-		&:disabled {
-			color: primary(200);
-
-			background: none;
-
-			cursor: not-allowed;
-
-			.icon {
-				fill: $disabled_primary;
-			}
+		&.--disabled {
+			color: $btn_text_disabled;
 		}
 
 		input[type='button'] {
-			color: primary(500);
-		}
-
-		.icon {
-			fill: primary(500);
+			color: $btn_text_color;
 		}
 	}
 
 	// Icon button
 	&__icon {
-		display: inline-flex;
+		@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
 
-		background-image: none;
 		border-radius: $btn_icon_borderRadius;
-		cursor: pointer;
-
-		transition: $btn_transition;
-
-		user-select: none;
-
-		// Icon primary button
-		&-primary {
-			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
-
-			background-color: primary(500);
-
-			@include media-min(lg) {
-				&:hover {
-					background-color: primary(600);
-				}
-
-				&:active {
-					background-color: primary(700);
-				}
-
-				&:focus-visible {
-					background-color: primary(600);
-					box-shadow: $focus_primary;
-				}
-			}
-
-			&.--disabled,
-			&:disabled {
-				background-color: primary(200);
-				cursor: not-allowed;
-			}
-
-			.icon {
-				fill: $white;
-			}
-		}
-
-		// Icon secondary button
-		&-secondary {
-			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
-
-			outline: rem($btn_outlineWidth) solid secondary(500);
-			outline-offset: rem(-$btn_outlineWidth);
-
-			@include media-min(lg) {
-				&:hover {
-					color: $white;
-
-					background-color: secondary(500);
-					outline: rem($btn_outlineWidth) solid secondary(500);
-
-					.icon {
-						fill: $white;
-					}
-				}
-
-				&:active {
-					background-color: secondary(600);
-					outline: rem($btn_outlineWidth) solid secondary(600);
-				}
-
-				&:focus-visible {
-					box-shadow: $focus_secondary;
-				}
-			}
-
-			&.--disabled,
-			&:disabled {
-				background: none;
-				outline: rem($btn_outlineWidth) solid secondary(300);
-				cursor: not-allowed;
-
-				.icon {
-					fill: secondary(300);
-				}
-			}
-
-			.icon {
-				fill: secondary(500);
-			}
-		}
-
-		// Icon text button
-		&-text {
-			@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
-
-			@include media-min(lg) {
-				&:hover {
-					background-color: color.adjust(primary(500), $alpha: -0.9);
-				}
-
-				&:active {
-					background-color: color.adjust(primary(500), $alpha: -0.85);
-				}
-
-				&:focus-visible {
-					box-shadow: $focus_text;
-				}
-			}
-
-			&.--disabled,
-			&:disabled {
-				color: primary(300);
-
-				background: none;
-
-				cursor: not-allowed;
-
-				.icon {
-					fill: $disabled_primary;
-				}
-			}
-
-			.icon {
-				fill: primary(500);
-			}
-		}
-	}
-
-	// Close button
-	&__close {
-		position: relative;
-
-		display: block;
-		width: rem(24);
-		height: rem(24);
-
-		cursor: pointer;
-
-		&:before,
-		&:after {
-			position: absolute;
-			left: 0;
-
-			width: 100%;
-			height: rem(3);
-
-			background: secondary(600);
-
-			content: '';
-		}
-
-		&:before {
-			transform: rotate(45deg);
-		}
-
-		&:after {
-			transform: rotate(-45deg);
-		}
 	}
 
 	&__primary,
@@ -335,25 +86,119 @@
 	}
 }
 
-// Group buttons
-.btn-group {
-	font-size: 0;
+// btn & btn_icon
+.btn,
+.btn__icon {
+	display: inline-flex;
 
-	&__item {
-		position: relative;
+	background-image: none;
+	cursor: pointer;
 
-		padding: $btn_group_padding;
+	transition: $btn_transition;
 
-		&:first-child {
-			border-radius: $btn_group_borderRadius_first;
+	user-select: none;
+}
+
+// Primary buttons
+.btn__primary,
+.btn__icon-primary {
+	background: $btn_primary_background;
+
+	@include media-hov {
+		&:hover {
+			background: $btn_primary_hover;
 		}
 
-		&:last-child {
-			border-radius: $btn_group_borderRadius_last;
+		&:active {
+			background: $btn_primary_active;
 		}
 
 		&:focus-visible {
-			z-index: 2;
+			box-shadow: $btn_primary_focus;
 		}
+	}
+
+	&.--disabled {
+		background: $btn_primary_disabled;
+		cursor: not-allowed;
+	}
+
+	.icon {
+		fill: $btn_primary_color;
+	}
+}
+
+// Secondary buttons
+.btn__secondary,
+.btn__icon-secondary {
+	background: $btn_secondary_background;
+	outline: rem($btn_outlineWidth) solid $btn_secondary_outline;
+	outline-offset: rem(-$btn_outlineWidth);
+
+	@include media-hov {
+		&:hover {
+			background: $btn_secondary_color;
+
+			.icon {
+				fill: $btn_secondary_hover;
+			}
+		}
+
+		&:active {
+			background: $btn_secondary_active;
+			outline: rem($btn_outlineWidth) solid $btn_secondary_active;
+		}
+
+		&:focus-visible {
+			box-shadow: $btn_secondary_focus;
+		}
+	}
+
+	&.--disabled {
+		background: none;
+		outline: rem($btn_outlineWidth) solid $disabled_secondary;
+		cursor: not-allowed;
+
+		.icon {
+			fill: $btn_secondary_disabled;
+		}
+	}
+
+	.icon {
+		fill: $btn_secondary_color;
+	}
+}
+
+// Text buttons
+.btn__text,
+.btn__icon-text {
+	background: transparent;
+
+	@include media-hov {
+		&:hover {
+			background: $btn_text_hover;
+		}
+
+		&:active {
+			background: $btn_text_active;
+		}
+
+		&:focus-visible {
+			box-shadow: $btn_text_focus;
+		}
+	}
+
+	&.--disabled {
+		background: none;
+
+		cursor: not-allowed;
+
+		.icon {
+			fill: $btn_text_disabled;
+		}
+	}
+
+	.icon {
+		fill: $btn_text_color;
 	}
 }
