@@ -1,59 +1,42 @@
 // Breakpoints
-$break_xs:   320;
-$break_sm:   575.98;
-$break_md:   767.98;
-$break_lg:   991.98;
-$break_xl:   1199.98;
-$break_xxl:  1399.98;
-$break_xxxl: 1599.98;
+$bp_xs:   320;
+$bp_sm:   576;
+$bp_md:   768;
+$bp_lg:   992;
+$bp_xl:   1200;
+$bp_xxl:  1400;
 
 // Breackpoints map
 $breakpoints: (
-	xs:   $break_xs,
-	sm:   $break_sm,
-	md:   $break_md,
-	lg:   $break_lg,
-	xl:   $break_xl,
-	xxl:  $break_xxl,
-	xxxl: $break_xxxl,
+	xs:   $bp_xs - 0.2,
+	sm:   $bp_sm - 0.2,
+	md:   $bp_md - 0.2,
+	lg:   $bp_lg - 0.2,
+	xl:   $bp_xl - 0.2,
+	xxl:  $bp_xxl - 0.2,
 );
 
 // Max width container map
-$containerMaxWidth: (
-	sm:    $break_sm - 30,
-	md:    $break_md - 30,
-	lg:    $break_lg - 40,
-	xl:    $break_xl - 60,
-	xxl:   $break_xxl - 80,
-	xxxl:  $break_xxxl - 80,
-	fluid: 100%,
+$containerWidth: (
+	xs:  100%,
+	sm:  $bp_sm - 46,
+	md:  $bp_md - 46,
+	lg:  $bp_lg - 52,
+	xl:  $bp_xl - 56,
+	xxl: $bp_xxl - 76,
 );
 
-// $fields: 0 15px;
-$fields: (
-	default: 0 30px,
-	min: 0 15px,
-);
+$fields: 0 rem(10);
 
 // Get max width container map
-@function mxw-container($key) {
-	@if map-has-key($containerMaxWidth, $key) {
-		@return map-get($containerMaxWidth, $key);
+@function container($key) {
+	@if map-has-key($containerWidth, $key) {
+		@return map-get($containerWidth, $key);
 	}
 
-	@warn 'Size `#{$key}` not found in $containerMaxWidt map.';
+	@warn 'Size `#{$key}` not found in $containerWidth map.';
 	@return null;
 }
-
-@function fields($key) {
-	@if map-has-key($fields, $key) {
-		@return map-get($fields, $key);
-	}
-
-	@warn 'Size `#{$key}` not found in $fields map.';
-	@return null;
-}
-
 
 // Media queries mixins
 @mixin media-min($key) {
@@ -89,27 +72,31 @@ $fields: (
 
 // Adaptive mixin
 $maxWidth: 1920;
-$mxwContainer: mxw-container(xxl);
-$mxwContainerEm: em(1400 - 80);
+$mxwContainer: container(xxl);
 
-@mixin adaptive($property, $startSize, $minSize, $type) {
-	$addSize: $startSize - $minSize;
+@mixin adaptive($property, $maxValue, $minValue, $mode) {
+	$addSize: $maxValue - $minValue;
 
-	@if $type == 1 {
-		#{$property}: rem($startSize);
+	// Max width
+	@if $mode == 1 {
+		#{$property}: rem($maxValue);
 
-		@media (max-width: #{$mxwContainerEm}) {
-			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$mxwContainer - 320}));
+		@media (max-width: #{em($mxwContainer)}) {
+			#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$mxwContainer - 320}));
 		}
-	} @else if $type == 2 {
-		#{$property}: rem($startSize);
 
-		@media (min-width: #{$mxwContainerEm}) {
+		// Min width
+	} @else if $mode == 2 {
+		#{$property}: rem($maxValue);
+
+		@media (min-width: #{em($mxwContainer)}) {
 			#{$property}: calc(
-				#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
+				#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
 			);
 		}
+
+		// Always
 	} @else {
-		#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
+		#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
 	}
 }

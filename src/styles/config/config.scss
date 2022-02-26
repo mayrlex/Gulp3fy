@@ -131,29 +131,33 @@ img {
 
 	// < 576px
 	@include media-max(sm) {
-		max-width: mxw-container(fluid);
-		padding: fields(min) !important;
+		max-width: container(xs);
+		padding: $fields;
 	}
 
-	// < 992px
-	@include media-max(lg) {
-		max-width: mxw-container(fluid);
-		padding: fields(default);
+	// > 576px
+	@include media-min(sm) {
+		max-width: rem(container(sm));
+	}
+
+	// > 768px
+	@include media-min(md) {
+		max-width: rem(container(md));
 	}
 
 	// > 992px
 	@include media-min(lg) {
-		max-width: rem(mxw-container(lg));
+		max-width: rem(container(lg));
 	}
 
 	// > 1200px
 	@include media-min(xl) {
-		max-width: rem(mxw-container(xl));
+		max-width: rem(container(xl));
 	}
 
 	// > 1400px
 	@include media-min(xxl) {
-		max-width: rem(mxw-container(xxl));
+		max-width: rem(container(xxl));
 	}
 }
 
