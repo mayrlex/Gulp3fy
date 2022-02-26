@@ -100,7 +100,7 @@
 	&__link {
 		padding: $header_link_padding;
 
-		color: $header_link_color;
+		color: $header_color;
 		font-weight: $header_link_fontWeight;
 
 		letter-spacing: $header_link_letterSpacing;
@@ -120,7 +120,7 @@
 				width: $header_link_icon_width;
 				height: $header_link_icon_height;
 
-				background: $header_link_color;
+				background: $header_color;
 				border-radius: $header_borderRadius;
 
 				content: '';
@@ -136,7 +136,7 @@
 					width: $header_link_icon_width;
 					height: $header_link_icon_height;
 
-					background: $header_link_color;
+					background: $header_color;
 					border-radius: $header_borderRadius;
 					transform: rotate(-90deg);
 
@@ -148,14 +148,14 @@
 
 			&.--current {
 				&:before {
-					background: $header_link_color_current;
+					background: $header_color_current;
 				}
 			}
 
 			&.--show {
 				&:before,
 				&:after {
-					background: $header_link_color_hover;
+					background: $header_color_hover;
 				}
 
 				&:after {
@@ -180,7 +180,7 @@
 				&:after {
 					margin-left: $header_link_icon_marginLeft;
 
-					border-top: 6px solid $header_link_color;
+					border-top: 6px solid $header_color;
 					border-right: 6px solid transparent;
 					border-left: 6px solid transparent;
 					border-radius: radius(sm);
@@ -192,7 +192,7 @@
 
 				&.--show {
 					&:after {
-						border-top: 6px solid $header_link_color_hover;
+						border-top-color: $header_color_hover;
 						transform: rotate(-180deg);
 					}
 
@@ -207,26 +207,26 @@
 
 		@include media-hover {
 			&:hover {
-				color: $header_link_color_hover;
+				color: $header_color_hover;
 
 				&[data-dropdown-btn]:after {
-					border-top: 6px solid $header_link_color_hover;
+					border-top-color: $header_color_hover;
 				}
 			}
 
 			&:active {
-				color: $header_link_color_active;
+				color: $header_color_active;
 			}
 		}
 
 		&.--current {
-			color: $header_link_color_current;
+			color: $header_color_current;
 
 			pointer-events: none;
 		}
 
 		&.--show {
-			color: $header_link_color_hover;
+			color: $header_color_hover;
 		}
 	}
 
@@ -261,7 +261,7 @@
 			display: inline-block;
 			width: 100%;
 
-			color: $header_link_color;
+			color: $header_color;
 			font-weight: $header_subLink_fontWeight;
 			letter-spacing: $header_link_letterSpacing;
 
@@ -283,13 +283,13 @@
 
 			@include media-hover {
 				&:hover {
-					color: $header_link_color_hover;
+					color: $header_color_hover;
 
-					background: color.adjust($header_link_color_hover, $alpha: -0.9);
+					background: $header_background_hover;
 				}
 
 				&:active {
-					background: color.adjust($header_link_color_hover, $alpha: -0.85);
+					background: $header_background_active;
 				}
 
 				&:focus-visible {
@@ -298,7 +298,7 @@
 			}
 
 			&.--disabled {
-				color: $header_link_color_disabled;
+				color: $header_color_disabled;
 
 				pointer-events: none;
 			}
