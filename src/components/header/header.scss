@@ -213,10 +213,6 @@
 					border-top-color: $header_color_hover;
 				}
 			}
-
-			&:active {
-				color: $header_color_active;
-			}
 		}
 
 		&.--current {
@@ -286,10 +282,6 @@
 					color: $header_color_hover;
 
 					background: $header_background_hover;
-				}
-
-				&:active {
-					background: $header_background_active;
 				}
 
 				&:focus-visible {
