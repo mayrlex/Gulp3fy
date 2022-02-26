@@ -27,19 +27,12 @@
 		gap: $card_grid_gap_min;
 		row-gap: $card_grid_rowGap_min;
 
-		@include media-minmax(sm, lg) {
-			padding: $card_container_padding;
-		}
-
 		@include media-min(md) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
 		@include media-min(lg) {
 			grid-template-columns: repeat(3, 1fr);
-		}
-
-		@include media-min(xl) {
 			gap: $card_grid_gap_max;
 			row-gap: $card_grid_rowGap_max;
 		}
@@ -64,7 +57,7 @@
 			min-height: $card_preview_minHeight_max;
 		}
 
-		@include media-min(lg) {
+		@include media-hover {
 			&:before {
 				position: absolute;
 				top: 50%;
@@ -92,9 +85,7 @@
 
 				transition: $card_preview_overlay_transition;
 			}
-		}
 
-		@include media-hover {
 			&:hover {
 				&:before {
 					opacity: 1;
@@ -192,7 +183,7 @@
 		}
 
 		@include media-min(xl) {
-			grid-gap: $rowcard_grid_gap_max;
+			gap: $rowcard_grid_gap_max;
 		}
 	}
 
