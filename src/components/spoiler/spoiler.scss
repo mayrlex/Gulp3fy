@@ -32,7 +32,7 @@
 			&:hover {
 				color: $spoiler_title_color_hover;
 
-				background: color.adjust($spoiler_title_color_hover, $alpha: -0.9);
+				background: $spoiler_title_background_hover;
 			}
 
 			&:focus-visible {
@@ -43,7 +43,7 @@
 		&.--show {
 			color: $spoiler_title_color_hover;
 
-			background: color.adjust($spoiler_title_color_hover, $alpha: -0.85);
+			background: $spoiler_title_active;
 		}
 	}
 

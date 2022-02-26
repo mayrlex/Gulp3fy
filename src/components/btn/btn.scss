@@ -44,7 +44,7 @@
 		}
 
 		&.--disabled {
-			color: $disabled_secondary;
+			color: $btn_secondary_disabled;
 		}
 
 		input[type='button'] {
@@ -156,7 +156,7 @@
 
 	&.--disabled {
 		background: none;
-		outline: rem($btn_outlineWidth) solid $disabled_secondary;
+		outline: rem($btn_outlineWidth) solid $btn_secondary_disabled;
 		cursor: not-allowed;
 
 		.icon {
