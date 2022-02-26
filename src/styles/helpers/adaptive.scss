@@ -81,7 +81,7 @@ $fields: (
 	}
 }
 
-@mixin media-hov {
+@mixin media-hover {
 	@media (any-hover: hover) {
 		@content;
 	}

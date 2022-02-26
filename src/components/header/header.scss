@@ -205,8 +205,7 @@
 			}
 		}
 
-		// Only for devices supports hover
-		@include media-hov {
+		@include media-hover {
 			&:hover {
 				color: $header_link_color_hover;
 
@@ -282,8 +281,7 @@
 				transition: $header_transition_min;
 			}
 
-			// Only for devices supports hover
-			@include media-hov {
+			@include media-hover {
 				&:hover {
 					color: $header_link_color_hover;
 

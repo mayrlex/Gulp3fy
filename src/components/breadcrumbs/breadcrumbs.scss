@@ -57,16 +57,18 @@
 
 		transition: $breadcrumbs_transition;
 
-		&:hover {
-			color: primary(500);
-		}
+		@include media-hover {
+			&:hover {
+				color: primary(500);
+			}
 
-		&:active {
-			color: primary(600);
-		}
+			&:active {
+				color: primary(600);
+			}
 
-		&:focus-visible {
-			box-shadow: $focus_primary;
+			&:focus-visible {
+				box-shadow: $focus_primary;
+			}
 		}
 	}
 

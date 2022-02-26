@@ -87,6 +87,14 @@
 				content: $card_preview_overlay_content;
 			}
 
+			& img {
+				filter: $card_preview_overlay_filter;
+
+				transition: $card_preview_overlay_transition;
+			}
+		}
+
+		@include media-hover {
 			&:hover {
 				&:before {
 					opacity: 1;
@@ -95,12 +103,6 @@
 				& img {
 					filter: $card_preview_overlay_filter_hover;
 				}
-			}
-
-			& img {
-				filter: $card_preview_overlay_filter;
-
-				transition: $card_preview_overlay_transition;
 			}
 		}
 	}
@@ -226,6 +228,14 @@
 				content: $rowCard_preview_overlay_content;
 			}
 
+			& img {
+				filter: $rowCard_preview_overlay_filter;
+
+				transition: $rowCard_preview_overlay_transition;
+			}
+		}
+
+		@include media-hover {
 			&:hover {
 				&:before {
 					opacity: 1;
@@ -234,12 +244,6 @@
 				& img {
 					filter: $rowCard_preview_overlay_filter_hover;
 				}
-			}
-
-			& img {
-				filter: $rowCard_preview_overlay_filter;
-
-				transition: $rowCard_preview_overlay_transition;
 			}
 		}
 	}

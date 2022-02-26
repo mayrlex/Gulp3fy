@@ -45,7 +45,7 @@
 
 			transition: $pagination_transition;
 
-			@include media-min(lg) {
+			@include media-hover {
 				&:hover {
 					color: $pagination_color_hover;
 

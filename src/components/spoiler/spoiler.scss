@@ -28,7 +28,7 @@
 
 		transition: $spoiler_transition;
 
-		@include media-hov {
+		@include media-hover {
 			&:hover {
 				color: $spoiler_title_color_hover;
 
@@ -80,7 +80,7 @@
 			}
 		}
 
-		@include media-hov {
+		@include media-hover {
 			&:hover {
 				&:before,
 				&:after {

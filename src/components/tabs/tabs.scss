@@ -18,7 +18,7 @@
 
 			transition: $tab_transition;
 
-			@include media-min(lg) {
+			@include media-hover {
 				&:hover {
 					color: $tab_color_hover;
 
@@ -45,7 +45,7 @@
 		display: none;
 		overflow: hidden;
 
-		@include media-min(lg) {
+		@include media-hover {
 			&:focus-visible {
 				box-shadow: $tab_focus;
 			}

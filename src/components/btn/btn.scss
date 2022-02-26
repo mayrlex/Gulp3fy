@@ -33,7 +33,7 @@
 
 		color: $btn_secondary_color;
 
-		@include media-hov {
+		@include media-hover {
 			&:hover {
 				color: $btn_secondary_hover;
 
@@ -104,7 +104,7 @@
 .btn__icon-primary {
 	background: $btn_primary_background;
 
-	@include media-hov {
+	@include media-hover {
 		&:hover {
 			background: $btn_primary_hover;
 		}
@@ -135,7 +135,7 @@
 	outline: rem($btn_outlineWidth) solid $btn_secondary_outline;
 	outline-offset: rem(-$btn_outlineWidth);
 
-	@include media-hov {
+	@include media-hover {
 		&:hover {
 			background: $btn_secondary_color;
 
@@ -174,7 +174,7 @@
 .btn__icon-text {
 	background: transparent;
 
-	@include media-hov {
+	@include media-hover {
 		&:hover {
 			background: $btn_text_hover;
 		}
