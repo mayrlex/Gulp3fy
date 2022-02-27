@@ -370,7 +370,7 @@
 		width: 100%;
 		height: 100%;
 
-		background-color: $header_burger_overlay_background;
+		background: $header_burger_overlay;
 		visibility: hidden;
 		opacity: 0;
 
@@ -378,7 +378,7 @@
 
 		&.--show {
 			visibility: visible;
-			opacity: 0.8;
+			opacity: 1;
 		}
 	}
 }

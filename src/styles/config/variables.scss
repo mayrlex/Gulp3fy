@@ -150,7 +150,7 @@ $title_color: #152536;
 $fontFamily_primary:   'Inter', sans-serif;
 $fontFamily_secondary: 'Nunito', sans-serif;
 
-$icon_width: rem(16);
+$icon_width:  rem(16);
 $icon_height: $icon_width;
 
 $transition_default: 0.1s;
@@ -160,6 +160,8 @@ $letterSpacing_default: rem(1);
 $border_default: rem(1) solid gray(200);
 
 $boxShadow_default: 0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
+
+$overlay_background: color.adjust(dark(2), $alpha: -0.1);
 
 // COMPONENTS
 // ==========
@@ -380,7 +382,7 @@ $header_burger_icon_width:            rem(34);
 $header_burger_link_fontSize:         rem(32);
 $header_burger_maxWidth:              rem(450);
 $header_burger_menu_background:       $white;
-$header_burger_overlay_background:    dark(2);
+$header_burger_overlay:               $overlay_background;
 $header_burger_padding:               rem(100) 0;
 $header_burger_paddingLeft:           rem(35);
 $header_burger_transition:            right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
