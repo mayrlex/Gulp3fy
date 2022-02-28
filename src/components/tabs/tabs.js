@@ -19,7 +19,7 @@ Call:
 	});
 */
 
-class Tabs {
+export default class Tabs {
 	constructor(selector, options) {
 		const defaultOptions = {
 			isChanged: () => {},
@@ -77,9 +77,9 @@ class Tabs {
 			el.addEventListener('click', (e) => {
 				const currentTab = this.tabMenu.querySelector('[aria-selected]');
 
-				// prettier-ignore
-				e.currentTarget !== currentTab ?
-					this.switchTabs(e.currentTarget, currentTab) : null;
+				if (e.currentTarget !== currentTab) {
+					this.switchTabs(e.currentTarget, currentTab);
+				}
 			});
 
 			el.addEventListener('keydown', (e) => {
@@ -87,17 +87,27 @@ class Tabs {
 
 				let direction = null;
 
-				// prettier-ignore
-				e.which === 37 ? (direction = index - 1) :
-					e.which === 39 ? (direction = index + 1) :
-						e.which === 40 ? (direction = 'down') :
-							(direction = null);
+				if (e.key === 'ArrowLeft') {
+					direction = index - 1;
+				}
 
-				// prettier-ignore
-				direction !== null ?
-					(direction === 'down' ? this.tabContent[i].focus() :
-						(this.tabButtons[direction] ?
-							this.switchTabs(this.tabButtons[direction], e.currentTarget) : null)) : null;
+				if (e.key === 'ArrowRight') {
+					direction = index + 1;
+				}
+
+				if (e.key === 'ArrowDown') {
+					direction = 'down';
+				}
+
+				if (direction !== null) {
+					if (direction === 'down') {
+						this.tabContent[i].focus();
+					}
+
+					if (this.tabButtons[direction]) {
+						this.switchTabs(this.tabButtons[direction], e.currentTarget);
+					}
+				}
 			});
 		});
 	}
@@ -122,5 +132,3 @@ class Tabs {
 		this.options.isChanged(this);
 	}
 }
-
-export default Tabs;
