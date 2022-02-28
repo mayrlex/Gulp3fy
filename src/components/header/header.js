@@ -29,6 +29,15 @@ if (document.querySelector('header')) {
 				});
 			}
 		});
+
+		window.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && burger.classList.contains('--show')) {
+				document.body.classList.toggle('--lock');
+				burger.classList.toggle('--show');
+				menu.classList.toggle('--show');
+				overlay.classList.toggle('--show');
+			}
+		});
 	}
 
 	// Dropdown list
