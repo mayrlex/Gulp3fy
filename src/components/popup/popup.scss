@@ -1,0 +1,120 @@
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: zindex(popup);
+
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	background: $popup_overlay;
+	visibility: hidden;
+	opacity: 0;
+
+	transition: $popup_transition;
+
+	&__inner {
+		position: relative;
+
+		width: 90%;
+		margin: auto 0;
+		@include adaptive('padding', $popup_inner_padding_max, $popup_inner_padding_min, 1);
+
+		background: $popup_inner_background;
+		border: $popup_inner_border;
+		border-radius: $popup_inner_borderRadius;
+		transform: $popup_inner_transform;
+		opacity: 0;
+
+		transition: $popup_inner_transition;
+
+		@include media-min(md) {
+			width: $popup_inner_width;
+		}
+	}
+
+	&__close {
+		position: absolute;
+
+		padding: $popup_close_padding;
+
+		font-size: 0;
+
+		background: $popup_close_background;
+		border-radius: $popup_close_borderRadius;
+		cursor: pointer;
+
+		transition: $popup_close_transition;
+
+		fill: $popup_close_color;
+		@include adaptive('top', $popup_close_pos_max, $popup_close_pos_min, 1);
+		@include adaptive('right', $popup_close_pos_max, $popup_close_pos_min, 1);
+
+		@include media-hover {
+			&:hover {
+				background: $popup_close_background_hover;
+			}
+
+			&:focus-visible {
+				box-shadow: $popup_close_focus;
+			}
+		}
+	}
+
+	&__header {
+		text-align: center;
+
+		& [class^='popup'] {
+			margin-bottom: $popup_header_items_margin;
+		}
+	}
+
+	&__icon {
+		display: inline-flex;
+		@include adaptive('padding', $popup_icon_padding_max, $popup_icon_padding_min, 1);
+
+		background: $popup_icon_background;
+		border-radius: $popup_icon_borderRadius;
+
+		fill: $popup_icon_color;
+
+		.icon {
+			width: $popup_icon_size;
+			height: $popup_icon_size;
+		}
+	}
+
+	&__title {
+		color: $popup_title_color;
+		font-weight: $popup_title_fontWeight;
+		font-family: $fontFamily_secondary;
+		@include adaptive('font-size', $popup_title_fontSize_max, $popup_title_fontSize_min, 1);
+	}
+
+	&__content {
+		@include adaptive('margin-bottom', $popup_content_margin_max, $popup_content_margin_min, 1);
+
+		text-align: center;
+	}
+
+	&__footer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		@include adaptive('gap', $popup_footer_gap_max, $popup_footer_gap_min, 1);
+	}
+
+	&.--show {
+		visibility: visible;
+		opacity: 1;
+
+		& .popup__inner {
+			transform: $popup_inner_transform_show;
+			opacity: 1;
+		}
+	}
+}
