@@ -452,3 +452,18 @@ $popup_title_fontSize_max:     36;
 $popup_title_fontSize_min:     28;
 $popup_title_fontWeight:       700;
 $popup_transition:             opacity 0.3s, visibility 0.3s;
+
+// Slider
+$slider_navigation_button_color:             color.adjust(primary(500), $alpha: -0.5);
+$slider_navigation_button_pos_x:             rem(15);
+$slider_navigation_size:                     44;
+$slider_pagination_margin:                   20;
+$slider_naviagation_button_margin:           math.div($slider_navigation_size + $slider_pagination_margin, 2);
+$slider_pagination_bullet_background:        color.adjust(dark(1), $alpha: -0.5);
+$slider_pagination_bullet_background_active: color.adjust(primary(500), $alpha: -0.25);
+$slider_pagination_bullet_background_hover:  color.adjust(primary(500), $alpha: -0.5);
+$slider_pagination_bullet_borderRadius:      radius(sm);
+$slider_pagination_bullet_height:            rem(6);
+$slider_pagination_bullet_transition:        $transition_default;
+$slider_pagination_bullet_width:             rem(24);
+$slider_slide_height:                        rem(250);

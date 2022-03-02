@@ -8,11 +8,11 @@ import documentReady from './helpers/documentReady.js';
 
 //? ### Configs
 // import * as scrollbars from './config/scrollbars.js';
-// import * as swiper from './modules/swiper.js';
 
 //? ### Components
 // import * as themeSwitcher from '../components/themeSwitcher/themeSwitcher';
 // import * as header from '../components/header/header.js';
+// import * as slider from '../components/slider/slider.js';
 // import * as spoiler from '../components/spoiler/spoiler.js';
 
 //? ### Pages

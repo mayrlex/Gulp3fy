@@ -1,0 +1,49 @@
+.swiper {
+	&-slide {
+		height: $slider_slide_height;
+	}
+
+	&-pagination {
+		position: static;
+
+		margin-top: rem($slider_pagination_margin - 10);
+
+		&-bullet {
+			width: $slider_pagination_bullet_width;
+			height: $slider_pagination_bullet_height;
+
+			background: $slider_pagination_bullet_background;
+			border-radius: $slider_pagination_bullet_borderRadius;
+			opacity: 1;
+
+			transition: $slider_pagination_bullet_transition;
+
+			@include media-hover {
+				&:hover:not(.swiper-pagination-bullet-active) {
+					background: $slider_pagination_bullet_background_hover;
+				}
+			}
+
+			&-active {
+				background: $slider_pagination_bullet_background_active;
+			}
+		}
+	}
+
+	&-button-prev,
+	&-button-next {
+		margin-top: rem(-$slider_naviagation_button_margin);
+
+		&:after {
+			color: $slider_navigation_button_color;
+		}
+	}
+
+	&-button-prev {
+		left: $slider_navigation_button_pos_x;
+	}
+
+	&-button-next {
+		right: $slider_navigation_button_pos_x;
+	}
+}
