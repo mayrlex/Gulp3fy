@@ -26,7 +26,7 @@
 	},
 	"homepage": "https://github.com/H3JILgaH4uk/Gulp3fy#readme",
 	"dependencies": {
-		"overlayscrollbars": "^1.13.1",
+		"simplebar": "^5.3.6",
 		"swiper": "^8.0.6",
 		"vanilla-lazyload": "^17.6.1"
 	},
