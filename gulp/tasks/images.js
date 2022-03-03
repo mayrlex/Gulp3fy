@@ -41,6 +41,7 @@ export const imagesBuild = () => {
 
 		.pipe(gulp.dest(path.images.dest))
 		.pipe(gulp.src(path.images.svg))
+		.pipe(gulp.src(path.images.placehoder))
 		.pipe(gulp.dest(path.images.dest))
 		.pipe(sync.stream());
 };

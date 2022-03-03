@@ -47,7 +47,7 @@ export const path = {
 		src: `${source}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		webp: `${source}/assets/images/**/*.{jpg,png}`,
+		placehoder: `${source}/assets/images/**/placeholder.png`,
 		svg: `${source}/assets/images/**/*.svg`,
 	},
 
