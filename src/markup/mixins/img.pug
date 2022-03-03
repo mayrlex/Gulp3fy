@@ -2,7 +2,7 @@ mixin img(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -18,7 +18,7 @@ mixin pic(data)
 		const [srcFirstPart, extname] = srcParts;
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {

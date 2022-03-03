@@ -10,7 +10,6 @@
 	text-align: center;
 	text-transform: none;
 	text-overflow: ellipsis;
-	vertical-align: middle;
 
 	border-radius: $btn_borderRadius;
 
@@ -71,7 +70,7 @@
 	}
 
 	// Icon button
-	&__icon {
+	&-icon {
 		@include adaptive('padding', $btn_icon_padding_max, $btn_icon_padding_min, 1);
 
 		border-radius: $btn_icon_borderRadius;
@@ -88,8 +87,10 @@
 
 // btn & btn_icon
 .btn,
-.btn__icon {
+.btn-icon {
 	display: inline-flex;
+
+	vertical-align: middle;
 
 	background-image: none;
 	cursor: pointer;
@@ -101,7 +102,7 @@
 
 // Primary buttons
 .btn__primary,
-.btn__icon-primary {
+.btn-icon__primary {
 	background: $btn_primary_background;
 
 	@include media-hover {
@@ -130,7 +131,7 @@
 
 // Secondary buttons
 .btn__secondary,
-.btn__icon-secondary {
+.btn-icon__secondary {
 	background: $btn_secondary_background;
 	outline: rem($btn_outlineWidth) solid $btn_secondary_outline;
 	outline-offset: rem(-$btn_outlineWidth);
@@ -171,7 +172,7 @@
 
 // Text buttons
 .btn__text,
-.btn__icon-text {
+.btn-icon__text {
 	background: transparent;
 
 	@include media-hover {

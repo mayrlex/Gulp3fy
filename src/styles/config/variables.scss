@@ -168,7 +168,7 @@ $overlay_background: color.adjust(dark(2), $alpha: -0.1);
 
 // Breadcrumbs
 $breadcrumbs_color:            gray(600);
-$breadcrumbs_current_color:    state(current);
+$breadcrumbs_color_current:    state(current);
 $breadcrumbs_divider_height:   rem(2);
 $breadcrumbs_divider_width:    rem(10);
 $breadcrumbs_focus:            state(focus, primary);
@@ -354,8 +354,8 @@ $pagination_color:               dark(1);
 $pagination_color_hover:         state(hover, color);
 $pagination_controls_margin:     rem(10);
 $pagination_controls_padding:    rem(7);
-$pagination_current_color:       primary(500);
-$pagination_current_background:  state(active);
+$pagination_color_current:       primary(500);
+$pagination_background_current:  state(active);
 $pagination_disabled_color:      state(disabled, color);
 $pagination_disabled_background: state(disabled, bg);
 $pagination_focus:               state(focus, primary);

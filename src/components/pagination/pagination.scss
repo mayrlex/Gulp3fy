@@ -89,9 +89,9 @@
 		}
 
 		&.--current {
-			color: $pagination_current_color;
+			color: $pagination_color_current;
 
-			background: $pagination_current_background;
+			background: $pagination_background_current;
 		}
 	}
 }
