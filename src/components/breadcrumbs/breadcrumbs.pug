@@ -14,7 +14,7 @@ mixin breadcrumbs(mods)
 	-
 		let modsArray = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
+		if (mods) {
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -22,15 +22,20 @@ mixin breadcrumbs(mods)
 			}
 		}
 
-	nav(class=modsArray, aria-label='breadcrumb')&attributes(attributes)
-		ol.breadcrumbs
+	nav.breadcrumbs(class=modsArray, aria-label='breadcrumb')&attributes(attributes)
+		ol
 			block
 
 //- Breadcrumbs item
 mixin breadcrumbs-item(data)
-	if (typeof(data.link) !== 'undefined' && data.link)
-		li.breadcrumbs__item
-			a.breadcrumbs__link(href=data.link)= data.text
+	li.breadcrumbs__item(
+		class=!data.link ? `--current` : null,
+		href=data.link ? data.link : null,
+		aria-current=!data.link ? data.text : null
+	)
+		if data.link
+			a.breadcrumbs__link(href=data.link)!= data.text
 			span.breadcrumbs__divider
-	else
-		li.breadcrumbs__item.--current(aria-current=data.text)= data.text
+
+		else
+			p!= data.text

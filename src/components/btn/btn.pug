@@ -3,7 +3,7 @@
 	mods    {string}  - Mod('s)
 	icon    {string}  - Icon name
 	link    {string}  - Link
-	isInput {boolean} - If is input
+	isInput {boolean} - Set button type: input
 
 //- Call:
 	//- Button type 'link'
@@ -17,7 +17,7 @@
 	+btn({
 		text: 'Button',
 		mods: 'secondary',
-		isInput: 'true'
+		isInput: true,
 	})
 
 	//- Button type 'button'
@@ -38,68 +38,59 @@ mixin btn(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if(data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined') {
-					modsArray = `${modsArray} btn__icon-${modsList[i].trim()}`;
-
-				} else {
-					modsArray = `${modsArray} btn__${modsList[i].trim()}`;
-				}
+				modsArray = `${modsArray}${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
 			}
 		}
 
-	//- If argument 'link' not empty — is link
-	if (typeof(data.link) !== 'undefined')
-		//- If the button has an icon
-		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
-			a.btn(class=modsArray, href=data.link)&attributes(attributes)!= data.text
+	//- Button type: link
+	if data.link
+		//- Icon
+		if (!data.text && data.icon)
+			a.btn-icon(class=modsArray)&attributes(attributes)
 				+icon-mono(data.icon)
 				block
 
-		//- If the button has only an icon
-		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
-			a.btn__icon(class=modsArray)&attributes(attributes)
-				+icon-mono(data.icon)
-				block
-
+		//- Text
 		else
 			a.btn(class=modsArray, href=data.link)&attributes(attributes)!= data.text
+				//- Has icon
+				if (data.icon)
+					+icon-mono(data.icon)
 				block
 
-	//- If 'isInput' argument is true — is input
-	else if (typeof(data.isInput) !== 'undefined')
-		//- If the button has an icon
-		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
+	//- Button type: input
+	else if data.isInput
+		//- Text + icon
+		if (data.text && data.icon)
 			label.btn(class=modsArray)
 				input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
 				+icon-mono(data.icon)
 
-		//- If the button has only an icon
-		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
-			label.btn__icon(class=modsArray)
+		//- Icon
+		else if (!data.text && data.icon)
+			label.btn-icon(class=modsArray)
 				input(value=data.text, type='button')&attributes(attributes)
 				+icon-mono(data.icon)
 
+		//- Text
 		else
 			input.btn(class=modsArray, value=data.text, type='button')&attributes(attributes)
 
-	//- Just button
+	//- Button type: button
 	else
-		//- If the button has an icon
-		if (typeof(data.icon) !== 'undefined' && typeof(data.text) !== 'undefined')
-			button.btn(class=modsArray)&attributes(attributes)!= data.text
+		//- Icon
+		if (!data.text && data.icon)
+			button.btn-icon(class=modsArray)&attributes(attributes)
 				+icon-mono(data.icon)
 				block
 
-		//- If the button has only an icon
-		else if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined')
-			button.btn__icon(class=modsArray)&attributes(attributes)
-				+icon-mono(data.icon)
-				block
-
+		//- Text
 		else
 			button.btn(class=modsArray)&attributes(attributes)!= data.text
+				if (data.icon)
+					+icon-mono(data.icon)
 				block

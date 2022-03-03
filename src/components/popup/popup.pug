@@ -1,8 +1,8 @@
 //- Arguments:
-	title         {string} - Title
-	icon          {string} - Icon name
-	mods          {string} - Mod('s)
-	btnCloseLabel {string} - Close button label (Default: 'Close popup')
+	title      {string} - Title
+	icon       {string} - Icon name
+	mods       {string} - Mod('s)
+	closeLabel {string} - Close button label (Default: 'Close popup')
 
 //- Call:
 	+popup({ title: 'Popup!', icon: 'success' })
@@ -17,7 +17,7 @@ mixin popup(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -27,7 +27,7 @@ mixin popup(data)
 
 	.popup(class=modsArray, tabindex='-1', aria-hidden='true')&attributes(attributes)
 		.popup__inner(role='dialog', aria-modal='true')
-			button.popup__close(aria-label=(data.btnCloseLabel = 'Close popup'), data-popup='close')
+			button.popup__close(aria-label=(data.closeLabel = 'Close popup'), data-popup='close')
 				+icon-mono('cross')
 
 			if data.title

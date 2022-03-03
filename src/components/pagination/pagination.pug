@@ -1,30 +1,31 @@
 //- Arguments:
-	text {string}    - Button text
-	mods 'prev/next' - Mod('s)
-	icon {string}    - Icon name
-	link {string}    - Link
-	dots 'true'      - Dots
+	text      {string} - Button text
+	mods      {string} - Mod('s)
+	icon      {string} - Icon name
+	link      {string} - Link
+	isControl {boolean}- Set item as control
+	dots      {boolean}- Dots
 
 //- Call:
 	+pagination
-		+pagination-control({ mods: 'prev', icon: 'arrow-2-left', link: '#' }).--disabled
+		+pagination-item({ mods: 'prev', icon: 'arrow-2-left', link: '#', isControl: true }).--disabled
 
 		ul.pagination__list
-			+pagination-btn({ text: '1', link: '#' }).--current
-			+pagination-btn({ text: '2', link: '#' })
-			+pagination-btn({ text: '3', link: '#' })
-			+pagination-btn({ dots: 'true' })
-			+pagination-btn({ text: '8', link: '#' })
-			+pagination-btn({ text: '9', link: '#' })
-			+pagination-btn({ text: '10', link: '#' })
+			+pagination-item({ text: '1', link: '#' }).--current
+			+pagination-item({ text: '2', link: '#' })
+			+pagination-item({ text: '3', link: '#' })
+			+pagination-item({ dots: true })
+			+pagination-item({ text: '8', link: '#' })
+			+pagination-item({ text: '9', link: '#' })
+			+pagination-item({ text: '10', link: '#' })
 
-		+pagination-control({ mods: 'next', icon: 'arrow-2-right', link: '#' })
+		+pagination-item({ mods: 'next', icon: 'arrow-2-right', link: '#', isControl: true })
 
 mixin pagination(mods)
 	-
 		let modsArray = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
+		if (mods) {
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -36,11 +37,11 @@ mixin pagination(mods)
 		.pagination__inner
 			block
 
-mixin pagination-control(data)
+mixin pagination-item(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -48,18 +49,22 @@ mixin pagination-control(data)
 			}
 		}
 
-	if (typeof(data.icon) !== 'undefined')
-		a(class=modsArray, href=data.link)&attributes(attributes)
-			+icon-mono(data.icon)
+	//- Is controls
+	if data.isControl
+		//- Controls type: icon
+		if data.icon
+			a(class=modsArray, href=data.link)&attributes(attributes)
+				+icon-mono(data.icon)
+
+		//- Controls type: text
+		else
+			a(class=modsArray, href=data.link)&attributes(attributes)!= data.text
 
 	else
-		a(class=modsArray, href=data.link)&attributes(attributes)!= data.text
-
-mixin pagination-btn(data)
-	if (data.dots === 'true' && typeof(data.text) === 'undefined')
 		li.pagination__item
-			span.pagination__btn-dots&attributes(attributes) ...
+			//- Is dots
+			if (data.dots && !data.text)
+				span.pagination__btn-dots&attributes(attributes) ...
 
-	else
-		li.pagination__item
-			a.pagination__btn(href=data.link)&attributes(attributes)!= data.text
+			else
+				a.pagination__btn(href=data.link)&attributes(attributes)!= data.text

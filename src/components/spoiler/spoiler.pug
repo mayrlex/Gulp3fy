@@ -1,39 +1,23 @@
 //- Arguments:
-	mods        {string} - Mod('s)
-	media       {string} - Media queries '[size],[min/max]'
-	isAccordion 'true'   - Enable accordion mode
-	title       {string} - Spoiler title
+	mods        {string}  - Mod('s)
+	isAccordion {boolean} - Enable accordion mode
+	media       {string}  - Media queries '[size],[min/max]'
+	title       {string}  - Spoiler title
 
 //- Call:
-	### With accordion mode
-	+spoiler({
-		mods: 'hero',
-		isAccordion: 'true'
-	})
-		+spoiler-item('Spoiler title')
+	+spoiler({ isAccordion: true, media: '840,max' })
+		+spoiler-item('Title')
 			...
-
-	### Default spoiler
-	+spoiler({ mods: 'hero' })
-
-	### With media queries
-	+spoiler({
-		mods: 'hero',
-		media: '840,min'
-	})
-
-	### With accordion mode and media queries
-	+spoiler({
-		mods: 'hero',
-		isAccordion: 'true',
-		media: '840,max'
-	})
+		+spoiler-item('Title')
+			...
+		+spoiler-item('Title')
+			...
 
 mixin spoiler(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -41,25 +25,12 @@ mixin spoiler(data)
 			}
 		}
 
-	//- If accordion mode is disabled and there are no media queries
-	if (typeof(data.isAccordion) === 'undefined' && typeof(data.media) === 'undefined')
-		.spoiler(class=modsArray, data-spoilers='')&attributes(attributes)
-			block
-
-	//- If accordion mode is disabled but there are media queries
-	else if (typeof(data.isAccordion) === 'undefined' && typeof(data.media) !== 'undefined')
-		.spoiler(class=modsArray, data-spoilers=data.media)&attributes(attributes)
-			block
-
-	//- If accordion mode is enabled and there are media queries
-	else if (typeof(data.isAccordion) !== 'undefined' && typeof(data.media) !== 'undefined')
-		.spoiler(class=modsArray, data-spoilers=data.media, accordion='')&attributes(attributes)
-			block
-
-	//- If accordion mode is enabled and there are no media queries
-	else
-		.spoiler(class=modsArray, data-spoilers='', accordion='')&attributes(attributes)
-			block
+	.spoiler(
+		class=modsArray,
+		data-spoilers=data.media ? data.media : '',
+		accordion=data.isAccordion ? '' : null
+	)&attributes(attributes)
+		block
 
 mixin spoiler-item(title)
 	.spoiler__item

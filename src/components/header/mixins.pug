@@ -1,9 +1,10 @@
 //- Arguments:
-	mods       {string} - Mod('s)
-	text       {string} - Link title
-	link       {string} - Link
-	isDropdown 'true'   - Set nav item as dropdown button
-	anchor     {string} - Smooth scrolling to the specified block
+	mods        {string}  - Mod('s)
+	text        {string}  - Link title
+	link        {string}  - Link
+	hasDropdown {boolean} - Set nav item as dropdown button
+	isSub       {boolean} - Set menu item as sub-item
+	anchor      {string}  - Smooth scrolling to the specified block
 
 //- Call:
 	+header
@@ -14,11 +15,11 @@
 				+menu-item({ text: 'Home', link: '#' }).--current
 				+menu-item({ text: 'About', link: '#' })
 
-				+menu-item({ text: 'Products', link: '#', isDropdown: 'true' })
-					+menu-sub-item({ text: 'Laptops', link: '#' })
-					+menu-sub-item({ text: 'Headphones', link: '#' })
-					+menu-sub-item({ text: 'Keyboards', link: '#' }).--disabled
-					+menu-sub-item({ text: 'Mouses', link: '#' })
+				+menu-item({ text: 'Products', link: '#', hasDropdown: true })
+					+menu-item({ text: 'Laptops', link: '#', isSub: true })
+					+menu-item({ text: 'Headphones', link: '#', isSub: true })
+					+menu-item({ text: 'Keyboards', link: '#', isSub: true }).--disabled
+					+menu-item({ text: 'Mouses', link: '#', isSub: true })
 
 				+menu-item({ text: 'News', link: '#' })
 
@@ -33,7 +34,7 @@ mixin header(mods)
 	-
 		let modsArray = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
+		if (mods) {
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -50,7 +51,7 @@ mixin menu(mods)
 	-
 		let modsArray = '';
 
-		if(typeof(mods) !== 'undefined' && mods) {
+		if (mods) {
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
@@ -58,36 +59,30 @@ mixin menu(mods)
 			}
 		}
 
-	//- If attr mods not empty
-	if (typeof(mods) !== 'undefined')
-		ul.menu__list(class=modsArray)
-			block
-
-	else
-		ul.menu__list
-			block
+	ul.menu__list(class=modsArray)
+		block
 
 //- Nav item
 mixin menu-item(data)
-	//- Nav item includes dropdown
-	if (typeof(data.isDropdown) !== 'undefined')
+	//- Has dropdown?
+	if data.hasDropdown
 		li.menu__item(data-dropdown='')
 			button.menu__link(type='button', data-dropdown-btn='')&attributes(attributes)= data.text
 			ul.menu__sub-list(class=data.active)
 				block
 
-	//- Nav item includes anchor mode
-	else if (typeof(data.anchor) !== 'undefined')
-		li.menu__item
-			a.menu__link(href=data.link, data-anchor=data.anchor)&attributes(attributes)= data.text
-				block
+	//- Is sub item?
+	else if data.isSub
+		li.menu__sub-item
+			a.menu__sub-link(href=data.link)&attributes(attributes)= data.text
 
 	else
 		li.menu__item
-			a.menu__link(href=data.link)&attributes(attributes)= data.text
-				block
+			//- Has anchor?
+			if data.anchor
+				a.menu__link(href=data.link, data-anchor=data.anchor)&attributes(attributes)= data.text
+					block
 
-//- Nav sub-item mixin
-mixin menu-sub-item(data)
-	li.menu__sub-item
-		a.menu__sub-link(href=data.link)&attributes(attributes)= data.text
+			else
+				a.menu__link(href=data.link)&attributes(attributes)= data.text
+					block

@@ -1,12 +1,12 @@
 //- Arguments:
 	tab  {string} - Unique tab name
-	mods {string} - Mod('s)
 	text {string} - Tab button text
+	mods {string} - Mod('s)
 
 //- Call:
 	+tab({ tab: 'tabName' })
 		block buttons
-			+tab-btn('Tab')
+			+tab-btn('Tab title')
 
 		block contents
 			+tab-content
@@ -17,16 +17,11 @@ mixin tab(data)
 	-
 		let modsArray = '';
 
-		if(typeof(data.mods) !== 'undefined' && data.mods) {
+		if (data.mods) {
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				if (typeof(data.icon) !== 'undefined' && typeof(data.text) === 'undefined') {
-					modsArray = `${modsArray} btn__icon-${modsList[i].trim()}`;
-
-				} else {
-					modsArray = `${modsArray} btn__${modsList[i].trim()}`;
-				}
+				modsArray = `${modsArray} ${modsList[i].trim()}__tab`;
 			}
 		}
 
@@ -38,7 +33,7 @@ mixin tab(data)
 
 //- Button
 mixin tab-btn(text)
-	button.tabs__menu-btn(type='button')&attributes(attributes)= text
+	button.tabs__menu-btn(type='button')&attributes(attributes)!= text
 
 //- Content
 mixin tab-content
