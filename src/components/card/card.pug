@@ -89,13 +89,13 @@ mixin card-preview(data)
 	if (data.type === 'row')
 		.row-card__preview.--ibg
 			a(href=data.link)
-				+pic(data.src)(alt=data.alt)
+				+pic({src: data.src, alt: data.alt})
 
 	//- Col card preview
 	else
 		.card__preview.--ibg
 			a(href=data.link)
-				+pic(data.src)(alt=data.alt)
+				+pic({src: data.src, alt: data.alt})
 
 //- Header
 mixin card-header(data)

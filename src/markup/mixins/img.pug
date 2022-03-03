@@ -1,9 +1,39 @@
-mixin img(src)
-	img(class='lazy', data-src=src, src='assets/images/common/placeholder.png', alt='')&attributes(attributes)
+mixin img(data)
+	-
+		let modsArray = '';
 
-mixin pic(src, srcPlaceholder='assets/images/common/placeholder.png')
-	- const srcParts = src.split('.')
-	- const [srcFirstPart, extname] = srcParts
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}`;
+			}
+		}
+
+	img.lazy(class=modsArray, data-src=data.src, src='assets/images/common/placeholder.png', alt=data.alt)&attributes(attributes)
+
+mixin pic(data)
+	-
+		const srcParts = data.src.split('.');
+		const [srcFirstPart, extname] = srcParts;
+		let modsArray = '';
+
+		if(typeof(data.mods) !== 'undefined' && data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}`;
+			}
+		}
 	picture
-		source(type='image/webp', data-srcset=`${srcFirstPart}.webp`, srcset=srcPlaceholder)
-		img(class='lazy', data-src=`${srcFirstPart}.${extname}`, src=srcPlaceholder, alt='')&attributes(attributes)
+		source(
+			type='image/webp',
+			data-srcset=`${srcFirstPart}.webp`,
+			srcset='assets/images/common/placeholder.png'
+		)
+		img.lazy(
+			class=modsArray,
+			data-src=`${srcFirstPart}.${extname}`,
+			src='assets/images/common/placeholder.png',
+			alt=data.alt
+		)&attributes(attributes)
