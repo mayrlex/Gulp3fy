@@ -1,3 +1,5 @@
+import Toggler from '../../scripts/modules/toggler.js';
+
 if (document.querySelector('header')) {
 	const header = document.querySelector('header');
 	const main = document.querySelector('main');
@@ -43,6 +45,7 @@ if (document.querySelector('header')) {
 	// Dropdown list
 	if (dropdown.length > 0) {
 		const isDisabled = document.querySelectorAll('.menu__sub-link.--disabled');
+		const toggle = new Toggler({ btn: '[data-dropdown-btn]', area: '[data-dropdown]' });
 
 		// If there is a disabled item
 		if (isDisabled.length > 0) {
@@ -50,22 +53,5 @@ if (document.querySelector('header')) {
 				link.setAttribute('tabindex', '-1');
 			});
 		}
-
-		document.addEventListener('click', (e) => {
-			const isDropdownButton = e.target.matches('[data-dropdown-btn]');
-			let currentDropdown;
-
-			if (!isDropdownButton && e.target.closest('[data-dropdown]') != null) return;
-
-			if (isDropdownButton) {
-				currentDropdown = e.target.closest('[data-dropdown-btn]');
-				currentDropdown.classList.toggle('--show');
-			}
-
-			document.querySelectorAll('[data-dropdown-btn].--show').forEach((btn) => {
-				if (btn === currentDropdown) return;
-				btn.classList.remove('--show');
-			});
-		});
 	}
 }
