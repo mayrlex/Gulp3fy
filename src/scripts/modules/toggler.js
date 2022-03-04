@@ -1,9 +1,7 @@
 /*
 Arguments:
-	selector    {object}
-		btn:    {string} - Button selector
-		area:   {string} - Area selector that contains the button selector
-	activeClass {string} - Active class selector (Default: '--show')
+	btn:    {string} - Button selector
+	area:   {string} - Area selector that contains the button selector
 
 Call:
 	const toggle = new Toggler({
@@ -13,11 +11,10 @@ Call:
 */
 
 export default class Toggler {
-	constructor(selector, activeClass = '--show') {
+	constructor(selector) {
 		this.selector = selector;
 		this.targetBtn = selector.btn;
 		this.targetArea = selector.area;
-		this.activeClass = activeClass;
 		this.current;
 
 		this.init();
@@ -32,14 +29,14 @@ export default class Toggler {
 
 			if (isTargetBtn) {
 				this.current = event.target.closest(this.targetBtn);
-				this.current.classList.toggle(this.activeClass);
+				this.current.classList.toggle('--show');
 			} else {
 				this.current = undefined;
 			}
 
-			document.querySelectorAll(`${this.targetBtn}.${this.activeClass}`).forEach((item) => {
+			document.querySelectorAll(`${this.targetBtn}.--show`).forEach((item) => {
 				if (item === this.current) return;
-				item.classList.remove(this.activeClass);
+				item.classList.remove('--show');
 			});
 		});
 	}

@@ -80,7 +80,7 @@ mixin menu-item(data)
 		li.menu__item
 			//- Has anchor?
 			if data.anchor
-				a.menu__link(href=data.link, data-anchor=data.anchor)&attributes(attributes)= data.text
+				button.menu__link(data-anchor=data.anchor)&attributes(attributes)= data.text
 					block
 
 			else

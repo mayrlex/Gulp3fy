@@ -31,57 +31,84 @@
 	font-family: $header_menu_fontFamily;
 
 	@include media-max(lg) {
-		position: fixed;
-		top: 0;
-		right: -100%;
-
-		width: 100%;
-
-		max-width: $header_burger_maxWidth;
-		height: 100%;
-		padding: $header_burger_padding;
-		@include adaptive(
-			'padding-left',
-			$header_burger_x_padding_max,
-			$header_burger_x_padding_min,
-			1
-		);
-		@include adaptive(
-			'padding-right',
-			$header_burger_x_padding_max,
-			$header_burger_x_padding_min,
-			1
-		);
-		overflow: auto;
-
-		background: $header_burger_menu_background;
-		border-left: $header_border;
-		box-shadow: $header_boxShadow;
-
-		transition: $header_burger_transition;
-
-		// Menu body overlay
-		&:before {
+		&:after {
 			position: fixed;
 			top: 0;
 			left: 0;
-			z-index: zindex(default);
+			z-index: -1;
 
 			width: 100%;
-			height: $header_height;
+			height: 100%;
 
-			background: $header_background;
-			border-bottom: $header_border;
+			background: $header_burger_overlay;
+			visibility: hidden;
+			opacity: 0;
+
+			transition: all 0.3s ease-in-out;
 
 			content: '';
 		}
 
 		&.--show {
-			right: 0;
+			&:after {
+				visibility: visible;
+				opacity: 1;
+			}
+
+			& .menu__list {
+				right: 0;
+			}
 		}
 	}
 
 	&__list {
+		@include media-max(lg) {
+			position: fixed;
+			top: 0;
+			right: -100%;
+
+			width: 100%;
+
+			max-width: $header_burger_maxWidth;
+			height: 100%;
+			padding: $header_burger_padding;
+			@include adaptive(
+				'padding-left',
+				$header_burger_x_padding_max,
+				$header_burger_x_padding_min,
+				1
+			);
+			@include adaptive(
+				'padding-right',
+				$header_burger_x_padding_max,
+				$header_burger_x_padding_min,
+				1
+			);
+			overflow: auto;
+
+			background: $header_burger_menu_background;
+			border-left: $header_border;
+			box-shadow: $header_boxShadow;
+
+			transition: $header_burger_transition;
+
+			// Menu body overlay
+			&:before {
+				position: fixed;
+				top: 0;
+				left: 0;
+				z-index: zindex(default);
+
+				width: 100%;
+				height: $header_height;
+
+				background: $header_background;
+				border-bottom: $header_border;
+
+				content: '';
+			}
+		}
+
 		@include media-min(lg) {
 			display: flex;
 		}
@@ -312,7 +339,6 @@
 		&:before,
 		&:after {
 			position: absolute;
-			left: 0;
 
 			width: 100%;
 			height: $header_burger_icon_line_height;
@@ -358,27 +384,6 @@
 
 				transform: rotate(-45deg) translate(0px, 80%);
 			}
-		}
-	}
-
-	.overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: -1;
-
-		width: 100%;
-		height: 100%;
-
-		background: $header_burger_overlay;
-		visibility: hidden;
-		opacity: 0;
-
-		transition: all 0.3s ease-in-out;
-
-		&.--show {
-			visibility: visible;
-			opacity: 1;
 		}
 	}
 }

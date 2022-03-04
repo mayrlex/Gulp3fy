@@ -1,34 +1,24 @@
-const menuLinkAnchor = document.querySelectorAll('.menu__link[data-anchor]');
-const menuIcon = document.querySelector('.menu__icon');
-const menuBody = document.querySelector('.menu__body');
+if (document.querySelectorAll('.menu__link[data-anchor]').length > 0) {
+	const anchor = document.querySelectorAll('.menu__link[data-anchor]');
+	const header = document.querySelector('header');
+	const burger = document.querySelector('.burger');
+	const menu = document.querySelector('.menu');
 
-function onMenuLinkClick(e) {
-	const menuLink = e.target;
+	const smoothScroll = (event) => {
+		const selector = document.querySelector(event.target.dataset.anchor);
+		const scrollTo = selector.getBoundingClientRect().top + scrollY - header.offsetHeight;
 
-	if (menuLink.dataset.anchor && document.querySelector(menuLink.dataset.anchor)) {
-		const anchorBlock = document.querySelector(menuLink.dataset.anchor);
-		const anchorBlockValue =
-			anchorBlock.getBoundingClientRect().top +
-			scrollY -
-			document.querySelector('header').offsetHeight;
-
-		if (menuIcon.classList.contains('--active')) {
+		if (burger.classList.contains('--show')) {
 			document.body.classList.remove('--lock');
-			menuIcon.classList.remove('--active');
-			menuBody.classList.remove('--active');
+			menu.classList.remove('--show');
+			burger.classList.remove('--show');
 		}
 
 		window.scrollTo({
-			top: anchorBlockValue,
+			top: scrollTo,
 			behavior: 'smooth',
 		});
+	};
 
-		e.preventDefault();
-	}
-}
-
-if (menuLinkAnchor.length > 0) {
-	menuLinkAnchor.forEach((e) => {
-		e.addEventListener('click', onMenuLinkClick);
-	});
+	anchor.forEach((event) => event.addEventListener('click', smoothScroll));
 }
