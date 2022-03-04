@@ -19,7 +19,6 @@ module.exports = {
 		'no-unused-vars': 0,
 		'no-trailing-spaces': 0,
 		'no-plusplus': 0,
-		'operator-linebreak': ['error', 'after'],
 		'implicit-arrow-linebreak': 0,
 		'comma-dangle': 0,
 		'no-restricted-globals': 0,
