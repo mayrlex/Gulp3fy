@@ -1,104 +1,100 @@
-import { hideAnim, toggleAnim } from '../../scripts/modules/showHideAnimation.js';
+import ShowHide from '../../scripts/modules/showHide.js';
 
-// Get all spoiler containers, includes attribute [data-spoilers]
-const spoilersArray = document.querySelectorAll('[data-spoilers]');
+if (document.querySelectorAll('[data-spoilers]').length) {
+	const init = (array, matchMedia = false) => {
+		array.forEach((item) => {
+			let spoiler = item;
 
-//* ### Functions ###
-//* ################################
+			spoiler = matchMedia ? item.item : item;
 
-// Initialization
-const initSpoilers = (block, matchMedia = false) => {
-	block.forEach((spoiler) => {
-		let initItem = spoiler;
-		initItem = matchMedia ? spoiler.item : spoiler;
-
-		if (matchMedia.matches || !matchMedia) {
-			initItem.classList.add('--init');
-			initSpoilerBody(initItem);
-			initItem.addEventListener('click', setSpoilerAction);
-		} else {
-			initItem.classList.remove('--init');
-			initSpoilerBody(initItem, false);
-			initItem.removeEventListener('click', setSpoilerAction);
-		}
-	});
-};
-
-// Working with content
-const initSpoilerBody = (block, hidden = true) => {
-	const spoilerTitles = block.querySelectorAll('[data-spoiler]');
-
-	if (spoilerTitles.length > 0) {
-		spoilerTitles.forEach((title) => {
-			if (hidden) {
-				title.removeAttribute('tabindex');
-
-				if (!title.classList.contains('--show')) {
-					title.nextElementSibling.hidden = true;
-				}
+			if (matchMedia.matches || !matchMedia) {
+				spoiler.classList.add('--init');
+				initContent(spoiler);
+				spoiler.addEventListener('click', setAction);
 			} else {
-				title.setAttribute('tabindex', '-1');
-				title.nextElementSibling.hidden = false;
+				spoiler.classList.remove('--init');
+				initContent(spoiler, false);
+				spoiler.removeEventListener('click', setAction);
 			}
 		});
-	}
-};
+	};
 
-// Sets action accordion for spoilers
-const setSpoilerAction = (e) => {
-	const el = e.target;
+	// Init spoiler content
+	const initContent = (target, hidden = true) => {
+		const btnArray = target.querySelectorAll('[data-spoiler]');
 
-	if (el.hasAttribute('data-spoiler') || el.closest('[data-spoiler]')) {
-		const spoilerTitle = el.hasAttribute('data-spoiler') ? el : el.closest('[data-spoiler]');
-		const spoilersBlock = spoilerTitle.closest('[data-spoilers]');
-		const oneSpoiler = !!spoilersBlock.hasAttribute('accordion');
+		if (btnArray.length) {
+			btnArray.forEach((btn) => {
+				if (hidden) {
+					btn.removeAttribute('tabindex');
 
-		if (!spoilersBlock.querySelectorAll('.--slide').length) {
-			if (oneSpoiler && !spoilerTitle.classList.contains('--show')) {
-				hideSpoilersBody(spoilersBlock);
+					if (!btn.classList.contains('--show')) {
+						btn.nextElementSibling.hidden = true;
+					}
+				} else {
+					btn.setAttribute('tabindex', '-1');
+					btn.nextElementSibling.hidden = false;
+				}
+			});
+		}
+	};
+
+	// Sets the action to show and hide content
+	const setAction = (event) => {
+		if (event.target.hasAttribute('data-spoiler') || event.target.closest('[data-spoiler]')) {
+			const btn = event.target.hasAttribute('data-spoiler')
+				? event.target
+				: event.target.closest('[data-spoiler]');
+			const container = btn.closest('[data-spoilers]');
+			const isAccordion = !!container.hasAttribute('accordion');
+
+			if (!container.querySelectorAll('.--active').length) {
+				const showHide = new ShowHide({ target: btn.nextElementSibling });
+
+				// Accordion mode
+				if (isAccordion && !btn.classList.contains('--show')) {
+					hideSpoilersBody(container);
+				}
+
+				btn.classList.toggle('--show');
+				showHide.toggle();
 			}
 
-			spoilerTitle.classList.toggle('--show');
-			toggleAnim(spoilerTitle.nextElementSibling, 500);
+			event.preventDefault();
 		}
+	};
 
-		e.preventDefault();
-	}
-};
+	// Hide inactive spoilers content
+	const hideSpoilersBody = (container) => {
+		const btnActive = container.querySelector('[data-spoiler].--show');
 
-// Hide inactive spoilers content
-const hideSpoilersBody = (spoilersBlock) => {
-	const spoilerActiveTitle = spoilersBlock.querySelector('[data-spoiler].--show');
+		if (btnActive) {
+			btnActive.classList.remove('--show');
+			const showHide = new ShowHide({ target: btnActive.nextElementSibling });
+			showHide.hide();
+		}
+	};
 
-	if (spoilerActiveTitle) {
-		spoilerActiveTitle.classList.remove('--show');
-		hideAnim(spoilerActiveTitle.nextElementSibling, 500);
-	}
-};
+	const spoilerNodes = document.querySelectorAll('[data-spoilers]');
 
-//* ### Body ###
-//* ################################
-if (spoilersArray.length > 0) {
-	// Getting the default spoilers
-	const spoilersDefault = Array.from(spoilersArray).filter((item, index, self) => {
+	// Getting an array of spoilers
+	const spoilerArray = Array.from(spoilerNodes).filter((item, index, self) => {
 		return !item.dataset.spoilers.split(',')[0];
 	});
 
-	// Initializing default spoilers
-	if (spoilersDefault.length > 0) {
-		initSpoilers(spoilersDefault);
-	}
-
-	// Getting spoilers from media queriesasm
-	const spoilersMedia = Array.from(spoilersArray).filter((item, index, self) => {
+	// Getting an array of spoilers with a media query
+	const spoilerArrayMedia = Array.from(spoilerNodes).filter((item, index, self) => {
 		return item.dataset.spoilers.split(',')[0];
 	});
 
-	// Initializing spoilers from media queriesasm
-	if (spoilersMedia.length > 0) {
+	// Init spoilers
+	if (spoilerArray.length) init(spoilerArray);
+
+	// Init spoilers with media query
+	if (spoilerArrayMedia.length) {
 		const breakpointsArray = [];
 
-		spoilersMedia.forEach((item) => {
+		spoilerArrayMedia.forEach((item) => {
 			const params = item.dataset.spoilers;
 			const breakpoint = {};
 			const paramsArray = params.split(',');
@@ -109,7 +105,6 @@ if (spoilersArray.length > 0) {
 			breakpointsArray.push(breakpoint);
 		});
 
-		// Getting unique breakpoints
 		let mediaQueries = breakpointsArray.map((item) => {
 			return `(${item.type}-width: ${item.value}px),${item.value},${item.type}`;
 		});
@@ -118,14 +113,12 @@ if (spoilersArray.length > 0) {
 			return self.indexOf(item) === index;
 		});
 
-		// Working with every breakpoint
 		mediaQueries.forEach((breakpoint) => {
 			const paramsArray = breakpoint.split(',');
 			const mediaBreakpoint = paramsArray[1];
 			const mediaType = paramsArray[2];
 			const matchMedia = window.matchMedia(paramsArray[0]);
 
-			// Objects with suitable conditions
 			const spoilersArrayMedia = breakpointsArray.filter((item) => {
 				if (item.value === mediaBreakpoint && item.type === mediaType) {
 					return true;
@@ -136,10 +129,10 @@ if (spoilersArray.length > 0) {
 
 			// Change on resolution change
 			matchMedia.addEventListener('change', () => {
-				initSpoilers(spoilersArrayMedia, matchMedia);
+				init(spoilersArrayMedia, matchMedia);
 			});
 
-			initSpoilers(spoilersArrayMedia, matchMedia);
+			init(spoilersArrayMedia, matchMedia);
 		});
 	}
 }
