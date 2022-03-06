@@ -1,42 +1,34 @@
+import Burger from '../../scripts/modules/burger.js';
 import Toggler from '../../scripts/modules/toggler.js';
 // import SmoothScroll from '../../scripts/modules/smoothScroll.js';
 
 if (document.querySelector('header')) {
 	const header = document.querySelector('header');
 	const main = document.querySelector('main');
-	const burger = document.querySelector('.burger');
-	const dropdown = document.querySelectorAll('.menu__item[data-dropdown]');
-	const hasFixed = window.getComputedStyle(header).position === 'fixed';
 
 	// Smooth scroll
 	// const smoothScroll = new SmoothScroll();
 
 	// Burger menu
-	if (burger) {
-		const menu = document.querySelector('.menu');
-		const menuLink = document.querySelectorAll('.menu__link');
+	const burger = new Burger();
 
-		burger.addEventListener('click', () => {
-			document.body.classList.toggle('--lock');
-			burger.classList.toggle('--show');
-			menu.classList.toggle('--show');
-
-			// Hide all opened dropdown lists when closing burger menu
-			if (!burger.classList.contains('--show')) {
-				menuLink.forEach((title) => {
-					title.classList.remove('--show');
-				});
-			}
-		});
-	}
+	// Sets the margin-top for main if the header is fixed
+	window.getComputedStyle(header).position === 'fixed'
+		? (main.style.marginTop = `${header.offsetHeight}px`)
+		: null;
 
 	// Dropdown list
-	if (dropdown.length > 0) {
+	if (document.querySelectorAll('.menu__item[data-dropdown]').length) {
 		const disabledLinks = document.querySelectorAll('.menu__sub-link.--disabled');
-		const toggle = new Toggler({ btn: '[data-dropdown-btn]', area: '[data-dropdown]' });
+
+		// Dropdown toggle
+		const dropdown = new Toggler({
+			btn: '[data-dropdown-btn]',
+			area: '[data-dropdown]',
+		});
 
 		// If there is a disabled item
-		if (disabledLinks.length > 0) {
+		if (disabledLinks.length) {
 			disabledLinks.forEach((link) => {
 				link.setAttribute('tabindex', '-1');
 			});
