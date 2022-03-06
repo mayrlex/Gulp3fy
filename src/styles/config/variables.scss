@@ -218,6 +218,9 @@ $btn_padding_x_min:        20;
 $btn_padding_y_max:        10;
 $btn_padding_y_min:        8;
 
+$btn_group_borderRadius_first: $btn_borderRadius 0 0 $btn_borderRadius;
+$btn_group_borderRadius_last: 0 $btn_borderRadius $btn_borderRadius 0;
+
 // Spoiler
 $spoiler_background:             $white;
 $spoiler_border:                 $border_default;
@@ -375,10 +378,10 @@ $header_border:                       $border_default;
 $header_borderRadius:                 radius(sm);
 $header_boxShadow:                    $boxShadow_default;
 $header_burger_icon_background:       dark(1);
-$header_burger_icon_height:           rem(24);
+$header_burger_icon_height:           rem(30);
 $header_burger_icon_line_height:      rem(4);
 $header_burger_icon_transition:       all 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
-$header_burger_icon_width:            rem(34);
+$header_burger_icon_width:            rem(40);
 $header_burger_link_fontSize:         rem(32);
 $header_burger_maxWidth:              rem(450);
 $header_burger_menu_background:       $white;

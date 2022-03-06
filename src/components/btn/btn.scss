@@ -83,6 +83,28 @@
 			@include adaptive('margin-left', $btn_icon_margin_max, $btn_icon_margin_min, 1);
 		}
 	}
+
+	// Group buttons container
+	&__group {
+		display: inline-flex;
+		flex-wrap: wrap;
+
+		font-size: 0;
+
+		border-radius: $btn_borderRadius;
+
+		.btn {
+			border-radius: 0;
+
+			&:first-child {
+				border-radius: $btn_group_borderRadius_first;
+			}
+
+			&:last-child {
+				border-radius: $btn_group_borderRadius_last;
+			}
+		}
+	}
 }
 
 // btn & btn_icon
