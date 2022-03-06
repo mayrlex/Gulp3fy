@@ -1,5 +1,5 @@
 import Toggler from '../../scripts/modules/toggler.js';
-// import * as smoothScroll from '../../scripts/modules/smoothScroll.js';
+// import SmoothScroll from '../../scripts/modules/smoothScroll.js';
 
 if (document.querySelector('header')) {
 	const header = document.querySelector('header');
@@ -8,8 +8,8 @@ if (document.querySelector('header')) {
 	const dropdown = document.querySelectorAll('.menu__item[data-dropdown]');
 	const hasFixed = window.getComputedStyle(header).position === 'fixed';
 
-	// If the header is fixed, indent main by the height of the header
-	hasFixed ? (main.style.marginTop = `${header.offsetHeight}px`) : null;
+	// Smooth scroll
+	// const smoothScroll = new SmoothScroll();
 
 	// Burger menu
 	if (burger) {
