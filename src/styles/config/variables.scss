@@ -166,6 +166,17 @@ $overlay_background: color.adjust(dark(2), $alpha: -0.1);
 // COMPONENTS
 // ==========
 
+// Badges
+$badges_color:         $white;
+$badges_dot_size:      rem(10);
+$badges_fontWeight:    700;
+$badges_fontSize:      rem(14);
+$badges_letterSpacing: $letterSpacing_default;
+$badges_num_minWidth:  1.5;
+$badges_num_padding:   em(4);
+$badges_outlineWidth: rem(1);
+$badges_text_padding:  rem(2) rem(6);
+
 // Breadcrumbs
 $breadcrumbs_color:            gray(600);
 $breadcrumbs_color_current:    state(current);
@@ -220,74 +231,6 @@ $btn_padding_y_min:        8;
 
 $btn_group_borderRadius_first: $btn_borderRadius 0 0 $btn_borderRadius;
 $btn_group_borderRadius_last: 0 $btn_borderRadius $btn_borderRadius 0;
-
-// Spoiler
-$spoiler_background:             $white;
-$spoiler_border:                 $border_default;
-$spoiler_borderRadius:           radius(sm);
-$spoiler_boxShadow:              $boxShadow_default;
-$spoiler_content_color:          gray(700);
-$spoiler_content_fontSize_max:   16;
-$spoiler_content_fontSize_min:   14;
-$spoiler_gap_max:                10;
-$spoiler_gap_min:                5;
-$spoiler_focus:                  state(focus, primary);
-$spoiler_icon_right_max:         20;
-$spoiler_icon_right_min:         10;
-$spoiler_icon_top_max:           25;
-$spoiler_icon_top_min:           20;
-$spoiler_icon_height:            rem(3);
-$spoiler_icon_width_max:         20;
-$spoiler_icon_width_min:         16;
-$spoiler_letterSpacing:          $letterSpacing_default;
-$spoiler_title_active:           state(active);
-$spoiler_title_background:       $white;
-$spoiler_title_background_hover: state(hover, bg);
-$spoiler_title_color:            dark(1);
-$spoiler_title_color_hover:      state(hover, color);
-$spoiler_title_fontSize_max:     18;
-$spoiler_title_fontSize_min:     16;
-$spoiler_title_fontWeight:       600;
-$spoiler_title_padding_max:      15;
-$spoiler_title_padding_min:      10;
-$spoiler_title_transition:       transform 0.3s ease 0s;
-$spoiler_transition:             $transition_default;
-$spoiler_x_padding_max:          15;
-$spoiler_x_padding_min:          10;
-$spoiler_y_padding_max:          25;
-$spoiler_y_padding_min:          15;
-
-// Tab
-$tab_active:                    state(active);
-$tab_borderRadius:              radius(sm) radius(sm) 0 0;
-$tab_btn_divider_height:        2;
-$tab_btn_divider_marginTop_max: 10;
-$tab_btn_divider_marginTop_min: 2;
-$tab_btn_padding:               rem(10);
-$tab_btn_padding_min:           5;
-$tab_btn_padding_x_max:         25;
-$tab_btn_padding_x_min:         15;
-$tab_background_hover:          state(hover, bg);
-$tab_color:                     gray(600);
-$tab_color_hover:               state(hover, color);
-$tab_focus:                     state(focus, primary);
-$tab_fontFamily:                $fontFamily_secondary;
-$tab_fontSize_max:              18;
-$tab_fontSize_min:              16;
-$tab_fontWeight:                600;
-$tab_menu_marginBottom:         rem(10);
-$tab_transition:                $transition_default;
-
-// Badges
-$badges_color:         $white;
-$badges_dot_size:      rem(10);
-$badges_fontWeight:    700;
-$badges_fontSize:      rem(14);
-$badges_letterSpacing: $letterSpacing_default;
-$badges_num_minWidth:  1.5;
-$badges_num_padding:   em(4);
-$badges_outlineWidth: rem(1);
-$badges_text_padding:  rem(2) rem(6);
 
 // Card
 $card_background:                   $white;
@@ -347,29 +290,6 @@ $rowCard_title_fontSize:               $card_title_fontSize;
 $rowCard_title_fontWeight:             $card_title_fontWeight;
 $rowCard_title_color:                  $card_title_color;
 
-// Pagination
-$pagination_background:          $white;
-$pagination_background_hover:    state(hover, bg);
-$pagination_border:              $border_default;
-$pagination_borderRadius:        radius(sm);
-$pagination_boxShadow:           $boxShadow_default;
-$pagination_color:               dark(1);
-$pagination_color_hover:         state(hover, color);
-$pagination_controls_margin:     rem(10);
-$pagination_controls_padding:    rem(7);
-$pagination_color_current:       primary(500);
-$pagination_background_current:  state(active);
-$pagination_disabled_color:      state(disabled, color);
-$pagination_disabled_background: state(disabled, bg);
-$pagination_focus:               state(focus, primary);
-$pagination_fontWeight:          700;
-$pagination_fontSize:            rem(16);
-$pagination_fontFamily:          $fontFamily_secondary;
-$pagination_item_marginRight:    rem(5);
-$pagination_letterSpacing:       $letterSpacing_default;
-$pagination_padding:             rem(5) rem(10);
-$pagination_transition:          $transition_default;
-
 // Header
 $header_background:                   $white;
 $header_background_hover:             state(hover, bg);
@@ -417,7 +337,30 @@ $header_subLink_fontWeight:           $header_link_fontWeight;
 $header_subLink_padding_desk:         rem(8) rem(15);
 $header_subLink_padding_mob:          rem(8) 0 rem(8) rem(35);
 $header_transition_max:               0.3s;
-$header_transition_min:               0.1s;
+$header_transition_min:               $transition_default;
+
+// Pagination
+$pagination_background:          $white;
+$pagination_background_hover:    state(hover, bg);
+$pagination_border:              $border_default;
+$pagination_borderRadius:        radius(sm);
+$pagination_boxShadow:           $boxShadow_default;
+$pagination_color:               dark(1);
+$pagination_color_hover:         state(hover, color);
+$pagination_controls_margin:     rem(10);
+$pagination_controls_padding:    rem(7);
+$pagination_color_current:       primary(500);
+$pagination_background_current:  state(active);
+$pagination_disabled_color:      state(disabled, color);
+$pagination_disabled_background: state(disabled, bg);
+$pagination_focus:               state(focus, primary);
+$pagination_fontWeight:          700;
+$pagination_fontSize:            rem(16);
+$pagination_fontFamily:          $fontFamily_secondary;
+$pagination_item_marginRight:    rem(5);
+$pagination_letterSpacing:       $letterSpacing_default;
+$pagination_padding:             rem(5) rem(10);
+$pagination_transition:          $transition_default;
 
 // Popup
 $popup_close_background:       dark(1);
@@ -470,3 +413,60 @@ $slider_pagination_bullet_height:            rem(6);
 $slider_pagination_bullet_transition:        $transition_default;
 $slider_pagination_bullet_width:             rem(24);
 $slider_slide_height:                        rem(250);
+
+// Spoiler
+$spoiler_background:             $white;
+$spoiler_border:                 $border_default;
+$spoiler_borderRadius:           radius(sm);
+$spoiler_boxShadow:              $boxShadow_default;
+$spoiler_content_color:          gray(700);
+$spoiler_content_fontSize_max:   16;
+$spoiler_content_fontSize_min:   14;
+$spoiler_gap_max:                10;
+$spoiler_gap_min:                5;
+$spoiler_focus:                  state(focus, primary);
+$spoiler_icon_right_max:         20;
+$spoiler_icon_right_min:         10;
+$spoiler_icon_top_max:           25;
+$spoiler_icon_top_min:           20;
+$spoiler_icon_height:            rem(3);
+$spoiler_icon_width_max:         20;
+$spoiler_icon_width_min:         16;
+$spoiler_letterSpacing:          $letterSpacing_default;
+$spoiler_title_active:           state(active);
+$spoiler_title_background:       $white;
+$spoiler_title_background_hover: state(hover, bg);
+$spoiler_title_color:            dark(1);
+$spoiler_title_color_hover:      state(hover, color);
+$spoiler_title_fontSize_max:     18;
+$spoiler_title_fontSize_min:     16;
+$spoiler_title_fontWeight:       600;
+$spoiler_title_padding_max:      15;
+$spoiler_title_padding_min:      10;
+$spoiler_title_transition:       transform 0.3s ease 0s;
+$spoiler_transition:             $transition_default;
+$spoiler_x_padding_max:          15;
+$spoiler_x_padding_min:          10;
+$spoiler_y_padding_max:          25;
+$spoiler_y_padding_min:          15;
+
+// Tab
+$tab_active:                    state(active);
+$tab_borderRadius:              radius(sm) radius(sm) 0 0;
+$tab_btn_divider_height:        2;
+$tab_btn_divider_marginTop_max: 10;
+$tab_btn_divider_marginTop_min: 2;
+$tab_btn_padding:               rem(10);
+$tab_btn_padding_min:           5;
+$tab_btn_padding_x_max:         25;
+$tab_btn_padding_x_min:         15;
+$tab_background_hover:          state(hover, bg);
+$tab_color:                     gray(600);
+$tab_color_hover:               state(hover, color);
+$tab_focus:                     state(focus, primary);
+$tab_fontFamily:                $fontFamily_secondary;
+$tab_fontSize_max:              18;
+$tab_fontSize_min:              16;
+$tab_fontWeight:                600;
+$tab_menu_marginBottom:         rem(10);
+$tab_transition:                $transition_default;
