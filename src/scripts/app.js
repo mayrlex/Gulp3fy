@@ -2,6 +2,7 @@
 import lazyLoad from './helpers/lazyLoad.js';
 import documentReady from './helpers/documentReady.js';
 // import checkDevice from './helpers/checkDevice.js';
+import * as focusVisible from './helpers/focusVisible.js';
 
 //? ### Components
 // import * as header from '../components/header/header.js';

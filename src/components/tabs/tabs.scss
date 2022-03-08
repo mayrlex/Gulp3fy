@@ -25,6 +25,11 @@
 					background: $tab_background_hover;
 				}
 
+				// focus-visible polyfill
+				&.focus-visible {
+					box-shadow: $tab_focus;
+				}
+
 				&:focus-visible {
 					box-shadow: $tab_focus;
 				}
@@ -46,6 +51,11 @@
 		overflow: hidden;
 
 		@include media-hover {
+			// focus-visible polyfill
+			&.focus-visible {
+				box-shadow: $tab_focus;
+			}
+
 			&:focus-visible {
 				box-shadow: $tab_focus;
 			}

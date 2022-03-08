@@ -66,6 +66,11 @@
 				color: primary(600);
 			}
 
+			// focus-visible polyfill
+			&.focus-visible {
+				box-shadow: $breadcrumbs_focus;
+			}
+
 			&:focus-visible {
 				box-shadow: $breadcrumbs_focus;
 			}

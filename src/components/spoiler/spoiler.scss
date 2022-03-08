@@ -35,6 +35,11 @@
 				background: $spoiler_title_background_hover;
 			}
 
+			// focus-visible polyfill
+			&.focus-visible {
+				box-shadow: $spoiler_focus;
+			}
+
 			&:focus-visible {
 				box-shadow: $spoiler_focus;
 			}

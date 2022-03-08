@@ -311,6 +311,11 @@
 					background: $header_background_hover;
 				}
 
+				// focus-visible polyfill
+				&.focus-visible {
+					box-shadow: $header_link_focus;
+				}
+
 				&:focus-visible {
 					box-shadow: $header_link_focus;
 				}

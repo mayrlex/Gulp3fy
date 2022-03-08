@@ -136,6 +136,11 @@
 			background: $btn_primary_active;
 		}
 
+		// focus-visible polyfill
+		&.focus-visible {
+			box-shadow: $btn_primary_focus;
+		}
+
 		&:focus-visible {
 			box-shadow: $btn_primary_focus;
 		}
@@ -172,6 +177,11 @@
 			outline: rem($btn_outlineWidth) solid $btn_secondary_active;
 		}
 
+		// focus-visible polyfill
+		&.focus-visible {
+			box-shadow: $btn_secondary_focus;
+		}
+
 		&:focus-visible {
 			box-shadow: $btn_secondary_focus;
 		}
@@ -204,6 +214,11 @@
 
 		&:active {
 			background: $btn_text_active;
+		}
+
+		// focus-visible polyfill
+		&.focus-visible {
+			box-shadow: $btn_text_focus;
 		}
 
 		&:focus-visible {

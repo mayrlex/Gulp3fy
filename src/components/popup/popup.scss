@@ -59,6 +59,11 @@
 				background: $popup_close_background_hover;
 			}
 
+			// focus-visible polyfill
+			&.focus-visible {
+				box-shadow: $popup_close_focus;
+			}
+
 			&:focus-visible {
 				box-shadow: $popup_close_focus;
 			}

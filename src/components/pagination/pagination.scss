@@ -54,6 +54,11 @@
 					fill: $pagination_color_hover;
 				}
 
+				// focus-visible polyfill
+				&.focus-visible {
+					box-shadow: $pagination_focus;
+				}
+
 				&:focus-visible {
 					box-shadow: $pagination_focus;
 				}
