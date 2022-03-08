@@ -1,5 +1,5 @@
 // import SimpleBar from 'simplebar';
-import lazyImages from './helpers/lazyImages.js';
+import lazyLoad from './helpers/lazyLoad.js';
 import documentReady from './helpers/documentReady.js';
 // import checkDevice from './helpers/checkDevice.js';
 
@@ -12,6 +12,6 @@ import documentReady from './helpers/documentReady.js';
 import * as homepage from './pages/home/hero.js';
 
 documentReady(() => {
-	lazyImages();
+	lazyLoad();
 	// checkDevice();
 });
