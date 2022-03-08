@@ -35,7 +35,6 @@ mixin breadcrumbs-item(data)
 	)
 		if data.link
 			a.breadcrumbs__link(href=data.link)!= data.text
-			span.breadcrumbs__divider
 
 		else
 			p!= data.text
