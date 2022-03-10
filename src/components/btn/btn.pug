@@ -42,7 +42,7 @@ mixin btn(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray}${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
+				modsArray = `${modsArray} ${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
 			}
 		}
 
