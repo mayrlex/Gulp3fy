@@ -1,11 +1,7 @@
-$card_gap_max: 25;
-$card_gap_min: 15;
-
 .card {
-	display: grid;
-	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
-	align-items: start;
-	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+	$card_gap_max: 25;
+	$card_gap_min: 15;
+
 	overflow: hidden;
 
 	background: $white;
@@ -13,14 +9,57 @@ $card_gap_min: 15;
 	border-radius: radius(sm);
 	box-shadow: $boxShadow;
 
-	// If card_header comes first
-	& &__header:first-child {
-		@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
+	& &__inner {
+		// If card_inner comes first
+		&:first-child {
+			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+		}
+
+		// If card_inner comes last
+		&:last-child {
+			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+		}
 	}
 
-	// If card_preview comse last
-	& &__preview:last-child {
-		@include adaptive('margin-bottom', -$card_gap_max, -$card_gap_min, 1);
+	// Card col
+	&.col {
+		display: flex;
+		flex-direction: column;
+		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+		overflow: hidden;
+
+		// Card items gap
+		& > [class*='card__'] {
+			&:not([class*='preview']) {
+				@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+				@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+			}
+
+			&:not(:last-child) {
+				@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
+			}
+		}
+
+		// If card_header comes first
+		& .card__header:first-child {
+			@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
+		}
+
+		// If card_preview comse last
+		& .card__preview:last-child {
+			@include adaptive('margin-bottom', -$card_gap_max, -$card_gap_min, 1);
+		}
+	}
+
+	// Card row
+	&.row {
+		display: grid;
+		grid-template-columns: repeat(1, 1fr);
+		@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
+
+		@include media-min(sm) {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 
 	&__grid {
@@ -29,18 +68,32 @@ $card_gap_min: 15;
 		gap: rem(10);
 		row-gap: rem(20);
 
-		@include media-min(md) {
-			grid-template-columns: repeat(2, 1fr);
+		// Card grid col
+		&.col {
+			@include media-min(md) {
+				grid-template-columns: repeat(2, 1fr);
+			}
+
+			@include media-min(lg) {
+				grid-template-columns: repeat(3, 1fr);
+				gap: rem(20);
+				row-gap: rem(30);
+			}
+
+			@include media-min(xxl) {
+				grid-template-columns: repeat(4, 1fr);
+			}
 		}
 
-		@include media-min(lg) {
-			grid-template-columns: repeat(3, 1fr);
-			gap: rem(20);
-			row-gap: rem(30);
-		}
+		// Card grid row
+		&.row {
+			@include media-min(lg) {
+				grid-template-columns: repeat(2, 1fr);
+			}
 
-		@include media-min(xxl) {
-			grid-template-columns: repeat(4, 1fr);
+			@include media-min(xl) {
+				gap: rem(20);
+			}
 		}
 	}
 
@@ -51,15 +104,12 @@ $card_gap_min: 15;
 		min-height: rem(170);
 		overflow: hidden;
 
-		@include media-minmax(sm, md) {
-			min-height: rem(300);
-		}
-
 		@include media-min(md) {
 			min-height: rem(200);
 		}
 
 		@include media-hover {
+			// Preview overlay
 			&:before {
 				position: absolute;
 				top: 50%;
@@ -98,13 +148,35 @@ $card_gap_min: 15;
 				}
 			}
 		}
+
+		// Card preview col
+		&.col {
+			@include media-minmax(sm, md) {
+				min-height: rem(300);
+			}
+		}
+
+		// Card preview row
+		&.row {
+		}
 	}
 
-	&__header,
-	&__content,
-	&__footer {
-		@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-		@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+	// Card inner row
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		@include adaptive('padding-top', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+
+		@include media-max(sm) {
+			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+		}
+
+		// Card items gap
+		& > [class*='card__']:not(:last-child) {
+			@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
+		}
 	}
 
 	&__header {
@@ -137,152 +209,6 @@ $card_gap_min: 15;
 		width: 100%;
 
 		& .card__date {
-			margin-right: auto;
-		}
-	}
-
-	&__date {
-		color: gray(500);
-		font-size: rem(14);
-		white-space: nowrap;
-	}
-}
-
-.row-card {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
-	overflow: hidden;
-
-	background: $white;
-	border: $border;
-	border-radius: radius(sm);
-	box-shadow: $boxShadow;
-
-	@include media-min(sm) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	& &__inner {
-		// If card_inner comes first
-		&:first-child {
-			@include adaptive('margin-left', $card_gap_max, $card_gap_min, 1);
-		}
-
-		// If card_inner comes last
-		&:last-child {
-			@include adaptive('margin-right', $card_gap_max, $card_gap_min, 1);
-		}
-	}
-
-	&__grid {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		gap: rem(10);
-
-		@include media-min(lg) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-		@include media-min(xl) {
-			gap: rem(20);
-		}
-	}
-
-	&__preview {
-		position: relative;
-
-		width: 100%;
-		min-height: rem(170);
-		overflow: hidden;
-
-		@include media-min(md) {
-			min-height: rem(200);
-		}
-		@include media-min(lg) {
-			&:before {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				z-index: 2;
-
-				color: $white;
-				font-weight: 700;
-				font-size: rem(28);
-				font-family: $fontFamily_secondary;
-				white-space: nowrap;
-
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-				opacity: 0;
-
-				transition: 0.3s;
-
-				content: 'Learn more';
-			}
-
-			& img {
-				filter: brightness(1);
-
-				transition: 0.3s;
-			}
-		}
-
-		@include media-hover {
-			&:hover {
-				&:before {
-					opacity: 1;
-				}
-
-				& img {
-					filter: brightness(0.5);
-				}
-			}
-		}
-	}
-
-	&__inner {
-		display: flex;
-		flex-direction: column;
-		@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
-		@include adaptive('padding-top', $card_gap_max, $card_gap_min, 1);
-		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
-
-		@include media-max(sm) {
-			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
-		}
-	}
-
-	&__header {
-		display: flex;
-		align-items: center;
-	}
-
-	&__title {
-		margin-right: auto;
-
-		color: dark(1);
-		font-weight: 700;
-		font-size: rem(20);
-		letter-spacing: $letterSpacing;
-	}
-
-	&__content {
-		flex: 1 1 auto;
-
-		color: $color_body;
-		font-size: rem(14);
-		line-height: rem(20);
-	}
-
-	&__footer {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-
-		& .row-card__date {
 			margin-right: auto;
 		}
 	}

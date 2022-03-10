@@ -29,7 +29,7 @@
 			})
 
 	//- Row
-	.row-card__grid
+	.card__grid
 		+card({ isRow: true })
 			+card-preview({
 				link: 'https://example.com/news/page',
@@ -38,13 +38,12 @@
 				isRow: true
 			})
 
-			.row-card__inner
+			.card__inner
 				+card-header({
 					title: 'Card title',
-					isRow: true
 				})
 
-				.row-card__content
+				.card__content
 					p Lorem ipsum
 
 				+card-footer({
@@ -52,10 +51,8 @@
 					validDate:'2022-01-01',
 					text:'More',
 					link:'https://example.com/news/page',
-					isRow: true
 				})
 
-//- Card
 mixin card(data)
 	-
 		let modsArray = '';
@@ -64,35 +61,35 @@ mixin card(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray}${modsList[i].trim()}${isRow ? '__row-card' : '__card'}`;
+				modsArray = `${modsArray}${modsList[i].trim()}'__card'`;
 			}
 		}
 
-	article(class=data.isRow ? `row-card ${modsArray}` : `card ${modsArray}`)&attributes(attributes)
+	article.card(class=data.isRow ? `row ${modsArray}` : `col ${modsArray}`)&attributes(attributes)
 		block
 
 //- Preview
 mixin card-preview(data)
-	div(class=data.isRow ? `row-card__preview --ibg` : `card__preview --ibg`)
+	.card__preview(class=data.isRow ? `row --ibg` : `col --ibg`)
 		a(href=data.link)
 			+pic({src: data.src, alt: data.alt})
 
 //- Header
 mixin card-header(data)
-	div(class=data.isRow ? `row-card__header` : `card__header`)
-		h3(class=data.isRow ? `row-card__title` : `card__title`)!= data.title
+	.card__header
+		h3.card__title!= data.title
 		if data.date
-			time(class=data.isRow ? `row-card__date` : `card__date`, datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.validDate)!= data.date
 
 //- Footer
 mixin card-footer(data)
-	div(class=data.isRow ? `row-card__footer` : `card__footer`)
+	.card__footer
 		if !data.date
 			+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
 
 		else if !data.text
-			time(class=data.isRow ? `row-card__date` : `card__date`, datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.validDate)!= data.date
 
 		else
-			time(class=data.isRow ? `row-card__date` : `card__date`, datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.validDate)!= data.date
 			+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
