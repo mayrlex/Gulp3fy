@@ -6,12 +6,9 @@
 	display: inline-flex;
 	align-items: center;
 
-	font: {
-		weight: 700;
-		size: rem(14);
-		family: $fontFamily_secondary;
-	}
-
+	font-weight: 700;
+	font-size: rem(14);
+	font-family: $fontFamily_secondary;
 	letter-spacing: $letterSpacing;
 
 	&__dot {

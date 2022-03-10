@@ -82,14 +82,6 @@
 		border-radius: radius(circle);
 	}
 
-	&__primary,
-	&__secondary,
-	&__text {
-		.icon {
-			@include adaptive('margin-left', 12, 8, 1);
-		}
-	}
-
 	// Group buttons container
 	&__group {
 		display: inline-flex;
@@ -165,10 +157,10 @@
 // Secondary buttons
 .btn__secondary,
 .btn-icon__secondary {
-	$outline_size: 2;
+	$outline_size: rem(2);
 
-	outline: rem($outline_size) solid secondary(500);
-	outline-offset: rem(-$outline_size);
+	outline: $outline_size solid secondary(500);
+	outline-offset: -$outline_size;
 
 	@include media-hover {
 		&:hover {
@@ -181,7 +173,7 @@
 
 		&:active {
 			background: secondary(600);
-			outline: rem($outline_size) solid secondary(600);
+			outline: $outline_size solid secondary(600);
 		}
 
 		// focus-visible polyfill
@@ -196,7 +188,7 @@
 
 	&.--disabled {
 		background: none;
-		outline: rem($outline_size) solid secondary(200);
+		outline: $outline_size solid secondary(200);
 		cursor: not-allowed;
 
 		.icon {
@@ -212,8 +204,6 @@
 // Text buttons
 .btn__text,
 .btn-icon__text {
-	background: transparent;
-
 	@include media-hover {
 		&:hover {
 			background: state(hover, primary, bg);
@@ -246,4 +236,9 @@
 	.icon {
 		fill: primary(500);
 	}
+}
+
+// Any button containing text with an icon
+[class*='btn__'] > .icon {
+	@include adaptive('margin-left', 12, 8, 1);
 }
