@@ -27,7 +27,7 @@ body {
 }
 
 body {
-	color: $body_color;
+	color: $color_body;
 	@include adaptive('font-size', 16, 14, 1);
 	font-family: $fontFamily_primary;
 

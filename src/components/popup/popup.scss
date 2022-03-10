@@ -1,4 +1,8 @@
 .popup {
+	$close_pos_max: 25;
+	$close_pos_in: 15;
+	$icon_size: rem(35);
+
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -11,61 +15,61 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 
-	background: $popup_overlay;
+	background: $overlay;
 	visibility: hidden;
 	opacity: 0;
 
-	transition: $popup_transition;
+	transition: opacity 0.3s, visibility 0.3s;
 
 	&__inner {
 		position: relative;
 
 		width: 90%;
 		margin: auto 0;
-		@include adaptive('padding', $popup_inner_padding_max, $popup_inner_padding_min, 1);
+		@include adaptive('padding', 50, 25, 1);
 
-		background: $popup_inner_background;
-		border: $popup_inner_border;
-		border-radius: $popup_inner_borderRadius;
-		transform: $popup_inner_transform;
+		background: $white;
+		border: $border;
+		border-radius: radius(sm);
+		transform: perspective(600px) translate(0px, -100%) rotateX(45deg);
 		opacity: 0;
 
-		transition: $popup_inner_transition;
+		transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
 		@include media-min(md) {
-			width: $popup_inner_width;
+			width: rem(540);
 		}
 	}
 
 	&__close {
 		position: absolute;
+		@include adaptive('top', $close_pos_max, $close_pos_in, 1);
+		@include adaptive('right', $close_pos_max, $close_pos_in, 1);
 
-		padding: $popup_close_padding;
+		padding: rem(5);
 
 		font-size: 0;
 
-		background: $popup_close_background;
-		border-radius: $popup_close_borderRadius;
+		background: dark(1);
+		border-radius: radius(sm);
 		cursor: pointer;
 
-		transition: $popup_close_transition;
+		transition: $transition;
 
-		fill: $popup_close_color;
-		@include adaptive('top', $popup_close_pos_max, $popup_close_pos_min, 1);
-		@include adaptive('right', $popup_close_pos_max, $popup_close_pos_min, 1);
+		fill: $white;
 
 		@include media-hover {
 			&:hover {
-				background: $popup_close_background_hover;
+				background: dark(2);
 			}
 
 			// focus-visible polyfill
 			&.focus-visible {
-				box-shadow: $popup_close_focus;
+				box-shadow: state(focus, primary);
 			}
 
 			&:focus-visible {
-				box-shadow: $popup_close_focus;
+				box-shadow: state(focus, primary);
 			}
 		}
 	}
@@ -74,34 +78,34 @@
 		text-align: center;
 
 		& [class^='popup'] {
-			margin-bottom: $popup_header_items_margin;
+			margin-bottom: rem(15);
 		}
 	}
 
 	&__icon {
 		display: inline-flex;
-		@include adaptive('padding', $popup_icon_padding_max, $popup_icon_padding_min, 1);
+		@include adaptive('padding', 35, 25, 1);
 
-		background: $popup_icon_background;
-		border-radius: $popup_icon_borderRadius;
+		background: success(100);
+		border-radius: radius(circle);
 
-		fill: $popup_icon_color;
+		fill: success(500);
 
 		.icon {
-			width: $popup_icon_size;
-			height: $popup_icon_size;
+			width: $icon_size;
+			height: $icon_size;
 		}
 	}
 
 	&__title {
-		color: $popup_title_color;
-		font-weight: $popup_title_fontWeight;
+		color: dark(1);
+		font-weight: 700;
 		font-family: $fontFamily_secondary;
-		@include adaptive('font-size', $popup_title_fontSize_max, $popup_title_fontSize_min, 1);
+		@include adaptive('font-size', 36, 28, 1);
 	}
 
 	&__content {
-		@include adaptive('margin-bottom', $popup_content_margin_max, $popup_content_margin_min, 1);
+		@include adaptive('margin-bottom', 30, 20, 1);
 
 		text-align: center;
 	}
@@ -110,7 +114,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		@include adaptive('gap', $popup_footer_gap_max, $popup_footer_gap_min, 1);
+		@include adaptive('gap', 20, 10, 1);
 	}
 
 	&.--show {
@@ -118,7 +122,7 @@
 		opacity: 1;
 
 		& .popup__inner {
-			transform: $popup_inner_transform_show;
+			transform: perspective(600px) translate(0px, 0%) rotateX(0deg);
 			opacity: 1;
 		}
 	}

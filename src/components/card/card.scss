@@ -1,15 +1,17 @@
+$card_gap_max: 25;
+$card_gap_min: 15;
+
 .card {
-	display: flex;
-	flex-direction: column;
+	display: grid;
 	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
 	align-items: start;
 	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
 	overflow: hidden;
 
 	background: $white;
-	border: $card_border;
-	border-radius: $card_borderRadius;
-	box-shadow: $card_boxShadow;
+	border: $border;
+	border-radius: radius(sm);
+	box-shadow: $boxShadow;
 
 	// If card_header comes first
 	& &__header:first-child {
@@ -24,8 +26,8 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: $card_grid_gap_min;
-		row-gap: $card_grid_rowGap_min;
+		gap: rem(10);
+		row-gap: rem(20);
 
 		@include media-min(md) {
 			grid-template-columns: repeat(2, 1fr);
@@ -33,8 +35,8 @@
 
 		@include media-min(lg) {
 			grid-template-columns: repeat(3, 1fr);
-			gap: $card_grid_gap_max;
-			row-gap: $card_grid_rowGap_max;
+			gap: rem(20);
+			row-gap: rem(30);
 		}
 
 		@include media-min(xxl) {
@@ -46,15 +48,15 @@
 		position: relative;
 
 		width: 100%;
-		min-height: $card_preview_minHeight_min;
+		min-height: rem(170);
 		overflow: hidden;
 
 		@include media-minmax(sm, md) {
-			min-height: $card_preview_minHeight_minmax;
+			min-height: rem(300);
 		}
 
 		@include media-min(md) {
-			min-height: $card_preview_minHeight_max;
+			min-height: rem(200);
 		}
 
 		@include media-hover {
@@ -64,26 +66,26 @@
 				left: 50%;
 				z-index: 2;
 
-				color: $card_preview_overlay_color;
-				font-weight: $card_preview_overlay_fontWeight;
-				font-size: $card_preview_overlay_fontSize;
+				color: $white;
+				font-weight: 700;
+				font-size: rem(28);
 				font-family: $fontFamily_secondary;
-				letter-spacing: $card_letterSpacing;
+				letter-spacing: $letterSpacing;
 				white-space: nowrap;
 
 				transform: translate(-50%, -50%);
 				cursor: pointer;
 				opacity: 0;
 
-				transition: $card_preview_overlay_transition;
+				transition: 0.3s;
 
-				content: $card_preview_overlay_content;
+				content: 'Learn more';
 			}
 
 			& img {
-				filter: $card_preview_overlay_filter;
+				filter: brightness(1);
 
-				transition: $card_preview_overlay_transition;
+				transition: 0.3s;
 			}
 
 			&:hover {
@@ -92,7 +94,7 @@
 				}
 
 				& img {
-					filter: $card_preview_overlay_filter_hover;
+					filter: brightness(0.5);
 				}
 			}
 		}
@@ -114,18 +116,18 @@
 	&__title {
 		margin-right: auto;
 
-		color: $card_title_color;
-		font-weight: $card_title_fontWeight;
-		font-size: $card_title_fontSize;
-		letter-spacing: $card_letterSpacing;
+		color: dark(1);
+		font-weight: 700;
+		font-size: rem(20);
+		letter-spacing: $letterSpacing;
 	}
 
 	&__content {
 		flex: 1 1 auto;
 
-		color: $card_content_color;
-		font-size: $card_content_fontSize;
-		line-height: $card_content_lineHeight;
+		color: $color_body;
+		font-size: rem(14);
+		line-height: rem(20);
 	}
 
 	&__footer {
@@ -140,8 +142,8 @@
 	}
 
 	&__date {
-		color: $card_date_color;
-		font-size: $card_date_fontSize;
+		color: gray(500);
+		font-size: rem(14);
 		white-space: nowrap;
 	}
 }
@@ -149,13 +151,13 @@
 .row-card {
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	@include adaptive('gap', $rowCard_gap_max, $rowCard_gap_min, 1);
+	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
 	overflow: hidden;
 
 	background: $white;
-	border: $rowCard_border;
-	border-radius: $rowCard_borderRadius;
-	box-shadow: $rowCard_boxShadow;
+	border: $border;
+	border-radius: radius(sm);
+	box-shadow: $boxShadow;
 
 	@include media-min(sm) {
 		grid-template-columns: repeat(2, 1fr);
@@ -164,26 +166,26 @@
 	& &__inner {
 		// If card_inner comes first
 		&:first-child {
-			@include adaptive('margin-left', $rowCard_gap_max, $rowCard_gap_min, 1);
+			@include adaptive('margin-left', $card_gap_max, $card_gap_min, 1);
 		}
 
 		// If card_inner comes last
 		&:last-child {
-			@include adaptive('margin-right', $rowCard_gap_max, $rowCard_gap_min, 1);
+			@include adaptive('margin-right', $card_gap_max, $card_gap_min, 1);
 		}
 	}
 
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
-		gap: $rowcard_grid_gap_min;
+		gap: rem(10);
 
 		@include media-min(lg) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
 		@include media-min(xl) {
-			gap: $rowcard_grid_gap_max;
+			gap: rem(20);
 		}
 	}
 
@@ -191,11 +193,11 @@
 		position: relative;
 
 		width: 100%;
-		min-height: $card_preview_minHeight_min;
+		min-height: rem(170);
 		overflow: hidden;
 
 		@include media-min(md) {
-			min-height: $card_preview_minHeight_max;
+			min-height: rem(200);
 		}
 		@include media-min(lg) {
 			&:before {
@@ -204,9 +206,9 @@
 				left: 50%;
 				z-index: 2;
 
-				color: $rowCard_preview_overlay_color;
-				font-weight: $rowCard_preview_overlay_fontWeight;
-				font-size: $rowCard_preview_overlay_fontSize;
+				color: $white;
+				font-weight: 700;
+				font-size: rem(28);
 				font-family: $fontFamily_secondary;
 				white-space: nowrap;
 
@@ -214,15 +216,15 @@
 				cursor: pointer;
 				opacity: 0;
 
-				transition: $rowCard_preview_overlay_transition;
+				transition: 0.3s;
 
-				content: $rowCard_preview_overlay_content;
+				content: 'Learn more';
 			}
 
 			& img {
-				filter: $rowCard_preview_overlay_filter;
+				filter: brightness(1);
 
-				transition: $rowCard_preview_overlay_transition;
+				transition: 0.3s;
 			}
 		}
 
@@ -233,7 +235,7 @@
 				}
 
 				& img {
-					filter: $rowCard_preview_overlay_filter_hover;
+					filter: brightness(0.5);
 				}
 			}
 		}
@@ -242,13 +244,13 @@
 	&__inner {
 		display: flex;
 		flex-direction: column;
-		@include adaptive('gap', $rowCard_gap_max, $rowCard_gap_min, 1);
-		@include adaptive('padding-top', $rowCard_gap_max, $rowCard_gap_min, 1);
-		@include adaptive('padding-bottom', $rowCard_gap_max, $rowCard_gap_min, 1);
+		@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-top', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
 
 		@include media-max(sm) {
-			@include adaptive('padding-right', $rowCard_gap_max, $rowCard_gap_min, 1);
-			@include adaptive('padding-left', $rowCard_gap_max, $rowCard_gap_min, 1);
+			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
 		}
 	}
 
@@ -260,18 +262,18 @@
 	&__title {
 		margin-right: auto;
 
-		color: $rowCard_title_color;
-		font-weight: $rowCard_title_fontWeight;
-		font-size: $rowCard_title_fontSize;
-		letter-spacing: $rowCard_letterSpacing;
+		color: dark(1);
+		font-weight: 700;
+		font-size: rem(20);
+		letter-spacing: $letterSpacing;
 	}
 
 	&__content {
 		flex: 1 1 auto;
 
-		color: $rowCard_content_color;
-		font-size: $rowCard_content_fontSize;
-		line-height: $rowCard_content_lineHeight;
+		color: $color_body;
+		font-size: rem(14);
+		line-height: rem(20);
 	}
 
 	&__footer {
@@ -286,8 +288,8 @@
 	}
 
 	&__date {
-		color: $rowCard_date_color;
-		font-size: $rowCard_date_fontSize;
+		color: gray(500);
+		font-size: rem(14);
 		white-space: nowrap;
 	}
 }

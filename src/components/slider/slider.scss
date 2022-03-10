@@ -1,49 +1,53 @@
 .swiper {
+	$nav_btn_pos_x: rem(15);
+	$pagination_margin: 20;
+	$nav_btn_margin: math.div(44 + $pagination_margin, 2);
+
 	&-slide {
-		height: $slider_slide_height;
+		height: rem(250);
 	}
 
 	&-pagination {
 		position: static;
 
-		margin-top: rem($slider_pagination_margin - 10);
+		margin-top: rem($pagination_margin - 10);
 
 		&-bullet {
-			width: $slider_pagination_bullet_width;
-			height: $slider_pagination_bullet_height;
+			width: rem(24);
+			height: rem(6);
 
-			background: $slider_pagination_bullet_background;
-			border-radius: $slider_pagination_bullet_borderRadius;
+			background: color.adjust(dark(1), $alpha: -0.5);
+			border-radius: radius(sm);
 			opacity: 1;
 
-			transition: $slider_pagination_bullet_transition;
+			transition: $transition;
 
 			@include media-hover {
 				&:hover:not(.swiper-pagination-bullet-active) {
-					background: $slider_pagination_bullet_background_hover;
+					background: color.adjust(primary(500), $alpha: -0.5);
 				}
 			}
 
 			&-active {
-				background: $slider_pagination_bullet_background_active;
+				background: color.adjust(primary(500), $alpha: -0.25);
 			}
 		}
 	}
 
 	&-button-prev,
 	&-button-next {
-		margin-top: rem(-$slider_naviagation_button_margin);
+		margin-top: rem(-$nav_btn_margin);
 
 		&:after {
-			color: $slider_navigation_button_color;
+			color: color.adjust(primary(500), $alpha: -0.5);
 		}
 	}
 
 	&-button-prev {
-		left: $slider_navigation_button_pos_x;
+		left: $nav_btn_pos_x;
 	}
 
 	&-button-next {
-		right: $slider_navigation_button_pos_x;
+		right: $nav_btn_pos_x;
 	}
 }

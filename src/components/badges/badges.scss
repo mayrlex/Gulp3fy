@@ -1,17 +1,22 @@
 .badge {
+	$dot_size: rem(10);
+	$num_width: 1.5;
+	$outline_size: rem(1);
+
 	display: inline-flex;
 	align-items: center;
 
 	font: {
-		weight: $badges_fontWeight;
-		size: $badges_fontSize;
+		weight: 700;
+		size: rem(14);
 		family: $fontFamily_secondary;
 	}
-	letter-spacing: $badges_letterSpacing;
+
+	letter-spacing: $letterSpacing;
 
 	&__dot {
-		width: $badges_dot_size;
-		height: $badges_dot_size;
+		width: $dot_size;
+		height: $dot_size;
 
 		background: primary(500);
 		border-radius: radius(circle);
@@ -20,11 +25,11 @@
 	&__num {
 		box-sizing: content-box;
 
-		min-width: $badges_num_minWidth + em;
-		padding: $badges_num_padding;
+		min-width: $num_width + em;
+		padding: em(4);
 
-		color: $badges_color;
-		line-height: $badges_num_minWidth;
+		color: $white;
+		line-height: $num_width;
 		text-align: center;
 
 		background: primary(500);
@@ -32,7 +37,7 @@
 	}
 
 	&__text {
-		padding: $badges_text_padding;
+		padding: rem(2) rem(6);
 
 		border-radius: radius(xxl);
 	}
@@ -46,7 +51,7 @@
 	&--outline {
 		color: primary(500);
 
-		outline: $badges_outlineWidth solid primary(500);
-		outline-offset: -$badges_outlineWidth;
+		outline: $outline_size solid primary(500);
+		outline-offset: -$outline_size;
 	}
 }

@@ -89,8 +89,10 @@
 }
 
 // States
-@function state($key1, $key2: null) {
-	@if map-has-key($states, $key1, $key2) {
+@function state($key1, $key2: null, $key3: null) {
+	@if map-has-key($states, $key1, $key2, $key3) {
+		@return map-get($states, $key1, $key2, $key3);
+	} @else if map-has-key($states, $key1, $key2) {
 		@return map-get($states, $key1, $key2);
 	} @else if map-has-key($states, $key1) {
 		@return map-get($states, $key1);

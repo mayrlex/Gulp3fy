@@ -1,12 +1,19 @@
 .spoiler {
+	$color_title: dark(1);
+	$title_hover: state(hover, primary, color);
+	$padding_x_max: 15;
+	$padding_x_min: 10;
+	$padding_y_max: 25;
+	$padding_y_min: 15;
+
 	&__item {
-		background: $spoiler_background;
-		border: $spoiler_border;
-		border-radius: $spoiler_borderRadius;
-		box-shadow: $spoiler_boxShadow;
+		background: $white;
+		border: $border;
+		border-radius: radius(sm);
+		box-shadow: $boxShadow;
 
 		&:not(:last-child) {
-			@include adaptive('margin-bottom', $spoiler_gap_max, $spoiler_gap_min, 1);
+			@include adaptive('margin-bottom', 10, 5, 1);
 		}
 	}
 
@@ -14,41 +21,41 @@
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding', $spoiler_title_padding_max, $spoiler_title_padding_min, 1);
+		@include adaptive('padding', 15, 10, 1);
 
-		color: $spoiler_title_color;
-		font-weight: $spoiler_title_fontWeight;
-		@include adaptive('font-size', $spoiler_title_fontSize_max, $spoiler_title_fontSize_min, 1);
+		color: $color_title;
+		font-weight: 600;
+		@include adaptive('font-size', 18, 16, 1);
 		font-family: $fontFamily_secondary;
-		letter-spacing: $spoiler_letterSpacing;
+		letter-spacing: $letterSpacing;
 		text-align: left;
 
-		background: $spoiler_title_background;
-		border-radius: $spoiler_borderRadius;
+		background: $white;
+		border-radius: radius(sm);
 
-		transition: $spoiler_transition;
+		transition: $transition;
 
 		@include media-hover {
 			&:hover {
-				color: $spoiler_title_color_hover;
+				color: state(hover, primary, color);
 
-				background: $spoiler_title_background_hover;
+				background: state(hover, primary, bg);
 			}
 
 			// focus-visible polyfill
 			&.focus-visible {
-				box-shadow: $spoiler_focus;
+				box-shadow: state(focus, primary);
 			}
 
 			&:focus-visible {
-				box-shadow: $spoiler_focus;
+				box-shadow: state(focus, primary);
 			}
 		}
 
 		&.--show {
-			color: $spoiler_title_color_hover;
+			color: $title_hover;
 
-			background: $spoiler_title_active;
+			background: state(active);
 		}
 	}
 
@@ -56,16 +63,16 @@
 		&:before,
 		&:after {
 			position: absolute;
-			@include adaptive('top', $spoiler_icon_top_max, $spoiler_icon_top_min, 1);
-			@include adaptive('right', $spoiler_icon_right_max, $spoiler_icon_right_min, 1);
+			@include adaptive('top', 25, 20, 1);
+			@include adaptive('right', 20, 10, 1);
 
-			@include adaptive('width', $spoiler_icon_width_max, $spoiler_icon_width_min, 1);
-			height: $spoiler_icon_height;
+			@include adaptive('width', 20, 16, 1);
+			height: rem(3);
 
-			background: $spoiler_title_color;
+			background: $color_title;
 			border-radius: radius(sm);
 
-			transition: $spoiler_title_transition;
+			transition: transform 0.3s ease 0s;
 
 			content: '';
 		}
@@ -77,7 +84,7 @@
 		&.--show {
 			&:before,
 			&:after {
-				background: $spoiler_title_color_hover;
+				background: $title_hover;
 			}
 
 			&:after {
@@ -89,24 +96,19 @@
 			&:hover {
 				&:before,
 				&:after {
-					background: $spoiler_title_color_hover;
+					background: $title_hover;
 				}
 			}
 		}
 	}
 
 	&__content {
-		@include adaptive('padding-top', $spoiler_y_padding_max, $spoiler_y_padding_min, 1);
-		@include adaptive('padding-right', $spoiler_x_padding_max, $spoiler_x_padding_min, 1);
-		@include adaptive('padding-bottom', $spoiler_y_padding_max, $spoiler_y_padding_min, 1);
-		@include adaptive('padding-left', $spoiler_x_padding_max, $spoiler_x_padding_min, 1);
+		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
+		@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
+		@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
+		@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
 
-		color: $spoiler_content_color;
-		@include adaptive(
-			'font-size',
-			$spoiler_content_fontSize_max,
-			$spoiler_content_fontSize_min,
-			1
-		);
+		color: $color_body;
+		@include adaptive('font-size', 16, 14, 1);
 	}
 }

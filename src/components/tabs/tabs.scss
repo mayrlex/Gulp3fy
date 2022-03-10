@@ -1,44 +1,47 @@
 .tabs {
+	$btn_padding_x_max: 25;
+	$btn_padding_x_min: 15;
+
 	&__menu {
-		margin-bottom: $tab_menu_marginBottom;
+		margin-bottom: rem(10);
 
 		font-size: 0;
 
 		&-btn {
-			padding: $tab_btn_padding;
-			@include adaptive('padding-right', $tab_btn_padding_x_max, $tab_btn_padding_x_min, 1);
-			@include adaptive('padding-left', $tab_btn_padding_x_max, $tab_btn_padding_x_min, 1);
+			padding: rem(10);
+			@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
+			@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
 
-			color: $tab_color;
-			font-weight: $tab_fontWeight;
-			@include adaptive('font-size', $tab_fontSize_max, $tab_fontSize_min, 1);
-			font-family: $tab_fontFamily;
+			color: gray(600);
+			font-weight: 600;
+			@include adaptive('font-size', 18, 16, 1);
+			font-family: $fontFamily_secondary;
 
-			border-radius: $tab_borderRadius;
+			border-radius: radius(sm) radius(sm) 0 0;
 
-			transition: $tab_transition;
+			transition: $transition;
 
 			@include media-hover {
 				&:hover {
-					color: $tab_color_hover;
+					color: state(hover, primary, color);
 
-					background: $tab_background_hover;
+					background: state(hover, primary, bg);
 				}
 
 				// focus-visible polyfill
 				&.focus-visible {
-					box-shadow: $tab_focus;
+					box-shadow: state(focus, primary);
 				}
 
 				&:focus-visible {
-					box-shadow: $tab_focus;
+					box-shadow: state(focus, primary);
 				}
 			}
 
 			&.--active {
-				color: $tab_color_hover;
+				color: state(hover, primary, color);
 
-				background: $tab_active;
+				background: state(active);
 			}
 		}
 	}
@@ -53,11 +56,11 @@
 		@include media-hover {
 			// focus-visible polyfill
 			&.focus-visible {
-				box-shadow: $tab_focus;
+				box-shadow: state(focus, primary);
 			}
 
 			&:focus-visible {
-				box-shadow: $tab_focus;
+				box-shadow: state(focus, primary);
 			}
 		}
 

@@ -1,23 +1,26 @@
 .pagination {
+	$controls_margin: rem(10);
+	$controls_padding: rem(7);
+
 	display: flex;
 	justify-content: center;
 
-	color: $pagination_color;
-	font-weight: $pagination_fontWeight;
-	font-size: $pagination_fontSize;
-	font-family: $pagination_fontFamily;
-	letter-spacing: $pagination_letterSpacing;
+	color: dark(1);
+	font-weight: 700;
+	font-size: rem(16);
+	font-family: $fontFamily_secondary;
+	letter-spacing: $letterSpacing;
 
 	&__inner {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		padding: $pagination_padding;
+		padding: rem(5) rem(10);
 
-		background: $pagination_background;
-		border: $pagination_border;
-		border-radius: $pagination_borderRadius;
-		box-shadow: $pagination_boxShadow;
+		background: $white;
+		border: $border;
+		border-radius: radius(sm);
+		box-shadow: $boxShadow;
 	}
 
 	&__list {
@@ -28,39 +31,39 @@
 
 	&__item {
 		&:not(:last-child) {
-			margin-right: $pagination_item_marginRight;
+			margin-right: rem(5);
 		}
 	}
 
 	&__btn {
 		display: inline-block;
-		padding: $pagination_padding;
+		padding: rem(5) rem(10);
 
 		&,
 		&-prev,
 		&-next {
 			color: inherit;
 
-			border-radius: $pagination_borderRadius;
+			border-radius: radius(sm);
 
-			transition: $pagination_transition;
+			transition: $transition;
 
 			@include media-hover {
 				&:hover {
-					color: $pagination_color_hover;
+					color: state(hover, primary, color);
 
-					background: $pagination_background_hover;
+					background: state(hover, primary, bg);
 
-					fill: $pagination_color_hover;
+					fill: state(hover, primary, color);
 				}
 
 				// focus-visible polyfill
 				&.focus-visible {
-					box-shadow: $pagination_focus;
+					box-shadow: state(focus, primary);
 				}
 
 				&:focus-visible {
-					box-shadow: $pagination_focus;
+					box-shadow: state(focus, primary);
 				}
 			}
 		}
@@ -69,34 +72,34 @@
 		&-next {
 			display: flex;
 			align-items: center;
-			padding: $pagination_controls_padding;
+			padding: $controls_padding;
 
-			fill: $pagination_color;
+			fill: dark(1);
 
 			&.--disabled {
-				color: $pagination_disabled_color;
+				color: state(disabled, color);
 
-				background: $pagination_disabled_background;
+				background: state(disabled, bg);
 
-				fill: $pagination_disabled_color;
+				fill: state(disabled, color);
 			}
 		}
 
 		&-prev {
-			margin-right: $pagination_controls_margin;
+			margin-right: $controls_margin;
 		}
 
 		&-dots {
 		}
 
 		&-next {
-			margin-left: $pagination_controls_margin;
+			margin-left: $controls_margin;
 		}
 
 		&.--current {
-			color: $pagination_color_current;
+			color: primary(500);
 
-			background: $pagination_background_current;
+			background: state(active);
 		}
 	}
 }

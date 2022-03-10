@@ -1,7 +1,9 @@
 .breadcrumbs {
-	padding: $breadcrumbs_padding;
+	$fontSize: 18;
 
-	font-weight: $breadcrumbs_fontWeight;
+	padding: rem(5) rem(25);
+
+	font-weight: 600;
 	font-size: 0;
 	font-family: $fontFamily_secondary;
 
@@ -9,49 +11,46 @@
 		display: inline-flex;
 		align-items: center;
 
-		@include adaptive('font-size', $breadcrumbs_fontSize_max, $breadcrumbs_fontSize_min, 1);
+		@include adaptive('font-size', $fontSize, 16, 1);
 		white-space: nowrap;
 
 		// Divider
 		&:not(:last-child):after {
-			height: $breadcrumbs_divider_size;
+			height: rem($fontSize);
 
-			content: url('data:image/svg+xml,%3Csvg width="#{$breadcrumbs_divider_size}" height="#{$breadcrumbs_divider_size}" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 0.146894C0.193339 0.100331 0.248515 0.0633878 0.30926 0.0381813C0.370005 0.0129749 0.435126 0 0.500894 0C0.566661 0 0.631782 0.0129749 0.692527 0.0381813C0.753272 0.0633878 0.808448 0.100331 0.854894 0.146894L6.85489 6.14689C6.90146 6.19334 6.9384 6.24852 6.96361 6.30926C6.98881 6.37001 7.00179 6.43513 7.00179 6.50089C7.00179 6.56666 6.98881 6.63178 6.96361 6.69253C6.9384 6.75327 6.90146 6.80845 6.85489 6.85489L0.854894 12.8549C0.761007 12.9488 0.633669 13.0015 0.500894 13.0015C0.368118 13.0015 0.24078 12.9488 0.146894 12.8549C0.0530069 12.761 0.000261784 12.6337 0.000261784 12.5009C0.000261784 12.3681 0.0530069 12.2408 0.146894 12.1469L5.79389 6.50089L0.146894 0.854894C0.10033 0.808448 0.0633873 0.753273 0.0381808 0.692528C0.0129744 0.631782 0 0.566661 0 0.500894C0 0.435127 0.0129744 0.370005 0.0381808 0.30926C0.0633873 0.248515 0.10033 0.19334 0.146894 0.146894Z" fill="%23adb5bd"/%3E%3C/svg%3E%0A');
+			content: url('data:image/svg+xml,%3Csvg width="#{rem($fontSize)}" height="#{rem($fontSize)}" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath fill-rule="evenodd" clip-rule="evenodd" d="M0.146894 0.146894C0.193339 0.100331 0.248515 0.0633878 0.30926 0.0381813C0.370005 0.0129749 0.435126 0 0.500894 0C0.566661 0 0.631782 0.0129749 0.692527 0.0381813C0.753272 0.0633878 0.808448 0.100331 0.854894 0.146894L6.85489 6.14689C6.90146 6.19334 6.9384 6.24852 6.96361 6.30926C6.98881 6.37001 7.00179 6.43513 7.00179 6.50089C7.00179 6.56666 6.98881 6.63178 6.96361 6.69253C6.9384 6.75327 6.90146 6.80845 6.85489 6.85489L0.854894 12.8549C0.761007 12.9488 0.633669 13.0015 0.500894 13.0015C0.368118 13.0015 0.24078 12.9488 0.146894 12.8549C0.0530069 12.761 0.000261784 12.6337 0.000261784 12.5009C0.000261784 12.3681 0.0530069 12.2408 0.146894 12.1469L5.79389 6.50089L0.146894 0.854894C0.10033 0.808448 0.0633873 0.753273 0.0381808 0.692528C0.0129744 0.631782 0 0.566661 0 0.500894C0 0.435127 0.0129744 0.370005 0.0381808 0.30926C0.0633873 0.248515 0.10033 0.19334 0.146894 0.146894Z" fill="%23adb5bd"/%3E%3C/svg%3E%0A');
 		}
 
 		&.--current {
-			padding: $breadcrumbs_link_padding;
+			padding: rem(5) rem(15);
 
-			color: $breadcrumbs_current;
+			color: state(current);
 		}
 	}
 
 	&__link {
-		padding: $breadcrumbs_link_padding;
+		margin: 0 rem(15);
+		padding: rem(5) 0;
 
-		color: $breadcrumbs_color;
-		letter-spacing: $breadcrumbs_letterSpacing;
+		color: gray(600);
+		letter-spacing: $letterSpacing;
 
 		border-radius: radius(sm);
 
-		transition: $breadcrumbs_transition;
+		transition: $transition;
 
 		@include media-hover {
 			&:hover {
-				color: $breadcrumbs_current;
-			}
-
-			&:active {
-				color: $breadcrumbs_active;
+				color: primary(500);
 			}
 
 			// focus-visible polyfill
 			&.focus-visible {
-				box-shadow: $breadcrumbs_focus;
+				box-shadow: state(focus, primary);
 			}
 
 			&:focus-visible {
-				box-shadow: $breadcrumbs_focus;
+				box-shadow: state(focus, primary);
 			}
 		}
 	}

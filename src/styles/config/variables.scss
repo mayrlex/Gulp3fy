@@ -127,345 +127,41 @@ $radius: (
 
 $states: (
 	hover: (
-		color: primary(500),
-		bg: color.adjust(primary(500), $alpha: -0.9),
+		primary: (
+			color: primary(500),
+			bg: color.adjust(primary(500), $alpha: -0.9),
+		),
+
+		secondary: (
+			color: $white,
+			bg: secondary(500),
+		),
 	),
+
 	active: color.adjust(primary(500), $alpha: -0.85),
+
 	focus: (
 		primary: 0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75),
 		secondary: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.75),
 	),
+
 	current: gray(700),
+
 	disabled: (
-		primary: primary(200),
-		secondary: secondary(200),
 		color: gray(500),
 		bg: color.adjust(gray(200), $alpha: -0.75),
 	),
 );
 
-$body_color:  #68717A;
-$title_color: #152536;
-
+// UI
+$border:               rem(1) solid gray(200);
+$boxShadow:            0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
+$color_body:           gray(600);
+$color_title:          dark(1);
 $fontFamily_primary:   'Inter', sans-serif;
 $fontFamily_secondary: 'Nunito', sans-serif;
-
-$icon_width:  rem(16);
-$icon_height: $icon_width;
-
-$transition_default: 0.1s;
-
-$letterSpacing_default: rem(1);
-
-$border_default: rem(1) solid gray(200);
-
-$boxShadow_default: 0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
-
-$overlay_background: color.adjust(dark(2), $alpha: -0.1);
-
-// COMPONENTS
-// ==========
-
-// Badges
-$badges_color:         $white;
-$badges_dot_size:      rem(10);
-$badges_fontWeight:    700;
-$badges_fontSize:      rem(14);
-$badges_letterSpacing: $letterSpacing_default;
-$badges_num_minWidth:  1.5;
-$badges_num_padding:   em(4);
-$badges_outlineWidth:  rem(1);
-$badges_text_padding:  rem(2) rem(6);
-
-// Breadcrumbs
-$breadcrumbs_active:        primary(600);
-$breadcrumbs_color:         gray(600);
-$breadcrumbs_current:       state(current);
-$breadcrumbs_divider_size:  rem(18);
-$breadcrumbs_focus:         state(focus, primary);
-$breadcrumbs_fontSize_max:  18;
-$breadcrumbs_fontSize_min:  16;
-$breadcrumbs_fontWeight:    600;
-$breadcrumbs_hover:         primary(500);
-$breadcrumbs_letterSpacing: $letterSpacing_default;
-$breadcrumbs_link_padding:  rem(5) rem(15);
-$breadcrumbs_padding:       0 rem(25);
-$breadcrumbs_transition:    $transition_default;
-
-// Button
-$btn_borderRadius:         radius(sm);
-$btn_fontSize_max:         18;
-$btn_fontSize_min:         16;
-$btn_fontWeight:           600;
-$btn_icon_borderRadius:    radius(xxl);
-$btn_icon_margin_max:      12;
-$btn_icon_margin_min:      8;
-$btn_icon_padding_max:     14;
-$btn_icon_padding_min:     11;
-$btn_letterSpacing:        $letterSpacing_default;
-$btn_outlineWidth:         2;
-$btn_primary_background:   primary(500);
-$btn_primary_color:        $white;
-$btn_primary_active:       primary(700);
-$btn_primary_disabled:     state(disabled, primary);
-$btn_primary_focus:        state(focus, primary);
-$btn_primary_hover:        primary(600);
-$btn_secondary_active:     secondary(600);
-$btn_secondary_background: transparent;
-$btn_secondary_color:      secondary(500);
-$btn_secondary_disabled:   state(disabled, secondary);
-$btn_secondary_focus:      state(focus, secondary);
-$btn_secondary_hover:      $white;
-$btn_secondary_outline:    $btn_secondary_color;
-$btn_text_active:          state(active);
-$btn_text_color:           primary(500);
-$btn_text_disabled:        state(disabled, primary);
-$btn_text_focus:           state(focus, primary);
-$btn_text_hover:           state(hover, bg);
-$btn_transition:           $transition_default;
-$btn_padding_x_max:        25;
-$btn_padding_x_min:        20;
-$btn_padding_y_max:        10;
-$btn_padding_y_min:        8;
-
-$btn_group_borderRadius_first: $btn_borderRadius 0 0 $btn_borderRadius;
-$btn_group_borderRadius_last: 0 $btn_borderRadius $btn_borderRadius 0;
-
-// Card
-$card_background:                   $white;
-$card_border:                       $border_default;
-$card_borderRadius:                 radius(sm);
-$card_boxShadow:                    $boxShadow_default;
-$card_content_color:                gray(700);
-$card_content_fontSize:             rem(14);
-$card_content_lineHeight:           rem(20);
-$card_date_color:                   gray(500);
-$card_date_fontSize:                rem(14);
-$card_gap_max:                      25;
-$card_gap_min:                      15;
-$card_grid_rowGap_max:              rem(30);
-$card_grid_rowGap_min:              rem(20);
-$card_grid_gap_max:                 rem(20);
-$card_grid_gap_min:                 rem(10);
-$card_letterSpacing:                $letterSpacing_default;
-$card_preview_minHeight_max:        rem(200);
-$card_preview_minHeight_min:        rem(170);
-$card_preview_minHeight_minmax:     rem(300);
-$card_preview_overlay_color:        $white;
-$card_preview_overlay_content:      'Learn more';
-$card_preview_overlay_filter:       brightness(1);
-$card_preview_overlay_filter_hover: brightness(0.5);
-$card_preview_overlay_fontSize:     rem(28);
-$card_preview_overlay_fontWeight:   700;
-$card_preview_overlay_transition:   0.3s;
-$card_title_color:                  dark(1);
-$card_title_fontWeight:             700;
-$card_title_fontSize:               rem(20);
-
-$rowCard_background:                   $card_background;
-$rowCard_border:                       $card_border;
-$rowCard_borderRadius:                 $card_borderRadius;
-$rowCard_boxShadow:                    $card_boxShadow;
-$rowcard_grid_gap_max:                 $card_grid_gap_max;
-$rowcard_grid_gap_min:                 $card_grid_gap_min;
-$rowCard_content_color:                $card_content_color;
-$rowCard_content_fontSize:             $card_content_fontSize;
-$rowCard_content_lineHeight:           $card_content_lineHeight;
-$rowCard_date_color:                   $card_date_color;
-$rowCard_date_fontSize:                $card_date_fontSize;
-$rowCard_gap_max:                      $card_gap_max;
-$rowCard_gap_min:                      $card_gap_min;
-$rowCard_letterSpacing:                $card_letterSpacing;
-$rowCard_preview_minHeight_max:        $card_preview_minHeight_max;
-$rowCard_preview_minHeight_min:        $card_preview_minHeight_min;
-$rowCard_preview_overlay_color:        $card_preview_overlay_color;
-$rowCard_preview_overlay_content:      $card_preview_overlay_content;
-$rowCard_preview_overlay_fontSize:     $card_preview_overlay_fontSize;
-$rowCard_preview_overlay_fontWeight:   $card_preview_overlay_fontWeight;
-$rowCard_preview_overlay_filter:       $card_preview_overlay_filter;
-$rowCard_preview_overlay_filter_hover: $card_preview_overlay_filter_hover;
-$rowCard_preview_overlay_transition:   $card_preview_overlay_transition;
-$rowCard_title_fontSize:               $card_title_fontSize;
-$rowCard_title_fontWeight:             $card_title_fontWeight;
-$rowCard_title_color:                  $card_title_color;
-
-// Header
-$header_background:                   $white;
-$header_background_hover:             state(hover, bg);
-$header_background_active:            state(active);
-$header_border:                       $border_default;
-$header_borderRadius:                 radius(sm);
-$header_boxShadow:                    $boxShadow_default;
-$header_burger_icon_background:       dark(1);
-$header_burger_icon_height:           rem(30);
-$header_burger_icon_line_height:      rem(4);
-$header_burger_icon_transition:       all 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
-$header_burger_icon_width:            rem(40);
-$header_burger_link_fontSize:         rem(32);
-$header_burger_maxWidth:              rem(450);
-$header_burger_menu_background:       $white;
-$header_burger_overlay:               $overlay_background;
-$header_burger_padding:               rem(100) 0;
-$header_burger_paddingLeft:           rem(35);
-$header_burger_transition:            right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-$header_burger_x_padding_max:         70;
-$header_burger_x_padding_min:         30;
-$header_item_margin:                  rem(25);
-$header_color:                        gray(600);
-$header_color_current:                state(current);
-$header_color_disabled:               state(disabled, color);
-$header_color_hover:                  primary(500);
-$header_link_focus:                   state(focus, primary);
-$header_link_fontSize:                rem(16);
-$header_link_fontWeight:              600;
-$header_link_icon_background_current: state(current);
-$header_link_icon_height:             rem(3);
-$header_link_icon_marginLeft:         rem(5);
-$header_link_icon_top:                rem(30);
-$header_link_icon_width:              rem(20);
-$header_link_letterSpacing:           $letterSpacing_default;
-$header_link_padding:                 rem(10) 0;
-$header_height:                       rem(60);
-$header_menu_fontFamily:              $fontFamily_secondary;
-$header_position:                     fixed;
-$header_subList_border:               $border_default;
-$header_subList_padding:              rem(5);
-$header_subLink_fontSize_desk:        rem(16);
-$header_subLink_fontSize_mob:         rem(20);
-$header_subLink_fontWeight:           $header_link_fontWeight;
-$header_subLink_padding_desk:         rem(8) rem(15);
-$header_subLink_padding_mob:          rem(8) 0 rem(8) rem(35);
-$header_transition_max:               0.3s;
-$header_transition_min:               $transition_default;
-
-// Pagination
-$pagination_background:          $white;
-$pagination_background_hover:    state(hover, bg);
-$pagination_border:              $border_default;
-$pagination_borderRadius:        radius(sm);
-$pagination_boxShadow:           $boxShadow_default;
-$pagination_color:               dark(1);
-$pagination_color_hover:         state(hover, color);
-$pagination_controls_margin:     rem(10);
-$pagination_controls_padding:    rem(7);
-$pagination_color_current:       primary(500);
-$pagination_background_current:  state(active);
-$pagination_disabled_color:      state(disabled, color);
-$pagination_disabled_background: state(disabled, bg);
-$pagination_focus:               state(focus, primary);
-$pagination_fontWeight:          700;
-$pagination_fontSize:            rem(16);
-$pagination_fontFamily:          $fontFamily_secondary;
-$pagination_item_marginRight:    rem(5);
-$pagination_letterSpacing:       $letterSpacing_default;
-$pagination_padding:             rem(5) rem(10);
-$pagination_transition:          $transition_default;
-
-// Popup
-$popup_close_background:       dark(1);
-$popup_close_background_hover: dark(2);
-$popup_close_borderRadius:     radius(sm);
-$popup_close_color:            $white;
-$popup_close_padding:          rem(5);
-$popup_close_focus:            state(focus, primary);
-$popup_close_pos_max:          25;
-$popup_close_pos_min:          15;
-$popup_close_transition:       $transition_default;
-$popup_content_margin_max:     30;
-$popup_content_margin_min:     20;
-$popup_footer_gap_max:         20;
-$popup_footer_gap_min:         10;
-$popup_header_items_margin:    rem(15);
-$popup_icon_background:        success(100);
-$popup_icon_borderRadius:      radius(circle);
-$popup_icon_color:             success(500);
-$popup_icon_padding_max:       35;
-$popup_icon_padding_min:       25;
-$popup_icon_size:              rem(35);
-$popup_inner_background:       $white;
-$popup_inner_border:           $border_default;
-$popup_inner_borderRadius:     radius(sm);
-$popup_inner_padding_max:      50;
-$popup_inner_padding_min:      25;
-$popup_inner_transform:        perspective(600px) translate(0px, -100%) rotateX(45deg);
-$popup_inner_transform_show:   perspective(600px) translate(0px, 0%) rotateX(0deg);
-$popup_inner_transition:       all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-$popup_inner_width:            rem(540);
-$popup_overlay:                $overlay_background;
-$popup_title_color:            dark(1);
-$popup_title_fontSize_max:     36;
-$popup_title_fontSize_min:     28;
-$popup_title_fontWeight:       700;
-$popup_transition:             opacity 0.3s, visibility 0.3s;
-
-// Slider
-$slider_navigation_button_color:             color.adjust(primary(500), $alpha: -0.5);
-$slider_navigation_button_pos_x:             rem(15);
-$slider_navigation_size:                     44;
-$slider_pagination_margin:                   20;
-$slider_naviagation_button_margin:           math.div($slider_navigation_size + $slider_pagination_margin, 2);
-$slider_pagination_bullet_background:        color.adjust(dark(1), $alpha: -0.5);
-$slider_pagination_bullet_background_active: color.adjust(primary(500), $alpha: -0.25);
-$slider_pagination_bullet_background_hover:  color.adjust(primary(500), $alpha: -0.5);
-$slider_pagination_bullet_borderRadius:      radius(sm);
-$slider_pagination_bullet_height:            rem(6);
-$slider_pagination_bullet_transition:        $transition_default;
-$slider_pagination_bullet_width:             rem(24);
-$slider_slide_height:                        rem(250);
-
-// Spoiler
-$spoiler_background:             $white;
-$spoiler_border:                 $border_default;
-$spoiler_borderRadius:           radius(sm);
-$spoiler_boxShadow:              $boxShadow_default;
-$spoiler_content_color:          gray(700);
-$spoiler_content_fontSize_max:   16;
-$spoiler_content_fontSize_min:   14;
-$spoiler_gap_max:                10;
-$spoiler_gap_min:                5;
-$spoiler_focus:                  state(focus, primary);
-$spoiler_icon_right_max:         20;
-$spoiler_icon_right_min:         10;
-$spoiler_icon_top_max:           25;
-$spoiler_icon_top_min:           20;
-$spoiler_icon_height:            rem(3);
-$spoiler_icon_width_max:         20;
-$spoiler_icon_width_min:         16;
-$spoiler_letterSpacing:          $letterSpacing_default;
-$spoiler_title_active:           state(active);
-$spoiler_title_background:       $white;
-$spoiler_title_background_hover: state(hover, bg);
-$spoiler_title_color:            dark(1);
-$spoiler_title_color_hover:      state(hover, color);
-$spoiler_title_fontSize_max:     18;
-$spoiler_title_fontSize_min:     16;
-$spoiler_title_fontWeight:       600;
-$spoiler_title_padding_max:      15;
-$spoiler_title_padding_min:      10;
-$spoiler_title_transition:       transform 0.3s ease 0s;
-$spoiler_transition:             $transition_default;
-$spoiler_x_padding_max:          15;
-$spoiler_x_padding_min:          10;
-$spoiler_y_padding_max:          25;
-$spoiler_y_padding_min:          15;
-
-// Tab
-$tab_active:                    state(active);
-$tab_borderRadius:              radius(sm) radius(sm) 0 0;
-$tab_btn_divider_height:        2;
-$tab_btn_divider_marginTop_max: 10;
-$tab_btn_divider_marginTop_min: 2;
-$tab_btn_padding:               rem(10);
-$tab_btn_padding_min:           5;
-$tab_btn_padding_x_max:         25;
-$tab_btn_padding_x_min:         15;
-$tab_background_hover:          state(hover, bg);
-$tab_color:                     gray(600);
-$tab_color_hover:               state(hover, color);
-$tab_focus:                     state(focus, primary);
-$tab_fontFamily:                $fontFamily_secondary;
-$tab_fontSize_max:              18;
-$tab_fontSize_min:              16;
-$tab_fontWeight:                600;
-$tab_menu_marginBottom:         rem(10);
-$tab_transition:                $transition_default;
+$icon_width:           rem(16);
+$icon_height:          $icon_width;
+$letterSpacing:        rem(1);
+$overlay:              color.adjust(dark(2), $alpha: -0.1);
+$transition:           0.1s;
