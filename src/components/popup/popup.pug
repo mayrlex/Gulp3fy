@@ -21,11 +21,11 @@ mixin popup(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} popup__${modsList[i].trim()}`;
+				modsArray = `${modsArray} ${modsList[i].trim()}__popup`;
 			}
 		}
 
-	.popup(class=modsArray, tabindex='-1', aria-hidden='true')&attributes(attributes)
+	.popup(class=`${modsArray} --hide`, tabindex='-1', aria-hidden='true')&attributes(attributes)
 		.popup__inner(role='dialog', aria-modal='true')
 			button.popup__close(aria-label=(data.closeLabel = 'Close popup'), data-popup='close')
 				+icon-mono('cross')

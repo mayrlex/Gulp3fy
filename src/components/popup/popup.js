@@ -1,8 +1,19 @@
+/*
+Argumenst:
+	selector {string} - Popup selector
+
+Call:
+	import Popup from '../../../components/popup/popup.js';
+
+	const popup = new Popup('.popup');
+*/
+
 export default class Popup {
-	constructor(options) {
-		this.options = options;
-		this.popup = document.querySelector('.popup');
-		this.popupInner = document.querySelector('.popup__inner');
+	constructor(selector) {
+		this.selector = selector;
+		this.popup = document.querySelector(`.${this.selector}__popup`);
+		this.popupInner = document.querySelector(`.${this.selector}__popup > .popup__inner`);
+		this.popupNodes = document.querySelectorAll('.popup');
 		this.isOpened = false;
 		this.focusItems = [
 			'a[href]',
@@ -18,45 +29,52 @@ export default class Popup {
 
 	events() {
 		if (this.popup) {
-			document.addEventListener('click', (e) => {
-				const btnCall = e.target.closest('[data-popup="call"]');
-				const btnClose = e.target.closest('[data-popup="close"]');
-				const popup = e.target.classList.contains('popup');
-				const isShown = e.target.classList.contains('--show');
+			document.addEventListener('click', (event) => {
+				const btnCall = event.target.closest(`[data-popup=${this.selector}]`);
+				const btnClose = event.target.closest('[data-popup="close"]');
+				const popup = event.target.classList.contains('popup');
+				const isShown = event.target.classList.contains('--show');
 
 				btnCall ? this.open() : null;
 				btnClose || (popup && isShown) ? this.close() : null;
 			});
 
-			window.addEventListener('keydown', (e) => {
-				e.key === 'Escape' && this.isOpened ? this.close() : null;
-				e.key === 'Tab' && this.isOpened ? this.focus(e) : null;
+			window.addEventListener('keydown', (event) => {
+				event.key === 'Escape' && this.isOpened ? this.close() : null;
+				event.key === 'Tab' && this.isOpened ? this.focus(event) : null;
 			});
 		}
 	}
 
-	focus(e) {
+	focus(event) {
 		const focusItems = this.popupInner.querySelectorAll(this.focusItems);
 		const focusItemsArray = Array.prototype.slice.call(focusItems);
 		const focusedItemIndex = focusItemsArray.indexOf(document.activeElement);
 
-		if (e.shiftKey && focusedItemIndex === 0) {
+		if (event.shiftKey && focusedItemIndex === 0) {
 			focusItemsArray[focusItemsArray.length - 1].focus();
-			e.preventDefault();
+			event.preventDefault();
 		}
 
-		if (!e.shiftKey && focusedItemIndex === focusItemsArray.length - 1) {
+		if (!event.shiftKey && focusedItemIndex === focusItemsArray.length - 1) {
 			focusItemsArray[0].focus();
-			e.preventDefault();
+			event.preventDefault();
 		}
 	}
 
 	open() {
 		const focusItems = this.popupInner.querySelectorAll(this.focusItems);
 
+		this.popupNodes.forEach((item) => {
+			if (item === this.popup) return;
+
+			item.classList.replace('--show', '--hide');
+			item.ariaHidden = 'true';
+		});
+
 		this.isOpened ? this.close() : null;
 		document.body.classList.add('--lock');
-		this.popup.classList.add('--show');
+		this.popup.classList.replace('--hide', '--show');
 		this.popup.ariaHidden = 'false';
 
 		setTimeout(() => {
@@ -67,7 +85,7 @@ export default class Popup {
 
 	close() {
 		document.body.classList.remove('--lock');
-		this.popup.classList.remove('--show');
+		this.popup.classList.replace('--show', '--hide');
 		this.isOpened = false;
 		this.popup.ariaHidden = 'true';
 	}
