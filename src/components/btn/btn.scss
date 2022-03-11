@@ -8,7 +8,7 @@
 	align-items: center;
 	overflow: hidden;
 
-	font-weight: 600;
+	font-weight: 400;
 	@include adaptive('font-size', 18, 16, 1);
 	font-family: $fontFamily_secondary;
 	letter-spacing: $letterSpacing;
