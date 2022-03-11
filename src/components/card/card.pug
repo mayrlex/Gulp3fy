@@ -6,6 +6,7 @@
 	validDate {string}  - Valid date for search robots
 	title     {string}  - Card title
 	text      {string}  - Button text
+	icon      {string}  - Button icon
 	isRow     {boolean} - Switch to row card
 
 //-Call
@@ -25,7 +26,9 @@
 			+card-footer({
 				date:'01 Jan. 2022',
 				validDate:'2022-01-01',
-				text:'More', link:'https://example.com/news/page'
+				text:'More',
+				link:'https://example.com/news/page',
+				icon: 'arrow-right'
 			})
 
 	//- Row
@@ -51,6 +54,7 @@
 					validDate:'2022-01-01',
 					text:'More',
 					link:'https://example.com/news/page',
+					icon: 'arrow-right'
 				})
 
 mixin card(data)
@@ -85,11 +89,17 @@ mixin card-header(data)
 mixin card-footer(data)
 	.card__footer
 		if !data.date
-			+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
+			if data.icon
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
+			else
+				+btn({ text: data.text, mods: 'text', link: data.link })
 
 		else if !data.text
 			time.card__date(datetime=data.validDate)!= data.date
 
 		else
 			time.card__date(datetime=data.validDate)!= data.date
-			+btn({ text: data.text, mods: 'text', link: data.link, icon: 'arrow-right' })
+			if data.icon
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
+			else
+				+btn({ text: data.text, mods: 'text', link: data.link })
