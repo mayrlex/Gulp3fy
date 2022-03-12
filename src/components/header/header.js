@@ -1,6 +1,4 @@
-import Burger from '../../scripts/modules/burger.js';
-import Toggler from '../../scripts/modules/toggler.js';
-// import SmoothScroll from '../../scripts/modules/smoothScroll.js';
+import Toggle from '../../scripts/modules/toggle.js';
 
 if (document.querySelector('header')) {
 	const header = document.querySelector('header');
@@ -22,7 +20,7 @@ if (document.querySelector('header')) {
 		const disabledLinks = document.querySelectorAll('.menu__sub-link.--disabled');
 
 		// Dropdown toggle
-		const dropdown = new Toggler({
+		const dropdown = new Toggle({
 			btn: '[data-dropdown-btn]',
 			area: '[data-dropdown]',
 		});

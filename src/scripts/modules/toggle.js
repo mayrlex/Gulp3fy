@@ -10,7 +10,7 @@ Call:
 	});
 */
 
-export default class Toggler {
+export default class Toggle {
 	constructor(selector) {
 		this.selector = selector;
 		this.targetBtn = selector.btn;
