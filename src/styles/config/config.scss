@@ -34,7 +34,6 @@ body {
 	background: $white;
 	text-size-adjust: 100%;
 
-	// Lock body at open burger
 	&.--lock {
 		overflow: hidden;
 	}
