@@ -1,14 +1,14 @@
+import burger from '../../scripts/modules/burger.js';
 import Toggle from '../../scripts/modules/toggle.js';
+// import smoothScroll from '../../scripts/modules/smoothScroll.js';
 
 if (document.querySelector('header')) {
 	const header = document.querySelector('header');
 	const main = document.querySelector('main');
 
-	// Smooth scroll
-	// const smoothScroll = new SmoothScroll();
-
-	// Burger menu
-	const burger = new Burger();
+	// Modules
+	// smoothScroll();
+	burger();
 
 	// Sets the margin-top for main if the header is fixed
 	window.getComputedStyle(header).position === 'fixed'

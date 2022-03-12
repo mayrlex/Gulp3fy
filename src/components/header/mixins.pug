@@ -10,25 +10,24 @@
 	+header
 		.header__logo
 
-		nav.header__nav.menu
-			+menu
-				+menu-item({ text: 'Home', link: '#' }).--current
-				+menu-item({ text: 'About', link: '#' })
+		nav.header__nav
+			.header__menu.menu
+				+menu
+					+menu-item({ text: 'Home', link: '#' }).--current
+					+menu-item({ text: 'About', link: '#' })
 
-				+menu-item({ text: 'Products', link: '#', hasDropdown: true })
-					+menu-item({ text: 'Laptops', link: '#', isSub: true })
-					+menu-item({ text: 'Headphones', link: '#', isSub: true })
-					+menu-item({ text: 'Keyboards', link: '#', isSub: true }).--disabled
-					+menu-item({ text: 'Mouses', link: '#', isSub: true })
+					+menu-item({ text: 'Products', link: '#', hasDropdown: true })
+						+menu-item({ text: 'Laptops', link: '#', isSub: true })
+						+menu-item({ text: 'Headphones', link: '#', isSub: true })
+						+menu-item({ text: 'Keyboards', link: '#', isSub: true }).--disabled
+						+menu-item({ text: 'Mouses', link: '#', isSub: true })
 
-				+menu-item({ text: 'News', link: '#' })
+					+menu-item({ text: 'News', link: '#' })
 
-				+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
+					+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
 
 		.header__burger.burger
 			span
-
-		.overlay
 
 mixin header(mods)
 	-
@@ -59,7 +58,7 @@ mixin menu(mods)
 			}
 		}
 
-	ul.menu__list(class=modsArray)
+	ul.menu__list(class=modsArray)&attributes(attributes)
 		block
 
 //- Nav item

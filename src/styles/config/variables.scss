@@ -163,5 +163,5 @@ $fontFamily_secondary: 'Nunito', sans-serif;
 $icon_width:           rem(16);
 $icon_height:          $icon_width;
 $letterSpacing:        rem(1);
-$overlay:              color.adjust(dark(2), $alpha: -0.1);
+$backdrop:              color.adjust(dark(2), $alpha: -0.1);
 $transition:           0.1s;
