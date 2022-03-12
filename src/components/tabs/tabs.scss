@@ -27,15 +27,6 @@
 
 					background: state(hover, primary, bg);
 				}
-
-				// focus-visible polyfill
-				&.focus-visible {
-					box-shadow: state(focus, primary);
-				}
-
-				&:focus-visible {
-					box-shadow: state(focus, primary);
-				}
 			}
 
 			&.--active {
@@ -52,17 +43,6 @@
 	&__content {
 		display: none;
 		overflow: hidden;
-
-		@include media-hover {
-			// focus-visible polyfill
-			&.focus-visible {
-				box-shadow: state(focus, primary);
-			}
-
-			&:focus-visible {
-				box-shadow: state(focus, primary);
-			}
-		}
 
 		&.--active {
 			display: block;

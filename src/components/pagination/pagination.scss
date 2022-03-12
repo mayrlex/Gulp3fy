@@ -56,15 +56,6 @@
 
 					fill: state(hover, primary, color);
 				}
-
-				// focus-visible polyfill
-				&.focus-visible {
-					box-shadow: state(focus, primary);
-				}
-
-				&:focus-visible {
-					box-shadow: state(focus, primary);
-				}
 			}
 		}
 

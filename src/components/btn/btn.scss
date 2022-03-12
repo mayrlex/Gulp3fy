@@ -133,15 +133,6 @@
 		&:active {
 			background: primary(700);
 		}
-
-		// focus-visible polyfill
-		&.focus-visible {
-			box-shadow: state(focus, primary);
-		}
-
-		&:focus-visible {
-			box-shadow: state(focus, primary);
-		}
 	}
 
 	&.--disabled {
@@ -211,15 +202,6 @@
 
 		&:active {
 			background: state(active);
-		}
-
-		// focus-visible polyfill
-		&.focus-visible {
-			box-shadow: state(focus, primary);
-		}
-
-		&:focus-visible {
-			box-shadow: state(focus, primary);
 		}
 	}
 

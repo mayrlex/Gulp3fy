@@ -272,15 +272,6 @@ $header_height: rem(70);
 
 					background: state(hover, primary, bg);
 				}
-
-				// focus-visible polyfill
-				&.focus-visible {
-					box-shadow: state(focus, primary);
-				}
-
-				&:focus-visible {
-					box-shadow: state(focus, primary);
-				}
 			}
 
 			&.--disabled {

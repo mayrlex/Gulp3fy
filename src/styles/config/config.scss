@@ -21,6 +21,10 @@
 	outline: none;
 }
 
+:focus-visible {
+	box-shadow: state(focus, primary);
+}
+
 html,
 body {
 	height: 100%;
@@ -187,4 +191,9 @@ img {
 */
 .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
+}
+
+// focus-visible polyfill
+.focus-visible {
+	box-shadow: state(focus, primary);
 }
