@@ -1,9 +1,10 @@
 //- Arguments:
-	text    {string}  - Text
-	mods    {string}  - Mod('s)
-	icon    {string}  - Icon name
-	link    {string}  - Link
-	isInput {boolean} - Set button type: input
+	text       {string}  - Text
+	mods       {string}  - Mod('s)
+	icon       {string}  - Icon name
+	link       {string}  - Link
+	iconBefore {boolean} - Set icon before text
+	isInput    {boolean} - Set button type: input
 
 //- Call:
 	//- Button type 'link'
@@ -24,7 +25,8 @@
 	+btn({
 		text: 'Button',
 		mods: 'text'
-		icon: 'arrow-right',
+		icon: 'play',
+		iconBefore: true,
 	})
 
 	//- Icon button
@@ -56,11 +58,17 @@ mixin btn(data)
 
 		//- Text
 		else
-			a.btn(class=modsArray, href=data.link)&attributes(attributes)!= data.text
-				//- Has icon
-				if (data.icon)
-					+icon-mono(data.icon)
-				block
+			a.btn(class=modsArray, href=data.link)&attributes(attributes)
+				if data.icon
+					if data.iconBefore
+						+icon-mono(data.icon)
+						span!= data.text
+
+					else
+						span!= data.text
+						+icon-mono(data.icon)
+				else
+					!= data.text
 
 	//- Button type: input
 	else if data.isInput

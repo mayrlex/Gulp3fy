@@ -19,6 +19,15 @@
 
 	border-radius: $borderRadius;
 
+	// Any button containing text with an icon
+	&[class*='btn__'] > .icon:first-child {
+		@include adaptive('margin-right', 12, 8, 1);
+	}
+
+	&[class*='btn__'] > .icon:last-child {
+		@include adaptive('margin-left', 12, 8, 1);
+	}
+
 	// Primary button
 	&__primary {
 		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
@@ -218,9 +227,4 @@
 	.icon {
 		fill: primary(500);
 	}
-}
-
-// Any button containing text with an icon
-[class*='btn__'] > .icon {
-	@include adaptive('margin-left', 12, 8, 1);
 }
