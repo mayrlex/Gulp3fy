@@ -74,7 +74,7 @@
 		"stylelint-prettier": "^2.0.0",
 		"stylelint-scss": "^4.1.0",
 		"vinyl-ftp": "^0.6.1",
-		"webp-converter": "^2.2.3",
+		"webp-converter": "2.2.3",
 		"webpack": "^5.69.1",
 		"webpack-stream": "^7.0.0"
 	}
