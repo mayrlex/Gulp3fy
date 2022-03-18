@@ -1,4 +1,4 @@
-import burger from '../../scripts/modules/burger.js';
+import burger from './burger.js';
 import Toggle from '../../scripts/modules/toggle.js';
 // import smoothScroll from '../../scripts/modules/smoothScroll.js';
 
