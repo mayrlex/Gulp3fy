@@ -1,13 +1,13 @@
 //- Arguments:
-	link      {string}  - Link to page
-	src       {string}  - Path to image
-	alt       {string}  - Alternate text
-	date      {string}  - Date
-	validDate {string}  - Valid date for search robots
-	title     {string}  - Card title
-	text      {string}  - Button text
-	icon      {string}  - Button icon
-	isRow     {boolean} - Switch to row card
+	link  {string}  - Link to page
+	src   {string}  - Path to image
+	alt   {string}  - Alternate text
+	date  {string}  - Date
+	vDate {string}  - Valid date for search robots
+	title {string}  - Card title
+	text  {string}  - Button text
+	icon  {string}  - Button icon
+	isRow {boolean} - Switch to row card
 
 //-Call
 	//- Column
@@ -25,7 +25,7 @@
 
 			+card-footer({
 				date:'01 Jan. 2022',
-				validDate:'2022-01-01',
+				vDate:'2022-01-01',
 				text:'More',
 				link:'https://example.com/news/page',
 				icon: 'arrow-right'
@@ -37,8 +37,7 @@
 			+card-preview({
 				link: 'https://example.com/news/page',
 				src: 'assets/images/card-preview.jpg',
-				alt: 'Preview',
-				isRow: true
+				alt: 'Preview'
 			})
 
 			.card__inner
@@ -51,7 +50,7 @@
 
 				+card-footer({
 					date:'01 Jan. 2022',
-					validDate:'2022-01-01',
+					vDate:'2022-01-01',
 					text:'More',
 					link:'https://example.com/news/page',
 					icon: 'arrow-right'
@@ -74,7 +73,7 @@ mixin card(data)
 
 //- Preview
 mixin card-preview(data)
-	.card__preview(class=data.isRow ? `row --ibg` : `col --ibg`)
+	.card__preview.--ibg
 		a(href=data.link)
 			+pic({src: data.src, alt: data.alt})
 
@@ -83,23 +82,23 @@ mixin card-header(data)
 	.card__header
 		h3.card__title!= data.title
 		if data.date
-			time.card__date(datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.vDate)!= data.date
 
 //- Footer
 mixin card-footer(data)
 	.card__footer
 		if !data.date
 			if data.icon
-				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
+				+btn({ text: data.text, mods: 'light', link: data.link, icon: data.icon })
 			else
-				+btn({ text: data.text, mods: 'text', link: data.link })
+				+btn({ text: data.text, mods: 'light', link: data.link })
 
 		else if !data.text
-			time.card__date(datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.vDate)!= data.date
 
 		else
-			time.card__date(datetime=data.validDate)!= data.date
+			time.card__date(datetime=data.vDate)!= data.date
 			if data.icon
-				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
+				+btn({ text: data.text, mods: 'light', link: data.link, icon: data.icon })
 			else
-				+btn({ text: data.text, mods: 'text', link: data.link })
+				+btn({ text: data.text, mods: 'light', link: data.link })
