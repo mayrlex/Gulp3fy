@@ -16,7 +16,8 @@
 
 	background: primary(500);
 
-	&:disabled {
+	&:disabled,
+	.--disabled {
 		background: primary(200);
 		cursor: not-allowed;
 	}
@@ -26,7 +27,7 @@
 	}
 
 	@include media-hover {
-		&:enabled {
+		&:not(:disabled, .--disabled) {
 			&:hover {
 				background: primary(600);
 

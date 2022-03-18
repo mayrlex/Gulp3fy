@@ -17,7 +17,8 @@
 	outline: $outline_size solid secondary(500);
 	outline-offset: -$outline_size;
 
-	&:disabled {
+	&:disabled,
+	.--disabled {
 		color: secondary(200);
 
 		background: none;
@@ -30,7 +31,7 @@
 	}
 
 	@include media-hover {
-		&:enabled {
+		&:not(:disabled, .--disabled) {
 			&:hover {
 				color: state(hover, secondary, color);
 

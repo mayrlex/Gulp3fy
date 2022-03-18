@@ -14,7 +14,8 @@
 	&__primary {
 		background: primary(500);
 
-		&:disabled {
+		&:disabled,
+		.--disabled {
 			background: primary(200);
 			cursor: not-allowed;
 		}
@@ -24,7 +25,7 @@
 		}
 
 		@include media-hover {
-			&:enabled {
+			&:not(:disabled, .--disabled) {
 				&:hover {
 					background: primary(600);
 				}
@@ -42,7 +43,8 @@
 		outline: $outline_size solid secondary(500);
 		outline-offset: -$outline_size;
 
-		&:disabled {
+		&:disabled,
+		.--disabled {
 			background: none;
 			outline: $outline_size solid secondary(200);
 			cursor: not-allowed;
@@ -57,7 +59,7 @@
 		}
 
 		@include media-hover {
-			&:enabled {
+			&:not(:disabled, .--disabled) {
 				&:hover {
 					background: secondary(500);
 
@@ -84,7 +86,8 @@
 	}
 
 	&__light {
-		&:disabled {
+		&:disabled,
+		.--disabled {
 			background: none;
 			cursor: not-allowed;
 
@@ -98,7 +101,7 @@
 		}
 
 		@include media-hover {
-			&:enabled {
+			&:not(:disabled, .--disabled) {
 				&:hover {
 					background: state(hover, primary, bg);
 				}
