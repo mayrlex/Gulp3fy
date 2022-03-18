@@ -1,27 +1,24 @@
 .headline {
 	color: $color_title;
-	font-weight: font-weight(headline);
-	@include adaptive('font-size', 40, 36, 1);
-	font-family: $fontFamily_secondary;
+	font-weight: 700;
+	@include adaptive('font-size', 32, 24, 1);
+	line-height: 120%;
 }
 
 .subheading {
 	color: $color_title;
-	font-weight: font-weight(subheading);
-	@include adaptive('font-size', 32, 26, 1);
-	font-family: $fontFamily_secondary;
+	font-weight: 500;
+	@include adaptive('font-size', 24, 18, 1);
 }
 
 .title {
 	color: $color_title;
-	font-weight: font-weight(title);
-	@include adaptive('font-size', 28, 24, 1);
-	font-family: $fontFamily_secondary;
+	font-weight: 600;
+	@include adaptive('font-size', 24, 18, 1);
 }
 
 .subtitle {
 	color: $color_title;
-	font-weight: font-weight(subtitle);
-	@include adaptive('font-size', 24, 20, 1);
-	font-family: $fontFamily_secondary;
+	font-weight: 500;
+	@include adaptive('font-size', 20, 16, 1);
 }
