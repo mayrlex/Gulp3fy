@@ -1,0 +1,43 @@
+//? ### Variant: Primary
+
+&__primary {
+	$color: $white;
+	$padding_x_max: $btn_padding_x_max;
+	$padding_x_min: $btn_padding_x_min;
+	$padding_y_max: $btn_padding_y_max;
+	$padding_y_min: $btn_padding_y_min;
+
+	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
+	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
+
+	color: $color;
+
+	background: primary(500);
+
+	&:disabled {
+		background: primary(200);
+		cursor: not-allowed;
+	}
+
+	input[type='button'] {
+		color: $color;
+	}
+
+	@include media-hover {
+		&:enabled {
+			&:hover {
+				background: primary(600);
+
+				input[type='button'] {
+					color: state(hover, primary, color);
+				}
+			}
+
+			&:active {
+				background: primary(700);
+			}
+		}
+	}
+}

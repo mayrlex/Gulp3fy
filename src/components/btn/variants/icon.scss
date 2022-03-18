@@ -1,0 +1,112 @@
+//? ### Variant: Only icon
+
+&-icon {
+	@include adaptive('padding', 14, 11, 1);
+	display: inline-flex;
+
+	vertical-align: middle;
+
+	border-radius: radius(circle);
+	cursor: pointer;
+
+	transition: $transition;
+
+	&__primary {
+		background: primary(500);
+
+		&:disabled {
+			background: primary(200);
+			cursor: not-allowed;
+		}
+
+		.icon {
+			fill: $white;
+		}
+
+		@include media-hover {
+			&:enabled {
+				&:hover {
+					background: primary(600);
+				}
+
+				&:active {
+					background: primary(700);
+				}
+			}
+		}
+	}
+
+	&__secondary {
+		$outline_size: $btn_outline_size;
+
+		outline: $outline_size solid secondary(500);
+		outline-offset: -$outline_size;
+
+		&:disabled {
+			background: none;
+			outline: $outline_size solid secondary(200);
+			cursor: not-allowed;
+
+			.icon {
+				fill: secondary(200);
+			}
+		}
+
+		.icon {
+			fill: secondary(500);
+		}
+
+		@include media-hover {
+			&:enabled {
+				&:hover {
+					background: secondary(500);
+
+					.icon {
+						fill: state(hover, secondary, color);
+					}
+				}
+
+				&:active {
+					background: secondary(600);
+					outline: $outline_size solid secondary(600);
+				}
+
+				// focus-visible polyfill
+				&.focus-visible {
+					box-shadow: state(focus, secondary);
+				}
+
+				&:focus-visible {
+					box-shadow: state(focus, secondary);
+				}
+			}
+		}
+	}
+
+	&__light {
+		&:disabled {
+			background: none;
+			cursor: not-allowed;
+
+			.icon {
+				fill: primary(200);
+			}
+		}
+
+		.icon {
+			fill: primary(500);
+		}
+
+		@include media-hover {
+			&:enabled {
+				&:hover {
+					background: state(hover, primary, bg);
+				}
+
+				&:active {
+					background: state(active);
+				}
+			}
+		}
+	}
+}

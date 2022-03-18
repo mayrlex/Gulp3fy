@@ -1,0 +1,59 @@
+//? ### Variant: Secondary
+
+&__secondary {
+	$outline_size: $btn_outline_size;
+	$padding_x_max: $btn_padding_x_max;
+	$padding_x_min: $btn_padding_x_min;
+	$padding_y_max: $btn_padding_y_max;
+	$padding_y_min: $btn_padding_y_min;
+
+	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
+	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
+
+	color: secondary(500);
+
+	outline: $outline_size solid secondary(500);
+	outline-offset: -$outline_size;
+
+	&:disabled {
+		color: secondary(200);
+
+		background: none;
+		outline: $outline_size solid secondary(200);
+		cursor: not-allowed;
+	}
+
+	input[type='button'] {
+		color: secondary(500);
+	}
+
+	@include media-hover {
+		&:enabled {
+			&:hover {
+				color: state(hover, secondary, color);
+
+				background: secondary(500);
+
+				input[type='button'] {
+					color: state(hover, secondary, color);
+				}
+			}
+
+			&:active {
+				background: secondary(600);
+				outline: $outline_size solid secondary(600);
+			}
+
+			// focus-visible polyfill
+			&.focus-visible {
+				box-shadow: state(focus, secondary);
+			}
+
+			&:focus-visible {
+				box-shadow: state(focus, secondary);
+			}
+		}
+	}
+}

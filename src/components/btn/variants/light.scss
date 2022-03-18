@@ -1,0 +1,38 @@
+//? ### Variant: Light
+
+&__light {
+	$padding_x_max: $btn_padding_x_max;
+	$padding_x_min: $btn_padding_x_min;
+	$padding_y_max: $btn_padding_y_max;
+	$padding_y_min: $btn_padding_y_min;
+
+	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
+	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
+
+	color: primary(500);
+
+	&:disabled {
+		color: primary(200);
+
+		background: none;
+		cursor: not-allowed;
+	}
+
+	input[type='button'] {
+		color: primary(500);
+	}
+
+	@include media-hover {
+		&:enabled {
+			&:hover {
+				background: state(hover, primary, bg);
+			}
+
+			&:active {
+				background: state(active);
+			}
+		}
+	}
+}

@@ -1,9 +1,12 @@
 .btn {
 	$borderRadius: radius(sm);
-	$padding_x_max: 25;
-	$padding_x_min: 20;
-	$padding_y_max: 10;
-	$padding_y_min: 8;
+	$btn_padding_x_max: 25;
+	$btn_padding_x_min: 20;
+	$btn_padding_y_max: 10;
+	$btn_padding_y_min: 8;
+	$btn_outline_size: rem(2);
+
+	display: inline-flex;
 
 	align-items: center;
 	overflow: hidden;
@@ -17,214 +20,20 @@
 	text-transform: none;
 	text-overflow: ellipsis;
 
-	border-radius: $borderRadius;
-
-	// Any button containing text with an icon
-	&[class*='btn__'] > .icon:first-child {
-		@include adaptive('margin-right', 12, 8, 1);
-	}
-
-	&[class*='btn__'] > .icon:last-child {
-		@include adaptive('margin-left', 12, 8, 1);
-	}
-
-	// Primary button
-	&__primary {
-		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-		@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-		color: $white;
-	}
-
-	// Secondary button
-	&__secondary {
-		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-		@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-		color: secondary(500);
-
-		@include media-hover {
-			&:hover {
-				color: state(hover, secondary, color);
-
-				input[type='button'] {
-					color: state(hover, secondary, color);
-				}
-			}
-		}
-
-		&.--disabled {
-			color: secondary(200);
-		}
-
-		input[type='button'] {
-			color: secondary(500);
-		}
-	}
-
-	// Text button
-	&__text {
-		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-		@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-		color: primary(500);
-
-		&.--disabled {
-			color: primary(200);
-		}
-
-		input[type='button'] {
-			color: primary(500);
-		}
-	}
-
-	// Icon button
-	&-icon {
-		@include adaptive('padding', 14, 11, 1);
-
-		border-radius: radius(circle);
-	}
-
-	// Group buttons container
-	&__group {
-		display: inline-flex;
-		flex-wrap: wrap;
-
-		font-size: 0;
-
-		border-radius: $borderRadius;
-
-		.btn {
-			border-radius: 0;
-
-			&:first-child {
-				border-radius: $borderRadius 0 0 $borderRadius;
-			}
-
-			&:last-child {
-				border-radius: 0 $borderRadius $borderRadius 0;
-			}
-		}
-	}
-}
-
-// btn & btn_icon
-.btn,
-.btn-icon {
-	display: inline-flex;
-
 	vertical-align: middle;
 
-	background-image: none;
+	border-radius: $borderRadius;
 	cursor: pointer;
 
 	transition: $transition;
 
 	user-select: none;
-}
 
-// Primary buttons
-.btn__primary,
-.btn-icon__primary {
-	background: primary(500);
-
-	@include media-hover {
-		&:hover {
-			background: primary(600);
-		}
-
-		&:active {
-			background: primary(700);
-		}
-	}
-
-	&.--disabled {
-		background: primary(200);
-		cursor: not-allowed;
-	}
-
-	.icon {
-		fill: $white;
-	}
-}
-
-// Secondary buttons
-.btn__secondary,
-.btn-icon__secondary {
-	$outline_size: rem(2);
-
-	outline: $outline_size solid secondary(500);
-	outline-offset: -$outline_size;
-
-	@include media-hover {
-		&:hover {
-			background: secondary(500);
-
-			.icon {
-				fill: state(hover, secondary, color);
-			}
-		}
-
-		&:active {
-			background: secondary(600);
-			outline: $outline_size solid secondary(600);
-		}
-
-		// focus-visible polyfill
-		&.focus-visible {
-			box-shadow: state(focus, secondary);
-		}
-
-		&:focus-visible {
-			box-shadow: state(focus, secondary);
-		}
-	}
-
-	&.--disabled {
-		background: none;
-		outline: $outline_size solid secondary(200);
-		cursor: not-allowed;
-
-		.icon {
-			fill: secondary(200);
-		}
-	}
-
-	.icon {
-		fill: secondary(500);
-	}
-}
-
-// Text buttons
-.btn__text,
-.btn-icon__text {
-	@include media-hover {
-		&:hover {
-			background: state(hover, primary, bg);
-		}
-
-		&:active {
-			background: state(active);
-		}
-	}
-
-	&.--disabled {
-		background: none;
-
-		cursor: not-allowed;
-
-		.icon {
-			fill: primary(200);
-		}
-	}
-
-	.icon {
-		fill: primary(500);
-	}
+	//? ### Modules
+	// @import 'twi';
+	// @import 'variants/primary';
+	// @import 'variants/secondary';
+	// @import 'variants/light';
+	// @import 'variants/icon';
+	// @import 'group';
 }
