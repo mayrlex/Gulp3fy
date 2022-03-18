@@ -1,5 +1,9 @@
 module.exports = {
-	extends: ['stylelint-config-standard-scss', 'stylelint-config-rational-order', 'stylelint-prettier/recommended'],
+	extends: [
+		'stylelint-config-standard-scss',
+		'stylelint-config-rational-order',
+		'stylelint-prettier/recommended',
+	],
 	plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-config-rational-order/plugin'],
 	rules: {
 		// Property Order
@@ -37,5 +41,6 @@ module.exports = {
 		'scss/no-global-function-names': null,
 		'color-function-notation': null,
 		'scss/double-slash-comment-whitespace-inside': null,
+		'no-invalid-position-at-import-rule': null,
 	},
 };
