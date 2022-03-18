@@ -1,4 +1,4 @@
-@mixin icon-arrow-1($border: rem(6), $color: dark(1), $direction: top) {
+@mixin icon-arrow-1($border: 6, $color: dark(1), $direction: top) {
 	@if $direction == 'top' {
 		border-right: rem($border) solid transparent;
 		border-bottom: rem($border) solid $color;

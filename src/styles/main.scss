@@ -6,9 +6,13 @@
 // @import 'https://unpkg.com/swiper@8/swiper-bundle.min.css';
 // @import 'https://unpkg.com/simplebar@latest/dist/simplebar.css';
 
-//? ### Mixins / Functions
+//? ### Functions
 @import './mixins/**/*';
 @import './functions/**/*';
+
+//? ### Mixins
+@import './mixins/font-face';
+@import './mixins/icons';
 
 //? ### Configs
 @import './config/variables';
