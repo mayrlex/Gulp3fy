@@ -54,7 +54,6 @@ mixin btn(data)
 		if (!data.text && data.icon)
 			a.btn-icon(class=modsArray)&attributes(attributes)
 				+icon-mono(data.icon)
-				block
 
 		//- Text
 		else
@@ -68,16 +67,21 @@ mixin btn(data)
 						span!= data.text
 						+icon-mono(data.icon)
 				else
-					!= data.text
+					span!= data.text
 
 	//- Button type: input
 	else if data.isInput
 		//- Text + icon
 		if (data.text && data.icon)
 			label.btn(class=modsArray)
-				input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
-				+icon-mono(data.icon)
+				if data.iconBefore
+					+icon-mono(data.icon)
+					input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
 
+				else
+					input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
+
+					+icon-mono(data.icon)
 		//- Icon
 		else if (!data.text && data.icon)
 			label.btn-icon(class=modsArray)
@@ -94,11 +98,17 @@ mixin btn(data)
 		if (!data.text && data.icon)
 			button.btn-icon(class=modsArray)&attributes(attributes)
 				+icon-mono(data.icon)
-				block
 
 		//- Text
 		else
-			button.btn(class=modsArray)&attributes(attributes)!= data.text
-				if (data.icon)
-					+icon-mono(data.icon)
-				block
+			button.btn(class=modsArray)&attributes(attributes)
+				if data.icon
+					if data.iconBefore
+						+icon-mono(data.icon)
+						span!= data.text
+
+					else
+						span!= data.text
+						+icon-mono(data.icon)
+				else
+					span!= data.text
