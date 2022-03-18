@@ -9,92 +9,15 @@
 	border-radius: radius(sm);
 	box-shadow: $boxShadow;
 
-	& &__inner {
-		// If card_inner comes first
-		&:first-child {
-			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
-		}
-
-		// If card_inner comes last
-		&:last-child {
-			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-		}
-	}
-
-	// Card col
-	&.col {
-		display: flex;
-		flex-direction: column;
-		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
-		overflow: hidden;
-
-		// Card items gap
-		& > [class*='card__'] {
-			&:not([class*='preview']) {
-				@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-				@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
-			}
-
-			&:not(:last-child) {
-				@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
-			}
-		}
-
-		// If card_header comes first
-		& .card__header:first-child {
-			@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
-		}
-
-		// If card_preview comse last
-		& .card__preview:last-child {
-			@include adaptive('margin-bottom', -$card_gap_max, -$card_gap_min, 1);
-		}
-	}
-
-	// Card row
-	&.row {
-		display: grid;
-		grid-template-columns: repeat(1, 1fr);
-		@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
-
-		@include media-min(sm) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
+	//? ### Variants
+	@import 'column';
+	// @import 'row';
 
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(1, 1fr);
 		gap: rem(10);
 		row-gap: rem(20);
-
-		// Card grid col
-		&.col {
-			@include media-min(md) {
-				grid-template-columns: repeat(2, 1fr);
-			}
-
-			@include media-min(lg) {
-				grid-template-columns: repeat(3, 1fr);
-				gap: rem(20);
-				row-gap: rem(30);
-			}
-
-			@include media-min(xxl) {
-				grid-template-columns: repeat(4, 1fr);
-			}
-		}
-
-		// Card grid row
-		&.row {
-			@include media-min(lg) {
-				grid-template-columns: repeat(2, 1fr);
-			}
-
-			@include media-min(xl) {
-				gap: rem(20);
-			}
-		}
 	}
 
 	&__preview {
@@ -147,35 +70,6 @@
 					filter: brightness(0.5);
 				}
 			}
-		}
-
-		// Card preview col
-		&.col {
-			@include media-minmax(sm, md) {
-				min-height: rem(300);
-			}
-		}
-
-		// Card preview row
-		&.row {
-		}
-	}
-
-	// Card inner row
-	&__inner {
-		display: flex;
-		flex-direction: column;
-		@include adaptive('padding-top', $card_gap_max, $card_gap_min, 1);
-		@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
-
-		@include media-max(sm) {
-			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
-		}
-
-		// Card items gap
-		& > [class*='card__']:not(:last-child) {
-			@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
 		}
 	}
 

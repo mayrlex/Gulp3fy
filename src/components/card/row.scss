@@ -1,0 +1,53 @@
+//? ### Variant: Row
+
+&__grid.row {
+	@include media-min(lg) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include media-min(xl) {
+		gap: rem(20);
+	}
+}
+
+&.row {
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	@include adaptive('gap', $card_gap_max, $card_gap_min, 1);
+
+	@include media-min(sm) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+& &__inner {
+	// If card__inner comes first
+	&:first-child {
+		@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+	}
+
+	// If card__inner comes last
+	&:last-child {
+		@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+	}
+}
+
+&__preview.row {
+}
+
+&__inner {
+	display: flex;
+	flex-direction: column;
+	@include adaptive('padding-top', $card_gap_max, $card_gap_min, 1);
+	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+
+	@include media-max(sm) {
+		@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+	}
+
+	// Card items gap
+	& > [class*='card__']:not(:last-child) {
+		@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
+	}
+}

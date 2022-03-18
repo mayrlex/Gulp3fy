@@ -1,0 +1,52 @@
+//? ### Variant: Column
+
+&__grid.col {
+	@include media-min(md) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@include media-min(lg) {
+		grid-template-columns: repeat(3, 1fr);
+		gap: rem(20);
+		row-gap: rem(30);
+	}
+
+	@include media-min(xxl) {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+&.col {
+	display: flex;
+	flex-direction: column;
+	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+	overflow: hidden;
+
+	// Card items gap
+	& > [class*='card__'] {
+		&:not([class$='preview']) {
+			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
+			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+		}
+
+		&:not(:last-child) {
+			@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
+		}
+	}
+
+	// If card_header comes first
+	& .card__header:first-child {
+		@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
+	}
+
+	// If card_preview comse last
+	& .card__preview:last-child {
+		@include adaptive('margin-bottom', -$card_gap_max, -$card_gap_min, 1);
+	}
+
+	.card__preview {
+		@include media-minmax(sm, md) {
+			min-height: rem(300);
+		}
+	}
+}
