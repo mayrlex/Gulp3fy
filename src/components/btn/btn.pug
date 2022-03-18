@@ -1,10 +1,10 @@
 //- Arguments:
-	text       {string}  - Text
-	mods       {string}  - Mod('s)
-	icon       {string}  - Icon name
-	link       {string}  - Link
-	iconBefore {boolean} - Set icon before text
-	isInput    {boolean} - Set button type: input
+	text       {string}         - Text
+	mods       {string}         - Mod('s)
+	link       {string}         - Link
+	icon       {string}         - Icon name
+	iconPos    [before / after] - Set icon position [Default: 'after']
+	isInput    {boolean}        - Set button type: input
 
 //- Call:
 	//- Button type 'link'
@@ -24,9 +24,9 @@
 	//- Button type 'button'
 	+btn({
 		text: 'Button',
-		mods: 'text'
+		mods: 'light'
 		icon: 'play',
-		iconBefore: true,
+		iconPos: 'before',
 	})
 
 	//- Icon button
@@ -44,7 +44,7 @@ mixin btn(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
+				modsArray = `${modsArray}${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
 			}
 		}
 
@@ -59,7 +59,7 @@ mixin btn(data)
 		else
 			a.btn(class=modsArray, href=data.link)&attributes(attributes)
 				if data.icon
-					if data.iconBefore
+					if (data.iconPos === 'before')
 						+icon-mono(data.icon)
 						span!= data.text
 
@@ -74,7 +74,7 @@ mixin btn(data)
 		//- Text + icon
 		if (data.text && data.icon)
 			label.btn(class=modsArray)
-				if data.iconBefore
+				if (data.iconPos === 'before')
 					+icon-mono(data.icon)
 					input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
 
@@ -103,7 +103,7 @@ mixin btn(data)
 		else
 			button.btn(class=modsArray)&attributes(attributes)
 				if data.icon
-					if data.iconBefore
+					if (data.iconPos === 'before')
 						+icon-mono(data.icon)
 						span!= data.text
 
