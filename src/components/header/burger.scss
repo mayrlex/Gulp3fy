@@ -1,0 +1,62 @@
+//? ### Burger menu
+
+.burger {
+	position: relative;
+	z-index: 1;
+
+	width: rem(40);
+	height: rem(30);
+
+	cursor: pointer;
+
+	& span,
+	&:before,
+	&:after {
+		position: absolute;
+
+		width: 100%;
+		height: rem(4);
+
+		background: dark(1);
+		border-radius: radius(sm);
+
+		transition: all 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+	}
+
+	&:before,
+	&:after {
+		content: '';
+	}
+
+	&:before {
+		top: 0;
+	}
+
+	&:after {
+		bottom: 0;
+	}
+
+	& span {
+		top: 50%;
+
+		transform: scale(1) translate(0px, -50%);
+	}
+
+	&.--show {
+		& span {
+			transform: scale(0) translate(0px, -50%);
+		}
+
+		&:before {
+			top: 50%;
+
+			transform: rotate(45deg) translate(0px, -55%);
+		}
+
+		&:after {
+			bottom: 50%;
+
+			transform: rotate(-45deg) translate(0px, 80%);
+		}
+	}
+}
