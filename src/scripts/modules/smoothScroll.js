@@ -9,7 +9,8 @@ const smoothScroll = () => {
 		const init = (event) => {
 			const target = document.querySelector(event.target.dataset.anchor);
 
-			if (!target) return;
+			if (!target)
+				return console.error(`Error: Anchor '${event.target.dataset.anchor}' not found`);
 
 			if (burger.classList.contains('--show')) {
 				document.body.classList.remove('--lock');
