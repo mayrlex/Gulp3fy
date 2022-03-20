@@ -97,17 +97,13 @@
 		}
 
 		.icon {
-			fill: primary(500);
+			fill: $btn_light_color;
 		}
 
 		@include media-hover {
 			&:not(:disabled, .--disabled) {
-				&:hover {
-					background: state(hover, primary, bg);
-				}
-
-				&:active {
-					background: state(active);
+				&:hover .icon {
+					fill: state(hover, primary, color);
 				}
 			}
 		}

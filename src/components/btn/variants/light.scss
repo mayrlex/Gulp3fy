@@ -1,17 +1,7 @@
 //? ### Variant: Light
 
 &__light {
-	$padding_x_max: $btn_padding_x_max;
-	$padding_x_min: $btn_padding_x_min;
-	$padding_y_max: $btn_padding_y_max;
-	$padding_y_min: $btn_padding_y_min;
-
-	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-	color: primary(500);
+	color: $btn_light_color;
 
 	&:disabled,
 	.--disabled {
@@ -22,17 +12,13 @@
 	}
 
 	input[type='button'] {
-		color: primary(500);
+		color: $btn_light_color;
 	}
 
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {
-				background: state(hover, primary, bg);
-			}
-
-			&:active {
-				background: state(active);
+				color: primary(500);
 			}
 		}
 	}

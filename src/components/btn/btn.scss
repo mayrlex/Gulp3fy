@@ -1,5 +1,6 @@
 .btn {
 	$borderRadius: radius(sm);
+	$btn_light_color: primary(400);
 	$btn_padding_x_max: 25;
 	$btn_padding_x_min: 20;
 	$btn_padding_y_max: 10;
@@ -7,7 +8,6 @@
 	$btn_outline_size: rem(2);
 
 	display: inline-flex;
-
 	align-items: center;
 	overflow: hidden;
 
@@ -19,7 +19,6 @@
 	text-align: center;
 	text-transform: none;
 	text-overflow: ellipsis;
-
 	vertical-align: middle;
 
 	border-radius: $borderRadius;

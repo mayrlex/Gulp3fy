@@ -48,6 +48,12 @@
 	}
 
 	.icon {
-		fill: primary(500);
+		fill: $btn_light_color;
+	}
+
+	@include media-hover {
+		&:hover .icon {
+			fill: state(hover, primary, color);
+		}
 	}
 }
