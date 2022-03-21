@@ -1,26 +1,24 @@
 //? ### Variant: Column
 
-&__grid.col {
-	@include media-min(md) {
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	@include media-min(lg) {
-		grid-template-columns: repeat(3, 1fr);
-		gap: rem(20);
-		row-gap: rem(30);
-	}
-
-	@include media-min(xxl) {
-		grid-template-columns: repeat(4, 1fr);
-	}
-}
-
 &.col {
 	display: flex;
 	flex-direction: column;
-	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+	grid-column: 12 span;
+
 	overflow: hidden;
+	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
+
+	@include media-min(md) {
+		grid-column: 6 span;
+	}
+
+	@include media-min(lg) {
+		grid-column: 4 span;
+	}
+
+	@include media-min(xl) {
+		grid-column: 3 span;
+	}
 
 	// Card items gap
 	& > [class*='card__'] {
