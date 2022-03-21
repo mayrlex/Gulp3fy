@@ -125,42 +125,16 @@ img {
 }
 
 .container {
+	max-width: rem($container);
 	margin: 0 auto;
+	padding: offset(min);
 
-	// < 576px
-	@include media-max(sm) {
-		max-width: container(xs);
-		padding: $fields;
-	}
-
-	// > 576px
-	@include media-min(sm) {
-		max-width: rem(container(sm));
-	}
-
-	// > 768px
 	@include media-min(md) {
-		max-width: rem(container(md));
-	}
-
-	// > 992px
-	@include media-min(lg) {
-		max-width: rem(container(lg));
-	}
-
-	// > 1200px
-	@include media-min(xl) {
-		max-width: rem(container(xl));
-	}
-
-	// > 1400px
-	@include media-min(xxl) {
-		max-width: rem(container(xxl));
+		padding: offset(max);
 	}
 }
 
-// Responsive image
-// by FLS
+// Responsive image by FLS
 .--ibg {
 	position: relative;
 

@@ -1,67 +1,76 @@
-// Breakpoints
-$bp_xs:   320;
-$bp_sm:   576;
-$bp_md:   768;
-$bp_lg:   992;
-$bp_xl:   1200;
-$bp_xxl:  1400;
-
 // Breackpoints map
 $breakpoints: (
-	xs:   $bp_xs - 0.2,
-	sm:   $bp_sm - 0.2,
-	md:   $bp_md - 0.2,
-	lg:   $bp_lg - 0.2,
-	xl:   $bp_xl - 0.2,
-	xxl:  $bp_xxl - 0.2,
+	xs:  320 - 0.2,
+	sm:  576 - 0.2,
+	md:  768 - 0.2,
+	lg:  992 - 0.2,
+	xl:  1200 - 0.2,
+	xxl: 1400 - 0.2,
 );
 
-// Max width container map
-$containerWidth: (
-	xs:  100%,
-	sm:  $bp_sm - 46,
-	md:  $bp_md - 46,
-	lg:  $bp_lg - 52,
-	xl:  $bp_xl - 56,
-	xxl: $bp_xxl - 76,
+$offset: (
+	min: 0 rem(10),
+	max: 0 rem(20),
 );
 
-$fields: 0 rem(10);
+$maxWidth:  1920;
+$container: 1400;
 
-// Get max width container map
-@function container($key) {
-	@if map-has-key($containerWidth, $key) {
-		@return map-get($containerWidth, $key);
+// Get offset map
+@function offset($key) {
+	@if map-has-key($offset, $key) {
+		@return map-get($offset, $key);
 	}
 
-	@warn 'Size `#{$key}` not found in $containerWidth map.';
+	@warn 'Size `#{$key}` not found in $offset map.';
 	@return null;
 }
 
 // Media queries mixins
 @mixin media-min($key) {
-	$breakpoint: map-get($breakpoints, $key);
+	@if map-has-key($breakpoints, $key) {
+		$breakpoint: map-get($breakpoints, $key);
 
-	@media (min-width: em($breakpoint)) {
-		@content;
+		@media (min-width: em($breakpoint)) {
+			@content;
+		}
+	} @else {
+		@media (min-width: em($key)) {
+			@content;
+		}
 	}
+
 }
 
 @mixin media-max($key) {
-	$breakpoint: map-get($breakpoints, $key);
+	@if map-has-key($breakpoints, $key) {
+		$breakpoint: map-get($breakpoints, $key);
 
-	@media (max-width: em($breakpoint)) {
-		@content;
+		@media (max-width: em($breakpoint)) {
+			@content;
+		}
+	} @else {
+		@media (max-width: em($key)) {
+			@content;
+		}
 	}
+
 }
 
 @mixin media-minmax($key1, $key2) {
-	$breakpointMin: map-get($breakpoints, $key1);
-	$breakpointMax: map-get($breakpoints, $key2);
+	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
+		$breakpointMin: map-get($breakpoints, $key1);
+		$breakpointMax: map-get($breakpoints, $key2);
 
-	@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax)) {
-		@content;
+		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax)) {
+			@content;
+		}
+	} @else {
+		@media (min-width: em($key1)) and (max-width: em($key2)) {
+			@content;
+		}
 	}
+
 }
 
 @mixin media-hover {
@@ -71,25 +80,22 @@ $fields: 0 rem(10);
 }
 
 // Adaptive mixin
-$maxWidth: 1920;
-$mxwContainer: container(xxl);
-
-@mixin adaptive($property, $maxValue, $minValue, $mode) {
+@mixin adaptive($property, $maxValue, $minValue, $mode: 1) {
 	$addSize: $maxValue - $minValue;
 
 	// Max width
 	@if $mode == 1 {
 		#{$property}: rem($maxValue);
 
-		@media (max-width: #{em($mxwContainer)}) {
-			#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$mxwContainer - 320}));
+		@media (max-width: #{em($container)}) {
+			#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
 		}
 
 		// Min width
 	} @else if $mode == 2 {
 		#{$property}: rem($maxValue);
 
-		@media (min-width: #{em($mxwContainer)}) {
+		@media (min-width: #{em($container)}) {
 			#{$property}: calc(
 				#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
 			);
