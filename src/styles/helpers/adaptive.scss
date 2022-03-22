@@ -11,7 +11,7 @@ $breakpoints: (
 $offsetMax: 20;
 $offsetMin: 10;
 $maxWidth:  1920;
-$container: 1324 + $offsetMax;
+$container: 1324 + ($offsetMax * 2);
 
 // Media queries mixins
 @mixin media-min($key) {
