@@ -58,11 +58,18 @@ $container: 1400;
 }
 
 @mixin media-minmax($key1, $key2) {
-	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
 		$breakpointMin: map-get($breakpoints, $key1);
 		$breakpointMax: map-get($breakpoints, $key2);
-
+	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
 		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax)) {
+			@content;
+		}
+	} @else if map-has-key($breakpoints, $key1) and not map-has-key($breakpoints, $key2) {
+		@media (min-width: em($breakpointMin)) and (max-width: em($key2)) {
+			@content;
+		}
+	} @else if map-has-key($breakpoints, $key2) and not map-has-key($breakpoints, $key1) {
+		@media (min-width: em($key1)) and (max-width: em($breakpointMax)) {
 			@content;
 		}
 	} @else {
