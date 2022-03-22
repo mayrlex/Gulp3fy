@@ -8,23 +8,10 @@ $breakpoints: (
 	xxl: 1400 - 0.2,
 );
 
-$offset: (
-	min: 0 rem(10),
-	max: 0 rem(20),
-);
-
+$offsetMax: 20;
+$offsetMin: 10;
 $maxWidth:  1920;
-$container: 1400;
-
-// Get offset map
-@function offset($key) {
-	@if map-has-key($offset, $key) {
-		@return map-get($offset, $key);
-	}
-
-	@warn 'Size `#{$key}` not found in $offset map.';
-	@return null;
-}
+$container: 1324 + $offsetMax;
 
 // Media queries mixins
 @mixin media-min($key) {
@@ -58,8 +45,8 @@ $container: 1400;
 }
 
 @mixin media-minmax($key1, $key2) {
-		$breakpointMin: map-get($breakpoints, $key1);
-		$breakpointMax: map-get($breakpoints, $key2);
+	$breakpointMin: map-get($breakpoints, $key1);
+	$breakpointMax: map-get($breakpoints, $key2);
 	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
 		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax)) {
 			@content;
