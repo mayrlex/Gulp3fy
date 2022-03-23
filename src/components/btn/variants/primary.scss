@@ -22,18 +22,10 @@
 		cursor: not-allowed;
 	}
 
-	input[type='button'] {
-		color: $color;
-	}
-
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {
 				background: primary(600);
-
-				input[type='button'] {
-					color: state(hover, primary, color);
-				}
 			}
 
 			&:active {

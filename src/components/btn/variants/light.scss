@@ -11,10 +11,6 @@
 		cursor: not-allowed;
 	}
 
-	input[type='button'] {
-		color: $btn_light_color;
-	}
-
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {

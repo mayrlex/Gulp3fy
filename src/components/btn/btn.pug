@@ -1,10 +1,9 @@
 //- Arguments:
-	text       {string}         - Text
-	mods       {string}         - Mod('s)
-	link       {string}         - Link
-	icon       {string}         - Icon name
-	iconPos    [before / after] - Set icon position [Default: 'after']
-	isInput    {boolean}        - Set button type: input
+	text    {string}         - Text
+	mods    {string}         - Mod('s)
+	link    {string}         - Link
+	icon    {string}         - Icon name
+	iconPos [before / after] - Set icon position [Default: 'after']
 
 //- Call:
 	//- Button type 'link'
@@ -12,13 +11,6 @@
 		text: 'Button',
 		mods: 'primary'
 		link: '#',
-	})
-
-	//- Button type 'input'
-	+btn({
-		text: 'Button',
-		mods: 'secondary',
-		isInput: true,
 	})
 
 	//- Button type 'button'
@@ -68,29 +60,6 @@ mixin btn(data)
 						+icon-mono(data.icon)
 				else
 					span!= data.text
-
-	//- Button type: input
-	else if data.isInput
-		//- Text + icon
-		if (data.text && data.icon)
-			label.btn(class=modsArray)
-				if (data.iconPos === 'before')
-					+icon-mono(data.icon)
-					input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
-
-				else
-					input.btn(value=data.text, type='button', style='background-color: transparent')&attributes(attributes)
-
-					+icon-mono(data.icon)
-		//- Icon
-		else if (!data.text && data.icon)
-			label.btn-icon(class=modsArray)
-				input(value=data.text, type='button')&attributes(attributes)
-				+icon-mono(data.icon)
-
-		//- Text
-		else
-			input.btn(class=modsArray, value=data.text, type='button')&attributes(attributes)
 
 	//- Button type: button
 	else

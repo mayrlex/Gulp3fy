@@ -26,20 +26,12 @@
 		cursor: not-allowed;
 	}
 
-	input[type='button'] {
-		color: secondary(500);
-	}
-
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {
 				color: state(hover, secondary, color);
 
 				background: secondary(500);
-
-				input[type='button'] {
-					color: state(hover, secondary, color);
-				}
 			}
 
 			&:active {

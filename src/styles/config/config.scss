@@ -63,20 +63,16 @@ textarea.input {
 }
 
 button {
-	background: transparent;
-}
-
-button,
-input[type='button'] {
 	font-family: inherit;
 
+	background: transparent;
 	cursor: pointer;
-}
 
-button:-moz-focus-inner {
-	padding: 0;
+	&:-moz-focus-inner {
+		padding: 0;
 
-	border: 0;
+		border: 0;
+	}
 }
 // Forms / End
 
