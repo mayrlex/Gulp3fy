@@ -1,3 +1,13 @@
+// Accent
+@function accent($key) {
+	@if map-has-key($accent, $key) {
+		@return map-get($accent, $key);
+	}
+
+	@warn 'Key `#{$key}` not found in $accent map.';
+	@return null;
+}
+
 // Primary
 @function primary($key) {
 	@if map-has-key($primary, $key) {
