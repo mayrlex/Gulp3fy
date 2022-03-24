@@ -8,52 +8,69 @@
 	@include adaptive('margin-left', 12, 8, 1);
 }
 
-&__primary {
-	&:disabled {
-		.icon {
-			// fill: $white;
-		}
-	}
-
-	.icon {
-		fill: $white;
-	}
+&__primary .icon {
+	fill: $white;
 }
 
-&__secondary {
-	&:disabled {
+&__outline {
+	&:disabled,
+	&.--disabled {
 		.icon {
-			fill: secondary(200);
+			fill: accent(200);
 		}
 	}
 
 	.icon {
-		fill: secondary(500);
+		fill: accent(500);
 	}
 
 	@include media-hover {
-		&:hover:enabled {
-			.icon {
-				fill: state(hover, secondary, color);
+		&:not(:disabled, .--disabled) {
+			&:hover .icon {
+				fill: accent(400);
+			}
+
+			&:active .icon {
+				fill: accent(500);
 			}
 		}
 	}
 }
 
-&__light {
-	&:disabled {
+&__secondary {
+	&:disabled,
+	&.--disabled {
 		.icon {
-			fill: primary(200);
+			fill: state(disabled, color);
 		}
 	}
 
 	.icon {
-		fill: $btn_light_color;
+		fill: accent(500);
+	}
+}
+
+&__light {
+	&:disabled,
+	&.--disabled {
+		.icon {
+			fill: accent(200);
+		}
+	}
+
+	.icon {
+		fill: accent(500);
 	}
 
 	@include media-hover {
-		&:hover .icon {
-			fill: state(hover, primary, color);
+		&:not(:disabled, .--disabled) {
+			&:hover .icon {
+				fill: accent(600);
+			}
+
+			&:active .icon {
+				fill: accent(700);
+			}
 		}
 	}
 }

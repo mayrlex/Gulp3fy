@@ -1,11 +1,11 @@
 //? ### Variant: Light
 
 &__light {
-	color: $btn_light_color;
+	color: accent(500);
 
 	&:disabled,
-	.--disabled {
-		color: primary(200);
+	&.--disabled {
+		color: accent(200);
 
 		background: none;
 		cursor: not-allowed;
@@ -14,7 +14,11 @@
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {
-				color: primary(500);
+				color: accent(600);
+			}
+
+			&:active {
+				color: accent(700);
 			}
 		}
 	}

@@ -1,11 +1,10 @@
 .btn {
-	$borderRadius: radius(sm);
-	$btn_light_color: primary(400);
-	$btn_padding_x_max: 25;
-	$btn_padding_x_min: 20;
+	$borderRadius: rem(4);
+	$btn_light_color: color.adjust(accent(500), $alpha: -0.9);
+	$btn_padding_x_max: 30;
+	$btn_padding_x_min: 15;
 	$btn_padding_y_max: 10;
 	$btn_padding_y_min: 8;
-	$btn_outline_size: rem(2);
 
 	display: inline-flex;
 	align-items: center;

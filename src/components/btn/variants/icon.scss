@@ -1,7 +1,9 @@
 //? ### Variant: Only icon
 
 &-icon {
-	@include adaptive('padding', 14, 11, 1);
+	$icon_padding_max: 10;
+	$icon_padding_min: 8;
+
 	display: inline-flex;
 
 	vertical-align: middle;
@@ -11,12 +13,22 @@
 
 	transition: $transition;
 
+	.icon {
+		@include adaptive('width', 24, 22);
+		@include adaptive('height', 24, 22);
+	}
+
 	&__primary {
-		background: primary(500);
+		$padding_max: $icon_padding_max;
+		$padding_min: $icon_padding_min;
+
+		@include adaptive('padding', $padding_max, $padding_min, 1);
+
+		background: accent(500);
 
 		&:disabled,
-		.--disabled {
-			background: primary(200);
+		&.--disabled {
+			background: accent(200);
 			cursor: not-allowed;
 		}
 
@@ -27,59 +39,91 @@
 		@include media-hover {
 			&:not(:disabled, .--disabled) {
 				&:hover {
-					background: primary(600);
+					background: accent(600);
 				}
 
 				&:active {
-					background: primary(700);
+					background: accent(700);
+				}
+			}
+		}
+	}
+
+	&__outline {
+		$border_size: 2;
+		$padding_max: $icon_padding_max - $border_size;
+		$padding_min: $icon_padding_min - $border_size;
+
+		@include adaptive('padding', $padding_max, $padding_min, 1);
+		border: rem($border_size) solid accent(500);
+
+		fill: accent(500);
+
+		&:disabled,
+		&.--disabled {
+			border-color: accent(200);
+			cursor: not-allowed;
+
+			.icon {
+				fill: accent(200);
+			}
+		}
+
+		.icon {
+			fill: accent(500);
+		}
+
+		@include media-hover {
+			&:not(:disabled, .--disabled) {
+				&:hover {
+					border-color: accent(400);
+
+					.icon {
+						fill: accent(400);
+					}
+				}
+
+				&:active {
+					border-color: accent(500);
+
+					.icon {
+						fill: accent(500);
+					}
 				}
 			}
 		}
 	}
 
 	&__secondary {
-		$outline_size: $btn_outline_size;
+		$padding_max: $icon_padding_max;
+		$padding_min: $icon_padding_min;
 
-		outline: $outline_size solid secondary(500);
-		outline-offset: -$outline_size;
+		@include adaptive('padding', $padding_max, $padding_min, 1);
+
+		background: $btn_light_color;
 
 		&:disabled,
-		.--disabled {
-			background: none;
-			outline: $outline_size solid secondary(200);
+		&.--disabled {
+			background: state(disabled, bg);
 			cursor: not-allowed;
 
 			.icon {
-				fill: secondary(200);
+				fill: state(disabled, color);
 			}
 		}
 
 		.icon {
-			fill: secondary(500);
+			fill: accent(500);
 		}
 
 		@include media-hover {
 			&:not(:disabled, .--disabled) {
 				&:hover {
-					background: secondary(500);
-
-					.icon {
-						fill: state(hover, secondary, color);
-					}
+					background: state(hover);
 				}
 
 				&:active {
-					background: secondary(600);
-					outline: $outline_size solid secondary(600);
-				}
-
-				// focus-visible polyfill
-				&.focus-visible {
-					box-shadow: state(focus, secondary);
-				}
-
-				&:focus-visible {
-					box-shadow: state(focus, secondary);
+					background: state(active);
 				}
 			}
 		}
@@ -87,23 +131,26 @@
 
 	&__light {
 		&:disabled,
-		.--disabled {
-			background: none;
+		&.--disabled {
 			cursor: not-allowed;
 
 			.icon {
-				fill: primary(200);
+				fill: accent(200);
 			}
 		}
 
 		.icon {
-			fill: $btn_light_color;
+			fill: accent(500);
 		}
 
 		@include media-hover {
 			&:not(:disabled, .--disabled) {
 				&:hover .icon {
-					fill: state(hover, primary, color);
+					fill: accent(600);
+				}
+
+				&:active .icon {
+					fill: accent(700);
 				}
 			}
 		}

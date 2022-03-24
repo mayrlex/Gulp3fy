@@ -14,22 +14,22 @@
 
 	color: $color;
 
-	background: primary(500);
+	background: accent(500);
 
 	&:disabled,
-	.--disabled {
-		background: primary(200);
+	&.--disabled {
+		background: accent(200);
 		cursor: not-allowed;
 	}
 
 	@include media-hover {
 		&:not(:disabled, .--disabled) {
 			&:hover {
-				background: primary(600);
+				background: accent(600);
 			}
 
 			&:active {
-				background: primary(700);
+				background: accent(700);
 			}
 		}
 	}
