@@ -8,26 +8,6 @@
 	@return null;
 }
 
-// Primary
-@function primary($key) {
-	@if map-has-key($primary, $key) {
-		@return map-get($primary, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $primary map.';
-	@return null;
-}
-
-// Secondary
-@function secondary($key) {
-	@if map-has-key($secondary, $key) {
-		@return map-get($secondary, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $secondary map.';
-	@return null;
-}
-
 // Success
 @function success($key) {
 	@if map-has-key($success, $key) {

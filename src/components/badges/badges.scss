@@ -15,7 +15,7 @@
 		width: $dot_size;
 		height: $dot_size;
 
-		background: primary(500);
+		background: accent(500);
 		border-radius: radius(circle);
 	}
 
@@ -29,7 +29,7 @@
 		line-height: $num_width;
 		text-align: center;
 
-		background: primary(500);
+		background: accent(500);
 		border-radius: radius(xxl);
 	}
 
@@ -42,13 +42,13 @@
 	&--solid {
 		color: $white;
 
-		background: primary(500);
+		background: accent(500);
 	}
 
 	&--outline {
-		color: primary(500);
+		color: accent(500);
 
-		outline: $outline_size solid primary(500);
+		outline: $outline_size solid accent(500);
 		outline-offset: -$outline_size;
 	}
 }

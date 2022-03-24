@@ -99,9 +99,9 @@
 
 		@include media-hover {
 			&:hover {
-				color: $color_hover;
+				color: accent(500);
 
-				background: state(hover, primary, bg);
+				background: state(hover);
 			}
 		}
 

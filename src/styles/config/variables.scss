@@ -14,32 +14,6 @@ $accent: (
 	900: #061978,
 );
 
-// Primary
-$primary: (
-	100: #E8DAFE,
-	200: #CFB6FE,
-	300: #B391FC,
-	400: #9C76FA,
-	500: #7749F8,
-	600: #5B35D5,
-	700: #4224B2,
-	800: #2D178F,
-	900: #1E0E77,
-);
-
-// Secondary
-$secondary: (
-	100: #D0FCF2,
-	200: #A3FAED,
-	300: #73F1E9,
-	400: #4FE1E3,
-	500: #1CC0D2,
-	600: #1497B4,
-	700: #0E7397,
-	800: #085379,
-	900: #053C64,
-);
-
 // Success
 $success: (
 	100: #D6FCD4,
@@ -135,30 +109,13 @@ $radius: (
 );
 
 $states: (
-	hover: (
-		primary: (
-			color: primary(500),
-			bg: color.adjust(primary(500), $alpha: -0.9),
-		),
-
-		secondary: (
-			color: $white,
-			bg: secondary(500),
-		),
-	),
-
-	active: color.adjust(primary(500), $alpha: -0.85),
-
-	focus: (
-		primary: 0 0 0 rem(4) color.adjust(primary(500), $alpha: -0.75),
-		secondary: 0 0 0 rem(4) color.adjust(secondary(500), $alpha: -0.75),
-	),
-
+	hover: color.adjust(accent(500), $alpha: -0.85),
+	active: color.adjust(accent(500), $alpha: -0.75),
+	focus: 0 0 0 rem(4) color.adjust(accent(500), $alpha: -0.5),
 	current: gray(700),
-
 	disabled: (
-		color: gray(500),
-		bg: color.adjust(gray(200), $alpha: -0.75),
+		color: gray(400),
+		bg: color.adjust(gray(500), $alpha: -0.9),
 	),
 );
 

@@ -17,7 +17,7 @@
 }
 
 :focus-visible {
-	box-shadow: state(focus, primary);
+	box-shadow: state(focus);
 }
 
 html,
@@ -160,5 +160,5 @@ img {
 
 // focus-visible polyfill
 .focus-visible {
-	box-shadow: state(focus, primary);
+	box-shadow: state(focus);
 }

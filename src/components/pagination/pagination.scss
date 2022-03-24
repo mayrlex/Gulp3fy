@@ -5,7 +5,7 @@
 	display: flex;
 	justify-content: center;
 
-	color: dark(1);
+	color: gray(600);
 	font-weight: 700;
 	font-size: rem(16);
 	font-family: $fontFamily_secondary;
@@ -50,11 +50,11 @@
 
 			@include media-hover {
 				&:hover {
-					color: state(hover, primary, color);
+					color: accent(500);
 
-					background: state(hover, primary, bg);
+					background: state(hover);
 
-					fill: state(hover, primary, color);
+					fill: accent(500);
 				}
 			}
 		}
@@ -65,7 +65,7 @@
 			align-items: center;
 			padding: $controls_padding;
 
-			fill: dark(1);
+			fill: gray(600);
 
 			&.--disabled {
 				color: state(disabled, color);
@@ -81,6 +81,7 @@
 		}
 
 		&-dots {
+			color: gray(500);
 		}
 
 		&-next {
@@ -88,7 +89,7 @@
 		}
 
 		&.--current {
-			color: primary(500);
+			color: accent(500);
 
 			background: state(active);
 		}
