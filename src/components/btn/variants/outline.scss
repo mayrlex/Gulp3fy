@@ -1,0 +1,41 @@
+&__outline {
+	$color: accent(500);
+	$border_size: 2;
+	$padding_x_max: $btn_padding_x_max - $border_size;
+	$padding_x_min: $btn_padding_x_min - $border_size;
+	$padding_y_max: $btn_padding_y_max - $border_size;
+	$padding_y_min: $btn_padding_y_min - $border_size;
+
+	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
+	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
+	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
+
+	color: $color;
+
+	border: rem($border_size) solid accent(500);
+
+	&:disabled,
+	&.--disabled {
+		color: accent(200);
+
+		border: rem($border_size) solid accent(200);
+		cursor: not-allowed;
+	}
+
+	@include media-hover {
+		&:not(:disabled, .--disabled) {
+			&:hover {
+				color: accent(400);
+
+				border-color: accent(400);
+			}
+
+			&:active {
+				color: accent(500);
+
+				border: rem($border_size) solid accent(500);
+			}
+		}
+	}
+}
