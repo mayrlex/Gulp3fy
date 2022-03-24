@@ -1,25 +1,24 @@
 //- Arguments:
-	text      {string} - Button text
-	mods      {string} - Mod('s)
-	icon      {string} - Icon name
-	link      {string} - Link
-	isControl {boolean}- Set item as control
-	dots      {boolean}- Dots
+	text      {string}  - Button text
+	mods      {string}  - Mod('s)
+	icon      {string}  - Icon name
+	link      {string}  - Link
+	isControl {boolean} - Set item as control
 
 //- Call:
 	+pagination
-		+pagination-item({ mods: 'prev', icon: 'arrow-2-left', link: '#', isControl: true }).--disabled
+		+pagination-item({ mods: 'prev', icon: 'arrow-left', link: '#', isControl: true }).--disabled
 
 		ul.pagination__list
 			+pagination-item({ text: '1', link: '#' }).--current
 			+pagination-item({ text: '2', link: '#' })
 			+pagination-item({ text: '3', link: '#' })
-			+pagination-item({ dots: true })
+			+pagination-item({})
 			+pagination-item({ text: '8', link: '#' })
 			+pagination-item({ text: '9', link: '#' })
 			+pagination-item({ text: '10', link: '#' })
 
-		+pagination-item({ mods: 'next', icon: 'arrow-2-right', link: '#', isControl: true })
+		+pagination-item({ mods: 'next', icon: 'arrow-right', link: '#', isControl: true })
 
 mixin pagination(mods)
 	-
@@ -52,7 +51,7 @@ mixin pagination-item(data)
 	//- Is controls
 	if data.isControl
 		//- Controls type: icon
-		if data.icon
+		if (data.icon && !data.text)
 			a(class=modsArray, href=data.link)&attributes(attributes)
 				+icon-mono(data.icon)
 
@@ -63,7 +62,7 @@ mixin pagination-item(data)
 	else
 		li.pagination__item
 			//- Is dots
-			if (data.dots && !data.text)
+			if !data.text
 				span.pagination__btn-dots&attributes(attributes) ...
 
 			else
