@@ -10,8 +10,8 @@
 	box-shadow: $boxShadow;
 
 	//? ### Variants
-	@import 'column';
-	// @import 'row';
+	@import 'variants/column';
+	// @import 'variants/row';
 
 	&__grid {
 		display: grid;
