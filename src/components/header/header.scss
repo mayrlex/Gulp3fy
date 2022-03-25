@@ -1,175 +1,50 @@
-$header_background: $white;
-$header_height: rem(70);
+$header_background: transparent;
+$header_height: auto;
 
 .header {
-	position: fixed;
 	z-index: zindex(header);
 
-	width: 100%;
-
 	background: $header_background;
-	border-bottom: $border;
-	box-shadow: $boxShadow;
-
-	// Header overlay
-	@include media-max(lg) {
-		&:before {
-			position: fixed;
-			top: 0;
-			left: 0;
-			z-index: 1;
-
-			width: 100%;
-			height: $header_height;
-
-			background: $header_background;
-			border-bottom: $border;
-
-			content: '';
-		}
-	}
 
 	&__inner {
 		display: flex;
 		align-items: center;
 		min-height: $header_height;
-
-		@include media-max(lg) {
-			// Menu backdrop
-			&:before {
-				position: fixed;
-				top: 0;
-				left: 0;
-
-				width: 100%;
-				height: 100%;
-
-				background: $backdrop;
-				visibility: hidden;
-				opacity: 0;
-
-				transition: opacity 0.3s, visibility 0.3s;
-
-				content: '';
-			}
-
-			&.--show {
-				&:before {
-					visibility: visible;
-					opacity: 1;
-				}
-			}
-		}
 	}
 
 	&__logo {
 		z-index: 1;
-
-		margin-right: auto;
 	}
 
 	&__nav {
-		// Burger navbar
-		@include media-max(lg) {
-			position: fixed;
-			top: 0;
-			right: -100%;
-
-			width: 100%;
-			max-width: rem(450);
-			height: 100%;
-			padding: rem(100) 0;
-			@include adaptive('padding-left', 70, 30, 1);
-			@include adaptive('padding-right', 70, 30, 1);
-			overflow: auto;
-
-			background: $header_background;
-			border-left: $border;
-			box-shadow: $boxShadow;
-
-			transition: right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-
-			&.--show {
-				right: 0;
-			}
-		}
-
-		@include media-min(lg) {
-			display: flex;
-			align-items: center;
-		}
 	}
 
 	&__menu {
-	}
-
-	&__burger {
 	}
 }
 
 .menu {
 	$color: gray(600);
 	$color_hover: accent(500);
-	$link_icon_top: rem(30);
-	$link_icon_width: rem(20);
-	$menu_transition: 0.3s;
+	$dropdown_icon_size_desk: 6;
+	$dropdown_icon_size_mob: 6;
+	$dropdown_icon_margin_desk: 5;
+	$dropdown_icon_margin_mob: 5;
+	$link_fontSize: inherit;
 
-	font-family: $fontFamily_secondary;
-
-	&__list {
-		@include media-min(lg) {
-			display: flex;
-		}
-	}
-
-	&__item {
-		position: relative;
-
-		@include media-min(lg) {
-			&:not(:last-child) {
-				margin-right: rem(25);
-			}
-		}
-	}
-
-	&__link {
-		display: flex;
-		align-items: center;
-		padding: rem(10) 0;
-
-		color: $color;
-		font-weight: 600;
-
-		letter-spacing: $letterSpacing;
-
-		&.--current {
-			color: state(current);
-
-			pointer-events: none;
-		}
-
-		@include media-max(lg) {
-			font-size: rem(32);
-		}
-
-		@include media-min(lg) {
-			font-size: rem(16);
-
-			transition: $transition;
-		}
-
-		@include media-hover {
-			&:hover {
-				color: $color_hover;
-			}
-		}
-	}
+	//? ### Menu
+	@import 'modules/menu';
 
 	//? ### Dropdown menu
-	@import 'dropdown';
+	@import 'modules/dropdown';
 }
 
 @include media-max(lg) {
+	$burger_btn_animation: cubic-bezier(0.57, 0.21, 0.69, 1.25);
+	$burger_btn_size: rem(44);
+	$burger_btn_color: dark(1);
+	$burger_line_height: rem(4);
+
 	//? ### Burger
-	@import 'burger';
+	@import 'modules/burger';
 }

@@ -1,10 +1,10 @@
 //- Arguments:
-	mods        {string}  - Mod('s)
-	text        {string}  - Link title
-	link        {string}  - Link
-	hasDropdown {boolean} - Set nav item as dropdown button
-	isSub       {boolean} - Set menu item as sub-item
-	anchor      {string}  - Smooth scrolling to the specified block
+	mods     {string}  - Mod('s)
+	text     {string}  - Link title
+	link     {string}  - Link
+	dropdown {boolean} - Set menu item as dropdown button
+	subitem  {boolean} - Set menu item as sub-item
+	anchor   {string}  - Smooth scrolling to the specified block
 
 //- Call:
 	+header
@@ -16,11 +16,11 @@
 					+menu-item({ text: 'Home', link: '#' }).--current
 					+menu-item({ text: 'About', link: '#' })
 
-					+menu-item({ text: 'Products', link: '#', hasDropdown: true })
-						+menu-item({ text: 'Laptops', link: '#', isSub: true })
-						+menu-item({ text: 'Headphones', link: '#', isSub: true })
-						+menu-item({ text: 'Keyboards', link: '#', isSub: true }).--disabled
-						+menu-item({ text: 'Mouses', link: '#', isSub: true })
+					+menu-item({ text: 'Products', link: '#', dropdown: true })
+						+menu-item({ text: 'Laptops', link: '#', subitem: true })
+						+menu-item({ text: 'Headphones', link: '#', subitem: true })
+						+menu-item({ text: 'Keyboards', link: '#', subitem: true }).--disabled
+						+menu-item({ text: 'Mouses', link: '#', subitem: true })
 
 					+menu-item({ text: 'News', link: '#' })
 
@@ -64,14 +64,14 @@ mixin menu(mods)
 //- Nav item
 mixin menu-item(data)
 	//- Has dropdown?
-	if data.hasDropdown
+	if data.dropdown
 		li.menu__item(data-dropdown='')
-			button.menu__link(type='button', data-dropdown-btn='')&attributes(attributes)= data.text
+			button.menu__link(data-dropdown='toggle')&attributes(attributes)= data.text
 			ul.menu__sub-list(class=data.active)
 				block
 
 	//- Is sub item?
-	else if data.isSub
+	else if data.subitem
 		li.menu__sub-item
 			a.menu__sub-link(href=data.link)&attributes(attributes)= data.text
 
@@ -85,3 +85,7 @@ mixin menu-item(data)
 			else
 				a.menu__link(href=data.link)&attributes(attributes)= data.text
 					block
+
+mixin burger(label = 'Toggle burger menu')
+	button.burger(aria-label=label)&attributes(attributes)
+		span

@@ -1,0 +1,151 @@
+//? ### Module: Burger [Button / Menu]
+
+.header {
+	//? ## Header overlay
+	// &:before {
+	// 	position: fixed;
+	// 	top: 0;
+	// 	left: 0;
+	// 	z-index: 1;
+
+	// 	width: 100%;
+	// 	height: 60px;
+
+	// 	background: $header_background;
+
+	// 	content: '';
+	// }
+
+	&__inner {
+		//? ## Buger menu backdrop
+		&:before {
+			position: fixed;
+			top: 0;
+			left: 0;
+
+			width: 100%;
+			height: 100%;
+
+			background: $backdrop;
+			visibility: hidden;
+			opacity: 0;
+
+			transition: opacity transition(time, sm), visibility transition(time, sm);
+
+			content: '';
+		}
+
+		&.--show {
+			&:before {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+
+	&__nav {
+		//? ## Burger menu
+		@include media-max(lg) {
+			position: fixed;
+			top: 0;
+			right: -100%;
+
+			width: 100%;
+			max-width: rem(450);
+			height: 100%;
+			padding-top: $header_height /* + rem(50)*/;
+			overflow: auto;
+
+			@if $header_background == transparent {
+				background: $white;
+			} @else {
+				background: $header_background;
+			}
+
+			transition: right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+			&.--show {
+				right: 0;
+			}
+		}
+
+		@include media-min(lg) {
+			display: flex;
+			align-items: center;
+		}
+	}
+}
+
+.burger {
+	position: relative;
+	z-index: 1;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: $burger_btn_size;
+	height: $burger_btn_size;
+	margin-left: auto;
+
+	user-select: none;
+
+	span {
+		position: relative;
+
+		display: block;
+		width: 90%;
+		height: $burger_line_height;
+
+		background: $burger_btn_color;
+
+		transition: background transition(time);
+
+		&:before,
+		&:after {
+			position: absolute;
+			left: 0;
+
+			width: 100%;
+			height: $burger_line_height;
+
+			background: $burger_btn_color;
+			transform-origin: 50% 50%;
+
+			transition: top transition(time) transition(time), transform transition(time);
+
+			content: '';
+		}
+
+		&:before {
+			top: rem(-12);
+		}
+
+		&:after {
+			top: rem(12);
+		}
+	}
+
+	&.--show {
+		span {
+			background: transparent;
+
+			transition: background transition(time) 0s $burger_btn_animation;
+
+			&:before,
+			&:after {
+				top: 0;
+
+				transition: top transition(time) $burger_btn_animation,
+					transform transition(time) transition(time) $burger_btn_animation;
+			}
+
+			&:before {
+				transform: rotate3d(0, 0, 1, 45deg);
+			}
+
+			&:after {
+				transform: rotate3d(0, 0, 1, -45deg);
+			}
+		}
+	}
+}

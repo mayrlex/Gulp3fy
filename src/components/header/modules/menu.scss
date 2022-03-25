@@ -1,0 +1,31 @@
+//? ### Module: Menu
+
+&__list {
+	@include media-min(lg) {
+		display: flex;
+	}
+}
+
+&__item {
+	@include media-min(lg) {
+		&:not(:last-child) {
+		}
+	}
+}
+
+&__link {
+	color: $color;
+	font-size: $link_fontSize;
+
+	&.--current {
+		color: state(current);
+
+		pointer-events: none;
+	}
+
+	@include media-hover {
+		&:hover {
+			color: $color_hover;
+		}
+	}
+}
