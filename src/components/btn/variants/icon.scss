@@ -11,7 +11,7 @@
 	border-radius: radius(circle);
 	cursor: pointer;
 
-	transition: $transition;
+	transition: transition(time);
 
 	.icon {
 		@include adaptive('width', 24, 22);

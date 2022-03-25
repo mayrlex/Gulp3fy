@@ -98,6 +98,7 @@ $zIndex: (
 	popup:    100,
 );
 
+// Border radius
 $radius: (
 	xs: rem(2),
 	sm: rem(4),
@@ -109,25 +110,35 @@ $radius: (
 );
 
 $states: (
-	hover: color.adjust(accent(500), $alpha: -0.85),
-	active: color.adjust(accent(500), $alpha: -0.75),
-	focus: 0 0 0 rem(4) color.adjust(accent(500), $alpha: -0.5),
-	current: gray(700),
+	hover:     color.adjust(accent(500), $alpha: -0.85),
+	active:    color.adjust(accent(500), $alpha: -0.75),
+	focus:     0 0 0 rem(4) color.adjust(accent(500), $alpha: -0.5),
+	current:   gray(700),
 	disabled: (
 		color: gray(400),
-		bg: color.adjust(gray(500), $alpha: -0.9),
+		bg:    color.adjust(gray(500), $alpha: -0.9),
+	),
+);
+
+$fontFamily:(
+	default: ('Inter', sans-serif),
+	second: ('Nunito', sans-serif),
+);
+
+$transitions: (
+	time: (
+		xs: 0.1s,
+		sm: 0.3s,
 	),
 );
 
 // UI
-$border:               rem(1) solid gray(200);
-$boxShadow:            0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
-$color_body:           gray(600);
-$color_title:          dark(1);
-$fontFamily_primary:   'Inter', sans-serif;
-$fontFamily_secondary: 'Nunito', sans-serif;
-$icon_width:           rem(16);
-$icon_height:          $icon_width;
-$letterSpacing:        rem(1);
-$backdrop:              color.adjust(dark(2), $alpha: -0.1);
-$transition:           0.1s;
+$border:        rem(1) solid gray(200);
+$boxShadow:     0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
+$color_body:    gray(600);
+$color_title:   dark(1);
+$icon_width:    rem(16);
+$icon_height:   $icon_width;
+$letterSpacing: rem(1);
+$backdrop:      color.adjust(dark(2), $alpha: -0.1);
+$transition:    0.1s;

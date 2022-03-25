@@ -8,12 +8,32 @@
 	@return null;
 }
 
-// Borber
+// Borber radius
 @function radius($key) {
 	@if map-has-key($radius, $key) {
 		@return map-get($radius, $key);
 	}
 
 	@warn 'Key `#{$key}` not found in $radius map.';
+	@return null;
+}
+
+// Font family
+@function font($variant) {
+	@if map-has-key($fontFamily, $variant) {
+		@return map-get($fontFamily, $variant);
+	}
+
+	@warn 'Key `#{$variant}` not found in $fontFamily map.';
+	@return null;
+}
+
+// Transition
+@function transition($type, $value: xs) {
+	@if map-has-key($transitions, $type, $value) {
+		@return map-get($transitions, $type, $value);
+	}
+
+	@warn 'Keys `#{$type} & #{$value}` not found in $transition map.';
 	@return null;
 }

@@ -21,7 +21,7 @@
 	visibility: hidden;
 	opacity: 0;
 
-	transition: opacity $transition, visibility $transition;
+	transition: opacity transition(time), visibility transition(time);
 
 	pointer-events: none;
 
@@ -34,13 +34,13 @@
 		& .popup__inner {
 			opacity: 1;
 
-			animation: show $transition;
+			animation: show transition(time);
 		}
 	}
 
 	&.--hide {
 		& .popup__inner {
-			animation: hide $transition;
+			animation: hide transition(time);
 		}
 	}
 
@@ -55,7 +55,7 @@
 		border-radius: radius(sm);
 		opacity: 0;
 
-		animation: hide $transition;
+		animation: hide transition(time);
 		@include adaptive('padding', 50, 25, 1);
 
 		@include media-min(md) {
@@ -74,7 +74,7 @@
 		border-radius: radius(sm);
 		cursor: pointer;
 
-		transition: $transition;
+		transition: transition(time);
 
 		fill: $white;
 		@include adaptive('top', $close_pos_max, $close_pos_in, 1);
@@ -113,7 +113,7 @@
 	&__title {
 		color: dark(1);
 		font-weight: 700;
-		font-family: $fontFamily_secondary;
+		font-family: font(second);
 		@include adaptive('font-size', 36, 28, 1);
 	}
 

@@ -1,6 +1,5 @@
 .spoiler {
-	$color_title: dark(1);
-	$title_hover: state(hover, primary, color);
+	$title_color: dark(1);
 	$padding_x_max: 15;
 	$padding_x_min: 10;
 	$padding_y_max: 25;
@@ -23,28 +22,28 @@
 		width: 100%;
 		@include adaptive('padding', 15, 10, 1);
 
-		color: $color_title;
+		color: $title_color;
 		font-weight: 600;
 		@include adaptive('font-size', 18, 16, 1);
-		font-family: $fontFamily_secondary;
+		font-family: font(second);
 		letter-spacing: $letterSpacing;
 		text-align: left;
 
 		background: $white;
 		border-radius: radius(sm);
 
-		transition: $transition;
+		transition: transition(time);
 
 		@include media-hover {
 			&:hover {
-				color: state(hover, primary, color);
+				color: accent(500);
 
-				background: state(hover, primary, bg);
+				background: state(hover);
 			}
 		}
 
 		&.--show {
-			color: $title_hover;
+			color: accent(500);
 
 			background: state(active);
 		}
@@ -60,7 +59,7 @@
 			@include adaptive('width', 20, 16, 1);
 			height: rem(3);
 
-			background: $color_title;
+			background: $title_color;
 			border-radius: radius(sm);
 
 			transition: transform 0.3s ease 0s;
@@ -75,7 +74,7 @@
 		&.--show {
 			&:before,
 			&:after {
-				background: $title_hover;
+				background: accent(500);
 			}
 
 			&:after {
@@ -87,7 +86,7 @@
 			&:hover {
 				&:before,
 				&:after {
-					background: $title_hover;
+					background: accent(500);
 				}
 			}
 		}

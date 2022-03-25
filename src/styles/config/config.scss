@@ -28,7 +28,7 @@ body {
 body {
 	color: $color_body;
 	@include adaptive('font-size', 16, 14, 1);
-	font-family: $fontFamily_primary;
+	font-family: font(default);
 
 	background: $white;
 	text-size-adjust: 100%;
@@ -42,7 +42,7 @@ body {
 input,
 button,
 textarea {
-	font-family: $fontFamily_primary;
+	font-family: font(default);
 }
 
 input::-ms-clear {

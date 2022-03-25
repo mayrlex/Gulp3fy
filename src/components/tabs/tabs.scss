@@ -15,11 +15,11 @@
 			color: gray(600);
 			font-weight: 600;
 			@include adaptive('font-size', 18, 16, 1);
-			font-family: $fontFamily_secondary;
+			font-family: font(second);
 
 			border-radius: radius(sm) radius(sm) 0 0;
 
-			transition: $transition;
+			transition: transition(time);
 
 			@include media-hover {
 				&:hover {

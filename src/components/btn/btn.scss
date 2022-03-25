@@ -12,7 +12,7 @@
 
 	font-weight: 400;
 	@include adaptive('font-size', 18, 16, 1);
-	font-family: $fontFamily_secondary;
+	font-family: font(second);
 	letter-spacing: $letterSpacing;
 	white-space: nowrap;
 	text-align: center;
@@ -23,16 +23,16 @@
 	border-radius: $borderRadius;
 	cursor: pointer;
 
-	transition: $transition;
+	transition: transition(time);
 
 	user-select: none;
 
 	//? ### Modules
-	// @import 'twi';
-	// @import 'variants/solid';
-	// @import 'variants/outline';
-	// @import 'variants/light';
-	// @import 'variants/text';
-	// @import 'variants/icon';
-	// @import 'group';
+	@import 'twi';
+	@import 'variants/solid';
+	@import 'variants/outline';
+	@import 'variants/light';
+	@import 'variants/text';
+	@import 'variants/icon';
+	@import 'group';
 }

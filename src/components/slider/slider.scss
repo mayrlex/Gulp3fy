@@ -20,7 +20,7 @@
 			border-radius: radius(sm);
 			opacity: 1;
 
-			transition: $transition;
+			transition: transition(time);
 
 			@include media-hover {
 				&:hover:not(.swiper-pagination-bullet-active) {

@@ -8,7 +8,7 @@
 	color: gray(600);
 	font-weight: 600;
 	font-size: rem(16);
-	font-family: $fontFamily_secondary;
+	font-family: font(second);
 	letter-spacing: $letterSpacing;
 
 	&__inner {
@@ -46,7 +46,7 @@
 
 			border-radius: radius(sm);
 
-			transition: $transition;
+			transition: transition(time);
 
 			@include media-hover {
 				&:hover {
