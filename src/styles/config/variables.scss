@@ -100,11 +100,11 @@ $zIndex: (
 
 // Border radius
 $radius: (
-	xs: rem(2),
-	sm: rem(4),
-	md: rem(6),
-	lg: rem(8),
-	xl: rem(16),
+	xs: em(2),
+	sm: em(4),
+	md: em(6),
+	lg: em(8),
+	xl: em(16),
 	xxl: em(160),
 	circle: 50%,
 );
