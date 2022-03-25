@@ -32,7 +32,7 @@ export const stylesBuild = () => {
 		)
 		.pipe(sassGlob())
 		.pipe(
-			sass({
+			sass.sync({
 				outputStyle: stylesConfig.sass.outputStyle,
 				includePaths: ['./node_modules'],
 			})
