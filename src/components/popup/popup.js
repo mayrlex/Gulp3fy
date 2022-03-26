@@ -1,92 +1,87 @@
 /*
-Argumenst:
-	selector {string} - Popup selector
-
 Call:
-	import Popup from '../../../components/popup/popup.js';
+	import Modal from '../../../components/popup/popup.js';
 
-	const popup = new Popup('.popup');
+	const modal1 = new Modal('modal-1');
 */
 
-export default class Popup {
-	constructor(selector) {
-		this.selector = selector;
-		this.popup = document.querySelector(`.${this.selector}__popup`);
-		this.popupInner = document.querySelector(`.${this.selector}__popup > .popup__inner`);
-		this.popupNodes = document.querySelectorAll('.popup');
-		this.isOpened = false;
-		this.focusItems = [
+export default class Modal {
+	constructor(id) {
+		this.id = id;
+		this.modal = document.querySelector(`#${this.id}`);
+		this.modalNodes = document.querySelectorAll('.modal');
+		this.isShown = false;
+		this.FOCUSABLE_ELEMENTS = [
 			'a[href]',
-			'button',
-			'input',
-			'select',
-			'textarea',
-			'[tabindex]:not([tabindex^=' - '])',
+			'area[href]',
+			'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
+			'select:not([disabled]):not([aria-hidden])',
+			'textarea:not([disabled]):not([aria-hidden])',
+			'button:not([disabled]):not([aria-hidden])',
+			'iframe',
+			'object',
+			'embed',
+			'[contenteditable]',
+			'[tabindex]:not([tabindex^="-"])',
 		];
 
 		this.events();
 	}
 
 	events() {
-		if (this.popup) {
+		if (this.modal) {
 			document.addEventListener('click', (event) => {
-				const btnCall = event.target.closest(`[data-popup=${this.selector}]`);
-				const btnClose = event.target.closest('[data-popup="close"]');
-				const popup = event.target.classList.contains('popup');
-				const isShown = event.target.classList.contains('--show');
+				const call = event.target.closest(`[data-modal=${this.id}]`);
+				const close = event.target.closest('[data-modal-close]');
+				const overlay = event.target.classList.contains('modal__overlay');
 
-				btnCall ? this.open() : null;
-				btnClose || (popup && isShown) ? this.close() : null;
+				call ? this.show() : null;
+				close || overlay ? this.hide() : null;
 			});
 
 			window.addEventListener('keydown', (event) => {
-				event.key === 'Escape' && this.isOpened ? this.close() : null;
-				event.key === 'Tab' && this.isOpened ? this.focus(event) : null;
+				event.key === 'Escape' && this.isShown ? this.hide() : null;
+				event.key === 'Tab' && this.isShown ? this.focus(event) : null;
 			});
 		}
 	}
 
-	focus(event) {
-		const focusItems = this.popupInner.querySelectorAll(this.focusItems);
-		const focusItemsArray = Array.prototype.slice.call(focusItems);
-		const focusedItemIndex = focusItemsArray.indexOf(document.activeElement);
+	show() {
+		const focusableNodes = this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS);
 
-		if (event.shiftKey && focusedItemIndex === 0) {
-			focusItemsArray[focusItemsArray.length - 1].focus();
-			event.preventDefault();
-		}
-
-		if (!event.shiftKey && focusedItemIndex === focusItemsArray.length - 1) {
-			focusItemsArray[0].focus();
-			event.preventDefault();
-		}
-	}
-
-	open() {
-		const focusItems = this.popupInner.querySelectorAll(this.focusItems);
-
-		this.popupNodes.forEach((item) => {
-			if (item === this.popup) return;
-
-			item.classList.replace('--show', '--hide');
+		this.modalNodes.forEach((item) => {
+			if (item === this.modal) return;
 			item.ariaHidden = 'true';
 		});
 
-		this.isOpened ? this.close() : null;
+		this.isShown ? this.hide() : null;
 		document.body.classList.add('--lock');
-		this.popup.classList.replace('--hide', '--show');
-		this.popup.ariaHidden = 'false';
+		this.modal.ariaHidden = 'false';
 
 		setTimeout(() => {
-			this.isOpened = true;
-			focusItems.length ? focusItems[0].focus() : null;
+			this.isShown = true;
+			focusableNodes.length ? focusableNodes[0].focus() : null;
 		}, 300);
 	}
 
-	close() {
+	hide() {
 		document.body.classList.remove('--lock');
-		this.popup.classList.replace('--show', '--hide');
-		this.isOpened = false;
-		this.popup.ariaHidden = 'true';
+		this.isShown = false;
+		this.modal.ariaHidden = 'true';
+	}
+
+	focus(event) {
+		const focusedElements = Array(...this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS));
+		const focusedItemindex = focusedElements.indexOf(document.activeElement);
+
+		if (event.shiftKey && focusedItemindex === 0) {
+			focusedElements[focusedElements.length - 1].focus();
+			event.preventDefault();
+		}
+
+		if (!event.shiftKey && focusedItemindex === focusedElements.length - 1) {
+			focusedElements[0].focus();
+			event.preventDefault();
+		}
 	}
 }

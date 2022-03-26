@@ -2,18 +2,20 @@
 	title      {string} - Title
 	icon       {string} - Icon name
 	mods       {string} - Mod('s)
-	closeLabel {string} - Close button label (Default: 'Close popup')
+	closeLabel {string} - Close button label (Default: 'Close modal')
 
 //- Call:
-	+popup({ title: 'Popup!', icon: 'success' })
-		.popup__content
-			p It's just a popup :3
+	Any element with (data-modal-close)
 
-		.popup__footer
-			+btn({ text: 'Confirm', mods: 'primary' })
-			+btn({ text: 'Cancel', mods: 'secondary' })
+	+modal({ mods: 'success', id: 'modal-1', title: 'Example modal', })
+		block modal-contnent
+			...
 
-mixin popup(data)
+		block modal-footer
+			+btn({ text: 'Cancel', mods: 'light' })
+			+btn({ text: 'Confirm', mods: 'solid' })
+
+mixin modal(data)
 	-
 		let modsArray = '';
 
@@ -21,21 +23,20 @@ mixin popup(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}__popup`;
+				modsArray = `${modsArray} ${modsList[i].trim()}__modal`;
 			}
 		}
 
-	.popup(class=`${modsArray} --hide`, tabindex='-1', aria-hidden='true')&attributes(attributes)
-		.popup__inner(role='dialog', aria-modal='true')
-			button.popup__close(aria-label=(data.closeLabel = 'Close popup'), data-popup='close')
-				+icon-mono('cross')
+	section.modal(class=modsArray, id=data.id, aria-hidden='true')
+		.modal__overlay(tabindex='-1')
+			.modal__inner(role='dialog', aria-modal='true')
+				.modal__header
+					if data.title
+						h2.modal__title!= data.title
+					button.modal__close(aria-label=(data.closeLabel = 'Close modal'), data-modal-close='')
 
-			if data.title
-				.popup__header
-					if data.icon
-						.popup__icon
-							+icon-mono(data.icon)
+				.modal__content
+					block modal-contnent
 
-					.popup__title!= data.title
-
-			block
+				.modal__footer
+					block modal-footer
