@@ -1,24 +1,34 @@
-.headline {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
 	color: $color_title;
-	font-weight: 700;
-	@include adaptive('font-size', 32, 24, 1);
+	font-weight: 600;
 	line-height: 120%;
 }
 
-.subheading {
-	color: $color_title;
-	font-weight: 500;
-	@include adaptive('font-size', 24, 18, 1);
+.h1 {
+	@include adaptive('font-size', 80, 48);
 }
 
-.title {
-	color: $color_title;
-	font-weight: 600;
-	@include adaptive('font-size', 24, 18, 1);
+.h2 {
+	@include adaptive('font-size', 56, 40);
 }
 
-.subtitle {
-	color: $color_title;
-	font-weight: 500;
-	@include adaptive('font-size', 20, 16, 1);
+.h3 {
+	@include adaptive('font-size', 44, 36);
+}
+
+.h4 {
+	@include adaptive('font-size', 36, 32);
+}
+
+.h5 {
+	@include adaptive('font-size', 32, 28);
+}
+
+.h6 {
+	@include adaptive('font-size', 28, 24);
 }
