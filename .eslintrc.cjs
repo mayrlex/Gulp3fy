@@ -34,5 +34,6 @@ module.exports = {
 		'no-param-reassign': [2, { props: false }],
 		'no-nested-ternary': 0,
 		'import/order': 0,
+		'no-useless-return': 0,
 	},
 };

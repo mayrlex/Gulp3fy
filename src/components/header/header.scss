@@ -33,10 +33,10 @@ $header_height: auto;
 	$link_fontSize: inherit;
 
 	//? ### Menu
-	@import 'modules/menu';
+	// @import 'modules/menu';
 
 	//? ### Dropdown menu
-	@import 'modules/dropdown';
+	// @import 'modules/dropdown';
 }
 
 @include media-max(lg) {
@@ -46,5 +46,5 @@ $header_height: auto;
 	$burger_line_height: rem(4);
 
 	//? ### Burger
-	@import 'modules/burger';
+	// @import 'modules/burger';
 }
