@@ -1,4 +1,5 @@
 dist
+src/markup/config/head.pug
 src/styles/config/themes.scss
 src/styles/config/variables.scss
 src/styles/helpers/adaptive.scss
