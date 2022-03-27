@@ -44,11 +44,14 @@ export const path = {
 	},
 
 	images: {
-		src: `${source}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
+		src: [
+			`${source}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
+			`!${source}/assets/images/common/placeholder.*`,
+		],
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		placehoder: `${source}/assets/images/**/placeholder.png`,
 		svg: `${source}/assets/images/**/*.svg`,
+		placehoder: `${source}/assets/images/**/placeholder.png`,
 	},
 
 	icons: {

@@ -1,5 +1,3 @@
-/* eslint-disable import/no-mutable-exports */
-/* eslint-disable prefer-const */
 //##############################
 // Tasks
 //##############################
@@ -54,7 +52,7 @@ const manifest = {
 //##############################
 // FTP Settings
 //##############################
-let ftpConfig = {
+const ftpConfig = {
 	folder:   `test`, // Folder on the server
 	host:     '',     // Address
 	user:     '',     // Username

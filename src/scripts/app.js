@@ -4,16 +4,15 @@ import documentReady from './helpers/documentReady.js';
 
 //? ### Plugins
 import lazyLoad from './plugins/lazyLoad.js';
-import * as focusVisible from './plugins/focusVisible.js';
-// import SimpleBar from 'simplebar';
-// import Swiper, { Navigation, Pagination, Keyboard } from 'swiper';
+import './plugins/focusVisible.js';
+// import 'simplebar';
 
 //? ### Components
-// import * as header from '../components/header/header.js';
-// import * as spoiler from '../components/spoiler/spoiler.js';
+// import '../components/header/header.js';
+// import '../components/spoiler/spoiler.js';
 
 //? ### Pages
-import * as homepage from './pages/home/hero.js';
+import './pages/home/hero.js';
 
 documentReady(() => {
 	lazyLoad();
