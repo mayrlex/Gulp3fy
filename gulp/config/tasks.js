@@ -6,7 +6,7 @@ import { imagesBuild, imagesWatch } from '../tasks/images.js';
 import { spritesBuild, spritesWatch } from '../tasks/sprites.js';
 import fontsBuild from '../tasks/fonts.js';
 import faviconsBuild from '../tasks/favicon.js';
-import { filesBuild, filesWatch, robots } from '../tasks/files.js';
+import { filesBuild, filesWatch } from '../tasks/files.js';
 
 const builds = [
 	markupBuild,
@@ -17,7 +17,6 @@ const builds = [
 	spritesBuild,
 	faviconsBuild,
 	filesBuild,
-	robots,
 ];
 
 const watchers = [

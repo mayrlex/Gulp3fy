@@ -79,8 +79,8 @@ export const path = {
 		src: [`${source}/assets/files/**/*.*`, `!${source}/assets/files/robots.txt`],
 		dest: `${compiled}/assets/files/`,
 		watch: `${source}/assets/files/**/*.*`,
-		robots: {
-			src: `${source}/assets/files/robots.txt`,
+		root: {
+			robots: `${source}/assets/files/robots.txt`,
 			dest: compiled,
 		},
 	},

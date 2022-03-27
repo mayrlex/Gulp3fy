@@ -11,7 +11,7 @@ const task = {
 	images:  true,
 	sprites: true,
 	favicon: true,
-	files:   false,
+	files:   true,
 }
 
 //##############################
