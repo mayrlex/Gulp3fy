@@ -4,6 +4,7 @@
 	icon      {string}  - Icon name
 	link      {string}  - Link
 	isControl {boolean} - Set item as control
+	isMulti   {boolean} - Set icon type: multi [Default: false]
 
 //- Call:
 	+pagination
@@ -53,7 +54,7 @@ mixin pagination-item(data)
 		//- Controls type: icon
 		if (data.icon && !data.text)
 			a(class=modsArray, href=data.link)&attributes(attributes)
-				+icon-mono(data.icon)
+				+icon(data.icon, data.isMulti)
 
 		//- Controls type: text
 		else

@@ -1,9 +1,10 @@
 //- Arguments:
-	text    {string}         - Text
-	mods    {string}         - Mod('s)
-	link    {string}         - Link
-	icon    {string}         - Icon name
-	iconPos [before / after] - Set icon position [Default: 'after']
+	text    {string}  - Text
+	mods    {string}  - Mod('s)
+	link    {string}  - Link
+	icon    {string}  - Icon name
+	iconPos {string}  - Set icon position: before / after [Default: 'after']
+	isMulti {boolean} - Set icon type: multi [Default: false]
 
 //- Call:
 	//- Button type 'link'
@@ -45,19 +46,19 @@ mixin btn(data)
 		//- Icon
 		if (!data.text && data.icon)
 			a.btn-icon(class=modsArray)&attributes(attributes)
-				+icon-mono(data.icon)
+				+icon(data.icon, data.isMulti)
 
 		//- Text
 		else
 			a.btn(class=modsArray, href=data.link)&attributes(attributes)
 				if data.icon
 					if (data.iconPos === 'before')
-						+icon-mono(data.icon)
+						+icon(data.icon, data.isMulti)
 						span!= data.text
 
 					else
 						span!= data.text
-						+icon-mono(data.icon)
+						+icon(data.icon, data.isMulti)
 				else
 					span!= data.text
 
@@ -66,18 +67,18 @@ mixin btn(data)
 		//- Icon
 		if (!data.text && data.icon)
 			button.btn-icon(class=modsArray)&attributes(attributes)
-				+icon-mono(data.icon)
+				+icon(data.icon, data.isMulti)
 
 		//- Text
 		else
 			button.btn(class=modsArray)&attributes(attributes)
 				if data.icon
 					if (data.iconPos === 'before')
-						+icon-mono(data.icon)
+						+icon(data.icon, data.isMulti)
 						span!= data.text
 
 					else
 						span!= data.text
-						+icon-mono(data.icon)
+						+icon(data.icon, data.isMulti)
 				else
 					span!= data.text
