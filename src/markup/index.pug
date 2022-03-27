@@ -1,13 +1,19 @@
 extends layouts/default.pug
 
 block variables
-	- const pageLang = 'ru';
-	- const pageName = 'Blank page';
-	- const pageDescription = '';
-	- const pageKeywords = '';
-	//- - const pageRobots = 'noindex, nofollow'
+	-
+		const pageLang = 'ru',
+			  pageName = 'Home',
+			  pageDescription = '',
+			  pageKeywords = '',
+			  pageAuthor = '',
+			  pageLocale = 'ru-RU',
+			  pageUrl = 'http://localhost:3300',
+			  themeColor = '#ffffff',
+			  translate = true,
+			  robots = true;
 
 block content
 	include pages/home/hero.pug
 
-	include pages/modals.pug
+	//- include pages/modals.pug

@@ -1,30 +1,67 @@
 - const pageTitle = pageName ? `${pageName} — ${brandName}` : brandName;
-
 meta(charset='UTF-8')
+meta(http-equiv='X-UA-Compatible', content='IE=edge')
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
 //- meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
-meta(name='description', content=pageDescription)
-meta(name='keywords', content=pageKeywords)
-meta(name='format-detection', content='telephone=no, date=no, address=no, email=no')
-meta(name='robots', content=pageRobots)
 
-//- TAB
 title= pageTitle
-link(rel='shortcut icon', href='assets/images/common/favicon.ico')
+if pageDescription
+	meta(name='description', content=pageDescription)
+if pageKeywords
+	meta(name='keywords', content=pageKeywords)
+if pageAuthor
+	meta(name='author', content=pageAuthor)
+meta(name='image', content='./assets/images/common/logo.png')
 
-//- Styles
-link(
-	rel='preload',
-	href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap',
-	as='font',
-	type='font/woff2',
-	crossorigin
-)
-link(
-	rel='preload',
-	href='https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap',
-	as='font',
-	type='font/woff2',
-	crossorigin
-)
+meta(property='og:type', content='website')
+meta(property='og:title', content=pageTitle)
+meta(property='og:description', content=pageDescription)
+meta(property='og:image', content='./assets/images/common/logo.png')
+meta(property='og:url', content=pageUrl)
+meta(property='og:locale', content=pageLocale)
+
+link(rel='canonical', href=pageUrl)
+
+//- link(rel='preconnect', href='//fonts.gstatic.com')
+
+link(rel='icon', type='image/png', sizes='16x16', href='./assets/images/common/favicon-16x16.png')
+link(rel='icon', type='image/png', sizes='32x32', href='./assets/images/common/favicon-32x32.png')
+
+link(rel='icon', type='image/png', sizes='36x36', href='./assets/images/common/android-chrome-36x36.png')
+link(rel='icon', type='image/png', sizes='48x48', href='./assets/images/common/android-chrome-48x48.png')
+link(rel='icon', type='image/png', sizes='72x72', href='./assets/images/common/android-chrome-72x72.png')
+link(rel='icon', type='image/png', sizes='96x96', href='./assets/images/common/android-chrome-96x96.png')
+link(rel='icon', type='image/png', sizes='144x144', href='./assets/images/common/android-chrome-144x144.png')
+link(rel='icon', type='image/png', sizes='192x192', href='./assets/images/common/android-chrome-192x192.png')
+link(rel='icon', type='image/png', sizes='256x256', href='./assets/images/common/android-chrome-256x256.png')
+link(rel='icon', type='image/png', sizes='384x384', href='./assets/images/common/android-chrome-384x384.png')
+link(rel='icon', type='image/png', sizes='512x512', href='./assets/images/common/android-chrome-512x512.png')
+
+link(rel='apple-touch-icon', sizes='57x57', href='./assets/images/common/apple-touch-icon-57x57.png')
+link(rel='apple-touch-icon', sizes='60x60', href='./assets/images/common/apple-touch-icon-60x60.png')
+link(rel='apple-touch-icon', sizes='72x72', href='./assets/images/common/apple-touch-icon-72x72.png')
+link(rel='apple-touch-icon', sizes='76x76', href='./assets/images/common/apple-touch-icon-76x76.png')
+link(rel='apple-touch-icon', sizes='114x114', href='./assets/images/common/apple-touch-icon-114x114.png')
+link(rel='apple-touch-icon', sizes='120x120', href='./assets/images/common/apple-touch-icon-120x120.png')
+link(rel='apple-touch-icon', sizes='144x144', href='./assets/images/common/apple-touch-icon-144x144.png')
+link(rel='apple-touch-icon', sizes='152x152', href='./assets/images/common/apple-touch-icon-152x152.png')
+link(rel='apple-touch-icon', sizes='167x167', href='./assets/images/common/apple-touch-icon-167x167.png')
+link(rel='apple-touch-icon', sizes='180x180', href='./assets/images/common/apple-touch-icon-180x180.png')
+link(rel='apple-touch-icon', sizes='1024x1024', href='./assets/images/common/apple-touch-icon-1024x1024.png')
+
+link(rel='manifest', href='./assets/images/common/manifest.json')
+
+meta(name='theme-color', content=themeColor)
+//- meta(name='theme-color' media='(prefers-color-scheme: light)' content='white')
+//- meta(name='theme-color' media='(prefers-color-scheme: dark)' content='black')
+
+meta(name='apple-mobile-web-app-title', content=pageTitle)
+meta(name='apple-mobile-web-app-capable', content='yes')
+
+meta(name='format-detection', content='telephone=no, date=no, address=no, email=no')
+if !translate
+	meta(name='google' value='notranslate')
+if !robots
+	meta(name='robots' value='noindex, nofollow')
+
 link(rel='stylesheet', href='assets/css/main.min.css')
