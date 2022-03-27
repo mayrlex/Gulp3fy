@@ -113,6 +113,7 @@ const spriteConfig = {
 
 export { task };
 export { serverConfig };
+export { manifest };
 export { ftpConfig };
 export { imgminConfig };
 export { markupConfig };
