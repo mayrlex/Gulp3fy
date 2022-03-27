@@ -6,7 +6,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "gulp dev",
-		"build": "gulp prod --prod",
+		"pws": "gulp dev --prod",
+		"prod": "gulp prod --prod",
 		"zip": "gulp archiving --prod",
 		"deploy": "gulp deploy --prod",
 		"eslint": "eslint src/scripts --ext .js",
