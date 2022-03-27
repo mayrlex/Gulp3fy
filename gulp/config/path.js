@@ -76,9 +76,13 @@ export const path = {
 	},
 
 	files: {
-		src: `${source}/assets/files/**/*.*`,
+		src: [`${source}/assets/files/**/*.*`, `!${source}/assets/files/robots.txt`],
 		dest: `${compiled}/assets/files/`,
 		watch: `${source}/assets/files/**/*.*`,
+		robots: {
+			src: `${source}/assets/files/robots.txt`,
+			dest: compiled,
+		},
 	},
 
 	zip: {
