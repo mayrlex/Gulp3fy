@@ -24,6 +24,34 @@ const serverConfig = {
 }
 
 //##############################
+// Manifest Settings
+//##############################
+
+const manifest = {
+	name: 'Gulp3fy',
+	shortname: 'G3',
+	description: 'Taskrunner based on gulp + webpack',
+	devName: 'H3JILgaH4uk',
+	devUrl: 'https://github.com/H3JILgaH4uk',
+	lang: 'RU-ru',
+	bg: '#fff',
+	themeColor: '#fff',
+	display: 'standalone',
+	orientation: 'portrait',
+	url: '/',
+	icons: {
+		android: true,
+		appleIcon: true,
+		appleStartup: false,
+		coast: false,
+		favicons: true,
+		firefox: false,
+		windows: false,
+		yandex: false,
+	}
+}
+
+//##############################
 // FTP Settings
 //##############################
 let ftpConfig = {

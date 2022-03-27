@@ -41,6 +41,7 @@
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-clean-css": "^4.3.0",
+		"gulp-favicons": "^3.0.0",
 		"gulp-fonter": "^0.3.0",
 		"gulp-group-css-media-queries": "^1.2.2",
 		"gulp-if": "^3.0.0",

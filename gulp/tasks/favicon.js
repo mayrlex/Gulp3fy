@@ -1,8 +1,9 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import rename from 'gulp-rename';
+import favicons from 'gulp-favicons';
 import { path } from '../config/path.js';
+import { manifest } from '../../config.js';
 
 const faviconsBuild = () =>
 	gulp
@@ -10,14 +11,37 @@ const faviconsBuild = () =>
 		.pipe(
 			plumber(
 				notify.onError({
-					title: 'FONTS',
+					title: 'FAVICON',
 					message: 'Error: <%= error.message %>',
 				})
 			)
 		)
 		.pipe(
-			rename({
-				extname: '.ico',
+			favicons({
+				path: '../common/',
+				appName: manifest.name,
+				appShortName: manifest.shortname,
+				appDescription: manifest.description,
+				developerName: manifest.devName,
+				developerURL: manifest.devUrl,
+				lang: manifest.lang,
+				background: manifest.bg,
+				theme_color: manifest.themeColor,
+				display: manifest.display,
+				orientation: manifest.orientation,
+				url: manifest.url,
+				scope: '/',
+				start_url: '/',
+				icons: {
+					android: manifest.icons.android,
+					appleIcon: manifest.icons.appleIcon,
+					appleStartup: manifest.icons.appleStartup,
+					coast: manifest.icons.coast,
+					favicons: manifest.icons.favicons,
+					firefox: manifest.icons.firefox,
+					windows: manifest.icons.windows,
+					yandex: manifest.icons.yandex,
+				},
 			})
 		)
 		.pipe(gulp.dest(path.favicon.dest));
