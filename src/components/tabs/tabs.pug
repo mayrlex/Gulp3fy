@@ -27,9 +27,9 @@ mixin tab(data)
 
 	.tabs(class=modsArray, data-tab=data.tab)&attributes(attributes)
 		nav.tabs__menu(role='tablist')
-			block buttons
+			block tabs-header
 		.tabs__inner
-			block contents
+			block tabs-content
 
 //- Button
 mixin tab-btn(text)

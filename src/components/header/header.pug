@@ -2,8 +2,12 @@
 include ./mixins.pug
 
 +header
-	a.header__logo
-		//- +img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
+	if (!pageId === 0)
+		a.header__logo(href)
+			//- +img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
+	else
+		.header__logo
+			//- +img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
 
 	nav.header__nav
 		.header__menu.menu

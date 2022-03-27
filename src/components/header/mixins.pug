@@ -5,10 +5,12 @@
 	dropdown {boolean} - Set menu item as dropdown button
 	subitem  {boolean} - Set menu item as sub-item
 	anchor   {string}  - Smooth scrolling to the specified block
+	label    {string}  - Burger button aria-label
 
 //- Call:
 	+header
-		.header__logo
+		a.header__logo
+			+img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
 
 		nav.header__nav
 			.header__menu.menu
@@ -26,8 +28,7 @@
 
 					+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
 
-		.header__burger.burger
-			span
+		+burger
 
 mixin header(mods)
 	-
@@ -45,7 +46,7 @@ mixin header(mods)
 		.header__inner.container
 			block
 
-//- Navbar
+//- Menu
 mixin menu(mods)
 	-
 		let modsArray = '';
@@ -61,7 +62,7 @@ mixin menu(mods)
 	ul.menu__list(class=modsArray)&attributes(attributes)
 		block
 
-//- Nav item
+//- Menu item
 mixin menu-item(data)
 	//- Has dropdown?
 	if data.dropdown
@@ -86,6 +87,7 @@ mixin menu-item(data)
 				a.menu__link(href=data.link)&attributes(attributes)= data.text
 					block
 
+//- Burger button
 mixin burger(label = 'Toggle burger menu')
 	button.burger(aria-label=label)&attributes(attributes)
 		span

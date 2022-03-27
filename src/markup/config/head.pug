@@ -1,8 +1,10 @@
 - const pageTitle = pageName ? `${pageName} — ${brandName}` : brandName;
 meta(charset='UTF-8')
 meta(http-equiv='X-UA-Compatible', content='IE=edge')
-meta(name='viewport', content='width=device-width, initial-scale=1.0')
-//- meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+if !pageScalable
+	meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
+else
+	meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
 title= pageTitle
 if pageDescription
@@ -11,12 +13,12 @@ if pageKeywords
 	meta(name='keywords', content=pageKeywords)
 if pageAuthor
 	meta(name='author', content=pageAuthor)
-meta(name='image', content='./assets/images/common/logo.png')
+meta(name='image', content=`./assets/images/common/logo.${pageLogoFormat}`)
 
 meta(property='og:type', content='website')
 meta(property='og:title', content=pageTitle)
 meta(property='og:description', content=pageDescription)
-meta(property='og:image', content='./assets/images/common/logo.png')
+meta(property='og:image', content=`./assets/images/common/logo.${pageLogoFormat}`)
 meta(property='og:url', content=pageUrl)
 meta(property='og:locale', content=pageLocale)
 
