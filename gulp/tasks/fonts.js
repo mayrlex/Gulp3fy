@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import fs from 'fs';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import fonter from 'gulp-fonter';
@@ -22,7 +21,7 @@ const otfConvert = () => {
 				formats: ['ttf'],
 			})
 		)
-		.pipe(gulp.dest(path.fonts.dest));
+		.pipe(gulp.dest(path.fonts.src.folder));
 };
 
 const ttfConvert = () => {
