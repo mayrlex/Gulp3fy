@@ -123,10 +123,12 @@ img {
 .container {
 	max-width: rem($container);
 	margin: 0 auto;
-	padding: 0 rem($offsetMin);
+	padding-right: rem($offsetMin);
+	padding-left: rem($offsetMin);
 
 	@include media-min(md) {
-		padding: 0 rem($offsetMax);
+		padding-right: rem($offsetMax);
+		padding-left: rem($offsetMax);
 	}
 }
 
