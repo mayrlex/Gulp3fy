@@ -18,141 +18,56 @@
 		@include adaptive('height', 24, 22);
 	}
 
-	&__primary {
-		$padding_max: $icon_padding_max;
-		$padding_min: $icon_padding_min;
+	// .btn-icon__solid
+	@include btn(
+		$element: 'solid',
+		$fill: $white,
+		$bg: accent(500),
+		$bg_hover: accent(600),
+		$bg_active: accent(700),
+		$bg_disabled: accent(200)
+	) {
+		@include adaptive('padding', $icon_padding_max, $icon_padding_min, 1);
+	}
+
+	// .btn-icon__outline
+	@include btn(
+		$element: 'outline',
+		$fill: accent(500),
+		$fill_hover: accent(600),
+		$fill_active: accent(400),
+		$fill_disabled: accent(200),
+		$border_width: $border_width,
+		$border_color: accent(500),
+		$border_color_hover: accent(600),
+		$border_color_active: accent(400),
+		$border_color_disabled: accent(200)
+	) {
+		$padding_max: $icon_padding_max - $border_width;
+		$padding_min: $icon_padding_min - $border_width;
 
 		@include adaptive('padding', $padding_max, $padding_min, 1);
-
-		background: accent(500);
-
-		&:disabled,
-		&.--disabled {
-			background: accent(200);
-			cursor: not-allowed;
-		}
-
-		.icon {
-			fill: $white;
-		}
-
-		@include media-hover {
-			&:not(:disabled, .--disabled) {
-				&:hover {
-					background: accent(600);
-				}
-
-				&:active {
-					background: accent(700);
-				}
-			}
-		}
 	}
 
-	&__outline {
-		$border_size: 2;
-		$padding_max: $icon_padding_max - $border_size;
-		$padding_min: $icon_padding_min - $border_size;
-
-		@include adaptive('padding', $padding_max, $padding_min, 1);
-		border: rem($border_size) solid accent(500);
-
-		fill: accent(500);
-
-		&:disabled,
-		&.--disabled {
-			border-color: accent(200);
-			cursor: not-allowed;
-
-			.icon {
-				fill: accent(200);
-			}
-		}
-
-		.icon {
-			fill: accent(500);
-		}
-
-		@include media-hover {
-			&:not(:disabled, .--disabled) {
-				&:hover {
-					border-color: accent(400);
-
-					.icon {
-						fill: accent(400);
-					}
-				}
-
-				&:active {
-					border-color: accent(500);
-
-					.icon {
-						fill: accent(500);
-					}
-				}
-			}
-		}
+	// .btn-icon__light
+	@include btn(
+		$element: 'light',
+		$fill: accent(500),
+		$fill_disabled: state(disabled, color),
+		$bg: color.adjust(accent(500), $alpha: -0.9),
+		$bg_hover: state(hover),
+		$bg_active: state(active),
+		$bg_disabled: state(disabled, bg)
+	) {
+		@include adaptive('padding', $icon_padding_max, $icon_padding_min, 1);
 	}
 
-	&__secondary {
-		$padding_max: $icon_padding_max;
-		$padding_min: $icon_padding_min;
-
-		@include adaptive('padding', $padding_max, $padding_min, 1);
-
-		background: $btn_light_color;
-
-		&:disabled,
-		&.--disabled {
-			background: state(disabled, bg);
-			cursor: not-allowed;
-
-			.icon {
-				fill: state(disabled, color);
-			}
-		}
-
-		.icon {
-			fill: accent(500);
-		}
-
-		@include media-hover {
-			&:not(:disabled, .--disabled) {
-				&:hover {
-					background: state(hover);
-				}
-
-				&:active {
-					background: state(active);
-				}
-			}
-		}
-	}
-
-	&__light {
-		&:disabled,
-		&.--disabled {
-			cursor: not-allowed;
-
-			.icon {
-				fill: accent(200);
-			}
-		}
-
-		.icon {
-			fill: accent(500);
-		}
-
-		@include media-hover {
-			&:not(:disabled, .--disabled) {
-				&:hover .icon {
-					fill: accent(600);
-				}
-
-				&:active .icon {
-					fill: accent(700);
-				}
-			}
-		}
-	}
+	// .btn-icon__text
+	@include btn(
+		$element: 'text',
+		$fill: accent(500),
+		$fill_hover: accent(600),
+		$fill_active: accent(700),
+		$fill_disabled: accent(200)
+	);
 }

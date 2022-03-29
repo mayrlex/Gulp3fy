@@ -1,6 +1,8 @@
+@import './mixins';
+
 .btn {
 	$borderRadius: rem(4);
-	$btn_light_color: color.adjust(accent(500), $alpha: -0.9);
+	$border_width: 2;
 	$btn_padding_x_max: 30;
 	$btn_padding_x_min: 15;
 	$btn_padding_y_max: 10;
@@ -28,11 +30,11 @@
 	user-select: none;
 
 	//? ### Modules
-	// @import 'twi';
 	// @import 'variants/solid';
 	// @import 'variants/outline';
 	// @import 'variants/light';
 	// @import 'variants/text';
 	// @import 'variants/icon';
+	// @import 'twi';
 	// @import 'group';
 }

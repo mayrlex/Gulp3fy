@@ -1,25 +1,9 @@
-//? ### Variant: Light
+//? ### Variant: Text
 
-&__text {
-	color: accent(500);
-
-	&:disabled,
-	&.--disabled {
-		color: accent(200);
-
-		background: none;
-		cursor: not-allowed;
-	}
-
-	@include media-hover {
-		&:not(:disabled, .--disabled) {
-			&:hover {
-				color: accent(600);
-			}
-
-			&:active {
-				color: accent(700);
-			}
-		}
-	}
-}
+@include btn(
+	$element: 'text',
+	$color: accent(500),
+	$color_hover: accent(600),
+	$color_active: accent(700),
+	$color_disabled: accent(200)
+);

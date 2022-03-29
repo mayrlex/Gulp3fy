@@ -1,37 +1,16 @@
 //? ### Variant: Light
 
-&__light {
-	$padding_x_max: $btn_padding_x_max;
-	$padding_x_min: $btn_padding_x_min;
-	$padding_y_max: $btn_padding_y_max;
-	$padding_y_min: $btn_padding_y_min;
-
-	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-	color: accent(500);
-
-	background: $btn_light_color;
-
-	&:disabled,
-	&.--disabled {
-		color: state(disabled, color);
-
-		background: state(disabled, bg);
-		cursor: not-allowed;
-	}
-
-	@include media-hover {
-		&:not(:disabled, .--disabled) {
-			&:hover {
-				background: state(hover);
-			}
-
-			&:active {
-				background: state(active);
-			}
-		}
-	}
+@include btn(
+	$element: 'light',
+	$color: accent(500),
+	$color_disabled: state(disabled, color),
+	$bg: color.adjust(accent(500), $alpha: -0.9),
+	$bg_hover: state(hover),
+	$bg_active: state(active),
+	$bg_disabled: state(disabled, bg)
+) {
+	@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
+	@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
 }

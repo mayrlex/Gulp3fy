@@ -1,36 +1,30 @@
-//? ### Variant: Primary
+//? ### Variant: Solid
 
-&__solid {
-	$color: $white;
-	$padding_x_max: $btn_padding_x_max;
-	$padding_x_min: $btn_padding_x_min;
-	$padding_y_max: $btn_padding_y_max;
-	$padding_y_min: $btn_padding_y_min;
+@include btn(
+	$element: 'solid',
+	$color: $white,
+	$bg: accent(500),
+	$bg_hover: accent(600),
+	$bg_active: accent(700),
+	$bg_disabled: accent(200)
+) {
+	@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
+	@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
+}
 
-	@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-	@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-	@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-	color: $color;
-
-	background: accent(500);
-
-	&:disabled,
-	&.--disabled {
-		background: accent(200);
-		cursor: not-allowed;
-	}
-
-	@include media-hover {
-		&:not(:disabled, .--disabled) {
-			&:hover {
-				background: accent(600);
-			}
-
-			&:active {
-				background: accent(700);
-			}
-		}
-	}
+@include btn(
+	$element: 'solid',
+	$mod: '--success',
+	$color: $white,
+	$bg: success(500),
+	$bg_hover: success(600),
+	$bg_active: success(700),
+	$bg_disabled: success(200)
+) {
+	@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
+	@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
+	@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
 }

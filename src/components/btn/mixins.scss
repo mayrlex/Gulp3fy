@@ -1,0 +1,105 @@
+/*  //? ### Arguments
+	$element:               'solid',
+	$mod:                   '--success',
+	$color:                 $white,
+	$color_hover:           $white,
+	$color_active:          $white,
+	$color_disabled:        gray(300),
+	$fill:                  $white,
+	$fill_hover:            $white,
+	$fill_active:           $white,
+	$fill_disabled:         gray(300),
+	$bg:                    success(500),
+	$bg_hover:              success(600),
+	$bg_active:             success(700),
+	$bg_disabled:           success(200),
+	$border_width:          2,
+	$border_color:          success(200),
+	$border_color_hover:    success(300),
+	$border_color_active:   success(400),
+	$border_color_disabled: gray(300),
+*/
+
+@mixin btn(
+	$element,
+	$mod: null,
+	$color: null,
+	$color_hover: null,
+	$color_active: null,
+	$color_disabled: null,
+	$fill: null,
+	$fill_hover: null,
+	$fill_active: null,
+	$fill_disabled: null,
+	$bg: null,
+	$bg_hover: null,
+	$bg_active: null,
+	$bg_disabled: null,
+	$border_width: null,
+	$border_color: null,
+	$border_color_hover: null,
+	$border_color_active: null,
+	$border_color_disabled: null
+) {
+	&__#{$element}#{$mod} {
+		@content;
+
+		color: $color;
+
+		background: $bg;
+		@if $border_width {
+			border: rem($border_width) solid $border_color;
+		}
+
+		&:disabled,
+		&.--disabled {
+			color: $color_disabled;
+
+			@if $fill_disabled {
+				.icon {
+					fill: $fill_disabled;
+				}
+			}
+
+			background: $bg_disabled;
+			border-color: $border_color_disabled;
+			cursor: not-allowed;
+		}
+
+		@if $fill {
+			.icon {
+				fill: $fill;
+			}
+		}
+
+		@include media-hover {
+			&:not(:disabled, .--disabled) {
+				&:hover {
+					color: $color_hover;
+
+					@if $fill_hover {
+						.icon {
+							fill: $fill_hover;
+						}
+					}
+
+					background: $bg_hover;
+					border-color: $border_color_hover;
+				}
+
+				&:active {
+					color: $color_active;
+
+					@if $fill_active {
+						.icon {
+							fill: $fill_active;
+						}
+					}
+
+					background: $bg_active;
+					border-color: $border_color_active;
+				}
+			}
+		}
+	}
+}

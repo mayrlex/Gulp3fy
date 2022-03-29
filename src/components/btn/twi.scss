@@ -8,69 +8,26 @@
 	@include adaptive('margin-left', 12, 8, 1);
 }
 
-&__solid .icon {
-	fill: $white;
-}
+// .btn__solid > .icon
+@include btn($element: 'solid', $fill: $white);
 
-&__outline {
-	&:disabled,
-	&.--disabled {
-		.icon {
-			fill: accent(200);
-		}
-	}
+// .btn__outline > .icon
+@include btn(
+	$element: 'outline',
+	$fill: accent(500),
+	$fill_hover: accent(600),
+	$fill_active: accent(400),
+	$fill_disabled: accent(200)
+);
 
-	.icon {
-		fill: accent(500);
-	}
+// .btn__light > .icon
+@include btn($element: 'light', $fill: accent(500), $fill_disabled: state(disabled, color));
 
-	@include media-hover {
-		&:not(:disabled, .--disabled) {
-			&:hover .icon {
-				fill: accent(400);
-			}
-
-			&:active .icon {
-				fill: accent(500);
-			}
-		}
-	}
-}
-
-&__light {
-	&:disabled,
-	&.--disabled {
-		.icon {
-			fill: state(disabled, color);
-		}
-	}
-
-	.icon {
-		fill: accent(500);
-	}
-}
-
-&__text {
-	&:disabled,
-	&.--disabled {
-		.icon {
-			fill: accent(200);
-		}
-	}
-
-	.icon {
-		fill: accent(500);
-	}
-
-	@include media-hover {
-		&:not(:disabled, .--disabled) {
-			&:hover .icon {
-				fill: accent(600);
-			}
-
-			&:active .icon {
-				fill: accent(700);
-			}
-		}
-	}
-}
+// .btn__text > .icon
+@include btn(
+	$element: 'text',
+	$fill: accent(500),
+	$fill_hover: accent(600),
+	$fill_active: accent(700),
+	$fill_disabled: accent(200)
+);
