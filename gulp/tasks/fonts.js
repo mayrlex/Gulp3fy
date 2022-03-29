@@ -5,7 +5,7 @@ import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
 import { path } from '../config/path.js';
 
-const otfConvert = () => {
+export const otfConvert = () => {
 	return gulp
 		.src(path.fonts.src.otf, {})
 		.pipe(
@@ -21,7 +21,7 @@ const otfConvert = () => {
 				formats: ['ttf'],
 			})
 		)
-		.pipe(gulp.dest(path.fonts.src.folder));
+		.pipe(gulp.dest(path.fonts.root));
 };
 
 const fontsBuild = () => {

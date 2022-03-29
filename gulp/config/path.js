@@ -36,11 +36,10 @@ export const path = {
 		src: {
 			otf: `${source}/assets/fonts/**/*.otf`,
 			ttf: `${source}/assets/fonts/**/*.ttf`,
-			folder: `${source}/assets/fonts/`,
 		},
+		root: `${source}/assets/fonts/`,
 		dest: `${compiled}/assets/fonts`,
 		watch: `${source}/assets/fonts/**/*.ttf`,
-		config: `${source}/styles/config/fonts.scss`,
 	},
 
 	images: {
