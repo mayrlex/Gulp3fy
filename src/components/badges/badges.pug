@@ -1,11 +1,9 @@
 //- Arguments:
-	text  {string}  - Badge content
-	mods  {string}  - Badge modificator (solid / outline)
-	isNum {boolean} - Indicates that the badge is numeric
+	text  {string} - Badge content
+	mods  {string} - Badge modificator
 
 //- Call:
-	+badge({})                               - Dot badge
-	+badge({ text: '99+', isNum: true })     - Numeric badge
+	+badge({}) - Empty badge
 	+badge({ text: 'Badge', mods: 'solid' }) - Text badge
 
 mixin badge(data)
@@ -16,14 +14,8 @@ mixin badge(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} badge__text badge--${modsList[i].trim()}`;
+				modsArray = `${modsArray} badge--${modsList[i].trim()}`;
 			}
 		}
 
-	.badge&attributes(attributes)
-		//- Dot badge
-		if !data.text
-			.badge__dot
-
-		else
-			span(class=data.isNum ? `badge__num` : modsArray)!= data.text
+	span.badge(class=modsArray)&attributes(attributes)!= data.text

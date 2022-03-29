@@ -1,54 +1,25 @@
 .badge {
-	$dot_size: rem(10);
-	$num_width: 1.5;
-	$outline_size: rem(1);
+	$badge_size: rem(14);
 
-	display: inline-flex;
-	align-items: center;
+	display: inline-block;
+	box-sizing: content-box;
+	min-width: $badge_size;
+	min-height: $badge_size;
+	padding: em(6);
 
 	font-weight: 700;
-	font-size: rem(14);
-	font-family: font(second);
-	letter-spacing: $letterSpacing;
+	font-size: $badge_size;
+	line-height: 1;
+	white-space: nowrap;
+	text-align: center;
 
-	&__dot {
-		width: $dot_size;
-		height: $dot_size;
+	border-radius: em(16);
 
-		background: accent(500);
-		border-radius: radius(circle);
-	}
-
-	&__num {
-		box-sizing: content-box;
-
-		min-width: $num_width + em;
-		padding: em(4);
-
-		color: $white;
-		line-height: $num_width;
-		text-align: center;
+	&:empty {
+		width: rem(16);
+		height: rem(16);
+		padding: 0;
 
 		background: accent(500);
-		border-radius: radius(xxl);
-	}
-
-	&__text {
-		padding: rem(2) rem(6);
-
-		border-radius: radius(xxl);
-	}
-
-	&--solid {
-		color: $white;
-
-		background: accent(500);
-	}
-
-	&--outline {
-		color: accent(500);
-
-		outline: $outline_size solid accent(500);
-		outline-offset: -$outline_size;
 	}
 }
