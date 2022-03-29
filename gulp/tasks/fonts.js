@@ -24,7 +24,7 @@ const otfConvert = () => {
 		.pipe(gulp.dest(path.fonts.src.folder));
 };
 
-const ttfConvert = () => {
+const fontsBuild = () => {
 	return gulp
 		.src(path.fonts.src.ttf, {})
 		.pipe(
@@ -35,16 +35,8 @@ const ttfConvert = () => {
 				})
 			)
 		)
-		.pipe(
-			fonter({
-				formats: ['woff'],
-			})
-		)
-		.pipe(gulp.dest(path.fonts.src.folder))
-		.pipe(gulp.src(path.fonts.src.ttf))
 		.pipe(ttf2woff2())
 		.pipe(gulp.dest(path.fonts.dest));
 };
 
-const fontsBuild = gulp.series(otfConvert, ttfConvert);
 export default fontsBuild;
