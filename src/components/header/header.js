@@ -4,7 +4,7 @@ import Toggle from '../../scripts/modules/toggle.js';
 
 //? ### Modules
 // smoothScroll();
-burger();
+// burger();
 
 // Dropdown menu
 // const headerDropdown = new Toggle({
