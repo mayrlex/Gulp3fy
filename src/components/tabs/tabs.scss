@@ -1,36 +1,20 @@
 .tabs {
-	$btn_padding_x_max: 25;
-	$btn_padding_x_min: 15;
-
 	&__menu {
-		margin-bottom: rem(10);
-
 		font-size: 0;
 
 		&-btn {
-			padding: rem(10);
-			@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min, 1);
-			@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min, 1);
-
-			color: gray(600);
-			font-weight: 600;
-			@include adaptive('font-size', 18, 16, 1);
-			font-family: font(second);
-
-			border-radius: radius(sm) radius(sm) 0 0;
-
 			transition: transition(time);
 
 			@include media-hover {
 				&:hover {
-					color: state(hover, primary, color);
+					color: accent(500);
 
-					background: state(hover, primary, bg);
+					background: state(hover);
 				}
 			}
 
 			&.--active {
-				color: state(hover, primary, color);
+				color: accent(500);
 
 				background: state(active);
 			}
