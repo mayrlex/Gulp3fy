@@ -1,6 +1,6 @@
 /*
 Call:
-	import Modal from '../../../components/popup/popup.js';
+	import Modal from '../../../components/modal/modal.js';
 
 	const modal1 = new Modal('modal-1');
 */

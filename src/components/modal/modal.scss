@@ -1,7 +1,5 @@
 .modal {
-	$modal_padding_max: 15;
-	$modal_padding_min: 10;
-	$modal_cubic: cubic-bezier(0, 0, 0.5, 1);
+	$bezier: cubic-bezier(0, 0, 0.5, 1);
 
 	transition: opacity transition(time, sm), visibility transition(time, sm);
 
@@ -12,7 +10,7 @@
 		pointer-events: none;
 
 		& .modal__inner {
-			animation: modal-on-hide transition(time, sm) $modal_cubic;
+			animation: modal-on-hide transition(time, sm) $bezier;
 		}
 	}
 
@@ -23,7 +21,7 @@
 		pointer-events: all;
 
 		& .modal__inner {
-			animation: modal-on-show transition(time, sm) $modal_cubic;
+			animation: modal-on-show transition(time, sm) $bezier;
 		}
 	}
 
@@ -47,18 +45,12 @@
 		margin: 0 rem(10);
 		overflow-y: auto;
 
-		background-color: $white;
-		border: $border;
-		border-radius: radius(sm);
-		box-shadow: $boxShadow;
+		background: $white;
 	}
 
 	&__header {
 		display: flex;
 		align-items: center;
-		@include adaptive('padding-top', $modal_padding_max, $modal_padding_min);
-		@include adaptive('padding-right', $modal_padding_max, $modal_padding_min);
-		@include adaptive('padding-left', $modal_padding_max, $modal_padding_min);
 	}
 
 	&__close {
@@ -67,11 +59,6 @@
 		width: rem(24);
 		height: rem(24);
 		margin-left: auto;
-
-		border: rem(1) solid gray(400);
-		border-radius: radius(circle);
-
-		transition: transition(time);
 
 		&:before,
 		&:after {
@@ -84,6 +71,8 @@
 			height: rem(2);
 
 			background: dark(1);
+
+			transition: transition(time);
 
 			content: '';
 		}
@@ -98,31 +87,22 @@
 
 		@include media-hover {
 			&:hover {
-				border-color: gray(500);
+				&:before,
+				&:after {
+					background: gray(600);
+				}
 			}
 		}
 	}
 
 	&__title {
-		color: dark(1);
-		font-weight: 600;
-		@include adaptive('font-size', 24, 20);
-		line-height: 125%;
 	}
 
 	&__content {
-		@include adaptive('padding-top', 30, 15);
-		@include adaptive('padding-right', $modal_padding_max, $modal_padding_min);
-		@include adaptive('padding-bottom', 30, 15);
-		@include adaptive('padding-left', $modal_padding_max, $modal_padding_min);
 	}
 
 	&__footer {
 		display: flex;
-		justify-content: flex-end;
-		@include adaptive('padding', $modal_padding_max, $modal_padding_min);
-
-		background: light(1);
 
 		.btn:not(:last-child) {
 			margin-right: rem(15);
