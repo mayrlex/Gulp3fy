@@ -1,18 +1,6 @@
 .spoiler {
-	$title_color: dark(1);
-	$padding_x_max: 15;
-	$padding_x_min: 10;
-	$padding_y_max: 25;
-	$padding_y_min: 15;
-
 	&__item {
-		background: $white;
-		border: $border;
-		border-radius: radius(sm);
-		box-shadow: $boxShadow;
-
 		&:not(:last-child) {
-			@include adaptive('margin-bottom', 10, 5, 1);
 		}
 	}
 
@@ -20,17 +8,9 @@
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding', 15, 10, 1);
+		@include adaptive('padding-right', 50, 35);
 
-		color: $title_color;
-		font-weight: 600;
-		@include adaptive('font-size', 18, 16, 1);
-		font-family: font(second);
-		letter-spacing: $letterSpacing;
 		text-align: left;
-
-		background: $white;
-		border-radius: radius(sm);
 
 		transition: transition(time);
 
@@ -53,14 +33,13 @@
 		&:before,
 		&:after {
 			position: absolute;
-			@include adaptive('top', 25, 20, 1);
+			top: calc(50% - 1px);
 			@include adaptive('right', 20, 10, 1);
 
-			@include adaptive('width', 20, 16, 1);
-			height: rem(3);
+			@include adaptive('width', 16, 16, 1);
+			height: rem(2);
 
-			background: $title_color;
-			border-radius: radius(sm);
+			background: dark(1);
 
 			transition: transform 0.3s ease 0s;
 
@@ -93,12 +72,5 @@
 	}
 
 	&__content {
-		@include adaptive('padding-top', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-right', $padding_x_max, $padding_x_min, 1);
-		@include adaptive('padding-bottom', $padding_y_max, $padding_y_min, 1);
-		@include adaptive('padding-left', $padding_x_max, $padding_x_min, 1);
-
-		color: $color_body;
-		@include adaptive('font-size', 16, 14, 1);
 	}
 }

@@ -1,11 +1,11 @@
 //- Arguments:
 	mods        {string}  - Mod('s)
-	isAccordion {boolean} - Enable accordion mode
+	isAccordion {boolean} - Enable accordion mode [Default: true]
 	media       {string}  - Media queries '[size],[min/max]'
 	title       {string}  - Spoiler title
 
 //- Call:
-	+spoiler({ isAccordion: true, media: '840,max' })
+	+spoiler({ isAccordion: false, media: '840,max' })
 		+spoiler-item('Title')
 			...
 		+spoiler-item('Title')
@@ -16,6 +16,7 @@
 mixin spoiler(data)
 	-
 		let modsArray = '';
+		const checkAccordion = typeof(data.isAccordion) === 'undefined' || data.isAccordion;
 
 		if (data.mods) {
 			const modsList = data.mods.split(',');
@@ -25,10 +26,11 @@ mixin spoiler(data)
 			}
 		}
 
+
 	.spoiler(
 		class=modsArray,
 		data-spoilers=data.media ? data.media : '',
-		accordion=data.isAccordion ? '' : null
+		accordion=checkAccordion ? '' : null
 	)&attributes(attributes)
 		block
 
