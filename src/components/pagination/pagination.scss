@@ -1,26 +1,17 @@
 .pagination {
-	$controls_margin: rem(10);
-	$controls_padding: rem(7);
+	$btn_padding: rem(8) rem(10);
+	$item_ctrl_margin: rem(0);
+	$item_num_margin: rem(0);
 
 	display: flex;
 	justify-content: center;
 
-	color: gray(600);
-	font-weight: 600;
-	font-size: rem(16);
-	font-family: font(second);
-	letter-spacing: $letterSpacing;
-
 	&__inner {
 		display: flex;
 		flex-wrap: wrap;
+		align-items: center;
 		justify-content: center;
 		padding: rem(5) rem(10);
-
-		background: $white;
-		border: $border;
-		border-radius: radius(sm);
-		box-shadow: $boxShadow;
 	}
 
 	&__list {
@@ -30,62 +21,52 @@
 	}
 
 	&__item {
-		&:not(:last-child) {
-			margin-right: rem(5);
+		&:first-child {
+			margin-right: $item_ctrl_margin;
+		}
+
+		&:last-child {
+			margin-left: $item_ctrl_margin;
+		}
+
+		&:not(:first-child, :last-child) {
+			margin-right: $item_num_margin;
 		}
 	}
 
 	&__btn {
-		display: inline-block;
-		padding: rem(5) rem(10);
+		display: inline-flex;
+		align-items: center;
+		padding: $btn_padding;
 
-		&,
-		&-prev,
-		&-next {
-			color: inherit;
+		color: inherit;
+		line-height: 1;
 
-			border-radius: radius(sm);
+		transition: transition(time);
 
-			transition: transition(time);
+		fill: inherit;
 
-			@include media-hover {
-				&:hover {
-					color: accent(500);
+		&:disabled,
+		&.--disabled {
+			color: state(disabled, color);
 
-					background: state(hover);
+			background: state(disabled, bg);
 
-					fill: accent(500);
-				}
-			}
+			fill: state(disabled, color);
 		}
 
-		&-prev,
-		&-next {
-			display: flex;
-			align-items: center;
-			padding: $controls_padding;
+		@include media-hover {
+			&:hover {
+				color: accent(500);
 
-			fill: gray(600);
+				background: state(hover);
 
-			&.--disabled {
-				color: state(disabled, color);
-
-				background: state(disabled, bg);
-
-				fill: state(disabled, color);
+				fill: accent(500);
 			}
-		}
-
-		&-prev {
-			margin-right: $controls_margin;
 		}
 
 		&-dots {
 			color: gray(500);
-		}
-
-		&-next {
-			margin-left: $controls_margin;
 		}
 
 		&.--current {
