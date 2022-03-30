@@ -38,6 +38,7 @@
 
 		@include media-hover {
 			// Preview overlay
+			&[href] {
 			&:before {
 				position: absolute;
 				top: 50%;
@@ -77,6 +78,7 @@
 			}
 		}
 	}
+	}
 
 	&__header {
 		display: flex;
@@ -90,7 +92,16 @@
 		color: dark(1);
 		font-weight: 700;
 		font-size: rem(20);
-		letter-spacing: $letterSpacing;
+
+		@include media-hover {
+			&[href] {
+				transition: transition(time);
+
+				&:hover {
+					color: accent(500);
+				}
+			}
+		}
 	}
 
 	&__content {
@@ -99,6 +110,16 @@
 		color: $color_body;
 		font-size: rem(14);
 		line-height: rem(20);
+
+		@include media-hover {
+			&[href] {
+				transition: transition(time);
+
+				&:hover {
+					color: accent(500);
+				}
+			}
+		}
 	}
 
 	&__footer {

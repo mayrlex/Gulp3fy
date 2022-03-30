@@ -73,8 +73,15 @@ mixin card(data)
 
 //- Preview
 mixin card-preview(data)
-	.card__preview.--ibg
-		a(href=data.link)
+	if data.link
+		a.card__preview.--ibg(href=data.link)
+			if (data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/))
+				+img({ src: data.src, alt: data.alt })
+			else
+				+pic({src: data.src, alt: data.alt})
+
+	else
+		.card__preview.--ibg
 			if (data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/))
 				+img({ src: data.src, alt: data.alt })
 			else
@@ -83,7 +90,12 @@ mixin card-preview(data)
 //- Header
 mixin card-header(data)
 	.card__header
-		h3.card__title!= data.title
+		if data.link
+			a.card__title(href=data.link)
+				h3!= data.title
+		else
+			h3.card__title!= data.title
+
 		if data.date
 			time.card__date(datetime=data.vDate)!= data.date
 
@@ -92,9 +104,9 @@ mixin card-footer(data)
 	.card__footer
 		if !data.date
 			if data.icon
-				+btn({ text: data.text, mods: 'light', link: data.link, icon: data.icon })
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
 			else
-				+btn({ text: data.text, mods: 'light', link: data.link })
+				+btn({ text: data.text, mods: 'text', link: data.link })
 
 		else if !data.text
 			time.card__date(datetime=data.vDate)!= data.date
@@ -102,6 +114,6 @@ mixin card-footer(data)
 		else
 			time.card__date(datetime=data.vDate)!= data.date
 			if data.icon
-				+btn({ text: data.text, mods: 'light', link: data.link, icon: data.icon })
+				+btn({ text: data.text, mods: 'text', link: data.link, icon: data.icon })
 			else
-				+btn({ text: data.text, mods: 'light', link: data.link })
+				+btn({ text: data.text, mods: 'text', link: data.link })
