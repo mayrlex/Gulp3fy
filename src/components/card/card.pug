@@ -75,7 +75,10 @@ mixin card(data)
 mixin card-preview(data)
 	.card__preview.--ibg
 		a(href=data.link)
-			+pic({src: data.src, alt: data.alt})
+			if (data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/))
+				+img({ src: data.src, alt: data.alt })
+			else
+				+pic({src: data.src, alt: data.alt})
 
 //- Header
 mixin card-header(data)
