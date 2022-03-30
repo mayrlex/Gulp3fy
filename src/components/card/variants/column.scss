@@ -6,7 +6,6 @@
 	grid-column: 12 span;
 
 	overflow: hidden;
-	@include adaptive('padding-bottom', $card_gap_max, $card_gap_min, 1);
 
 	@include media-min(md) {
 		grid-column: 6 span;
@@ -20,26 +19,27 @@
 		grid-column: 3 span;
 	}
 
-	// Card items gap
 	& > [class*='card__'] {
-		&:not([class$='preview']) {
-			@include adaptive('padding-right', $card_gap_max, $card_gap_min, 1);
-			@include adaptive('padding-left', $card_gap_max, $card_gap_min, 1);
+		// Padding-x for card item (Exclude .card__preview)
+		&:not([class*='preview']) {
+			@include adaptive('padding-right', $item_padding_x_max, $item_padding_x_min, 1);
+			@include adaptive('padding-left', $item_padding_x_max, $item_padding_x_min, 1);
 		}
 
+		// Gap between card items
 		&:not(:last-child) {
-			@include adaptive('margin-bottom', $card_gap_max, $card_gap_min, 1);
+			@include adaptive('margin-bottom', $item_margin_max, $item_margin_min, 1);
 		}
 	}
 
-	// If card_header comes first
+	// Padding top if card__header comes first
 	& .card__header:first-child {
-		@include adaptive('margin-top', $card_gap_max, $card_gap_min, 1);
+		@include adaptive('padding-top', $item_padding_y_max, $item_padding_y_min, 1);
 	}
 
-	// If card_preview comse last
-	& .card__preview:last-child {
-		@include adaptive('margin-bottom', -$card_gap_max, -$card_gap_min, 1);
+	// Padding bottom if card__footer comes last
+	& .card__footer:last-child {
+		@include adaptive('padding-bottom', $item_padding_y_max, $item_padding_y_min, 1);
 	}
 
 	.card__preview {

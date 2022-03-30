@@ -1,13 +1,16 @@
 .card {
-	$card_gap_max: 25;
-	$card_gap_min: 15;
+	$col_gap_max: 0;
+	$col_gap_min: 0;
+	$row_gap_max: 0;
+	$row_gap_min: 0;
+	$item_margin_max: 0;
+	$item_margin_min: 0;
+	$item_padding_x_max: 0;
+	$item_padding_x_min: 0;
+	$item_padding_y_max: 0;
+	$item_padding_y_min: 0;
 
 	overflow: hidden;
-
-	background: $white;
-	border: $border;
-	border-radius: radius(sm);
-	box-shadow: $boxShadow;
 
 	//? ### Variants
 	// @import 'variants/column';
@@ -16,12 +19,12 @@
 	&__grid {
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
-		gap: rem(10);
-		row-gap: rem(20);
+		gap: rem($col_gap_min);
+		row-gap: rem($row_gap_min);
 
 		@include media-min(lg) {
-			gap: rem(20);
-			row-gap: rem(30);
+			gap: rem($col_gap_max);
+			row-gap: rem($row_gap_max);
 		}
 	}
 
@@ -39,45 +42,41 @@
 		@include media-hover {
 			// Preview overlay
 			&[href] {
-			&:before {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				z-index: 2;
-
-				color: $white;
-				font-weight: 700;
-				font-size: rem(28);
-				font-family: font(second);
-				letter-spacing: $letterSpacing;
-				white-space: nowrap;
-
-				transform: translate(-50%, -50%);
-				cursor: pointer;
-				opacity: 0;
-
-				transition: 0.3s;
-
-				content: 'Learn more';
-			}
-
-			& img {
-				filter: brightness(1);
-
-				transition: 0.3s;
-			}
-
-			&:hover {
 				&:before {
-					opacity: 1;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					z-index: 2;
+
+					color: $white;
+					white-space: nowrap;
+
+					transform: translate(-50%, -50%);
+					cursor: pointer;
+					opacity: 0;
+
+					transition: transition(time, sm);
+
+					content: 'Learn more';
 				}
 
 				& img {
-					filter: brightness(0.5);
+					filter: brightness(1);
+
+					transition: transition(time, sm);
+				}
+
+				&:hover {
+					&:before {
+						opacity: 1;
+					}
+
+					& img {
+						filter: brightness(0.5);
+					}
 				}
 			}
 		}
-	}
 	}
 
 	&__header {
@@ -89,16 +88,11 @@
 	&__title {
 		margin-right: auto;
 
-		color: dark(1);
-		font-weight: 700;
-		font-size: rem(20);
-
 		@include media-hover {
 			&[href] {
 				transition: transition(time);
 
 				&:hover {
-					color: accent(500);
 				}
 			}
 		}
@@ -107,16 +101,11 @@
 	&__content {
 		flex: 1 1 auto;
 
-		color: $color_body;
-		font-size: rem(14);
-		line-height: rem(20);
-
 		@include media-hover {
 			&[href] {
 				transition: transition(time);
 
 				&:hover {
-					color: accent(500);
 				}
 			}
 		}
@@ -134,8 +123,6 @@
 	}
 
 	&__date {
-		color: gray(500);
-		font-size: rem(14);
 		white-space: nowrap;
 	}
 }
