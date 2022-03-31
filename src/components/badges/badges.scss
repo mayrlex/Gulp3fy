@@ -1,3 +1,5 @@
+@import './mixins';
+
 .badge {
 	$badge_size: rem(14);
 
@@ -13,7 +15,7 @@
 	white-space: nowrap;
 	text-align: center;
 
-	border-radius: em(16);
+	border-radius: radius(xl);
 
 	&:empty {
 		width: rem(16);
@@ -22,4 +24,6 @@
 
 		background: accent(500);
 	}
+
+	@include badge($element: 'solid', $color: $white, $bg: accent(500));
 }
