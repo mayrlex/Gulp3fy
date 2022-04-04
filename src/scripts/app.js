@@ -5,6 +5,7 @@ import documentReady from './helpers/documentReady.js';
 //? ### Plugins
 import lazyLoad from './plugins/lazyLoad.js';
 import './plugins/focusVisible.js';
+// import './plugins/swiper.js';
 // import 'simplebar';
 
 //? ### Components

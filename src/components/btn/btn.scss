@@ -14,8 +14,6 @@
 
 	font-weight: 400;
 	@include adaptive('font-size', 18, 16, 1);
-	font-family: font(second);
-	letter-spacing: $letterSpacing;
 	white-space: nowrap;
 	text-align: center;
 	text-transform: none;
