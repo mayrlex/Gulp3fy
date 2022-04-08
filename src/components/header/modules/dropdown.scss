@@ -18,13 +18,13 @@
 
 			content: '';
 
-			@include media-max(lg) {
+			@include media-max($header_point) {
 				margin-left: rem($dropdown_icon_margin_mob);
 
 				@include icon-arrow-1($dropdown_icon_size_mob, $color, bottom);
 			}
 
-			@include media-min(lg) {
+			@include media-min($header_point) {
 				margin-left: rem($dropdown_icon_margin_desk);
 
 				@include icon-arrow-1($dropdown_icon_size_desk, $color, bottom);
@@ -38,7 +38,7 @@
 			}
 
 			// Show dropdown
-			@include media-min(lg) {
+			@include media-min($header_point) {
 				& ~ .menu__sub-list {
 					visibility: visible;
 					opacity: 1;
@@ -53,7 +53,7 @@
 		}
 	}
 
-	@include media-max(lg) {
+	@include media-max($header_point) {
 		&.--show ~ .menu__sub-list {
 			display: block;
 		}
@@ -62,11 +62,11 @@
 
 &__sub {
 	&-list {
-		@include media-max(lg) {
+		@include media-max($header_point) {
 			display: none;
 		}
 
-		@include media-min(lg) {
+		@include media-min($header_point) {
 			position: absolute;
 			top: 100%;
 			z-index: zindex(dropdown);

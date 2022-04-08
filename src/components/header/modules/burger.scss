@@ -45,7 +45,7 @@
 
 	&__nav {
 		//? ## Burger menu
-		@include media-max(lg) {
+		@include media-max($header_point) {
 			position: fixed;
 			top: 0;
 			right: -100%;
@@ -69,7 +69,7 @@
 			}
 		}
 
-		@include media-min(lg) {
+		@include media-min($header_point) {
 			display: flex;
 			align-items: center;
 		}

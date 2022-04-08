@@ -1,13 +1,13 @@
 //? ### Module: Menu
 
 &__list {
-	@include media-min(lg) {
+	@include media-min($header_point) {
 		display: flex;
 	}
 }
 
 &__item {
-	@include media-min(lg) {
+	@include media-min($header_point) {
 		&:not(:last-child) {
 		}
 	}
