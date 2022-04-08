@@ -9,7 +9,7 @@ import './plugins/focusVisible.js';
 // import 'simplebar';
 
 //? ### Components
-// import '../components/header/header.js';
+import '../components/header/header.js';
 // import '../components/spoiler/spoiler.js';
 
 //? ### Pages
