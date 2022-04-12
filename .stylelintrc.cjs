@@ -42,5 +42,6 @@ module.exports = {
 		'color-function-notation': null,
 		'scss/double-slash-comment-whitespace-inside': null,
 		'no-invalid-position-at-import-rule': null,
+		'scss/operator-no-unspaced': null,
 	},
 };
