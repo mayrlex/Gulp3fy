@@ -57,20 +57,20 @@
 
 		@include media-hover {
 			&:hover {
-				color: accent(500);
+				color: color(accent, 500);
 
 				background: state(hover);
 
-				fill: accent(500);
+				fill: color(accent, 500);
 			}
 		}
 
 		&-dots {
-			color: gray(500);
+			color: color('gray', 500);
 		}
 
 		&.--current {
-			color: accent(500);
+			color: color(accent, 500);
 
 			background: state(active);
 		}

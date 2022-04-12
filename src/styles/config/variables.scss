@@ -1,94 +1,111 @@
-$white: #fff;
-$black: #000;
+$white:   #fff;
+$black:   #000;
+$accent:  #2460FC;
+$success: #29C45F;
+$warning: #FCC93F;
+$danger:  #FF4732;
+$info:    #0378E6;
+$gray:    #ADB5BD;
 
-// Accent
-$accent: (
-	100: #D3E4FE,
-	200: #A7C7FE,
-	300: #7BA7FE,
-	400: #5A8CFD,
-	500: #2460FC,
-	600: #1A49D8,
-	700: #1236B5,
-	800: #0B2592,
-	900: #061978,
+// Accent color map
+$accent-map: (
+	100: tint($accent, 80),
+	200: tint($accent, 60),
+	300: tint($accent, 40),
+	400: tint($accent, 20),
+	500: $accent,
+	600: shade($accent, 20),
+	700: shade($accent, 40),
+	800: shade($accent, 60),
+	900: shade($accent, 80),
 );
 
-// Success
-$success: (
-	100: #D6FCD4,
-	200: #AAF9AE,
-	300: #7CED8D,
-	400: #59DB79,
-	500: #29C45F,
-	600: #1DA85B,
-	700: #148D56,
-	800: #0D714D,
-	900: #075E47,
+// Success color map
+$success-map: (
+	100: tint($success, 80),
+	200: tint($success, 60),
+	300: tint($success, 40),
+	400: tint($success, 20),
+	500: $success,
+	600: shade($success, 20),
+	700: shade($success, 40),
+	800: shade($success, 60),
+	900: shade($success, 80),
 );
 
-// Warning
-$warning: (
-	100: #FEF8D8,
-	200: #FEF0B2,
-	300: #FEE58B,
-	400: #FDDA6E,
-	500: #FCC93F,
-	600: #D8A52E,
-	700: #B5841F,
-	800: #926514,
-	900: #784F0C,
+// Warning color map
+$warning-map: (
+	100: tint($warning, 80),
+	200: tint($warning, 60),
+	300: tint($warning, 40),
+	400: tint($warning, 20),
+	500: $warning,
+	600: shade($warning, 20),
+	700: shade($warning, 40),
+	800: shade($warning, 60),
+	900: shade($warning, 80),
 );
 
-// Error
-$error: (
-	100: #FFE7D6,
-	200: #FFC9AD,
-	300: #FFA483,
-	400: #FF8165,
-	500: #FF4732,
-	600: #DB2824,
-	700: #B71922,
-	800: #930F22,
-	900: #7A0922,
+// Danger color map
+$danger-map: (
+	100: tint($danger, 80),
+	200: tint($danger, 60),
+	300: tint($danger, 40),
+	400: tint($danger, 20),
+	500: $danger,
+	600: shade($danger, 20),
+	700: shade($danger, 40),
+	800: shade($danger, 60),
+	900: shade($danger, 80),
 );
 
-// Info
-$info: (
-	100: #CBEFFD,
-	200: #98DBFC,
-	300: #64BFF7,
-	400: #3EA3F0,
-	500: #0378E6,
-	600: #025CC5,
-	700: #0145A5,
-	800: #003085,
-	900: #00226E,
+// Info color map
+$info-map: (
+	100: tint($info, 80),
+	200: tint($info, 60),
+	300: tint($info, 40),
+	400: tint($info, 20),
+	500: $info,
+	600: shade($info, 20),
+	700: shade($info, 40),
+	800: shade($info, 60),
+	900: shade($info, 80),
 );
 
-// Gray
-$gray: (
-	100: #F8F9FA,
-	200: #e9ecef,
-	300: #dee2e6,
-	400: #ced4da,
-	500: #adb5bd,
-	600: #6c757d,
-	700: #495057,
-	800: #343a40,
-	900: #212529,
+// Gray color map
+$gray-map: (
+	100: tint($gray, 80),
+	200: tint($gray, 60),
+	300: tint($gray, 40),
+	400: tint($gray, 20),
+	500: $gray,
+	600: shade($gray, 20),
+	700: shade($gray, 40),
+	800: shade($gray, 60),
+	900: shade($gray, 80),
 );
 
-// Light
+// Light color map
 $light: (
 	1: #F8F9FA,
 	2: #E2E6EA,
 );
 
-// Dark
+// Dark color map
 $dark: (
 	1: #343A40,
 	2: #23272B,
+);
+
+$color-names: (
+	'accent':  $accent-map,
+	'success': $success-map,
+	'warning': $warning-map,
+	'danger':  $danger-map,
+	'info':    $info-map,
+	'gray':    $gray-map,
+	'light':   $light,
+	'dark':    $dark,
 );
 
 // z-index
@@ -110,13 +127,13 @@ $radius: (
 );
 
 $states: (
-	hover:     color.adjust(accent(500), $alpha: -0.85),
-	active:    color.adjust(accent(500), $alpha: -0.75),
-	focus:     0 0 0 rem(4) color.adjust(accent(500), $alpha: -0.5),
-	current:   gray(700),
+	hover:     alpha($accent, 85),
+	active:    alpha($accent, 75),
+	focus:     0 0 0 rem(4) alpha($accent, 50),
+	current:   color('gray', 700),
 	disabled: (
-		color: gray(400),
-		bg:    color.adjust(gray(500), $alpha: -0.9),
+		color: color('gray', 400),
+		bg:    alpha($gray, 85),
 	),
 );
 
@@ -133,12 +150,12 @@ $transitions: (
 );
 
 // UI
-$border:        rem(1) solid gray(200);
+$border:        rem(1) solid color('gray', 200);
 $boxShadow:     0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
-$color_body:    gray(600);
-$color_title:   dark(1);
+$color_body:    color('gray', 600);
+$color_title:   color(dark, 1);
 $icon_width:    rem(16);
 $icon_height:   $icon_width;
 $letterSpacing: rem(1);
-$backdrop:      color.adjust(dark(2), $alpha: -0.1);
+$backdrop:      color.adjust(color(dark, 2), $alpha: -0.1);
 $transition:    0.1s;

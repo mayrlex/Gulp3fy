@@ -22,8 +22,8 @@
 		height: rem(16);
 		padding: 0;
 
-		background: accent(500);
+		background: color(accent, 500);
 	}
 
-	@include badge($element: 'solid', $color: $white, $bg: accent(500));
+	@include badge($element: 'solid', $color: $white, $bg: color(accent, 500));
 }

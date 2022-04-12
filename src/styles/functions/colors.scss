@@ -1,93 +1,37 @@
-// Accent
-@function accent($key) {
-	@if map-has-key($accent, $key) {
-		@return map-get($accent, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $accent map.';
-	@return null;
+// Lighten a color
+@function tint($color, $prc) {
+	@return mix($white, $color, $prc);
 }
 
-// Success
-@function success($key) {
-	@if map-has-key($success, $key) {
-		@return map-get($success, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $success map.';
-	@return null;
+// Darken a color
+@function shade($color, $prc) {
+	@return mix($black, $color, $prc);
 }
 
-// Warning
-@function warning($key) {
-	@if map-has-key($warning, $key) {
-		@return map-get($warning, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $warning map.';
-	@return null;
+// Set an alpha channel to a color
+@function alpha($color, $prc) {
+	$prc: math.div($prc, 100);
+	@return color.adjust($color, $alpha: -$prc);
 }
 
-// Error
-@function error($key) {
-	@if map-has-key($error, $key) {
-		@return map-get($error, $key);
+// Get color from the map
+@function color($color, $key) {
+	@if map-has-key($color-names, $color, $key) {
+		@return map-get($color-names, $color, $key);
 	}
 
-	@warn 'Key `#{$key}` not found in $error map.';
-	@return null;
-}
-
-// Info
-@function info($key) {
-	@if map-has-key($info, $key) {
-		@return map-get($info, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $info map.';
-	@return null;
-}
-
-// Gray
-@function gray($key) {
-	@if map-has-key($gray, $key) {
-		@return map-get($gray, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $gray map.';
-	@return null;
-}
-
-// Light
-@function light($key) {
-	@if map-has-key($light, $key) {
-		@return map-get($light, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $light map.';
-	@return null;
-}
-
-// Dark
-@function dark($key) {
-	@if map-has-key($dark, $key) {
-		@return map-get($dark, $key);
-	}
-
-	@warn 'Key `#{$key}` not found in $dark map.';
+	@warn 'Color "#{$color}" with value "#{$key}" not found.';
 	@return null;
 }
 
 // States
-@function state($key1, $key2: null, $key3: null) {
-	@if map-has-key($states, $key1, $key2, $key3) {
-		@return map-get($states, $key1, $key2, $key3);
-	} @else if map-has-key($states, $key1, $key2) {
+@function state($key1, $key2: null) {
+	@if map-has-key($states, $key1, $key2) {
 		@return map-get($states, $key1, $key2);
 	} @else if map-has-key($states, $key1) {
 		@return map-get($states, $key1);
 	}
 
-	@warn 'Key `#{$key1} #{$key2}` not found in $states map.';
+	@warn 'Key #{$key1} not found in $states map.';
 	@return null;
 }

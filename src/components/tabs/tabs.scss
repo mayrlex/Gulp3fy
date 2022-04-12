@@ -7,14 +7,14 @@
 
 			@include media-hover {
 				&:hover {
-					color: accent(500);
+					color: color(accent, 500);
 
 					background: state(hover);
 				}
 			}
 
 			&.--active {
-				color: accent(500);
+				color: color(accent, 500);
 
 				background: state(active);
 			}

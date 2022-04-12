@@ -16,14 +16,14 @@
 
 		@include media-hover {
 			&:hover {
-				color: accent(500);
+				color: color(accent, 500);
 
 				background: state(hover);
 			}
 		}
 
 		&.--show {
-			color: accent(500);
+			color: color(accent, 500);
 
 			background: state(active);
 		}
@@ -39,7 +39,7 @@
 			@include adaptive('width', 16, 16, 1);
 			height: rem(2);
 
-			background: dark(1);
+			background: color(dark, 1);
 
 			transition: transform 0.3s ease 0s;
 
@@ -53,7 +53,7 @@
 		&.--show {
 			&:before,
 			&:after {
-				background: accent(500);
+				background: color(accent, 500);
 			}
 
 			&:after {
@@ -65,7 +65,7 @@
 			&:hover {
 				&:before,
 				&:after {
-					background: accent(500);
+					background: color(accent, 500);
 				}
 			}
 		}

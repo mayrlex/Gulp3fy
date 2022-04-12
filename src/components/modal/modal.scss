@@ -70,7 +70,7 @@
 			width: 60%;
 			height: rem(2);
 
-			background: dark(1);
+			background: color(dark, 1);
 
 			transition: transition(time);
 
@@ -89,7 +89,7 @@
 			&:hover {
 				&:before,
 				&:after {
-					background: gray(600);
+					background: color('gray', 600);
 				}
 			}
 		}
