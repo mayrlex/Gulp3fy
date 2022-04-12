@@ -1,9 +1,0 @@
-//? ### Variant: Text
-
-@include btn(
-	$element: 'text',
-	$color: accent(500),
-	$color_hover: accent(600),
-	$color_active: accent(700),
-	$color_disabled: accent(200)
-);
