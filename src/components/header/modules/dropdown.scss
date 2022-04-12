@@ -14,20 +14,18 @@
 
 	&[data-dropdown='toggle'] {
 		&:after {
-			border-radius: radius(sm);
-
 			content: '';
 
 			@include media-max($header_point) {
-				margin-left: rem($dropdown_icon_margin_mob);
+				margin-left: rem(5);
 
-				@include icon-arrow-1($dropdown_icon_size_mob, $color, bottom);
+				@include icon-arrow-1($size: 6, $color: $color, $direction: bottom, $radius: 4);
 			}
 
 			@include media-min($header_point) {
-				margin-left: rem($dropdown_icon_margin_desk);
+				margin-left: rem(5);
 
-				@include icon-arrow-1($dropdown_icon_size_desk, $color, bottom);
+				@include icon-arrow-1($size: 6, $color: $color, $direction: bottom, $radius: 4);
 			}
 		}
 
@@ -69,7 +67,7 @@
 		@include media-min($header_point) {
 			position: absolute;
 			top: 100%;
-			z-index: zindex(dropdown);
+			z-index: 15;
 
 			visibility: hidden;
 			opacity: 0;
@@ -94,8 +92,6 @@
 		@include media-hover {
 			&:hover {
 				color: $color_hover;
-
-				background: state(hover);
 			}
 		}
 	}

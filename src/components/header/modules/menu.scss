@@ -15,7 +15,7 @@
 
 &__link {
 	color: $color;
-	font-size: $link_fontSize;
+	font-size: inherit;
 
 	&.--current {
 		color: state(current);

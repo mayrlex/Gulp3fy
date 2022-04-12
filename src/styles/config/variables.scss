@@ -108,24 +108,6 @@ $color-names: (
 	'dark':    $dark,
 );
 
-// z-index
-$zIndex: (
-	header:   10,
-	dropdown: 15,
-	popup:    100,
-);
-
-// Border radius
-$radius: (
-	xs: em(2),
-	sm: em(4),
-	md: em(6),
-	lg: em(8),
-	xl: em(16),
-	xxl: em(160),
-	circle: 50%,
-);
-
 $states: (
 	hover:     alpha($accent, 85),
 	active:    alpha($accent, 75),
@@ -139,23 +121,10 @@ $states: (
 
 $fontFamily:(
 	default: ('Inter', sans-serif),
-	second: ('Nunito', sans-serif),
-);
-
-$transitions: (
-	time: (
-		xs: 0.1s,
-		sm: 0.3s,
-	),
 );
 
 // UI
-$border:        rem(1) solid color('gray', 200);
-$boxShadow:     0 rem(4) rem(24) rem(-6) rgba(24, 39, 75, 4%);
-$color_body:    color('gray', 600);
-$color_title:   color(dark, 1);
-$icon_width:    rem(16);
-$icon_height:   $icon_width;
-$letterSpacing: rem(1);
-$backdrop:      color.adjust(color(dark, 2), $alpha: -0.1);
-$transition:    0.1s;
+$body:        color('gray', 600);
+$icon_width:  rem(16);
+$icon_height: rem(16);
+$backdrop:    alpha(color(dark, 2), 10);

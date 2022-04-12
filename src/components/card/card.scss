@@ -90,8 +90,6 @@
 
 		@include media-hover {
 			&[href] {
-				transition: transition(time);
-
 				&:hover {
 				}
 			}
@@ -103,8 +101,6 @@
 
 		@include media-hover {
 			&[href] {
-				transition: transition(time);
-
 				&:hover {
 				}
 			}

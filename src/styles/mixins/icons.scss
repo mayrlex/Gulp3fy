@@ -1,24 +1,28 @@
-@mixin icon-arrow-1($border: 6, $color: dark(1), $direction: top) {
+@mixin icon-arrow-1($size: 6, $color: color(dark, 1), $direction: top, $radius: 0) {
 	@if $direction == 'top' {
-		border-right: rem($border) solid transparent;
-		border-bottom: rem($border) solid $color;
-		border-left: rem($border) solid transparent;
+		border-right: rem($size) solid transparent;
+		border-bottom: rem($size) solid $color;
+		border-left: rem($size) solid transparent;
+		border-radius: em($radius);
 	}
 
 	@if $direction == 'right' {
-		border-top: rem($border) solid transparent;
-		border-bottom: rem($border) solid transparent;
-		border-left: rem($border) solid $color;
+		border-top: rem($size) solid transparent;
+		border-bottom: rem($size) solid transparent;
+		border-left: rem($size) solid $color;
+		border-radius: em($radius);
 	}
 	@if $direction == 'bottom' {
-		border-top: rem($border) solid $color;
-		border-right: rem($border) solid transparent;
-		border-left: rem($border) solid transparent;
+		border-top: rem($size) solid $color;
+		border-right: rem($size) solid transparent;
+		border-left: rem($size) solid transparent;
+		border-radius: em($radius);
 	}
 
 	@if $direction == 'left' {
-		border-top: rem($border) solid transparent;
-		border-right: rem($border) solid $color;
-		border-bottom: rem($border) solid transparent;
+		border-top: rem($size) solid transparent;
+		border-right: rem($size) solid $color;
+		border-bottom: rem($size) solid transparent;
+		border-radius: em($radius);
 	}
 }

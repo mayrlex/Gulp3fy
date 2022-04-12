@@ -98,7 +98,7 @@
 
 		background: $burger_btn_color;
 
-		transition: background transition(time);
+		transition: background 0.1s;
 
 		&:before,
 		&:after {
@@ -111,7 +111,7 @@
 			background: $burger_btn_color;
 			transform-origin: 50% 50%;
 
-			transition: top transition(time) transition(time), transform transition(time);
+			transition: top 0.1s 0.1s, transform 0.1s;
 
 			content: '';
 		}
@@ -129,14 +129,14 @@
 		span {
 			background: transparent;
 
-			transition: background transition(time) 0s $burger_btn_animation;
+			transition: background 0.1s 0s $burger_btn_animation;
 
 			&:before,
 			&:after {
 				top: 0;
 
-				transition: top transition(time) $burger_btn_animation,
-					transform transition(time) transition(time) $burger_btn_animation;
+				transition: top 0.1s $burger_btn_animation,
+					transform 0.1s 0.1s $burger_btn_animation;
 			}
 
 			&:before {

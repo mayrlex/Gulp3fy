@@ -12,8 +12,6 @@
 
 		text-align: left;
 
-		transition: transition(time);
-
 		@include media-hover {
 			&:hover {
 				color: color(accent, 500);

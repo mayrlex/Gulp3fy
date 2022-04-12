@@ -3,8 +3,6 @@
 		font-size: 0;
 
 		&-btn {
-			transition: transition(time);
-
 			@include media-hover {
 				&:hover {
 					color: color(accent, 500);

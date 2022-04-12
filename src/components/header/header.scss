@@ -3,7 +3,7 @@ $header_height: auto;
 $header_point: lg;
 
 .header {
-	z-index: zindex(header);
+	z-index: 10;
 
 	background: $header_background;
 
@@ -25,18 +25,13 @@ $header_point: lg;
 }
 
 .menu {
-	$color: gray(600);
-	$color_hover: accent(500);
-	$dropdown_icon_size_desk: 6;
-	$dropdown_icon_size_mob: 6;
-	$dropdown_icon_margin_desk: 5;
-	$dropdown_icon_margin_mob: 5;
-	$link_fontSize: inherit;
+	$color: color('gray', 600);
+	$color_hover: color(accent, 500);
 
 	//? ### Menu
 	// @import 'modules/menu';
 
-	//? ### Dropdown menu
+	// ? ### Dropdown menu
 	// @import 'modules/dropdown';
 }
 

@@ -24,8 +24,6 @@ meta(property='og:locale', content=pageLocale)
 
 link(rel='canonical', href=pageUrl)
 
-//- link(rel='preconnect', href='//fonts.gstatic.com')
-
 link(rel='icon', type='image/png', sizes='16x16', href='./assets/images/common/favicon-16x16.png')
 link(rel='icon', type='image/png', sizes='32x32', href='./assets/images/common/favicon-32x32.png')
 
@@ -65,5 +63,9 @@ if !translate
 	meta(name='google' value='notranslate')
 if !robots
 	meta(name='robots' value='noindex, nofollow')
+
+link(rel='preconnect' href='https://fonts.googleapis.com')
+link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+link(href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap' rel='stylesheet')
 
 link(rel='stylesheet', href='assets/css/main.min.css')
