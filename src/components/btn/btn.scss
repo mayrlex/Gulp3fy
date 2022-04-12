@@ -1,18 +1,17 @@
 @import '../../styles/mixins/btn';
 
 .btn {
-	$borderRadius: rem(4);
 	$border_width: 2;
 	$btn_padding_x_max: 30;
 	$btn_padding_x_min: 15;
 	$btn_padding_y_max: 10;
 	$btn_padding_y_min: 8;
+	$radius: rem(4);
 
 	display: inline-flex;
 	align-items: center;
 	overflow: hidden;
 
-	font-weight: 400;
 	@include adaptive('font-size', 18, 16, 1);
 	white-space: nowrap;
 	text-align: center;
@@ -20,14 +19,86 @@
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	border-radius: $borderRadius;
+	border-radius: $radius;
 	cursor: pointer;
-
-	transition: transition(time);
 
 	user-select: none;
 
-	//? ### Modules
-	// @import 'icon';
-	// @import 'group';
+	//? If button contains icon before text
+	// &[class*='btn__'] > .icon:first-child {
+	// 	@include adaptive('margin-right', 12, 8, 1);
+	// }
+
+	//? If button contains icon after text
+	// &[class*='btn__'] > .icon:last-child {
+	// 	@include adaptive('margin-left', 12, 8, 1);
+	// }
+
+	// .btn__solid
+	@include btn(
+		$element: 'solid',
+		$color: $white,
+		$fill: $white,
+		$bg: color(accent, 500),
+		$bg_hover: color(accent, 600),
+		$bg_active: color(accent, 700),
+		$bg_disabled: color(accent, 200)
+	) {
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
+	}
+
+	//? ### Icon button
+	// &-icon {
+	// 	$icon_padding_max: 10;
+	// 	$icon_padding_min: 8;
+
+	// 	display: inline-flex;
+
+	// 	vertical-align: middle;
+
+	// 	border-radius: 50%;
+	// 	cursor: pointer;
+
+	// 	.icon {
+	// 		@include adaptive('width', 24, 22);
+	// 		@include adaptive('height', 24, 22);
+	// 	}
+
+	// 	// .btn-icon__solid
+	// 	@include btn(
+	// 		$element: 'solid',
+	// 		$fill: $white,
+	// 		$bg: color(accent, 500),
+	// 		$bg_hover: color(accent, 600),
+	// 		$bg_active: color(accent, 700),
+	// 		$bg_disabled: color(accent, 200)
+	// 	) {
+	// 		@include adaptive('padding', $icon_padding_max, $icon_padding_min, 1);
+	// 	}
+	// }
+
+	//? ### Button group container
+	// &__group {
+	// 	display: inline-flex;
+	// 	flex-wrap: wrap;
+
+	// 	font-size: 0;
+
+	// 	border-radius: $borderRadius;
+
+	// 	.btn {
+	// 		border-radius: 0;
+
+	// 		&:first-child {
+	// 			border-radius: $borderRadius 0 0 $borderRadius;
+	// 		}
+
+	// 		&:last-child {
+	// 			border-radius: 0 $borderRadius $borderRadius 0;
+	// 		}
+	// 	}
+	// }
 }
