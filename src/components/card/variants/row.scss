@@ -4,7 +4,7 @@
 	display: grid;
 	grid-column: 12 span;
 	grid-template-columns: repeat(12, 1fr);
-	@include adaptive('gap', $item_padding_x_max, $item_padding_x_min, 1);
+	@include adaptive('gap', $content_padding_x_max, $content_padding_x_min, 1);
 
 	@include media-min(lg) {
 		grid-column: 6 span;
@@ -20,14 +20,14 @@
 }
 
 & &__inner {
-	// Padding left if card__inner comes first
-	&:first-child {
-		@include adaptive('padding-left', $item_padding_x_max, $item_padding_x_min, 1);
-	}
+	//? Padding left if card__inner comes first
+	// &:first-child {
+	// 	@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min, 1);
+	// }
 
-	// Padding right if card__inner comes last
+	//? Padding right if card__inner comes last
 	&:last-child {
-		@include adaptive('padding-right', $item_padding_x_max, $item_padding_x_min, 1);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min, 1);
 	}
 }
 
@@ -35,20 +35,20 @@
 	display: flex;
 	flex-direction: column;
 	grid-column: 12 span;
-	@include adaptive('padding-top', $item_padding_y_max, $item_padding_y_min, 1);
-	@include adaptive('padding-bottom', $item_padding_y_max, $item_padding_y_min, 1);
+	@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min, 1);
 
 	@include media-max(sm) {
-		@include adaptive('padding-right', $item_padding_x_max, $item_padding_x_min, 1);
-		@include adaptive('padding-left', $item_padding_x_max, $item_padding_x_min, 1);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min, 1);
+		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min, 1);
 	}
 
 	@include media-min(sm) {
 		grid-column: 7 span;
+		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min, 1);
 	}
 
-	// Gap between card items
+	//? Margin between card items (Exclude last item)
 	& > [class*='card__']:not(:last-child) {
-		@include adaptive('margin-bottom', $item_margin_max, $item_margin_min, 1);
+		@include adaptive('margin-bottom', $content_between_max, $content_between_min, 1);
 	}
 }

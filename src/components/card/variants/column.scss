@@ -4,10 +4,9 @@
 	display: flex;
 	flex-direction: column;
 	grid-column: 12 span;
-
 	overflow: hidden;
 
-	@include media-min(md) {
+	@include media-min(sm) {
 		grid-column: 6 span;
 	}
 
@@ -20,31 +19,25 @@
 	}
 
 	& > [class*='card__'] {
-		// Padding-x for card item (Exclude .card__preview)
 		&:not([class*='preview']) {
-			@include adaptive('padding-right', $item_padding_x_max, $item_padding_x_min, 1);
-			@include adaptive('padding-left', $item_padding_x_max, $item_padding_x_min, 1);
+			//? Padding-x for card item (Exclude .card__preview)
+			@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
+			@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
+
+			//? Margin top for any card item (Exclude .card__preview)
+			// &:first-child {
+			// 	@include adaptive('margin-top', $content_padding_y_max, $content_padding_y_min);
+			// }
+
+			//? Margin bottom for any card item (Exclude .card__preview)
+			&:last-child {
+				@include adaptive('margin-bottom', $content_padding_y_max, $content_padding_y_min);
+			}
 		}
 
-		// Gap between card items
+		//? Margin between card items
 		&:not(:last-child) {
-			@include adaptive('margin-bottom', $item_margin_max, $item_margin_min, 1);
-		}
-	}
-
-	// Padding top if card__header comes first
-	& .card__header:first-child {
-		@include adaptive('padding-top', $item_padding_y_max, $item_padding_y_min, 1);
-	}
-
-	// Padding bottom if card__footer comes last
-	& .card__footer:last-child {
-		@include adaptive('padding-bottom', $item_padding_y_max, $item_padding_y_min, 1);
-	}
-
-	.card__preview {
-		@include media-minmax(sm, md) {
-			min-height: rem(300);
+			@include adaptive('margin-bottom', $content_between_max, $content_between_min);
 		}
 	}
 }
