@@ -1,19 +1,4 @@
-// Breackpoints map
-$breakpoints: (
-	xs:  320 - 0.2,
-	sm:  576 - 0.2,
-	md:  768 - 0.2,
-	lg:  992 - 0.2,
-	xl:  1200 - 0.2,
-	xxl: 1400 - 0.2,
-);
-
-$offsetMax: 20;
-$offsetMin: 10;
-$maxWidth:  1920;
-$container: 1324 + ($offsetMax * 2);
-
-// Media queries mixins
+// Min width
 @mixin media-min($key) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
@@ -26,9 +11,9 @@ $container: 1324 + ($offsetMax * 2);
 			@content;
 		}
 	}
-
 }
 
+// Max width
 @mixin media-max($key) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
@@ -41,9 +26,9 @@ $container: 1324 + ($offsetMax * 2);
 			@content;
 		}
 	}
-
 }
 
+// Min/Max width
 @mixin media-minmax($key1, $key2) {
 	$breakpointMin: map-get($breakpoints, $key1);
 	$breakpointMax: map-get($breakpoints, $key2);
@@ -64,39 +49,11 @@ $container: 1324 + ($offsetMax * 2);
 			@content;
 		}
 	}
-
 }
 
+// Any hover
 @mixin media-hover {
 	@media (any-hover: hover) {
 		@content;
-	}
-}
-
-// Adaptive mixin
-@mixin adaptive($property, $maxValue, $minValue, $mode: 1) {
-	$addSize: $maxValue - $minValue;
-
-	// Max width
-	@if $mode == 1 {
-		#{$property}: rem($maxValue);
-
-		@media (max-width: #{em($container)}) {
-			#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
-		}
-
-		// Min width
-	} @else if $mode == 2 {
-		#{$property}: rem($maxValue);
-
-		@media (min-width: #{em($container)}) {
-			#{$property}: calc(
-				#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
-			);
-		}
-
-		// Always
-	} @else {
-		#{$property}: calc(#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320}));
 	}
 }

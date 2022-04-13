@@ -108,6 +108,15 @@ $color-names: (
 	'dark':    $dark,
 );
 
+$breakpoints: (
+	xs:  320 - 0.2,
+	sm:  576 - 0.2,
+	md:  768 - 0.2,
+	lg:  992 - 0.2,
+	xl:  1200 - 0.2,
+	xxl: 1400 - 0.2,
+);
+
 $states: (
 	hover:     alpha($accent, 85),
 	active:    alpha($accent, 75),
@@ -122,6 +131,11 @@ $states: (
 $fontFamily:(
 	default: ('Inter', sans-serif),
 );
+
+// Container
+$offsetMax: 20;
+$offsetMin: 10;
+$container: 1324 + ($offsetMax * 2);
 
 // UI
 $body:        color('gray', 600);

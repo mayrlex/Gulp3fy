@@ -10,12 +10,13 @@
 @import './functions/**/*';
 
 //? ### Mixins
+@import './mixins/adaptive';
 @import './mixins/fontFace';
 @import './mixins/icons';
+@import './mixins/media';
 
 //? ### Configs
 @import './config/variables';
-@import './helpers/adaptive';
 @import './config/fonts';
 @import './config/config';
 // @import './config/typography';

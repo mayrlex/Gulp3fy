@@ -1,0 +1,39 @@
+/*  //? ### Arguments
+	$propery:  'font-size',
+	$maxValue: 32,
+	$minValue: 26,
+	$mode:     2, (Default 1)
+*/
+
+$maxWidth: 1920;
+
+@mixin adaptive($property, $maxValue, $minValue, $mode: 1) {
+	$addSize: $maxValue - $minValue;
+
+	// Max width
+	@if $mode == 1 {
+		#{$property}: rem($maxValue);
+
+		@media (max-width: #{em($container)}) {
+			#{$property}: calc(
+				#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320})
+			);
+		}
+
+		// Min width
+	} @else if $mode == 2 {
+		#{$property}: rem($maxValue);
+
+		@media (min-width: #{em($container)}) {
+			#{$property}: calc(
+				#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
+			);
+		}
+
+		// Always
+	} @else {
+		#{$property}: calc(
+			#{$minValue + px} + #{$addSize} * ((100vw - 320px) / #{$maxWidth - 320})
+		);
+	}
+}
