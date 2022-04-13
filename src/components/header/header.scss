@@ -37,6 +37,7 @@ $header_point: lg;
 
 @include media-max(lg) {
 	$burger_btn_animation: cubic-bezier(0.57, 0.21, 0.69, 1.25);
+	$burger_menu_animation: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	$burger_btn_size: rem(44);
 	$burger_btn_color: color(dark, 1);
 	$burger_line_height: rem(4);

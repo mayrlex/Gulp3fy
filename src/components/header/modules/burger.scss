@@ -9,7 +9,7 @@
 	// 	z-index: 1;
 
 	// 	width: 100%;
-	// 	height: 60px;
+	// 	height: $header_height;
 
 	// 	background: $header_background;
 
@@ -18,29 +18,29 @@
 
 	&__inner {
 		//? ## Buger menu backdrop
-		&:before {
-			position: fixed;
-			top: 0;
-			left: 0;
+		// &:before {
+		// 	position: fixed;
+		// 	top: 0;
+		// 	left: 0;
 
-			width: 100%;
-			height: 100%;
+		// 	width: 100%;
+		// 	height: 100%;
 
-			background: $backdrop;
-			visibility: hidden;
-			opacity: 0;
+		// 	background: $backdrop;
+		// 	visibility: hidden;
+		// 	opacity: 0;
 
-			transition: opacity transition(time, sm), visibility transition(time, sm);
+		// 	transition: opacity 0.3s, visibility 0.3s;
 
-			content: '';
-		}
+		// 	content: '';
+		// }
 
-		&.--show {
-			&:before {
-				visibility: visible;
-				opacity: 1;
-			}
-		}
+		// &.--show {
+		// 	&:before {
+		// 		visibility: visible;
+		// 		opacity: 1;
+		// 	}
+		// }
 	}
 
 	&__nav {
@@ -48,24 +48,18 @@
 		@include media-max($header_point) {
 			position: fixed;
 			top: 0;
-			right: -100%;
+			left: -100%;
 
-			width: 100%;
-			max-width: rem(450);
 			height: 100%;
 			padding-top: $header_height + rem(50);
 			overflow: auto;
 
-			@if $header_background == transparent {
-				background: $white;
-			} @else {
-				background: $header_background;
-			}
+			background: $header_background;
 
-			transition: right 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+			transition: left 0.5s $burger_menu_animation;
 
 			&.--show {
-				right: 0;
+				left: 0;
 			}
 		}
 
