@@ -4,31 +4,31 @@
 .h4,
 .h5,
 .h6 {
-	color: $color_title;
-	font-weight: 600;
-	line-height: 120%;
+	color: color(dark, 1);
+	font-weight: 700;
+	line-height: 130%;
 }
 
 .h1 {
-	@include adaptive('font-size', 80, 48);
+	@include adaptive('font-size', 48, 32);
 }
 
 .h2 {
-	@include adaptive('font-size', 56, 40);
-}
-
-.h3 {
-	@include adaptive('font-size', 44, 36);
-}
-
-.h4 {
-	@include adaptive('font-size', 36, 32);
-}
-
-.h5 {
 	@include adaptive('font-size', 32, 28);
 }
 
-.h6 {
+.h3 {
 	@include adaptive('font-size', 28, 24);
+}
+
+.h4 {
+	@include adaptive('font-size', 24, 20);
+}
+
+.h5 {
+	@include adaptive('font-size', 20, 16);
+}
+
+.h6 {
+	@include adaptive('font-size', 16, 14);
 }
