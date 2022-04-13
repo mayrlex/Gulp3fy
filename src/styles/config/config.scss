@@ -38,7 +38,6 @@ body {
 	}
 }
 
-// Forms / Start
 input,
 button,
 textarea {
@@ -74,7 +73,6 @@ button {
 		border: 0;
 	}
 }
-// Forms / End
 
 h1,
 h2,
@@ -122,7 +120,8 @@ img {
 
 .container {
 	max-width: rem($container);
-	margin: 0 auto;
+	margin-right: auto;
+	margin-left: auto;
 	padding-right: rem($offsetMin);
 	padding-left: rem($offsetMin);
 
@@ -160,7 +159,6 @@ img {
 	outline: none;
 }
 
-// focus-visible polyfill
 .focus-visible {
 	box-shadow: state(focus);
 }

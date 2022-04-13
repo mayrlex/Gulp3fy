@@ -4,8 +4,4 @@
 	&__inner {
 		width: 100%;
 	}
-
-	&__copy {
-		@include adaptive('font-size', 16, 12, 1);
-	}
 }

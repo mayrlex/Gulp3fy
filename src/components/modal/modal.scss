@@ -1,7 +1,7 @@
 .modal {
 	$bezier: cubic-bezier(0, 0, 0.5, 1);
 
-	transition: opacity transition(time, sm), visibility transition(time, sm);
+	transition: opacity 0.3s, visibility 0.3s;
 
 	&[aria-hidden='true'] {
 		visibility: hidden;
@@ -10,7 +10,7 @@
 		pointer-events: none;
 
 		& .modal__inner {
-			animation: modal-on-hide transition(time, sm) $bezier;
+			animation: modal-on-hide 0.3s $bezier;
 		}
 	}
 
@@ -21,7 +21,7 @@
 		pointer-events: all;
 
 		& .modal__inner {
-			animation: modal-on-show transition(time, sm) $bezier;
+			animation: modal-on-show 0.3s $bezier;
 		}
 	}
 

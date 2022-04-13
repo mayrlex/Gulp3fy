@@ -2,5 +2,7 @@ include ./mixins.pug
 
 +footer({})
 	//- .footer__bottom
-		script.
-			document.write(`&copy; ${new Date().getFullYear()} #{brandName}. #{copyText}`);
+	//- 	script document.querySelector('#copy').innerText = new Date().getFullYear();
+	//- 	| &copy;
+	//- 	span#copy
+	//- 	| &nbsp; #{ brandName }. #{ copyText }
