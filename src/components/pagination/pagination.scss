@@ -1,7 +1,8 @@
 .pagination {
 	$btn_padding: rem(8) rem(10);
-	$item_ctrl_margin: rem(0);
-	$item_num_margin: rem(0);
+	$btn_control_between: rem(0);
+	$btn_num_between: rem(0);
+	$content_padding: rem(0) rem(0);
 
 	display: flex;
 	justify-content: center;
@@ -11,7 +12,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		padding: rem(5) rem(10);
+		padding: $content_padding;
 	}
 
 	&__list {
@@ -22,15 +23,15 @@
 
 	&__item {
 		&:first-child {
-			margin-right: $item_ctrl_margin;
+			margin-right: $btn_control_between;
 		}
 
 		&:last-child {
-			margin-left: $item_ctrl_margin;
+			margin-left: $btn_control_between;
 		}
 
 		&:not(:first-child, :last-child) {
-			margin-right: $item_num_margin;
+			margin-right: $btn_num_between;
 		}
 	}
 
@@ -63,14 +64,14 @@
 			}
 		}
 
-		&-dots {
-			color: color('gray', 500);
-		}
-
 		&.--current {
 			color: color(accent, 500);
 
 			background: state(active);
 		}
+	}
+
+	&__dots {
+		color: inherit;
 	}
 }
