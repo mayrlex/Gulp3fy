@@ -1,19 +1,18 @@
 //- Arguments:
-	title      {string} - Title
-	icon       {string} - Icon name
-	mods       {string} - Mod('s)
-	closeLabel {string} - Close button label (Default: 'Close modal')
+	mods  {string} - Mod('s)
+	close {string} - Close button label [Default: 'Close modal']
 
 //- Call:
-	Any element with (data-modal-close)
+	+modal({ id: 'modal-1' })
+		.modal__header
+			h2.modal__title Modal title
 
-	+modal({ mods: 'success', id: 'modal-1', title: 'Example modal', })
-		block modal-contnent
-			...
+		.modal__content
+			p Lorem ipsum
 
-		block modal-footer
-			+btn({ text: 'Cancel', mods: 'light' })
-			+btn({ text: 'Confirm', mods: 'solid' })
+		.modal__footer
+			+btn({ mods: 'outline', text: 'Cancel' })(data-modal-close)
+			+btn({ mods: 'solid', text: 'Confirm' })
 
 mixin modal(data)
 	-
@@ -30,13 +29,5 @@ mixin modal(data)
 	section.modal(class=modsArray, id=data.id, aria-hidden='true')
 		.modal__overlay(tabindex='-1')
 			.modal__inner(role='dialog', aria-modal='true')
-				.modal__header
-					if data.title
-						h2.modal__title!= data.title
-					button.modal__close(aria-label=(data.closeLabel = 'Close modal'), data-modal-close='')
-
-				.modal__content
-					block modal-contnent
-
-				.modal__footer
-					block modal-footer
+				button.modal__close(aria-label=(data.close = 'Close modal'), data-modal-close='')
+				block

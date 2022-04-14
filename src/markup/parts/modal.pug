@@ -1,7 +1,10 @@
-+modal({ mods: '', id: 'modal-1', title: 'Modal title' })
-	block modal-contnent
++modal({ id: 'modal-1' })
+	.modal__header
+		h2.modal__title Modal title
+
+	.modal__content
 		p ...
 
-	block modal-footer
-		+btn({ text: 'Cancel', mods: 'light' })(data-modal-close)
+	.modal__footer
+		//- +btn({ text: 'Cancel', mods: 'light' })(data-modal-close)
 		+btn({ text: 'Confirm', mods: 'solid'})
