@@ -26,3 +26,37 @@
 		border-radius: em($radius);
 	}
 }
+
+@mixin icon-cross($size: 16, $width: 2, $color: color(dark, 1), $radius: null) {
+	position: relative;
+
+	display: inline-block;
+	width: rem($size);
+	height: rem($size);
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+
+		display: inline-block;
+		width: 100%;
+		height: rem($width);
+
+		background: $color;
+		@if $radius {
+			border-radius: em($radius);
+		}
+
+		content: '';
+	}
+
+	&:before {
+		transform: translate(-50%, -50%) rotate(45deg);
+	}
+
+	&:after {
+		transform: translate(-50%, -50%) rotate(-45deg);
+	}
+}
