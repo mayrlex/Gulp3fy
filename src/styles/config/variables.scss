@@ -86,13 +86,13 @@ $gray-map: (
 );
 
 // Light color map
-$light: (
+$light-map: (
 	1: #F8F9FA,
 	2: #E2E6EA,
 );
 
 // Dark color map
-$dark: (
+$dark-map: (
 	1: #343A40,
 	2: #23272B,
 );
@@ -104,8 +104,8 @@ $color-names: (
 	'danger':  $danger-map,
 	'info':    $info-map,
 	'gray':    $gray-map,
-	'light':   $light,
-	'dark':    $dark,
+	'light':   $light-map,
+	'dark':    $dark-map,
 );
 
 $breakpoints: (
@@ -128,7 +128,7 @@ $states: (
 	),
 );
 
-$fontFamily:(
+$fontFamily: (
 	default: ('Inter', sans-serif),
 );
 
