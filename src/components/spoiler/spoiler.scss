@@ -1,6 +1,20 @@
 .spoiler {
+	$icon_height: 2;
+	$icon_width: 16;
+
+	$title_padding_x_max: 0;
+	$title_padding_x_min: 0;
+	$title_padding_y_max: 0;
+	$title_padding_y_min: 0;
+
+	$content_padding_x_max: 0;
+	$content_padding_x_min: 0;
+	$content_padding_y_max: 0;
+	$content_padding_y_min: 0;
+
 	&__item {
 		&:not(:last-child) {
+			// margin-bottom: rem();
 		}
 	}
 
@@ -8,8 +22,12 @@
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding-right', 50, 35);
+		@include adaptive('padding-top', $title_padding_y_max, $title_padding_y_min);
+		@include adaptive('padding-right', $title_padding_x_max + 30, $title_padding_x_min + 20);
+		@include adaptive('padding-bottom', $title_padding_y_max, $title_padding_y_min);
+		@include adaptive('padding-left', $title_padding_x_max, $title_padding_x_min);
 
+		font-size: inherit;
 		text-align: left;
 
 		@include media-hover {
@@ -32,10 +50,10 @@
 		&:after {
 			position: absolute;
 			top: calc(50% - 1px);
-			@include adaptive('right', 20, 10, 1);
+			@include adaptive('right', $title_padding_x_max, $title_padding_x_min);
 
-			@include adaptive('width', 16, 16, 1);
-			height: rem(2);
+			width: rem($icon_width);
+			height: rem($icon_height);
 
 			background: color(dark, 1);
 
@@ -70,5 +88,9 @@
 	}
 
 	&__content {
+		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
+		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
 	}
 }
