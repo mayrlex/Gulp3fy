@@ -132,6 +132,10 @@ $fontFamily:(
 	default: ('Inter', sans-serif),
 );
 
+$cubic-bezier: (
+	modal: cubic-bezier(0, 0, 0.5, 1),
+);
+
 // Container
 $offsetMax: 20;
 $offsetMin: 10;
