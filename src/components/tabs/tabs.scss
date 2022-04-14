@@ -1,21 +1,46 @@
 .tabs {
-	&__menu {
+	$header_padding_x_max: 0;
+	$header_padding_x_min: 0;
+	$header_padding_y_max: 0;
+	$header_padding_y_min: 0;
+
+	$btn_padding_x_max: 0;
+	$btn_padding_x_min: 0;
+	$btn_padding_y_max: 0;
+	$btn_padding_y_min: 0;
+
+	$content_padding_x_max: 0;
+	$content_padding_x_min: 0;
+	$content_padding_y_max: 0;
+	$content_padding_y_min: 0;
+
+	&__header {
 		font-size: 0;
 
-		&-btn {
-			@include media-hover {
-				&:hover {
-					color: color(accent, 500);
+		// @include adaptive('padding-top', $header_padding_y_max, $header_padding_y_min);
+		// @include adaptive('padding-right', $header_padding_x_max, $header_padding_x_min);
+		// @include adaptive('padding-bottom', $header_padding_y_max, $header_padding_y_min);
+		// @include adaptive('padding-left', $header_padding_x_max, $header_padding_x_min);
+	}
 
-					background: state(hover);
-				}
-			}
+	&__btn {
+		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
+		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
+		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
+		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
 
-			&.--active {
+		@include media-hover {
+			&:hover {
 				color: color(accent, 500);
 
-				background: state(active);
+				background: state(hover);
 			}
+		}
+
+		&.--active {
+			color: color(accent, 500);
+
+			background: state(active);
 		}
 	}
 
@@ -25,6 +50,10 @@
 	&__content {
 		display: none;
 		overflow: hidden;
+		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
+		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
 
 		&.--active {
 			display: block;

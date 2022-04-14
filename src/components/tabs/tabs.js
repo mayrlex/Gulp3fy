@@ -29,8 +29,8 @@ export default class Tabs {
 		this.tab = document.querySelector(`[data-tab="${selector}"]`);
 
 		if (this.tab) {
-			this.tabMenu = this.tab.querySelector('.tabs__menu');
-			this.tabButtons = this.tabMenu.querySelectorAll('.tabs__menu-btn');
+			this.tabMenu = this.tab.querySelector('.tabs__header');
+			this.tabButtons = this.tabMenu.querySelectorAll('.tabs__btn');
 			this.tabContent = this.tab.querySelectorAll('.tabs__content');
 		} else {
 			console.error('selector "data-tab" does not exist!');
