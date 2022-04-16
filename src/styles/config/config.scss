@@ -131,6 +131,19 @@ img {
 	}
 }
 
+.grid {
+	display: grid;
+	grid-template-columns: repeat($column_count, 1fr);
+
+	column-gap: rem($colGap_min);
+	row-gap: rem($rowGap_min);
+
+	@include media-min(lg) {
+		column-gap: rem($colGap_max);
+		row-gap: rem($rowGap_max);
+	}
+}
+
 // Responsive image by FLS
 .--ibg {
 	position: relative;

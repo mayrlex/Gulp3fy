@@ -154,6 +154,13 @@ $offsetMax: 20;
 $offsetMin: 10;
 $container: 1324 + ($offsetMax * 2);
 
+// Grid
+$column_count: 12;
+$colGap_max:   20;
+$rowGap_max:   30;
+$colGap_min:   10;
+$rowGap_min:   20;
+
 // UI
 $body:        color('gray', 600);
 $icon_width:  rem(16);
