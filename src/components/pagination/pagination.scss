@@ -1,8 +1,9 @@
 .pagination {
-	$btn_padding: rem(8) rem(10);
+	$content_padding: rem(0) rem(0);
 	$btn_control_between: rem(0);
 	$btn_num_between: rem(0);
-	$content_padding: rem(0) rem(0);
+	$btn_padding: rem(0) rem(0);
+	$controll_content_between: null;
 
 	display: flex;
 	justify-content: center;
@@ -49,25 +50,28 @@
 		&.--disabled {
 			color: state(disabled, color);
 
-			background: state(disabled, bg);
+			cursor: default;
 
 			fill: state(disabled, color);
 		}
 
-		@include media-hover {
-			&:hover {
-				color: color(accent, 500);
+		&.--current {
+			color: color(accent, 500);
+		}
 
-				background: state(hover);
-
-				fill: color(accent, 500);
+		// If controllers use both text and icon
+		@if $controll_content_between {
+			&-content:first-child {
+				margin-right: $controll_content_between;
 			}
 		}
 
-		&.--current {
-			color: color(accent, 500);
+		@include media-hover {
+			&:not(:disabled, .--disabled):hover {
+				color: color(accent, 500);
 
-			background: state(active);
+				fill: color(accent, 500);
+			}
 		}
 	}
 
