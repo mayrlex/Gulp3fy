@@ -51,12 +51,12 @@
 			left: -100%;
 
 			height: 100%;
-			padding-top: $header_height + rem(50);
+			padding-top: calc($header_height + rem(50));
 			overflow: auto;
 
 			background: $header_background;
 
-			transition: left 0.5s $burger_menu_animation;
+			transition: left 0.5s bezier(burger-menu);
 
 			&.--show {
 				left: 0;
@@ -123,14 +123,13 @@
 		span {
 			background: transparent;
 
-			transition: background 0.1s 0s $burger_btn_animation;
+			transition: background 0.1s 0s bezier(burger-btn);
 
 			&:before,
 			&:after {
 				top: 0;
 
-				transition: top 0.1s $burger_btn_animation,
-					transform 0.1s 0.1s $burger_btn_animation;
+				transition: top 0.1s bezier(burger-btn), transform 0.1s 0.1s bezier(burger-btn);
 			}
 
 			&:before {

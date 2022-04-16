@@ -1,5 +1,5 @@
 $header_background: transparent;
-$header_height: auto;
+$header_height: rem(0);
 $header_point: lg;
 
 .header {
@@ -21,23 +21,20 @@ $header_point: lg;
 	}
 
 	&__menu {
+		&.menu {
+			$color: color('gray', 600);
+			$color_hover: color(accent, 500);
+
+			//? ### Menu
+			// @import 'modules/menu';
+
+			// ? ### Dropdown menu
+			// @import 'modules/dropdown';
+		}
 	}
 }
 
-.menu {
-	$color: color('gray', 600);
-	$color_hover: color(accent, 500);
-
-	//? ### Menu
-	// @import 'modules/menu';
-
-	// ? ### Dropdown menu
-	// @import 'modules/dropdown';
-}
-
-@include media-max(lg) {
-	$burger_btn_animation: cubic-bezier(0.57, 0.21, 0.69, 1.25);
-	$burger_menu_animation: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+@include media-max($header_point) {
 	$burger_btn_size: rem(44);
 	$burger_btn_color: color(dark, 1);
 	$burger_line_height: rem(4);

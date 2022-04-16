@@ -144,7 +144,9 @@ $fontFamily: (
 );
 
 $cubic-bezier: (
-	modal: cubic-bezier(0, 0, 0.5, 1),
+	modal:       cubic-bezier(0, 0, 0.5, 1),
+	burger-btn:  cubic-bezier(0.57, 0.21, 0.69, 1.25),
+	burger-menu: cubic-bezier(0.785, 0.135, 0.15, 0.86),
 );
 
 // Container
