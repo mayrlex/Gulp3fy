@@ -1,15 +1,76 @@
-//- All header mixins
-include ./mixins.pug
+//- Arguments:
+	mods     {string}  - Mod('s)
+	text     {string}  - Link title
+	link     {string}  - Link
+	dropdown {boolean} - Set menu item as dropdown button
+	subitem  {boolean} - Set menu item as sub-item
+	anchor   {string}  - Smooth scrolling to the specified block
+	label    {string}  - Burger button aria-label
 
-+header
-	if (!pageId === 0)
-		a.header__logo(href)
-			//- +img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
-	else
-		.header__logo
-			//- +img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
+//- Call:
+	#{tag}.header__logo
+		+img({ src: 'assets/images/common/logo.svg', alt: 'Brand logo' })
 
 	nav.header__nav
 		.header__menu.menu
+			+menu
+				+menu-item({ text: 'Home', link: '#' }).--current
+				+menu-item({ text: 'About', link: '#' })
+
+				+menu-item({ text: 'Products', link: '#', dropdown: true })
+					+menu-item({ text: 'Laptops', link: '#', subitem: true })
+					+menu-item({ text: 'Headphones', link: '#', subitem: true })
+					+menu-item({ text: 'Keyboards', link: '#', subitem: true }).--disabled
+					+menu-item({ text: 'Mouses', link: '#', subitem: true })
+
+				+menu-item({ text: 'News', link: '#' })
+
+				+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
 
 	+burger
+
+//- Menu
+mixin menu(mods)
+	-
+		let modsArray = '';
+
+		if (mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} menu__list--${modsList[i].trim()}`;
+			}
+		}
+
+	ul.menu__list(class=modsArray)&attributes(attributes)
+		block
+
+//- Menu item
+mixin menu-item(data)
+	//- Has dropdown?
+	if data.dropdown
+		li.menu__item(data-dropdown='')
+			button.menu__link(data-dropdown='toggle')&attributes(attributes)= data.text
+			ul.menu__sub-list(class=data.active)
+				block
+
+	//- Is sub item?
+	else if data.subitem
+		li.menu__sub-item
+			a.menu__sub-link(href=data.link)&attributes(attributes)= data.text
+
+	else
+		li.menu__item
+			//- Has anchor?
+			if data.anchor
+				button.menu__link(data-anchor=data.anchor)&attributes(attributes)= data.text
+					block
+
+			else
+				a.menu__link(href=data.link)&attributes(attributes)= data.text
+					block
+
+//- Burger button
+mixin burger(label = 'Toggle burger menu')
+	button.burger(aria-label=label)&attributes(attributes)
+		span
