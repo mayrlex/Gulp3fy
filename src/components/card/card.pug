@@ -42,29 +42,30 @@
 				.card__footer
 					time.card__date(datetime='2022-01-01') 01 Jan. 2022
 
-mixin card(data)
+mixin card(mods)
 	-
 		let modsArray = '';
-		const linkPattern = "/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/";
 
-		if (data.mods) {
-			const modsList = data.mods.split(',');
+
+		if (mods) {
+			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray}${modsList[i].trim()}'__card'`;
+				modsArray = `${modsArray}${modsList[i].trim()}__card`;
 			}
 		}
 
-	article.card(class=data.row ? `row ${modsArray}` : `col ${modsArray}`)&attributes(attributes)
+	article.card(class=modsArray)&attributes(attributes)
 		block
 
 //- Preview
 mixin card-preview(data)
-	- let tag;
-	- data.link ? (tag = 'a') : (tag = 'div');
+	-
+		let tag;
+		data.link ? (tag = 'a') : (tag = 'div');
 
 	#{tag}.card__preview.--ibg(href=data.link)
-		if (data.src.match(linkPattern))
+		if (data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/))
 			+img({ src: data.src, alt: data.alt })
 		else
 			+pic({ src: data.src, alt: data.alt })

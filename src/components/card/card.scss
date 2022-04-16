@@ -1,9 +1,4 @@
 .card {
-	$col_gap_max: 20;
-	$col_gap_min: 10;
-	$row_gap_max: 30;
-	$row_gap_min: 20;
-
 	$content_between_max: 25;
 	$content_between_min: 15;
 
@@ -15,20 +10,8 @@
 	overflow: hidden;
 
 	//? ### Variants
-	// @import 'variants/column';
-	// @import 'variants/row';
-
-	&__grid {
-		display: grid;
-		grid-template-columns: repeat(12, 1fr);
-		gap: rem($col_gap_min);
-		row-gap: rem($row_gap_min);
-
-		@include media-min(lg) {
-			gap: rem($col_gap_max);
-			row-gap: rem($row_gap_max);
-		}
-	}
+	@import 'variants/column';
+	@import 'variants/row';
 
 	&__preview {
 		position: relative;
@@ -42,37 +25,47 @@
 		}
 
 		//? Preview overlay
-		@include media-hover {
-			&[href] {
-				&:before {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					z-index: 2;
+		// @include media-hover {
+		// 	&[href] {
+		// 		&:before {
+		// 			position: absolute;
+		// 			top: 50%;
+		// 			left: 50%;
+		// 			z-index: 2;
 
-					color: $white;
-					text-align: center;
+		// 			color: $white;
+		// 			text-align: center;
 
-					transform: translate(-50%, -50%);
-					opacity: 0;
+		// 			transform: translate(-50%, -50%);
+		// 			opacity: 0;
 
-					content: 'Learn more';
-				}
+		// 			content: 'Learn more';
+		// 		}
 
-				& img {
-					filter: brightness(1);
-				}
+		// 		& img {
+		// 			filter: brightness(1);
+		// 		}
 
-				&:hover {
-					&:before {
-						opacity: 1;
-					}
+		// 		&:hover {
+		// 			&:before {
+		// 				opacity: 1;
+		// 			}
 
-					& img {
-						filter: brightness(0.5);
-					}
-				}
-			}
+		// 			& img {
+		// 				filter: brightness(0.2);
+		// 			}
+		// 		}
+		// 	}
+		// }
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+
+		//? Margin between card items (Exclude last item)
+		& > [class*='card__']:not(:last-child) {
+			@include adaptive('margin-bottom', $content_between_max, $content_between_min);
 		}
 	}
 

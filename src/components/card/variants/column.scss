@@ -18,26 +18,11 @@
 		grid-column: 3 span;
 	}
 
-	& > [class*='card__'] {
-		&:not([class*='preview']) {
-			//? Padding-x for card item (Exclude .card__preview)
-			@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
-			@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
-
-			//? Margin top for any card item (Exclude .card__preview)
-			// &:first-child {
-			// 	@include adaptive('margin-top', $content_padding_y_max, $content_padding_y_min);
-			// }
-
-			//? Margin bottom for any card item (Exclude .card__preview)
-			&:last-child {
-				@include adaptive('margin-bottom', $content_padding_y_max, $content_padding_y_min);
-			}
-		}
-
-		//? Margin between card items
-		&:not(:last-child) {
-			@include adaptive('margin-bottom', $content_between_max, $content_between_min);
-		}
+	& .card__inner {
+		height: 100%;
+		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
+		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
 	}
 }

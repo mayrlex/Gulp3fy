@@ -4,7 +4,6 @@
 	display: grid;
 	grid-column: 12 span;
 	grid-template-columns: repeat(12, 1fr);
-	@include adaptive('gap', $content_padding_x_max, $content_padding_x_min, 1);
 
 	@include media-min(lg) {
 		grid-column: 6 span;
@@ -17,38 +16,16 @@
 			grid-column: 5 span;
 		}
 	}
-}
 
-& &__inner {
-	//? Padding left if card__inner comes first
-	// &:first-child {
-	// 	@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min, 1);
-	// }
+	& .card__inner {
+		grid-column: 12 span;
+		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
+		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
+		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
 
-	//? Padding right if card__inner comes last
-	&:last-child {
-		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min, 1);
-	}
-}
-
-&__inner {
-	display: flex;
-	flex-direction: column;
-	grid-column: 12 span;
-	@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min, 1);
-
-	@include media-max(sm) {
-		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min, 1);
-		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min, 1);
-	}
-
-	@include media-min(sm) {
-		grid-column: 7 span;
-		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min, 1);
-	}
-
-	//? Margin between card items (Exclude last item)
-	& > [class*='card__']:not(:last-child) {
-		@include adaptive('margin-bottom', $content_between_max, $content_between_min, 1);
+		@include media-min(sm) {
+			grid-column: 7 span;
+		}
 	}
 }
