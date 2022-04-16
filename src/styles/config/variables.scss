@@ -117,6 +117,17 @@ $breakpoints: (
 	xxl: 1400 - 0.2,
 );
 
+$body: (
+	background: $white,
+	color: color('gray', 600),
+	font-family: ('Inter', sans-serif),
+	font-size: (
+		max: 16,
+		min: 14,
+	),
+	line-height: 100%,
+);
+
 $states: (
 	hover:     alpha($accent, 85),
 	active:    alpha($accent, 75),

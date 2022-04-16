@@ -26,11 +26,11 @@ body {
 }
 
 body {
-	color: $body;
-	@include adaptive('font-size', 16, 14, 1);
-	font-family: font(default);
+	color: body(color);
+	@include adaptive('font-size', body(font-size, max), body(font-size, min));
+	font-family: body(font-family);
 
-	background: $white;
+	background: body(background);
 	text-size-adjust: 100%;
 
 	&.--lock {
@@ -41,7 +41,7 @@ body {
 input,
 button,
 textarea {
-	font-family: font(default);
+	font-family: body(font-family);
 }
 
 input::-ms-clear {
