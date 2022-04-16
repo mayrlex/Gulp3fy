@@ -8,7 +8,6 @@ import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
 import { path } from '../config/path.js';
-import { markupConfig } from '../../config.js';
 
 const markup = [path.markup.watch, path.components.markup];
 
@@ -24,12 +23,16 @@ export const markupBuild = () => {
 			)
 		)
 		.pipe(
-			pug({
-				pretty: markupConfig.pretty,
-				verbose: markupConfig.verbose,
-				plugins: [pugGlob()],
-			})
+			gulpif(
+				path.isDev,
+				pug({
+					pretty: true,
+					verbose: true,
+					plugins: [pugGlob()],
+				})
+			)
 		)
+		.pipe(gulpif(path.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
 		.pipe(gulpif(path.isProd, webphtmlNosvg()))
 		.pipe(
 			gulpif(

@@ -61,14 +61,6 @@ const ftpConfig = {
 };
 
 //##############################
-// Markup settings
-//##############################
-const markupConfig = {
-	pretty:  true,
-	verbose: true,
-}
-
-//##############################
 // Styles settings
 //##############################
 const stylesConfig = {
@@ -114,6 +106,5 @@ export { serverConfig };
 export { manifest };
 export { ftpConfig };
 export { imgminConfig };
-export { markupConfig };
 export { stylesConfig };
 export { spriteConfig };
