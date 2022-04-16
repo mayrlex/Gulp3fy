@@ -118,12 +118,12 @@ $breakpoints: (
 );
 
 $body: (
-	background: $white,
-	color: color('gray', 600),
+	background:  $white,
+	color:       color('gray', 600),
 	font-family: ('Inter', sans-serif),
 	font-size: (
-		max: 16,
-		min: 14,
+		max:     16,
+		min:     14,
 	),
 	line-height: 100%,
 );
@@ -137,10 +137,6 @@ $states: (
 		color: color('gray', 400),
 		bg:    alpha($gray, 85),
 	),
-);
-
-$fontFamily: (
-	default: ('Inter', sans-serif),
 );
 
 $cubic-bezier: (
@@ -162,7 +158,6 @@ $colGap_min:   10;
 $rowGap_min:   20;
 
 // UI
-$body:        color('gray', 600);
 $icon_width:  rem(16);
 $icon_height: rem(16);
 $backdrop:    alpha(color(dark, 2), 10);

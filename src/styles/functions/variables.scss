@@ -1,13 +1,3 @@
-// Font family
-@function font($variant) {
-	@if map-has-key($fontFamily, $variant) {
-		@return map-get($fontFamily, $variant);
-	}
-
-	@warn 'Font #{$variant} not found.';
-	@return null;
-}
-
 // Body styles map
 @function body($property, $value: null) {
 	@if map-has-key($body, $property, $value) {
