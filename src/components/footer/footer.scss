@@ -6,7 +6,19 @@
 	}
 
 	&__menu {
-		&.menu {
+		> .col {
+			// grid-column: 3 span;
+		}
+	}
+
+	& .menu {
+		&__list {
+		}
+
+		&__item {
+		}
+
+		&__link {
 		}
 	}
 }

@@ -1,0 +1,25 @@
+//- Arguments:
+	title {string} - Column title
+	text  {string} - Item text
+	link  {string} - Item link
+
+//- Call:
+	+footer-menu({ title: 'Navigation' })
+		+footer-menu-item({ text: 'Home', link: '#' })
+		+footer-menu-item({ text: 'About', link: '#' })
+		+footer-menu-item({ text: 'News', link: '#' })
+		+footer-menu-item({ text: 'Price', link: '#' })
+		+footer-menu-item({ text: 'Contact', link: '#' })
+
+//- Footer menu
+mixin footer-menu(data)
+	.col
+		if data.title
+			h3.menu__title!= data.title
+		ul.menu__list
+			block
+
+//- Footer menu item
+mixin footer-menu-item(data)
+	li.menu__item
+		a.menu__link(href=data.link)!= data.text
