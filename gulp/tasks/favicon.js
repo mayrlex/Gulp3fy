@@ -24,6 +24,7 @@ const faviconsBuild = () =>
 				appDescription: manifest.description,
 				developerName: manifest.devName,
 				developerURL: manifest.devUrl,
+				version: manifest.version,
 				lang: manifest.lang,
 				background: manifest.bg,
 				theme_color: manifest.themeColor,

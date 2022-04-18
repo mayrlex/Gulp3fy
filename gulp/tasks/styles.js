@@ -55,19 +55,8 @@ export const stylesBuild = () => {
 			})
 		)
 		.pipe(gulp.dest(path.styles.dest))
-		.pipe(
-			gulpif(
-				path.isProd,
-				cleanCss({
-					level: stylesConfig.cleanlvl,
-				})
-			)
-		)
-		.pipe(
-			rename({
-				extname: '.min.css',
-			})
-		)
+		.pipe(gulpif(path.isProd, cleanCss({ level: stylesConfig.cleanlvl })))
+		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.styles.dest))
 		.pipe(sync.stream());
 };
