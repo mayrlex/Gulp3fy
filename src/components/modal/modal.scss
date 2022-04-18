@@ -1,5 +1,5 @@
 .modal {
-	$delay: 0.3s;
+	$animation_delay: 0.3s;
 
 	$close_top: 0;
 	$close_right: 0;
@@ -12,19 +12,33 @@
 	$content_padding_y_max: 0;
 	$content_padding_y_min: 0;
 
-	transition: opacity $delay, visibility $delay;
+	$modal_margin_y: 50;
 
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+
+	visibility: hidden;
+	opacity: 0;
+
+	transition: opacity $animation_delay, visibility $animation_delay;
+
+	pointer-events: none;
+
+	//? When modal is hidden
 	&[aria-hidden='true'] {
-		visibility: hidden;
-		opacity: 0;
-
-		pointer-events: none;
-
 		& .modal__inner {
-			animation: modal-on-hide $delay bezier(modal);
+			animation: modal-on-hide $animation_delay bezier(modal);
 		}
 	}
 
+	//? When modal is shown
 	&[aria-hidden='false'] {
 		visibility: visible;
 		opacity: 1;
@@ -32,20 +46,27 @@
 		pointer-events: all;
 
 		& .modal__inner {
-			animation: modal-on-show $delay bezier(modal);
+			animation: modal-on-show $animation_delay bezier(modal);
+		}
+	}
+
+	//? If content scroll is enabled
+	&[data-modal-scroll='true'] {
+		& .modal__overlay {
+			height: 100%;
+		}
+
+		& .modal__content {
+			flex: 1 1 auto;
+			overflow-y: auto;
 		}
 	}
 
 	&__overlay {
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		min-height: 100%;
 
 		background: $backdrop;
 	}
@@ -53,33 +74,38 @@
 	&__inner {
 		position: relative;
 
-		width: 100%;
+		display: flex;
+		flex-direction: column;
+
 		max-width: rem(500);
+		height: calc(100% - rem(20));
 		min-height: rem(50);
-		margin: 0 rem(10);
+		margin: rem(10) rem(10);
 		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
 		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
 		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
 		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
-		overflow-y: auto;
+		overflow: hidden;
 
 		background: $white;
 
-		> [class^='modal__']:not(:last-child) {
-			@include adaptive('margin-bottom', $content_between_max, $content_between_min);
+		// > [class^='modal__']:not(:last-child) {
+		// 	@include adaptive('margin-bottom', $content_between_max, $content_between_min);
+		// }
+
+		@include media-min(sm) {
+			height: calc(100% - rem($modal_margin_y));
+			margin: rem($modal_margin_y) rem(10);
 		}
 	}
 
-	&__header {
-		display: flex;
-		align-items: center;
-	}
-
 	&__close {
-		@include icon-cross($size: 24, $width: 2, $color: color('gray', 600), $radius: 2);
+		@include icon-cross($size: 32, $width: 2, $color: color('gray', 600), $radius: 2);
 		position: absolute;
 		top: rem($close_top);
 		right: rem($close_right);
+
+		padding: rem(8);
 
 		&:before,
 		&:after {
