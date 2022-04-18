@@ -65,8 +65,9 @@ if !translate
 if !robots
 	meta(name='robots' value='noindex, nofollow')
 
-link(rel='preconnect' href='https://fonts.googleapis.com')
-link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
-link(href=googleFonts rel='stylesheet')
+if googleFonts
+	link(rel='preconnect' href='https://fonts.googleapis.com')
+	link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin)
+	link(href=googleFonts rel='stylesheet')
 
 link(rel='stylesheet', href='assets/css/main.min.css')
