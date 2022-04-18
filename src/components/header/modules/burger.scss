@@ -48,7 +48,11 @@
 		@include media-max($header_point) {
 			position: fixed;
 			top: 0;
-			left: -100%;
+			@if $burger_menu_direction == ltr {
+				left: -100%;
+			} @else {
+				right: -100%;
+			}
 
 			height: 100%;
 			padding-top: calc($header_height + rem(50));
@@ -56,16 +60,19 @@
 
 			background: $header_background;
 
-			transition: left 0.5s bezier(burger-menu);
+			@if $burger_menu_direction == ltr {
+				transition: left $burger_menu_delay bezier(burger-menu);
+			} @else {
+				transition: right $burger_menu_delay bezier(burger-menu);
+			}
 
 			&.--show {
-				left: 0;
+				@if $burger_menu_direction == ltr {
+					left: 0;
+				} @else {
+					right: 0;
+				}
 			}
-		}
-
-		@include media-min($header_point) {
-			display: flex;
-			align-items: center;
 		}
 	}
 }

@@ -21,16 +21,17 @@ $header_point: lg;
 	}
 
 	&__menu {
-		&.menu {
-			$color: color('gray', 600);
-			$color_hover: color(accent, 500);
+	}
 
-			//? ### Menu
-			// @import 'modules/menu';
+	& .menu {
+		$color: color('gray', 600);
+		$color_hover: color(accent, 500);
 
-			// ? ### Dropdown menu
-			// @import 'modules/dropdown';
-		}
+		//? ### Menu
+		// @import 'modules/menu';
+
+		// ? ### Dropdown menu
+		// @import 'modules/dropdown';
 	}
 }
 
@@ -38,6 +39,8 @@ $header_point: lg;
 	$burger_btn_size: rem(44);
 	$burger_btn_color: color(dark, 1);
 	$burger_line_height: rem(4);
+	$burger_menu_direction: ltr;
+	$burger_menu_delay: 0.3s;
 
 	//? ### Burger
 	// @import 'modules/burger';
