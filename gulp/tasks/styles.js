@@ -48,14 +48,11 @@ export const stylesBuild = () => {
 			)
 		)
 		.pipe(
-			gulpif(
-				path.isProd,
-				autoprefixer({
-					grid: stylesConfig.autoprefixer.grid,
-					overrideBrowserlist: [stylesConfig.autoprefixer.overrideBrowserlist],
-					cascade: stylesConfig.autoprefixer.cascade,
-				})
-			)
+			autoprefixer({
+				grid: stylesConfig.autoprefixer.grid,
+				overrideBrowserlist: [stylesConfig.autoprefixer.overrideBrowserlist],
+				cascade: stylesConfig.autoprefixer.cascade,
+			})
 		)
 		.pipe(gulp.dest(path.styles.dest))
 		.pipe(
