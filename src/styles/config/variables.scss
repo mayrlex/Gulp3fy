@@ -9,6 +9,7 @@ $gray:    #ADB5BD;
 
 // Accent color map
 $accent-map: (
+	50:  tint($accent, 90),
 	100: tint($accent, 80),
 	200: tint($accent, 60),
 	300: tint($accent, 40),
@@ -22,6 +23,7 @@ $accent-map: (
 
 // Success color map
 $success-map: (
+	50:  tint($success, 90),
 	100: tint($success, 80),
 	200: tint($success, 60),
 	300: tint($success, 40),
@@ -35,6 +37,7 @@ $success-map: (
 
 // Warning color map
 $warning-map: (
+	50:  tint($warning, 90),
 	100: tint($warning, 80),
 	200: tint($warning, 60),
 	300: tint($warning, 40),
@@ -48,6 +51,7 @@ $warning-map: (
 
 // Danger color map
 $danger-map: (
+	50:  tint($danger, 90),
 	100: tint($danger, 80),
 	200: tint($danger, 60),
 	300: tint($danger, 40),
@@ -61,6 +65,7 @@ $danger-map: (
 
 // Info color map
 $info-map: (
+	50:  tint($info, 90),
 	100: tint($info, 80),
 	200: tint($info, 60),
 	300: tint($info, 40),
@@ -74,6 +79,7 @@ $info-map: (
 
 // Gray color map
 $gray-map: (
+	50:  tint($gray, 90),
 	100: tint($gray, 80),
 	200: tint($gray, 60),
 	300: tint($gray, 40),
