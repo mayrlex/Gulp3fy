@@ -14,29 +14,30 @@ include ../../components/pagination/pagination.pug
 include ../../components/spoiler/spoiler.pug
 include ../../components/tabs/tabs.pug
 
-block variables
+block settings
 
 doctype html
-html(lang=pageLang)
+html(lang=page.lang)
 	head
 		include ../config/head.pug
+		block styles
 
 	body.body
 		.wrapper
-			block header
-				header.header(role='banner')
-					.header__inner.container
-						- let tag;
-						- pageId !== 0 ? (tag = `a href='${pageUrl}'`) : (tag = 'div');
+			header.header(role='banner')
+				.header__inner.container
+					- let tag;
+					- page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
 
+					block header
 						include ../parts/header.pug
 
 			main.main
 				block content
 
-			block footer
-				footer.footer(role='contentinfo')
-					.footer__inner.container
+			footer.footer(role='contentinfo')
+				.footer__inner.container
+					block footer
 						include ../parts/footer.pug
 
 		block scripts

@@ -1,20 +1,54 @@
 extends layouts/default.pug
 
-block variables
+block settings
 	-
-		const pageId          = 0,
-			  pageName        = '',
-			  pageLang        = 'ru',
-			  pageDescription = '',
-			  pageKeywords    = '',
-			  pageAuthor      = '',
-			  pageLocale      = 'ru-RU',
-			  pageUrl         = 'http://localhost:3300',
-			  pageLogoFormat  = 'svg',
-			  pageScalable    = true,
-			  themeColor      = '#ffffff',
-			  translate       = true,
-			  robots          = true;
+		const page = {
+			id:          0,
+			name:        'Home',
+			description: null,
+			lang:        'ru',
+			canonical:   'http://localhost:3300',
+		}
+
+		const meta = {
+			viewport:                        'width=device-width, initial-scale=1.0',
+			keywords:                        [],
+			image:                           config.logo,
+			author:                          null,
+			ogType:                          'website',
+			ogUrl:                           page.canonical,
+			ogLocale:                        'ru_RU',
+			ogSiteName:                      config.siteName,
+			ogTitle:                         true,
+			ogDescription:                   page.description,
+			ogImage:                         config.logo,
+			ogImageType:                     null,
+			ogImageWidth:                    null,
+			ogImageHeight:                   null,
+			ogImageAlt:                      null,
+			twitterCard:                     'summary_large_image',
+			twitterUrl:                      page.canonical,
+			twitterSite:                     config.siteName,
+			twitterCreator:                  null,
+			twitterTitle:                    true,
+			twitterDescription:              page.description,
+			twitterImage:                    config.logo,
+			appleMobileWebAppCapable:        'yes',
+			appleMobileWebAppStatusBarStyle: null,
+			appleMobileWebAppTitle:          true,
+			applicationName:                 null,
+			themeColor:                      '#ffffff',
+			themeColorLight:                 null,
+			themeColorDark:                  null,
+			formatDetection: {
+				address:                     false,
+				date:                        false,
+				email:                       false,
+				telephone:                   false
+			},
+			googleTranslate:                 null,
+			robots:                          null,
+		}
 
 block content
 	include pages/home/hero.pug
