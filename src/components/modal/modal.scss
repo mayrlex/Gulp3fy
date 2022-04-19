@@ -21,8 +21,6 @@
 
 	width: 100%;
 	height: 100%;
-	overflow-x: hidden;
-	overflow-y: auto;
 
 	visibility: hidden;
 	opacity: 0;
@@ -60,6 +58,12 @@
 			flex: 1 1 auto;
 			overflow-y: auto;
 		}
+	}
+
+	//? If content scroll is disabled
+	&:not([data-modal-scroll]) {
+		overflow-x: hidden;
+		overflow-y: auto;
 	}
 
 	&__overlay {
