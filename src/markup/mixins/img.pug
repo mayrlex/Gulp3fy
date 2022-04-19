@@ -37,3 +37,7 @@ mixin pic(data)
 			src='assets/images/common/placeholder.png',
 			alt=data.alt
 		)&attributes(attributes)
+
+mixin svg(name)
+	svg&attributes(attributes)
+		use(xlink:href=`assets/images/sprites/sprite-svg.svg#${name}`)
