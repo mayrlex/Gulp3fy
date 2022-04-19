@@ -13,7 +13,7 @@ import '../components/header/header.js';
 // import '../components/spoiler/spoiler.js';
 
 //? ### Pages
-import './pages/home/hero.js';
+import './pages/home.js';
 
 documentReady(() => {
 	lazyLoad();
