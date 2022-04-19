@@ -5,12 +5,18 @@ Call:
 	const modal1 = new Modal('modal-1');
 */
 
+import Lock from '../../scripts/modules/lock.js';
+
 export default class Modal {
 	constructor(id) {
 		this.id = id;
 		this.modal = document.querySelector(`#${this.id}`);
 		this.modalNodes = document.querySelectorAll('.modal');
 		this.isShown = false;
+		this.lock = new Lock({
+			scrollOffset: scrollFix,
+		});
+
 		this.FOCUSABLE_ELEMENTS = [
 			'a[href]',
 			'area[href]',
@@ -55,7 +61,7 @@ export default class Modal {
 		});
 
 		this.isShown ? this.hide() : null;
-		document.body.classList.add('--lock');
+		this.lock.lock();
 		this.modal.ariaHidden = 'false';
 
 		setTimeout(() => {
@@ -65,7 +71,7 @@ export default class Modal {
 	}
 
 	hide() {
-		document.body.classList.remove('--lock');
+		this.lock.unlock();
 		this.isShown = false;
 		this.modal.ariaHidden = 'true';
 	}
