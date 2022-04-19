@@ -49,7 +49,7 @@
 	}
 
 	//? If content scroll is enabled
-	&[data-modal-scroll='true'] {
+	&[data-modal-scroll] {
 		& .modal__overlay {
 			height: 100%;
 		}

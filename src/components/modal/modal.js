@@ -1,16 +1,41 @@
 /*
+Options:
+	target       {string}  - Modal id
+	openTrigger  {string}  - Modal open trigger [ `[data-<any>='${target}']` | Default: `[data-modal='${target}']` ]
+	closeTrigger {string}  - Modal close trigger [ Default: [data-modal-close] ]
+	scrollFix    {boolean} - Sets padding-right for content when scroll is blocked [Default: true]
+	onShow()     {object}  - Function triggired on show modal
+	onHide()     {object}  - Function triggired on hide modal
+
 Call:
 	import Modal from '../../../components/modal/modal.js';
 
-	const modal1 = new Modal('modal-1');
+	const modal1 = new Modal({
+		id: 'modal-1',
+		scrollFix: false,
+		onShow: () => {
+			console.log('Modal is shown');
+		},
+
+		onHide: () => {
+			console.log('Modal is hidden');
+		},
+	});
 */
 
 import Lock from '../../scripts/modules/lock.js';
 
 export default class Modal {
-	constructor(id) {
-		this.id = id;
-		this.modal = document.querySelector(`#${this.id}`);
+	constructor({
+		target,
+		openTrigger = `[data-modal='${target}']`,
+		closeTrigger = '[data-modal-close]',
+		scrollFix,
+		onShow = () => {},
+		onHide = () => {},
+	}) {
+		this.config = { target, openTrigger, closeTrigger, onShow, onHide };
+		this.modal = document.querySelector(`#${this.config.target}`);
 		this.modalNodes = document.querySelectorAll('.modal');
 		this.isShown = false;
 		this.lock = new Lock({
@@ -37,12 +62,11 @@ export default class Modal {
 	events() {
 		if (this.modal) {
 			document.addEventListener('click', (event) => {
-				const call = event.target.closest(`[data-modal=${this.id}]`);
-				const close = event.target.closest('[data-modal-close]');
-				const overlay = event.target.classList.contains('modal__overlay');
+				const closeTrigger = event.target.closest(this.config.closeTrigger);
+				const outsideArea = event.target.classList.contains('modal__overlay');
 
-				call ? this.show() : null;
-				close || overlay ? this.hide() : null;
+				if (event.target.closest(this.config.openTrigger)) this.show();
+				closeTrigger || outsideArea ? this.hide() : null;
 			});
 
 			window.addEventListener('keydown', (event) => {
@@ -62,6 +86,7 @@ export default class Modal {
 
 		this.isShown ? this.hide() : null;
 		this.lock.lock();
+		this.config.onShow(this);
 		this.modal.ariaHidden = 'false';
 
 		setTimeout(() => {
@@ -71,6 +96,7 @@ export default class Modal {
 	}
 
 	hide() {
+		this.config.onHide(this);
 		this.lock.unlock();
 		this.isShown = false;
 		this.modal.ariaHidden = 'true';
