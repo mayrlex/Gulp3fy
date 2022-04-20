@@ -49,19 +49,26 @@ export const path = {
 		],
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		svg: `${source}/assets/images/**/*.svg`,
+		svg: [`${source}/assets/images/**/*.svg`, `!${source}/assets/images/svg`],
 		placehoder: `${source}/assets/images/**/placeholder.png`,
 	},
 
-	icons: {
+	sprites: {
+		icon: {
 		src: {
-			mono: `${source}/assets/icons/mono/*.svg`,
-			multi: `${source}/assets/icons/multi/*.svg`,
+				mono: `${source}/assets/icons/mono/**/*.svg`,
+				multi: `${source}/assets/icons/multi/**/*.svg`,
 		},
 		dest: `${compiled}/assets/images`,
 		watch: {
-			mono: `${source}/assets/icons/mono/*.svg`,
-			multi: `${source}/assets/icons/multi/*.svg`,
+				mono: `${source}/assets/icons/mono/**/*.svg`,
+				multi: `${source}/assets/icons/multi/**/*.svg`,
+			},
+		},
+		svg: {
+			src: `${source}/assets/images/svg/**/*.svg`,
+			dest: `${compiled}/assets/images`,
+			watch: `${source}/assets/images/svg/**/*.svg`,
 		},
 	},
 

@@ -95,10 +95,12 @@ const spriteConfig = {
 	example: {
 		mono:  true,
 		multi: true,
+		svg:   true,
 	},
 	removeAttrs: {
 		mono:  ['class', 'data-name', 'fill.*', 'stroke.*'],
 		multi: ['class', 'data-name'],
+		svg:   ['class', 'data-name'],
 	}
 }
 

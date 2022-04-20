@@ -7,7 +7,7 @@ import { spriteConfig } from '../../config.js';
 
 const spriteMono = () =>
 	gulp
-		.src(path.icons.src.mono)
+		.src(path.sprites.icon.src.mono)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -41,11 +41,11 @@ const spriteMono = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(path.icons.dest));
+		.pipe(gulp.dest(path.sprites.icon.dest));
 
 const spriteMulti = () =>
 	gulp
-		.src(path.icons.src.multi)
+		.src(path.sprites.icon.src.multi)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -84,9 +84,55 @@ const spriteMulti = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.icons.dest));
+		.pipe(gulp.dest(path.sprites.icon.dest));
 
-export const spritesBuild = gulp.parallel(spriteMono, spriteMulti);
+const spriteSvg = () =>
+	gulp
+		.src(path.sprites.svg.src)
+		.pipe(
+			plumber(
+				notify.onError({
+					title: 'SPRITES',
+					message: 'Error: <%= error.message %>',
+				})
+			)
+		)
+		.pipe(
+			svgSprite({
+				mode: {
+					stack: {
+						sprite: '../sprites/sprite-svg.svg',
+						example: spriteConfig.example.svg,
+					},
+				},
+				shape: {
+					transform: [
+						{
+							svgo: {
+								plugins: [
+									{
+										removeAttrs: {
+											attrs: spriteConfig.removeAttrs.svg,
+										},
+									},
+
+									{ removeUselessStrokeAndFill: false },
+
+									{ inlineStyles: true },
+								],
+							},
+						},
+					],
+				},
+			})
+		)
+
+		.pipe(gulp.dest(path.sprites.svg.dest));
+
+export const spritesBuild = gulp.parallel(spriteMono, spriteMulti, spriteSvg);
 export const spritesWatch = () => {
-	gulp.watch([path.icons.watch.mono, path.icons.watch.multi], spritesBuild);
+	gulp.watch(
+		[path.sprites.icon.watch.mono, path.sprites.icon.watch.multi, path.sprites.svg.watch],
+		spritesBuild
+	);
 };
