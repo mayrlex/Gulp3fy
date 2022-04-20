@@ -13,7 +13,7 @@ module.exports = {
 			'error',
 			{ devDependencies: ['gulpfile.js', 'gulp/**/*'] },
 		],
-		indent: ['error', 'tab'],
+		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'no-console': 0,
 		'eol-last': 0,
 		'no-unused-vars': 0,
