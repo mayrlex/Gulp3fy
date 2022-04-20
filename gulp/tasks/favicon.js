@@ -18,7 +18,7 @@ const faviconsBuild = () =>
 		)
 		.pipe(
 			favicons({
-				path: '../common/',
+				path: './',
 				appName: manifest.name,
 				appShortName: manifest.shortname,
 				appDescription: manifest.description,

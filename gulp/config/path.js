@@ -55,12 +55,12 @@ export const path = {
 
 	sprites: {
 		icon: {
-		src: {
+			src: {
 				mono: `${source}/assets/icons/mono/**/*.svg`,
 				multi: `${source}/assets/icons/multi/**/*.svg`,
-		},
-		dest: `${compiled}/assets/images`,
-		watch: {
+			},
+			dest: `${compiled}/assets/images`,
+			watch: {
 				mono: `${source}/assets/icons/mono/**/*.svg`,
 				multi: `${source}/assets/icons/multi/**/*.svg`,
 			},
@@ -74,7 +74,7 @@ export const path = {
 
 	favicon: {
 		src: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
-		dest: `${compiled}/assets/images/common/`,
+		dest: `${compiled}/assets/images/common/favicons/`,
 		watch: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
 	},
 
