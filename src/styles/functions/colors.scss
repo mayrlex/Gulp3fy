@@ -8,12 +8,6 @@
 	@return mix($black, $color, $prc);
 }
 
-// Set an alpha channel to a color
-@function alpha($color, $prc) {
-	$prc: math.div($prc, 100);
-	@return color.adjust($color, $alpha: -$prc);
-}
-
 // Get color from the map
 @function color($color, $key) {
 	@if map-has-key($color-names, $color, $key) {

@@ -135,13 +135,13 @@ $body: (
 );
 
 $states: (
-	hover:     alpha($accent, 85),
-	active:    alpha($accent, 75),
-	focus:     0 0 0 rem(4) alpha($accent, 50),
+	hover:     rgba($accent, 0.15),
+	active:    rgba($accent, 0.25),
+	focus:     0 0 0 rem(4) rgba($accent, 0.5),
 	current:   color('gray', 700),
 	disabled: (
 		color: color('gray', 400),
-		bg:    alpha($gray, 85),
+		bg:    rgba($gray, 0.15),
 	),
 );
 
@@ -166,4 +166,4 @@ $rowGap_min:   20;
 // UI
 $icon_width:  rem(16);
 $icon_height: rem(16);
-$backdrop:    alpha(color(dark, 2), 10);
+$backdrop:    rgba(color(dark, 2), .9);

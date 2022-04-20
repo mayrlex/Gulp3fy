@@ -16,7 +16,7 @@
 			width: rem(24);
 			height: rem(6);
 
-			background: alpha(color(dark, 1), 50);
+			background: rgba(color(dark, 1), 0.5);
 			border-radius: em(4);
 			opacity: 1;
 
@@ -24,12 +24,12 @@
 
 			@include media-hover {
 				&:hover:not(.swiper-pagination-bullet-active) {
-					background: alpha(color(accent, 500), 50);
+					background: rgba(color(accent, 500), 0.5);
 				}
 			}
 
 			&-active {
-				background: alpha(color(accent, 500), 25);
+				background: rgba(color(accent, 500), 0.75);
 			}
 		}
 	}
@@ -39,7 +39,7 @@
 		margin-top: rem(-$nav_btn_margin);
 
 		&:after {
-			color: alpha(color(accent, 500), 50);
+			color: rgba(color(accent, 500), 0.5);
 		}
 	}
 
