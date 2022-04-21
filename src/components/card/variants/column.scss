@@ -20,9 +20,9 @@
 
 	& .card__inner {
 		height: 100%;
-		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
-		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
-		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
-		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
+		@include adaptive('padding-top', $-content_padding_y_max, $-content_padding_y_min);
+		@include adaptive('padding-right', $-content_padding_x_max, $-content_padding_x_min);
+		@include adaptive('padding-bottom', $-content_padding_y_max, $-content_padding_y_min);
+		@include adaptive('padding-left', $-content_padding_x_max, $-content_padding_x_min);
 	}
 }

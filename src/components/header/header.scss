@@ -4,19 +4,32 @@
 @use 'src/styles/mixins/icon';
 @use 'src/styles/mixins/media';
 
-$header_background: transparent;
-$header_height: rem(0);
-$header_point: lg;
+$-breakpoint: lg;
+
+// header
+$-bg: transparent;
+$-height: rem(0);
+
+// menu
+$-color: color('gray', 600);
+$-color_hover: color(accent, 500);
+
+// burger
+$-btn_size: rem(44);
+$-btn_color: color(dark, 1);
+$-item_height: rem(4);
+$-menu_direction: ltr;
+$-menu_transition_delay: 0.3s;
 
 .header {
 	z-index: 10;
 
-	background: $header_background;
+	background: $-bg;
 
 	&__inner {
 		display: flex;
 		align-items: center;
-		min-height: $header_height;
+		min-height: $-height;
 	}
 
 	&__logo {
@@ -30,9 +43,6 @@ $header_point: lg;
 	}
 
 	& .menu {
-		$color: color('gray', 600);
-		$color_hover: color(accent, 500);
-
 		//? ### Menu
 		// @import 'modules/menu';
 
@@ -41,13 +51,7 @@ $header_point: lg;
 	}
 }
 
-@include media.max($header_point) {
-	$burger_btn_size: rem(44);
-	$burger_btn_color: color(dark, 1);
-	$burger_line_height: rem(4);
-	$burger_menu_direction: ltr;
-	$burger_menu_delay: 0.3s;
-
+@include media.max($-breakpoint) {
 	//? ### Burger
 	// @import 'modules/burger';
 }

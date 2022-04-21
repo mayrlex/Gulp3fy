@@ -1,20 +1,20 @@
 //? ### Module: Menu
 
 &__list {
-	@include media.min($header_point) {
+	@include media.min($-breakpoint) {
 		display: flex;
 	}
 }
 
 &__item {
-	@include media.min($header_point) {
+	@include media.min($-breakpoint) {
 		&:not(:last-child) {
 		}
 	}
 }
 
 &__link {
-	color: $color;
+	color: $-color;
 	font-size: inherit;
 
 	&.--current {
@@ -25,7 +25,7 @@
 
 	@include media.hover {
 		&:hover {
-			color: $color_hover;
+			color: $-color_hover;
 		}
 	}
 }

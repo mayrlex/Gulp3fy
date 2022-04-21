@@ -1,16 +1,16 @@
 @use 'src/styles/utils/forwards' as *;
 @use 'src/styles/mixins/component';
 
-.badge {
-	$badge_size: rem(14);
+$-size: rem(14);
 
+.badge {
 	display: inline-block;
 	box-sizing: content-box;
-	min-width: $badge_size;
-	min-height: $badge_size;
+	min-width: $-size;
+	min-height: $-size;
 	padding: em(6);
 
-	font-size: $badge_size;
+	font-size: $-size;
 	line-height: 1;
 	white-space: nowrap;
 	text-align: center;

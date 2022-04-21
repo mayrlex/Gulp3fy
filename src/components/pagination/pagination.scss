@@ -2,13 +2,13 @@
 @use 'src/styles/utils/forwards' as *;
 @use 'src/styles/mixins/media';
 
-.pagination {
-	$content_padding: rem(0) rem(0);
-	$btn_control_between: rem(0);
-	$btn_num_between: rem(0);
-	$btn_padding: rem(0) rem(0);
-	$controll_content_between: null;
+$-content_padding: rem(0) rem(0);
+$-btn_control_between: rem(0);
+$-btn_num_between: rem(0);
+$btn_padding: rem(0) rem(0);
+$-controll_content_between: null;
 
+.pagination {
 	display: flex;
 	justify-content: center;
 
@@ -17,7 +17,7 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		padding: $content_padding;
+		padding: $-content_padding;
 	}
 
 	&__list {
@@ -28,15 +28,15 @@
 
 	&__item {
 		&:first-child {
-			margin-right: $btn_control_between;
+			margin-right: $-btn_control_between;
 		}
 
 		&:last-child {
-			margin-left: $btn_control_between;
+			margin-left: $-btn_control_between;
 		}
 
 		&:not(:first-child, :last-child) {
-			margin-right: $btn_num_between;
+			margin-right: $-btn_num_between;
 		}
 	}
 
@@ -64,9 +64,9 @@
 		}
 
 		// If controllers use both text and icon
-		@if $controll_content_between {
+		@if $-controll_content_between {
 			&-content:first-child {
-				margin-right: $controll_content_between;
+				margin-right: $-controll_content_between;
 			}
 		}
 

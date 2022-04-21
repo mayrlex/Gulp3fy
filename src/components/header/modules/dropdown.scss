@@ -9,34 +9,34 @@
 	align-items: center;
 
 	&.--show {
-		color: $color_hover;
+		color: $-color_hover;
 	}
 
 	&[data-dropdown='toggle'] {
 		&:after {
 			content: '';
 
-			@include media.max($header_point) {
+			@include media.max($-breakpoint) {
 				margin-left: rem(5);
 
-				@include icon.arrow-1($size: 6, $color: $color, $direction: bottom, $radius: 4);
+				@include icon.arrow-1($size: 6, $-color: $-color, $direction: bottom, $radius: 4);
 			}
 
-			@include media.min($header_point) {
+			@include media.min($-breakpoint) {
 				margin-left: rem(5);
 
-				@include icon.arrow-1($size: 6, $color: $color, $direction: bottom, $radius: 4);
+				@include icon.arrow-1($size: 6, $-color: $-color, $direction: bottom, $radius: 4);
 			}
 		}
 
 		&.--show {
 			&:after {
-				border-top-color: $color_hover;
+				border-top-color: $-color_hover;
 				transform: rotateX(180deg);
 			}
 
 			// Show dropdown
-			@include media.min($header_point) {
+			@include media.min($-breakpoint) {
 				& ~ .menu__sub-list {
 					visibility: visible;
 					opacity: 1;
@@ -47,11 +47,11 @@
 
 	@include media.hover {
 		&:hover[data-dropdown='toggle']:after {
-			border-top-color: $color_hover;
+			border-top-color: $-color_hover;
 		}
 	}
 
-	@include media.max($header_point) {
+	@include media.max($-breakpoint) {
 		&.--show ~ .menu__sub-list {
 			display: block;
 		}
@@ -60,11 +60,11 @@
 
 &__sub {
 	&-list {
-		@include media.max($header_point) {
+		@include media.max($-breakpoint) {
 			display: none;
 		}
 
-		@include media.min($header_point) {
+		@include media.min($-breakpoint) {
 			position: absolute;
 			top: 100%;
 			z-index: 15;
@@ -81,7 +81,7 @@
 		display: inline-block;
 		width: 100%;
 
-		color: $color;
+		color: $-color;
 
 		&.--disabled {
 			color: map.get($states, disabled, color);
@@ -91,7 +91,7 @@
 
 		@include media.hover {
 			&:hover {
-				color: $color_hover;
+				color: $-color_hover;
 			}
 		}
 	}

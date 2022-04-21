@@ -2,15 +2,14 @@
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/media';
 
+$-item_between_max: 25;
+$-item_between_min: 15;
+$-content_padding_x_max: 25;
+$-content_padding_x_min: 15;
+$-content_padding_y_max: 25;
+$-content_padding_y_min: 15;
+
 .card {
-	$content_between_max: 25;
-	$content_between_min: 15;
-
-	$content_padding_x_max: 25;
-	$content_padding_x_min: 15;
-	$content_padding_y_max: 25;
-	$content_padding_y_min: 15;
-
 	overflow: hidden;
 
 	//? ### Variants
@@ -69,7 +68,7 @@
 
 		//? Margin between card items (Exclude last item)
 		& > [class*='card__']:not(:last-child) {
-			@include adaptive('margin-bottom', $content_between_max, $content_between_min);
+			@include adaptive('margin-bottom', $-item_between_max, $-item_between_min);
 		}
 	}
 

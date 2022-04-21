@@ -3,22 +3,21 @@
 @use 'src/styles/mixins/icon';
 @use 'src/styles/mixins/media';
 
+$-offset_x_max: 10;
+$-offset_x_min: 10;
+$-offset_y_max: 50;
+$-offset_y_min: 10;
+$-content_padding_x_max: 0;
+$-content_padding_x_min: 0;
+$-content_padding_y_max: 0;
+$-content_padding_y_min: 0;
+$-content_between_max: 0;
+$-content_between_min: 0;
+$-btn_close_top: 0;
+$-btn_close_right: 0;
+$-animation_delay: 0.3s;
+
 .modal {
-	$animation_delay: 0.3s;
-
-	$close_top: 0;
-	$close_right: 0;
-
-	$content_between_max: 0;
-	$content_between_min: 0;
-
-	$content_padding_x_max: 0;
-	$content_padding_x_min: 0;
-	$content_padding_y_max: 0;
-	$content_padding_y_min: 0;
-
-	$modal_margin_y: 50;
-
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -30,14 +29,14 @@
 	visibility: hidden;
 	opacity: 0;
 
-	transition: opacity $animation_delay, visibility $animation_delay;
+	transition: opacity $-animation_delay, visibility $-animation_delay;
 
 	pointer-events: none;
 
 	//? When modal is hidden
 	&[aria-hidden='true'] {
 		& .modal__inner {
-			animation: modal-on-hide $animation_delay bezier(modal);
+			animation: modal-on-hide $-animation_delay bezier(modal);
 		}
 	}
 
@@ -49,7 +48,7 @@
 		pointer-events: all;
 
 		& .modal__inner {
-			animation: modal-on-show $animation_delay bezier(modal);
+			animation: modal-on-show $-animation_delay bezier(modal);
 		}
 	}
 
@@ -89,30 +88,30 @@
 		max-width: rem(500);
 		height: calc(100% - rem(20));
 		min-height: rem(50);
-		margin: rem(10) rem(10);
-		@include adaptive('padding-top', $content_padding_y_max, $content_padding_y_min);
-		@include adaptive('padding-right', $content_padding_x_max, $content_padding_x_min);
-		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
-		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
+		margin: rem($-offset_y_min) rem($-offset_x_min);
+		@include adaptive('padding-top', $-content_padding_y_max, $-content_padding_y_min);
+		@include adaptive('padding-right', $-content_padding_x_max, $--content_padding_x_min);
+		@include adaptive('padding-bottom', $-content_padding_y_max, $-content_padding_y_min);
+		@include adaptive('padding-left', $-content_padding_x_max, $--content_padding_x_min);
 		overflow: hidden;
 
 		background: $white;
 
 		// > [class^='modal__']:not(:last-child) {
-		// 	@include adaptive('margin-bottom', $content_between_max, $content_between_min);
+		// 	@include adaptive('margin-bottom', $-content_between_max, $-content_between_min);
 		// }
 
 		@include media.min(sm) {
-			height: calc(100% - rem($modal_margin_y));
-			margin: rem($modal_margin_y) rem(10);
+			height: calc(100% - rem($-offset_y_max));
+			margin: rem($-offset_y_max) rem($-offset_x_max);
 		}
 	}
 
 	&__close {
 		@include icon.cross($size: 32, $width: 2, $color: color('gray', 600), $radius: 2);
 		position: absolute;
-		top: rem($close_top);
-		right: rem($close_right);
+		top: rem($-btn_close_top);
+		right: rem($-btn_close_right);
 
 		padding: rem(8);
 

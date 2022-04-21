@@ -9,9 +9,9 @@
 	// 	z-index: 1;
 
 	// 	width: 100%;
-	// 	height: $header_height;
+	// 	height: $-height;
 
-	// 	background: $header_background;
+	// 	background: $-bg;
 
 	// 	content: '';
 	// }
@@ -45,29 +45,29 @@
 
 	&__nav {
 		//? ## Burger menu
-		@include media.max($header_point) {
+		@include media.max($-breakpoint) {
 			position: fixed;
 			top: 0;
-			@if $burger_menu_direction == ltr {
+			@if $-menu_direction == ltr {
 				left: -100%;
 			} @else {
 				right: -100%;
 			}
 
 			height: 100%;
-			padding-top: calc($header_height + rem(50));
+			padding-top: calc($-height + rem(50));
 			overflow: auto;
 
-			background: $header_background;
+			background: $-bg;
 
-			@if $burger_menu_direction == ltr {
-				transition: left $burger_menu_delay bezier(burger-menu);
+			@if $-menu_direction == ltr {
+				transition: left $-menu_transition_delay bezier(burger-menu);
 			} @else {
-				transition: right $burger_menu_delay bezier(burger-menu);
+				transition: right $-menu_transition_delay bezier(burger-menu);
 			}
 
 			&.--show {
-				@if $burger_menu_direction == ltr {
+				@if $-menu_direction == ltr {
 					left: 0;
 				} @else {
 					right: 0;
@@ -84,8 +84,8 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	width: $burger_btn_size;
-	height: $burger_btn_size;
+	width: $-btn_size;
+	height: $-btn_size;
 	margin-left: auto;
 
 	user-select: none;
@@ -95,9 +95,9 @@
 
 		display: block;
 		width: 90%;
-		height: $burger_line_height;
+		height: $-item_height;
 
-		background: $burger_btn_color;
+		background: $-btn_color;
 
 		transition: background 0.1s;
 
@@ -107,9 +107,9 @@
 			left: 0;
 
 			width: 100%;
-			height: $burger_line_height;
+			height: $-item_height;
 
-			background: $burger_btn_color;
+			background: $-btn_color;
 			transform-origin: 50% 50%;
 
 			transition: top 0.1s 0.1s, transform 0.1s;

@@ -2,13 +2,15 @@
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/component';
 
-.btn {
-	$btn_padding_x_max: 30;
-	$btn_padding_x_min: 15;
-	$btn_padding_y_max: 10;
-	$btn_padding_y_min: 8;
-	$radius: rem(4);
+$-padding_x_max: 30;
+$-padding_x_min: 15;
+$-padding_y_max: 10;
+$-padding_y_min: 8;
+$-radius: rem(4);
+$-icon_padding_max: 10;
+$-icon_padding_min: 8;
 
+.btn {
 	display: inline-flex;
 	align-items: center;
 	overflow: hidden;
@@ -19,7 +21,7 @@
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	border-radius: $radius;
+	border-radius: $-radius;
 	cursor: pointer;
 
 	user-select: none;
@@ -44,16 +46,14 @@
 		$bg_active: color(accent, 700),
 		$bg_disabled: color(accent, 200)
 	) {
-		@include adaptive('padding-top', $btn_padding_y_max, $btn_padding_y_min);
-		@include adaptive('padding-right', $btn_padding_x_max, $btn_padding_x_min);
-		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
-		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
+		@include adaptive('padding-top', $-padding_y_max, $-padding_y_min);
+		@include adaptive('padding-right', $-padding_x_max, $-padding_x_min);
+		@include adaptive('padding-bottom', $-padding_y_max, $-padding_y_min);
+		@include adaptive('padding-left', $-padding_x_max, $-padding_x_min);
 	}
 
 	//? ### Icon button
 	// &-icon {
-	// 	$icon_padding_max: 10;
-	// 	$icon_padding_min: 8;
 
 	// 	display: inline-flex;
 
@@ -76,7 +76,7 @@
 	// 		$bg_active: color(accent, 700),
 	// 		$bg_disabled: color(accent, 200)
 	// 	) {
-	// 		@include adaptive('padding', $icon_padding_max, $icon_padding_min, 1);
+	// 		@include adaptive('padding', $-icon_padding_max, $-icon_padding_min, 1);
 	// 	}
 	// }
 
