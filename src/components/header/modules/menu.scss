@@ -1,13 +1,13 @@
 //? ### Module: Menu
 
 &__list {
-	@include media-min($header_point) {
+	@include media.min($header_point) {
 		display: flex;
 	}
 }
 
 &__item {
-	@include media-min($header_point) {
+	@include media.min($header_point) {
 		&:not(:last-child) {
 		}
 	}
@@ -18,12 +18,12 @@
 	font-size: inherit;
 
 	&.--current {
-		color: state(current);
+		color: map.get($states, current);
 
 		pointer-events: none;
 	}
 
-	@include media-hover {
+	@include media.hover {
 		&:hover {
 			color: $color_hover;
 		}

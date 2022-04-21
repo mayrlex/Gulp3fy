@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/adaptive' as *;
+@use 'src/styles/mixins/media';
+
 .breadcrumbs {
 	$fontSize_max: 18;
 	$fontSize_min: 16;
@@ -32,14 +37,14 @@
 		}
 
 		&.--current {
-			color: state(current);
+			color: map.get($states, current);
 		}
 	}
 
 	&__link {
 		color: color('gray', 600);
 
-		@include media-hover {
+		@include media.hover {
 			&:hover {
 				color: color(accent, 500);
 			}

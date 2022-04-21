@@ -1,3 +1,7 @@
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/adaptive' as *;
+@use 'src/styles/mixins/component';
+
 .btn {
 	$btn_padding_x_max: 30;
 	$btn_padding_x_min: 15;
@@ -31,7 +35,7 @@
 	// }
 
 	// .btn__solid
-	@include btn(
+	@include component.btn(
 		$element: 'solid',
 		$color: $white,
 		$fill: $white,
@@ -64,7 +68,7 @@
 	// 	}
 
 	// 	// .btn-icon__solid
-	// 	@include btn(
+	// 	@include component.btn(
 	// 		$element: 'solid',
 	// 		$fill: $white,
 	// 		$bg: color(accent, 500),

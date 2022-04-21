@@ -1,0 +1,46 @@
+@use 'functions/converter' as *;
+@use 'color' as *;
+
+$breakpoints: (
+	xs:  320  - 0.2,
+	sm:  576  - 0.2,
+	md:  768  - 0.2,
+	lg:  992  - 0.2,
+	xl:  1200 - 0.2,
+	xxl: 1400 - 0.2,
+);
+
+$cubic-bezier: (
+	modal:       cubic-bezier(0, 0, 0.5, 1),
+	burger-btn:  cubic-bezier(0.57, 0.21, 0.69, 1.25),
+	burger-menu: cubic-bezier(0.785, 0.135, 0.15, 0.86),
+);
+
+$states: (
+	hover:     rgba($accent, 0.15),
+	active:    rgba($accent, 0.25),
+	focus:     0 0 0 rem(4) rgba($accent, 0.5),
+	current:   color('gray', 700),
+	disabled: (
+		color: color('gray', 400),
+		bg:    rgba($gray, 0.15),
+	),
+);
+
+// Container
+$offsetMax:   20;
+$offsetMin:   10;
+$layoutWidth: 1920;
+$container:   1324 + ($offsetMax * 2);
+
+// Grid
+$column_count: 12;
+$colGap_max:   20;
+$rowGap_max:   30;
+$colGap_min:   10;
+$rowGap_min:   20;
+
+// UI
+$icon_width:  rem(16);
+$icon_height: rem(16);
+$backdrop:    rgba($dark_2, 0.9);

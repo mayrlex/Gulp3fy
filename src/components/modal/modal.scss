@@ -1,3 +1,8 @@
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/adaptive' as *;
+@use 'src/styles/mixins/icon';
+@use 'src/styles/mixins/media';
+
 .modal {
 	$animation_delay: 0.3s;
 
@@ -97,14 +102,14 @@
 		// 	@include adaptive('margin-bottom', $content_between_max, $content_between_min);
 		// }
 
-		@include media-min(sm) {
+		@include media.min(sm) {
 			height: calc(100% - rem($modal_margin_y));
 			margin: rem($modal_margin_y) rem(10);
 		}
 	}
 
 	&__close {
-		@include icon-cross($size: 32, $width: 2, $color: color('gray', 600), $radius: 2);
+		@include icon.cross($size: 32, $width: 2, $color: color('gray', 600), $radius: 2);
 		position: absolute;
 		top: rem($close_top);
 		right: rem($close_right);
@@ -116,7 +121,7 @@
 			width: 60%;
 		}
 
-		@include media-hover {
+		@include media.hover {
 			&:hover {
 				&:before,
 				&:after {

@@ -1,5 +1,8 @@
+@use 'utils/variables' as *;
+@use 'functions/converter' as *;
+
 // Min width
-@mixin media-min($key) {
+@mixin min($key) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
 
@@ -14,7 +17,7 @@
 }
 
 // Max width
-@mixin media-max($key) {
+@mixin max($key) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
 
@@ -29,7 +32,7 @@
 }
 
 // Min/Max width
-@mixin media-minmax($key1, $key2) {
+@mixin minmax($key1, $key2) {
 	$breakpointMin: map-get($breakpoints, $key1);
 	$breakpointMax: map-get($breakpoints, $key2);
 	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
@@ -52,7 +55,7 @@
 }
 
 // Any hover
-@mixin media-hover {
+@mixin hover {
 	@media (any-hover: hover) {
 		@content;
 	}

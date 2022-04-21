@@ -1,39 +1,23 @@
-//? ### SASS Modules
-@use 'sass:color';
-@use 'sass:math';
+//? ### Vendors
+// @use 'vendors/swiper';
 
-//? ### Plugins
-// @import 'https://unpkg.com/swiper@8/swiper-bundle.min.css';
-// @import 'https://unpkg.com/simplebar@latest/dist/simplebar.css';
-
-//? ### Functions
-@import './functions/**/*';
-
-//? ### Mixins
-@import './mixins/adaptive';
-@import './mixins/badge';
-@import './mixins/btn';
-@import './mixins/fontFace';
-@import './mixins/icons';
-@import './mixins/media';
-
-//? ### Configs
-@import './config/variables';
-@import './config/fonts';
-@import './config/config';
-// @import './config/typography';
+//? ### Core
+@use 'core/reset';
+@use 'core/fonts';
+@use 'core/typography';
+@use 'core/helpers';
 
 //? ### Components
-// @import '../components/header/header';
-// @import '../components/footer/footer';
-// @import '../components/badges/badges';
-// @import '../components/breadcrumbs/breadcrumbs';
-// @import '../components/btn/btn';
-// @import '../components/card/card';
-// @import '../components/modal/modal';
-// @import '../components/pagination/pagination';
-// @import '../components/spoiler/spoiler';
-// @import '../components/tabs/tabs';
+// @use './../components/header/header';
+// @use './../components/footer/footer';
+// @use './../components/badges/badges';
+// @use './../components/breadcrumbs/breadcrumbs';
+// @use './../components/btn/btn';
+// @use './../components/card/card';
+// @use './../components/modal/modal';
+// @use './../components/pagination/pagination';
+// @use './../components/spoiler/spoiler';
+// @use './../components/tabs/tabs';
 
 //? ### Pages
-@import './pages/home/hero';
+@use 'pages/home';

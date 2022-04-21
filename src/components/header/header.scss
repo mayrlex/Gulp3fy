@@ -1,3 +1,9 @@
+@use 'sass:map';
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/functions/bezier' as *;
+@use 'src/styles/mixins/icon';
+@use 'src/styles/mixins/media';
+
 $header_background: transparent;
 $header_height: rem(0);
 $header_point: lg;
@@ -35,7 +41,7 @@ $header_point: lg;
 	}
 }
 
-@include media-max($header_point) {
+@include media.max($header_point) {
 	$burger_btn_size: rem(44);
 	$burger_btn_color: color(dark, 1);
 	$burger_line_height: rem(4);

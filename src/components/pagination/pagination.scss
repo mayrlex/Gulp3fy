@@ -1,3 +1,7 @@
+@use 'sass:map';
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/media';
+
 .pagination {
 	$content_padding: rem(0) rem(0);
 	$btn_control_between: rem(0);
@@ -48,11 +52,11 @@
 
 		&:disabled,
 		&.--disabled {
-			color: state(disabled, color);
+			color: map.get($states, disabled, color);
 
 			cursor: default;
 
-			fill: state(disabled, color);
+			fill: map.get($states, disabled, color);
 		}
 
 		&.--current {
@@ -66,7 +70,7 @@
 			}
 		}
 
-		@include media-hover {
+		@include media.hover {
 			&:not(:disabled, .--disabled):hover {
 				color: color(accent, 500);
 

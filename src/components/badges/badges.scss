@@ -1,3 +1,6 @@
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/component';
+
 .badge {
 	$badge_size: rem(14);
 
@@ -22,5 +25,5 @@
 		background: color(accent, 500);
 	}
 
-	@include badge($element: 'solid', $color: $white, $bg: color(accent, 500));
+	@include component.badge($element: 'solid', $color: $white, $bg: color(accent, 500));
 }

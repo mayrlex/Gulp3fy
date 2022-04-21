@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+
+	border: 0;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+:focus,
+:active {
+	outline: none;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+	font-family: inherit;
+}
+
+input::-ms-clear {
+	display: none;
+}
+
+input[type='email'],
+input[type='text'],
+input[type='tel'],
+textarea {
+	appearance: none;
+}
+
+textarea.input {
+	padding: 0;
+
+	resize: none;
+}
+
+button {
+	font-family: inherit;
+
+	background: transparent;
+	cursor: pointer;
+
+	&:-moz-focus-inner {
+		padding: 0;
+
+		border: 0;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+img {
+	vertical-align: top;
+}

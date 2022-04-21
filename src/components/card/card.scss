@@ -1,3 +1,7 @@
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/adaptive' as *;
+@use 'src/styles/mixins/media';
+
 .card {
 	$content_between_max: 25;
 	$content_between_min: 15;
@@ -10,8 +14,8 @@
 	overflow: hidden;
 
 	//? ### Variants
-	@import 'variants/column';
-	@import 'variants/row';
+	// @import 'variants/column';
+	// @import 'variants/row';
 
 	&__preview {
 		position: relative;
@@ -20,12 +24,12 @@
 		min-height: rem(170);
 		overflow: hidden;
 
-		@include media-min(md) {
+		@include media.min(md) {
 			min-height: rem(200);
 		}
 
 		//? Preview overlay
-		// @include media-hover {
+		// @include media.hover {
 		// 	&[href] {
 		// 		&:before {
 		// 			position: absolute;
@@ -72,7 +76,7 @@
 	&__content {
 		flex: 1 1 auto;
 
-		@include media-hover {
+		@include media.hover {
 			&[href] {
 				&:hover {
 				}

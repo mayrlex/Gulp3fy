@@ -1,0 +1,82 @@
+@use 'sass:map';
+@use 'utils/variables' as *;
+@use 'functions/converter' as *;
+@use 'mixins/media';
+
+:focus-visible {
+	box-shadow: map.get($states, focus);
+}
+
+.body.--lock {
+	overflow: hidden;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.main {
+	flex: 1 1 auto;
+}
+
+.container {
+	max-width: rem($container);
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: rem($offsetMin);
+	padding-left: rem($offsetMin);
+
+	@include media.min(md) {
+		padding-right: rem($offsetMax);
+		padding-left: rem($offsetMax);
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat($column_count, 1fr);
+
+	column-gap: rem($colGap_min);
+	row-gap: rem($rowGap_min);
+
+	@include media.min(lg) {
+		column-gap: rem($colGap_max);
+		row-gap: rem($rowGap_max);
+	}
+}
+
+// Responsive image by FLS
+.--ibg {
+	position: relative;
+
+	& img {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.icon {
+	width: $icon_width;
+	height: $icon_height;
+}
+
+/*
+	This will hide the focus indicator if the element receives focus via the mouse,
+	but it will still show up on keyboard focus.
+*/
+.js-focus-visible :focus:not(.focus-visible) {
+	outline: none;
+}
+
+.focus-visible {
+	box-shadow: map.get($states, focus);
+}

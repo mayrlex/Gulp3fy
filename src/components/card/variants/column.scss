@@ -6,15 +6,15 @@
 	grid-column: 12 span;
 	overflow: hidden;
 
-	@include media-min(sm) {
+	@include media.min(sm) {
 		grid-column: 6 span;
 	}
 
-	@include media-min(lg) {
+	@include media.min(lg) {
 		grid-column: 4 span;
 	}
 
-	@include media-min(xl) {
+	@include media.min(xl) {
 		grid-column: 3 span;
 	}
 

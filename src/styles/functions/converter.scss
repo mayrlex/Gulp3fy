@@ -1,20 +1,16 @@
+@use 'sass:math';
+
 // To Rem
 @function rem($px) {
-	$result: math.div($px, 16) + rem;
-
-	@return $result;
+	@return math.div($px, 16) + rem;
 }
 
 // To Em
 @function em($px) {
-	$result: math.div($px, 16) + em;
-
-	@return $result;
+	@return math.div($px, 16) + em;
 }
 
 // To %
 @function prc($pxOne, $pxTwo) {
-	$result: math.div($pxOne, $pxTwo) * 100%;
-
-	@return $result;
+	@return math.div($pxOne, $pxTwo) * 100%;
 }

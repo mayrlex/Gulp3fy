@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/adaptive' as *;
+@use 'src/styles/mixins/media';
+
 .tabs {
 	$header_padding_x_max: 0;
 	$header_padding_x_min: 0;
@@ -29,18 +34,18 @@
 		@include adaptive('padding-bottom', $btn_padding_y_max, $btn_padding_y_min);
 		@include adaptive('padding-left', $btn_padding_x_max, $btn_padding_x_min);
 
-		@include media-hover {
+		@include media.hover {
 			&:hover {
 				color: color(accent, 500);
 
-				background: state(hover);
+				background: map.get($states, hover);
 			}
 		}
 
 		&.--active {
 			color: color(accent, 500);
 
-			background: state(active);
+			background: map.get($states, active);
 		}
 	}
 

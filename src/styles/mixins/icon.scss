@@ -1,4 +1,6 @@
-@mixin icon-arrow-1($size: 6, $color: color(dark, 1), $direction: top, $radius: 0) {
+@use 'functions/converter' as *;
+
+@mixin arrow-1($size: 6, $color: color(dark, 1), $direction: top, $radius: 0) {
 	@if $direction == 'top' {
 		border-right: rem($size) solid transparent;
 		border-bottom: rem($size) solid $color;
@@ -27,7 +29,7 @@
 	}
 }
 
-@mixin icon-cross($size: 16, $width: 2, $color: color(dark, 1), $radius: null) {
+@mixin cross($size: 16, $width: 2, $color: color(dark, 1), $radius: null) {
 	position: relative;
 
 	display: inline-block;

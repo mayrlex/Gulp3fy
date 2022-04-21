@@ -5,14 +5,14 @@
 	grid-column: 12 span;
 	grid-template-columns: repeat(12, 1fr);
 
-	@include media-min(lg) {
+	@include media.min(lg) {
 		grid-column: 6 span;
 	}
 
 	.card__preview {
 		grid-column: 12 span;
 
-		@include media-min(sm) {
+		@include media.min(sm) {
 			grid-column: 5 span;
 		}
 	}
@@ -24,7 +24,7 @@
 		@include adaptive('padding-bottom', $content_padding_y_max, $content_padding_y_min);
 		@include adaptive('padding-left', $content_padding_x_max, $content_padding_x_min);
 
-		@include media-min(sm) {
+		@include media.min(sm) {
 			grid-column: 7 span;
 		}
 	}

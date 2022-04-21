@@ -1,24 +1,25 @@
-/*  //? ### Arguments
-	$element:               'solid',
-	$mod:                   '--success',
-	$color:                 $white,
-	$color_hover:           $white,
-	$color_active:          $white,
-	$color_disabled:        color('gray', 300),
-	$fill:                  $white,
-	$fill_hover:            $white,
-	$fill_active:           $white,
-	$fill_disabled:         color('gray', 300),
-	$bg:                    color(success, 500),
-	$bg_hover:              color(success, 600),
-	$bg_active:             color(success, 700),
-	$bg_disabled:           color(success, 200),
-	$border_width:          2,
-	$border_color:          color(success, 200),
-	$border_color_hover:    color(success, 300),
-	$border_color_active:   color(success, 400),
-	$border_color_disabled: color('gray', 300),
-*/
+@use 'mixins/media';
+
+//? ### Arguments
+// $element:               'solid',
+// $mod:                   '--success',
+// $color:                 $white,
+// $color_hover:           $white,
+// $color_active:          $white,
+// $color_disabled:        color('gray', 300),
+// $fill:                  $white,
+// $fill_hover:            $white,
+// $fill_active:           $white,
+// $fill_disabled:         color('gray', 300),
+// $bg:                    color(success, 500),
+// $bg_hover:              color(success, 600),
+// $bg_active:             color(success, 700),
+// $bg_disabled:           color(success, 200),
+// $border_width:          2,
+// $border_color:          color(success, 200),
+// $border_color_hover:    color(success, 300),
+// $border_color_active:   color(success, 400),
+// $border_color_disabled: color('gray', 300),
 
 @mixin btn(
 	$element,
@@ -72,7 +73,7 @@
 			}
 		}
 
-		@include media-hover {
+		@include media.hover {
 			&:not(:disabled, .--disabled) {
 				&:hover {
 					color: $color_hover;

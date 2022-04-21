@@ -1,0 +1,43 @@
+@use 'utils/color' as *;
+@use 'mixins/adaptive' as *;
+
+body {
+	color: color('gray', 600);
+	@include adaptive('font-size', 16, 14);
+	font-family: Inter, sans-serif;
+}
+
+// .h1,
+// .h2,
+// .h3,
+// .h4,
+// .h5,
+// .h6 {
+// 	color: color(dark, 1);
+// 	font-weight: 700;
+// 	line-height: 130%;
+// }
+
+// .h1 {
+// 	@include adaptive('font-size', 48, 32);
+// }
+
+// .h2 {
+// 	@include adaptive('font-size', 32, 28);
+// }
+
+// .h3 {
+// 	@include adaptive('font-size', 28, 24);
+// }
+
+// .h4 {
+// 	@include adaptive('font-size', 24, 20);
+// }
+
+// .h5 {
+// 	@include adaptive('font-size', 20, 16);
+// }
+
+// .h6 {
+// 	@include adaptive('font-size', 16, 14);
+// }

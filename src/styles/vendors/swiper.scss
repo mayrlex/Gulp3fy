@@ -1,3 +1,7 @@
+@use 'sass:math';
+@use 'utils/forwards' as *;
+@use 'mixins/media';
+
 .swiper {
 	$nav_btn_pos_x: rem(15);
 	$pagination_margin: 20;
@@ -22,7 +26,7 @@
 
 			transition: 0.1s;
 
-			@include media-hover {
+			@include media.hover {
 				&:hover:not(.swiper-pagination-bullet-active) {
 					background: rgba(color(accent, 500), 0.5);
 				}

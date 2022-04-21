@@ -45,7 +45,7 @@
 
 	&__nav {
 		//? ## Burger menu
-		@include media-max($header_point) {
+		@include media.max($header_point) {
 			position: fixed;
 			top: 0;
 			@if $burger_menu_direction == ltr {
