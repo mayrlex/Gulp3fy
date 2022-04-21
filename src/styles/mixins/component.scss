@@ -1,6 +1,31 @@
-@use 'mixins/media';
+//? ### Badge
+// $element:       'solid',
+// $mod:           '--success',
+// $color:         $white,
+// $bg:            color(success, 500),
+// $outline_width: 2,
+// $outline_color: color(success, 500),
 
-//? ### Arguments
+@mixin badge(
+	$element,
+	$mod: null,
+	$color: null,
+	$bg: null,
+	$outline_width: null,
+	$outline_color: null
+) {
+	&__#{$element}#{$mod} {
+		color: $color;
+
+		background: $bg;
+		@if $outline_width {
+			outline: $outline_width solid $outline_color;
+			outline-offset: -$outline_width;
+		}
+	}
+}
+
+//? ### Btn
 // $element:               'solid',
 // $mod:                   '--success',
 // $color:                 $white,
