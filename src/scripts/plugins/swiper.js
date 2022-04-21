@@ -30,27 +30,27 @@ const swiper = new Swiper('.swiper', {
 	// autoplay: {
 	// 	delay: 5000,
 	// },
-	// slidesPerView: 1,
+	slidesPerView: 1,
 
-	breakpoints: {
-		576: {
-			slidesPerView: 1,
-			spaceBetween: 10,
-		},
+	// breakpoints: {
+	// 	576: {
+	// 		slidesPerView: 1,
+	// 		spaceBetween: 10,
+	// 	},
 
-		768: {
-			slidesPerView: 2,
-			spaceBetween: 20,
-		},
+	// 	768: {
+	// 		slidesPerView: 2,
+	// 		spaceBetween: 20,
+	// 	},
 
-		992: {
-			slidesPerView: 3,
-			spaceBetween: 20,
-		},
+	// 	992: {
+	// 		slidesPerView: 3,
+	// 		spaceBetween: 20,
+	// 	},
 
-		1400: {
-			slidesPerView: 4,
-			spaceBetween: 20,
-		},
-	},
+	// 	1400: {
+	// 		slidesPerView: 4,
+	// 		spaceBetween: 20,
+	// 	},
+	// },
 });
