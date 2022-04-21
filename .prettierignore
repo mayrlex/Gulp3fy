@@ -1,6 +1,5 @@
 dist
-src/markup/config/head.pug
-src/styles/config/themes.scss
-src/styles/config/variables.scss
-src/styles/helpers/adaptive.scss
+src/markup/utils/head.pug
+src/styles/utils/variables.scss
+src/styles/utils/color.scss
 config.js
