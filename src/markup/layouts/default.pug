@@ -24,21 +24,26 @@ html(lang=page.lang)
 
 	body.body
 		.wrapper
-			header.header(role='banner')
-				.header__inner.container
-					- let tag;
-					- page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
+			if page.header
+				header.header(role='banner')
+					.header__inner.container
+						- let tag;
+						- page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
 
-					block header
-						include ../parts/header.pug
+						block header
+							include ../parts/header.pug
 
 			main.main
 				block content
 
-			footer.footer(role='contentinfo')
-				.footer__inner.container
-					block footer
-						include ../parts/footer.pug
+				if page.modal
+					include ../parts/modal.pug
+
+			if page.footer
+				footer.footer(role='contentinfo')
+					.footer__inner.container
+						block footer
+							include ../parts/footer.pug
 
 		block scripts
 			script(src='assets/js/app.min.js')
