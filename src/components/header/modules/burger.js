@@ -5,14 +5,16 @@ const burger = () => {
 	const menu = document.querySelector('.header__nav');
 	const target = document.querySelector('.burger');
 	const lock = new Lock({});
+	const aira = target.getAttribute('aria-expanded') === 'true';
 
 	if (target) {
 		target.addEventListener('click', () => {
 			backdrop.classList.toggle('--show');
 			menu.classList.toggle('--show');
+			target.setAttribute('aria-expanded', !aira);
 			target.classList.toggle('--show');
-			target.classList.contains('--show') ? lock.lock() : null;
-			!target.classList.contains('--show') ? lock.unlock() : null;
+			if (target.classList.contains('--show')) lock.lock();
+			if (!target.classList.contains('--show')) lock.unlock();
 		});
 	}
 };

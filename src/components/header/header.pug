@@ -72,5 +72,5 @@ mixin menu-item(data)
 
 //- Burger button
 mixin burger(label = 'Toggle burger menu')
-	button.burger(aria-label=label)&attributes(attributes)
+	button.burger(aria-label=label, aria-expanded='false', aria-controls='header__nav')&attributes(attributes)
 		span
