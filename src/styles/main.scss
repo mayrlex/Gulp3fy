@@ -8,16 +8,16 @@
 @use 'core/helpers';
 
 //? ### Components
-// @use './../components/header/header';
-// @use './../components/footer/footer';
-// @use './../components/badges/badges';
-// @use './../components/breadcrumbs/breadcrumbs';
-// @use './../components/btn/btn';
-// @use './../components/card/card';
-// @use './../components/modal/modal';
-// @use './../components/pagination/pagination';
-// @use './../components/spoiler/spoiler';
-// @use './../components/tabs/tabs';
+// @use './src/components/header/header';
+// @use './src/components/footer/footer';
+// @use './src/components/badges/badges';
+// @use './src/components/breadcrumbs/breadcrumbs';
+// @use './src/components/btn/btn';
+// @use './src/components/card/card';
+// @use './src/components/modal/modal';
+// @use './src/components/pagination/pagination';
+// @use './src/components/spoiler/spoiler';
+// @use './src/components/tabs/tabs';
 
 //? ### Pages
 @use 'pages/home';
