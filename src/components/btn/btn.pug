@@ -41,44 +41,21 @@ mixin btn(data)
 			}
 		}
 
-	//- Button type: link
-	if data.link
-		//- Icon
-		if (!data.text && data.icon)
-			a.btn-icon(class=modsArray)&attributes(attributes)
-				+icon(data.icon, data.isMulti)
+	#{data.link ? 'a' : 'button'}(
+		class=!data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`,
+		href=data.link ? data.link : null,
+		type=!data.link ? 'button' : null
+	)&attributes(attributes)
+		if (data.icon)
+			if (data.iconPos === 'before')
+				+icon(data.icon, isMulti)
+				if data.text
+					span= data.text
 
-		//- Text
+			else
+				if data.text
+					span= data.text
+				+icon(data.icon, isMulti)
+
 		else
-			a.btn(class=modsArray, href=data.link)&attributes(attributes)
-				if data.icon
-					if (data.iconPos === 'before')
-						+icon(data.icon, data.isMulti)
-						span!= data.text
-
-					else
-						span!= data.text
-						+icon(data.icon, data.isMulti)
-				else
-					span!= data.text
-
-	//- Button type: button
-	else
-		//- Icon
-		if (!data.text && data.icon)
-			button.btn-icon(class=modsArray)&attributes(attributes)
-				+icon(data.icon, data.isMulti)
-
-		//- Text
-		else
-			button.btn(class=modsArray)&attributes(attributes)
-				if data.icon
-					if (data.iconPos === 'before')
-						+icon(data.icon, data.isMulti)
-						span!= data.text
-
-					else
-						span!= data.text
-						+icon(data.icon, data.isMulti)
-				else
-					span!= data.text
+			span= data.text
