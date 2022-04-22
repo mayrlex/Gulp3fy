@@ -2,10 +2,10 @@
 import documentReady from './helpers/documentReady.js';
 // import checkDevice from './helpers/checkDevice.js';
 
-//? ### Plugins
-import lazyLoad from './plugins/lazyLoad.js';
-import './plugins/focusVisible.js';
-// import './plugins/swiper.js';
+//? ### Vendors
+import lazyLoad from './vendors/lazyLoad.js';
+import './vendors/focusVisible.js';
+// import './vendors/swiper.js';
 // import 'simplebar';
 
 //? ### Components
