@@ -14,18 +14,17 @@
 	// Max width
 	@if $mode == 1 {
 		#{$property}: converter.rem($maxValue);
+		$containerWidth: variables.$container - (variables.$offsetMax * 2);
 
-		@media (max-width: #{converter.em(variables.$container)}) {
-			#{$property}: calc(
-				$minValue + $addSize * ((100vw - 320px) / #{variables.$container - 320})
-			);
+		@media (max-width: #{converter.em($containerWidth)}) {
+			#{$property}: calc($minValue + $addSize * ((100vw - 320px) / #{$containerWidth - 320}));
 		}
 
 		// Min width
 	} @else if $mode == 2 {
 		#{$property}: converter.rem($maxValue);
 
-		@media (min-width: #{converter.em(variables.$container)}) {
+		@media (min-width: #{converter.em($containerWidth)}) {
 			// prettier-ignore
 			#{$property}: calc($minValue + $addSize * ((100vw - 320px) / #{variables.$layoutWidth - 320}));
 		}
