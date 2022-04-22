@@ -1,6 +1,7 @@
 @use 'sass:math';
 @use 'utils/forwards' as *;
 @use 'mixins/media';
+@use 'swiper/swiper-bundle.min.css';
 
 .swiper {
 	$nav_btn_pos_x: rem(15);
