@@ -1,5 +1,5 @@
 //- Config & mixin
-include ../config/config.pug
+include ../core/config.pug
 include ../mixins/**/*.pug
 
 //- Components mixins
@@ -19,7 +19,7 @@ block settings
 doctype html
 html(lang=page.lang)
 	head
-		include ../config/head.pug
+		include ../core/head.pug
 		block styles
 
 	body.body
