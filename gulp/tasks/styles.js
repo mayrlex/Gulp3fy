@@ -8,7 +8,6 @@ import compiler from 'sass';
 import gulpSass from 'gulp-sass';
 import rename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
-import webpcss from 'gulp-webpcss';
 import media from 'gulp-group-css-media-queries';
 import sassGlob from 'gulp-sass-glob';
 import { path } from '../config/path.js';
@@ -41,18 +40,12 @@ export const stylesBuild = () => {
 		.pipe(
 			gulpif(
 				path.isProd,
-				webpcss({
-					webpClass: '.webp',
-					noWebpClass: '.no-webp',
+				autoprefixer({
+					grid: stylesConfig.autoprefixer.grid,
+					overrideBrowserlist: [stylesConfig.autoprefixer.overrideBrowserlist],
+					cascade: stylesConfig.autoprefixer.cascade,
 				})
 			)
-		)
-		.pipe(
-			autoprefixer({
-				grid: stylesConfig.autoprefixer.grid,
-				overrideBrowserlist: [stylesConfig.autoprefixer.overrideBrowserlist],
-				cascade: stylesConfig.autoprefixer.cascade,
-			})
 		)
 		.pipe(gulp.dest(path.styles.dest))
 		.pipe(gulpif(path.isProd, cleanCss({ level: stylesConfig.cleanlvl })))

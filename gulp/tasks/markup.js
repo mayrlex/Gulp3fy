@@ -3,7 +3,6 @@ import sync from 'browser-sync';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import gulpif from 'gulp-if';
-import webphtmlNosvg from 'gulp-webp-html-nosvg';
 import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
@@ -33,7 +32,6 @@ export const markupBuild = () => {
 			)
 		)
 		.pipe(gulpif(path.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
-		.pipe(gulpif(path.isProd, webphtmlNosvg()))
 		.pipe(
 			gulpif(
 				path.isProd,
