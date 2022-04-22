@@ -63,10 +63,10 @@ if meta.themeColorDark !== null && meta.themeColor !== null
 	meta(name='theme-color' media='(prefers-color-scheme: dark)' content=meta.themeColorDark)
 if meta.formatDetection !== null && (typeof meta.formatDetection === 'string' || Object.values(meta.formatDetection).some(function (value) { return !value }))
 	meta(name='format-detection', content=(typeof meta.formatDetection === 'string' ? meta.formatDetection : Object.entries(meta.formatDetection).filter(function (entry) { return !entry[1] || entry[1] === 'no' }).map(function (entry) { return `${entry[0]}=no` }).join(',')))
-if meta.googleTranslate !== null
-	meta(name='google' value=meta.googleTranslate)
+if meta.googleTranslate !== true
+	meta(name='google' content='notranslate')
 if meta.robots !== null
-	meta(name='robots' value=meta.robots)
+	meta(name='robots' content=meta.robots)
 
 title= pageTitle
 

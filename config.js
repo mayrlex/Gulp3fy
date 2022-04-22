@@ -58,7 +58,7 @@ const ftpConfig = {
 	host:     '',     // Address
 	user:     '',     // Username
 	password: '',     // Password
-	parallel: 5,      // Number of concurrent streams
+	parallel: 5,      // Count of parallel streams
 };
 
 //##############################
