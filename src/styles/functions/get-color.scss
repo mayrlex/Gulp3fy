@@ -1,0 +1,10 @@
+@use 'utils/variables' as *;
+
+@function color($color, $key) {
+	@if map-has-key($color-names, $color, $key) {
+		@return map-get($color-names, $color, $key);
+	}
+
+	@warn 'Color "#{$color}" with value "#{$key}" not found.';
+	@return null;
+}
