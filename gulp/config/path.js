@@ -46,6 +46,7 @@ export const path = {
 		src: [
 			`${source}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
 			`!${source}/assets/images/common/placeholder.*`,
+			`!${source}/assets/images/common/favicon.*`,
 		],
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
@@ -73,9 +74,8 @@ export const path = {
 	},
 
 	favicon: {
-		src: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
+		src: `${source}/assets/images/common/favicon.{jpg,png,gif,ico,webp}`,
 		dest: `${compiled}/assets/images/common/favicons/`,
-		watch: `${source}/assets/favicon/favicon.{jpg,png,svg,gif,ico,webp}`,
 	},
 
 	components: {
