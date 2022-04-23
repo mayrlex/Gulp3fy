@@ -1,6 +1,6 @@
-//? ### Helpers
-import documentReady from './helpers/documentReady.js';
-// import checkDevice from './helpers/checkDevice.js';
+//? ### Utils
+import documentReady from './utils/documentReady.js';
+// import checkDevice from './utils/checkDevice.js';
 
 //? ### Vendors
 import lazyLoad from './vendors/lazyLoad.js';
