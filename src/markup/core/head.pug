@@ -149,9 +149,19 @@ if config.manifest !== null
 	link(rel='manifest', href=config.manifest)
 if page.canonical !== null
 	link(rel='canonical', href=page.canonical)
-if config.googleFonts !== null
+
+- let matchGoogleFonts;
+each item in config.fonts
+	- matchGoogleFonts = item.match('fonts.googleapis.com');
+
+if matchGoogleFonts !== null
 	link(rel='preconnect', href='https://fonts.googleapis.com')
 	link(rel='preconnect', href='https://fonts.gstatic.com' crossorigin)
-	link(rel='stylesheet', href=config.googleFonts)
+	each font in config.fonts
+		link(rel='stylesheet', href=font)
+
+if config.fonts !== null && !matchGoogleFonts
+	each font in config.fonts
+		link(rel='preload', href=`./assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
 
 link(rel='stylesheet', href='assets/css/main.min.css')
