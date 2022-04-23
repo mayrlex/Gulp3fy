@@ -14,8 +14,8 @@ mixin img(data)
 
 mixin pic(data)
 	-
-		const srcParts = data.src.split('.');
-		const [srcFirstPart, extname] = srcParts;
+		const imageFullName = data.src.split('.');
+		const [imageName, imageExtname] = imageFullName;
 		let modsArray = '';
 
 		if (data.mods) {
@@ -25,15 +25,16 @@ mixin pic(data)
 				modsArray = `${modsArray} ${modsList[i].trim()}`;
 			}
 		}
+
 	picture
 		source(
 			type='image/webp',
-			data-srcset=`${srcFirstPart}.webp`,
+			data-srcset=`${imageName}.webp`,
 			srcset='assets/images/common/placeholder.png'
 		)
 		img.lazy(
 			class=modsArray,
-			data-src=`${srcFirstPart}.${extname}`,
+			data-src=`${imageName}.${imageExtname}`,
 			src='assets/images/common/placeholder.png',
 			alt=data.alt
 		)&attributes(attributes)

@@ -1,8 +1,8 @@
-@use 'utils/variables' as *;
+@use 'utils/variables';
 
 @function color($color, $key) {
-	@if map-has-key($color-names, $color, $key) {
-		@return map-get($color-names, $color, $key);
+	@if map-has-key(variables.$color-names, $color, $key) {
+		@return map-get(variables.$color-names, $color, $key);
 	}
 
 	@warn 'Color "#{$color}" with value "#{$key}" not found.';

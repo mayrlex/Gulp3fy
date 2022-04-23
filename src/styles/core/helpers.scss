@@ -43,7 +43,7 @@
 	column-gap: rem($colGap_min);
 	row-gap: rem($rowGap_min);
 
-	@include media.min(lg) {
+	@include media.min(md) {
 		column-gap: rem($colGap_max);
 		row-gap: rem($rowGap_max);
 	}

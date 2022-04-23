@@ -2,7 +2,6 @@
 	link {string}  - Link to page
 	src  {string}  - Path to image
 	alt  {string}  - Alternate text
-	row  {boolean} - Set card orientation as row
 
 //-Call
 	//- Column
@@ -25,7 +24,7 @@
 
 	//- Row
 	.card__grid
-		+card({ row: true })
+		+card.row
 			+card-preview({
 				link: 'https://example.com/news/page',
 				src: 'https://picsum.photos/200/300',

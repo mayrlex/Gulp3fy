@@ -1,5 +1,4 @@
 dist
-src/markup/config/head.pug
-src/styles/utils/variables.scss
-src/styles/utils/color.scss
 config.js
+src/markup/core/head.pug
+src/styles/utils/variables.scss
