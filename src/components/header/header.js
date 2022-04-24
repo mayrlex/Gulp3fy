@@ -2,7 +2,7 @@
 // import Toggle from '../../scripts/modules/toggle.js';
 // import smoothScroll from '../../scripts/modules/smoothScroll.js';
 
-//? ### Modules
+//? SmoothScroll
 // smoothScroll();
 
 //? Burger
@@ -10,7 +10,7 @@
 // 	throttle: 300,
 // });
 
-//? ### Dropdown menu
+//? Dropdown menu
 // const headerDropdown = new Toggle({
 // 	btn: '[data-dropdown="toggle"]',
 // 	area: '[data-dropdown]',

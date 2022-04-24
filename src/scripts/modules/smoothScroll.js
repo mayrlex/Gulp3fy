@@ -1,4 +1,4 @@
-const smoothScroll = () => {
+const smoothScroll = (burgerToggleClass = '--show') => {
 	const anchor = document.querySelectorAll('.menu__link[data-anchor]');
 	const menu = document.querySelector('.header__nav');
 	const burger = document.querySelector('.burger');
@@ -9,14 +9,16 @@ const smoothScroll = () => {
 		const init = (event) => {
 			const target = document.querySelector(event.target.dataset.anchor);
 
-			if (!target)
-				return console.error(`Error: Anchor '${event.target.dataset.anchor}' not found`);
+			if (!target) {
+				console.error(`Error: Anchor '${event.target.dataset.anchor}' not found`);
+				return;
+			}
 
-			if (burger.classList.contains('--show')) {
+			if (burger.classList.contains(burgerToggleClass)) {
 				document.body.classList.remove('--lock');
-				menu.classList.remove('--show');
-				backdrop.classList.remove('--show');
-				burger.classList.remove('--show');
+				menu.classList.remove(burgerToggleClass);
+				backdrop.classList.remove(burgerToggleClass);
+				burger.classList.remove(burgerToggleClass);
 			}
 
 			window.scrollTo({

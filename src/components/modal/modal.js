@@ -1,3 +1,5 @@
+import Lock from '../../scripts/modules/lock.js';
+
 /*
 Options:
 	target       {string}  - Modal id
@@ -23,8 +25,6 @@ Call:
 	});
 */
 
-import Lock from '../../scripts/modules/lock.js';
-
 export default class Modal {
 	constructor({
 		target,
@@ -39,7 +39,7 @@ export default class Modal {
 		this.modalNodes = document.querySelectorAll('.modal');
 		this.isShown = false;
 		this.lock = new Lock({
-			scrollOffset: scrollFix,
+			scrollFix,
 		});
 
 		this.FOCUSABLE_ELEMENTS = [

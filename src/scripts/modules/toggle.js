@@ -12,9 +12,9 @@ Call:
 
 export default class Toggle {
 	constructor(selector) {
-		this.selector = selector;
 		this.targetBtn = selector.btn;
 		this.targetArea = selector.area;
+		this.toggleClass = selector.toggleClass || '--show';
 		this.current;
 
 		this.init();
@@ -29,14 +29,14 @@ export default class Toggle {
 
 			if (isTargetBtn) {
 				this.current = event.target.closest(this.targetBtn);
-				this.current.classList.toggle('--show');
+				this.current.classList.toggle(this.toggleClass);
 			} else {
 				this.current = undefined;
 			}
 
-			document.querySelectorAll(`${this.targetBtn}.--show`).forEach((item) => {
+			document.querySelectorAll(`${this.targetBtn}.${this.toggleClass}`).forEach((item) => {
 				if (item === this.current) return;
-				item.classList.remove('--show');
+				item.classList.remove(this.toggleClass);
 			});
 		});
 	}

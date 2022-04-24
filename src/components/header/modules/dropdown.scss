@@ -19,13 +19,13 @@
 			@include media.max($-breakpoint) {
 				margin-left: rem(5);
 
-				@include icon.arrow-1($size: 6, $-color: $-color, $direction: bottom, $radius: 4);
+				@include icon.arrow-1($size: 6, $color: $-color, $direction: bottom, $radius: 4);
 			}
 
 			@include media.min($-breakpoint) {
 				margin-left: rem(5);
 
-				@include icon.arrow-1($size: 6, $-color: $-color, $direction: bottom, $radius: 4);
+				@include icon.arrow-1($size: 6, $color: $-color, $direction: bottom, $radius: 4);
 			}
 		}
 

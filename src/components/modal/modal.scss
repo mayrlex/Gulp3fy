@@ -90,9 +90,9 @@ $-animation_delay: 0.3s;
 		min-height: rem(50);
 		margin: rem($-offset_y_min) rem($-offset_x_min);
 		@include adaptive('padding-top', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-right', $-content_padding_x_max, $--content_padding_x_min);
+		@include adaptive('padding-right', $-content_padding_x_max, $-content_padding_x_min);
 		@include adaptive('padding-bottom', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-left', $-content_padding_x_max, $--content_padding_x_min);
+		@include adaptive('padding-left', $-content_padding_x_max, $-content_padding_x_min);
 		overflow: hidden;
 
 		background: $white;
