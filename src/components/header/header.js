@@ -1,10 +1,14 @@
-// import burger from './modules/burger.js';
+// import Burger from './modules/burger.js';
 // import Toggle from '../../scripts/modules/toggle.js';
 // import smoothScroll from '../../scripts/modules/smoothScroll.js';
 
 //? ### Modules
 // smoothScroll();
-// burger();
+
+//? Burger
+// const burger = new Burger({
+// 	throttle: 300,
+// });
 
 //? ### Dropdown menu
 // const headerDropdown = new Toggle({
