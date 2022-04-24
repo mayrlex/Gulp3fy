@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
 import { path } from '../config/path.js';
-import { spriteConfig } from '../../config.js';
+import { spriteSettings } from '../../config.js';
 
 const spriteMono = () =>
 	gulp
@@ -21,7 +21,7 @@ const spriteMono = () =>
 				mode: {
 					stack: {
 						sprite: '../sprites/sprite-mono.svg',
-						example: spriteConfig.example.mono,
+						example: spriteSettings.example.mono,
 					},
 				},
 				shape: {
@@ -31,7 +31,7 @@ const spriteMono = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteConfig.removeAttrs.mono,
+											attrs: spriteSettings.removeAttrs.mono,
 										},
 									},
 								],
@@ -59,7 +59,7 @@ const spriteMulti = () =>
 				mode: {
 					stack: {
 						sprite: '../sprites/sprite-multi.svg',
-						example: spriteConfig.example.multi,
+						example: spriteSettings.example.multi,
 					},
 				},
 				shape: {
@@ -69,7 +69,7 @@ const spriteMulti = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteConfig.removeAttrs.multi,
+											attrs: spriteSettings.removeAttrs.multi,
 										},
 									},
 
@@ -102,7 +102,7 @@ const spriteSvg = () =>
 				mode: {
 					stack: {
 						sprite: '../sprites/sprite-svg.svg',
-						example: spriteConfig.example.svg,
+						example: spriteSettings.example.svg,
 					},
 				},
 				shape: {
@@ -112,7 +112,7 @@ const spriteSvg = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteConfig.removeAttrs.svg,
+											attrs: spriteSettings.removeAttrs.svg,
 										},
 									},
 

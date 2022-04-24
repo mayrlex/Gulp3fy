@@ -8,7 +8,7 @@ import newer from 'gulp-newer';
 import gulpif from 'gulp-if';
 import sync from 'browser-sync';
 import { path } from '../config/path.js';
-import { imgminConfig } from '../../config.js';
+import { imageminSettings } from '../../config.js';
 
 export const imagesBuild = () => {
 	return gulp
@@ -31,10 +31,10 @@ export const imagesBuild = () => {
 			gulpif(
 				path.isProd,
 				imagemin({
-					progressive: imgminConfig.progressive,
-					svgoPlugins: [{ removeViewBox: imgminConfig.svg.removeViewBox }],
-					interlaced: imgminConfig.interlaced,
-					optimizationLevel: imgminConfig.optimizationLevel,
+					progressive: imageminSettings.progressive,
+					svgoPlugins: [{ removeViewBox: imageminSettings.svg.removeViewBox }],
+					interlaced: imageminSettings.interlaced,
+					optimizationLevel: imageminSettings.optimizationLevel,
 				})
 			)
 		)

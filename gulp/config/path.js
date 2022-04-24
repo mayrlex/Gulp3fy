@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import * as nodePath from 'path';
-import { ftpConfig } from '../../config.js';
+import { ftpSettings } from '../../config.js';
 
 const root = nodePath.basename(nodePath.resolve());
 const compiled = `./dist`;
@@ -37,6 +37,7 @@ export const path = {
 			otf: `${source}/assets/fonts/**/*.otf`,
 			ttf: `${source}/assets/fonts/**/*.ttf`,
 		},
+
 		root: `${source}/assets/fonts/`,
 		dest: `${compiled}/assets/fonts`,
 		watch: `${source}/assets/fonts/**/*.ttf`,
@@ -48,6 +49,7 @@ export const path = {
 			`!${source}/assets/images/common/placeholder.*`,
 			`!${source}/assets/images/common/favicon.*`,
 		],
+
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 		svg: [`${source}/assets/images/**/*.svg`, `!${source}/assets/images/svg`],
@@ -60,12 +62,15 @@ export const path = {
 				mono: `${source}/assets/icons/mono/**/*.svg`,
 				multi: `${source}/assets/icons/multi/**/*.svg`,
 			},
+
 			dest: `${compiled}/assets/images`,
+
 			watch: {
 				mono: `${source}/assets/icons/mono/**/*.svg`,
 				multi: `${source}/assets/icons/multi/**/*.svg`,
 			},
 		},
+
 		svg: {
 			src: `${source}/assets/images/svg/**/*.svg`,
 			dest: `${compiled}/assets/images`,
@@ -102,7 +107,7 @@ export const path = {
 	},
 
 	ftp: {
-		server: ftpConfig.folder,
+		server: ftpSettings.folder,
 		local: `${compiled}/**/*.*`,
 	},
 };
