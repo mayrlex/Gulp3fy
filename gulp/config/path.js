@@ -84,12 +84,13 @@ export const path = {
 		scripts: `${source}/components/**/*.js`,
 	},
 
-	files: {
-		src: [`${source}/assets/files/**/*.*`, `!${source}/assets/files/robots.txt`],
-		dest: `${compiled}/assets/files/`,
-		watch: `${source}/assets/files/**/*.*`,
+	resources: {
+		src: [`${source}/assets/resources/**/*.*`, `!${source}/assets/resources/root/*.*`],
+		dest: `${compiled}/assets/resources/`,
+		watch: `${source}/assets/resources/**/*.*`,
+
 		root: {
-			robots: `${source}/assets/files/robots.txt`,
+			src: `${source}/assets/resources/root/**/*.*`,
 			dest: compiled,
 		},
 	},

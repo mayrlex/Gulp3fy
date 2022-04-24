@@ -2,14 +2,14 @@
 // Tasks
 //##############################
 const task = {
-	markup:  true,
-	styles:  true,
-	scripts: true,
-	fonts:   false,
-	images:  true,
-	sprites: true,
-	favicon: true,
-	files:   true,
+	markup:    true,
+	styles:    true,
+	scripts:   true,
+	fonts:     false,
+	images:    true,
+	sprites:   true,
+	favicon:   true,
+	resources: true,
 }
 
 //##############################

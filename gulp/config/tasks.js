@@ -6,7 +6,7 @@ import { imagesBuild, imagesWatch } from '../tasks/images.js';
 import { spritesBuild, spritesWatch } from '../tasks/sprites.js';
 import fontsBuild from '../tasks/fonts.js';
 import faviconsBuild from '../tasks/favicon.js';
-import { filesBuild, filesWatch } from '../tasks/files.js';
+import { resourcesBuild, resourcesWatch } from '../tasks/resources.js';
 
 const builds = [
 	markupBuild,
@@ -16,7 +16,7 @@ const builds = [
 	imagesBuild,
 	spritesBuild,
 	faviconsBuild,
-	filesBuild,
+	resourcesBuild,
 ];
 
 const watchers = [
@@ -25,8 +25,7 @@ const watchers = [
 	scriptsWatch,
 	imagesWatch,
 	spritesWatch,
-	filesWatch,
-	//
+	resourcesWatch,
 ];
 
 if (task.markup !== true) {
@@ -62,9 +61,9 @@ if (task.favicon !== true) {
 	builds.splice(builds.indexOf(faviconsBuild), 1);
 }
 
-if (task.files !== true) {
-	builds.splice(builds.indexOf(filesBuild), 1);
-	watchers.splice(watchers.indexOf(filesWatch), 1);
+if (task.resources !== true) {
+	builds.splice(builds.indexOf(resourcesBuild), 1);
+	watchers.splice(watchers.indexOf(resourcesWatch), 1);
 }
 
 export { builds };
