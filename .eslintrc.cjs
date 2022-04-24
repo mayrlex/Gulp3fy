@@ -35,5 +35,6 @@ module.exports = {
 		'no-nested-ternary': 0,
 		'import/order': 0,
 		'no-useless-return': 0,
+		'no-sequences': 0,
 	},
 };
