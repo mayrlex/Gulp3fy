@@ -36,7 +36,7 @@ export const stylesBuild = () => {
 				includePaths: ['./node_modules'],
 			})
 		)
-		.pipe(gulpif(path.isProd, media()))
+		.pipe(media())
 		.pipe(
 			gulpif(
 				path.isProd,
