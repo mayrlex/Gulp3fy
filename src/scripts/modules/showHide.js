@@ -1,8 +1,8 @@
 /*
 Arguments:
-	target:   {string} - Target
-	duration: {number} - Animation duration [Default: 500ms]
-	active    {string} - Active class       [Default: --active]
+	target:     {string} - Target
+	duration:   {number} - Animation duration
+	activeClass {string} - Active class
 
 Methods:
 	show():   Sets the expand animation
@@ -10,17 +10,24 @@ Methods:
 	toggle(): Toggles between expand and collapse animations
 
 Call:
-	const showHide = new ShowHide({ target: spoiler });
+	const showHide = new ShowHide({
+		target: spoilerBtn,
+		activeClass: '--show',
+		duration: 300,
+	});
 
 	showHide.toggle();
 */
 
+const defaultOptions = {
+	activeClass: '--active',
+	duration: 500,
+};
+
 export default class ShowHide {
 	constructor(options) {
-		this.options = options;
+		this.options = { ...defaultOptions, ...options };
 		this.target = options.target;
-		this.duration = options.duration || 500;
-		this.activeClass = options.active || '--active';
 	}
 
 	show() {
@@ -41,7 +48,7 @@ export default class ShowHide {
 			this.target.style.marginBottom = 0;
 			this.target.offsetHeight;
 			this.target.style.transitionProperty = 'height, margin, padding';
-			this.target.style.transitionDuration = `${this.duration}ms`;
+			this.target.style.transitionDuration = `${this.options.duration}ms`;
 			this.target.style.height = `${height}px`;
 			this.target.style.removeProperty('padding-top');
 			this.target.style.removeProperty('padding-bottom');
@@ -53,8 +60,8 @@ export default class ShowHide {
 				this.target.style.removeProperty('overflow');
 				this.target.style.removeProperty('transition-duration');
 				this.target.style.removeProperty('transition-property');
-				this.target.classList.remove(this.activeClass);
-			}, this.duration);
+				this.target.classList.remove(this.options.activeClass);
+			}, this.options.duration);
 		}
 	}
 

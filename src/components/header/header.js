@@ -6,12 +6,10 @@
 // smoothScroll();
 
 //? Burger
-// const burger = new Burger({
-// 	throttle: 300,
-// });
+// const burger = new Burger({});
 
 //? Dropdown menu
 // const headerDropdown = new Toggle({
-// 	btn: '[data-dropdown="toggle"]',
-// 	area: '[data-dropdown]',
+// 	trigger: '[data-dropdown="toggle"]',
+// 	container: '[data-dropdown]',
 // });

@@ -1,43 +1,48 @@
 /*
 Arguments:
-	btn:    {string} - Button selector
-	area:   {string} - Area selector that contains the button selector
+	trigger:     {string} - Trigger target
+	container:   {string} - Сontainer containing trigger and content
+	toggleClass: {string} - Trigger modifier
 
 Call:
 	const toggle = new Toggler({
-		btn: '[data-dropdown-btn]',
-		area: '[data-dropdown]',
+		trigger:     '[data-dropdown-btn]',
+		container:   '[data-dropdown]',
+		toggleClass: '--active',
 	});
 */
 
+const defaultOptions = {
+	toggleClass: '--show',
+};
+
 export default class Toggle {
 	constructor(selector) {
-		this.targetBtn = selector.btn;
-		this.targetArea = selector.area;
-		this.toggleClass = selector.toggleClass || '--show';
-		this.current;
-
+		this.options = { ...defaultOptions, ...selector };
 		this.init();
 	}
 
 	init() {
 		document.addEventListener('click', (event) => {
-			const isTargetBtn = event.target.matches(this.targetBtn);
-			const isTargetArea = event.target.closest(this.targetArea);
+			const isTrigger = event.target.matches(this.options.trigger);
+			const isContainer = event.target.closest(this.options.container);
+			let current;
 
-			if (!isTargetBtn && isTargetArea != null) return;
+			if (!isTrigger && isContainer != null) return;
 
-			if (isTargetBtn) {
-				this.current = event.target.closest(this.targetBtn);
-				this.current.classList.toggle(this.toggleClass);
+			if (isTrigger) {
+				current = event.target.closest(this.options.trigger);
+				current.classList.toggle(this.options.toggleClass);
 			} else {
-				this.current = undefined;
+				current = undefined;
 			}
 
-			document.querySelectorAll(`${this.targetBtn}.${this.toggleClass}`).forEach((item) => {
-				if (item === this.current) return;
-				item.classList.remove(this.toggleClass);
-			});
+			document
+				.querySelectorAll(`${this.options.trigger}.${this.options.toggleClass}`)
+				.forEach((item) => {
+					if (item === current) return;
+					item.classList.remove(this.options.toggleClass);
+				});
 		});
 	}
 }
