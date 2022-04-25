@@ -1,5 +1,5 @@
-import Lock from '../../../scripts/modules/lock.js';
-import throttle from '../../../scripts/modules/throttle.js';
+import Lock from './lock.js';
+import throttle from './throttle.js';
 
 /*
 Options:
