@@ -1,16 +1,12 @@
 //? ### Utils
 import documentReady from './utils/documentReady.js';
-// import checkDevice from './utils/checkDevice.js';
-
-//? ### Vendors
 import lazyLoad from './vendors/lazyLoad.js';
-import './vendors/focusVisible.js';
-// import './vendors/swiper.js';
-// import 'simplebar';
+// import checkDevice from '../utils/checkDevice.js';
 
-//? ### Components
-import '../components/header/header.js';
-// import '../components/spoiler/spoiler.js';
+//? ### Core
+import './core/vendors.js';
+import './core/modules.js';
+import './core/components.js';
 
 //? ### Pages
 import './pages/home.js';
