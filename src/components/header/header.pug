@@ -3,7 +3,6 @@
 	text     {string}  - Link title
 	link     {string}  - Link
 	dropdown {boolean} - Set menu item as dropdown button
-	subitem  {boolean} - Set menu item as sub-item
 	anchor   {string}  - Smooth scrolling to the specified block
 	label    {string}  - Burger button aria-label
 
@@ -14,18 +13,9 @@
 	nav.header__nav
 		.header__menu.menu
 			+menu
-				+menu-item({ text: 'Home', link: '#' }).--current
-				+menu-item({ text: 'About', link: '#' })
-
-				+menu-item({ text: 'Products', link: '#', dropdown: true })
-					+menu-item({ text: 'Laptops', link: '#', subitem: true })
-					+menu-item({ text: 'Headphones', link: '#', subitem: true })
-					+menu-item({ text: 'Keyboards', link: '#', subitem: true }).--disabled
-					+menu-item({ text: 'Mouses', link: '#', subitem: true })
-
-				+menu-item({ text: 'News', link: '#' })
-
-				+menu-item({ text: 'Contacts', link: '#', anchor: '.section__contacts' })
+				+menu-item({ text: 'Lorem', link: '#' })
+				+menu-item({ text: 'Lorem', link: '#', dropdown: true })
+					+dropdown-item({ text: 'Lorem', link: '#' })
 
 	+burger
 
@@ -49,15 +39,10 @@ mixin menu(mods)
 mixin menu-item(data)
 	//- Has dropdown?
 	if data.dropdown
-		li.menu__item(data-dropdown='')
-			button.menu__link(data-dropdown='toggle')&attributes(attributes)= data.text
-			ul.menu__sub-list(class=data.active)
+		li.menu__item.dropdown
+			button.menu__link.dropdown__toggle&attributes(attributes)= data.text
+			ul.dropdown__menu
 				block
-
-	//- Is sub item?
-	else if data.subitem
-		li.menu__sub-item
-			a.menu__sub-link(href=data.link)&attributes(attributes)= data.text
 
 	else
 		li.menu__item
