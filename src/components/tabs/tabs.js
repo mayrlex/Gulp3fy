@@ -1,32 +1,28 @@
 /*
-Modifed code from MaxGrph author
-https://github.com/maxdenaro/maxgraph-youtube-source/tree/master/JS-решения%20№21.%20Создаем%20свой%20плагин%20для%20табов
-
-Params:
-	?Debug mode
-	isChanged: (TabName) => {
-		console.log('TabName');
-	},
-
-	?Select default active tab ('#TabName + number of tab')
-	tab.switchTabs(document.querySelector('#tab3'));
+Options:
+	isChanged()  {object} - Funtion triggired on change
+	switchTabs() (method) - Set default active tab
 
 Call:
 	import Tabs from '../../../components/tabs/tabs.js';
 
-	const tab = new Tabs('TabName', {
-		...
+	const tab = new Tabs({
+		target: 'tab1',
+		isChanged: () => {
+			console.log('Tab changed');
+		}
 	});
+
+	tab.switchTabs(document.querySelector('#tab3'));
 */
 
 export default class Tabs {
-	constructor(selector, options) {
+	constructor(options) {
 		const defaultOptions = {
 			isChanged: () => {},
 		};
-		this.options = Object.assign(defaultOptions, options);
-		this.selector = selector;
-		this.tab = document.querySelector(`[data-tab="${selector}"]`);
+		this.options = { ...defaultOptions, ...options };
+		this.tab = document.querySelector(`[data-tab="${this.options.target}"]`);
 
 		if (this.tab) {
 			this.tabMenu = this.tab.querySelector('.tabs__header');
@@ -43,7 +39,7 @@ export default class Tabs {
 	}
 
 	check() {
-		if (document.querySelectorAll(`[data-tab="${this.selector}"]`).length > 1) {
+		if (document.querySelectorAll(`[data-tab="${this.options.target}"]`).length > 1) {
 			console.error('The value of the "data-tab" attribute must be unique!');
 			return;
 		}
@@ -56,7 +52,7 @@ export default class Tabs {
 	init() {
 		this.tabButtons.forEach((el, i) => {
 			el.setAttribute('tabindex', '-1');
-			el.setAttribute('id', `${this.selector}${i + 1}`);
+			el.setAttribute('id', `${this.options.target}${i + 1}`);
 			el.classList.remove('--active');
 		});
 

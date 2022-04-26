@@ -18,34 +18,32 @@ $_content-padding-x-min: 0;
 $_content-padding-y-max: 0;
 $_content-padding-y-min: 0;
 
+$_main-breakpoint: lg;
+
 .tabs {
 	&__header {
+		padding: $_header-padding-y-min $_header-padding-x-min;
+
 		font-size: 0;
 
-		// @include adaptive('padding-top', $_header-padding-y-max, $_header-padding-y-min);
-		// @include adaptive('padding-right', $_header-padding-x-max, $_header-padding-x-min);
-		// @include adaptive('padding-bottom', $_header-padding-y-max, $_header-padding-y-min);
-		// @include adaptive('padding-left', $_header-padding-x-max, $_header-padding-x-min);
+		@include media.min($_main-breakpoint) {
+			padding: $_header-padding-y-max $_header-padding-x-max;
+		}
 	}
 
 	&__btn {
-		@include adaptive('padding-top', $_btn-padding-y-max, $_btn-padding-y-min);
-		@include adaptive('padding-right', $_btn-padding-x-max, $_btn-padding-x-min);
-		@include adaptive('padding-bottom', $_btn-padding-y-max, $_btn-padding-y-min);
-		@include adaptive('padding-left', $_btn-padding-x-max, $_btn-padding-x-min);
+		padding: $_btn-padding-y-min $_btn-padding-x-min;
 
 		@include media.hover {
 			&:hover {
-				color: color(accent, 500);
-
-				background: map.get($states, hover);
 			}
 		}
 
-		&.--active {
-			color: color(accent, 500);
+		@include media.min($_main-breakpoint) {
+			padding: $_btn-padding-y-max $_btn-padding-x-max;
+		}
 
-			background: map.get($states, active);
+		&.--active {
 		}
 	}
 
@@ -54,11 +52,12 @@ $_content-padding-y-min: 0;
 
 	&__content {
 		display: none;
+		padding: $_content-padding-y-min $_content-padding-x-min;
 		overflow: hidden;
-		@include adaptive('padding-top', $_content-padding-y-max, $_content-padding-y-min);
-		@include adaptive('padding-right', $_content-padding-x-max, $_content-padding-x-min);
-		@include adaptive('padding-bottom', $_content-padding-y-max, $_content-padding-y-min);
-		@include adaptive('padding-left', $_content-padding-x-max, $_content-padding-x-min);
+
+		@include media.min($_main-breakpoint) {
+			padding: $_content-padding-y-max $_content-padding-x-max;
+		}
 
 		&.--active {
 			display: block;
