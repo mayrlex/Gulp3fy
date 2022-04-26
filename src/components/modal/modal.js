@@ -4,18 +4,17 @@ import throttle from '../../scripts/modules/throttle.js';
 /*
 Options:
 	target       {string}  - Modal id
-	openTrigger  {string}  - Modal open trigger [ `[data-<any>='${target}']` | Default: `[data-modal='${target}']` ]
-	closeTrigger {string}  - Modal close trigger [ Default: [data-modal-close] ]
+	activeClass: {string}  - Active class
 	scrollFix    {boolean} - Sets padding-right for content when scroll is blocked [Default: true]
 	throttle:    {number}  - Set throttle
 	onShow()     {object}  - Function triggired on show modal
 	onHide()     {object}  - Function triggired on hide modal
 
 Call:
-	import Modal from '../../../components/modal/modal.js';
+	import Modal from 'modal.js';
 
 	const modal1 = new Modal({
-		id: 'modal-1',
+		target: 'modal-1',
 		scrollFix: false,
 		throttle: 300,
 		onShow: () => {
@@ -31,6 +30,7 @@ Call:
 export default class Modal {
 	constructor(options) {
 		const defaultOptions = {
+			activeClass: '--isShown',
 			scrollFix: true,
 			throttle: 350,
 			onShow: () => {},
@@ -55,21 +55,28 @@ export default class Modal {
 			'[tabindex]:not([tabindex^="-"])',
 		];
 
-		this.events();
+		this.check();
+		this.init();
 	}
 
-	events() {
+	check() {
+		if (!this.modal) {
+			console.error(`Error: modal with id:'${this.options.target}' not found`);
+		}
+	}
+
+	init() {
 		if (this.modal) {
 			document.addEventListener(
 				'click',
 				throttle((event) => {
 					const closeTrigger = event.target.closest('[data-modal-close]');
-				const outsideArea = event.target.classList.contains('modal__overlay');
+					const outsideArea = event.target.classList.contains('modal__overlay');
 
 					if (event.target.closest(`[data-modal='${this.options.target}']`)) {
 						this.show();
 					}
-				closeTrigger || outsideArea ? this.hide() : null;
+					closeTrigger || outsideArea ? this.hide() : null;
 				}, this.options.throttle)
 			);
 
@@ -88,13 +95,15 @@ export default class Modal {
 
 	show() {
 		const focusableNodes = this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS);
+		const modalNodes = document.querySelectorAll('.modal');
 
-		this.modalNodes.forEach((item) => {
+		modalNodes.forEach((item) => {
 			if (item === this.modal) return;
 			item.ariaHidden = 'true';
 		});
 
 		this.isShown ? this.hide() : null;
+		this.modal.classList.toggle(this.options.activeClass);
 		this.lock.lock();
 		this.options.onShow(this);
 		this.modal.ariaHidden = 'false';
@@ -110,18 +119,22 @@ export default class Modal {
 		this.lock.unlock();
 		this.isShown = false;
 		this.modal.ariaHidden = 'true';
+
+		setTimeout(() => {
+			this.modal.classList.toggle(this.options.activeClass);
+		}, 300);
 	}
 
 	focus(event) {
 		const focusedElements = Array(...this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS));
-		const focusedItemindex = focusedElements.indexOf(document.activeElement);
+		const focusedElementIndex = focusedElements.indexOf(document.activeElement);
 
-		if (event.shiftKey && focusedItemindex === 0) {
+		if (event.shiftKey && focusedElementIndex === 0) {
 			focusedElements[focusedElements.length - 1].focus();
 			event.preventDefault();
 		}
 
-		if (!event.shiftKey && focusedItemindex === focusedElements.length - 1) {
+		if (!event.shiftKey && focusedElementIndex === focusedElements.length - 1) {
 			focusedElements[0].focus();
 			event.preventDefault();
 		}

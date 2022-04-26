@@ -5,7 +5,7 @@
 	scroll {boolean} - Enable content scrolling inside the modal [Default: true]
 
 //- Call:
-	+modal({ id: 'modal-1' })
+	+modal({ id: 'modal-1' scroll: true })
 		.modal__header
 			h2.modal__title Modal title
 
@@ -29,11 +29,10 @@ mixin modal(data)
 		}
 
 	section.modal(
-		class=modsArray,
+		class=data.scroll ? `modal__scrollable ${modsArray}` : modsArray,
 		id=data.id,
 		tabindex='-1',
-		aria-hidden='true',
-		data-modal-scroll=data.scroll ? '' : null
+		aria-hidden='true'
 	)&attributes(attributes)
 		.modal__overlay.--isFixed
 			.modal__inner(role='dialog', aria-modal='true')
