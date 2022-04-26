@@ -4,32 +4,71 @@
 @use 'src/styles/mixins/icon';
 @use 'src/styles/mixins/media';
 
-$-breakpoint: lg;
+$_main-breakpoint: lg;
 
 // header
-$-bg: transparent;
-$-height: rem(0);
+$_bg: transparent;
+$_height: rem(0);
 
 // menu
-$-color: color('gray', 600);
-$-color_hover: color(accent, 500);
+$_color: color('gray', 600);
 
 // burger
-$-btn_size: rem(44);
-$-btn_color: color(dark, 1);
-$-item_height: rem(4);
-$-menu_direction: ltr;
-$-menu_transition_delay: 0.3s;
+$_btn-size: rem(44);
+$_btn-color: color(dark, 1);
+$_item-height: rem(4);
+$_menu-direction: ltr;
+$_menu-transition-delay: 0.3s;
 
 .header {
 	z-index: 10;
 
-	background: $-bg;
+	background: $_bg;
+
+	//? Header overlay
+	&:before {
+		// 	position: fixed;
+		// 	top: 0;
+		// 	left: 0;
+		// 	z-index: 1;
+
+		// 	width: 100%;
+		// 	height: $_height;
+
+		// 	background: $_bg;
+
+		// 	content: '';
+	}
 
 	&__inner {
 		display: flex;
 		align-items: center;
-		min-height: $-height;
+		min-height: $_height;
+
+		//? Backdrop
+		&:before {
+			// 	position: fixed;
+			// 	top: 0;
+			// 	left: 0;
+
+			// 	width: 100%;
+			// 	height: 100%;
+
+			// 	background: $backdrop;
+			// 	visibility: hidden;
+			// 	opacity: 0;
+
+			// 	transition: opacity 0.3s, visibility 0.3s;
+
+			// 	content: '';
+			// }
+
+			// &.--show {
+			// 	&:before {
+			// 		visibility: visible;
+			// 		opacity: 1;
+			// 	}
+		}
 	}
 
 	&__logo {
@@ -37,21 +76,146 @@ $-menu_transition_delay: 0.3s;
 	}
 
 	&__nav {
+		//? ## Burger menu
+		@include media.max($_main-breakpoint) {
+			// position: fixed;
+			// top: 0;
+			// @if $_menu-direction == ltr {
+			// 	left: -100%;
+			// } @else {
+			// 	right: -100%;
+			// }
+
+			// height: 100%;
+			// padding-top: calc($_height + rem(50));
+			// overflow-y: auto;
+
+			// background: $_bg;
+
+			// @if $_menu-direction == ltr {
+			// 	transition: left $_menu-transition-delay bezier(burger-menu);
+			// } @else {
+			// 	transition: right $_menu-transition-delay bezier(burger-menu);
+			// }
+
+			// &.--show {
+			// 	@if $_menu-direction == ltr {
+			// 		left: 0;
+			// 	} @else {
+			// 		right: 0;
+			// 	}
+			// }
+		}
 	}
 
 	&__menu {
 	}
 
 	& .menu {
-		//? ### Menu
-		// @import 'modules/menu';
+		&__list {
+			@include media.min($_main-breakpoint) {
+				display: flex;
+			}
+		}
 
-		// ? ### Dropdown menu
-		// @import 'modules/dropdown';
+		&__item {
+			@include media.min($_main-breakpoint) {
+				&:not(:last-child) {
+				}
+			}
+		}
+
+		&__link {
+			color: $_color;
+			font-size: inherit;
+
+			&.--current {
+				color: map.get($states, current);
+
+				pointer-events: none;
+			}
+
+			@include media.hover {
+				&:hover {
+					color: color(accent, 500);
+				}
+			}
+		}
 	}
 }
 
-@include media.max($-breakpoint) {
-	//? ### Burger
-	// @import 'modules/burger';
+//? ### Burger
+@include media.max($_main-breakpoint) {
+	// .burger {
+	// 	position: relative;
+	// 	z-index: 1;
+
+	// 	display: inline-flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	width: $_btn-size;
+	// 	height: $_btn-size;
+	// 	margin-left: auto;
+
+	// 	user-select: none;
+
+	// 	span {
+	// 		position: relative;
+
+	// 		display: block;
+	// 		width: 90%;
+	// 		height: $_item-height;
+
+	// 		background: $_btn-color;
+
+	// 		transition: background 0.1s;
+
+	// 		&:before,
+	// 		&:after {
+	// 			position: absolute;
+	// 			left: 0;
+
+	// 			width: 100%;
+	// 			height: $_item-height;
+
+	// 			background: $_btn-color;
+	// 			transform-origin: 50% 50%;
+
+	// 			transition: top 0.1s 0.1s, transform 0.1s;
+
+	// 			content: '';
+	// 		}
+
+	// 		&:before {
+	// 			top: rem(-12);
+	// 		}
+
+	// 		&:after {
+	// 			top: rem(12);
+	// 		}
+	// 	}
+
+	// 	&.--show {
+	// 		span {
+	// 			background: transparent;
+
+	// 			transition: background 0.1s 0s bezier(burger-btn);
+
+	// 			&:before,
+	// 			&:after {
+	// 				top: 0;
+
+	// 				transition: top 0.1s bezier(burger-btn), transform 0.1s 0.1s bezier(burger-btn);
+	// 			}
+
+	// 			&:before {
+	// 				transform: rotate3d(0, 0, 1, 45deg);
+	// 			}
+
+	// 			&:after {
+	// 				transform: rotate3d(0, 0, 1, -45deg);
+	// 			}
+	// 		}
+	// 	}
+	// }
 }
