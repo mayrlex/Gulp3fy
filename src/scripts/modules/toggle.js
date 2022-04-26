@@ -3,14 +3,14 @@ import throttle from './throttle.js';
 /*
 Arguments:
 	trigger:     {string} - Trigger target
-	container:   {string} - Сontainer containing trigger and content
+	parrent:     {string} - Сontainer containing trigger and content
 	activeClass: {string} - Trigger modifier
 	activeItems: {object} - Set active class to arbitrary number of elements
 	throttle:    {number} - Set throttle
 Call:
 	const toggle = new Toggle({
 		trigger:     '.dropdown__toggle',
-		container:   '.dropdown',
+		parrent:     '.dropdown',
 		activeClass: '--active',
 		activeItems: ['.dropdown__menu'],
 		throttle: 100,
@@ -32,37 +32,42 @@ export default class Toggle {
 
 	check() {
 		if (!document.querySelector(this.options.trigger))
-			console.error('[Toggle] Toggle trigger not found');
+			console.warn(`[Toggle] Toggle trigger '${this.options.trigger}' not found`);
 
 		if (!document.querySelector(this.options.parrent))
-			console.error('[Toggle] Parrent of the trigger not found');
+			console.warn(`[Toggle] Parrent '${this.options.parrent}' not found`);
 	}
 
 	init() {
-		document.addEventListener(
-			'click',
-			throttle((event) => {
-				const isTrigger = event.target.matches(this.options.trigger);
-				const isParrent = event.target.closest(this.options.parrent);
-				const activeItemsArray = [this.options.trigger, ...this.options.activeItems];
-				const activeItems = activeItemsArray.filter((element, index) => {
-					return activeItemsArray.indexOf(element) === index;
-				});
+		const existsTrigger = document.querySelector(this.options.trigger);
+		const existsParrent = document.querySelector(this.options.parrent);
 
-				if (!isTrigger && isParrent) return;
+		if (existsTrigger && existsParrent) {
+			document.addEventListener(
+				'click',
+				throttle((event) => {
+					const isTrigger = event.target.matches(this.options.trigger);
+					const isParrent = event.target.closest(this.options.parrent);
+					const activeItemsArray = [this.options.trigger, ...this.options.activeItems];
+					const activeItems = activeItemsArray.filter((element, index) => {
+						return activeItemsArray.indexOf(element) === index;
+					});
 
-				if (isTrigger) {
+					if (!isTrigger && isParrent) return;
+
+					if (isTrigger) {
+						activeItems.forEach((item) =>
+							document.querySelector(item).classList.toggle(this.options.activeClass)
+						);
+					}
+
+					if (event.target.closest(this.options.parrent)) return;
+
 					activeItems.forEach((item) =>
-						document.querySelector(item).classList.toggle(this.options.activeClass)
+						document.querySelector(item).classList.remove(this.options.activeClass)
 					);
-				}
-
-				if (event.target.closest(this.options.parrent)) return;
-
-				activeItems.forEach((item) =>
-					document.querySelector(item).classList.remove(this.options.activeClass)
-				);
-			}, this.options.throttle)
-		);
+				}, this.options.throttle)
+			);
+		}
 	}
 }
