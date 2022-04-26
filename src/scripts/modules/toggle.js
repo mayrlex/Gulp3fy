@@ -1,48 +1,68 @@
+import throttle from './throttle.js';
+
 /*
 Arguments:
 	trigger:     {string} - Trigger target
 	container:   {string} - Сontainer containing trigger and content
-	toggleClass: {string} - Trigger modifier
-
+	activeClass: {string} - Trigger modifier
+	activeItems: {object} - Set active class to arbitrary number of elements
+	throttle:    {number} - Set throttle
 Call:
-	const toggle = new Toggler({
-		trigger:     '[data-dropdown-btn]',
-		container:   '[data-dropdown]',
-		toggleClass: '--active',
+	const toggle = new Toggle({
+		trigger:     '.dropdown__toggle',
+		container:   '.dropdown',
+		activeClass: '--active',
+		activeItems: ['.dropdown__menu'],
+		throttle: 100,
 	});
 */
 
-const defaultOptions = {
-	toggleClass: '--show',
-};
-
 export default class Toggle {
-	constructor(selector) {
-		this.options = { ...defaultOptions, ...selector };
+	constructor(options) {
+		const defaultOptions = {
+			activeClass: '--show',
+			activeItems: [],
+			throttle: 0,
+		};
+
+		this.options = { ...defaultOptions, ...options };
+		this.check();
 		this.init();
 	}
 
+	check() {
+		if (!document.querySelector(this.options.trigger))
+			console.error('[Toggle] Toggle trigger not found');
+
+		if (!document.querySelector(this.options.parrent))
+			console.error('[Toggle] Parrent of the trigger not found');
+	}
+
 	init() {
-		document.addEventListener('click', (event) => {
-			const isTrigger = event.target.matches(this.options.trigger);
-			const isContainer = event.target.closest(this.options.container);
-			let current;
-
-			if (!isTrigger && isContainer != null) return;
-
-			if (isTrigger) {
-				current = event.target.closest(this.options.trigger);
-				current.classList.toggle(this.options.toggleClass);
-			} else {
-				current = undefined;
-			}
-
-			document
-				.querySelectorAll(`${this.options.trigger}.${this.options.toggleClass}`)
-				.forEach((item) => {
-					if (item === current) return;
-					item.classList.remove(this.options.toggleClass);
+		document.addEventListener(
+			'click',
+			throttle((event) => {
+				const isTrigger = event.target.matches(this.options.trigger);
+				const isParrent = event.target.closest(this.options.parrent);
+				const activeItemsArray = [this.options.trigger, ...this.options.activeItems];
+				const activeItems = activeItemsArray.filter((element, index) => {
+					return activeItemsArray.indexOf(element) === index;
 				});
-		});
+
+				if (!isTrigger && isParrent) return;
+
+				if (isTrigger) {
+					activeItems.forEach((item) =>
+						document.querySelector(item).classList.toggle(this.options.activeClass)
+					);
+				}
+
+				if (event.target.closest(this.options.parrent)) return;
+
+				activeItems.forEach((item) =>
+					document.querySelector(item).classList.remove(this.options.activeClass)
+				);
+			}, this.options.throttle)
+		);
 	}
 }
