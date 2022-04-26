@@ -15,7 +15,7 @@ $_color-active: color(accent, 500);
 		&:after {
 			margin-left: rem(5);
 
-			@include icon.arrow-1($size: 6, $color: currentColor, $direction: bottom, $radius: 4);
+			@include icon.arrow-1($size: 6, $direction: bottom, $radius: 4);
 
 			@include media.min($_main-breakpoint) {
 				border-top-width: rem(6);

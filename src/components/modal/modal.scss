@@ -1,21 +1,25 @@
 @use 'src/styles/utils/forwards' as *;
+@use 'src/styles/functions/bezier' as *;
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/icon';
 @use 'src/styles/mixins/media';
 
-$-offset_x_max: 10;
-$-offset_x_min: 10;
-$-offset_y_max: 50;
-$-offset_y_min: 10;
-$-content_padding_x_max: 0;
-$-content_padding_x_min: 0;
-$-content_padding_y_max: 0;
-$-content_padding_y_min: 0;
-$-content_between_max: 0;
-$-content_between_min: 0;
-$-btn_close_top: 0;
-$-btn_close_right: 0;
-$-animation_delay: 0.3s;
+$_offset-x-max: 10;
+$_offset-x-min: 10;
+$_offset-y-max: 50;
+$_offset-y-min: 10;
+
+$_content-padding-x-max: 0;
+$_content-padding-x-min: 0;
+$_content-padding-y-max: 0;
+$_content-padding-y-min: 0;
+$_content-between-max: 0;
+$_content-between-min: 0;
+
+$_btn-close-top: 0;
+$_btn-close-right: 0;
+
+$_animation-delay: 0.3s;
 
 .modal {
 	position: fixed;
@@ -29,14 +33,14 @@ $-animation_delay: 0.3s;
 	visibility: hidden;
 	opacity: 0;
 
-	transition: opacity $-animation_delay, visibility $-animation_delay;
+	transition: opacity $_animation-delay, visibility $_animation-delay;
 
 	pointer-events: none;
 
 	//? When modal is hidden
 	&[aria-hidden='true'] {
 		& .modal__inner {
-			animation: modal-on-hide $-animation_delay bezier(modal);
+			animation: modal-on-hide $_animation-delay bezier(modal);
 		}
 	}
 
@@ -48,14 +52,15 @@ $-animation_delay: 0.3s;
 		pointer-events: all;
 
 		& .modal__inner {
-			animation: modal-on-show $-animation_delay bezier(modal);
+			animation: modal-on-show $_animation-delay bezier(modal);
 		}
 	}
 
 	//? If content scroll is enabled
 	&[data-modal-scroll] {
 		& .modal__overlay {
-			height: 100%;
+			// height: 100%;
+			max-height: 100%;
 		}
 
 		& .modal__content {
@@ -88,30 +93,30 @@ $-animation_delay: 0.3s;
 		max-width: rem(500);
 		height: calc(100% - rem(20));
 		min-height: rem(50);
-		margin: rem($-offset_y_min) rem($-offset_x_min);
-		@include adaptive('padding-top', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-right', $-content_padding_x_max, $-content_padding_x_min);
-		@include adaptive('padding-bottom', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-left', $-content_padding_x_max, $-content_padding_x_min);
+		margin: rem($_offset-y-min) rem($_offset-x-min);
+		@include adaptive('padding-top', $_content-padding-y-max, $_content-padding-y-min);
+		@include adaptive('padding-right', $_content-padding-x-max, $_content-padding-x-min);
+		@include adaptive('padding-bottom', $_content-padding-y-max, $_content-padding-y-min);
+		@include adaptive('padding-left', $_content-padding-x-max, $_content-padding-x-min);
 		overflow: hidden;
 
 		background: $white;
 
 		// > [class^='modal__']:not(:last-child) {
-		// 	@include adaptive('margin-bottom', $-content_between_max, $-content_between_min);
+		// 	@include adaptive('margin-bottom', $_content-between-max, $_content-between-min);
 		// }
 
 		@include media.min(sm) {
-			height: calc(100% - rem($-offset_y_max));
-			margin: rem($-offset_y_max) rem($-offset_x_max);
+			height: calc(100% - rem($_offset-y-max));
+			margin: rem($_offset-y-max) rem($_offset-x-max);
 		}
 	}
 
 	&__close {
 		@include icon.cross($size: 32, $width: 2, $color: color('gray', 600), $radius: 2);
 		position: absolute;
-		top: rem($-btn_close_top);
-		right: rem($-btn_close_right);
+		top: rem($_btn-close-top);
+		right: rem($_btn-close-right);
 
 		padding: rem(8);
 

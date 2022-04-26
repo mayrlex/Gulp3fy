@@ -1,6 +1,5 @@
 @use 'sass:map';
-@use 'utils/variables' as *;
-@use 'functions/converter' as *;
+@use 'src/styles/utils/forwards' as *;
 @use 'mixins/media';
 
 :focus-visible {
@@ -38,14 +37,14 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat($column_count, 1fr);
+	grid-template-columns: repeat($column-count, 1fr);
 
-	column-gap: rem($colGap_min);
-	row-gap: rem($rowGap_min);
+	column-gap: rem($colGap-min);
+	row-gap: rem($rowGap-min);
 
 	@include media.min(md) {
-		column-gap: rem($colGap_max);
-		row-gap: rem($rowGap_max);
+		column-gap: rem($colGap-max);
+		row-gap: rem($rowGap-max);
 	}
 }
 
@@ -65,8 +64,15 @@
 }
 
 .icon {
-	width: $icon_width;
-	height: $icon_height;
+	width: $icon-width;
+	height: $icon-height;
+}
+
+.divider {
+	width: 100%;
+	height: rem(1);
+
+	background: color('gray', 200);
 }
 
 /*

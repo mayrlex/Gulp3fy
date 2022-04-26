@@ -50,12 +50,12 @@ mixin btn(data)
 			if (data.iconPos === 'before')
 				+icon(data.icon, isMulti)
 				if data.text
-					span= data.text
+					= data.text
 
 			else
 				if data.text
-					span= data.text
+					= data.text
 				+icon(data.icon, isMulti)
 
 		else
-			span= data.text
+			= data.text

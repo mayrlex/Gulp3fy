@@ -2,11 +2,13 @@
 @use 'src/styles/utils/forwards' as *;
 @use 'src/styles/mixins/media';
 
-$-content_padding: rem(0) rem(0);
-$-btn_control_between: rem(0);
-$-btn_num_between: rem(0);
-$btn_padding: rem(0) rem(0);
-$-controll_content_between: null;
+$_btn-control-between: rem(0);
+$_btn-num-between: rem(0);
+$_btn-padding: rem(0) rem(0);
+
+$_content-padding: rem(0) rem(0);
+
+$_controll-content-between: null;
 
 .pagination {
 	display: flex;
@@ -17,7 +19,7 @@ $-controll_content_between: null;
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		padding: $-content_padding;
+		padding: $_content-padding;
 	}
 
 	&__list {
@@ -28,22 +30,22 @@ $-controll_content_between: null;
 
 	&__item {
 		&:first-child {
-			margin-right: $-btn_control_between;
+			margin-right: $_btn-control-between;
 		}
 
 		&:last-child {
-			margin-left: $-btn_control_between;
+			margin-left: $_btn-control-between;
 		}
 
 		&:not(:first-child, :last-child) {
-			margin-right: $-btn_num_between;
+			margin-right: $_btn-num-between;
 		}
 	}
 
 	&__btn {
 		display: inline-flex;
 		align-items: center;
-		padding: $btn_padding;
+		padding: $_btn-padding;
 
 		color: inherit;
 		line-height: 1;
@@ -64,9 +66,9 @@ $-controll_content_between: null;
 		}
 
 		// If controllers use both text and icon
-		@if $-controll_content_between {
+		@if $_controll-content-between {
 			&-content:first-child {
-				margin-right: $-controll_content_between;
+				margin-right: $_controll-content-between;
 			}
 		}
 

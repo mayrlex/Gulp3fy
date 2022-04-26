@@ -1,16 +1,20 @@
 @use 'src/styles/utils/forwards' as *;
 @use 'src/styles/mixins/component';
 
-$-size: rem(14);
+$_size: rem(14);
+$_empty-size: rem(14);
+$_badges-map: (
+	success: color(success, 500),
+);
 
 .badge {
 	display: inline-block;
 	box-sizing: content-box;
-	min-width: $-size;
-	min-height: $-size;
+	min-width: $_size;
+	min-height: $_size;
 	padding: em(6);
 
-	font-size: $-size;
+	font-size: $_size;
 	line-height: 1;
 	white-space: nowrap;
 	text-align: center;
@@ -18,12 +22,16 @@ $-size: rem(14);
 	border-radius: em(16);
 
 	&:empty {
-		width: rem(14);
-		height: rem(14);
+		width: $_empty-size;
+		height: $_empty-size;
 		padding: 0;
 
 		background: color(accent, 500);
 	}
 
 	@include component.badge($element: 'solid', $color: $white, $bg: color(accent, 500));
+
+	// @each $mod, $color in $_badges-map {
+	// 	@include component.badge($element: 'solid', $mod: '--#{$mod}', $color: $white, $bg: $color);
+	// }
 }

@@ -3,16 +3,18 @@
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/media';
 
-$-icon_height: 2;
-$-icon_width: 16;
-$-title_padding_x_max: 0;
-$-title_padding_x_min: 0;
-$-title_padding_y_max: 0;
-$-title_padding_y_min: 0;
-$-content_padding_x_max: 0;
-$-content_padding_x_min: 0;
-$-content_padding_y_max: 0;
-$-content_padding_y_min: 0;
+$_icon-height: 2;
+$_icon-width: 16;
+
+$_title-padding-x-max: 0;
+$_title-padding-x-min: 0;
+$_title-padding-y-max: 0;
+$_title-padding-y-min: 0;
+
+$_content-padding-x-max: 0;
+$_content-padding-x-min: 0;
+$_content-padding-y-max: 0;
+$_content-padding-y-min: 0;
 
 .spoiler {
 	&__item {
@@ -25,10 +27,10 @@ $-content_padding_y_min: 0;
 		position: relative;
 
 		width: 100%;
-		@include adaptive('padding-top', $-title_padding_y_max, $-title_padding_y_min);
-		@include adaptive('padding-right', $-title_padding_x_max + 30, $-title_padding_x_min + 20);
-		@include adaptive('padding-bottom', $-title_padding_y_max, $-title_padding_y_min);
-		@include adaptive('padding-left', $-title_padding_x_max, $-title_padding_x_min);
+		@include adaptive('padding-top', $_title-padding-y-max, $_title-padding-y-min);
+		@include adaptive('padding-right', $_title-padding-x-max + 30, $_title-padding-x-min + 20);
+		@include adaptive('padding-bottom', $_title-padding-y-max, $_title-padding-y-min);
+		@include adaptive('padding-left', $_title-padding-x-max, $_title-padding-x-min);
 
 		font-size: inherit;
 		text-align: left;
@@ -53,10 +55,10 @@ $-content_padding_y_min: 0;
 		&:after {
 			position: absolute;
 			top: calc(50% - 1px);
-			@include adaptive('right', $-title_padding_x_max, $-title_padding_x_min);
+			@include adaptive('right', $_title-padding-x-max, $_title-padding-x-min);
 
-			width: rem($-icon_width);
-			height: rem($-icon_height);
+			width: rem($_icon-width);
+			height: rem($_icon-height);
 
 			background: color(dark, 1);
 
@@ -91,9 +93,9 @@ $-content_padding_y_min: 0;
 	}
 
 	&__content {
-		@include adaptive('padding-top', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-right', $-content_padding_x_max, $-content_padding_x_min);
-		@include adaptive('padding-bottom', $-content_padding_y_max, $-content_padding_y_min);
-		@include adaptive('padding-left', $-content_padding_x_max, $-content_padding_x_min);
+		@include adaptive('padding-top', $_content-padding-y-max, $_content-padding-y-min);
+		@include adaptive('padding-right', $_content-padding-x-max, $_content-padding-x-min);
+		@include adaptive('padding-bottom', $_content-padding-y-max, $_content-padding-y-min);
+		@include adaptive('padding-left', $_content-padding-x-max, $_content-padding-x-min);
 	}
 }

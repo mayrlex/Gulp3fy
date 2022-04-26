@@ -8,11 +8,11 @@ $layoutWidth: 1920;
 $container:   1324 + ($offsetMax * 2);
 
 // Grid
-$column_count: 12;
-$colGap_max:   20;
-$rowGap_max:   30;
-$colGap_min:   10;
-$rowGap_min:   20;
+$column-count: 12;
+$colGap-max:   20;
+$rowGap-max:   30;
+$colGap-min:   10;
+$rowGap-min:   20;
 
 // Colors
 $white:   #fff;
@@ -23,10 +23,10 @@ $warning: #fcc93f;
 $danger:  #ff4732;
 $info:    #0378e6;
 $gray:    #adb5bd;
-$light_1: #f8f9fa;
-$light_2: #e2e6ea;
-$dark_1:  #343a40;
-$dark_2:  #23272b;
+$light-1: #f8f9fa;
+$light-2: #e2e6ea;
+$dark-1:  #343a40;
+$dark-2:  #23272b;
 
 // Media breakpoints
 $breakpoints: (
@@ -124,13 +124,13 @@ $gray-map: (
 );
 
 $light-map: (
-	1: $light_1,
-	2: $light_2,
+	1: $light-1,
+	2: $light-2,
 );
 
 $dark-map: (
-	1: $dark_1,
-	2: $dark_2,
+	1: $dark-1,
+	2: $dark-2,
 );
 
 $color-names: (
@@ -156,6 +156,6 @@ $states: (
 );
 
 // UI
-$backdrop:    rgb($dark_2, 10%);
-$icon_width:  rem(16);
-$icon_height: rem(16);
+$backdrop:    rgb($dark-2, 90%);
+$icon-width:  rem(16);
+$icon-height: rem(16);

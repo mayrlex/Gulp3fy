@@ -2,59 +2,54 @@
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/component';
 
-$-padding_x_max: 30;
-$-padding_x_min: 15;
-$-padding_y_max: 10;
-$-padding_y_min: 8;
-$-radius: rem(4);
-$-icon_padding_max: 10;
-$-icon_padding_min: 8;
+$_padding-x-max: 30;
+$_padding-x-min: 15;
+$_padding-y-max: 10;
+$_padding-y-min: 8;
+$_radius: rem(4);
+$_gap: 10;
+
+$_icon-padding-max: 10;
+$_icon-padding-min: 8;
 
 .btn {
+	// display: inline-grid;
+	// grid-auto-flow: column;
+	// column-gap: rem($_gap);
 	display: inline-flex;
 	align-items: center;
 	overflow: hidden;
 
-	@include adaptive('font-size', 18, 16, 1);
 	white-space: nowrap;
 	text-align: center;
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	border-radius: $-radius;
+	border-radius: $_radius;
 	cursor: pointer;
 
 	user-select: none;
 
-	//? If button contains icon before text
-	// &[class*='btn__'] > .icon:first-child {
-	// 	@include adaptive('margin-right', 12, 8, 1);
-	// }
-
-	//? If button contains icon after text
-	// &[class*='btn__'] > .icon:last-child {
-	// 	@include adaptive('margin-left', 12, 8, 1);
-	// }
+	@include adaptive('font-size', 18, 16, 1);
 
 	// .btn__solid
 	@include component.btn(
 		$element: 'solid',
 		$color: $white,
-		$fill: $white,
+		$fill: currentColor,
 		$bg: color(accent, 500),
 		$bg_hover: color(accent, 600),
 		$bg_active: color(accent, 700),
 		$bg_disabled: color(accent, 200)
 	) {
-		@include adaptive('padding-top', $-padding_y_max, $-padding_y_min);
-		@include adaptive('padding-right', $-padding_x_max, $-padding_x_min);
-		@include adaptive('padding-bottom', $-padding_y_max, $-padding_y_min);
-		@include adaptive('padding-left', $-padding_x_max, $-padding_x_min);
+		@include adaptive('padding-top', $_padding-y-max, $_padding-y-min);
+		@include adaptive('padding-right', $_padding-x-max, $_padding-x-min);
+		@include adaptive('padding-bottom', $_padding-y-max, $_padding-y-min);
+		@include adaptive('padding-left', $_padding-x-max, $_padding-x-min);
 	}
 
 	//? ### Icon button
 	// &-icon {
-
 	// 	display: inline-flex;
 
 	// 	vertical-align: middle;
@@ -76,7 +71,7 @@ $-icon_padding_min: 8;
 	// 		$bg_active: color(accent, 700),
 	// 		$bg_disabled: color(accent, 200)
 	// 	) {
-	// 		@include adaptive('padding', $-icon_padding_max, $-icon_padding_min, 1);
+	// 		@include adaptive('padding', $_icon-padding-max, $_icon-padding-min, 1);
 	// 	}
 	// }
 
