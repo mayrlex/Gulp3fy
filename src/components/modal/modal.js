@@ -1,4 +1,5 @@
 import Lock from '../../scripts/modules/lock.js';
+import throttle from '../../scripts/modules/throttle.js';
 
 /*
 Options:
@@ -6,6 +7,7 @@ Options:
 	openTrigger  {string}  - Modal open trigger [ `[data-<any>='${target}']` | Default: `[data-modal='${target}']` ]
 	closeTrigger {string}  - Modal close trigger [ Default: [data-modal-close] ]
 	scrollFix    {boolean} - Sets padding-right for content when scroll is blocked [Default: true]
+	throttle:    {number}  - Set throttle
 	onShow()     {object}  - Function triggired on show modal
 	onHide()     {object}  - Function triggired on hide modal
 
@@ -15,6 +17,7 @@ Call:
 	const modal1 = new Modal({
 		id: 'modal-1',
 		scrollFix: false,
+		throttle: 300,
 		onShow: () => {
 			console.log('Modal is shown');
 		},
@@ -26,22 +29,18 @@ Call:
 */
 
 export default class Modal {
-	constructor({
-		target,
-		openTrigger = `[data-modal='${target}']`,
-		closeTrigger = '[data-modal-close]',
-		scrollFix,
-		onShow = () => {},
-		onHide = () => {},
-	}) {
-		this.config = { target, openTrigger, closeTrigger, onShow, onHide };
-		this.modal = document.querySelector(`#${this.config.target}`);
-		this.modalNodes = document.querySelectorAll('.modal');
-		this.isShown = false;
-		this.lock = new Lock({
-			scrollFix,
-		});
+	constructor(options) {
+		const defaultOptions = {
+			scrollFix: true,
+			throttle: 350,
+			onShow: () => {},
+			onHide: () => {},
+		};
 
+		this.options = { ...defaultOptions, ...options };
+		this.modal = document.querySelector(`#${this.options.target}`);
+		this.isShown = false;
+		this.lock = new Lock(this.options.scrollFix);
 		this.FOCUSABLE_ELEMENTS = [
 			'a[href]',
 			'area[href]',
@@ -61,16 +60,27 @@ export default class Modal {
 
 	events() {
 		if (this.modal) {
-			document.addEventListener('click', (event) => {
-				const closeTrigger = event.target.closest(this.config.closeTrigger);
+			document.addEventListener(
+				'click',
+				throttle((event) => {
+					const closeTrigger = event.target.closest('[data-modal-close]');
 				const outsideArea = event.target.classList.contains('modal__overlay');
 
-				if (event.target.closest(this.config.openTrigger)) this.show();
+					if (event.target.closest(`[data-modal='${this.options.target}']`)) {
+						this.show();
+					}
 				closeTrigger || outsideArea ? this.hide() : null;
-			});
+				}, this.options.throttle)
+			);
+
+			window.addEventListener(
+				'keydown',
+				throttle((event) => {
+					event.key === 'Escape' && this.isShown ? this.hide() : null;
+				}, this.options.throttle)
+			);
 
 			window.addEventListener('keydown', (event) => {
-				event.key === 'Escape' && this.isShown ? this.hide() : null;
 				event.key === 'Tab' && this.isShown ? this.focus(event) : null;
 			});
 		}
@@ -86,7 +96,7 @@ export default class Modal {
 
 		this.isShown ? this.hide() : null;
 		this.lock.lock();
-		this.config.onShow(this);
+		this.options.onShow(this);
 		this.modal.ariaHidden = 'false';
 
 		setTimeout(() => {
@@ -96,7 +106,7 @@ export default class Modal {
 	}
 
 	hide() {
-		this.config.onHide(this);
+		this.options.onHide(this);
 		this.lock.unlock();
 		this.isShown = false;
 		this.modal.ariaHidden = 'true';
