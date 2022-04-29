@@ -1,33 +1,23 @@
-import Lock from './lock.js';
-import throttle from './throttle.js';
+import Lock from '../../scripts/modules/lock.js';
+import throttle from '../../scripts/modules/throttle.js';
 
-/*
-Options:
-	toggleClass {string}  - Toggle class
-	scrollFix   {boolean} - Sets padding-right for content when scroll is blocked
-	delay       {number}  - Throttle between toggling
-	backdrop    {boolean} - Turn off/on burger menu backdrop
-
-Call:
-	import Modal from '../../../components/modal/modal.js';
-
-	const burger = new Burger({
-		toggleClass: '--active',
-		scrollFix: false,
-		throttle: 300,
-		backdrop: false,
-	});
-*/
-
-const defaultOptions = {
-	toggleClass: '--show',
-	throttle: 250,
-	backdrop: true,
-	scrollFix: true,
-};
+/**
+ * @param {Object}  options
+ * @param {string}  options.toggleClass - Toggle class
+ * @param {number}  options.throttle    - Throttle between toggling
+ * @param {boolean} options.backdrop    - Turn on/off burger menu backdrop
+ * @param {boolean} options.scrollFix   - Sets padding-right for content when scroll is blocked
+ */
 
 export default class Burger {
 	constructor(options) {
+		const defaultOptions = {
+			toggleClass: '--show',
+			throttle: 250,
+			backdrop: true,
+			scrollFix: true,
+		};
+
 		this.option = { ...defaultOptions, ...options };
 		this.lock = new Lock({ scrollFix: this.option.scrollFix });
 		this.init();

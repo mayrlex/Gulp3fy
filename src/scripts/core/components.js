@@ -1,5 +1,9 @@
 // import '../../components/header/header.js';
-// import '../../components/spoiler/spoiler.js';
+
+//? Burger
+// import Burger from '../../components/burger/burger.js';
+
+// const burger = new Burger({});
 
 //? Modal
 // import Modal from '../../components/modal/modal.js';

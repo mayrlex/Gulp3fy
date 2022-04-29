@@ -1,0 +1,83 @@
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/media';
+@use 'src/styles/functions/bezier' as cubic;
+
+$_btn-size: rem(44);
+$_btn-color: color(dark, 1);
+$_btn-line-height: rem(4);
+
+@include media.max(lg) {
+	.burger {
+		position: relative;
+		z-index: 1;
+
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: $_btn-size;
+		height: $_btn-size;
+		margin-left: auto;
+
+		user-select: none;
+
+		span {
+			position: relative;
+
+			display: block;
+			width: 90%;
+			height: $_btn-line-height;
+
+			background: $_btn-color;
+
+			transition: background 0.1s;
+
+			&:before,
+			&:after {
+				position: absolute;
+				left: 0;
+
+				width: 100%;
+				height: $_btn-line-height;
+
+				background: $_btn-color;
+				transform-origin: 50% 50%;
+
+				transition: top 0.1s 0.1s, transform 0.1s;
+
+				content: '';
+			}
+
+			&:before {
+				top: rem(-12);
+			}
+
+			&:after {
+				top: rem(12);
+			}
+		}
+
+		&.--show {
+			span {
+				background: transparent;
+
+				transition: background 0.1s 0s cubic.bezier(burger-btn);
+
+				&:before,
+				&:after {
+					top: 0;
+
+					transition: top 0.1s cubic.bezier(burger-btn),
+						transform 0.1s 0.1s cubic.bezier(burger-btn);
+				}
+
+				&:before {
+					transform: rotate3d(0, 0, 1, 45deg);
+				}
+
+				&:after {
+					transform: rotate3d(0, 0, 1, -45deg);
+				}
+			}
+		}
+	}
+}
