@@ -1,3 +1,4 @@
+//? Header
 // import '../../components/header/header.js';
 
 //? Burger
@@ -10,7 +11,10 @@
 
 // const modal1 = new Modal({ target: 'modal-1' });
 
-// //? Tabs
+//? Spoiler
+// import '../../components/spoiler/spoiler.js';
+
+//? Tabs
 // import Tabs from '../../components/tabs/tabs.js';
 
 // const tab = new Tabs({ target: 'tab1' });
