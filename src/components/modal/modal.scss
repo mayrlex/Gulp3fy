@@ -16,6 +16,7 @@ $_btn-close-top: 0;
 $_btn-close-right: 0;
 
 $_animation-delay: 0.3s;
+$_bezier: cubic-bezier(0, 0, 0.5, 1);
 
 .modal {
 	position: fixed;
@@ -32,7 +33,7 @@ $_animation-delay: 0.3s;
 	//? When modal is hidden
 	&[aria-hidden='true'] {
 		& .modal__inner {
-			animation: modal-on-hide $_animation-delay bezier(modal);
+			animation: modal-on-hide $_animation-delay $_bezier;
 		}
 	}
 
@@ -44,7 +45,7 @@ $_animation-delay: 0.3s;
 		}
 
 		& .modal__inner {
-			animation: modal-on-show $_animation-delay bezier(modal);
+			animation: modal-on-show $_animation-delay $_bezier;
 		}
 	}
 

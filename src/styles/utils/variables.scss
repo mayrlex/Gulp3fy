@@ -15,18 +15,16 @@ $colGap-min:   10;
 $rowGap-min:   20;
 
 // Colors
-$white:   #fff;
-$black:   #000;
-$accent:  #2460fc;
-$success: #29c45f;
-$warning: #fcc93f;
-$danger:  #ff4732;
-$info:    #0378e6;
-$gray:    #adb5bd;
-$light-1: #f8f9fa;
-$light-2: #e2e6ea;
-$dark-1:  #343a40;
-$dark-2:  #23272b;
+$white:      #fff;
+$black:      #000;
+$accent:     #2460fc;
+$success:    #29c45f;
+$warning:    #fcc93f;
+$danger:     #ff4732;
+$info:       #0378e6;
+$gray:       #adb5bd;
+
+$body-color: #374151;
 
 // Media breakpoints
 $breakpoints: (
@@ -36,13 +34,6 @@ $breakpoints: (
 	lg:  992  - 0.2,
 	xl:  1200 - 0.2,
 	xxl: 1400 - 0.2,
-);
-
-// Cubic-bezier animations
-$cubic-bezier: (
-	modal:       cubic-bezier(0, 0, 0.5, 1),
-	burger-btn:  cubic-bezier(0.57, 0.21, 0.69, 1.25),
-	burger-menu: cubic-bezier(0.785, 0.135, 0.15, 0.86),
 );
 
 $accent-map: (
@@ -123,16 +114,6 @@ $gray-map: (
 	900: mix($black, $gray, 80),
 );
 
-$light-map: (
-	1: $light-1,
-	2: $light-2,
-);
-
-$dark-map: (
-	1: $dark-1,
-	2: $dark-2,
-);
-
 $color-names: (
 	'accent':  $accent-map,
 	'success': $success-map,
@@ -140,8 +121,6 @@ $color-names: (
 	'danger':  $danger-map,
 	'info':    $info-map,
 	'gray':    $gray-map,
-	'light':   $light-map,
-	'dark':    $dark-map,
 );
 
 $states: (
@@ -156,6 +135,6 @@ $states: (
 );
 
 // UI
-$backdrop:    rgb($dark-2, 90%);
+$backdrop:    rgb(#23272b, 90%);
 $icon-width:  rem(16);
 $icon-height: rem(16);

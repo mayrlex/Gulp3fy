@@ -2,7 +2,7 @@
 @use 'mixins/adaptive' as *;
 
 body {
-	color: color('gray', 600);
+	color: $body-color;
 	@include adaptive('font-size', 16, 14);
 	font-family: Inter, sans-serif;
 }

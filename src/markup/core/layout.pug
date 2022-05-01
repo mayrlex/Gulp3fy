@@ -27,10 +27,11 @@ html(lang=page.lang)
 	body.body
 		.wrapper
 			if page.header
-				header.header(role='banner')
+				header.header
 					.header__inner.container
-						- let tag;
-						- page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
+						-
+							let tag
+							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
 
 						block header
 							include ../parts/header.pug
