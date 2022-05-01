@@ -1,8 +1,3 @@
-import Toggle from '../../scripts/modules/toggle.js';
+import dropdown from '../dropdown/dropdown.js';
 
-//? Dropdown menu
-const headerDropdown = new Toggle({
-	trigger: '.dropdown__toggle',
-	parrent: '.dropdown',
-	activeItems: ['.dropdown__menu'],
-});
+dropdown({});
