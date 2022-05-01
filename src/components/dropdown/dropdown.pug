@@ -1,29 +1,19 @@
 //- Arguments:
-	mods     {string}  - Mod('s)
-	text     {string}  - Dropdown toggle text
-	link     {string}  - Link
+	mods  {string}  - Mod('s)
+	text  {string}  - Dropdown toggle text
+	link  {string}  - Link
+	inNav {boolean} - If dropdown contained in navbar
 
 //- Call:
-	+dropdown({ text: 'Prfile' })
-		+dropdown-item({ text: 'Your profile', link: '#' })
+	+dropdown({ text: 'Lorem' })
+		+dropdown-item({ text: 'Lorem', link: '#' })
 
 mixin dropdown(data)
-	-
-		let modsArray = '';
-
-		if (data.mods) {
-			const modsList = data.mods.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} dropdown--${modsList[i].trim()}`;
-			}
-		}
-
-	.dropdown(class=modsArray)&attributes(attributes)
-		button.dropdown__toggle= data.text
+	#{data.inNav ? 'li' : 'div'}(class=data.inNav ? 'nav__item dropdown' : 'dropdown')&attributes(attributes)
+		button(class=data.inNav ? 'nav__link dropdown__toggle' : 'dropdown__toggle')= data.text
 		ul.dropdown__menu
 			block
 
 mixin dropdown-item(data)
-	li.dropdown__item&attributes(attributes)
-		a.dropdown__link(href=data.link)= data.text
+	li.dropdown__item
+		a.dropdown__link(href=data.link)&attributes(attributes)= data.text

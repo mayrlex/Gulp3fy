@@ -8,6 +8,27 @@ $_color-active: color(accent, 500);
 .dropdown {
 	position: relative;
 
+	&.--show {
+		& .dropdown__toggle {
+			color: $_color-active;
+
+			&:after {
+				transform: rotateX(180deg);
+			}
+		}
+
+		& .dropdown__menu {
+			@include media.max($_main-breakpoint) {
+				display: block;
+			}
+
+			@include media.min($_main-breakpoint) {
+				visibility: visible;
+				opacity: 1;
+			}
+		}
+	}
+
 	&__toggle {
 		display: flex;
 		align-items: center;
@@ -15,7 +36,7 @@ $_color-active: color(accent, 500);
 		&:after {
 			margin-left: rem(5);
 
-			@include icon.arrow-1($size: 6, $direction: bottom, $radius: 4);
+			@include icon.arrow-1($size: 10, $direction: bottom, $radius: 4);
 
 			@include media.min($_main-breakpoint) {
 				border-top-width: rem(6);
@@ -24,26 +45,6 @@ $_color-active: color(accent, 500);
 			}
 
 			content: '';
-		}
-
-		&.--show {
-			color: $_color-active;
-
-			&:after {
-				transform: rotateX(180deg);
-			}
-
-			//? Show dropdown
-			& ~ .dropdown__menu {
-				@include media.max($_main-breakpoint) {
-					display: block;
-				}
-
-				@include media.min($_main-breakpoint) {
-					visibility: visible;
-					opacity: 1;
-				}
-			}
 		}
 	}
 
@@ -75,7 +76,7 @@ $_color-active: color(accent, 500);
 		}
 	}
 
-	.divider {
-		// margin: rem(5) 0;
-	}
+	// .divider {
+	// 	margin: rem(5) 0;
+	// }
 }
