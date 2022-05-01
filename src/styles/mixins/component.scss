@@ -6,24 +6,24 @@
 // $mod:           '--success',
 // $color:         $white,
 // $bg:            color(success, 500),
-// $outline_width: 2,
-// $outline_color: color(success, 500),
+// $outline-width: 2,
+// $outline-color: color(success, 500),
 
 @mixin badge(
 	$element,
 	$mod: null,
 	$color: null,
 	$bg: null,
-	$outline_width: null,
-	$outline_color: null
+	$outline-width: null,
+	$outline-color: null
 ) {
 	&__#{$element}#{$mod} {
 		color: $color;
 
 		background: $bg;
-		@if $outline_width {
-			outline: $outline_width solid $outline_color;
-			outline-offset: -$outline_width;
+		@if $outline-width {
+			outline: $outline-width solid $outline-color;
+			outline-offset: -$outline-width;
 		}
 	}
 }
@@ -32,43 +32,43 @@
 // $element:               'solid',
 // $mod:                   '--success',
 // $color:                 $white,
-// $color_hover:           $white,
-// $color_active:          $white,
-// $color_disabled:        color('gray', 300),
+// $color-hover:           $white,
+// $color-active:          $white,
+// $color-disabled:        color('gray', 300),
 // $fill:                  $white,
-// $fill_hover:            $white,
-// $fill_active:           $white,
-// $fill_disabled:         color('gray', 300),
+// $fill-hover:            $white,
+// $fill-active:           $white,
+// $fill-disabled:         color('gray', 300),
 // $bg:                    color(success, 500),
-// $bg_hover:              color(success, 600),
-// $bg_active:             color(success, 700),
-// $bg_disabled:           color(success, 200),
-// $border_width:          2,
-// $border_color:          color(success, 200),
-// $border_color_hover:    color(success, 300),
-// $border_color_active:   color(success, 400),
-// $border_color_disabled: color('gray', 300),
+// $bg-hover:              color(success, 600),
+// $bg-active:             color(success, 700),
+// $bg-disabled:           color(success, 200),
+// $border-width:          2,
+// $border-color:          color(success, 200),
+// $border-color-hover:    color(success, 300),
+// $border-color-active:   color(success, 400),
+// $border-color-disabled: color('gray', 300),
 
 @mixin btn(
 	$element,
 	$mod: null,
 	$color: null,
-	$color_hover: null,
-	$color_active: null,
-	$color_disabled: null,
+	$color-hover: null,
+	$color-active: null,
+	$color-disabled: null,
 	$fill: null,
-	$fill_hover: null,
-	$fill_active: null,
-	$fill_disabled: null,
+	$fill-hover: null,
+	$fill-active: null,
+	$fill-disabled: null,
 	$bg: null,
-	$bg_hover: null,
-	$bg_active: null,
-	$bg_disabled: null,
-	$border_width: null,
-	$border_color: null,
-	$border_color_hover: null,
-	$border_color_active: null,
-	$border_color_disabled: null
+	$bg-hover: null,
+	$bg-active: null,
+	$bg-disabled: null,
+	$border-width: null,
+	$border-color: null,
+	$border-color-hover: null,
+	$border-color-active: null,
+	$border-color-disabled: null
 ) {
 	&__#{$element}#{$mod} {
 		@content;
@@ -76,22 +76,22 @@
 		color: $color;
 
 		background: $bg;
-		@if $border_width {
-			border: rem($border_width) solid $border_color;
+		@if $border-width {
+			border: rem($border-width) solid $border-color;
 		}
 
 		&:disabled,
 		&.--disabled {
-			color: $color_disabled;
+			color: $color-disabled;
 
-			@if $fill_disabled {
+			@if $fill-disabled {
 				.icon {
-					fill: $fill_disabled;
+					fill: $fill-disabled;
 				}
 			}
 
-			background: $bg_disabled;
-			border-color: $border_color_disabled;
+			background: $bg-disabled;
+			border-color: $border-color-disabled;
 			cursor: not-allowed;
 		}
 
@@ -104,29 +104,29 @@
 		@include media.hover {
 			&:not(:disabled, .--disabled) {
 				&:hover {
-					color: $color_hover;
+					color: $color-hover;
 
-					@if $fill_hover {
+					@if $fill-hover {
 						.icon {
-							fill: $fill_hover;
+							fill: $fill-hover;
 						}
 					}
 
-					background: $bg_hover;
-					border-color: $border_color_hover;
+					background: $bg-hover;
+					border-color: $border-color-hover;
 				}
 
 				&:active {
-					color: $color_active;
+					color: $color-active;
 
-					@if $fill_active {
+					@if $fill-active {
 						.icon {
-							fill: $fill_active;
+							fill: $fill-active;
 						}
 					}
 
-					background: $bg_active;
-					border-color: $border_color_active;
+					background: $bg-active;
+					border-color: $border-color-active;
 				}
 			}
 		}

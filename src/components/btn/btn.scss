@@ -6,7 +6,6 @@ $_padding-x-max: 30;
 $_padding-x-min: 15;
 $_padding-y-max: 10;
 $_padding-y-min: 8;
-$_radius: rem(4);
 $_gap: 10;
 
 $_icon-padding-max: 10;
@@ -25,7 +24,7 @@ $_icon-padding-min: 8;
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	border-radius: $_radius;
+	border-radius: em(4);
 	cursor: pointer;
 
 	user-select: none;
@@ -38,9 +37,9 @@ $_icon-padding-min: 8;
 		$color: $white,
 		$fill: currentColor,
 		$bg: color(accent, 500),
-		$bg_hover: color(accent, 600),
-		$bg_active: color(accent, 700),
-		$bg_disabled: color(accent, 200)
+		$bg-hover: color(accent, 600),
+		$bg-active: color(accent, 700),
+		$bg-disabled: color(accent, 200)
 	) {
 		@include adaptive('padding-top', $_padding-y-max, $_padding-y-min);
 		@include adaptive('padding-right', $_padding-x-max, $_padding-x-min);
@@ -67,9 +66,9 @@ $_icon-padding-min: 8;
 	// 		$element: 'solid',
 	// 		$fill: $white,
 	// 		$bg: color(accent, 500),
-	// 		$bg_hover: color(accent, 600),
-	// 		$bg_active: color(accent, 700),
-	// 		$bg_disabled: color(accent, 200)
+	// 		$bg-hover: color(accent, 600),
+	// 		$bg-active: color(accent, 700),
+	// 		$bg-disabled: color(accent, 200)
 	// 	) {
 	// 		@include adaptive('padding', $_icon-padding-max, $_icon-padding-min, 1);
 	// 	}

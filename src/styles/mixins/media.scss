@@ -21,11 +21,11 @@
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
 
-		@media (max-width: em($breakpoint)) {
+		@media (max-width: em($breakpoint - 0.2)) {
 			@content;
 		}
 	} @else {
-		@media (max-width: em($key)) {
+		@media (max-width: em($key - 0.2)) {
 			@content;
 		}
 	}
@@ -36,19 +36,19 @@
 	$breakpointMin: map-get($breakpoints, $key1);
 	$breakpointMax: map-get($breakpoints, $key2);
 	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
-		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax)) {
+		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax - 0.2)) {
 			@content;
 		}
 	} @else if map-has-key($breakpoints, $key1) and not map-has-key($breakpoints, $key2) {
-		@media (min-width: em($breakpointMin)) and (max-width: em($key2)) {
+		@media (min-width: em($breakpointMin)) and (max-width: em($key2 - 0.2)) {
 			@content;
 		}
 	} @else if map-has-key($breakpoints, $key2) and not map-has-key($breakpoints, $key1) {
-		@media (min-width: em($key1)) and (max-width: em($breakpointMax)) {
+		@media (min-width: em($key1)) and (max-width: em($breakpointMax - 0.2)) {
 			@content;
 		}
 	} @else {
-		@media (min-width: em($key1)) and (max-width: em($key2)) {
+		@media (min-width: em($key1)) and (max-width: em($key2 - 0.2)) {
 			@content;
 		}
 	}
