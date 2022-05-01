@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use 'src/styles/utils/forwards' as *;
+@use 'src/styles/mixins/media';
+
+$_main-breakpoint: lg;
+$_color: inherit;
+$_bg: $white;
+$_menu-transition-delay: 0.3s;
+$_bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+.nav {
+	background: $_bg;
+
+	//? Mobile menu
+	@include media.max($_main-breakpoint) {
+		position: fixed;
+		top: 0;
+		left: -100%;
+
+		height: 100%;
+		overflow-y: auto;
+
+		transition: left $_menu-transition-delay $_bezier;
+
+		&.--show {
+			left: 0;
+		}
+	}
+
+	&__list {
+		@include media.min($_main-breakpoint) {
+			display: flex;
+		}
+	}
+
+	&__item {
+		@include media.min($_main-breakpoint) {
+			&:not(:last-child) {
+			}
+		}
+	}
+
+	&__link {
+		color: $_color;
+		font-size: inherit;
+
+		&.--current {
+			pointer-events: none;
+		}
+
+		@include media.hover {
+			&:hover {
+				color: color(accent, 500);
+			}
+		}
+	}
+}
