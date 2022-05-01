@@ -61,10 +61,12 @@ mixin card(mods)
 mixin card-preview(data)
 	-
 		let tag;
+		const linkRegEx = /([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/
+		const isSvg = data.src.split('.');
 		data.link ? (tag = 'a') : (tag = 'div');
 
 	#{tag}.card__preview.--ibg(href=data.link)
-		if (data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/))
+		if (data.src.match(linkRegEx) || isSvg[1] === 'svg')
 			+img({ src: data.src, alt: data.alt })
 		else
 			+pic({ src: data.src, alt: data.alt })
