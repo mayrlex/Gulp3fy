@@ -51,7 +51,7 @@ const spriteBuild = () => {
 
 const spriteIconsBuild = () => {
 	return gulp
-		.src(path.sprites.icons.src.default)
+		.src(path.sprites.icons.src.root)
 		.pipe(
 			plumber(
 				notify.onError({

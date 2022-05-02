@@ -5,7 +5,7 @@ import { serverSettings } from '../../config.js';
 const server = (done) => {
 	sync.init({
 		server: {
-			baseDir: `${path.compiled}`,
+			baseDir: `${path.dest}`,
 		},
 		port: serverSettings.port,
 		open: serverSettings.open,

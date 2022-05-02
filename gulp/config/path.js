@@ -3,103 +3,106 @@ import * as nodePath from 'path';
 import { ftpSettings } from '../../config.js';
 
 const root = nodePath.basename(nodePath.resolve());
-const compiled = `./dist`;
-const source = `./src`;
+const src = `./src`;
+const dest = `./dist`;
+const srcAssets = `${src}/assets`;
+const destAssets = `${dest}/assets`;
+const prod = process.argv.includes('--prod');
 
 export const path = {
-	source,
-	compiled,
+	src,
+	dest,
 	root,
 
-	isProd: process.argv.includes('--prod'),
-	isDev: !process.argv.includes('--prod'),
+	isProd: prod,
+	isDev: !prod,
 
 	markup: {
-		src: `${source}/markup/*.pug`,
-		dest: compiled,
-		watch: `${source}/markup/**/*.pug`,
+		src: `${src}/markup/*.pug`,
+		dest,
+		watch: `${src}/markup/**/*.pug`,
 	},
 
 	styles: {
-		src: `${source}/styles/main.scss`,
-		dest: `${compiled}/assets/css`,
-		watch: `${source}/styles/**/*.scss`,
+		src: `${src}/styles/main.scss`,
+		dest: `${destAssets}/css`,
+		watch: `${src}/styles/**/*.scss`,
 	},
 
 	scripts: {
-		src: `${source}/scripts/app.js`,
-		dest: `${compiled}/assets/js`,
-		watch: `${source}/scripts/**/*.js`,
+		src: `${src}/scripts/app.js`,
+		dest: `${destAssets}/js`,
+		watch: `${src}/scripts/**/*.js`,
 	},
 
 	fonts: {
-		root: `${source}/assets/fonts/`,
+		root: `${srcAssets}/fonts/`,
 		src: {
-			otf: `${source}/assets/fonts/**/*.otf`,
-			ttf: `${source}/assets/fonts/**/*.ttf`,
-			woff2: `${source}/assets/fonts/**/*.woff2`,
+			otf: `${srcAssets}/fonts/**/*.otf`,
+			ttf: `${srcAssets}/fonts/**/*.ttf`,
+			woff2: `${srcAssets}/fonts/**/*.woff2`,
 		},
 
-		dest: `${compiled}/assets/fonts`,
+		dest: `${destAssets}/fonts`,
 	},
 
 	images: {
 		src: [
-			`${source}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
-			`!${source}/assets/images/common/placeholder.*`,
-			`!${source}/assets/images/common/favicon.*`,
+			`${srcAssets}/images/**/*.{jpg,jpeg,png,gif,webp}`,
+			`!${srcAssets}/images/common/placeholder.*`,
+			`!${srcAssets}/images/common/favicon.*`,
 		],
 
-		dest: `${compiled}/assets/images`,
-		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		svg: [`${source}/assets/images/**/*.svg`, `!${source}/assets/images/sprite`],
-		placehoder: `${source}/assets/images/**/placeholder.png`,
+		dest: `${destAssets}/images`,
+		watch: `${srcAssets}/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+		svg: [`${srcAssets}/images/**/*.svg`, `!${srcAssets}/images/sprite`],
+		placehoder: `${srcAssets}/images/**/placeholder.png`,
 	},
 
 	sprites: {
-		src: `${source}/assets/images/sprite/**/*.svg`,
-		dest: `${compiled}/assets/sprites`,
-		watch: `${source}/assets/images/sprite/**/*.svg`,
+		src: `${srcAssets}/images/sprite/**/*.svg`,
+		dest: `${destAssets}/sprites`,
+		watch: `${srcAssets}/images/sprite/**/*.svg`,
 		icons: {
 			src: {
-				default: [`${source}/assets/icons/**/*.svg`, `!${source}/assets/icons/unreset/*.*`],
-				unreset: `${source}/assets/icons/unreset/**/*.svg`,
+				root: [`${srcAssets}/icons/**/*.svg`, `!${srcAssets}/icons/unreset/*.*`],
+				unreset: `${srcAssets}/icons/unreset/**/*.svg`,
 			},
 
-			watch: `${source}/assets/icons/**/*.svg`,
+			watch: `${srcAssets}/icons/**/*.svg`,
 		},
 	},
 
 	favicon: {
-		src: `${source}/assets/images/common/favicon.{jpg,png,gif,ico,webp}`,
-		dest: `${compiled}/assets/images/common/favicons/`,
+		src: `${srcAssets}/images/common/favicon.{jpg,png,gif,ico,webp}`,
+		dest: `${destAssets}/images/common/favicons/`,
 	},
 
 	components: {
-		markup: `${source}/components/**/*.pug`,
-		styles: `${source}/components/**/*.scss`,
-		scripts: `${source}/components/**/*.js`,
+		markup: `${src}/components/**/*.pug`,
+		styles: `${src}/components/**/*.scss`,
+		scripts: `${src}/components/**/*.js`,
 	},
 
 	resources: {
-		src: [`${source}/assets/resources/**/*.*`, `!${source}/assets/resources/root/*.*`],
-		dest: `${compiled}/assets/resources/`,
-		watch: `${source}/assets/resources/**/*.*`,
+		src: [`${srcAssets}/resources/**/*.*`, `!${srcAssets}/resources/root/*.*`],
+		dest: `${destAssets}/resources/`,
+		watch: `${srcAssets}/resources/**/*.*`,
 
 		root: {
-			src: `${source}/assets/resources/root/**/*.*`,
-			dest: compiled,
+			src: `${srcAssets}/resources/root/**/*.*`,
+			dest,
 		},
 	},
 
 	zip: {
-		compiled: `${compiled}/**/*.*`,
+		dest: `${dest}/**/*.*`,
 		del: `./${root}.zip`,
 		root: `./${root}.zip`,
 	},
 
 	ftp: {
 		server: ftpSettings.folder,
-		local: `${compiled}/**/*.*`,
+		local: `${dest}/**/*.*`,
 	},
 };
