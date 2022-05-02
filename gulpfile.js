@@ -5,6 +5,7 @@ import ftp from './gulp/tasks/ftp.js';
 import zip from './gulp/tasks/zip.js';
 import { builds, watchers } from './gulp/config/tasks.js';
 import { fontsConvertOTF } from './gulp/tasks/fonts.js';
+import faviconsBuild from './gulp/tasks/favicon.js';
 
 const dev = gulp.series(clean, builds, gulp.parallel(watchers, server));
 const prod = gulp.series(clean, builds);
@@ -16,3 +17,4 @@ export { prod };
 export { archiving };
 export { deploy };
 export { fontsConvertOTF };
+export { faviconsBuild };
