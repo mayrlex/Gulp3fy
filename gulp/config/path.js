@@ -33,14 +33,14 @@ export const path = {
 	},
 
 	fonts: {
+		root: `${source}/assets/fonts/`,
 		src: {
 			otf: `${source}/assets/fonts/**/*.otf`,
 			ttf: `${source}/assets/fonts/**/*.ttf`,
+			woff2: `${source}/assets/fonts/**/*.woff2`,
 		},
 
-		root: `${source}/assets/fonts/`,
 		dest: `${compiled}/assets/fonts`,
-		watch: `${source}/assets/fonts/**/*.ttf`,
 	},
 
 	images: {

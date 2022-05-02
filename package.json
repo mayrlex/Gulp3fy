@@ -10,7 +10,7 @@
 		"prod": "gulp prod --prod",
 		"zip": "gulp archiving --prod",
 		"deploy": "gulp deploy --prod",
-		"otf": "gulp otfConvert",
+		"otf": "gulp fontsConvertOTF",
 		"eslint": "eslint src/scripts --ext .js",
 		"eslint:fix": "npm run eslint -- --fix",
 		"stylelint": "stylelint src/styles .scss",
