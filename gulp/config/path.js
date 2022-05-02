@@ -52,29 +52,21 @@ export const path = {
 
 		dest: `${compiled}/assets/images`,
 		watch: `${source}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		svg: [`${source}/assets/images/**/*.svg`, `!${source}/assets/images/svg`],
+		svg: [`${source}/assets/images/**/*.svg`, `!${source}/assets/images/sprite`],
 		placehoder: `${source}/assets/images/**/placeholder.png`,
 	},
 
 	sprites: {
-		icon: {
+		src: `${source}/assets/images/sprite/**/*.svg`,
+		dest: `${compiled}/assets/sprites`,
+		watch: `${source}/assets/images/sprite/**/*.svg`,
+		icons: {
 			src: {
-				mono: `${source}/assets/icons/mono/**/*.svg`,
-				multi: `${source}/assets/icons/multi/**/*.svg`,
+				default: [`${source}/assets/icons/**/*.svg`, `!${source}/assets/icons/unreset/*.*`],
+				unreset: `${source}/assets/icons/unreset/**/*.svg`,
 			},
 
-			dest: `${compiled}/assets/images`,
-
-			watch: {
-				mono: `${source}/assets/icons/mono/**/*.svg`,
-				multi: `${source}/assets/icons/multi/**/*.svg`,
-			},
-		},
-
-		svg: {
-			src: `${source}/assets/images/svg/**/*.svg`,
-			dest: `${compiled}/assets/images`,
-			watch: `${source}/assets/images/svg/**/*.svg`,
+			watch: `${source}/assets/icons/**/*.svg`,
 		},
 	},
 

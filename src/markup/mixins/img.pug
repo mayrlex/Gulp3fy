@@ -39,6 +39,6 @@ mixin pic(data)
 			alt=data.alt
 		)&attributes(attributes)
 
-mixin svg(name)
+mixin sprite(name)
 	svg&attributes(attributes)
-		use(xlink:href=`assets/images/sprites/sprite-svg.svg#${name}`)
+		use(xlink:href=`assets/sprites/sprite.svg#${name}`)

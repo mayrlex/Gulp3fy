@@ -1,3 +1,3 @@
-mixin icon(name, isMulti = false)
+mixin icon(name, unreset = false)
 	svg(class='icon icon-' + name)&attributes(attributes)
-		use(xlink:href=`assets/images/sprites/sprite-${isMulti ? 'multi' : 'mono'}.svg#${name}`)
+		use(xlink:href=`assets/sprites/sprite-${unreset ? 'u-icons' : 'icons'}.svg#${name}`)

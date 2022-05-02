@@ -87,15 +87,15 @@ const imageminSettings = {
 //? ### Sprite settings
 const spriteSettings = {
 	example: {
-		mono:  true,
-		multi: true,
-		svg:   true,
+		sprite:       true,
+		icons:        true,
+		unresetIcons: true,
 	},
 
 	removeAttrs: {
-		mono:  ['class', 'data-name', 'fill.*', 'stroke.*'],
-		multi: ['class', 'data-name'],
-		svg:   ['class', 'data-name'],
+		sprite:       ['class', 'data-name'],
+		icons:        ['class', 'data-name', 'fill.*', 'stroke.*'],
+		unresetIcons: ['class', 'data-name'],
 	}
 }
 

@@ -5,9 +5,9 @@ import svgSprite from 'gulp-svg-sprite';
 import { path } from '../config/path.js';
 import { spriteSettings } from '../../config.js';
 
-const spriteMono = () =>
-	gulp
-		.src(path.sprites.icon.src.mono)
+const spriteBuild = () => {
+	return gulp
+		.src(path.sprites.src)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -20,8 +20,8 @@ const spriteMono = () =>
 			svgSprite({
 				mode: {
 					stack: {
-						sprite: '../sprites/sprite-mono.svg',
-						example: spriteSettings.example.mono,
+						sprite: '../sprite.svg',
+						example: spriteSettings.example.sprite,
 					},
 				},
 				shape: {
@@ -31,45 +31,7 @@ const spriteMono = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.mono,
-										},
-									},
-								],
-							},
-						},
-					],
-				},
-			})
-		)
-		.pipe(gulp.dest(path.sprites.icon.dest));
-
-const spriteMulti = () =>
-	gulp
-		.src(path.sprites.icon.src.multi)
-		.pipe(
-			plumber(
-				notify.onError({
-					title: 'SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
-		)
-		.pipe(
-			svgSprite({
-				mode: {
-					stack: {
-						sprite: '../sprites/sprite-multi.svg',
-						example: spriteSettings.example.multi,
-					},
-				},
-				shape: {
-					transform: [
-						{
-							svgo: {
-								plugins: [
-									{
-										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.multi,
+											attrs: spriteSettings.removeAttrs.sprite,
 										},
 									},
 
@@ -84,11 +46,12 @@ const spriteMulti = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.sprites.icon.dest));
+		.pipe(gulp.dest(path.sprites.dest));
+};
 
-const spriteSvg = () =>
-	gulp
-		.src(path.sprites.svg.src)
+const spriteIconsBuild = () => {
+	return gulp
+		.src(path.sprites.icons.src.default)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -101,8 +64,8 @@ const spriteSvg = () =>
 			svgSprite({
 				mode: {
 					stack: {
-						sprite: '../sprites/sprite-svg.svg',
-						example: spriteSettings.example.svg,
+						sprite: '../sprite-icons.svg',
+						example: spriteSettings.example.icons,
 					},
 				},
 				shape: {
@@ -112,7 +75,46 @@ const spriteSvg = () =>
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.svg,
+											attrs: spriteSettings.removeAttrs.icons,
+										},
+									},
+								],
+							},
+						},
+					],
+				},
+			})
+		)
+		.pipe(gulp.dest(path.sprites.dest));
+};
+
+const spriteUIconsBuild = () => {
+	return gulp
+		.src(path.sprites.icons.src.unreset)
+		.pipe(
+			plumber(
+				notify.onError({
+					title: 'SPRITES',
+					message: 'Error: <%= error.message %>',
+				})
+			)
+		)
+		.pipe(
+			svgSprite({
+				mode: {
+					stack: {
+						sprite: '../sprite-u-icons.svg',
+						example: spriteSettings.example.unresetIcons,
+					},
+				},
+				shape: {
+					transform: [
+						{
+							svgo: {
+								plugins: [
+									{
+										removeAttrs: {
+											attrs: spriteSettings.removeAttrs.unresetIcons,
 										},
 									},
 
@@ -127,12 +129,10 @@ const spriteSvg = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.sprites.svg.dest));
+		.pipe(gulp.dest(path.sprites.dest));
+};
 
-export const spritesBuild = gulp.parallel(spriteMono, spriteMulti, spriteSvg);
+export const spritesBuild = gulp.parallel(spriteBuild, spriteIconsBuild, spriteUIconsBuild);
 export const spritesWatch = () => {
-	gulp.watch(
-		[path.sprites.icon.watch.mono, path.sprites.icon.watch.multi, path.sprites.svg.watch],
-		spritesBuild
-	);
+	gulp.watch([path.sprites.watch, path.sprites.icons.watch], spritesBuild);
 };
