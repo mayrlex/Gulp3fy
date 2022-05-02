@@ -1,2 +1,8 @@
+@use 'mixins/fontFace' as font;
+
 // Inter
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300%3b400%3b500%3b600%3b700&display=swap');
+@include font.face('Inter', 'Light', 300);
+@include font.face('Inter', 'Regular');
+@include font.face('Inter', 'Medium', 500);
+@include font.face('Inter', 'SemiBold', 600);
+@include font.face('Inter', 'Bold', 700);

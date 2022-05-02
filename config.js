@@ -3,7 +3,7 @@ const task = {
 	markup:    true,
 	styles:    true,
 	scripts:   true,
-	fonts:     false,
+	fonts:     true,
 	images:    true,
 	sprites:   true,
 	favicon:   true,
