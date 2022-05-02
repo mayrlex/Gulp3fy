@@ -6,8 +6,12 @@
 	box-shadow: map.get($states, focus);
 }
 
-.body.--lock {
-	overflow: hidden;
+.body {
+	background-color: $body-background;
+
+	&.--lock {
+		overflow: hidden;
+	}
 }
 
 .wrapper {

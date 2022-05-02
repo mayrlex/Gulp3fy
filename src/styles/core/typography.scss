@@ -1,10 +1,11 @@
 @use 'utils/forwards' as *;
 @use 'mixins/adaptive' as *;
 
-body {
+.body {
 	color: $body-color;
-	@include adaptive('font-size', 16, 14);
-	font-family: Inter, sans-serif;
+	font-weight: $body-fontWeight;
+	@include adaptive('font-size', $body-fontSize-max, $body-fontSize-min);
+	font-family: $body-fontFamily;
 }
 
 // .h1,

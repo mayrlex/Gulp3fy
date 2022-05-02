@@ -24,7 +24,13 @@ $danger:     #ff4732;
 $info:       #0378e6;
 $gray:       #adb5bd;
 
-$body-color: #374151;
+// Page
+$body-fontSize-max: 16;
+$body-fontSize-min: 14;
+$body-fontFamily:   'Inter', sans-serif;
+$body-fontWeight:   400;
+$body-color:        #374151;
+$body-background:   $white;
 
 // Media breakpoints
 $breakpoints: (
