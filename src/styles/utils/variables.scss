@@ -2,10 +2,10 @@
 @use 'functions/converter' as *;
 
 // Container
+$layoutWidth: 1920;
+$container:   1324;
 $offsetMax:   20;
 $offsetMin:   10;
-$layoutWidth: 1920;
-$container:   1324 + ($offsetMax * 2);
 
 // Grid
 $column-count: 12;
