@@ -1,31 +1,14 @@
 import Lock from '../modules/lock.js';
 import throttle from '../modules/throttle.js';
 
-/*
-Options:
-	target       {string}  - Modal id
-	activeClass: {string}  - Active class
-	scrollFix    {boolean} - Sets padding-right for content when scroll is blocked [Default: true]
-	throttle:    {number}  - Set throttle
-	onShow()     {object}  - Function triggired on show modal
-	onHide()     {object}  - Function triggired on hide modal
-
-Call:
-	import Modal from 'modal.js';
-
-	const modal1 = new Modal({
-		target: 'modal-1',
-		scrollFix: false,
-		throttle: 300,
-		onShow: () => {
-			console.log('Modal is shown');
-		},
-
-		onHide: () => {
-			console.log('Modal is hidden');
-		},
-	});
-*/
+/**
+ * @param {string}  target      - Modal id
+ * @param {string}  activeClass - Active class
+ * @param {boolean} scrollFix   - Sets padding-right for content when scroll is blocked
+ * @param {number}  throttle    - Delay between activation
+ * @param {object}  onShow()    - Function triggired on show modal
+ * @param {object}  onHide()    - Function triggired on hide modal
+ */
 
 export default class Modal {
 	constructor(options) {

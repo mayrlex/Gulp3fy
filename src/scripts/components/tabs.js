@@ -1,20 +1,8 @@
-/*
-Options:
-	isChanged()  {object} - Funtion triggired on change
-	switchTabs() (method) - Set default active tab
-
-Call:
-	import Tabs from '../../../components/tabs/tabs.js';
-
-	const tab = new Tabs({
-		target: 'tab1',
-		isChanged: () => {
-			console.log('Tab changed');
-		}
-	});
-
-	tab.switchTabs(document.querySelector('#tab3'));
-*/
+/**
+ * @param {string}  target      - Tab id
+ * @param {object}  isChanged()  - Funtion triggired on change
+ * @param {string}  switchTabs() - Set default active tab
+ */
 
 export default class Tabs {
 	constructor(options) {

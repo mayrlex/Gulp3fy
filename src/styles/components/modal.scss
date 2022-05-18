@@ -1,5 +1,4 @@
 @use 'src/styles/utils/forwards' as *;
-@use 'src/styles/functions/bezier' as *;
 @use 'src/styles/mixins/adaptive' as *;
 @use 'src/styles/mixins/icon';
 @use 'src/styles/mixins/media';
@@ -125,7 +124,7 @@ $_bezier: cubic-bezier(0, 0, 0.5, 1);
 			&:hover {
 				&:before,
 				&:after {
-					background: color(dark, 1);
+					background: $black;
 				}
 			}
 		}

@@ -60,7 +60,7 @@ $_content-padding-y-min: 0;
 			width: rem($_icon-width);
 			height: rem($_icon-height);
 
-			background: color(dark, 1);
+			background: $black;
 
 			transition: transform 0.3s ease 0s;
 

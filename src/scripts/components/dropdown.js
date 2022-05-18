@@ -1,7 +1,7 @@
 import throttle from '../modules/throttle.js';
 
 /**
- * @param {number} delay - Delay between activation
+ * @param {number} delay - Delay
  */
 
 const dropdown = (delay) => {

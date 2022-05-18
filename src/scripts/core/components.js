@@ -11,7 +11,7 @@
 //? Dropdown
 // import dropdown from '../components/dropdown.js';
 
-// dropdown({});
+// dropdown();
 //? ==========
 
 //? Modal
@@ -28,4 +28,5 @@
 // import Tabs from '../components/tabs.js';
 
 // const tab = new Tabs({ target: 'tab1' });
+// tab.switchTabs(document.querySelector('#tab3'));
 //? ==========

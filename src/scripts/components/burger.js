@@ -25,7 +25,7 @@ export default class Burger {
 
 	init() {
 		const btn = document.querySelector('.burger');
-		const menu = document.querySelector('.header__nav');
+		const nav = document.querySelector('.header__nav');
 		const backdrop = document.querySelector('.header__inner');
 
 		btn.addEventListener(
@@ -35,7 +35,7 @@ export default class Burger {
 
 				if (this.option.backdrop) backdrop.classList.toggle(this.option.toggleClass);
 
-				menu.classList.toggle(this.option.toggleClass);
+				nav.classList.toggle(this.option.toggleClass);
 				btn.classList.toggle(this.option.toggleClass);
 				btn.setAttribute('aria-expanded', !ariaExpanded);
 
