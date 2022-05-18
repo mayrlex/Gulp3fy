@@ -1,4 +1,4 @@
-import throttle from '../../scripts/modules/throttle.js';
+import throttle from '../modules/throttle.js';
 
 /**
  * @param {number} delay - Delay between activation

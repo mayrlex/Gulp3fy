@@ -1,4 +1,4 @@
-import ShowHide from '../../scripts/modules/showHide.js';
+import ShowHide from '../modules/showHide.js';
 
 if (document.querySelectorAll('[data-spoilers]').length) {
 	const init = (array, matchMedia = false) => {
