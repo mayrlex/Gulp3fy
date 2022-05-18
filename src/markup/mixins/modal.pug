@@ -1,21 +1,3 @@
-//- Arguments:
-	id:    {string}  - Modal id
-	mods   {string}  - Mod('s)
-	close  {string}  - Close button label                        [Default: 'Close modal']
-	scroll {boolean} - Enable content scrolling inside the modal [Default: true]
-
-//- Call:
-	+modal({ id: 'modal-1' scroll: true })
-		.modal__header
-			h2.modal__title Modal title
-
-		.modal__content
-			p Lorem ipsum
-
-		.modal__footer
-			+btn({ mods: 'outline', text: 'Cancel' })(data-modal-close)
-			+btn({ mods: 'solid', text: 'Confirm' })
-
 mixin modal(data)
 	-
 		let modsArray = '';
@@ -28,12 +10,9 @@ mixin modal(data)
 			}
 		}
 
-	section.modal(
-		class=data.scroll ? `modal__scrollable ${modsArray}` : modsArray,
-		id=data.id,
-		tabindex='-1',
-		aria-hidden='true'
-	)&attributes(attributes)
+		const isScrollable = data.scroll ? `modal__scrollable ${modsArray}` : modsArray;
+
+	section.modal(class=isScrollable, id=data.id, tabindex='-1', aria-hidden='true')&attributes(attributes)
 		.modal__overlay.--isFixed
 			.modal__inner(role='dialog', aria-modal='true')
 				button.modal__close(aria-label=(data.close = 'Close modal'), data-modal-close='')

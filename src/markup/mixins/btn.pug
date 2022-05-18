@@ -1,34 +1,3 @@
-//- Arguments:
-	text    {string}  - Text
-	mods    {string}  - Mod('s)
-	link    {string}  - Link
-	icon    {string}  - Icon name
-	iconPos {string}  - Set icon position: before / after [Default: 'after']
-	isMulti {boolean} - Set icon type: multi [Default: false]
-
-//- Call:
-	//- Button type 'link'
-	+btn({
-		text: 'Button',
-		mods: 'primary'
-		link: '#',
-	})
-
-	//- Button type 'button'
-	+btn({
-		text: 'Button',
-		mods: 'light'
-		icon: 'play',
-		iconPos: 'before',
-	})
-
-	//- Icon button
-	+btn({
-		mods: 'primary',
-		icon: 'bell',
-	})
-
-//- Button
 mixin btn(data)
 	-
 		let modsArray = '';
@@ -41,21 +10,25 @@ mixin btn(data)
 			}
 		}
 
-	#{data.link ? 'a' : 'button'}(
-		class=!data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`,
-		href=data.link ? data.link : null,
-		type=!data.link ? 'button' : null
-	)&attributes(attributes)
+		const tag           =  data.link ? 'a' : 'button';
+		const hasType       = !data.link ? 'button' : null;
+		const hasLink       =  data.link ? data.link : null;
+		const isBtnIcon     = !data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`;
+		const isUnresetIcon =  data.iconUnreset ? true : false;
+
+	#{tag}(class=isBtnIcon, href=hasLink, type=hasType)&attributes(attributes)
 		if (data.icon)
-			if (data.iconPos === 'before')
-				+icon(data.icon, isMulti)
+			//- Icon before text
+			if (data.iconBefore)
+				+icon(data.icon, isUnresetIcon)
 				if data.text
 					= data.text
 
+			//- Icon after text
 			else
 				if data.text
 					= data.text
-				+icon(data.icon, isMulti)
+				+icon(data.icon, isUnresetIcon)
 
 		else
 			= data.text

@@ -1,12 +1,4 @@
-//- Arguments:
-	text   {string} - Link text
-	link   {string} - Link
-	anchor {string} - Smooth scrolling to the specified block
-
-//- Call:
-	+nav
-		+nav-item({ text: 'Lorem', link: '#' })
-
+//- Nav
 mixin nav
 	nav.header__nav.nav&attributes(attributes)
 		ul.nav__list
@@ -15,12 +7,10 @@ mixin nav
 //- Nav item
 mixin nav-item(data)
 	-
-		let tag;
-		!data.anchor ? tag = 'a' : tag = 'button';
+		const tag       = !data.anchor ? 'a'         : 'button';
+		const hasLink   =  data.link   ? data.link   : null;
+		const hasAnchor =  data.anchor ? data.anchor : null;
 
 	li.nav__item
-		#{tag}.nav__link(
-			href=data.link ? data.link : null,
-			data-anchor=data.anchor ? data.anchor : null
-		)&attributes(attributes)= data.text
+		#{tag}.nav__link(href=hasLink, data-anchor=hasAnchor)&attributes(attributes)= data.text
 			block

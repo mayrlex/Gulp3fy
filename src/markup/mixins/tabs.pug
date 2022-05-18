@@ -1,19 +1,5 @@
-//- Arguments:
-	tab  {string} - Unique tab name
-	text {string} - Tab button text
-	mods {string} - Mod('s)
-
-//- Call:
-	+tab({ tab: 'tabName' })
-		block buttons
-			+tab-btn('Tab title')
-
-		block contents
-			+tab-content
-				...
-
 //- Tab
-mixin tab(data)
+mixin tabs(data)
 	-
 		let modsArray = '';
 
@@ -27,15 +13,16 @@ mixin tab(data)
 
 	.tabs(class=modsArray, data-tab=data.tab)&attributes(attributes)
 		nav.tabs__header(role='tablist')
-			block tabs-header
-		.tabs__inner
-			block tabs-content
+			block header
 
-//- Button
-mixin tab-btn(text)
+		.tabs__inner
+			block content
+
+//- Tab button
+mixin tabs-btn(text)
 	button.tabs__btn(type='button')&attributes(attributes)!= text
 
-//- Content
-mixin tab-content
+//- Tab content
+mixin tabs-content
 	.tabs__content(role='tabpanel')&attributes(attributes)
 		block

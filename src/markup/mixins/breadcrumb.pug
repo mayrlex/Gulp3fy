@@ -1,16 +1,5 @@
-//- Arguments:
-	mods {string} - Breadcrumbs container mod(s)
-	text {string} - Breadcrumb link text
-	link {string} - Breadcrumb link
-
-//- Call:
-	+breadcrumbs
-		+breadcrumbs-item({ text: 'Home', link: 'http://example.com/' })
-		+breadcrumbs-item({ text: 'News', link: 'http://example.com/news' })
-		+breadcrumbs-item({ text: 'Current' })
-
-//- Breadcrumbs
-mixin breadcrumbs(mods)
+//- Breadcrumb
+mixin breadcrumb(mods)
 	-
 		let modsArray = '';
 
@@ -18,23 +7,21 @@ mixin breadcrumbs(mods)
 			const modsList = mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}__breadcrumbs`;
+				modsArray = `${modsArray} ${modsList[i].trim()}__breadcrumb`;
 			}
 		}
 
-	nav.breadcrumbs(class=modsArray, aria-label='breadcrumb')&attributes(attributes)
-		ol.breadcrumbs__list
+	nav.breadcrumb(class=modsArray, aria-label='breadcrumb')&attributes(attributes)
+		ol.breadcrumb__list
 			block
 
-//- Breadcrumbs item
-mixin breadcrumbs-item(data)
-	li.breadcrumbs__item(
-		class=!data.link ? `--current` : null,
-		href=data.link ? data.link : null,
-		aria-current=!data.link ? data.text : null
-	)
-		if data.link
-			a.breadcrumbs__link(href=data.link)!= data.text
+//- Breadcrumb item
+mixin breadcrumb-item(data)
+	-
+		const isCurrent   = !data.link ? `breadcrumb__item--current` : null;
+		const hasLink     =  data.link ? data.link : null;
+		const ariaCurrent = !data.link ? 'page' : null;
+		const tag         =  data.link ? 'a' : 'span';
 
-		else
-			p!= data.text
+	li.breadcrumb__item(class=isCurrent, href=hasLink, aria-current=ariaCurrent)
+		#{tag}(class=data.link ? 'breadcrumb__link' : null, href=data.link)= data.text
