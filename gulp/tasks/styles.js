@@ -15,8 +15,6 @@ import { stylesSettings } from '../../config.js';
 
 const sass = gulpSass(compiler);
 
-const styles = [path.styles.watch, path.components.styles];
-
 export const stylesBuild = () => {
 	return gulp
 		.src(path.styles.src, { sourcemaps: path.isDev })
@@ -54,4 +52,4 @@ export const stylesBuild = () => {
 		.pipe(sync.stream());
 };
 
-export const stylesWatch = () => gulp.watch(styles, stylesBuild);
+export const stylesWatch = () => gulp.watch(path.styles.watch, stylesBuild);
