@@ -11,7 +11,7 @@ mixin pagination(data)
 			}
 		}
 
-	nav.pagination(class=modsArray, aria-label=(data.label = 'Page navigation'))&attributes(attributes)
+	nav.pagination(class=modsArray, aria-label=(data.ariaLabel = 'Page navigation'))&attributes(attributes)
 		ul.pagination__inner
 			block
 

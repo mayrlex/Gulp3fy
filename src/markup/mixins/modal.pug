@@ -10,10 +10,10 @@ mixin modal(data)
 			}
 		}
 
-		const isScrollable = data.scroll ? `modal__scrollable ${modsArray}` : modsArray;
+		const isScrollable = data.scrollable ? `modal__scrollable ${modsArray}` : modsArray;
 
-	section.modal(class=isScrollable, id=data.id, tabindex='-1', aria-hidden='true')&attributes(attributes)
-		.modal__overlay.--isFixed
+	section.modal(class=isScrollable, id=data.modal, tabindex='-1', aria-hidden='true')&attributes(attributes)
+		.modal__overlay.--fixed
 			.modal__inner(role='dialog', aria-modal='true')
-				button.modal__close(aria-label=(data.close = 'Close modal'), data-modal-close='')
+				button.modal__close(aria-label=(data.ariaLabel = 'Close modal'), data-modal-close='')
 				block

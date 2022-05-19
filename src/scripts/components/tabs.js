@@ -1,5 +1,5 @@
 /**
- * @param {string}  target      - Tab id
+ * @param {string}  target       - Tab id
  * @param {object}  isChanged()  - Funtion triggired on change
  * @param {string}  switchTabs() - Set default active tab
  */

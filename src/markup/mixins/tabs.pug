@@ -13,14 +13,14 @@ mixin tabs(data)
 
 	.tabs(class=modsArray, data-tab=data.tab)&attributes(attributes)
 		nav.tabs__header(role='tablist')
-			block header
+			block tabs-header
 
 		.tabs__inner
-			block content
+			block tabs-content
 
 //- Tab button
 mixin tabs-btn(text)
-	button.tabs__btn(type='button')&attributes(attributes)!= text
+	button.tabs__btn(type='button')&attributes(attributes)= text
 
 //- Tab content
 mixin tabs-content

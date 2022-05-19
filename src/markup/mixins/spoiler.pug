@@ -18,8 +18,8 @@ mixin spoiler(data)
 		block
 
 //- Spoiler item
-mixin spoiler-item(title)
+mixin spoiler-item(text)
 	.spoiler__item
-		button.spoiler__title(tabinxex='-1', type='button', data-spoiler='')&attributes(attributes)= title
+		button.spoiler__title(tabinxex='-1', type='button', data-spoiler='')&attributes(attributes)= text
 		.spoiler__content
 			block

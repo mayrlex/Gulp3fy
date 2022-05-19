@@ -1,5 +1,6 @@
 # Main
 dist
+test
 gulp/version.json
 package-lock.json
 *.zip

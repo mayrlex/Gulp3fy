@@ -1,7 +1,7 @@
 export default () => {
-	const elem = document.createElement('canvas');
-	if (elem.getContext && elem.getContext('2d')) {
-		return elem.toDataURL('image/webp').indexOf('data:image/webp') === 0;
+	const element = document.createElement('canvas');
+	if (element.getContext && element.getContext('2d')) {
+		return element.toDataURL('image/webp').indexOf('data:image/webp') === 0;
 	}
 	return false;
 };
