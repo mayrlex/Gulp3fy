@@ -10,8 +10,6 @@ $_inner-padding-x-min: 15;
 $_inner-padding-y-max: 25;
 $_inner-padding-y-min: 15;
 
-$_main-breackpoint: lg;
-
 .card {
 	overflow: hidden;
 
@@ -26,7 +24,7 @@ $_main-breackpoint: lg;
 			grid-column: 6 span;
 		}
 
-		@include media.min($_main-breackpoint) {
+		@include media.min($main-breakpoint) {
 			grid-column: 4 span;
 		}
 
@@ -48,7 +46,7 @@ $_main-breackpoint: lg;
 		// 	grid-template-columns: 2fr 3fr;
 		// }
 
-		// @include media.min($_main-breackpoint) {
+		// @include media.min($main-breakpoint) {
 		// 	grid-column: 6 span;
 		// }
 
@@ -107,7 +105,7 @@ $_main-breackpoint: lg;
 		flex-direction: column;
 		padding: rem($_inner-padding-y-min) rem($_inner-padding-x-min);
 
-		@include media.min($_main-breackpoint) {
+		@include media.min($main-breakpoint) {
 			padding: rem($_inner-padding-y-max) rem($_inner-padding-x-max);
 		}
 

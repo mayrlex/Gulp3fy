@@ -2,7 +2,6 @@
 @use 'utils/forwards' as *;
 @use 'mixins/media';
 
-$_main-breakpoint: lg;
 $_color: inherit;
 $_bg: $white;
 $_menu-transition-delay: 0.3s;
@@ -12,7 +11,7 @@ $_bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	background: $_bg;
 
 	//? Mobile menu
-	@include media.max($_main-breakpoint) {
+	@include media.max($main-breakpoint) {
 		position: fixed;
 		top: 0;
 		left: -100%;
@@ -28,13 +27,13 @@ $_bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 	}
 
 	&__list {
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			display: flex;
 		}
 	}
 
 	&__item {
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			&:not(:last-child) {
 			}
 		}

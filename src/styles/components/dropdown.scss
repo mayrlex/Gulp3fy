@@ -2,7 +2,6 @@
 @use 'mixins/media';
 @use 'mixins/icon';
 
-$_main-breakpoint: lg;
 $_color-active: $accent;
 
 .dropdown {
@@ -18,11 +17,11 @@ $_color-active: $accent;
 		}
 
 		& .dropdown__menu {
-			@include media.max($_main-breakpoint) {
+			@include media.max($main-breakpoint) {
 				display: block;
 			}
 
-			@include media.min($_main-breakpoint) {
+			@include media.min($main-breakpoint) {
 				visibility: visible;
 				opacity: 1;
 			}
@@ -38,7 +37,7 @@ $_color-active: $accent;
 
 			@include icon.arrow-1($size: 10, $direction: bottom, $radius: 4);
 
-			@include media.min($_main-breakpoint) {
+			@include media.min($main-breakpoint) {
 				border-top-width: rem(6);
 				border-right-width: rem(6);
 				border-left-width: rem(6);
@@ -49,11 +48,11 @@ $_color-active: $accent;
 	}
 
 	&__menu {
-		@include media.max($_main-breakpoint) {
+		@include media.max($main-breakpoint) {
 			display: none;
 		}
 
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			position: absolute;
 			top: 100%;
 			left: 0;

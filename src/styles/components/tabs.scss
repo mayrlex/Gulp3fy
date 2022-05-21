@@ -18,15 +18,13 @@ $_content-padding-x-min: 0;
 $_content-padding-y-max: 0;
 $_content-padding-y-min: 0;
 
-$_main-breakpoint: lg;
-
 .tabs {
 	&__header {
 		padding: $_header-padding-y-min $_header-padding-x-min;
 
 		font-size: 0;
 
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			padding: $_header-padding-y-max $_header-padding-x-max;
 		}
 	}
@@ -39,7 +37,7 @@ $_main-breakpoint: lg;
 			}
 		}
 
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			padding: $_btn-padding-y-max $_btn-padding-x-max;
 		}
 
@@ -55,7 +53,7 @@ $_main-breakpoint: lg;
 		padding: $_content-padding-y-min $_content-padding-x-min;
 		overflow: hidden;
 
-		@include media.min($_main-breakpoint) {
+		@include media.min($main-breakpoint) {
 			padding: $_content-padding-y-max $_content-padding-x-max;
 		}
 

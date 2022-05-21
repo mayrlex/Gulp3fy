@@ -3,7 +3,7 @@
 
 $_size: rem(14);
 $_empty-size: rem(14);
-$_badges-map: (
+$_badges: (
 	any: $accent,
 );
 
@@ -11,8 +11,7 @@ $_badges-map: (
 	display: inline-block;
 	box-sizing: content-box;
 	min-width: $_size;
-	min-height: $_size;
-	padding: em(6);
+	padding: rem(6);
 
 	font-size: $_size;
 	line-height: 1;
@@ -31,7 +30,7 @@ $_badges-map: (
 
 	@include component.badge($element: 'solid', $color: $white, $bg: $accent);
 
-	// @each $mod, $color in $_badges-map {
+	// @each $mod, $color in $_badges {
 	// 	@include component.badge($element: 'solid', $mod: '--#{$mod}', $color: $white, $bg: $color);
 	// }
 }

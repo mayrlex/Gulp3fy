@@ -1,20 +1,20 @@
 @use 'sass:map';
 @use 'functions/converter' as *;
 
-// Container
+//? # Container
 $layoutWidth: 1920;
 $container:   1324;
 $offsetMax:   20;
 $offsetMin:   10;
 
-// Grid
+//? # Grid
 $column-count: 12;
 $colGap-max:   20;
 $rowGap-max:   30;
 $colGap-min:   10;
 $rowGap-min:   20;
 
-// Colors
+//? # Colors
 $white:      #fff;
 $black:      #000;
 $accent:     #2460fc;
@@ -24,7 +24,7 @@ $danger:     #ff4732;
 $info:       #0378e6;
 $gray:       #adb5bd;
 
-// Page
+//? # Body
 $body-fontSize-max: 14;
 $body-fontSize-min: 14;
 $body-fontFamily:   'Inter', sans-serif;
@@ -32,7 +32,7 @@ $body-fontWeight:   400;
 $body-color:        #374151;
 $body-background:   $white;
 
-// Media breakpoints
+//? # Media breakpoints
 $breakpoints: (
 	xs:  320,
 	sm:  576,
@@ -42,7 +42,9 @@ $breakpoints: (
 	xxl: 1400,
 );
 
-// UI
+$main-breakpoint: lg !default;
+
+//? # UI
 $backdrop:    rgb(#23272b, 90%);
 $icon-width:  rem(16);
 $icon-height: rem(16);
