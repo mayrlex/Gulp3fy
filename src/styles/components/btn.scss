@@ -36,10 +36,10 @@ $_icon-padding-min: 8;
 		$element: 'solid',
 		$color: $white,
 		$fill: currentColor,
-		$bg: color(accent, 500),
-		$bg-hover: color(accent, 600),
-		$bg-active: color(accent, 700),
-		$bg-disabled: color(accent, 200)
+		$bg: $accent,
+		$bg-hover: mix($black, $accent, 20),
+		$bg-active: mix($black, $accent, 40),
+		$bg-disabled: mix($white, $accent, 60)
 	) {
 		@include adaptive('padding-top', $_padding-y-max, $_padding-y-min);
 		@include adaptive('padding-right', $_padding-x-max, $_padding-x-min);
@@ -65,10 +65,10 @@ $_icon-padding-min: 8;
 	// 	@include component.btn(
 	// 		$element: 'solid',
 	// 		$fill: $white,
-	// 		$bg: color(accent, 500),
-	// 		$bg-hover: color(accent, 600),
-	// 		$bg-active: color(accent, 700),
-	// 		$bg-disabled: color(accent, 200)
+	// 		$bg: $accent,
+	// 		$bg-hover: mix($black, $accent, 20),
+	// 		$bg-active: mix($black, $accent, 40),
+	// 		$bg-disabled: mix($white, $accent, 60)
 	// 	) {
 	// 		@include adaptive('padding', $_icon-padding-max, $_icon-padding-min, 1);
 	// 	}

@@ -37,16 +37,12 @@ $_content-padding-y-min: 0;
 
 		@include media.hover {
 			&:hover {
-				color: color(accent, 500);
-
-				background: map.get($states, hover);
+				color: $accent;
 			}
 		}
 
 		&.--show {
-			color: color(accent, 500);
-
-			background: map.get($states, active);
+			color: $accent;
 		}
 	}
 
@@ -74,7 +70,7 @@ $_content-padding-y-min: 0;
 		&.--show {
 			&:before,
 			&:after {
-				background: color(accent, 500);
+				background: $accent;
 			}
 
 			&:after {
@@ -86,7 +82,7 @@ $_content-padding-y-min: 0;
 			&:hover {
 				&:before,
 				&:after {
-					background: color(accent, 500);
+					background: $accent;
 				}
 			}
 		}

@@ -40,12 +40,11 @@ $_divider: 'data:image/svg+xml,%3Csvg width="#{rem($_fontSize-max)}" height="#{r
 		}
 
 		&.--current {
-			color: map.get($states, current);
 		}
 	}
 
 	&__link {
-		color: color('gray', 600);
+		color: $gray;
 
 		@include media.hover {
 			&:hover {

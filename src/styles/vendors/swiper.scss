@@ -29,12 +29,12 @@
 
 			@include media.hover {
 				&:hover:not(.swiper-pagination-bullet-active) {
-					background: rgba(color(accent, 500), 0.5);
+					background: rgba($accent, 0.5);
 				}
 			}
 
 			&-active {
-				background: rgba(color(accent, 500), 0.75);
+				background: rgba($accent, 0.75);
 			}
 		}
 	}
@@ -44,7 +44,7 @@
 		margin-top: rem(-$nav_btn_margin);
 
 		&:after {
-			color: rgba(color(accent, 500), 0.5);
+			color: rgba($accent, 0.5);
 		}
 	}
 

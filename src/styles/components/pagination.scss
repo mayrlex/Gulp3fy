@@ -54,15 +54,11 @@ $_controll-content-between: null;
 
 		&:disabled,
 		&.--disabled {
-			color: map.get($states, disabled, color);
-
 			cursor: default;
-
-			fill: map.get($states, disabled, color);
 		}
 
 		&.--current {
-			color: color(accent, 500);
+			color: $accent;
 		}
 
 		// If controllers use both text and icon
@@ -74,9 +70,9 @@ $_controll-content-between: null;
 
 		@include media.hover {
 			&:not(:disabled, .--disabled):hover {
-				color: color(accent, 500);
+				color: $accent;
 
-				fill: color(accent, 500);
+				fill: $accent;
 			}
 		}
 	}

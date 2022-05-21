@@ -4,7 +4,7 @@
 $_size: rem(14);
 $_empty-size: rem(14);
 $_badges-map: (
-	success: color(success, 500),
+	any: $accent,
 );
 
 .badge {
@@ -26,10 +26,10 @@ $_badges-map: (
 		height: $_empty-size;
 		padding: 0;
 
-		background: color(accent, 500);
+		background: $accent;
 	}
 
-	@include component.badge($element: 'solid', $color: $white, $bg: color(accent, 500));
+	@include component.badge($element: 'solid', $color: $white, $bg: $accent);
 
 	// @each $mod, $color in $_badges-map {
 	// 	@include component.badge($element: 'solid', $mod: '--#{$mod}', $color: $white, $bg: $color);

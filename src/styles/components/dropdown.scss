@@ -3,7 +3,7 @@
 @use 'src/styles/mixins/icon';
 
 $_main-breakpoint: lg;
-$_color-active: color(accent, 500);
+$_color-active: $accent;
 
 .dropdown {
 	position: relative;

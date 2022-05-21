@@ -3,7 +3,7 @@
 @use 'mixins/media';
 
 :focus-visible {
-	box-shadow: map.get($states, focus);
+	box-shadow: 0 0 0 rem(4) rgb($accent, 50%);
 }
 
 .body {
@@ -80,7 +80,7 @@
 	width: 100%;
 	height: rem(1);
 
-	background: color('gray', 200);
+	background: $gray;
 }
 
 /*
@@ -92,5 +92,5 @@
 }
 
 .focus-visible {
-	box-shadow: map.get($states, focus);
+	box-shadow: 0 0 0 rem(4) rgb($accent, 50%);
 }

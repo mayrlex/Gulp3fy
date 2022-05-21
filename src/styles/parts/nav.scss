@@ -50,7 +50,7 @@ $_bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
 		@include media.hover {
 			&:hover {
-				color: color(accent, 500);
+				color: $accent;
 			}
 		}
 	}
