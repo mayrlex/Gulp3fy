@@ -1,7 +1,7 @@
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/adaptive' as *;
-@use 'src/styles/mixins/icon';
-@use 'src/styles/mixins/media';
+@use 'utils/forwards' as *;
+@use 'mixins/adaptive' as *;
+@use 'mixins/icon';
+@use 'mixins/media';
 
 $_offset-x-max: 10;
 $_offset-x-min: 10;

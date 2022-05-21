@@ -1,7 +1,7 @@
 @use 'sass:map';
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/adaptive' as *;
-@use 'src/styles/mixins/media';
+@use 'utils/forwards' as *;
+@use 'mixins/adaptive' as *;
+@use 'mixins/media';
 
 $_fontSize-max: 18;
 $_fontSize-min: 16;

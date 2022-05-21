@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use 'src/styles/utils/forwards' as *;
+@use 'utils/forwards' as *;
 @use 'mixins/media';
 
 :focus-visible {

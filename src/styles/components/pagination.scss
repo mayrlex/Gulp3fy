@@ -1,6 +1,6 @@
 @use 'sass:map';
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/media';
+@use 'utils/forwards' as *;
+@use 'mixins/media';
 
 $_btn-control-between: rem(0);
 $_btn-num-between: rem(0);

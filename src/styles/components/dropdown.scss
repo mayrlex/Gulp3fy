@@ -1,6 +1,6 @@
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/media';
-@use 'src/styles/mixins/icon';
+@use 'utils/forwards' as *;
+@use 'mixins/media';
+@use 'mixins/icon';
 
 $_main-breakpoint: lg;
 $_color-active: $accent;

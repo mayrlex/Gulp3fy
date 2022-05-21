@@ -1,5 +1,5 @@
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/component';
+@use 'utils/forwards' as *;
+@use 'mixins/component';
 
 $_size: rem(14);
 $_empty-size: rem(14);

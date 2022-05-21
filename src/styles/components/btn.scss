@@ -1,6 +1,6 @@
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/adaptive' as *;
-@use 'src/styles/mixins/component';
+@use 'utils/forwards' as *;
+@use 'mixins/adaptive' as *;
+@use 'mixins/component';
 
 $_padding-x-max: 30;
 $_padding-x-min: 15;

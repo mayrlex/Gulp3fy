@@ -1,7 +1,7 @@
 @use 'sass:map';
-@use 'src/styles/utils/forwards' as *;
-@use 'src/styles/mixins/icon';
-@use 'src/styles/mixins/media';
+@use 'utils/forwards' as *;
+@use 'mixins/icon';
+@use 'mixins/media';
 
 $_main-breakpoint: lg;
 $_bg: transparent;
