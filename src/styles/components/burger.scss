@@ -3,7 +3,7 @@
 
 $_size: rem(44);
 $_line-height: rem(4);
-$_line-bg: $body-color;
+$_line-bg: $color;
 $_bezier: cubic-bezier(0.57, 0.21, 0.69, 1.25);
 
 @include media.max(lg) {

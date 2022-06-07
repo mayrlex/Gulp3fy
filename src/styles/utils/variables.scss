@@ -1,4 +1,3 @@
-@use 'sass:map';
 @use 'functions/converter' as *;
 
 //? # Container
@@ -10,27 +9,28 @@ $offsetMin:   10;
 //? # Grid
 $column-count: 12;
 $colGap-max:   20;
-$rowGap-max:   30;
 $colGap-min:   10;
+$rowGap-max:   30;
 $rowGap-min:   20;
 
 //? # Colors
-$white:      #fff;
-$black:      #000;
-$accent:     #2460fc;
-$success:    #29c45f;
-$warning:    #fcc93f;
-$danger:     #ff4732;
-$info:       #0378e6;
-$gray:       #adb5bd;
+$white:   #fff;
+$black:   #000;
+$accent:  #2460fc;
+$success: #29c45f;
+$warning: #fcc93f;
+$danger:  #ff4732;
+$info:    #0378e6;
+$gray:    #adb5bd;
 
 //? # Body
-$body-fontSize-max: 14;
-$body-fontSize-min: 14;
-$body-fontFamily:   'Inter', sans-serif;
-$body-fontWeight:   400;
-$body-color:        #374151;
-$body-background:   $white;
+$fontSize:     16;
+$fontSize-max: $fontSize;
+$fontSize-min: 14;
+$fontFamily:   'Inter', sans-serif;
+$fontWeight:   400;
+$color:        #374151;
+$background:   $white;
 
 //? # Media breakpoints
 $breakpoints: (

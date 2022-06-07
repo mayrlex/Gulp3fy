@@ -2,14 +2,11 @@
 @use 'mixins/adaptive' as *;
 
 .body {
-	color: $body-color;
-	font-weight: $body-fontWeight;
-	@if $body-fontSize-max != $body-fontSize-min {
-		@include adaptive('font-size', $body-fontSize-max, $body-fontSize-min);
-	} @else {
-		font-size: rem($body-fontSize-max);
-	}
-	font-family: $body-fontFamily;
+	color: $color;
+	font-weight: $fontWeight;
+	// @include adaptive('font-size', $fontSize-max, $fontSize-min);
+	font-size: rem($fontSize);
+	font-family: $fontFamily;
 }
 
 // .h-xxl,
