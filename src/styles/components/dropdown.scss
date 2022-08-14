@@ -68,6 +68,7 @@ $_color-active: $accent;
 
 	&__link {
 		color: currentcolor;
+		white-space: nowrap;
 
 		@include media.hover {
 			&:hover {

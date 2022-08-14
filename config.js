@@ -1,23 +1,4 @@
-//? ### Task controls
-const task = {
-	markup:    true,
-	styles:    true,
-	scripts:   true,
-	fonts:     true,
-	images:    true,
-	sprites:   true,
-	favicon:   true,
-	resources: true,
-}
-
-//? ### Server settings
-const serverSettings = {
-	port:   3300,
-	open:   false,
-	notify: false,
-}
-
-//? ### Manifest Settings
+//? ### Manifest
 const manifest = {
 	name:        'Gulp3fy',
 	shortname:   'G3',
@@ -41,6 +22,25 @@ const manifest = {
 		windows:      false,
 		yandex:       false,
 	}
+}
+
+//? ### Tasks
+const task = {
+	markup:    true,
+	styles:    true,
+	scripts:   true,
+	fonts:     true,
+	images:    true,
+	sprites:   true,
+	favicon:   true,
+	resources: true,
+}
+
+//? ### Server settings
+const serverSettings = {
+	port:   3300,
+	open:   false,
+	notify: false,
 }
 
 //? ### FTP Settings

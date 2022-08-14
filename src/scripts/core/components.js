@@ -1,7 +1,3 @@
-//? Header
-// import '../components/header.js';
-//? ==========
-
 //? Burger
 // import Burger from '../components/burger.js';
 
