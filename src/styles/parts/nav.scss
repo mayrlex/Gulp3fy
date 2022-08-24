@@ -3,13 +3,10 @@
 @use 'mixins/media';
 
 $_color: inherit;
-$_bg: $white;
 $_menu-transition-delay: 0.3s;
 $_bezier: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
 .nav {
-	background: $_bg;
-
 	//? Mobile menu
 	@include media.max($main-breakpoint) {
 		position: fixed;

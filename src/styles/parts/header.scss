@@ -2,12 +2,8 @@
 @use 'mixins/icon';
 @use 'mixins/media';
 
-$_bg: transparent;
-
 .header {
 	z-index: 10;
-
-	background: $_bg;
 
 	//? Header overlay
 	&:before {
