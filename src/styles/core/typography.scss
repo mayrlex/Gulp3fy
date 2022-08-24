@@ -2,43 +2,43 @@
 @use 'mixins/adaptive' as *;
 
 .body {
-	color: $body-color;
-	font-weight: $body-fontWeight;
-	@include adaptive('font-size', $body-fontSize-max, $body-fontSize-min);
-	font-family: $body-fontFamily;
+	color: $color;
+	font-weight: $fontWeight;
+	// @include adaptive('font-size', $fontSize-max, $fontSize-min);
+	font-size: rem($fontSize);
+	font-family: $fontFamily;
 }
 
-// .h1,
-// .h2,
-// .h3,
-// .h4,
-// .h5,
-// .h6 {
-// 	color: color(dark, 1);
+// .h-xxl,
+// .h-xl,
+// .h-lg,
+// .h-md,
+// .h-sm,
+// .h-xs {
 // 	font-weight: 700;
-// 	line-height: 130%;
+// 	line-height: 120%;
 // }
 
-// .h1 {
-// 	@include adaptive('font-size', 48, 32);
+// .h-xxl {
+// 	@include adaptive('font-size', 42, 36);
 // }
 
-// .h2 {
+// .h-xl {
+// 	@include adaptive('font-size', 36, 32);
+// }
+
+// .h-lg {
 // 	@include adaptive('font-size', 32, 28);
 // }
 
-// .h3 {
+// .h-md {
 // 	@include adaptive('font-size', 28, 24);
 // }
 
-// .h4 {
-// 	@include adaptive('font-size', 24, 20);
+// .h-sm {
+// 	@include adaptive('font-size', 24, 18);
 // }
 
-// .h5 {
-// 	@include adaptive('font-size', 20, 16);
-// }
-
-// .h6 {
-// 	@include adaptive('font-size', 16, 14);
+// .h-xs {
+// 	@include adaptive('font-size', 18, 16);
 // }

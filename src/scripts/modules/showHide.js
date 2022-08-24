@@ -1,31 +1,20 @@
-/*
-Arguments:
-	target:     {string} - Target
-	duration:   {number} - Animation duration
-	activeClass {string} - Active class
-
-Methods:
-	show():   Sets the expand animation
-	hide():   Sets the collapse animation
-	toggle(): Toggles between expand and collapse animations
-
-Call:
-	const showHide = new ShowHide({
-		target: spoilerBtn,
-		activeClass: '--show',
-		duration: 300,
-	});
-
-	showHide.toggle();
-*/
-
-const defaultOptions = {
-	activeClass: '--active',
-	duration: 500,
-};
+/**
+ * @param {string} target      - Target
+ * @param {string} duration    - Animation duration
+ * @param {string} activeClass - Active class
+ *
+ * @method show()   - Sets the expand animation
+ * @method hide()   - Sets the collapse animation
+ * @method toggle() - Toggles between show() and hide() methods
+ */
 
 export default class ShowHide {
 	constructor(options) {
+		const defaultOptions = {
+			activeClass: '--active',
+			duration: 500,
+		};
+
 		this.options = { ...defaultOptions, ...options };
 		this.target = options.target;
 	}

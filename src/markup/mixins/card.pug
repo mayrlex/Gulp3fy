@@ -1,0 +1,31 @@
+//- Card
+mixin card(mods)
+	-
+		let modsArray = '';
+
+
+		if (mods) {
+			const modsList = mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray}${modsList[i].trim()}__card`;
+			}
+		}
+
+	article.card(class=modsArray)&attributes(attributes)
+		block
+
+//- Card preview
+mixin card-preview(data)
+	-
+		const tag = data.link ? 'a' : 'div';
+		const isExternal = data.src.match(/([^\"=]{2}|^)((https?|ftp):\/\/\S+[^\s.,> )\];'\"!?])/);
+		const isSvg = data.src.split('.')[1] === 'svg';
+
+	#{tag}.card__preview.--ibg(href=data.link)
+		//- If the link is external or leads to an svg image
+		if (isExternal || isSvg)
+			+img({ src: data.src, alt: data.alt })
+
+		else
+			+pic({ src: data.src, alt: data.alt })

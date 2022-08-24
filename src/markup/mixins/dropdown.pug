@@ -1,0 +1,16 @@
+//- Dropdown
+mixin dropdown(data)
+	-
+		const tag      = data.inNav ? 'li' : 'div';
+		const inNav    = data.inNav ? 'nav__item dropdown' : 'dropdown';
+		const inNavBtn = data.inNav ? 'nav__link dropdown__toggle' : 'dropdown__toggle';
+
+	#{tag}(class=inNav)&attributes(attributes)
+		button(class=inNavBtn)= data.text
+		ul.dropdown__menu
+			block
+
+//- Dropdown item
+mixin dropdown-item(data)
+	li.dropdown__item
+		a.dropdown__link(href=data.link)&attributes(attributes)= data.text

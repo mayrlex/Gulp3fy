@@ -1,0 +1,16 @@
+//- Nav
+mixin nav
+	nav.header__nav.nav&attributes(attributes)
+		ul.nav__list
+			block
+
+//- Nav item
+mixin nav-item(data)
+	-
+		const tag       = !data.anchor ? 'a'         : 'button';
+		const hasLink   =  data.link   ? data.link   : null;
+		const hasAnchor =  data.anchor ? data.anchor : null;
+
+	li.nav__item
+		#{tag}.nav__link(href=hasLink, data-anchor=hasAnchor)&attributes(attributes)= data.text
+			block

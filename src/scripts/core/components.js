@@ -1,31 +1,28 @@
-//? Header
-// import '../../components/header/header.js';
-//? ==========
-
 //? Burger
-import Burger from '../../components/burger/burger.js';
+// import Burger from '../components/burger.js';
 
-const burger = new Burger({});
+// const burger = new Burger({});
 //? ==========
 
 //? Dropdown
-import dropdown from '../../components/dropdown/dropdown.js';
+// import dropdown from '../components/dropdown.js';
 
-dropdown({});
+// dropdown();
 //? ==========
 
 //? Modal
-// import Modal from '../../components/modal/modal.js';
+// import Modal from '../components/modal.js';
 
 // const modal1 = new Modal({ target: 'modal-1' });
 //? ==========
 
 //? Spoiler
-// import '../../components/spoiler/spoiler.js';
+// import '../components/spoiler.js';
 //? ==========
 
 //? Tabs
-// import Tabs from '../../components/tabs/tabs.js';
+// import Tabs from '../components/tabs.js';
 
 // const tab = new Tabs({ target: 'tab1' });
+// tab.switchTabs(document.querySelector('#tab3'));
 //? ==========

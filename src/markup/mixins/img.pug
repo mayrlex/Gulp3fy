@@ -1,3 +1,6 @@
+-
+	const placeholder = 'assets/images/common/placeholder.png';
+
 mixin img(data)
 	-
 		let modsArray = '';
@@ -10,12 +13,7 @@ mixin img(data)
 			}
 		}
 
-	img.lazy(
-		class=modsArray,
-		data-src=`assets/images/${data.src}`,
-		src='assets/images/common/placeholder.png',
-		alt=data.alt
-	)&attributes(attributes)
+	img.lazy(class=modsArray, data-src=data.src, src=placeholder, alt=data.alt)&attributes(attributes)
 
 mixin pic(data)
 	-
@@ -32,15 +30,11 @@ mixin pic(data)
 		}
 
 	picture
-		source(
-			type='image/webp',
-			data-srcset=`assets/images/${imageName}.webp`,
-			srcset='assets/images/common/placeholder.png'
-		)
+		source(type='image/webp', data-srcset=`assets/images/${imageName}.webp`, srcset=placeholder)
 		img.lazy(
 			class=modsArray,
 			data-src=`assets/images/${imageName}.${imageExtname}`,
-			src='assets/images/common/placeholder.png',
+			src=placeholder,
 			alt=data.alt
 		)&attributes(attributes)
 

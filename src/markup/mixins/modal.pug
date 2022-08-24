@@ -1,0 +1,19 @@
+mixin modal(data)
+	-
+		let modsArray = '';
+
+		if (data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}__modal`;
+			}
+		}
+
+		const isScrollable = data.scrollable ? `modal__scrollable ${modsArray}` : modsArray;
+
+	section.modal(class=isScrollable, id=data.modal, tabindex='-1', aria-hidden='true')&attributes(attributes)
+		.modal__overlay.--fixed
+			.modal__inner(role='dialog', aria-modal='true')
+				button.modal__close(aria-label=(data.ariaLabel = 'Close modal'), data-modal-close='')
+				block

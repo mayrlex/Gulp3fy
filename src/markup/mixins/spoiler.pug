@@ -1,0 +1,25 @@
+//- Spoiler
+mixin spoiler(data)
+	-
+		let modsArray = '';
+
+		if (data.mods) {
+			const modsList = data.mods.split(',');
+
+			for (let i = 0; i < modsList.length; i++) {
+				modsArray = `${modsArray} ${modsList[i].trim()}__spoiler`;
+			}
+		}
+
+		const hasMedia = data.media ? data.media : '';
+		const isAccordion = typeof(data.isAccordion) === 'undefined' || data.isAccordion ? '' : null
+
+	.spoiler(class=modsArray, data-spoilers=hasMedia, accordion=isAccordion)&attributes(attributes)
+		block
+
+//- Spoiler item
+mixin spoiler-item(text)
+	.spoiler__item
+		button.spoiler__title(tabinxex='-1', type='button', data-spoiler='')&attributes(attributes)= text
+		.spoiler__content
+			block

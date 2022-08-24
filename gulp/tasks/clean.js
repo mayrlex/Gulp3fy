@@ -1,5 +1,5 @@
-import del from 'del';
+import { deleteAsync } from 'del';
 import { path } from '../config/path.js';
 
-const clean = () => del(path.dest);
+const clean = () => deleteAsync(path.dest);
 export default clean;

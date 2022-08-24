@@ -78,12 +78,6 @@ export const path = {
 		dest: `${destAssets}/images/common/favicons/`,
 	},
 
-	components: {
-		markup: `${src}/components/**/*.pug`,
-		styles: `${src}/components/**/*.scss`,
-		scripts: `${src}/components/**/*.js`,
-	},
-
 	resources: {
 		src: [`${srcAssets}/resources/**/*.*`, `!${srcAssets}/resources/root/*.*`],
 		dest: `${destAssets}/resources/`,

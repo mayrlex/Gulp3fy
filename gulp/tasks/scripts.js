@@ -5,8 +5,6 @@ import notify from 'gulp-notify';
 import sync from 'browser-sync';
 import { path } from '../config/path.js';
 
-const scripts = [path.scripts.watch, path.components.scripts];
-
 export const scriptsBuild = () => {
 	return gulp
 		.src(path.scripts.src, { sourcemaps: path.isDev })
@@ -33,4 +31,4 @@ export const scriptsBuild = () => {
 		.pipe(sync.stream());
 };
 
-export const scriptsWatch = () => gulp.watch(scripts, scriptsBuild);
+export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);

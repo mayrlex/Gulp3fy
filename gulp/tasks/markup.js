@@ -8,8 +8,6 @@ import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
 import { path } from '../config/path.js';
 
-const markup = [path.markup.watch, path.components.markup];
-
 export const markupBuild = () => {
 	return gulp
 		.src(path.markup.src)
@@ -52,4 +50,4 @@ export const markupBuild = () => {
 		.pipe(sync.stream());
 };
 
-export const markupWatch = () => gulp.watch(markup, markupBuild);
+export const markupWatch = () => gulp.watch(path.markup.watch, markupBuild);
