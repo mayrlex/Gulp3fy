@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
 import * as nodePath from 'path';
-import { ftpSettings } from '../../config.js';
 
 const root = nodePath.basename(nodePath.resolve());
 const src = `./src`;
@@ -93,10 +92,5 @@ export const path = {
 		dest: `${dest}/**/*.*`,
 		del: `./${root}.zip`,
 		root: `./${root}.zip`,
-	},
-
-	ftp: {
-		server: ftpSettings.folder,
-		local: `${dest}/**/*.*`,
 	},
 };

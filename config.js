@@ -43,21 +43,6 @@ const serverSettings = {
 	notify: false,
 }
 
-//? ### FTP Settings
-// folder:   Folder on the server
-// host:     Address
-// user:     Username
-// password: Password
-// parallel: Count of parallel streams
-
-const ftpSettings = {
-	folder:   `test`,
-	host:     '',
-	user:     '',
-	password: '',
-	parallel: 5,
-};
-
 //? ### Styles settings
 const stylesSettings = {
 	sass: {
