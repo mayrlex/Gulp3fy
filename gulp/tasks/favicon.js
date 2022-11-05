@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import favicons from 'gulp-favicons';
-import { path } from '../config/path.js';
+import path from '../config/path.js';
 import { manifest } from '../../config.js';
 
 const faviconsBuild = () =>

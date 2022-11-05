@@ -10,17 +10,17 @@ mixin btn(data)
 			}
 		}
 
-		const tag           =  data.link ? 'a' : 'button';
-		const hasType       = !data.link ? 'button' : null;
-		const hasLink       =  data.link ? data.link : null;
-		const isBtnIcon     = !data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`;
-		const isUnresetIcon =  data.iconUnreset ? true : false;
+		const tag       =  data.link ? 'a' : 'button';
+		const hasType   = !data.link ? 'button' : null;
+		const hasLink   =  data.link ? data.link : null;
+		const isBtnIcon = !data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`;
+		const isExcIcon =  data.excIcon ? true : false;
 
 	#{tag}(class=isBtnIcon, href=hasLink, type=hasType)&attributes(attributes)
 		if (data.icon)
 			//- Icon before text
 			if (data.iconBefore)
-				+icon(data.icon, isUnresetIcon)
+				+icon(data.icon, isExcIcon)
 				if data.text
 					= data.text
 
@@ -28,7 +28,7 @@ mixin btn(data)
 			else
 				if data.text
 					= data.text
-				+icon(data.icon, isUnresetIcon)
+				+icon(data.icon, isExcIcon)
 
 		else
 			= data.text

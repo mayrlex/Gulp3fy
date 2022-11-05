@@ -4,7 +4,7 @@ import notify from 'gulp-notify';
 import { deleteAsync } from 'del';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
-import { path } from '../config/path.js';
+import path from '../config/path.js';
 
 const fontsConvertOTF = () => {
 	return gulp
@@ -12,7 +12,7 @@ const fontsConvertOTF = () => {
 		.pipe(
 			plumber(
 				notify.onError({
-					title: '[FONTS] convertOTF',
+					title: '[FONTS] Convert OTF',
 					message: 'Error: <%= error.message %>',
 				})
 			)
@@ -22,7 +22,7 @@ const fontsConvertOTF = () => {
 				formats: ['ttf'],
 			})
 		)
-		.pipe(gulp.dest(path.fonts.root));
+		.pipe(gulp.dest(path.fonts.src.main));
 };
 
 const fontsConvertTTF = () => {
@@ -31,16 +31,16 @@ const fontsConvertTTF = () => {
 		.pipe(
 			plumber(
 				notify.onError({
-					title: '[FONTS] convertTTF',
+					title: '[FONTS] Convert TTF',
 					message: 'Error: <%= error.message %>',
 				})
 			)
 		)
 		.pipe(ttf2woff2())
-		.pipe(gulp.dest(path.fonts.root));
+		.pipe(gulp.dest(path.fonts.src.main));
 };
 
-const fontsDel = () => deleteAsync([`${path.fonts.root}*.*`, `!${path.fonts.src.woff2}`]);
+const fontsDel = () => deleteAsync([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
 const fontsBuild = () => gulp.src(path.fonts.src.woff2).pipe(gulp.dest(path.fonts.dest));
 
 export default gulp.series(fontsConvertTTF, fontsDel, fontsBuild);

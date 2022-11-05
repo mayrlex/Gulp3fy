@@ -1,18 +1,13 @@
-/* eslint-disable import/prefer-default-export */
 import * as nodePath from 'path';
 
 const root = nodePath.basename(nodePath.resolve());
 const src = `./src`;
 const dest = `./dist`;
-const srcAssets = `${src}/assets`;
-const destAssets = `${dest}/assets`;
 const prod = process.argv.includes('--prod');
 
-export const path = {
+const path = {
 	src,
 	dest,
-	root,
-
 	isProd: prod,
 	isDev: !prod,
 
@@ -24,68 +19,76 @@ export const path = {
 
 	styles: {
 		src: `${src}/styles/main.scss`,
-		dest: `${destAssets}/css`,
+		dest: `${dest}/assets/css`,
 		watch: `${src}/styles/**/*.scss`,
 	},
 
 	scripts: {
 		src: `${src}/scripts/app.js`,
-		dest: `${destAssets}/js`,
+		dest: `${dest}/assets/js`,
 		watch: `${src}/scripts/**/*.js`,
 	},
 
 	fonts: {
-		root: `${srcAssets}/fonts/`,
 		src: {
-			otf: `${srcAssets}/fonts/**/*.otf`,
-			ttf: `${srcAssets}/fonts/**/*.ttf`,
-			woff2: `${srcAssets}/fonts/**/*.woff2`,
+			main: `${src}/assets/fonts/`,
+			otf: `${src}/assets/fonts/**/*.otf`,
+			ttf: `${src}/assets/fonts/**/*.ttf`,
+			woff2: `${src}/assets/fonts/**/*.woff2`,
 		},
 
-		dest: `${destAssets}/fonts`,
+		dest: `${dest}/assets/fonts`,
 	},
 
 	images: {
-		src: [
-			`${srcAssets}/images/**/*.{jpg,jpeg,png,gif,webp}`,
-			`!${srcAssets}/images/common/placeholder.*`,
-			`!${srcAssets}/images/common/favicon.*`,
-		],
+		src: {
+			main: [
+				`${src}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
+				`!${src}/assets/images/common/placeholder.*`,
+				`!${src}/assets/images/common/favicon.*`,
+			],
 
-		dest: `${destAssets}/images`,
-		watch: `${srcAssets}/images/**/*.{jpg,png,svg,gif,ico,webp}`,
-		svg: [`${srcAssets}/images/**/*.svg`, `!${srcAssets}/images/sprite`],
-		placehoder: `${srcAssets}/images/**/placeholder.png`,
+			svg: [`${src}/assets/images/**/*.svg`, `!${src}/assets/images/sprite`],
+			placeholder: `${src}/assets/images/**/placeholder.png`,
+		},
+
+		dest: `${dest}/assets/images`,
+		watch: `${src}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
 	},
 
 	sprites: {
-		src: `${srcAssets}/images/sprite/**/*.svg`,
-		dest: `${destAssets}/sprites`,
-		watch: `${srcAssets}/images/sprite/**/*.svg`,
-		icons: {
-			src: {
-				root: [`${srcAssets}/icons/**/*.svg`, `!${srcAssets}/icons/unreset/*.*`],
-				unreset: `${srcAssets}/icons/unreset/**/*.svg`,
+		src: {
+			images: `${src}/assets/images/sprite/**/*.svg`,
+			icons: {
+				main: [`${src}/assets/icons/**/*.svg`, `!${src}/assets/icons/exception/*.*`],
+				exception: `${src}/assets/icons/exception/**/*.svg`,
 			},
+		},
 
-			watch: `${srcAssets}/icons/**/*.svg`,
+		dest: `${dest}/assets/sprites`,
+		watch: {
+			icons: `${src}/assets/icons/**/*.svg`,
+			images: `${src}/assets/images/sprite/**/*.svg`,
 		},
 	},
 
 	favicon: {
-		src: `${srcAssets}/images/common/favicon.{jpg,png,gif,ico,webp}`,
-		dest: `${destAssets}/images/common/favicons/`,
+		src: `${src}/assets/images/common/favicon.{jpg,png,gif,ico,webp}`,
+		dest: `${dest}/assets/images/common/favicons/`,
 	},
 
 	resources: {
-		src: [`${srcAssets}/resources/**/*.*`, `!${srcAssets}/resources/root/*.*`],
-		dest: `${destAssets}/resources/`,
-		watch: `${srcAssets}/resources/**/*.*`,
-
-		root: {
-			src: `${srcAssets}/resources/root/**/*.*`,
-			dest,
+		src: {
+			main: [`${src}/assets/resources/**/*.*`, `!${src}/assets/resources/exception/*.*`],
+			exception: `${src}/assets/resources/exception/**/*.*`,
 		},
+
+		dest: {
+			main: `${dest}/assets/resources/`,
+			exception: dest,
+		},
+
+		watch: `${src}/assets/resources/**/*.*`,
 	},
 
 	zip: {
@@ -94,3 +97,5 @@ export const path = {
 		root: `./${root}.zip`,
 	},
 };
+
+export default path;

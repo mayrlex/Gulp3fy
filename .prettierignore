@@ -2,3 +2,4 @@ dist
 config.js
 src/markup/core/head.pug
 src/styles/utils/variables.scss
+gulp/config/tasks.js

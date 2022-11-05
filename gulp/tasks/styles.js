@@ -10,8 +10,7 @@ import rename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
 import media from 'gulp-group-css-media-queries';
 import sassGlob from 'gulp-sass-glob';
-import { path } from '../config/path.js';
-import { stylesSettings } from '../../config.js';
+import path from '../config/path.js';
 
 const sass = gulpSass(compiler);
 
@@ -30,7 +29,7 @@ export const stylesBuild = () => {
 		.pipe(sassGlob())
 		.pipe(
 			sass.sync({
-				outputStyle: stylesSettings.sass.outputStyle,
+				outputStyle: 'expanded',
 				includePaths: ['./node_modules'],
 			})
 		)
@@ -39,14 +38,14 @@ export const stylesBuild = () => {
 			gulpif(
 				path.isProd,
 				autoprefixer({
-					grid: stylesSettings.autoprefixer.grid,
-					overrideBrowserlist: [stylesSettings.autoprefixer.overrideBrowserlist],
-					cascade: stylesSettings.autoprefixer.cascade,
+					grid: true,
+					overrideBrowserlist: ['last 5 version'],
+					cascade: true,
 				})
 			)
 		)
 		.pipe(gulp.dest(path.styles.dest))
-		.pipe(gulpif(path.isProd, cleanCss({ level: stylesSettings.cleanlvl })))
+		.pipe(gulpif(path.isProd, cleanCss({ level: 1 })))
 		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.styles.dest))
 		.pipe(sync.stream());

@@ -2,12 +2,11 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
-import { path } from '../config/path.js';
-import { spriteSettings } from '../../config.js';
+import path from '../config/path.js';
 
 const spriteBuild = () => {
 	return gulp
-		.src(path.sprites.src)
+		.src(path.sprites.src.images)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -21,7 +20,7 @@ const spriteBuild = () => {
 				mode: {
 					stack: {
 						sprite: '../sprite.svg',
-						example: spriteSettings.example.sprite,
+						example: true,
 					},
 				},
 				shape: {
@@ -31,7 +30,7 @@ const spriteBuild = () => {
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.sprite,
+											attrs: ['class', 'data-name'],
 										},
 									},
 
@@ -51,7 +50,7 @@ const spriteBuild = () => {
 
 const spriteIconsBuild = () => {
 	return gulp
-		.src(path.sprites.icons.src.root)
+		.src(path.sprites.src.icons.main)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -65,7 +64,7 @@ const spriteIconsBuild = () => {
 				mode: {
 					stack: {
 						sprite: '../sprite-icons.svg',
-						example: spriteSettings.example.icons,
+						example: true,
 					},
 				},
 				shape: {
@@ -75,7 +74,7 @@ const spriteIconsBuild = () => {
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.icons,
+											attrs: ['class', 'data-name', 'fill.*', 'stroke.*'],
 										},
 									},
 								],
@@ -88,9 +87,9 @@ const spriteIconsBuild = () => {
 		.pipe(gulp.dest(path.sprites.dest));
 };
 
-const spriteUIconsBuild = () => {
+const spriteExcIconsBuild = () => {
 	return gulp
-		.src(path.sprites.icons.src.unreset)
+		.src(path.sprites.src.icons.exception)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -103,8 +102,8 @@ const spriteUIconsBuild = () => {
 			svgSprite({
 				mode: {
 					stack: {
-						sprite: '../sprite-u-icons.svg',
-						example: spriteSettings.example.unresetIcons,
+						sprite: '../sprite-exc-icons.svg',
+						example: true,
 					},
 				},
 				shape: {
@@ -114,7 +113,7 @@ const spriteUIconsBuild = () => {
 								plugins: [
 									{
 										removeAttrs: {
-											attrs: spriteSettings.removeAttrs.unresetIcons,
+											attrs: ['class', 'data-name'],
 										},
 									},
 
@@ -132,7 +131,7 @@ const spriteUIconsBuild = () => {
 		.pipe(gulp.dest(path.sprites.dest));
 };
 
-export const spritesBuild = gulp.parallel(spriteBuild, spriteIconsBuild, spriteUIconsBuild);
+export const spritesBuild = gulp.parallel(spriteBuild, spriteIconsBuild, spriteExcIconsBuild);
 export const spritesWatch = () => {
-	gulp.watch([path.sprites.watch, path.sprites.icons.watch], spritesBuild);
+	gulp.watch([path.sprites.watch.icons, path.sprites.watch.images], spritesBuild);
 };
