@@ -1,4 +1,4 @@
-- const pageTitle = page.name ? `${config.siteName} — ${page.name}` : config.siteName;
+- const pageTitle = config.siteName && page.name ? `${config.siteName} — ${page.name}` : !config.siteName && page.name ? `${page.name}` : config.siteName;
 
 meta(charset='UTF-8')
 if meta.viewport !== null
