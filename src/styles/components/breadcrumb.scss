@@ -44,7 +44,7 @@ $_divider: 'data:image/svg+xml,%3Csvg width="#{rem($_fontSize-max)}" height="#{r
 	}
 
 	&__link {
-		color: $gray;
+		color: $black;
 
 		@include media.hover {
 			&:hover {

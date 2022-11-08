@@ -108,7 +108,7 @@ $_bezier: cubic-bezier(0, 0, 0.5, 1);
 	}
 
 	&__close {
-		@include icon.cross($size: 32, $width: 2, $color: $gray, $radius: 2);
+		@include icon.cross($size: 32, $width: 2, $color: $black, $radius: 2);
 		position: absolute;
 		top: rem($_btn-close-top);
 		right: rem($_btn-close-right);

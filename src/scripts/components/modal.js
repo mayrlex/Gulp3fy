@@ -4,10 +4,10 @@ import throttle from '../modules/throttle.js';
 /**
  * @param {string}  target      - Modal id
  * @param {string}  activeClass - Active class
- * @param {boolean} scrollFix   - Sets padding-right for content when scroll is blocked
- * @param {number}  throttle    - Delay between activation
- * @param {object}  onShow()    - Function triggired on show modal
- * @param {object}  onHide()    - Function triggired on hide modal
+ * @param {boolean} scrollFix   - Removes the shift of the page content when locking/unlocking scroll
+ * @param {number}  throttle    - Throttle delay
+ * @param {object}  onShow()    - Function triggered at show modal
+ * @param {object}  onHide()    - Function triggered at hide modal
  */
 
 export default class Modal {

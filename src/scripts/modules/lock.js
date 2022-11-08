@@ -1,18 +1,16 @@
 /**
- * @param {string} scrollFix        - Sets padding-right for content when scroll is blocked
- * @param {string} fixedBlocksClass - Sets padding-right for fixed blocks with specified class
+ * @param {boolean} scrollFix - Removes the shift of the page content when locking/unlocking scroll
  */
 
 export default class Lock {
 	constructor(options) {
 		const defaultOptions = {
 			scrollFix: true,
-			fixedBlocksClass: '.--fixed',
 		};
 
 		this.option = { ...defaultOptions, ...options };
 		this.body = document.body;
-		this.fixedBlocks = document.querySelectorAll(this.option.fixedBlocksClass);
+		this.fixedBlocks = document.querySelectorAll('.--fixed');
 	}
 
 	lock() {
