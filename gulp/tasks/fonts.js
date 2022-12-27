@@ -6,7 +6,7 @@ import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
 import path from '../config/path.js';
 
-const fontsConvertOTF = () => {
+const fontsTTF = () => {
 	return gulp
 		.src(path.fonts.src.otf)
 		.pipe(
@@ -25,7 +25,7 @@ const fontsConvertOTF = () => {
 		.pipe(gulp.dest(path.fonts.src.main));
 };
 
-const fontsConvertTTF = () => {
+const fontsWOFF2 = () => {
 	return gulp
 		.src(path.fonts.src.ttf)
 		.pipe(
@@ -40,8 +40,9 @@ const fontsConvertTTF = () => {
 		.pipe(gulp.dest(path.fonts.src.main));
 };
 
-const fontsDel = () => deleteAsync([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
+const fontsClean = () => deleteAsync([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
 const fontsBuild = () => gulp.src(path.fonts.src.woff2).pipe(gulp.dest(path.fonts.dest));
 
-export default gulp.series(fontsConvertTTF, fontsDel, fontsBuild);
-export { fontsConvertOTF };
+export default gulp.series(fontsWOFF2, fontsClean, fontsBuild);
+export { fontsTTF };
+export { fontsWOFF2 };

@@ -1,8 +1,7 @@
 - const pageTitle = config.siteName && page.name ? `${config.siteName} — ${page.name}` : !config.siteName && page.name ? `${page.name}` : config.siteName;
 
 meta(charset='UTF-8')
-if meta.viewport !== null
-	meta(name='viewport', content=meta.viewport)
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
 if page.description !== null
 	meta(name='description', content=page.description)
 if meta.keywords !== null && !(Array.isArray(meta.keywords) && !meta.keywords.length)

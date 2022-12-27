@@ -1,55 +1,55 @@
-@use 'utils/variables' as *;
-@use 'functions/converter' as *;
+@use 'core/variables' as *;
+@use 'functions/convert';
 
 // Min width
-@mixin min($key) {
+@mixin min($key: lg) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
 
-		@media (min-width: em($breakpoint)) {
+		@media (min-width: convert.em($breakpoint)) {
 			@content;
 		}
 	} @else {
-		@media (min-width: em($key)) {
+		@media (min-width: convert.em($key)) {
 			@content;
 		}
 	}
 }
 
 // Max width
-@mixin max($key) {
+@mixin max($key: lg) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map-get($breakpoints, $key);
 
-		@media (max-width: em($breakpoint - 0.2)) {
+		@media (max-width: convert.em($breakpoint - 0.2)) {
 			@content;
 		}
 	} @else {
-		@media (max-width: em($key - 0.2)) {
+		@media (max-width: convert.em($key - 0.2)) {
 			@content;
 		}
 	}
 }
 
-// Min/Max width
+// Min & Max width
 @mixin minmax($key1, $key2) {
 	$breakpointMin: map-get($breakpoints, $key1);
 	$breakpointMax: map-get($breakpoints, $key2);
 
 	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
-		@media (min-width: em($breakpointMin)) and (max-width: em($breakpointMax - 0.2)) {
+		@media (min-width: convert.em($breakpointMin)) and (max-width: convert.em($breakpointMax - 0.2)) {
 			@content;
 		}
 	} @else if map-has-key($breakpoints, $key1) and not map-has-key($breakpoints, $key2) {
-		@media (min-width: em($breakpointMin)) and (max-width: em($key2 - 0.2)) {
+		@media (min-width: convert.em($breakpointMin)) and (max-width: convert.em($key2 - 0.2)) {
 			@content;
 		}
 	} @else if map-has-key($breakpoints, $key2) and not map-has-key($breakpoints, $key1) {
-		@media (min-width: em($key1)) and (max-width: em($breakpointMax - 0.2)) {
+		@media (min-width: convert.em($key1)) and (max-width: convert.em($breakpointMax - 0.2)) {
 			@content;
 		}
 	} @else {
-		@media (min-width: em($key1)) and (max-width: em($key2 - 0.2)) {
+		@media (min-width: convert.em($key1)) and (max-width: convert.em($key2 - 0.2)) {
 			@content;
 		}
 	}

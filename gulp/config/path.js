@@ -73,7 +73,7 @@ const path = {
 	},
 
 	favicon: {
-		src: `${src}/assets/images/common/favicon.{jpg,png,gif,ico,webp}`,
+		src: `${src}/assets/images/common/favicon.{jpg,png}`,
 		dest: `${dest}/assets/images/common/favicons/`,
 	},
 

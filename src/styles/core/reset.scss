@@ -6,8 +6,8 @@
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
@@ -28,6 +28,7 @@ body {
 input,
 button,
 textarea {
+	font-size: initial;
 	font-family: inherit;
 }
 
