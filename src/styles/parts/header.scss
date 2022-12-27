@@ -1,35 +1,91 @@
 @use 'utils/forwards' as *;
-@use 'mixins/icon';
 @use 'mixins/media';
+@use 'sass:math';
+
+// Menu btn
+$_btn-width: 30;
+$_btn-height: 18;
+$_span-height: 2;
+$_span-bg: $white;
 
 .header {
-	z-index: 10;
-
-	//? Header overlay
-	&:before {
-		// 	position: fixed;
-		// 	top: 0;
-		// 	left: 0;
-		// 	z-index: 1;
-
-		// 	width: 100%;
-		// 	height: $_height;
-
-		// 	background: $_bg;
-
-		// 	content: '';
-	}
-
 	&__inner {
-		display: flex;
-		align-items: center;
-		min-height: rem(80);
 	}
 
-	&__logo {
-		z-index: 1;
+	&__menu {
 	}
 
-	&__nav {
+	& .menu {
+		// @include media.max(md) {
+		// 	// Mobile menu btn
+		// 	&__btn {
+		// 		position: relative;
+		// 		z-index: $backdropZIndex + 2;
+
+		// 		display: block;
+		// 		width: rem($_btn-width);
+		// 		height: rem($_btn-height);
+
+		// 		cursor: pointer;
+
+		// 		user-select: none;
+
+		// 		> span {
+		// 			position: absolute;
+		// 			top: calc(50% - rem(math.div($_span-height, 2)));
+		// 			left: 0;
+
+		// 			width: 100%;
+		// 			height: rem($_span-height);
+
+		// 			background-color: $_span-bg;
+
+		// 			transition: 0.2s;
+
+		// 			&:first-child {
+		// 				top: 0;
+		// 			}
+
+		// 			&:last-child {
+		// 				top: auto;
+		// 				bottom: 0;
+		// 			}
+		// 		}
+
+		// 		&[aria-expanded='true'] {
+		// 			> span {
+		// 				transform: scale(0);
+
+		// 				&:first-child {
+		// 					top: calc(50% - rem(math.div($_span-height, 2)));
+
+		// 					transform: rotate(-45deg);
+		// 				}
+
+		// 				&:last-child {
+		// 					bottom: calc(50% - rem(math.div($_span-height, 2)));
+
+		// 					transform: rotate(45deg);
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+
+		&__body {
+			@include media.max(md) {
+				&.--show {
+				}
+			}
+		}
+
+		&__list {
+		}
+
+		&__item {
+		}
+
+		&__link {
+		}
 	}
 }
