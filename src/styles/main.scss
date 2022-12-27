@@ -8,21 +8,11 @@
 @use 'core/helpers';
 
 //? ### Parts
-// @use 'parts/header';
-// @use 'parts/nav';
+@use 'parts/header';
 // @use 'parts/footer';
 
 //? ### Components
-// @use 'components/badges';
-// @use 'components/breadcrumbs';
 // @use 'components/btn';
-// @use 'components/burger';
-// @use 'components/card';
-// @use 'components/dropdown';
-// @use 'components/modal';
-// @use 'components/pagination';
-// @use 'components/spoiler';
-// @use 'components/tabs';
 
 //? ### Pages
 @use 'pages/home/hero';

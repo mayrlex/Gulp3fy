@@ -1,58 +1,24 @@
-@use 'sass:math';
 @use 'utils/forwards' as *;
-@use 'mixins/media';
 @use 'swiper/swiper-bundle.min.css';
 
 .swiper {
-	$nav_btn_pos_x: rem(15);
-	$pagination_margin: 20;
-	$nav_btn_margin: math.div(44 + $pagination_margin, 2);
-
 	&-slide {
-		height: rem(250);
 	}
 
 	&-pagination {
-		position: static;
-
-		margin-top: rem($pagination_margin - 10);
-
 		&-bullet {
-			width: rem(24);
-			height: rem(6);
-
-			background: rgba($black, 0.5);
-			border-radius: em(4);
-			opacity: 1;
-
-			transition: 0.1s;
-
-			@include media.hover {
-				&:hover:not(.swiper-pagination-bullet-active) {
-					background: rgba($accent, 0.5);
-				}
-			}
-
 			&-active {
-				background: rgba($accent, 0.75);
 			}
 		}
 	}
 
 	&-button-prev,
 	&-button-next {
-		margin-top: rem(-$nav_btn_margin);
-
-		&:after {
-			color: rgba($accent, 0.5);
-		}
 	}
 
 	&-button-prev {
-		left: $nav_btn_pos_x;
 	}
 
 	&-button-next {
-		right: $nav_btn_pos_x;
 	}
 }

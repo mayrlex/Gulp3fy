@@ -15,14 +15,3 @@
 
 // const modal1 = new Modal({ target: 'modal-1' });
 //? ==========
-
-//? Spoiler
-// import '../components/spoiler.js';
-//? ==========
-
-//? Tabs
-// import Tabs from '../components/tabs.js';
-
-// const tab = new Tabs({ target: 'tab1' });
-// tab.switchTabs(document.querySelector('#tab3'));
-//? ==========

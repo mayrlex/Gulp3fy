@@ -1,8 +1,1 @@
 @use 'mixins/fontFace' as font;
-
-// Inter
-@include font.face('Inter', 'Light', 300);
-@include font.face('Inter', 'Regular');
-@include font.face('Inter', 'Medium', 500);
-@include font.face('Inter', 'SemiBold', 600);
-@include font.face('Inter', 'Bold', 700);
