@@ -10,12 +10,13 @@ import { resourcesBuild, resourcesWatch } from '../tasks/resources.js';
 
 const build = [];
 const watch = [];
+const sprites = task.sprites.images || task.sprites.icons || task.sprites.eIcons;
 
 task.markup    ? [build.push(markupBuild),    watch.push(markupWatch)]    : null;
 task.styles    ? [build.push(stylesBuild),    watch.push(stylesWatch)]    : null;
 task.scripts   ? [build.push(scriptsBuild),   watch.push(scriptsWatch)]   : null;
 task.images    ? [build.push(imagesBuild),    watch.push(imagesWatch)]    : null;
-task.sprites   ? [build.push(spritesBuild),   watch.push(spritesWatch)]   : null;
+sprites        ? [build.push(spritesBuild),   watch.push(spritesWatch)]   : null;
 task.fonts     ?  build.push(fontsBuild)                                  : null;
 task.favicon   ?  build.push(faviconsBuild)                               : null;
 task.resources ? [build.push(resourcesBuild), watch.push(resourcesWatch)] : null;

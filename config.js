@@ -31,7 +31,11 @@ const task = {
 	scripts:   true,
 	fonts:     true,
 	images:    true,
-	sprites:   true,
+	sprites:   {
+		images:  false,
+		icons:   true,
+		eIcons:  false
+	},
 	favicon:   true,
 	resources: true,
 }
