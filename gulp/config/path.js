@@ -96,6 +96,11 @@ const path = {
 		del: `./${root}.zip`,
 		root: `./${root}.zip`,
 	},
+
+	clean: {
+		before: ['./.git'],
+		after: ['./node_modules'],
+	},
 };
 
 export default path;

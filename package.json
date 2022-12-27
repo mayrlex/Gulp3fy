@@ -15,7 +15,9 @@
 		"eslint": "eslint src/scripts --ext .js",
 		"eslint:fix": "npm run eslint -- --fix",
 		"stylelint": "stylelint src/styles .scss",
-		"stylelint:fix": "npm run stylelint -- --fix"
+		"stylelint:fix": "npm run stylelint -- --fix",
+		"before": "gulp cleanBefore",
+		"after": "gulp cleanAfter"
 	},
 	"repository": {
 		"type": "git",

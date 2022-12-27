@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import clean from './gulp/tasks/clean.js';
+import clean, { cleanBefore, cleanAfrer } from './gulp/tasks/clean.js';
 import server from './gulp/tasks/server.js';
 import zip from './gulp/tasks/zip.js';
 import { build, watch } from './gulp/config/tasks.js';
@@ -15,3 +15,4 @@ export { prod };
 export { archiving };
 export { fontsConvertOTF };
 export { faviconsBuild };
+export { cleanBefore, cleanAfrer };
