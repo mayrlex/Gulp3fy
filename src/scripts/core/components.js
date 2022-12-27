@@ -1,7 +1,9 @@
-//? Burger
-// import Burger from '../components/burger.js';
+//? Menu
+// import Menu from '../components/menu.js';
 
-// const burger = new Burger({});
+// const menu = new Menu({
+// 	// fixedBlocks: ['header'],
+// });
 //? ==========
 
 //? Dropdown

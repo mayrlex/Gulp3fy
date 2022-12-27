@@ -1,26 +1,27 @@
 /**
- * @param {boolean} scrollFix - Removes the shift of the page content when locking/unlocking scroll
+ * @param {Array} fixedBlocks - Blocks with position: fixed
  */
 
 export default class Lock {
 	constructor(options) {
 		const defaultOptions = {
-			scrollFix: true,
+			fixedBlocks: [],
 		};
 
-		this.option = { ...defaultOptions, ...options };
-		this.body = document.body;
-		this.fixedBlocks = document.querySelectorAll('.--fixed');
+		this.options = { ...defaultOptions, ...options };
+
+		if (this.options.fixedBlocks.length) {
+			this.fixedBlocks = document.querySelectorAll(this.options.fixedBlocks);
+		}
 	}
 
 	lock() {
 		const scrollWidth = `${window.innerWidth - document.body.offsetWidth}px`;
 
-		this.body.classList.add('--lock');
+		document.body.style.overflow = 'hidden';
+		document.body.style.paddingRight = scrollWidth;
 
-		if (this.option.scrollFix) {
-			this.body.style.paddingRight = scrollWidth;
-
+		if (this.options.fixedBlocks.length) {
 			this.fixedBlocks.forEach((element) => {
 				element.style.paddingRight = scrollWidth;
 			});
@@ -28,10 +29,10 @@ export default class Lock {
 	}
 
 	unlock() {
-		this.body.classList.remove('--lock');
+		document.body.style.overflow = null;
+		document.body.style.paddingRight = null;
 
-		if (this.option.scrollFix) {
-			this.body.style.paddingRight = null;
+		if (this.options.fixedBlocks.length) {
 			this.fixedBlocks.forEach((element) => {
 				element.style.paddingRight = null;
 			});
