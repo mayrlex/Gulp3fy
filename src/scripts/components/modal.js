@@ -2,7 +2,7 @@ import Lock from '../modules/lock.js';
 import throttle from '../modules/throttle.js';
 
 /**
- * @param {string}  target      - Modal id
+ * @param {string}  modal       - Modal id
  * @param {string}  activeClass - Active class
  * @param {boolean} scrollFix   - Removes the shift of the page content when locking/unlocking scroll
  * @param {number}  throttle    - Throttle delay
@@ -13,7 +13,7 @@ import throttle from '../modules/throttle.js';
 export default class Modal {
 	constructor(options) {
 		const defaultOptions = {
-			activeClass: '--isShown',
+			activeClass: '--show',
 			scrollFix: true,
 			throttle: 350,
 			onShow: () => {},
@@ -21,7 +21,7 @@ export default class Modal {
 		};
 
 		this.options = { ...defaultOptions, ...options };
-		this.modal = document.querySelector(`#${this.options.target}`);
+		this.modal = document.querySelector(`#${this.options.modal}`);
 		this.isShown = false;
 		this.lock = new Lock(this.options.scrollFix);
 		this.FOCUSABLE_ELEMENTS = [
@@ -44,7 +44,7 @@ export default class Modal {
 
 	check() {
 		if (!this.modal) {
-			console.error(`Error: modal with id:'${this.options.target}' not found`);
+			console.error(`Error: modal with id:'${this.options.modal}' not found`);
 		}
 	}
 
@@ -56,7 +56,7 @@ export default class Modal {
 					const closeTrigger = event.target.closest('[data-modal-close]');
 					const outsideArea = event.target.classList.contains('modal__overlay');
 
-					if (event.target.closest(`[data-modal='${this.options.target}']`)) {
+					if (event.target.closest(`[data-modal='${this.options.modal}']`)) {
 						this.show();
 					}
 					closeTrigger || outsideArea ? this.hide() : null;
