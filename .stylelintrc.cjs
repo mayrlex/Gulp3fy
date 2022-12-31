@@ -6,7 +6,6 @@ module.exports = {
 	],
 	plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-config-rational-order/plugin'],
 	rules: {
-		// Property Order
 		'order/properties-order': [[], { severity: 'warning' }],
 		'plugin/rational-order': [
 			true,
@@ -24,7 +23,7 @@ module.exports = {
 		'order/properties-order': [],
 		indentation: 'tab',
 		'no-missing-end-of-source-newline': null,
-		'selector-pseudo-element-colon-notation': 'single',
+		'selector-pseudo-element-colon-notation': 'double',
 		'block-no-empty': null,
 		'function-name-case': null,
 		'no-empty-source': null,

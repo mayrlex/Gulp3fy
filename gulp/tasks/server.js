@@ -1,5 +1,5 @@
 import sync from 'browser-sync';
-import { path } from '../config/path.js';
+import path from '../config/path.js';
 import { serverSettings } from '../../config.js';
 
 const server = (done) => {

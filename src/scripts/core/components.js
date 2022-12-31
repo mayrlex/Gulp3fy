@@ -1,7 +1,9 @@
-//? Burger
-// import Burger from '../components/burger.js';
+//? Menu
+// import Menu from '../components/menu.js';
 
-// const burger = new Burger({});
+// const menu = new Menu({
+// 	// fixedBlocks: ['header'],
+// });
 //? ==========
 
 //? Dropdown
@@ -13,16 +15,7 @@
 //? Modal
 // import Modal from '../components/modal.js';
 
-// const modal1 = new Modal({ target: 'modal-1' });
-//? ==========
-
-//? Spoiler
-// import '../components/spoiler.js';
-//? ==========
-
-//? Tabs
-// import Tabs from '../components/tabs.js';
-
-// const tab = new Tabs({ target: 'tab1' });
-// tab.switchTabs(document.querySelector('#tab3'));
+const modal1 = new Modal({
+	// modal: 'modal-1'
+});
 //? ==========

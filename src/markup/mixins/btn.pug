@@ -6,29 +6,12 @@ mixin btn(data)
 			const modsList = data.mods.split(',');
 
 			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray}${!data.text && data.icon ? 'btn-icon__' : 'btn__'}${modsList[i].trim()}`;
+				modsArray = `${modsArray} btn__${modsList[i].trim()}`;
 			}
 		}
 
-		const tag           =  data.link ? 'a' : 'button';
-		const hasType       = !data.link ? 'button' : null;
-		const hasLink       =  data.link ? data.link : null;
-		const isBtnIcon     = !data.text && data.icon ? `btn-icon ${modsArray}` : `btn ${modsArray}`;
-		const isUnresetIcon =  data.iconUnreset ? true : false;
+		const tag  =  data.link ? 'a' : 'button';
+		const link =  data.link ? data.link : null;
+		const type = !data.link ? data.type || 'button' : null;
 
-	#{tag}(class=isBtnIcon, href=hasLink, type=hasType)&attributes(attributes)
-		if (data.icon)
-			//- Icon before text
-			if (data.iconBefore)
-				+icon(data.icon, isUnresetIcon)
-				if data.text
-					= data.text
-
-			//- Icon after text
-			else
-				if data.text
-					= data.text
-				+icon(data.icon, isUnresetIcon)
-
-		else
-			= data.text
+	#{tag}(class=modsArray, href=link, type=type)&attributes(attributes)= data.text

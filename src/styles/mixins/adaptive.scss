@@ -1,41 +1,20 @@
-@use 'utils/variables';
-@use 'functions/converter';
+@use 'core/variables';
+@use 'functions/convert';
 
 //? ### Arguments
-//	$propery:  'font-size',
-//	$maxValue: 32,
-//	$minValue: 26,
-//	$mode:     2, [Default 1]
+//	$propery:  {css property}
+//	$maxValue: {number}
+//	$minValue: {number}
 
-$_containerWidth: variables.$container + (variables.$offsetMax * 2);
-
-@mixin adaptive($property, $maxValue, $minValue, $mode: 1) {
-	$addSize: $maxValue - $minValue;
+@mixin adaptive($property, $maxValue, $minValue) {
+	$addValue: $maxValue - $minValue;
 	$minValue: #{$minValue + px};
 
-	// Max width
-	@if $mode == 1 {
-		#{$property}: converter.rem($maxValue);
+	#{$property}: convert.rem($maxValue);
 
-		@media (max-width: #{converter.em($_containerWidth)}) {
-			#{$property}: calc(
-				$minValue + $addSize * ((100vw - 320px) / #{$_containerWidth - 320})
-			);
-		}
-
-		// Min width
-	} @else if $mode == 2 {
-		#{$property}: converter.rem($maxValue);
-
-		@media (min-width: #{converter.em($_containerWidth)}) {
-			// prettier-ignore
-			#{$property}: calc($minValue + $addSize * ((100vw - 320px) / #{variables.$layoutWidth - 320}));
-		}
-
-		// Always
-	} @else {
+	@media (max-width: #{convert.em(variables.$container)}) {
 		#{$property}: calc(
-			$minValue + $addSize * ((100vw - 320px) / #{variables.$layoutWidth - 320})
+			$minValue + $addValue * ((100vw - 320px) / #{variables.$container - 320})
 		);
 	}
 }

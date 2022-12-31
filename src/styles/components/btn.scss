@@ -1,98 +1,21 @@
 @use 'utils/forwards' as *;
 @use 'mixins/adaptive' as *;
-@use 'mixins/component';
-
-$_padding-x-max: 30;
-$_padding-x-min: 15;
-$_padding-y-max: 10;
-$_padding-y-min: 8;
-$_gap: 10;
-
-$_icon-padding-max: 10;
-$_icon-padding-min: 8;
 
 .btn {
-	// display: inline-grid;
-	// grid-auto-flow: column;
-	// column-gap: rem($_gap);
 	display: inline-flex;
 	align-items: center;
 	overflow: hidden;
 
+	font-size: initial;
+	line-height: inherit;
 	white-space: nowrap;
 	text-align: center;
 	text-overflow: ellipsis;
 	vertical-align: middle;
 
-	border-radius: em(4);
 	cursor: pointer;
 
+	transition: 0.1s;
+
 	user-select: none;
-
-	@include adaptive('font-size', 18, 16, 1);
-
-	// .btn__solid
-	@include component.btn(
-		$element: 'solid',
-		$color: $white,
-		$fill: currentColor,
-		$bg: $accent,
-		$bg-hover: mix($black, $accent, 20),
-		$bg-active: mix($black, $accent, 40),
-		$bg-disabled: mix($white, $accent, 60)
-	) {
-		@include adaptive('padding-top', $_padding-y-max, $_padding-y-min);
-		@include adaptive('padding-right', $_padding-x-max, $_padding-x-min);
-		@include adaptive('padding-bottom', $_padding-y-max, $_padding-y-min);
-		@include adaptive('padding-left', $_padding-x-max, $_padding-x-min);
-	}
-
-	//? ### Icon button
-	// &-icon {
-	// 	display: inline-flex;
-
-	// 	vertical-align: middle;
-
-	// 	border-radius: 50%;
-	// 	cursor: pointer;
-
-	// 	.icon {
-	// 		@include adaptive('width', 24, 22);
-	// 		@include adaptive('height', 24, 22);
-	// 	}
-
-	// 	// .btn-icon__solid
-	// 	@include component.btn(
-	// 		$element: 'solid',
-	// 		$fill: $white,
-	// 		$bg: $accent,
-	// 		$bg-hover: mix($black, $accent, 20),
-	// 		$bg-active: mix($black, $accent, 40),
-	// 		$bg-disabled: mix($white, $accent, 60)
-	// 	) {
-	// 		@include adaptive('padding', $_icon-padding-max, $_icon-padding-min, 1);
-	// 	}
-	// }
-
-	//? ### Button group container
-	// &__group {
-	// 	display: inline-flex;
-	// 	flex-wrap: wrap;
-
-	// 	font-size: 0;
-
-	// 	border-radius: $borderRadius;
-
-	// 	.btn {
-	// 		border-radius: 0;
-
-	// 		&:first-child {
-	// 			border-radius: $borderRadius 0 0 $borderRadius;
-	// 		}
-
-	// 		&:last-child {
-	// 			border-radius: 0 $borderRadius $borderRadius 0;
-	// 		}
-	// 	}
-	// }
 }

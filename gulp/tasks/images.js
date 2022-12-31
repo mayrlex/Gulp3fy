@@ -7,12 +7,11 @@ import notify from 'gulp-notify';
 import newer from 'gulp-newer';
 import gulpif from 'gulp-if';
 import sync from 'browser-sync';
-import { path } from '../config/path.js';
-import { imageminSettings } from '../../config.js';
+import path from '../config/path.js';
 
 export const imagesBuild = () => {
 	return gulp
-		.src(path.images.src)
+		.src(path.images.src.main)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -25,23 +24,23 @@ export const imagesBuild = () => {
 		.pipe(webp())
 		.pipe(gulp.dest(path.images.dest))
 
-		.pipe(gulpif(path.isProd, gulp.src(path.images.src)))
+		.pipe(gulpif(path.isProd, gulp.src(path.images.src.main)))
 		.pipe(gulpif(path.isProd, newer(path.images.dest)))
 		.pipe(
 			gulpif(
 				path.isProd,
 				imagemin({
-					progressive: imageminSettings.progressive,
-					svgoPlugins: [{ removeViewBox: imageminSettings.svg.removeViewBox }],
-					interlaced: imageminSettings.interlaced,
-					optimizationLevel: imageminSettings.optimizationLevel,
+					progressive: true,
+					svgoPlugins: [{ removeViewBox: false }],
+					interlaced: true,
+					optimizationLevel: 3,
 				})
 			)
 		)
 
 		.pipe(gulp.dest(path.images.dest))
-		.pipe(gulp.src(path.images.svg))
-		.pipe(gulp.src(path.images.placehoder))
+		.pipe(gulp.src(path.images.src.svg))
+		.pipe(gulp.src(path.images.src.placeholder))
 		.pipe(gulp.dest(path.images.dest))
 		.pipe(sync.stream());
 };

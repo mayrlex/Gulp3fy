@@ -1,17 +1,13 @@
-@use 'sass:map';
+// @use 'sass:map';
 @use 'utils/forwards' as *;
 @use 'mixins/media';
 
 :focus-visible {
-	box-shadow: 0 0 0 rem(4) rgb($accent, 50%);
+	box-shadow: 0 0 0 rem($focus-width) $focus-color;
 }
 
 .body {
 	background-color: $background;
-
-	&.--lock {
-		overflow: hidden;
-	}
 }
 
 .wrapper {
@@ -30,34 +26,23 @@
 	max-width: rem($container);
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: rem($offsetMin);
-	padding-left: rem($offsetMin);
-
-	@include media.min(md) {
-		padding-right: rem($offsetMax);
-		padding-left: rem($offsetMax);
-	}
+	padding-right: rem($offset);
+	padding-left: rem($offset);
 }
 
 .grid {
 	display: grid;
-	grid-template-columns: repeat($column-count, 1fr);
+	grid-template-columns: repeat(12, 1fr);
 
-	column-gap: rem($colGap-min);
+	column-gap: rem($gap);
 	row-gap: rem($rowGap-min);
 
 	@include media.min(md) {
-		column-gap: rem($colGap-max);
 		row-gap: rem($rowGap-max);
 	}
 }
 
-.section-offset {
-	padding-bottom: rem(50);
-}
-
-// Responsive image by FLS
-.--ibg {
+.cover {
 	position: relative;
 
 	& img {
@@ -72,15 +57,30 @@
 }
 
 .icon {
-	width: $icon-width;
-	height: $icon-height;
+	width: $icon-size;
+	height: $icon-size;
 }
 
 .divider {
 	width: 100%;
 	height: rem(1);
 
-	background: $gray;
+	background: $black;
+}
+
+.backdrop {
+	position: fixed;
+	z-index: $backdropZIndex;
+	inset: 0;
+
+	background-color: $backdropBg;
+	opacity: 0;
+
+	transition: opacity 0.3s;
+
+	&.--show {
+		opacity: 0.5;
+	}
 }
 
 /*
@@ -92,5 +92,5 @@
 }
 
 .focus-visible {
-	box-shadow: 0 0 0 rem(4) rgb($accent, 50%);
+	box-shadow: 0 0 0 rem($focus-width) $focus-color;
 }

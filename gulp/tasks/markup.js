@@ -6,7 +6,7 @@ import gulpif from 'gulp-if';
 import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
-import { path } from '../config/path.js';
+import path from '../config/path.js';
 
 export const markupBuild = () => {
 	return gulp

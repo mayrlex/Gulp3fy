@@ -1,9 +1,6 @@
 @use 'utils/forwards' as *;
 
 .footer {
-	display: flex;
-
 	&__inner {
-		width: 100%;
 	}
 }

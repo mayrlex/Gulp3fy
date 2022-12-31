@@ -1,44 +1,9 @@
 @use 'utils/forwards' as *;
-@use 'mixins/adaptive' as *;
 
 .body {
 	color: $color;
 	font-weight: $fontWeight;
-	// @include adaptive('font-size', $fontSize-max, $fontSize-min);
 	font-size: rem($fontSize);
 	font-family: $fontFamily;
+	line-height: $lineHeight;
 }
-
-// .h-xxl,
-// .h-xl,
-// .h-lg,
-// .h-md,
-// .h-sm,
-// .h-xs {
-// 	font-weight: 700;
-// 	line-height: 120%;
-// }
-
-// .h-xxl {
-// 	@include adaptive('font-size', 42, 36);
-// }
-
-// .h-xl {
-// 	@include adaptive('font-size', 36, 32);
-// }
-
-// .h-lg {
-// 	@include adaptive('font-size', 32, 28);
-// }
-
-// .h-md {
-// 	@include adaptive('font-size', 28, 24);
-// }
-
-// .h-sm {
-// 	@include adaptive('font-size', 24, 18);
-// }
-
-// .h-xs {
-// 	@include adaptive('font-size', 18, 16);
-// }

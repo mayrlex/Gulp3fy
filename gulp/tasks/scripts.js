@@ -3,7 +3,7 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import sync from 'browser-sync';
-import { path } from '../config/path.js';
+import path from '../config/path.js';
 
 export const scriptsBuild = () => {
 	return gulp
