@@ -15,7 +15,7 @@
 //? Modal
 // import Modal from '../components/modal.js';
 
-const modal1 = new Modal({
-	// modal: 'modal-1'
-});
+// const modal1 = new Modal({
+// 	// modal: 'modal-1'
+// });
 //? ==========
