@@ -39,6 +39,7 @@
 	},
 	"devDependencies": {
 		"@prettier/plugin-pug": "^2.3.0",
+		"@zoxon/emitty": "^1.4.2",
 		"browser-sync": "latest",
 		"del": "^7.0.0",
 		"eslint": "^8.30.0",

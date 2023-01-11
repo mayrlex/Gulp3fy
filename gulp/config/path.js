@@ -12,7 +12,11 @@ const path = {
 	isDev: !prod,
 
 	markup: {
-		src: `${src}/markup/*.pug`,
+		src: {
+			main: `${src}/markup/*.pug`,
+			emitty: `${src}/markup`,
+		},
+
 		dest,
 		watch: `${src}/markup/**/*.pug`,
 	},
