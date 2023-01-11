@@ -42,18 +42,22 @@ const path = {
 
 	images: {
 		src: {
-			main: [
-				`${src}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
-				`!${src}/assets/images/common/placeholder.*`,
+			copy: [
+				`${src}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 				`!${src}/assets/images/common/favicon.*`,
+				`!${src}/assets/images/sprite/**`,
 			],
 
-			svg: [`${src}/assets/images/**/*.svg`, `!${src}/assets/images/sprite`],
-			placeholder: `${src}/assets/images/**/placeholder.png`,
+			webp: [
+				`${src}/assets/images/**/*.{jpg,jpeg,png}`,
+				`!${src}/assets/images/common/placeholder.*`,
+				`!${src}/assets/images/common/favicon.*`,
+				`!${src}/assets/images/sprite/**`,
+			],
 		},
 
 		dest: `${dest}/assets/images`,
-		watch: `${src}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+		watch: `${src}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 	},
 
 	sprites: {
