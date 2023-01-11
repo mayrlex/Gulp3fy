@@ -7,7 +7,7 @@ import path from '../config/path.js';
 
 export const scriptsBuild = () => {
 	return gulp
-		.src(path.scripts.src, { sourcemaps: path.isDev })
+		.src(path.scripts.src)
 
 		.pipe(
 			plumber(
@@ -24,6 +24,8 @@ export const scriptsBuild = () => {
 				output: {
 					filename: 'app.min.js',
 				},
+
+				devtool: !path.isProd ? 'source-map' : false,
 			})
 		)
 

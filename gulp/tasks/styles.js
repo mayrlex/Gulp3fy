@@ -44,10 +44,11 @@ export const stylesBuild = () => {
 				})
 			)
 		)
-		.pipe(gulp.dest(path.styles.dest))
+
+		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(gulpif(path.isProd, cleanCss({ level: 1 })))
 		.pipe(rename({ extname: '.min.css' }))
-		.pipe(gulp.dest(path.styles.dest))
+		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(sync.stream());
 };
 
