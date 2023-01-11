@@ -22,7 +22,7 @@ export const scriptsBuild = () => {
 			webpack({
 				mode: path.isProd ? 'production' : 'development',
 				output: {
-					filename: 'app.min.js',
+					filename: 'main.min.js',
 				},
 
 				devtool: !path.isProd ? 'source-map' : false,

@@ -28,7 +28,7 @@ const path = {
 	},
 
 	scripts: {
-		src: `${src}/scripts/app.js`,
+		src: `${src}/scripts/main.js`,
 		dest: `${dest}/assets/js`,
 		watch: `${src}/scripts/**/*.js`,
 	},
