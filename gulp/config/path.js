@@ -1,8 +1,8 @@
 import * as nodePath from 'path';
 
 const root = nodePath.basename(nodePath.resolve());
-const src = `./src`;
-const dest = `./dist`;
+const src = `src`;
+const dest = `dist`;
 const prod = process.argv.includes('--prod');
 
 const path = {
@@ -97,6 +97,13 @@ const path = {
 		},
 
 		watch: `${src}/assets/resources/**/*.*`,
+	},
+
+	server: {
+		markup: `${dest}/*.html`,
+		styles: `${dest}/assets/css/*.css`,
+		scripts: `${dest}/assets/js/*.js`,
+		images: `${dest}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 	},
 
 	zip: {
