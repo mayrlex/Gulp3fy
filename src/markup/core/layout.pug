@@ -31,6 +31,10 @@ html(lang=page.lang)
 			if page.footer
 				footer.footer(role='contentinfo')
 					.footer__inner.container
+						-
+							let tag;
+							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
+
 						block footer
 							include ../parts/footer.pug
 

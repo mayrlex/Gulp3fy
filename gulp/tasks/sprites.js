@@ -94,7 +94,7 @@ const spriteEIconsBuild = () => {
 			svgSprite({
 				mode: {
 					stack: {
-						sprite: '../e-icons.svg',
+						sprite: '../eIcons.svg',
 						example: true,
 					},
 				},

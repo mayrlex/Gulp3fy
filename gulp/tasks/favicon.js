@@ -5,8 +5,8 @@ import favicons from 'gulp-favicons';
 import path from '../config/path.js';
 import { manifest } from '../../config.js';
 
-const faviconsBuild = () =>
-	gulp
+const faviconsBuild = () => {
+	return gulp
 		.src(path.favicon.src)
 		.pipe(
 			plumber(
@@ -46,5 +46,6 @@ const faviconsBuild = () =>
 			})
 		)
 		.pipe(gulp.dest(path.favicon.dest));
+};
 
 export default faviconsBuild;

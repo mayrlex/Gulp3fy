@@ -46,7 +46,30 @@ export const stylesBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
-		.pipe(gulpif(path.isProd, cleanCss({ level: 1 })))
+		.pipe(
+			gulpif(
+				path.isProd,
+				cleanCss({
+					level: {
+						1: {
+							all: true,
+							roundingPrecision: false,
+						},
+
+						2: {
+							all: true,
+							mergeIntoShorthands: false,
+							mergeSemantically: false,
+							overrideProperties: false,
+							reduceNonAdjacentRules: false,
+							removeUnusedAtRules: false,
+							restructureRules: false,
+						},
+					},
+				})
+			)
+		)
+
 		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(sync.stream());

@@ -2,7 +2,6 @@ import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import sync from 'browser-sync';
 import path from '../config/path.js';
 
 export const scriptsBuild = () => {
@@ -29,8 +28,7 @@ export const scriptsBuild = () => {
 			})
 		)
 
-		.pipe(gulp.dest(path.scripts.dest))
-		.pipe(sync.stream());
+		.pipe(gulp.dest(path.scripts.dest));
 };
 
 export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);

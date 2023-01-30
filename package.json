@@ -17,8 +17,8 @@
 		"eslint:fix": "npm run eslint -- --fix",
 		"stylelint": "stylelint src/styles .scss",
 		"stylelint:fix": "npm run stylelint -- --fix",
-		"before": "gulp cleanBefore",
-		"after": "gulp cleanAfter"
+		"clean --before": "gulp cleanBefore",
+		"clean --after": "gulp cleanAfter"
 	},
 	"repository": {
 		"type": "git",
@@ -62,7 +62,6 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-svg-sprite": "^1.5.0",
 		"gulp-ttf2woff2": "^4.0.1",
-		"gulp-util": "^3.0.8",
 		"gulp-version-number": "^0.2.4",
 		"gulp-webp": "^4.0.1",
 		"gulp-webpcss": "^1.1.1",

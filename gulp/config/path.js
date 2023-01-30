@@ -113,7 +113,7 @@ const path = {
 	},
 
 	clean: {
-		before: ['./.git'],
+		before: ['./.git', `${src}/**/.keep`],
 		after: ['./node_modules'],
 	},
 };

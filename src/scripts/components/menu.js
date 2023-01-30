@@ -108,10 +108,7 @@ export default class Menu {
 		this.menuBodyElement.classList.add(this.options.activeClass);
 		this.menuBtnElement.setAttribute('aria-expanded', true);
 
-		if (this.options.backdrop) {
-			this.backdrop.show();
-		}
-
+		this.options.backdrop ? this.backdrop.show() : null;
 		this.options.scrollFix ? this.lock.lock() : null;
 	}
 
@@ -119,10 +116,7 @@ export default class Menu {
 		this.menuBodyElement.classList.remove(this.options.activeClass);
 		this.menuBtnElement.setAttribute('aria-expanded', false);
 
-		if (this.options.backdrop) {
-			this.backdrop.hide();
-		}
-
+		this.options.backdrop ? this.backdrop.hide() : null;
 		this.options.scrollFix ? this.lock.unlock() : null;
 	}
 
