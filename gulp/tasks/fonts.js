@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import { deleteAsync } from 'del';
+import { deleteAsync as del } from 'del';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
 import path from '../config/path.js';
@@ -40,7 +40,7 @@ const fontsWOFF2 = () => {
 		.pipe(gulp.dest(path.fonts.src.main));
 };
 
-const fontsClean = () => deleteAsync([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
+const fontsClean = () => del([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
 const fontsBuild = () => gulp.src(path.fonts.src.woff2).pipe(gulp.dest(path.fonts.dest));
 
 export default gulp.series(fontsWOFF2, fontsClean, fontsBuild);

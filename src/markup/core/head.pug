@@ -1,8 +1,7 @@
 -
 	let pageTitle;
-	config.siteName && page.name && page.id !== 0 ? pageTitle = `${config.siteName} — ${page.name}` : null
-	!config.siteName && page.name && page.id !== 0 ? pageTitle = `${page.name}` : null
-	page.id === 0 || !page.name ? pageTitle = `${config.siteName}` : null
+	config.siteName  && page.name ? pageTitle = `${config.siteName} — ${page.name}` : null
+	!config.siteName && page.name ? pageTitle = `${page.name}` : null
 
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -167,8 +166,8 @@ if config.preloadFonts !== null && !matchGoogleFonts
 	each font in config.preloadFonts
 		link(rel='preload', href=`./assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
 
-if config.preloadImages !== null
-	each image in config.preloadImages
+if page.preloadImages !== null
+	each image in page.preloadImages
 		link(rel='preload', as="image", href=`./assets/images/${image}`)
 
 link(rel='stylesheet', href='assets/css/main.min.css')

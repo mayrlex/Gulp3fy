@@ -3,19 +3,22 @@ extends core/layout.pug
 block settings
 	-
 		const page = {
-			id:          0,
-			name:        'Home',
-			description: null,
-			lang:        'ru',
-			canonical:   'http://localhost:3300',
-			header:      false,
-			footer:      false,
-			modal:       false,
+			id:            0,
+			name:          'Home',
+			description:   null,
+			lang:          'ru',
+			canonical:     'http://localhost:3300',
+			header:        false,
+			footer:        false,
+			modal:         false,
+			thumb:         null,
+			preloadImages: [],
+
 		}
 
 		const meta = {
 			keywords:                        [],
-			image:                           config.image,
+			image:                           page.thumb,
 			author:                          null,
 			ogType:                          'website',
 			ogUrl:                           page.canonical,
@@ -23,7 +26,7 @@ block settings
 			ogSiteName:                      config.siteName,
 			ogTitle:                         true,
 			ogDescription:                   page.description,
-			ogImage:                         config.image,
+			ogImage:                         page.thumb,
 			ogImageType:                     null,
 			ogImageWidth:                    null,
 			ogImageHeight:                   null,
@@ -34,7 +37,7 @@ block settings
 			twitterCreator:                  null,
 			twitterTitle:                    true,
 			twitterDescription:              page.description,
-			twitterImage:                    config.image,
+			twitterImage:                    page.thumb,
 			appleMobileWebAppCapable:        'yes',
 			appleMobileWebAppStatusBarStyle: null,
 			appleMobileWebAppTitle:          true,
