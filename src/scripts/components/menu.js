@@ -6,7 +6,9 @@ import Backdrop from '../modules/backdrop.js';
  * @param {string}  activeClass                - Active class
  * @param {Array}   fixedBlocks                - Blocks with position: fixed
  * @param {boolean} isHeaderFixed              - Take into account the height of the header when scrolling if the header is fixed
- * @param {boolean} scrollFix                  - Sets padding-right for content when scroll is blocked
+ * @param {boolean} scrollLock                 - Disable scroll when modal opens
+ * @param {boolean} scrollFix                  - Fix jumping page when scrolling is disabled
+ * @param {string}  fixedBlockClass            - Modifier class for fixed blocks
  * @param {boolean} smoothScroll               - Smooth scrolling to block
  * @param {number}  throttle                   - Throttle between toggling
  *
@@ -28,7 +30,9 @@ export default class Menu {
 			activeClass: '--show',
 			fixedBlocks: [],
 			isHeaderFixed: false,
+			scrollLock: true,
 			scrollFix: true,
+			fixedBlockClass: '--fixed',
 			smoothScroll: true,
 			throttle: 300,
 
@@ -45,7 +49,11 @@ export default class Menu {
 		};
 
 		this.options = { ...defaultOptions, ...options };
-		this.lock = new Lock({ fixedBlocks: this.options.fixedBlocks });
+		this.lock = new Lock({
+			scrollFix: this.options.scrollFix,
+			fixedBlockClass: this.options.fixedBlockClass,
+		});
+
 		this.backdrop = new Backdrop({
 			activeClass: this.options.backdropActiveClass,
 			backdropSelector: this.options.backdropSelector,
