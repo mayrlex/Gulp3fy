@@ -1,21 +1,41 @@
-// Check platform
-const isMobile = {
-	Android: () => navigator.userAgent.match(/Android/i),
-	BlackBerry: () => navigator.userAgent.match(/BlackBerry/i),
-	iOS: () => navigator.userAgent.match(/iPhone|iPad|iPod/i),
-	Opera: () => navigator.userAgent.match(/Opera/i),
-	Windows: () => navigator.userAgent.match(/IEMobile/i),
+const userAgentAndroid = /android/i.test(navigator.userAgent);
+const userAgentiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const userAgentWindows = /Windows/.test(navigator.userAgent);
 
-	any: () =>
-		isMobile.Android() ||
-		isMobile.BlackBerry() ||
-		isMobile.iOS() ||
-		isMobile.Opera() ||
-		isMobile.Windows(),
-};
+/**
+ * @param {boolean} bodyClass    - Add device class in <body>
+ * @param {string}  mobileClass  - Mobile class
+ * @param {string}  desktopClass - Desktop class
+ */
 
-const checkDevice = () =>
-	isMobile.any() ? document.body.classList.add('--mob') : document.body.classList.add('--desk');
+export function isMobile(options) {
+	const defaultOptions = {
+		bodyClass: false,
+		mobileClass: '--mob',
+		desktopClass: '--desk',
+	};
 
-export default checkDevice;
-export { isMobile };
+	const option = { ...defaultOptions, ...options };
+
+	if (userAgentAndroid || userAgentiOS) {
+		if (option.bodyClass) {
+			document.body.classList.add(option.mobileClass);
+		}
+
+		return true;
+	}
+
+	if (option.bodyClass) {
+		document.body.classList.add(option.desktopClass);
+	}
+
+	return false;
+}
+
+export function getOS() {
+	if (userAgentAndroid) return 'Android';
+	if (userAgentiOS) return 'iOS';
+	if (userAgentWindows) return 'Windows';
+
+	return 'unknown';
+}
