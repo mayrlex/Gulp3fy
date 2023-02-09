@@ -32,6 +32,7 @@
 	},
 	"homepage": "https://github.com/H3JILgaH4uk/Gulp3fy#readme",
 	"dependencies": {
+		"dialog-polyfill": "^0.5.6",
 		"simplebar": "^6.2.0",
 		"swiper": "^8.4.7",
 		"vanilla-lazyload": "^17.8.3"
