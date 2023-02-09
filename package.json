@@ -37,6 +37,7 @@
 		"vanilla-lazyload": "^17.8.3"
 	},
 	"devDependencies": {
+		"@babel/eslint-parser": "^7.19.1",
 		"@prettier/plugin-pug": "^2.4.1",
 		"@zoxon/emitty": "^1.4.2",
 		"browser-sync": "latest",

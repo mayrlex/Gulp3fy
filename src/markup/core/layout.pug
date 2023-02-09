@@ -25,9 +25,6 @@ html(lang=page.lang)
 			main.main
 				block content
 
-				if page.modal
-					include ../parts/modal.pug
-
 			if page.footer
 				footer.footer(role='contentinfo')
 					.footer__inner.container
@@ -37,6 +34,9 @@ html(lang=page.lang)
 
 						block footer
 							include ../parts/footer.pug
+
+			if page.modal
+				include ../parts/modal.pug
 
 		block scripts
 			script(src='assets/js/main.min.js')

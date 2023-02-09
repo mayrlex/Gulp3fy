@@ -1,125 +1,99 @@
-import Lock from '../modules/lock.js';
 import throttle from '../modules/throttle.js';
+import Lock from '../modules/lock.js';
 
 /**
- * @param {string}  modal       - Modal id
- * @param {string}  activeClass - Active class
- * @param {boolean} scrollFix   - Removes the shift of the page content when locking/unlocking scroll
- * @param {number}  throttle    - Throttle delay
- * @param {object}  onShow()    - Function triggered at show modal
- * @param {object}  onHide()    - Function triggered at hide modal
+ * @param {string}  modalName       - Modal id
+ * @param {number}  throttle        - Throttle delay
+ * @param {number}  animation       - Animation delay (As in styles)
+ * @param {boolean} scrollLock      - Disable scroll when modal opens
+ * @param {boolean} scrollFix       - Fix jumping page when scrolling is disabled
+ * @param {string}  fixedBlockClass - Modifier class for fixed blocks
+ * @param {boolean} debug           - Debug mode
+ * @param {object}  onShow()        - Function triggered at show modal (With debug: true)
+ * @param {object}  onHide()        - Function triggered at hide modal (With debug: true)
  */
 
 export default class Modal {
 	constructor(options) {
 		const defaultOptions = {
-			activeClass: '--show',
+			throttle: 300,
+			animation: 500,
+			scrollLock: true,
 			scrollFix: true,
-			throttle: 350,
+			fixedBlockClass: '--fixed',
+			debug: false,
 			onShow: () => {},
 			onHide: () => {},
 		};
 
 		this.options = { ...defaultOptions, ...options };
-		this.modal = document.querySelector(`#${this.options.modal}`);
-		this.isShown = false;
-		this.lock = new Lock(this.options.scrollFix);
-		this.FOCUSABLE_ELEMENTS = [
-			'a[href]',
-			'area[href]',
-			'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
-			'select:not([disabled]):not([aria-hidden])',
-			'textarea:not([disabled]):not([aria-hidden])',
-			'button:not([disabled]):not([aria-hidden])',
-			'iframe',
-			'object',
-			'embed',
-			'[contenteditable]',
-			'[tabindex]:not([tabindex^="-"])',
-		];
+		this.modal = document.querySelector(`#${this.options.modalName}`);
+		this.lock = new Lock({
+			scrollFix: this.options.scrollFix,
+			fixedBlockClass: this.options.fixedBlockClass,
+		});
 
-		this.check();
-		this.init();
+		if (this.options.debug) this.check();
+		if (this.modal) this.init();
 	}
 
 	check() {
-		if (!this.modal) {
-			console.error(`Error: modal with id:'${this.options.modal}' not found`);
-		}
+		if (!this.modal)
+			console.error(`Error: Modal with id:'${this.options.modalName}' not found!`);
 	}
 
 	init() {
-		if (this.modal) {
-			document.addEventListener(
+		const showBtn = document.querySelectorAll(`[data-modal='${this.options.modalName}']`);
+
+		// Open modal on button click with [data-modal='{Modal Id}']
+		showBtn.forEach((item) => {
+			item.addEventListener(
 				'click',
-				throttle((event) => {
-					const closeTrigger = event.target.closest('[data-modal-close]');
-					const outsideArea = event.target.classList.contains('modal__overlay');
+				throttle(() => {
+					if (this.modal.hasAttribute('open')) return;
 
-					if (event.target.closest(`[data-modal='${this.options.modal}']`)) {
-						this.show();
-					}
-					closeTrigger || outsideArea ? this.hide() : null;
+					this.show();
 				}, this.options.throttle)
 			);
+		});
 
-			window.addEventListener(
-				'keydown',
-				throttle((event) => {
-					event.key === 'Escape' && this.isShown ? this.hide() : null;
-				}, this.options.throttle)
-			);
+		// Close modal when clicking on ::backdrop or on button with [data-modal-close]
+		this.modal.addEventListener(
+			'click',
+			throttle(({ currentTarget, target }) => {
+				const isThis = currentTarget === target;
+				const closeBtn = target.closest('[data-modal-close]');
 
-			window.addEventListener('keydown', (event) => {
-				event.key === 'Tab' && this.isShown ? this.focus(event) : null;
-			});
-		}
+				if (isThis || closeBtn) this.hide();
+			}, this.options.throttle)
+		);
 	}
 
 	show() {
-		const focusableNodes = this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS);
 		const modalNodes = document.querySelectorAll('.modal');
 
+		// Close all modals except current
 		modalNodes.forEach((item) => {
-			if (item === this.modal) return;
-			item.ariaHidden = 'true';
+			if (item !== this.modal) item.close();
 		});
 
-		this.isShown ? this.hide() : null;
-		this.modal.classList.toggle(this.options.activeClass);
-		this.lock.lock();
-		this.options.onShow(this);
-		this.modal.ariaHidden = 'false';
+		if (this.options.scrollLock) this.lock.lock();
 
-		setTimeout(() => {
-			this.isShown = true;
-			focusableNodes.length ? focusableNodes[0].focus() : null;
-		}, 300);
+		this.modal.showModal();
+
+		if (this.options.debug) this.options.onShow(this);
 	}
 
 	hide() {
-		this.options.onHide(this);
-		this.lock.unlock();
-		this.isShown = false;
-		this.modal.ariaHidden = 'true';
+		this.modal.classList.add('--closing');
 
 		setTimeout(() => {
-			this.modal.classList.toggle(this.options.activeClass);
-		}, 300);
-	}
+			this.modal.close();
+			this.modal.classList.remove('--closing');
 
-	focus(event) {
-		const focusedElements = Array(...this.modal.querySelectorAll(this.FOCUSABLE_ELEMENTS));
-		const focusedElementIndex = focusedElements.indexOf(document.activeElement);
+			if (this.options.scrollLock) this.lock.unlock();
+		}, this.options.animation);
 
-		if (event.shiftKey && focusedElementIndex === 0) {
-			focusedElements[focusedElements.length - 1].focus();
-			event.preventDefault();
-		}
-
-		if (!event.shiftKey && focusedElementIndex === focusedElements.length - 1) {
-			focusedElements[0].focus();
-			event.preventDefault();
-		}
+		if (this.options.debug) this.options.onHide(this);
 	}
 }
