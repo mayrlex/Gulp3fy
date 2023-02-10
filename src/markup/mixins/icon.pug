@@ -1,3 +1,0 @@
-mixin icon(name, isException = false)
-	svg(class='icon icon-' + name)&attributes(attributes)
-		use(xlink:href=`assets/sprites/${isException ? 'e-icons' : 'icons'}.svg#${name}`)

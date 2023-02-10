@@ -1,0 +1,10 @@
+mixin sprite(data)
+	if data.type === 'icon'
+		svg(class='icon icon-' + data.siteName)&attributes(attributes)
+			use(
+				xlink:href=`assets/sprites/${data.isException ? 'eIcons' : 'icons'}.svg#${data.siteName}`
+			)
+
+	if data.type === 'image'
+		svg&attributes(attributes)
+			use(xlink:href=`assets/sprites/images.svg#${data.siteName}`)
