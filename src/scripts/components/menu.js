@@ -117,7 +117,7 @@ export default class Menu {
 		this.menuBtnElement.setAttribute('aria-expanded', true);
 
 		this.options.backdrop ? this.backdrop.show() : null;
-		this.options.scrollFix ? this.lock.lock() : null;
+		this.options.scrollLock ? this.lock.lock() : null;
 	}
 
 	hide() {
@@ -125,7 +125,7 @@ export default class Menu {
 		this.menuBtnElement.setAttribute('aria-expanded', false);
 
 		this.options.backdrop ? this.backdrop.hide() : null;
-		this.options.scrollFix ? this.lock.unlock() : null;
+		this.options.scrollLock ? this.lock.unlock() : null;
 	}
 
 	smoothScroll(anchor) {
