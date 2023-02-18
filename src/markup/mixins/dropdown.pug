@@ -1,16 +1,19 @@
-//- Dropdown
-mixin dropdown(data)
-	-
-		const tag      = data.inNav ? 'li' : 'div';
-		const inNav    = data.inNav ? 'nav__item dropdown' : 'dropdown';
-		const inNavBtn = data.inNav ? 'nav__link dropdown__toggle' : 'dropdown__toggle';
+//- Arguments:
+	text {string} - Text
+	href {string} - Href content
 
-	#{tag}(class=inNav)&attributes(attributes)
-		button(class=inNavBtn)= data.text
+//- Call:
+	+dropdown('Text')
+		+dropdown-item({text: 'Text', href: 'http://localhost:3300/'})
+
+
+//- Dropdown
+mixin dropdown(text)
+	li.menu__item.dropdown
+		button.menu__link.dropdown__toggle(type='button')= text
 		ul.dropdown__menu
 			block
 
-//- Dropdown item
 mixin dropdown-item(data)
-	li.dropdown__item
-		a.dropdown__link(href=data.link)&attributes(attributes)= data.text
+	li.dropdown__item&attributes(attributes)
+		a.dropdown__link(href=data.href)= data.text
