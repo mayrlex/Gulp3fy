@@ -2,7 +2,9 @@
 // import Menu from '../components/menu.js';
 
 // const menu = new Menu({
-// 	// fixedBlocks: ['header'],
+// 	// smoothScroll: true,
+// 	// debug: true,
+// 	// backdrop: true,
 // });
 //? ==========
 

@@ -1,150 +1,166 @@
 import Lock from '../modules/lock.js';
-import throttle from '../modules/throttle.js';
 import Backdrop from '../modules/backdrop.js';
+import throttle from '../modules/throttle.js';
 
 /**
  * @param {string}  activeClass                - Active class
- * @param {Array}   fixedBlocks                - Blocks with position: fixed
- * @param {boolean} isHeaderFixed              - Take into account the height of the header when scrolling if the header is fixed
- * @param {boolean} scrollLock                 - Disable scroll when modal opens
+ * @param {boolean} scrollLock                 - Disable scroll when menu opens
  * @param {boolean} scrollFix                  - Fix jumping page when scrolling is disabled
  * @param {string}  fixedBlockClass            - Modifier class for fixed blocks
  * @param {boolean} smoothScroll               - Smooth scrolling to block
  * @param {number}  throttle                   - Throttle between toggling
- *
- * @param {string}  menuSelector               - Menu selector
+ * @param {boolean} debug                      - Enable Debug mode
  * @param {string}  menuBtnSelector            - Menu button selector
  * @param {string}  menuBodySelector           - Menu body selector
- * @param {string}  menuLinkSelector           - Menu link selector
- *
  * @param {boolean} backdrop                   - Menu backdrop
+ * @param {string}  backdropClass              - Backdrop class
  * @param {string}  backdropActiveClass        - Backdrop active class
- * @param {string}  backdropSelector           - Backdrop selector
- * @param {string}  backdropParrentSelector    - A selector whose block serves as a container for the backdrop
+ * @param {string}  backdropContainerClass     - Parent block for the backdrop element
  * @param {number}  backdropTransitionDuration - The duration of the transition between showing and hiding the backdrop (The value should match the transition property in css)
+ * @param {boolean} backdropStatic             - Disable menu closing on backdrop click
  */
 
 export default class Menu {
 	constructor(options) {
 		const defaultOptions = {
 			activeClass: '--show',
-			fixedBlocks: [],
-			isHeaderFixed: false,
 			scrollLock: true,
 			scrollFix: true,
 			fixedBlockClass: '--fixed',
-			smoothScroll: true,
+			smoothScroll: false,
 			throttle: 300,
+			debug: false,
 
-			menuSelector: '.header__menu.menu',
 			menuBtnSelector: '.header__menu .menu__btn',
 			menuBodySelector: '.header__menu .menu__body',
-			menuLinkSelector: '.header__menu .menu__link',
 
-			backdrop: true,
+			backdrop: false,
+			backdropClass: 'backdrop',
 			backdropActiveClass: '--show',
-			backdropSelector: '.backdrop',
-			backdropParrentSelector: '.header__menu.menu',
+			backdropContainerClass: '.header__menu.menu',
 			backdropTransitionDuration: 300,
+			backdropStatic: false,
 		};
 
 		this.options = { ...defaultOptions, ...options };
-		this.lock = new Lock({
-			scrollFix: this.options.scrollFix,
-			fixedBlockClass: this.options.fixedBlockClass,
-		});
 
-		this.backdrop = new Backdrop({
-			activeClass: this.options.backdropActiveClass,
-			backdropSelector: this.options.backdropSelector,
-			parrentSelector: this.options.backdropParrentSelector,
-			transitionDuration: this.options.backdropTransitionDuration,
-		});
+		if (this.options.scrollLock) {
+			this.lock = new Lock({
+				scrollFix: this.options.scrollFix,
+				fixedBlockClass: this.options.fixedBlockClass,
+			});
+		}
 
-		this.menuElement = document.querySelector(this.options.menuSelector);
+		if (this.options.backdrop) {
+			this.backdrop = new Backdrop({
+				class: this.options.backdropClass,
+				activeClass: this.options.backdropActiveClass,
+				containerClass: this.options.backdropContainerClass,
+				transitionDuration: this.options.backdropTransitionDuration,
+			});
+		}
+
 		this.menuBtnElement = document.querySelector(this.options.menuBtnSelector);
 		this.menuBodyElement = document.querySelector(this.options.menuBodySelector);
 
-		this.check();
+		if (this.options.debug) this.check();
+
 		this.init();
 	}
 
 	check() {
-		if (!this.options.menuBtnSelector) {
-			console.error(`Menu button with class «${this.options.menuBtnSelector}» not found`);
-		}
+		const backdropParentElement = document.querySelector(this.options.backdropContainerClass);
 
-		if (!this.options.menuBodySelector) {
-			console.error(`Menu body with class «${this.options.menuBodySelector}» not found`);
-		}
+		// Menu button
+		if (!this.menuBtnElement)
+			console.error(`Menu button with class "${this.options.menuBtnSelector}" not found`);
+
+		// Menu body
+		if (!this.menuBodyElement)
+			console.error(`Menu body with class "${this.options.menuBodySelector}" not found`);
+
+		// Backdrop parent element
+		if (!backdropParentElement && this.options.backdrop)
+			console.error(
+				`Backdrop parent element with class "${this.options.backdropContainerClass}" not found`
+			);
 	}
 
 	init() {
-		if (this.options.menuBtnSelector && this.options.menuBodySelector) {
-			this.menuBtnElement.addEventListener(
-				'click',
-				throttle((event) => {
-					const ariaExpanded = event.target.closest(`${this.options.menuBtnSelector}[aria-expanded='false']`);
+		// Initialisation
+		this.menuBtnElement?.addEventListener(
+			'click',
+			throttle(({ target }) => {
+				const ariaExpanded = target.closest(
+					`${this.options.menuBtnSelector}[aria-expanded='false']`
+				);
 
-					ariaExpanded ? this.show() : this.hide();
-				}, this.options.throttle)
-			);
+				ariaExpanded ? this.show() : this.hide();
+			}, this.options.throttle)
+		);
 
-			if (this.options.backdrop) {
-				document.addEventListener('click', (event) => {
-					const isBackdrop = event.target.classList.contains(this.options.backdropSelector.substring(1));
+		// Closing menu on backdrop click
+		if (this.options.backdrop && !this.options.backdropStatic) {
+			const backdropParent = document.querySelector(this.options.backdropContainerClass);
 
-					isBackdrop ? this.hide() : null;
-				});
-			}
+			backdropParent?.addEventListener('click', ({ target }) => {
+				if (target.classList.contains(this.options.backdropClass)) this.hide();
+			});
+		}
 
-			if (this.options.smoothScroll) {
-				const anchorNodes = document.querySelectorAll(`${this.options.menuLinkSelector}[href*="#"]`);
+		// Smooth scrolling when clicking anchor links
+		if (this.options.smoothScroll) {
+			this.menuBodyElement.addEventListener('click', event => {
+				if (event.target.hasAttribute('href')) {
+					event.preventDefault();
 
-				anchorNodes.forEach((anchor) => {
-					anchor.addEventListener('click', (event) => {
-						event.preventDefault();
-
-						this.smoothScroll(anchor);
-					});
-				});
-			}
+					this.smoothScroll(event.target);
+				}
+			});
 		}
 	}
 
 	show() {
-		this.menuBodyElement.classList.add(this.options.activeClass);
-		this.menuBtnElement.setAttribute('aria-expanded', true);
-
-		this.options.backdrop ? this.backdrop.show() : null;
-		this.options.scrollLock ? this.lock.lock() : null;
+		this.menuBodyElement?.classList.add(this.options.activeClass);
+		this.menuBtnElement?.setAttribute('aria-expanded', true);
+		this.backdrop?.add();
+		this.lock?.lock();
 	}
 
 	hide() {
-		this.menuBodyElement.classList.remove(this.options.activeClass);
-		this.menuBtnElement.setAttribute('aria-expanded', false);
-
-		this.options.backdrop ? this.backdrop.hide() : null;
-		this.options.scrollLock ? this.lock.unlock() : null;
+		this.menuBodyElement?.classList.remove(this.options.activeClass);
+		this.menuBtnElement?.setAttribute('aria-expanded', false);
+		this.backdrop?.remove();
+		this.lock?.unlock();
 	}
 
 	smoothScroll(anchor) {
-		const getElementById = document.querySelector(anchor.getAttribute('href'));
+		const getAnchor = document.querySelector(anchor.getAttribute('href'));
 		const header = document.querySelector('header');
+		const isHeaderFixed =
+			window.getComputedStyle(header).getPropertyValue('position') === 'fixed';
 
-		this.hide();
+		if (this.options.debug && !getAnchor) {
+			console.warn(
+				`Section with id "${anchor.getAttribute('href').substring(1)}" not found!`
+			);
+		}
 
-		if (!this.options.isHeaderFixed) {
-			getElementById.scrollIntoView({
+		if (getAnchor) this.hide();
+
+		// Smooth scrolling to the section
+		if (!isHeaderFixed && getAnchor) {
+			getAnchor.scrollIntoView({
 				behavior: 'smooth',
 				block: 'start',
 			});
 		}
 
-		if (this.options.isHeaderFixed) {
+		// Smooth scrolling to the section, taking into account the fixed header
+		if (isHeaderFixed && getAnchor) {
 			window.scrollTo({
 				behavior: 'smooth',
-				top: getElementById.getBoundingClientRect().top + scrollY - header.offsetHeight,
+				top: getAnchor.getBoundingClientRect().top + scrollY - header.offsetHeight,
 			});
 		}
 	}
