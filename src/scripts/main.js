@@ -1,7 +1,7 @@
 //? ### Utils
 import documentReady from './utils/documentReady.js';
 import lazyLoad from './vendors/lazyLoad.js';
-// import { isMobile } from './utils/checkDevice.js';
+// import checkDevice from './utils/checkDevice.js';
 
 //? ### Core
 import './core/vendors.js';
@@ -13,5 +13,5 @@ import './pages/home.js';
 
 documentReady(() => {
 	lazyLoad();
-	// isMobile({ bodyClass: true });
+	// checkDevice({ bodyClass: true });
 });

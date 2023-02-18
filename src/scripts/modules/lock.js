@@ -24,7 +24,7 @@ export default class Lock {
 		}
 
 		if (this.options.scrollFix && this.fixedBlocks.length) {
-			this.fixedBlocks.forEach((element) => {
+			this.fixedBlocks.forEach(element => {
 				element.style.paddingRight = scrollWidth;
 			});
 		}
@@ -38,7 +38,7 @@ export default class Lock {
 		}
 
 		if (this.options.scrollFix && this.fixedBlocks.length) {
-			this.fixedBlocks.forEach((element) => {
+			this.fixedBlocks.forEach(element => {
 				element.style.paddingRight = null;
 			});
 		}

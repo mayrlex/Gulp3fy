@@ -8,7 +8,7 @@ const userAgentWindows = /Windows/.test(navigator.userAgent);
  * @param {string}  desktopClass - Desktop class
  */
 
-export function isMobile(options) {
+const checkDevice = options => {
 	const defaultOptions = {
 		bodyClass: false,
 		mobileClass: '--mob',
@@ -18,24 +18,22 @@ export function isMobile(options) {
 	const option = { ...defaultOptions, ...options };
 
 	if (userAgentAndroid || userAgentiOS) {
-		if (option.bodyClass) {
-			document.body.classList.add(option.mobileClass);
-		}
+		if (option.bodyClass) document.body.classList.add(option.mobileClass);
 
 		return true;
 	}
 
-	if (option.bodyClass) {
-		document.body.classList.add(option.desktopClass);
-	}
+	if (option.bodyClass) document.body.classList.add(option.desktopClass);
 
 	return false;
-}
+};
 
-export function getOS() {
+export const getOS = () => {
 	if (userAgentAndroid) return 'Android';
 	if (userAgentiOS) return 'iOS';
 	if (userAgentWindows) return 'Windows';
 
 	return 'unknown';
-}
+};
+
+export default checkDevice;

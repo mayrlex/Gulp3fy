@@ -90,6 +90,10 @@ a {
 	}
 }
 
+:where(a) {
+	color: currentcolor;
+}
+
 img {
 	vertical-align: top;
 }

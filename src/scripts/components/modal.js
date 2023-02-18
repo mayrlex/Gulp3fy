@@ -46,7 +46,7 @@ export default class Modal {
 		const showBtn = document.querySelectorAll(`[data-modal='${this.options.modalName}']`);
 
 		// Open modal on button click with [data-modal='{Modal Id}']
-		showBtn.forEach((item) => {
+		showBtn.forEach(item => {
 			item.addEventListener(
 				'click',
 				throttle(() => {
@@ -73,7 +73,7 @@ export default class Modal {
 		const modalNodes = document.querySelectorAll('.modal');
 
 		// Close all modals except current
-		modalNodes.forEach((item) => {
+		modalNodes.forEach(item => {
 			if (item !== this.modal) item.close();
 		});
 
