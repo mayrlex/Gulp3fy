@@ -9,7 +9,6 @@
 		"prod": "gulp prod --prod",
 		"pws": "gulp dev --prod",
 		"zip": "gulp archiving --prod",
-		"deploy": "gulp deploy --prod",
 		"favicon": "gulp faviconsBuild",
 		"ttf": "gulp fontsTTF",
 		"woff": "gulp fontsWOFF2",

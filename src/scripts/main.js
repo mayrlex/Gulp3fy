@@ -1,15 +1,19 @@
 //? ### Utils
 import documentReady from './utils/documentReady.js';
-import lazyLoad from './vendors/lazyLoad.js';
+import lazyLoad from './vendors/vanilla-lazyload.js';
 // import checkDevice from './utils/checkDevice.js';
 
+//? ### Vendors
+import './vendors/focus-visible.js';
+// import './vendors/swiper.js';
+// import 'simplebar';
+// import './vendors/dialog-polyfill.js';
+
 //? ### Core
-import './core/vendors.js';
-import './core/modules.js';
 import './core/components.js';
 
 //? ### Pages
-import './pages/home.js';
+import './pages/index.js';
 
 documentReady(() => {
 	lazyLoad();
