@@ -70,16 +70,16 @@
 
 .backdrop {
 	position: fixed;
-	z-index: $backdropZIndex;
 	inset: 0;
+	z-index: $backdropZIndex;
 
 	background-color: $backdropBg;
-	opacity: 0;
+	opacity: 0%;
 
 	transition: opacity 0.3s;
 
 	&.--show {
-		opacity: 0.5;
+		opacity: 50%;
 	}
 }
 

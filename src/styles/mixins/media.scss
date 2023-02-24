@@ -1,10 +1,11 @@
 @use 'core/variables' as *;
 @use 'functions/convert';
+@use 'sass:map';
 
 // Min width
 @mixin min($key: lg) {
 	@if map-has-key($breakpoints, $key) {
-		$breakpoint: map-get($breakpoints, $key);
+		$breakpoint: map.get($breakpoints, $key);
 
 		@media (min-width: convert.em($breakpoint)) {
 			@content;
@@ -19,7 +20,7 @@
 // Max width
 @mixin max($key: lg) {
 	@if map-has-key($breakpoints, $key) {
-		$breakpoint: map-get($breakpoints, $key);
+		$breakpoint: map.get($breakpoints, $key);
 
 		@media (max-width: convert.em($breakpoint - 0.2)) {
 			@content;
@@ -33,8 +34,8 @@
 
 // Min & Max width
 @mixin minmax($key1, $key2) {
-	$breakpointMin: map-get($breakpoints, $key1);
-	$breakpointMax: map-get($breakpoints, $key2);
+	$breakpointMin: map.get($breakpoints, $key1);
+	$breakpointMax: map.get($breakpoints, $key2);
 
 	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
 		@media (min-width: convert.em($breakpointMin)) and (max-width: convert.em($breakpointMax - 0.2)) {
