@@ -19,8 +19,8 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-export const markupBuild = () => {
-	return gulp
+export const markupBuild = () =>
+	gulp
 		.src(path.markup.src.main)
 		.pipe(
 			plumber(
@@ -66,7 +66,6 @@ export const markupBuild = () => {
 		)
 		.pipe(gulp.dest(path.markup.dest))
 		.pipe(sync.stream());
-};
 
 export const markupWatch = () => {
 	global.isMarkupWatch = true;

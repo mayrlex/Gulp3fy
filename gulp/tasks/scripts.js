@@ -4,8 +4,8 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import path from '../config/path.js';
 
-export const scriptsBuild = () => {
-	return gulp
+export const scriptsBuild = () =>
+	gulp
 		.src(path.scripts.src)
 
 		.pipe(
@@ -29,6 +29,5 @@ export const scriptsBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.scripts.dest));
-};
 
 export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);

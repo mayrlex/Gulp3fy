@@ -6,8 +6,8 @@ import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
 import path from '../config/path.js';
 
-const fontsTTF = () => {
-	return gulp
+const fontsTTF = () =>
+	gulp
 		.src(path.fonts.src.otf)
 		.pipe(
 			plumber(
@@ -23,10 +23,9 @@ const fontsTTF = () => {
 			})
 		)
 		.pipe(gulp.dest(path.fonts.src.main));
-};
 
-const fontsWOFF2 = () => {
-	return gulp
+const fontsWOFF2 = () =>
+	gulp
 		.src(path.fonts.src.ttf)
 		.pipe(
 			plumber(
@@ -38,7 +37,6 @@ const fontsWOFF2 = () => {
 		)
 		.pipe(ttf2woff2())
 		.pipe(gulp.dest(path.fonts.src.main));
-};
 
 const fontsClean = () => del([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
 const fontsBuild = () => gulp.src(path.fonts.src.woff2).pipe(gulp.dest(path.fonts.dest));

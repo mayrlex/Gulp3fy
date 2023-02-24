@@ -14,8 +14,8 @@
 		"woff": "gulp fontsWOFF2",
 		"lint:styles": "stylelint src/styles .scss",
 		"lint:styles:fix": "npm run stylelint -- --fix",
-		"eslint": "eslint src/scripts --ext .js",
-		"eslint:fix": "npm run eslint -- --fix",
+		"lint:scripts": "eslint src/scripts/**/*.js",
+		"lint:scripts:fix": "npm run lint:scripts -- --fix",
 		"clean --before": "gulp cleanBefore",
 		"clean --after": "gulp cleanAfter"
 	},
@@ -38,15 +38,12 @@
 		"vanilla-lazyload": "^17.8.3"
 	},
 	"devDependencies": {
-		"@babel/eslint-parser": "^7.19.1",
 		"@prettier/plugin-pug": "^2.4.1",
 		"@zoxon/emitty": "^1.4.2",
 		"browser-sync": "latest",
 		"del": "^7.0.0",
-		"eslint": "^8.33.0",
-		"eslint-config-airbnb-base": "^15.0.0",
-		"eslint-config-prettier": "^8.6.0",
-		"eslint-plugin-import": "^2.27.5",
+		"eslint": "^8.34.0",
+		"globals": "^13.20.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
 		"gulp-changed": "^4.0.3",

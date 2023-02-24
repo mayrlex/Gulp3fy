@@ -7,8 +7,8 @@ import { task } from '../../config.js';
 
 const spritesTasks = [];
 
-const spriteImagesBuild = () => {
-	return gulp
+const spriteImagesBuild = () =>
+	gulp
 		.src(path.sprites.src.images)
 		.pipe(
 			plumber(
@@ -43,10 +43,9 @@ const spriteImagesBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
-const spriteIconsBuild = () => {
-	return gulp
+const spriteIconsBuild = () =>
+	gulp
 		.src(path.sprites.src.icons.main)
 		.pipe(
 			plumber(
@@ -77,10 +76,9 @@ const spriteIconsBuild = () => {
 			})
 		)
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
-const spriteEIconsBuild = () => {
-	return gulp
+const spriteEIconsBuild = () =>
+	gulp
 		.src(path.sprites.src.icons.exception)
 		.pipe(
 			plumber(
@@ -121,7 +119,6 @@ const spriteEIconsBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
 task.sprites.images ? [spritesTasks.push(spriteImagesBuild)] : null;
 task.sprites.icons ? [spritesTasks.push(spriteIconsBuild)] : null;

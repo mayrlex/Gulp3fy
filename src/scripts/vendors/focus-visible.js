@@ -2,7 +2,7 @@ const supportsNativeFocusVisible = () => {
 	try {
 		document.querySelector(':focus-visible');
 		return true;
-	} catch (e) {
+	} catch (error) {
 		return false;
 	}
 };

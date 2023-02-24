@@ -2,7 +2,7 @@ import sync from 'browser-sync';
 import path from '../config/path.js';
 import { serverSettings } from '../../config.js';
 
-const server = (callback) => {
+const server = callback => {
 	sync.create().init({
 		server: {
 			baseDir: path.dest,
