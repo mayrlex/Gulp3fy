@@ -4,25 +4,6 @@
 .dropdown {
 	position: relative;
 
-	&.--show {
-		& .dropdown__menu {
-			@include media.min(md) {
-				visibility: visible;
-				opacity: 1;
-
-				pointer-events: all;
-			}
-
-			@include media.max(md) {
-				display: block;
-			}
-		}
-	}
-
-	&__toggle {
-		color: currentcolor;
-	}
-
 	&__menu {
 		width: fit-content;
 
@@ -31,7 +12,7 @@
 			top: 100%;
 
 			visibility: hidden;
-			opacity: 0;
+			opacity: 0%;
 
 			pointer-events: none;
 		}
@@ -39,6 +20,10 @@
 		@include media.max(md) {
 			display: none;
 		}
+	}
+
+	&__toggle {
+		color: currentcolor;
 	}
 
 	&__item {
@@ -51,6 +36,21 @@
 
 		@include media.hover {
 			&:hover {
+			}
+		}
+	}
+
+	&.--show {
+		& .dropdown__menu {
+			@include media.min(md) {
+				visibility: visible;
+				opacity: 100%;
+
+				pointer-events: all;
+			}
+
+			@include media.max(md) {
+				display: block;
 			}
 		}
 	}
