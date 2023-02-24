@@ -9,8 +9,8 @@ import gulpif from 'gulp-if';
 import sync from 'browser-sync';
 import path from '../config/path.js';
 
-const imagesCopy = () => {
-	return gulp
+const imagesCopy = () =>
+	gulp
 		.src(path.images.src.copy)
 		.pipe(
 			plumber(
@@ -26,10 +26,9 @@ const imagesCopy = () => {
 
 		.pipe(gulp.dest(path.images.dest))
 		.pipe(sync.stream());
-};
 
-const imagesWebp = () => {
-	return gulp
+const imagesWebp = () =>
+	gulp
 		.src(path.images.src.webp)
 		.pipe(
 			plumber(
@@ -49,7 +48,6 @@ const imagesWebp = () => {
 
 		.pipe(gulp.dest(path.images.dest))
 		.pipe(sync.stream());
-};
 
 export const imagesBuild = gulp.series(imagesCopy, imagesWebp);
 export const imagesWatch = () => gulp.watch(path.images.watch, imagesBuild);

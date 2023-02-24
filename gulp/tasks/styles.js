@@ -14,8 +14,8 @@ import path from '../config/path.js';
 
 const sass = gulpSass(compiler);
 
-export const stylesBuild = () => {
-	return gulp
+export const stylesBuild = () =>
+	gulp
 		.src(path.styles.src, { sourcemaps: path.isDev })
 
 		.pipe(
@@ -73,6 +73,5 @@ export const stylesBuild = () => {
 		.pipe(rename({ extname: '.min.css' }))
 		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(sync.stream());
-};
 
 export const stylesWatch = () => gulp.watch(path.styles.watch, stylesBuild);

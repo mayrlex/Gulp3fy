@@ -4,8 +4,8 @@ import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
 import path from '../config/path.js';
 
-export const spriteImagesBuild = () => {
-	return gulp
+export const spriteImagesBuild = () =>
+	gulp
 		.src(path.sprites.src.images)
 		.pipe(
 			plumber(
@@ -40,10 +40,9 @@ export const spriteImagesBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
-export const spriteIconsBuild = () => {
-	return gulp
+export const spriteIconsBuild = () =>
+	gulp
 		.src(path.sprites.src.icons.main)
 		.pipe(
 			plumber(
@@ -74,10 +73,9 @@ export const spriteIconsBuild = () => {
 			})
 		)
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
-export const spriteEIconsBuild = () => {
-	return gulp
+export const spriteEIconsBuild = () =>
+	gulp
 		.src(path.sprites.src.icons.exception)
 		.pipe(
 			plumber(
@@ -118,7 +116,6 @@ export const spriteEIconsBuild = () => {
 		)
 
 		.pipe(gulp.dest(path.sprites.dest));
-};
 
 const spritesBuild = gulp.parallel(spriteImagesBuild, spriteIconsBuild, spriteEIconsBuild);
 const spritesWatchPaths = [path.sprites.watch.icons, path.sprites.watch.images];
