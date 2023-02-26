@@ -6,7 +6,7 @@ import { scriptsBuild, scriptsWatch }         from './gulp/tasks/scripts.js';
 import   fontsBuild, { fontsTTF, fontsWOFF2 } from './gulp/tasks/fonts.js';
 import { imagesBuild, imagesWatch }           from './gulp/tasks/images.js';
 import { spriteImagesBuild, spriteIconsBuild,
-		 spriteEIconsBuild, spritesWatch }    from './gulp/tasks/sprites.js';
+         spriteEIconsBuild, spritesWatch }    from './gulp/tasks/sprites.js';
 import   faviconsBuild                        from './gulp/tasks/favicon.js';
 import { resourcesBuild, resourcesWatch }     from './gulp/tasks/resources.js';
 import   zip                                  from './gulp/tasks/zip.js';
