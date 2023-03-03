@@ -1,7 +1,9 @@
 -
 	let pageTitle;
-	config.siteName  && page.name ? pageTitle = `${config.siteName} — ${page.name}` : null
-	!config.siteName && page.name ? pageTitle = `${page.name}` : null
+
+	if ( config.siteName &&  page.name) pageTitle = `${config.siteName} — ${page.name}`
+	if (!config.siteName &&  page.name) pageTitle = `${page.name}`
+	if ( config.siteName && !page.name) pageTitle = `${config.siteName}`
 
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
