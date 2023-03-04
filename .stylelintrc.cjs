@@ -23,7 +23,7 @@ module.exports = {
 			{
 				severity: 'warning',
 				except: ['blockless-after-blockless', 'first-nested'],
-				ignore: ['after-comment'],
+				ignore: ['after-comment', 'blockless-after-blockless'],
 				ignoreAtRules: ['use', 'import', 'font-face', 'else'],
 			},
 		],
@@ -78,14 +78,7 @@ module.exports = {
 			},
 		],
 		'scss/dollar-variable-pattern': null,
-		'scss/double-slash-comment-empty-line-before': [
-			'always',
-			{
-				severity: 'warning',
-				except: ['first-nested'],
-				ignore: ['between-comments', 'stylelint-commands'],
-			},
-		],
+		'scss/double-slash-comment-empty-line-before': null,
 		'scss/double-slash-comment-whitespace-inside': null,
 		'scss/operator-no-unspaced': [true, { severity: 'warning' }],
 		'scss/no-global-function-names': [true, { severity: 'warning' }],
@@ -94,6 +87,11 @@ module.exports = {
 			'custom-properties',
 			'dollar-variables',
 			'declarations',
+
+			// Universal Selectors
+			{ type: 'rule', selector: /^\*$/ },
+			{ type: 'rule', selector: /^> \*$/ },
+			{ type: 'rule', selector: /^& \*$/ },
 
 			// Media queries
 			{ type: 'at-rule', name: 'include', parameter: 'min', hasBlock: true },
@@ -163,10 +161,12 @@ module.exports = {
 					'grid-row-start',
 					'grid-row-end',
 					'grid-row-gap',
+					'row-gap',
 					'grid-column',
 					'grid-column-start',
 					'grid-column-end',
 					'grid-column-gap',
+					'column-gap',
 					'grid-template',
 					'grid-template-areas',
 					'grid-template-rows',
@@ -303,7 +303,6 @@ module.exports = {
 					'columns',
 					'column-count',
 					'column-fill',
-					'column-gap',
 					'column-rule',
 					'column-rule-color',
 					'column-rule-style',
