@@ -1,6 +1,5 @@
 //? ### Utils
 import documentReady from './utils/documentReady.js';
-import lazyLoad from './vendors/vanilla-lazyload.js';
 // import checkDevice from './utils/checkDevice.js';
 
 //? ### Vendors
@@ -16,6 +15,5 @@ import './core/components.js';
 import './pages/index.js';
 
 documentReady(() => {
-	lazyLoad();
 	// checkDevice({ bodyClass: true });
 });
