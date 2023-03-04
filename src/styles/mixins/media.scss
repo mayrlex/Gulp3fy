@@ -2,7 +2,8 @@
 @use 'functions/convert';
 @use 'sass:map';
 
-// Min width
+//? Min width
+// ================================
 @mixin min($key: lg) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map.get($breakpoints, $key);
@@ -16,8 +17,10 @@
 		}
 	}
 }
+// ================================
 
-// Max width
+//? Max width
+// ================================
 @mixin max($key: lg) {
 	@if map-has-key($breakpoints, $key) {
 		$breakpoint: map.get($breakpoints, $key);
@@ -31,8 +34,10 @@
 		}
 	}
 }
+// ================================
 
-// Min & Max width
+//? Min width & Max width
+// ================================
 @mixin minmax($key1, $key2) {
 	$breakpointMin: map.get($breakpoints, $key1);
 	$breakpointMax: map.get($breakpoints, $key2);
@@ -55,10 +60,13 @@
 		}
 	}
 }
+// ================================
 
-// Any hover
+//? Hover
+// ================================
 @mixin hover {
 	@media (any-hover: hover) {
 		@content;
 	}
 }
+// ================================

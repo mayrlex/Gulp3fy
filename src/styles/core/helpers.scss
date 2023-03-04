@@ -1,13 +1,14 @@
-// @use 'sass:map';
 @use 'utils/forwards' as *;
 @use 'mixins/media';
 
-:focus-visible {
-	box-shadow: 0 0 0 rem($focus-width) $focus-color;
-}
-
+//? Global
+// ================================
 .body {
 	background-color: $background;
+}
+
+.main {
+	flex-grow: 1;
 }
 
 .wrapper {
@@ -18,10 +19,6 @@
 	overflow: hidden;
 }
 
-.main {
-	flex-grow: 1;
-}
-
 .container {
 	max-width: rem($container);
 	margin-right: auto;
@@ -29,7 +26,10 @@
 	padding-right: rem($offset);
 	padding-left: rem($offset);
 }
+// ================================
 
+//? Utility
+// ================================
 .grid {
 	display: grid;
 	row-gap: rem($rowGap-min);
@@ -60,6 +60,10 @@
 	height: $icon-size;
 }
 
+// ================================
+
+//? Appearance
+// ================================
 .divider {
 	width: 100%;
 	height: rem(1);
@@ -82,10 +86,10 @@
 	}
 }
 
-/*
-	This will hide the focus indicator if the element receives focus via the mouse,
-	but it will still show up on keyboard focus.
-*/
+:focus-visible {
+	box-shadow: 0 0 0 rem($focus-width) $focus-color;
+}
+
 .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
 }
@@ -93,3 +97,4 @@
 .focus-visible {
 	box-shadow: 0 0 0 rem($focus-width) $focus-color;
 }
+// ================================

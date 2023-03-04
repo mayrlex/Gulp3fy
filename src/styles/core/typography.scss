@@ -1,5 +1,7 @@
 @use 'utils/forwards' as *;
 
+//? Page
+// ================================
 .body {
 	color: $color;
 	font-weight: $fontWeight;
@@ -7,3 +9,4 @@
 	font-family: $fontFamily;
 	line-height: $lineHeight;
 }
+// ================================
