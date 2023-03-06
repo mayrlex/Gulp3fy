@@ -3,8 +3,9 @@
 //? Layout
 // ================================
 //? Container
-$container: 1320;
-$offset:    16;
+$content-width:   1288;
+$offset-width:    16;
+$container-width: $content-width + ($offset-width * 2);
 
 //? Media breakpoints
 $breakpoints: (

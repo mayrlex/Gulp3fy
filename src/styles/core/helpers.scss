@@ -20,11 +20,11 @@
 }
 
 .container {
-	max-width: rem($container);
+	max-width: rem($container-width);
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: rem($offset);
-	padding-left: rem($offset);
+	padding-right: rem($offset-width);
+	padding-left: rem($offset-width);
 }
 // ================================
 
