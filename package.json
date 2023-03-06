@@ -36,14 +36,13 @@
 		"dialog-polyfill": "^0.5.6",
 		"focus-visible": "^5.2.0",
 		"simplebar": "^6.2.1",
-		"swiper": "^9.0.5"
+		"swiper": "^9.1.0"
 	},
 	"devDependencies": {
-		"@prettier/plugin-pug": "^2.4.1",
 		"@zoxon/emitty": "^1.4.2",
-		"browser-sync": "^2.27.12",
+		"browser-sync": "^2.28.3",
 		"del": "^7.0.0",
-		"eslint": "^8.34.0",
+		"eslint": "^8.35.0",
 		"globals": "^13.20.0",
 		"gulp": "^4.0.2",
 		"gulp-autoprefixer": "^8.0.0",
