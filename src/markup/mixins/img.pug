@@ -1,43 +1,15 @@
--
-	const placeholder = 'assets/images/common/placeholder.png';
+- const path = 'assets/images';
 
-mixin img(data)
-	-
-		let modsArray = '';
+mixin image(options)
 
-		if (data.mods) {
-			const modsList = data.mods.split(',');
+	if options.type === 'img'
+		img(loading='lazy', src=`${path}/${options.name}`, class=options.class alt=options.alt)&attributes(attributes)
 
-			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}`;
-			}
-		}
+	if options.type !== 'img'
+		picture
+			block
+			source(srcset=`${path}/${options.name.split('.')[0]}.webp`, media=options.media ? `(${options.media})` : null, type='image/webp')
+			img(loading='lazy', src=`${path}/${options.name}`, class=options.class alt=options.alt)&attributes(attributes)
 
-	img.lazy(class=modsArray, data-src=data.src, src=placeholder, alt=data.alt)&attributes(attributes)
-
-mixin pic(data)
-	-
-		const imageFullName = data.src.split('.');
-		const [imageName, imageExtname] = imageFullName;
-		let modsArray = '';
-
-		if (data.mods) {
-			const modsList = data.mods.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} ${modsList[i].trim()}`;
-			}
-		}
-
-	picture
-		source(type='image/webp', data-srcset=`assets/images/${imageName}.webp`, srcset=placeholder)
-		img.lazy(
-			class=modsArray,
-			data-src=`assets/images/${imageName}.${imageExtname}`,
-			src=placeholder,
-			alt=data.alt
-		)&attributes(attributes)
-
-mixin sprite(name)
-	svg&attributes(attributes)
-		use(xlink:href=`assets/sprites/sprite.svg#${name}`)
+mixin source(options)
+	source(srcset=`${path}/${options.name}.webp`, type='image/webp', media=options.media ? `(${options.media})` : null)
