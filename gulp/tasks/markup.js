@@ -6,6 +6,7 @@ import gulpif from 'gulp-if';
 import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
 import { setup as emittySetup } from '@zoxon/emitty';
+import typograph from 'gulp-typograf';
 import pugGlob from 'pug-include-glob';
 import path from '../config/path.js';
 
@@ -48,6 +49,11 @@ export const markupBuild = () =>
 			)
 		)
 		.pipe(gulpif(path.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
+		.pipe(
+			typograph({
+				locale: ['ru', 'en-US'],
+			})
+		)
 		.pipe(
 			gulpif(
 				path.isProd,

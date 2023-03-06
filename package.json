@@ -62,6 +62,7 @@
 		"gulp-sass-glob": "^1.1.0",
 		"gulp-svg-sprite": "^1.5.0",
 		"gulp-ttf2woff2": "^4.0.1",
+		"gulp-typograf": "^4.0.3",
 		"gulp-version-number": "^0.2.4",
 		"gulp-webp": "^4.0.1",
 		"gulp-webpcss": "^1.1.1",
