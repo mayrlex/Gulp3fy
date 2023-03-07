@@ -1,3 +1,5 @@
+//? Global
+// ================================
 * {
 	margin: 0;
 	padding: 0;
@@ -11,11 +13,6 @@
 	box-sizing: border-box;
 }
 
-:focus,
-:active {
-	outline: none;
-}
-
 html,
 body {
 	height: 100%;
@@ -24,7 +21,61 @@ body {
 body {
 	text-size-adjust: 100%;
 }
+// ================================
 
+//? Utility
+// ================================
+img {
+	vertical-align: top;
+}
+// ================================
+
+//? Appearance
+// ================================
+:focus,
+:active {
+	outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+
+ul li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+
+	&:hover,
+	&:visited {
+		text-decoration: none;
+	}
+
+	&:focus,
+	&:active {
+		outline: none;
+	}
+}
+
+:where(a) {
+	color: currentcolor;
+}
+
+address {
+	font-style: unset;
+}
+// ================================
+
+//? Forms
+// ================================
 input,
 button,
 textarea {
@@ -61,35 +112,4 @@ button {
 		border: 0;
 	}
 }
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: inherit;
-	font-size: inherit;
-}
-
-ul li {
-	list-style: none;
-}
-
-a {
-	text-decoration: none;
-
-	&:hover,
-	&:visited {
-		text-decoration: none;
-	}
-
-	&:focus,
-	&:active {
-		outline: none;
-	}
-}
-
-img {
-	vertical-align: top;
-}
+// ================================

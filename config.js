@@ -1,6 +1,6 @@
 //? ### Manifest
 const manifest = {
-	name:        '',
+	name:        'Gulp3fy',
 	shortname:   '',
 	description: 'Taskrunner based on gulp + webpack',
 	devName:     'H3JILgaH4uk',

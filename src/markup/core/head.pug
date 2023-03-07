@@ -1,4 +1,9 @@
-- const pageTitle = config.siteName && page.name ? `${config.siteName} — ${page.name}` : !config.siteName && page.name ? `${page.name}` : config.siteName;
+-
+	let pageTitle;
+
+	if ( config.siteName &&  page.name) pageTitle = `${config.siteName} — ${page.name}`
+	if (!config.siteName &&  page.name) pageTitle = `${page.name}`
+	if ( config.siteName && !page.name) pageTitle = `${config.siteName}`
 
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
@@ -150,17 +155,21 @@ if page.canonical !== null
 	link(rel='canonical', href=page.canonical)
 
 - let matchGoogleFonts;
-each item in config.fonts
+each item in config.preloadFonts
 	- matchGoogleFonts = item.match('fonts.googleapis.com');
 
-if matchGoogleFonts !== null
+if matchGoogleFonts
 	link(rel='preconnect', href='https://fonts.googleapis.com')
 	link(rel='preconnect', href='https://fonts.gstatic.com' crossorigin)
-	each font in config.fonts
+	each font in config.preloadFonts
 		link(rel='stylesheet', href=font)
 
-if config.fonts !== null && !matchGoogleFonts
-	each font in config.fonts
+if config.preloadFonts !== null && !matchGoogleFonts
+	each font in config.preloadFonts
 		link(rel='preload', href=`./assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
+
+if page.preloadImages !== null
+	each image in page.preloadImages
+		link(rel='preload', as="image", href=`./assets/images/${image}`)
 
 link(rel='stylesheet', href='assets/css/main.min.css')

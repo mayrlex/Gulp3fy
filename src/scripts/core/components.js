@@ -2,20 +2,22 @@
 // import Menu from '../components/menu.js';
 
 // const menu = new Menu({
-// 	// fixedBlocks: ['header'],
+// 	// smoothScroll: true,
+// 	// debug: true,
+// 	// backdrop: true,
 // });
 //? ==========
 
 //? Dropdown
 // import dropdown from '../components/dropdown.js';
 
-// dropdown();
+// dropdown({});
 //? ==========
 
 //? Modal
 // import Modal from '../components/modal.js';
 
-// const modal1 = new Modal({
-// 	// modal: 'modal-1'
+// const modal = new Modal({
+// 	modalName: 'modal'
 // });
 //? ==========

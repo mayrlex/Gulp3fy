@@ -1,8 +1,8 @@
 import * as nodePath from 'path';
 
 const root = nodePath.basename(nodePath.resolve());
-const src = `./src`;
-const dest = `./dist`;
+const src = `src`;
+const dest = `dist`;
 const prod = process.argv.includes('--prod');
 
 const path = {
@@ -12,7 +12,11 @@ const path = {
 	isDev: !prod,
 
 	markup: {
-		src: `${src}/markup/*.pug`,
+		src: {
+			main: `${src}/markup/*.pug`,
+			emitty: `${src}/markup`,
+		},
+
 		dest,
 		watch: `${src}/markup/**/*.pug`,
 	},
@@ -24,7 +28,7 @@ const path = {
 	},
 
 	scripts: {
-		src: `${src}/scripts/app.js`,
+		src: `${src}/scripts/main.js`,
 		dest: `${dest}/assets/js`,
 		watch: `${src}/scripts/**/*.js`,
 	},
@@ -42,18 +46,22 @@ const path = {
 
 	images: {
 		src: {
-			main: [
-				`${src}/assets/images/**/*.{jpg,jpeg,png,gif,webp}`,
-				`!${src}/assets/images/common/placeholder.*`,
+			copy: [
+				`${src}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 				`!${src}/assets/images/common/favicon.*`,
+				`!${src}/assets/images/sprite/**`,
 			],
 
-			svg: [`${src}/assets/images/**/*.svg`, `!${src}/assets/images/sprite`],
-			placeholder: `${src}/assets/images/**/placeholder.png`,
+			webp: [
+				`${src}/assets/images/**/*.{jpg,jpeg,png}`,
+				`!${src}/assets/images/common/placeholder.*`,
+				`!${src}/assets/images/common/favicon.*`,
+				`!${src}/assets/images/sprite/**`,
+			],
 		},
 
 		dest: `${dest}/assets/images`,
-		watch: `${src}/assets/images/**/*.{jpg,png,svg,gif,ico,webp}`,
+		watch: `${src}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 	},
 
 	sprites: {
@@ -91,6 +99,13 @@ const path = {
 		watch: `${src}/assets/resources/**/*.*`,
 	},
 
+	server: {
+		markup: `${dest}/*.html`,
+		styles: `${dest}/assets/css/*.css`,
+		scripts: `${dest}/assets/js/*.js`,
+		images: `${dest}/assets/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
+	},
+
 	zip: {
 		dest: `${dest}/**/*.*`,
 		del: `./${root}.zip`,
@@ -98,7 +113,7 @@ const path = {
 	},
 
 	clean: {
-		before: ['./.git'],
+		before: ['./.git', `${src}/**/.keep`],
 		after: ['./node_modules'],
 	},
 };

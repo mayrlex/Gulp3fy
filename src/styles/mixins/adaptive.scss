@@ -1,8 +1,9 @@
 @use 'core/variables';
 @use 'functions/convert';
 
-//? ### Arguments
-//	$propery:  {css property}
+//? Arguments
+// ================================
+//	$propery:  {CSS property}
 //	$maxValue: {number}
 //	$minValue: {number}
 
@@ -12,9 +13,9 @@
 
 	#{$property}: convert.rem($maxValue);
 
-	@media (max-width: #{convert.em(variables.$container)}) {
+	@media (max-width: #{convert.em(variables.$container-width)}) {
 		#{$property}: calc(
-			$minValue + $addValue * ((100vw - 320px) / #{variables.$container - 320})
+			$minValue + $addValue * ((100vw - 320px) / #{variables.$container-width - 320})
 		);
 	}
 }

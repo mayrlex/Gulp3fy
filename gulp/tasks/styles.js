@@ -14,8 +14,8 @@ import path from '../config/path.js';
 
 const sass = gulpSass(compiler);
 
-export const stylesBuild = () => {
-	return gulp
+export const stylesBuild = () =>
+	gulp
 		.src(path.styles.src, { sourcemaps: path.isDev })
 
 		.pipe(
@@ -44,11 +44,34 @@ export const stylesBuild = () => {
 				})
 			)
 		)
-		.pipe(gulp.dest(path.styles.dest))
-		.pipe(gulpif(path.isProd, cleanCss({ level: 1 })))
+
+		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
+		.pipe(
+			gulpif(
+				path.isProd,
+				cleanCss({
+					level: {
+						1: {
+							all: true,
+							roundingPrecision: false,
+						},
+
+						2: {
+							all: true,
+							mergeIntoShorthands: false,
+							mergeSemantically: false,
+							overrideProperties: false,
+							reduceNonAdjacentRules: false,
+							removeUnusedAtRules: false,
+							restructureRules: false,
+						},
+					},
+				})
+			)
+		)
+
 		.pipe(rename({ extname: '.min.css' }))
-		.pipe(gulp.dest(path.styles.dest))
+		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(sync.stream());
-};
 
 export const stylesWatch = () => gulp.watch(path.styles.watch, stylesBuild);

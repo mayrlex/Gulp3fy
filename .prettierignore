@@ -2,4 +2,4 @@ dist
 config.js
 src/markup/core/head.pug
 src/styles/core/variables.scss
-gulp/config/tasks.js
+gulpfile.js

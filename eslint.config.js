@@ -1,0 +1,76 @@
+import globals from 'globals';
+
+export default [
+	'eslint:recommended',
+	{
+		languageOptions: {
+			ecmaVersion: 'latest',
+			globals: {
+				...globals.browser,
+				...globals.node,
+			},
+		},
+
+		rules: {
+			// Possible Problems
+			'no-duplicate-imports': 2,
+			'no-self-assign': 1,
+			'no-use-before-define': 2,
+			'no-unused-vars': 0,
+
+			// Suggestions
+			'arrow-body-style': [1, 'as-needed'],
+			'class-methods-use-this': 1,
+			'default-param-last': 1,
+			'dot-notation': 1,
+			eqeqeq: [2, 'always'],
+			'func-style': [2, 'expression'],
+			'id-denylist': [2, 'err', 'cb'],
+			'id-length': [2, { min: 2 }],
+			'new-cap': 2,
+			'no-array-constructor': 1,
+			'no-bitwise': 2,
+			'no-else-return': [1, { allowElseIf: true }],
+			'no-empty': 1,
+			'no-eval': 2,
+			'no-floating-decimal': 1,
+			'no-inline-comments': 1,
+			'no-iterator': 2,
+			'no-lonely-if': 2,
+			'no-loop-func': 2,
+			'no-mixed-operators': 2,
+			'no-multi-assign': 2,
+			'no-multi-str': 2,
+			'no-nested-ternary': 1,
+			'no-new': 1,
+			'no-new-func': 2,
+			'no-new-object': 2,
+			'no-new-wrappers': 2,
+			'no-param-reassign': 2,
+			'no-plusplus': [2, { allowForLoopAfterthoughts: true }],
+			'no-proto': 2,
+			'no-underscore-dangle': 1,
+			'no-unneeded-ternary': 1,
+			'no-var': 2,
+			'no-warning-comments': [1, { terms: ['todo', 'fixme'], location: 'anywhere' }],
+			'object-shorthand': 1,
+			'one-var': [2, 'never'],
+			'prefer-arrow-callback': 1,
+			'prefer-const': 1,
+			'prefer-destructuring': 1,
+			'prefer-exponentiation-operator': 1,
+			'prefer-object-spread': 1,
+			'prefer-rest-params': 2,
+			'prefer-spread': 1,
+			'prefer-template': 1,
+			'quote-props': [1, 'as-needed'],
+			strict: [2, 'never'],
+			yoda: 1,
+
+			// Layout & Formatting
+			'lines-around-comment': [1, { beforeBlockComment: true, allowBlockStart: true }],
+			'lines-between-class-members': [1, 'always'],
+			'wrap-iife': [2, 'outside'],
+		},
+	},
+];

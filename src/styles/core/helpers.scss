@@ -1,13 +1,14 @@
-// @use 'sass:map';
 @use 'utils/forwards' as *;
 @use 'mixins/media';
 
-:focus-visible {
-	box-shadow: 0 0 0 rem($focus-width) $focus-color;
-}
-
+//? Global
+// ================================
 .body {
 	background-color: $background;
+}
+
+.main {
+	flex-grow: 1;
 }
 
 .wrapper {
@@ -18,24 +19,22 @@
 	overflow: hidden;
 }
 
-.main {
-	flex: 1 1 auto;
-}
-
 .container {
-	max-width: rem($container);
+	max-width: rem($container-width);
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: rem($offset);
-	padding-left: rem($offset);
+	padding-right: rem($offset-width);
+	padding-left: rem($offset-width);
 }
+// ================================
 
+//? Utility
+// ================================
 .grid {
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
-
-	column-gap: rem($gap);
 	row-gap: rem($rowGap-min);
+	column-gap: rem($gap);
+	grid-template-columns: repeat(12, 1fr);
 
 	@include media.min(md) {
 		row-gap: rem($rowGap-max);
@@ -61,6 +60,26 @@
 	height: $icon-size;
 }
 
+.visually-hidden {
+	position: absolute;
+
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+
+	white-space: nowrap;
+
+	border: 0;
+
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+}
+// ================================
+
+//? Appearance
+// ================================
 .divider {
 	width: 100%;
 	height: rem(1);
@@ -70,23 +89,23 @@
 
 .backdrop {
 	position: fixed;
-	z-index: $backdropZIndex;
 	inset: 0;
+	z-index: $backdropZIndex;
 
 	background-color: $backdropBg;
-	opacity: 0;
+	opacity: 0%;
 
 	transition: opacity 0.3s;
 
 	&.--show {
-		opacity: 0.5;
+		opacity: 50%;
 	}
 }
 
-/*
-	This will hide the focus indicator if the element receives focus via the mouse,
-	but it will still show up on keyboard focus.
-*/
+:focus-visible {
+	box-shadow: 0 0 0 rem($focus-width) $focus-color;
+}
+
 .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
 }
@@ -94,3 +113,4 @@
 .focus-visible {
 	box-shadow: 0 0 0 rem($focus-width) $focus-color;
 }
+// ================================

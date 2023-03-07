@@ -1,10 +1,13 @@
 @use 'functions/convert' as *;
 
-//? # Container
-$container: 1320;
-$offset:    16;
+//? Layout
+// ================================
+//? Container
+$content-width:   1288;
+$offset-width:    16;
+$container-width: $content-width + ($offset-width * 2);
 
-//? # Media breakpoints
+//? Media breakpoints
 $breakpoints: (
 	xs:  0,
 	sm:  576,
@@ -14,16 +17,20 @@ $breakpoints: (
 	xxl: 1400,
 );
 
-//? # Grid
+//? Grid
 $gap:        20;
 $rowGap-max: 30;
 $rowGap-min: 20;
+// ================================
 
-//? # Colors
-$white: hsl(  0deg,   0%, 100%);
-$black: hsl(  0deg,   0%,   0%);
+//? Apperance
+// ================================
 
-//? # Body
+//? Colors
+$white: hsl(  0deg   0% 100%);
+$black: hsl(  0deg   0%   0%);
+
+//? Body
 $fontSize:   16;
 $fontFamily: 'Inter', sans-serif;
 $fontWeight: 400;
@@ -31,9 +38,10 @@ $color:      $black;
 $background: $white;
 $lineHeight: 1.3;
 
-//? # Misc
-$backdropBg: $black;
+//? Misc
+$backdropBg:     hsl(0deg 0% 0% / 70%);
 $backdropZIndex: 1000;
-$focus-color: $black;
-$focus-width: 4;
-$icon-size:   rem(16);
+$focus-color:    $black;
+$focus-width:    4;
+$icon-size:      rem(16);
+// ================================

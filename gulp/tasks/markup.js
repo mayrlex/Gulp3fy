@@ -5,18 +5,37 @@ import notify from 'gulp-notify';
 import gulpif from 'gulp-if';
 import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
+import { setup as emittySetup } from '@zoxon/emitty';
+import typograph from 'gulp-typograf';
 import pugGlob from 'pug-include-glob';
 import path from '../config/path.js';
 
-export const markupBuild = () => {
-	return gulp
-		.src(path.markup.src)
+const emittyMarkup = emittySetup(path.markup.src.emitty, 'pug', {
+	makeVinylFile: true,
+});
+
+global.isMarkupWatch = false;
+global.emittyChangedFile = {
+	path: '',
+	stats: null,
+};
+
+export const markupBuild = () =>
+	gulp
+		.src(path.markup.src.main)
 		.pipe(
 			plumber(
 				notify.onError({
 					title: 'PUG',
 					message: 'Error: <%= error.message %>',
 				})
+			)
+		)
+
+		.pipe(
+			gulpif(
+				global.isMarkupWatch,
+				emittyMarkup.stream(global.emittyChangedFile.path, global.emittyChangedFile.stats)
 			)
 		)
 		.pipe(
@@ -30,6 +49,11 @@ export const markupBuild = () => {
 			)
 		)
 		.pipe(gulpif(path.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
+		.pipe(
+			typograph({
+				locale: ['ru', 'en-US'],
+			})
+		)
 		.pipe(
 			gulpif(
 				path.isProd,
@@ -48,6 +72,14 @@ export const markupBuild = () => {
 		)
 		.pipe(gulp.dest(path.markup.dest))
 		.pipe(sync.stream());
-};
 
-export const markupWatch = () => gulp.watch(path.markup.watch, markupBuild);
+export const markupWatch = () => {
+	global.isMarkupWatch = true;
+
+	gulp.watch(path.markup.watch, markupBuild).on('all', (event, filepath, stats) => {
+		global.emittyChangedFile = {
+			path: filepath,
+			stats,
+		};
+	});
+};
