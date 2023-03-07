@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "gulp dev",
 		"prod": "gulp prod --prod",
-		"pws": "gulp dev --prod",
+		"preview": "gulp dev --prod",
 		"zip": "gulp archiving --prod",
 		"favicon": "gulp faviconsBuild",
 		"ttf": "gulp fontsTTF",

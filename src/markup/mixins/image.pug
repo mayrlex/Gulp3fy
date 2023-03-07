@@ -1,6 +1,5 @@
-- const path = 'assets/images';
-
 mixin image(options)
+	- const path = 'assets/images';
 
 	if options.type === 'img'
 		img(loading='lazy', src=`${path}/${options.name}`, class=options.class alt=options.alt)&attributes(attributes)

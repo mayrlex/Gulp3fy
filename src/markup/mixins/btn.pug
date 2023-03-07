@@ -15,3 +15,4 @@ mixin btn(data)
 		const type = !data.link ? data.type || 'button' : null;
 
 	#{tag}(class=`btn${modsArray}`, href=link, type=type)&attributes(attributes)= data.text
+		block
