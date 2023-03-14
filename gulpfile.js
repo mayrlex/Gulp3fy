@@ -11,7 +11,7 @@ import {
 	spriteEIconsBuild,
 	spritesWatch,
 } from './gulp/tasks/sprites.js';
-import { resourcesBuild, resourcesWatch } from './gulp/tasks/resources.js';
+import { copyBuild, copyWatch } from './gulp/tasks/copy.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
 import config from './gulp/config.js';
@@ -30,7 +30,7 @@ config.task.sprites.images ? [build.push(spriteImagesBuild)] : null;
 config.task.sprites.icons ? [build.push(spriteIconsBuild)] : null;
 config.task.sprites.eIcons ? [build.push(spriteEIconsBuild)] : null;
 sprites ? watch.push(spritesWatch) : null;
-config.task.resources ? [build.push(resourcesBuild), watch.push(resourcesWatch)] : null;
+config.task.copy ? [build.push(copyBuild), watch.push(copyWatch)] : null;
 
 const dev = gulp.series(clean, build, gulp.parallel(watch, server));
 const prod = gulp.series(clean, build);

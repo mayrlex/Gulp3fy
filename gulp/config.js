@@ -18,7 +18,7 @@ const config = {
 			icons: true,
 			eIcons: false,
 		},
-		resources: true,
+		copy: true,
 	},
 
 	server: {
