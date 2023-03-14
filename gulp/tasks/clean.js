@@ -1,9 +1,9 @@
 import { deleteAsync as del } from 'del';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
-const clean = () => del(path.dest);
-const cleanBefore = () => del(path.clean.before);
-const cleanAfrer = () => del(path.clean.after);
+const clean = () => del(paths.dest);
+const cleanBefore = () => del(paths.clean.before);
+const cleanAfrer = () => del(paths.clean.after);
 
 export default clean;
 export { cleanBefore };

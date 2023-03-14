@@ -5,7 +5,7 @@ const src = `src`;
 const dest = `dist`;
 const prod = process.argv.includes('--prod');
 
-const path = {
+const paths = {
 	src,
 	dest,
 	isProd: prod,
@@ -118,4 +118,4 @@ const path = {
 	},
 };
 
-export default path;
+export default paths;

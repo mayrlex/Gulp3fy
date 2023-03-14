@@ -7,11 +7,11 @@ import notify from 'gulp-notify';
 import changed from 'gulp-changed';
 import gulpif from 'gulp-if';
 import sync from 'browser-sync';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 const imagesCopy = () =>
 	gulp
-		.src(path.images.src.copy)
+		.src(paths.images.src.copy)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -21,15 +21,15 @@ const imagesCopy = () =>
 			)
 		)
 
-		.pipe(changed(path.images.dest))
-		.pipe(gulpif(path.isProd, imageMin([mozjpeg({ quality: 80 }), optipng(), svgo({})])))
+		.pipe(changed(paths.images.dest))
+		.pipe(gulpif(paths.isProd, imageMin([mozjpeg({ quality: 80 }), optipng(), svgo({})])))
 
-		.pipe(gulp.dest(path.images.dest))
+		.pipe(gulp.dest(paths.images.dest))
 		.pipe(sync.stream());
 
 const imagesWebp = () =>
 	gulp
-		.src(path.images.src.webp)
+		.src(paths.images.src.webp)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -38,7 +38,7 @@ const imagesWebp = () =>
 				})
 			)
 		)
-		.pipe(changed(path.images.dest, { extension: '.webp' }))
+		.pipe(changed(paths.images.dest, { extension: '.webp' }))
 		.pipe(webp())
 		.pipe(
 			imageMin({
@@ -46,8 +46,8 @@ const imagesWebp = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.images.dest))
+		.pipe(gulp.dest(paths.images.dest))
 		.pipe(sync.stream());
 
 export const imagesBuild = gulp.series(imagesCopy, imagesWebp);
-export const imagesWatch = () => gulp.watch(path.images.watch, imagesBuild);
+export const imagesWatch = () => gulp.watch(paths.images.watch, imagesBuild);

@@ -4,11 +4,11 @@ import notify from 'gulp-notify';
 import { deleteAsync as del } from 'del';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 const fontsTTF = () =>
 	gulp
-		.src(path.fonts.src.otf)
+		.src(paths.fonts.src.otf)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -22,11 +22,11 @@ const fontsTTF = () =>
 				formats: ['ttf'],
 			})
 		)
-		.pipe(gulp.dest(path.fonts.src.main));
+		.pipe(gulp.dest(paths.fonts.src.main));
 
 const fontsWOFF2 = () =>
 	gulp
-		.src(path.fonts.src.ttf)
+		.src(paths.fonts.src.ttf)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -36,10 +36,10 @@ const fontsWOFF2 = () =>
 			)
 		)
 		.pipe(ttf2woff2())
-		.pipe(gulp.dest(path.fonts.src.main));
+		.pipe(gulp.dest(paths.fonts.src.main));
 
-const fontsClean = () => del([`${path.fonts.src.main}*.*`, `!${path.fonts.src.woff2}`]);
-const fontsBuild = () => gulp.src(path.fonts.src.woff2).pipe(gulp.dest(path.fonts.dest));
+const fontsClean = () => del([`${paths.fonts.src.main}*.*`, `!${paths.fonts.src.woff2}`]);
+const fontsBuild = () => gulp.src(paths.fonts.src.woff2).pipe(gulp.dest(paths.fonts.dest));
 
 export default gulp.series(fontsWOFF2, fontsClean, fontsBuild);
 export { fontsTTF };

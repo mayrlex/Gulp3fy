@@ -10,13 +10,13 @@ import rename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
 import media from 'gulp-group-css-media-queries';
 import sassGlob from 'gulp-sass-glob';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 const sass = gulpSass(compiler);
 
 export const stylesBuild = () =>
 	gulp
-		.src(path.styles.src, { sourcemaps: path.isDev })
+		.src(paths.styles.src, { sourcemaps: paths.isDev })
 
 		.pipe(
 			plumber(
@@ -36,7 +36,7 @@ export const stylesBuild = () =>
 		.pipe(media())
 		.pipe(
 			gulpif(
-				path.isProd,
+				paths.isProd,
 				autoprefixer({
 					grid: true,
 					overrideBrowserlist: ['last 5 version'],
@@ -45,10 +45,10 @@ export const stylesBuild = () =>
 			)
 		)
 
-		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
+		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
 		.pipe(
 			gulpif(
-				path.isProd,
+				paths.isProd,
 				cleanCss({
 					level: {
 						1: {
@@ -71,7 +71,7 @@ export const stylesBuild = () =>
 		)
 
 		.pipe(rename({ extname: '.min.css' }))
-		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
+		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
 		.pipe(sync.stream());
 
-export const stylesWatch = () => gulp.watch(path.styles.watch, stylesBuild);
+export const stylesWatch = () => gulp.watch(paths.styles.watch, stylesBuild);

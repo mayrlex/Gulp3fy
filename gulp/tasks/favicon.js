@@ -2,12 +2,12 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import favicons from 'gulp-favicons';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 import { manifest } from '../../config.js';
 
 const faviconsBuild = () =>
 	gulp
-		.src(path.favicon.src)
+		.src(paths.favicon.src)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -45,6 +45,6 @@ const faviconsBuild = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(path.favicon.dest));
+		.pipe(gulp.dest(paths.favicon.dest));
 
 export default faviconsBuild;

@@ -1,20 +1,20 @@
 import sync from 'browser-sync';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 import { serverSettings } from '../../config.js';
 
 const server = callback => {
 	sync.create().init({
 		server: {
-			baseDir: path.dest,
+			baseDir: paths.dest,
 		},
 
 		files: [
-			path.server.markup,
-			path.server.styles,
-			path.server.scripts,
+			paths.server.markup,
+			paths.server.styles,
+			paths.server.scripts,
 
 			{
-				match: path.server.images,
+				match: paths.server.images,
 				fn() {
 					this.reload();
 				},

@@ -2,11 +2,11 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 export const spriteImagesBuild = () =>
 	gulp
-		.src(path.sprites.src.images)
+		.src(paths.sprites.src.images)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -39,11 +39,11 @@ export const spriteImagesBuild = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.dest));
 
 export const spriteIconsBuild = () =>
 	gulp
-		.src(path.sprites.src.icons.main)
+		.src(paths.sprites.src.icons.main)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -72,11 +72,11 @@ export const spriteIconsBuild = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(path.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.dest));
 
 export const spriteEIconsBuild = () =>
 	gulp
-		.src(path.sprites.src.icons.exception)
+		.src(paths.sprites.src.icons.exception)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -115,9 +115,9 @@ export const spriteEIconsBuild = () =>
 			})
 		)
 
-		.pipe(gulp.dest(path.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.dest));
 
 const spritesBuild = gulp.parallel(spriteImagesBuild, spriteIconsBuild, spriteEIconsBuild);
-const spritesWatchPaths = [path.sprites.watch.icons, path.sprites.watch.images];
+const spritesWatchPaths = [paths.sprites.watch.icons, paths.sprites.watch.images];
 
 export const spritesWatch = () => gulp.watch(spritesWatchPaths, spritesBuild);

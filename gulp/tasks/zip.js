@@ -3,13 +3,13 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import { deleteAsync } from 'del';
 import gzip from 'gulp-zip';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 const zip = () => {
-	deleteAsync(path.zip.del);
+	deleteAsync(paths.zip.del);
 
 	return gulp
-		.src(path.zip.compiled, {})
+		.src(paths.zip.compiled, {})
 		.pipe(
 			plumber(
 				notify.onError({
@@ -19,7 +19,7 @@ const zip = () => {
 			)
 		)
 
-		.pipe(gzip(path.zip.root))
+		.pipe(gzip(paths.zip.root))
 
 		.pipe(gulp.dest('./'));
 };

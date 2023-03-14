@@ -2,11 +2,11 @@ import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 export const scriptsBuild = () =>
 	gulp
-		.src(path.scripts.src)
+		.src(paths.scripts.src)
 
 		.pipe(
 			plumber(
@@ -19,15 +19,15 @@ export const scriptsBuild = () =>
 
 		.pipe(
 			webpack({
-				mode: path.isProd ? 'production' : 'development',
+				mode: paths.isProd ? 'production' : 'development',
 				output: {
 					filename: 'main.min.js',
 				},
 
-				devtool: !path.isProd ? 'source-map' : false,
+				devtool: !paths.isProd ? 'source-map' : false,
 			})
 		)
 
-		.pipe(gulp.dest(path.scripts.dest));
+		.pipe(gulp.dest(paths.scripts.dest));
 
-export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);
+export const scriptsWatch = () => gulp.watch(paths.scripts.watch, scriptsBuild);

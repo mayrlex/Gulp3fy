@@ -1,11 +1,11 @@
 import gulp from 'gulp';
-import path from '../config/path.js';
+import paths from '../config/paths.js';
 
 export const resourcesBuild = () =>
 	gulp
-		.src(path.resources.src.main)
-		.pipe(gulp.dest(path.resources.dest.main))
-		.pipe(gulp.src(path.resources.src.exception))
-		.pipe(gulp.dest(path.resources.dest.exception));
+		.src(paths.resources.src.main)
+		.pipe(gulp.dest(paths.resources.dest.main))
+		.pipe(gulp.src(paths.resources.src.exception))
+		.pipe(gulp.dest(paths.resources.dest.exception));
 
-export const resourcesWatch = () => gulp.watch(path.resources.watch, resourcesBuild);
+export const resourcesWatch = () => gulp.watch(paths.resources.watch, resourcesBuild);
