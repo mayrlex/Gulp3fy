@@ -66,10 +66,24 @@ const paths = {
 		},
 	},
 
+	favicon: {
+		src: `${publicFolder}/favicon/*.{png,svg,ico}`,
+		dest: `${dest}/assets/favicon/`,
+	},
+
 	resources: {
-		src: `${publicFolder}/resources/**/*.*`,
+		src: [
+			`${publicFolder}/resources/**/*.*`,
+			`!${publicFolder}/resources/manifest.webmanifest`,
+			`!${publicFolder}/resources/robots.txt`,
+		],
+
 		dest: `${dest}/assets/resources/`,
 		watch: `${publicFolder}/resources/**/*.*`,
+		root: [
+			`${publicFolder}/resources/manifest.webmanifest`,
+			`${publicFolder}/resources/robots.txt`,
+		],
 	},
 
 	server: {
