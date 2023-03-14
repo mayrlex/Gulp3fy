@@ -11,7 +11,6 @@ import {
 	spriteEIconsBuild,
 	spritesWatch,
 } from './gulp/tasks/sprites.js';
-import faviconsBuild from './gulp/tasks/favicon.js';
 import { resourcesBuild, resourcesWatch } from './gulp/tasks/resources.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
@@ -31,7 +30,6 @@ config.task.sprites.images ? [build.push(spriteImagesBuild)] : null;
 config.task.sprites.icons ? [build.push(spriteIconsBuild)] : null;
 config.task.sprites.eIcons ? [build.push(spriteEIconsBuild)] : null;
 sprites ? watch.push(spritesWatch) : null;
-config.task.favicon ? build.push(faviconsBuild) : null;
 config.task.resources ? [build.push(resourcesBuild), watch.push(resourcesWatch)] : null;
 
 const dev = gulp.series(clean, build, gulp.parallel(watch, server));
@@ -42,5 +40,4 @@ export { dev };
 export { prod };
 export { archiving };
 export { fontsTTF, fontsWOFF2 };
-export { faviconsBuild };
 export { cleanBefore, cleanAfrer };

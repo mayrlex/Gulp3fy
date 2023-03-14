@@ -66,11 +66,6 @@ const paths = {
 		},
 	},
 
-	favicon: {
-		src: `${publicFolder}/favicon/favicon.{jpg,png}`,
-		dest: `${dest}/assets/favicon/`,
-	},
-
 	resources: {
 		src: `${publicFolder}/resources/**/*.*`,
 		dest: `${dest}/assets/resources/`,

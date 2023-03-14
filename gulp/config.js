@@ -18,33 +18,7 @@ const config = {
 			icons: true,
 			eIcons: false,
 		},
-		favicon: true,
 		resources: true,
-	},
-
-	manifest: {
-		name: 'Gulp3fy',
-		shortname: '',
-		description: 'Taskrunner based on gulp + webpack',
-		devName: 'H3JILgaH4uk',
-		devUrl: 'https://github.com/H3JILgaH4uk',
-		version: 1.0,
-		lang: 'ru-RU',
-		bg: '#fff',
-		themeColor: '#000',
-		display: 'standalone',
-		orientation: 'portrait',
-		url: '/',
-		icons: {
-			android: true,
-			appleIcon: true,
-			appleStartup: false,
-			coast: false,
-			favicons: true,
-			firefox: false,
-			windows: false,
-			yandex: false,
-		},
 	},
 
 	server: {
