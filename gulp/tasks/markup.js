@@ -8,9 +8,10 @@ import pug from 'gulp-pug';
 import { setup as emittySetup } from '@zoxon/emitty';
 import typograph from 'gulp-typograf';
 import pugGlob from 'pug-include-glob';
-import paths from '../config/paths.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
-const emittyMarkup = emittySetup(paths.markup.src.emitty, 'pug', {
+const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', {
 	makeVinylFile: true,
 });
 
@@ -22,7 +23,7 @@ global.emittyChangedFile = {
 
 export const markupBuild = () =>
 	gulp
-		.src(paths.markup.src.main)
+		.src(paths.markup.src)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -40,7 +41,7 @@ export const markupBuild = () =>
 		)
 		.pipe(
 			gulpif(
-				paths.isDev,
+				config.isDev,
 				pug({
 					pretty: true,
 					verbose: true,
@@ -48,7 +49,7 @@ export const markupBuild = () =>
 				})
 			)
 		)
-		.pipe(gulpif(paths.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
+		.pipe(gulpif(config.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
 		.pipe(
 			typograph({
 				locale: ['ru', 'en-US'],
@@ -56,7 +57,7 @@ export const markupBuild = () =>
 		)
 		.pipe(
 			gulpif(
-				paths.isProd,
+				config.isProd,
 				versionNumber({
 					value: '%DT%',
 					append: {

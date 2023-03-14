@@ -4,7 +4,7 @@ import notify from 'gulp-notify';
 import { deleteAsync as del } from 'del';
 import fonter from 'gulp-fonter';
 import ttf2woff2 from 'gulp-ttf2woff2';
-import paths from '../config/paths.js';
+import paths from '../paths.js';
 
 const fontsTTF = () =>
 	gulp

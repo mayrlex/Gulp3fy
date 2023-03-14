@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import { deleteAsync } from 'del';
 import gzip from 'gulp-zip';
-import paths from '../config/paths.js';
+import paths from '../paths.js';
 
 const zip = () => {
 	deleteAsync(paths.zip.del);

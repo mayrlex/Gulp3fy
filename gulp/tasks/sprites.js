@@ -2,7 +2,7 @@ import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
-import paths from '../config/paths.js';
+import paths from '../paths.js';
 
 export const spriteImagesBuild = () =>
 	gulp
@@ -43,7 +43,7 @@ export const spriteImagesBuild = () =>
 
 export const spriteIconsBuild = () =>
 	gulp
-		.src(paths.sprites.src.icons.main)
+		.src(paths.sprites.src.icons.mono)
 		.pipe(
 			plumber(
 				notify.onError({
@@ -76,7 +76,7 @@ export const spriteIconsBuild = () =>
 
 export const spriteEIconsBuild = () =>
 	gulp
-		.src(paths.sprites.src.icons.exception)
+		.src(paths.sprites.src.icons.multi)
 		.pipe(
 			plumber(
 				notify.onError({

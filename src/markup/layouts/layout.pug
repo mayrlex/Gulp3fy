@@ -1,5 +1,5 @@
 //- Config & mixin
-include ../core/config.pug
+include ../base/config.pug
 include ../mixins/**/*.pug
 
 block settings
@@ -7,7 +7,7 @@ block settings
 doctype html
 html(lang=page.lang)
 	head
-		include ../core/head.pug
+		include ../base/head.pug
 		block styles
 
 	body.body
@@ -20,7 +20,7 @@ html(lang=page.lang)
 							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
 
 						block header
-							include ../parts/header.pug
+							include ../layouts/header.pug
 
 			main.main
 				block content
@@ -33,10 +33,10 @@ html(lang=page.lang)
 							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
 
 						block footer
-							include ../parts/footer.pug
+							include ../layouts/footer.pug
 
 			if page.modal
-				include ../parts/modal.pug
+				include ../layouts/modal.pug
 
 		block scripts
 			script(src='assets/js/main.min.js')

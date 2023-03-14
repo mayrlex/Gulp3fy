@@ -7,7 +7,8 @@ import notify from 'gulp-notify';
 import changed from 'gulp-changed';
 import gulpif from 'gulp-if';
 import sync from 'browser-sync';
-import paths from '../config/paths.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
 const imagesCopy = () =>
 	gulp
@@ -22,7 +23,7 @@ const imagesCopy = () =>
 		)
 
 		.pipe(changed(paths.images.dest))
-		.pipe(gulpif(paths.isProd, imageMin([mozjpeg({ quality: 80 }), optipng(), svgo({})])))
+		.pipe(gulpif(config.isProd, imageMin([mozjpeg({ quality: 80 }), optipng(), svgo({})])))
 
 		.pipe(gulp.dest(paths.images.dest))
 		.pipe(sync.stream());

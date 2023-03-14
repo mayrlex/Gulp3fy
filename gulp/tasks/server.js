@@ -1,6 +1,6 @@
 import sync from 'browser-sync';
-import paths from '../config/paths.js';
-import { serverSettings } from '../../config.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
 const server = callback => {
 	sync.create().init({
@@ -21,9 +21,9 @@ const server = callback => {
 			},
 		],
 
-		port: serverSettings.port,
-		open: serverSettings.open,
-		notify: serverSettings.notify,
+		port: config.server.port,
+		open: config.server.open,
+		notify: config.server.notify,
 	});
 
 	callback();

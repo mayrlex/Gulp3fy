@@ -1,32 +1,24 @@
 //? Vendors
-// ================================
 // @use 'vendors/swiper';
-// ================================
 
-//? Core
-// ================================
-@use 'core/fonts';
-@use 'core/reset';
-@use 'core/typography';
-@use 'core/helpers';
-// ================================
+//? Base
+@use 'base/fonts';
+@use 'base/reset';
+@use 'base/typography';
 
-//? Parts
-// ================================
-// @use 'parts/header';
-// @use 'parts/footer';
-// ================================
+@use 'utils/helpers';
+
+//? Layouts
+// @use 'layouts/header';
+// @use 'layouts/footer';
 
 //? Components
-// ================================
 // @use 'components/btn';
 // @use 'components/dropdown';
 // @use 'components/modal';
-// ================================
 
 //? Pages & Sections
-// ================================
+
 //? Index
 @use 'pages/index';
 @use 'pages/index/hero';
-// ================================

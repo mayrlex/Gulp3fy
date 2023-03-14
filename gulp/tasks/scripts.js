@@ -2,7 +2,8 @@ import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import paths from '../config/paths.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
 export const scriptsBuild = () =>
 	gulp
@@ -19,12 +20,12 @@ export const scriptsBuild = () =>
 
 		.pipe(
 			webpack({
-				mode: paths.isProd ? 'production' : 'development',
+				mode: config.isProd ? 'production' : 'development',
 				output: {
 					filename: 'main.min.js',
 				},
 
-				devtool: !paths.isProd ? 'source-map' : false,
+				devtool: config.isDev ? 'source-map' : false,
 			})
 		)
 

@@ -8,8 +8,8 @@ import './vendors/focus-visible.js';
 // import 'simplebar';
 // import './vendors/dialog-polyfill.js';
 
-//? ### Core
-import './core/components.js';
+//? ### Base
+import './base/components.js';
 
 //? ### Pages
 import './pages/index.js';

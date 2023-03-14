@@ -10,13 +10,14 @@ import rename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
 import media from 'gulp-group-css-media-queries';
 import sassGlob from 'gulp-sass-glob';
-import paths from '../config/paths.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
 const sass = gulpSass(compiler);
 
 export const stylesBuild = () =>
 	gulp
-		.src(paths.styles.src, { sourcemaps: paths.isDev })
+		.src(paths.styles.src, { sourcemaps: config.isDev })
 
 		.pipe(
 			plumber(
@@ -36,7 +37,7 @@ export const stylesBuild = () =>
 		.pipe(media())
 		.pipe(
 			gulpif(
-				paths.isProd,
+				config.isProd,
 				autoprefixer({
 					grid: true,
 					overrideBrowserlist: ['last 5 version'],
@@ -48,7 +49,7 @@ export const stylesBuild = () =>
 		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
 		.pipe(
 			gulpif(
-				paths.isProd,
+				config.isProd,
 				cleanCss({
 					level: {
 						1: {
