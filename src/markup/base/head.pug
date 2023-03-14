@@ -56,8 +56,7 @@ if meta.robots !== null
 	meta(name='robots' content=meta.robots)
 if page.canonical !== null
 	link(rel='canonical', href=page.canonical)
-if config.manifest !== null
-	link(rel='manifest', href=config.manifest)
+link(rel='manifest', href='/manifest.webmanifest')
 if meta.author !== null
 	meta(name='author', content=meta.author)
 
