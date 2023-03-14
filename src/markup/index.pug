@@ -7,7 +7,7 @@ block settings
 			name:          'Home',
 			description:   null,
 			lang:          'ru',
-			canonical:     'http://localhost:3300',
+			canonical:     '/',
 			header:        false,
 			footer:        false,
 			modal:         false,
@@ -18,41 +18,30 @@ block settings
 
 		const meta = {
 			keywords:                        [],
-			image:                           page.thumb,
 			author:                          null,
-			ogType:                          'website',
-			ogUrl:                           page.canonical,
-			ogLocale:                        'ru_RU',
-			ogSiteName:                      config.siteName,
-			ogTitle:                         true,
-			ogDescription:                   page.description,
-			ogImage:                         page.thumb,
-			ogImageType:                     null,
-			ogImageWidth:                    null,
-			ogImageHeight:                   null,
-			ogImageAlt:                      null,
-			twitterCard:                     'summary_large_image',
-			twitterUrl:                      page.canonical,
-			twitterSite:                     config.siteName,
-			twitterCreator:                  null,
-			twitterTitle:                    true,
-			twitterDescription:              page.description,
-			twitterImage:                    page.thumb,
-			appleMobileWebAppCapable:        'yes',
-			appleMobileWebAppStatusBarStyle: null,
-			appleMobileWebAppTitle:          true,
-			applicationName:                 null,
 			themeColor:                      '#ffffff',
 			themeColorLight:                 null,
 			themeColorDark:                  null,
-			formatDetection: {
-				address:                     false,
-				date:                        false,
-				email:                       false,
-				telephone:                   false
-			},
 			googleTranslate:                 true,
 			robots:                          null, // noindex nofollow
+			og: {
+				type:        'website',
+				url:         page.canonical,
+				locale:      'ru_RU',
+				siteName:    config.siteName,
+				title:       true,
+				description: page.description,
+				image:       page.thumb,
+			},
+
+			twitter: {
+				card:        'summary_large_image',
+				url:         page.canonical,
+				site:        config.siteName,
+				title:       true,
+				description: page.description,
+				image:       page.thumb,
+			}
 		}
 
 block content
