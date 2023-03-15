@@ -6,8 +6,8 @@ const clearDist = () => del(paths.dest);
 const clearSrc = () => {
 	let clearFiles;
 
-	if (process.argv.includes('--clear-start')) clearFiles = config.clean.start;
-	if (process.argv.includes('--clear-end')) clearFiles = config.clean.end;
+	if (config.mode === 'clear-start') clearFiles = config.clean.start;
+	if (config.mode === 'clear-end') clearFiles = config.clean.end;
 
 	return del(clearFiles);
 };

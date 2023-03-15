@@ -5,10 +5,10 @@
 	"main": "gulpfile.js",
 	"type": "module",
 	"scripts": {
-		"dev": "gulp dev --development",
-		"prod": "gulp prod --production",
-		"preview": "gulp dev --production",
-		"zip": "gulp archiving --production",
+		"dev": "cross-env NODE_ENV=development gulp dev",
+		"prod": "cross-env NODE_ENV=production gulp prod",
+		"preview": "cross-env NODE_ENV=production gulp dev",
+		"zip": "cross-env NODE_ENV=production gulp archiving",
 		"ttf": "gulp fontsTTF",
 		"woff": "gulp fontsWOFF2",
 		"prettier": "prettier -c src/**/*.{pug,scss,js}",
@@ -17,8 +17,8 @@
 		"lint:styles:fix": "npm run stylelint -- --fix",
 		"lint:scripts": "eslint src/scripts/**/*.js",
 		"lint:scripts:fix": "npm run lint:scripts -- --fix",
-		"clear:start": "gulp clearSrc --clear-start",
-		"clear:end": "gulp clearSrc --clear-end"
+		"clear:start": "cross-env NODE_ENV=clear-start gulp clearSrc",
+		"clear:end": "cross-env NODE_ENV=clear-end gulp clearSrc"
 	},
 	"repository": {
 		"type": "git",
@@ -40,6 +40,7 @@
 	"devDependencies": {
 		"@zoxon/emitty": "^1.4.2",
 		"browser-sync": "^2.28.3",
+		"cross-env": "^7.0.3",
 		"del": "^7.0.0",
 		"eslint": "^8.35.0",
 		"globals": "^13.20.0",

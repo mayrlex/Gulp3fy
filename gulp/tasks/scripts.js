@@ -18,7 +18,7 @@ export const scriptsBuild = () =>
 
 		.pipe(
 			webpack({
-				mode: config.isProd ? 'production' : 'development',
+				mode: config.mode,
 				output: {
 					filename: 'main.min.js',
 				},
