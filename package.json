@@ -62,7 +62,6 @@
 		"gulp-webp": "^4.0.1",
 		"gulp-webpcss": "^1.1.1",
 		"gulp-zip": "^5.1.0",
-		"imagemin-webp": "^8.0.0",
 		"prettier": "^2.8.4",
 		"pug-include-glob": "^0.4.3",
 		"pug-lint": "^2.6.0",
