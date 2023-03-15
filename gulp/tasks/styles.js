@@ -1,23 +1,20 @@
 import gulp from 'gulp';
-import sync from 'browser-sync';
-import autoprefixer from 'gulp-autoprefixer';
 import plumber from 'gulp-plumber';
 import gulpif from 'gulp-if';
 import compiler from 'sass';
 import gulpSass from 'gulp-sass';
-import rename from 'gulp-rename';
 import cleanCss from 'gulp-clean-css';
-import media from 'gulp-group-css-media-queries';
-import sassGlob from 'gulp-sass-glob';
+import groupMedia from 'gulp-group-css-media-queries';
 import config from '../config.js';
 import paths from '../paths.js';
+import postcss from 'gulp-postcss';
+import postcssPresetEnv from 'postcss-preset-env';
 
 const sass = gulpSass(compiler);
 
-export const stylesBuild = () =>
+export const stylesCompile = () =>
 	gulp
 		.src(paths.styles.src, { sourcemaps: config.isDev })
-
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -25,26 +22,22 @@ export const stylesBuild = () =>
 				},
 			})
 		)
-		.pipe(sassGlob())
 		.pipe(
 			sass.sync({
-				outputStyle: 'expanded',
+				outputStyle: config.isDev ? 'expanded' : 'compressed',
 				includePaths: ['./node_modules'],
 			})
 		)
-		.pipe(media())
+		.pipe(groupMedia())
 		.pipe(
-			gulpif(
-				config.isProd,
-				autoprefixer({
-					grid: true,
-					overrideBrowserlist: ['last 5 version'],
-					cascade: true,
-				})
-			)
+			postcss([
+				postcssPresetEnv({
+					features: {
+						'custom-properties': { preserve: false },
+					},
+				}),
+			])
 		)
-
-		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
 		.pipe(
 			gulpif(
 				config.isProd,
@@ -68,9 +61,6 @@ export const stylesBuild = () =>
 				})
 			)
 		)
+		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }));
 
-		.pipe(rename({ extname: '.min.css' }))
-		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }))
-		.pipe(sync.stream());
-
-export const stylesWatch = () => gulp.watch(paths.styles.watch, stylesBuild);
+export const stylesWatch = () => gulp.watch(paths.styles.watch, stylesCompile);
