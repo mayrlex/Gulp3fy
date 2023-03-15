@@ -1,13 +1,8 @@
 import paths from './paths.js';
 
-const mode = process.env.NODE_ENV;
-const isDev = mode === 'development';
-const src = 'src';
-
 const config = {
-	mode,
-	isProd: !isDev,
-	isDev,
+	isProd: process.argv.includes('--production'),
+	isDev: process.argv.includes('--development'),
 
 	task: {
 		markup: true,
