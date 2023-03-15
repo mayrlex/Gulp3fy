@@ -17,8 +17,8 @@
 		"lint:styles:fix": "npm run stylelint -- --fix",
 		"lint:scripts": "eslint src/scripts/**/*.js",
 		"lint:scripts:fix": "npm run lint:scripts -- --fix",
-		"clear:start": "gulp cleanBefore",
-		"clear:end": "gulp cleanAfter"
+		"clear:start": "gulp clearSrc --clear-start",
+		"clear:end": "gulp clearSrc --clear-end"
 	},
 	"repository": {
 		"type": "git",

@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import clean, { cleanBefore, cleanAfrer, cleanFonts } from './gulp/tasks/clean.js';
+import { clearDist, clearSrc, cleanFonts } from './gulp/tasks/clean.js';
 import { markupBuild, markupWatch } from './gulp/tasks/markup.js';
 import { stylesBuild, stylesWatch } from './gulp/tasks/styles.js';
 import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts.js';
@@ -33,12 +33,12 @@ config.task.sprites.eIcons ? [build.push(spriteEIconsBuild)] : null;
 sprites ? watch.push(spritesWatch) : null;
 config.task.copy ? [build.push(copyBuild), watch.push(copyWatch)] : null;
 
-const dev = gulp.series(clean, build, gulp.parallel(watch, server));
-const prod = gulp.series(clean, build);
-const archiving = gulp.series(clean, build, zip);
+const dev = gulp.series(clearDist, build, gulp.parallel(watch, server));
+const prod = gulp.series(clearDist, build);
+const archiving = gulp.series(clearDist, build, zip);
 
 export { dev };
 export { prod };
 export { archiving };
 export { getFontsWoff2 };
-export { cleanBefore, cleanAfrer };
+export { clearSrc };
