@@ -1,11 +1,11 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import { deleteAsync } from 'del';
+import { deleteAsync as del } from 'del';
 import gzip from 'gulp-zip';
 import paths from '../paths.js';
 
 const zip = () => {
-	deleteAsync(paths.zip.del);
+	del(paths.zip.del);
 
 	return gulp
 		.src(paths.zip.compiled, {})
@@ -16,9 +16,7 @@ const zip = () => {
 				},
 			})
 		)
-
 		.pipe(gzip(paths.zip.root))
-
 		.pipe(gulp.dest('./'));
 };
 

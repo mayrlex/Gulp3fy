@@ -20,7 +20,7 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-export const markupBuild = () =>
+export const markupCompile = () =>
 	gulp
 		.src(paths.markup.src)
 		.pipe(
@@ -75,7 +75,7 @@ export const markupBuild = () =>
 export const markupWatch = () => {
 	global.isMarkupWatch = true;
 
-	gulp.watch(paths.markup.watch, markupBuild).on('all', (event, filepath, stats) => {
+	gulp.watch(paths.markup.watch, markupCompile).on('all', (event, filepath, stats) => {
 		global.emittyChangedFile = {
 			path: filepath,
 			stats,

@@ -5,7 +5,7 @@ import paths from '../paths.js';
 
 const getFontsWoff2 = () =>
 	gulp
-		.src(paths.fonts.src.ttf)
+		.src(paths.fonts.ttf)
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -14,6 +14,6 @@ const getFontsWoff2 = () =>
 			})
 		)
 		.pipe(ttf2woff2())
-		.pipe(gulp.dest(paths.fonts.src.main));
+		.pipe(gulp.dest(paths.fonts.src));
 
 export default getFontsWoff2;

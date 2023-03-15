@@ -12,8 +12,8 @@ const clearSrc = () => {
 	return del(clearFiles);
 };
 
-const cleanFonts = () => del(config.clean.fonts);
+const clearFonts = () => del(config.clean.fonts);
 
 export { clearDist };
-export { cleanFonts };
+export { clearFonts };
 export { clearSrc };

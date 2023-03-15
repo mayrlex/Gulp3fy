@@ -23,7 +23,7 @@ export const scriptsBuild = () =>
 					filename: 'main.min.js',
 				},
 
-				devtool: config.isDev ? 'source-map' : false,
+				devtool: config.isDev ? 'source-map' : undefined,
 			})
 		)
 

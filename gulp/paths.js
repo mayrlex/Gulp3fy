@@ -30,24 +30,17 @@ const paths = {
 	},
 
 	fonts: {
-		src: {
-			main: `${publicFolder}/fonts/`,
-			otf: `${publicFolder}/fonts/**/*.otf`,
-			ttf: `${publicFolder}/fonts/**/*.ttf`,
-			woff2: `${publicFolder}/fonts/**/*.woff2`,
-		},
-
+		src: `${publicFolder}/fonts/`,
 		dest: `${dest}/assets/fonts`,
+		ttf: `${publicFolder}/fonts/**/*.ttf`,
+		woff2: `${publicFolder}/fonts/**/*.woff2`,
 	},
 
 	images: {
-		src: {
-			copy: [`${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`],
-			webp: [`${publicFolder}/images/**/*.{jpg,jpeg,png}`],
-		},
-
+		src: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 		dest: `${dest}/assets/images`,
 		watch: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
+		webp: `${publicFolder}/images/**/*.{jpg,jpeg,png}`,
 	},
 
 	sprites: {

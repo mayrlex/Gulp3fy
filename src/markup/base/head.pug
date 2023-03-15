@@ -15,7 +15,7 @@ if meta.themeColorLight !== null && meta.themeColor !== null
 if meta.themeColorDark !== null && meta.themeColor !== null
 	meta(name='theme-color' media='(prefers-color-scheme: dark)' content=meta.themeColorDark)
 
-link(rel='stylesheet', href='assets/css/main.min.css')
+link(rel='stylesheet', href='assets/css/main.css')
 
 - let matchGoogleFonts;
 each item in config.preloadFonts
@@ -29,11 +29,11 @@ if matchGoogleFonts
 
 if config.preloadFonts !== null && !matchGoogleFonts
 	each font in config.preloadFonts
-		link(rel='preload', href=`./assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
+		link(rel='preload', href=`assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
 
 if page.preloadImages !== null
 	each image in page.preloadImages
-		link(rel='preload', as='image', href=`./assets/images/${image}`)
+		link(rel='preload', as='image', href=`assets/images/${image}`)
 
 title= pageTitle
 
@@ -46,7 +46,7 @@ if meta.keywords !== null && !(Array.isArray(meta.keywords) && !meta.keywords.le
 if config.colorScheme
 	meta(name='color-scheme' content=config.colorScheme)
 
-link(rel='icon' href=`assets/favicon.ico` sizes='any')
+link(rel='icon' href=`assets/favicon/favicon.ico` sizes='any')
 link(rel='icon' href=`assets/favicon/icon.svg` type='image/svg+xml' )
 link(rel='apple-touch-icon' href=`assets/favicon/apple-touch-icon.png`)
 
