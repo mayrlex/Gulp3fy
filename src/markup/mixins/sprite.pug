@@ -1,10 +1,8 @@
 mixin sprite(data)
-	- const path = 'assets/sprites';
-
-	if data.type !== 'image'
+	if !data.image
 		svg(class=`icon icon-${data.name}`)&attributes(attributes)
-			use(xlink:href=`${path}/${data.isExc ? 'eIcons' : 'icons'}.svg#${data.name}`)
+			use(xlink:href=`assets/sprites/${data.multi ? 'icons-multi' : 'icons-mono'}.svg#${data.name}`)
 
-	if data.type === 'image'
+	if data.image
 		svg&attributes(attributes)
-			use(xlink:href=`${path}/images.svg#${data.name}`)
+			use(xlink:href=`assets/sprites/images.svg#${data.name}`)

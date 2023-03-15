@@ -14,11 +14,7 @@ const config = {
 		scripts: true,
 		fonts: true,
 		images: true,
-		sprites: {
-			images: false,
-			icons: true,
-			eIcons: false,
-		},
+		sprites: true,
 		copy: true,
 	},
 

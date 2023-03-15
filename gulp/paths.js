@@ -51,19 +51,11 @@ const paths = {
 	},
 
 	sprites: {
-		src: {
-			images: `${publicFolder}/sprite/**/*.svg`,
-			icons: {
-				mono: `${publicFolder}/icons/mono/**/*.svg`,
-				multi: `${publicFolder}/icons/multi/**/*.svg`,
-			},
-		},
-
+		images: `${publicFolder}/sprite/**/*.svg`,
+		iconsMono: `${publicFolder}/icons/mono/**/*.svg`,
+		iconsMulti: `${publicFolder}/icons/multi/**/*.svg`,
 		dest: `${dest}/assets/sprites`,
-		watch: {
-			icons: `${publicFolder}/icons/**/*.svg`,
-			images: `${publicFolder}/sprite/**/*.svg`,
-		},
+		watch: [`${publicFolder}/sprite/**/*.svg`, `${publicFolder}/icons/**/*.svg`],
 	},
 
 	favicon: {
