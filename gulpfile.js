@@ -1,9 +1,9 @@
 import gulp from 'gulp';
-import clean, { cleanBefore, cleanAfrer } from './gulp/tasks/clean.js';
+import clean, { cleanBefore, cleanAfrer, cleanFonts } from './gulp/tasks/clean.js';
 import { markupBuild, markupWatch } from './gulp/tasks/markup.js';
 import { stylesBuild, stylesWatch } from './gulp/tasks/styles.js';
 import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts.js';
-import fontsBuild, { fontsTTF, fontsWOFF2 } from './gulp/tasks/fonts.js';
+import getFontsWoff2 from './gulp/tasks/fonts.js';
 import { imagesBuild, imagesWatch } from './gulp/tasks/images.js';
 import {
 	spriteImagesBuild,
@@ -11,7 +11,7 @@ import {
 	spriteEIconsBuild,
 	spritesWatch,
 } from './gulp/tasks/sprites.js';
-import { copyBuild, copyWatch } from './gulp/tasks/copy.js';
+import { copyBuild, copyWatch, copyFonts } from './gulp/tasks/copy.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
 import config from './gulp/config.js';
@@ -20,11 +20,12 @@ const build = [];
 const watch = [];
 const sprites =
 	config.task.sprites.images || config.task.sprites.icons || config.task.sprites.eIcons;
+const fonts = gulp.series(getFontsWoff2, cleanFonts, copyFonts);
 
 config.task.markup ? [build.push(markupBuild), watch.push(markupWatch)] : null;
 config.task.styles ? [build.push(stylesBuild), watch.push(stylesWatch)] : null;
 config.task.scripts ? [build.push(scriptsBuild), watch.push(scriptsWatch)] : null;
-config.task.fonts ? build.push(fontsBuild) : null;
+config.task.fonts ? build.push(fonts) : null;
 config.task.images ? [build.push(imagesBuild), watch.push(imagesWatch)] : null;
 config.task.sprites.images ? [build.push(spriteImagesBuild)] : null;
 config.task.sprites.icons ? [build.push(spriteIconsBuild)] : null;
@@ -39,5 +40,5 @@ const archiving = gulp.series(clean, build, zip);
 export { dev };
 export { prod };
 export { archiving };
-export { fontsTTF, fontsWOFF2 };
+export { getFontsWoff2 };
 export { cleanBefore, cleanAfrer };
