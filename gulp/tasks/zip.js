@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import { deleteAsync } from 'del';
 import gzip from 'gulp-zip';
 import paths from '../paths.js';
@@ -11,12 +10,11 @@ const zip = () => {
 	return gulp
 		.src(paths.zip.compiled, {})
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'ZIP',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 
 		.pipe(gzip(paths.zip.root))

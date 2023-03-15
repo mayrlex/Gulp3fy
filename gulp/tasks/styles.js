@@ -2,7 +2,6 @@ import gulp from 'gulp';
 import sync from 'browser-sync';
 import autoprefixer from 'gulp-autoprefixer';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import gulpif from 'gulp-if';
 import compiler from 'sass';
 import gulpSass from 'gulp-sass';
@@ -20,12 +19,11 @@ export const stylesBuild = () =>
 		.src(paths.styles.src, { sourcemaps: config.isDev })
 
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'SCSS',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 		.pipe(sassGlob())
 		.pipe(

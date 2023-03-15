@@ -1,7 +1,6 @@
 import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import config from '../config.js';
 import paths from '../paths.js';
 
@@ -10,12 +9,11 @@ export const scriptsBuild = () =>
 		.src(paths.scripts.src)
 
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'JS',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 
 		.pipe(

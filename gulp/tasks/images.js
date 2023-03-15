@@ -3,7 +3,6 @@ import webp from 'gulp-webp';
 import imageMin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import imageMinWebp from 'imagemin-webp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import changed from 'gulp-changed';
 import gulpif from 'gulp-if';
 import sync from 'browser-sync';
@@ -14,12 +13,11 @@ const imagesCopy = () =>
 	gulp
 		.src(paths.images.src.copy)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES: COPY',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 
 		.pipe(changed(paths.images.dest))
@@ -32,12 +30,11 @@ const imagesWebp = () =>
 	gulp
 		.src(paths.images.src.webp)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES: WEBP',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 		.pipe(changed(paths.images.dest, { extension: '.webp' }))
 		.pipe(webp())

@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
 import paths from '../paths.js';
 
@@ -8,12 +7,11 @@ export const spriteImagesBuild = () =>
 	gulp
 		.src(paths.sprites.src.images)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 		.pipe(
 			svgSprite({
@@ -45,12 +43,11 @@ export const spriteIconsBuild = () =>
 	gulp
 		.src(paths.sprites.src.icons.mono)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'ICON SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 		.pipe(
 			svgSprite({
@@ -78,12 +75,11 @@ export const spriteEIconsBuild = () =>
 	gulp
 		.src(paths.sprites.src.icons.multi)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'EICONS SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 		.pipe(
 			svgSprite({

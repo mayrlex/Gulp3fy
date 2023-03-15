@@ -1,7 +1,6 @@
 import gulp from 'gulp';
 import sync from 'browser-sync';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import gulpif from 'gulp-if';
 import versionNumber from 'gulp-version-number';
 import pug from 'gulp-pug';
@@ -25,12 +24,11 @@ export const markupBuild = () =>
 	gulp
 		.src(paths.markup.src)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'PUG',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
 		)
 
 		.pipe(
