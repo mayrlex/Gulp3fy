@@ -5,7 +5,12 @@ import { stylesCompile, stylesWatch } from './gulp/tasks/styles.js';
 import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts.js';
 import getFontsWoff2 from './gulp/tasks/fonts.js';
 import { images, imagesWatch } from './gulp/tasks/images.js';
-import { sprites, spritesWatch } from './gulp/tasks/sprites.js';
+import {
+	sprites,
+	imagesSpriteWatch,
+	iconsMonoSpriteWatch,
+	iconsMultiSpriteWatch,
+} from './gulp/tasks/sprites.js';
 import { copy, copyWatch, copyFonts } from './gulp/tasks/copy.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
@@ -20,7 +25,11 @@ config.task.styles ? [build.push(stylesCompile), watch.push(stylesWatch)] : null
 config.task.scripts ? [build.push(scriptsBuild), watch.push(scriptsWatch)] : null;
 config.task.fonts ? build.push(fonts) : null;
 config.task.images ? [build.push(images), watch.push(imagesWatch)] : null;
-config.task.sprites ? [build.push(sprites), watch.push(spritesWatch)] : null;
+// prettier-ignore
+config.task.sprites ? [
+			build.push(sprites),
+			watch.push(imagesSpriteWatch, iconsMonoSpriteWatch, iconsMultiSpriteWatch)
+		] : null;
 config.task.copy ? [build.push(copy), watch.push(copyWatch)] : null;
 
 const dev = gulp.series(clearDist, build, gulp.parallel(watch, server));

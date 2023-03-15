@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import svgSprite from 'gulp-svg-sprite';
 import paths from '../paths.js';
 
-export const imageSprite = () =>
+export const imagesSprite = () =>
 	gulp
 		.src(paths.sprites.images)
 		.pipe(
@@ -113,5 +113,7 @@ export const iconsMultiSprite = () =>
 
 		.pipe(gulp.dest(paths.sprites.dest));
 
-export const sprites = gulp.parallel(imageSprite, iconsMonoSprite, iconsMultiSprite);
-export const spritesWatch = () => gulp.watch(paths.sprites.watch, sprites);
+export const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);
+export const imagesSpriteWatch = () => gulp.watch(paths.sprites.images, imagesSprite);
+export const iconsMonoSpriteWatch = () => gulp.watch(paths.sprites.iconsMono, iconsMonoSprite);
+export const iconsMultiSpriteWatch = () => gulp.watch(paths.sprites.iconsMulti, iconsMultiSprite);

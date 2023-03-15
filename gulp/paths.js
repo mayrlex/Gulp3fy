@@ -48,7 +48,6 @@ const paths = {
 		iconsMono: `${publicFolder}/icons/mono/**/*.svg`,
 		iconsMulti: `${publicFolder}/icons/multi/**/*.svg`,
 		dest: `${dest}/assets/sprites`,
-		watch: [`${publicFolder}/sprite/**/*.svg`, `${publicFolder}/icons/**/*.svg`],
 	},
 
 	favicon: {
