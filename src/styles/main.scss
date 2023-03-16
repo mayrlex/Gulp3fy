@@ -1,9 +1,9 @@
 //? Vendors
+@use 'vendors/reset';
 // @use 'vendors/swiper';
 
 //? Base
 @use 'base/fonts';
-@use 'base/reset';
 @use 'base/typography';
 
 @use 'utils/helpers';

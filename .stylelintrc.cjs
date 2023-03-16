@@ -11,6 +11,10 @@ module.exports = {
 		'block-no-empty': null,
 		'no-empty-source': null,
 		'function-calc-no-unspaced-operator': [true, { severity: 'warning' }],
+		'selector-pseudo-class-no-unknown': [
+			true,
+			{ severity: 'error', ignorePseudoClasses: 'modal' },
+		],
 
 		// Enforce conventions
 		'declaration-no-important': [true, { severity: 'warning' }],
