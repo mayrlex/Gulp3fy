@@ -1,19 +1,19 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import gulpif from 'gulp-if';
 import compiler from 'sass';
 import gulpSass from 'gulp-sass';
-import cleanCss from 'gulp-clean-css';
 import groupMedia from 'gulp-group-css-media-queries';
-import config from '../config.js';
-import paths from '../paths.js';
 import postcss from 'gulp-postcss';
 import postcssPresetEnv from 'postcss-preset-env';
+import gulpif from 'gulp-if';
+import cleanCss from 'gulp-clean-css';
+import config from '../config.js';
+import paths from '../paths.js';
 
-const sass = gulpSass(compiler);
+const stylesCompile = () => {
+	const sass = gulpSass(compiler);
 
-const stylesCompile = () =>
-	gulp
+	return gulp
 		.src(paths.styles.src, { sourcemaps: config.isDev })
 		.pipe(
 			plumber({
@@ -62,5 +62,6 @@ const stylesCompile = () =>
 			)
 		)
 		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }));
+};
 
 export default stylesCompile;

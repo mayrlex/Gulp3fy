@@ -3,7 +3,7 @@ import { clearDist, clearSrc, clearFonts } from './gulp/tasks/clean.js';
 import markupCompile from './gulp/tasks/markup.js';
 import stylesCompile from './gulp/tasks/styles.js';
 import scriptsBundle from './gulp/tasks/scripts.js';
-import getFontsWoff2 from './gulp/tasks/fonts.js';
+import convertTTFtoWOFF2 from './gulp/tasks/fonts.js';
 import images from './gulp/tasks/images.js';
 import sprites from './gulp/tasks/sprites.js';
 import {
@@ -14,29 +14,29 @@ import {
 	spritesWatch,
 	copyResourcesWatch,
 } from './gulp/tasks/watcher.js';
-import { copy, copyFonts } from './gulp/tasks/copy.js';
+import copy, { copyFonts } from './gulp/tasks/copy.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
 import config from './gulp/config.js';
 
-const build = [];
-const watch = [];
-const fonts = gulp.series(getFontsWoff2, clearFonts, copyFonts);
+const tasks = [];
+const watchers = [];
+const fonts = gulp.series(convertTTFtoWOFF2, clearFonts, copyFonts);
 
-config.task.markup ? [build.push(markupCompile), watch.push(markupWatch)] : null;
-config.task.styles ? [build.push(stylesCompile), watch.push(stylesWatch)] : null;
-config.task.scripts ? [build.push(scriptsBundle), watch.push(scriptsWatch)] : null;
-config.task.fonts ? build.push(fonts) : null;
-config.task.images ? [build.push(images), watch.push(imagesWatch)] : null;
-config.task.sprites ? [build.push(sprites), watch.push(spritesWatch)] : null;
-config.task.copy ? [build.push(copy), watch.push(copyResourcesWatch)] : null;
+if (config.task.markup) tasks.push(markupCompile), watchers.push(markupWatch);
+if (config.task.styles) tasks.push(stylesCompile), watchers.push(stylesWatch);
+if (config.task.scripts) tasks.push(scriptsBundle), watchers.push(scriptsWatch);
+if (config.task.fonts) tasks.push(fonts);
+if (config.task.images) tasks.push(images), watchers.push(imagesWatch);
+if (config.task.sprites) tasks.push(sprites), watchers.push(spritesWatch);
+if (config.task.copy) tasks.push(copy), watchers.push(copyResourcesWatch);
 
-const dev = gulp.series(clearDist, build, gulp.parallel(watch, server));
-const prod = gulp.series(clearDist, build);
-const archiving = gulp.series(clearDist, build, zip);
+const dev = gulp.series(clearDist, tasks, gulp.parallel(watchers, server));
+const prod = gulp.series(clearDist, tasks);
+const archiving = gulp.series(clearDist, tasks, zip);
 
 export { dev };
 export { prod };
 export { archiving };
-export { getFontsWoff2 };
+export { convertTTFtoWOFF2 };
 export { clearSrc };

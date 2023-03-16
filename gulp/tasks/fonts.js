@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import ttf2woff2 from 'gulp-ttf2woff2';
 import paths from '../paths.js';
 
-const getFontsWoff2 = () =>
+const convertTTFtoWOFF2 = () =>
 	gulp
 		.src(paths.fonts.ttf)
 		.pipe(
@@ -16,4 +16,4 @@ const getFontsWoff2 = () =>
 		.pipe(ttf2woff2())
 		.pipe(gulp.dest(paths.fonts.src));
 
-export default getFontsWoff2;
+export default convertTTFtoWOFF2;

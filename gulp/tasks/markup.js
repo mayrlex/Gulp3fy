@@ -1,17 +1,13 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import gulpif from 'gulp-if';
-import versionNumber from 'gulp-version-number';
-import pug from 'gulp-pug';
 import { setup as emittySetup } from '@zoxon/emitty';
-import typograph from 'gulp-typograf';
+import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
+import typograf from 'gulp-typograf';
+import versionNumber from 'gulp-version-number';
 import config from '../config.js';
 import paths from '../paths.js';
-
-const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', {
-	makeVinylFile: true,
-});
 
 global.isMarkupWatch = false;
 global.emittyChangedFile = {
@@ -19,8 +15,10 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-const markupCompile = () =>
-	gulp
+const markupCompile = () => {
+	const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', { makeVinylFile: true });
+
+	return gulp
 		.src(paths.markup.src)
 		.pipe(
 			plumber({
@@ -29,7 +27,6 @@ const markupCompile = () =>
 				},
 			})
 		)
-
 		.pipe(
 			gulpif(
 				global.isMarkupWatch,
@@ -48,7 +45,7 @@ const markupCompile = () =>
 		)
 		.pipe(gulpif(config.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
 		.pipe(
-			typograph({
+			typograf({
 				locale: ['ru', 'en-US'],
 			})
 		)
@@ -56,18 +53,19 @@ const markupCompile = () =>
 			gulpif(
 				config.isProd,
 				versionNumber({
-					value: '%DT%',
+					value: '%MD5%',
 					append: {
 						key: '_v',
-						cover: 0,
+						cover: 1,
 						to: ['css', 'js'],
 					},
 					output: {
-						file: 'gulp/version.json',
+						file: 'gulp/cache.json',
 					},
 				})
 			)
 		)
 		.pipe(gulp.dest(paths.markup.dest));
+};
 
 export default markupCompile;

@@ -1,6 +1,6 @@
 import gulp from 'gulp';
-import plumber from 'gulp-plumber';
 import { deleteAsync as del } from 'del';
+import plumber from 'gulp-plumber';
 import gzip from 'gulp-zip';
 import paths from '../paths.js';
 

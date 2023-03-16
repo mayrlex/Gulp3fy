@@ -36,7 +36,6 @@ const imagesSprite = () =>
 				},
 			})
 		)
-
 		.pipe(gulp.dest(paths.sprites.dest));
 
 const iconsMonoSprite = () =>
@@ -99,9 +98,7 @@ const iconsMultiSprite = () =>
 											attrs: ['class', 'data-name'],
 										},
 									},
-
 									{ removeUselessStrokeAndFill: false },
-
 									{ inlineStyles: true },
 								],
 							},
@@ -110,7 +107,6 @@ const iconsMultiSprite = () =>
 				},
 			})
 		)
-
 		.pipe(gulp.dest(paths.sprites.dest));
 
 const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);

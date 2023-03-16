@@ -1,11 +1,11 @@
 import gulp from 'gulp';
-import paths from '../paths.js';
 import markupCompile from './markup.js';
 import stylesCompile from './styles.js';
 import scriptsBundle from './scripts.js';
 import images from './images.js';
 import { imagesSprite, iconsMonoSprite, iconsMultiSprite } from './sprites.js';
 import { copyResources } from './copy.js';
+import paths from '../paths.js';
 
 const markupWatch = () => {
 	global.isMarkupWatch = true;

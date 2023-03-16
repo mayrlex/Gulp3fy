@@ -1,9 +1,9 @@
 import gulp from 'gulp';
-import webp from 'gulp-webp';
-import imageMin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
 import plumber from 'gulp-plumber';
 import changed from 'gulp-changed';
 import gulpif from 'gulp-if';
+import imageMin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
+import webp from 'gulp-webp';
 import config from '../config.js';
 import paths from '../paths.js';
 
@@ -17,7 +17,6 @@ const optimizeImages = () =>
 				},
 			})
 		)
-
 		.pipe(changed(paths.images.dest))
 		.pipe(
 			gulpif(
@@ -31,7 +30,7 @@ const optimizeImages = () =>
 		)
 		.pipe(gulp.dest(paths.images.dest));
 
-const getImagesWebp = () =>
+const convertImagesToWebp = () =>
 	gulp
 		.src(paths.images.webp)
 		.pipe(
@@ -45,6 +44,6 @@ const getImagesWebp = () =>
 		.pipe(webp())
 		.pipe(gulp.dest(paths.images.dest));
 
-const images = gulp.series(optimizeImages, getImagesWebp);
+const images = gulp.series(optimizeImages, convertImagesToWebp);
 
 export default images;
