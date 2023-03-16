@@ -3,7 +3,7 @@ import plumber from 'gulp-plumber';
 import svgSprite from 'gulp-svg-sprite';
 import paths from '../paths.js';
 
-export const imagesSprite = () =>
+const imagesSprite = () =>
 	gulp
 		.src(paths.sprites.images)
 		.pipe(
@@ -39,7 +39,7 @@ export const imagesSprite = () =>
 
 		.pipe(gulp.dest(paths.sprites.dest));
 
-export const iconsMonoSprite = () =>
+const iconsMonoSprite = () =>
 	gulp
 		.src(paths.sprites.iconsMono)
 		.pipe(
@@ -71,7 +71,7 @@ export const iconsMonoSprite = () =>
 		)
 		.pipe(gulp.dest(paths.sprites.dest));
 
-export const iconsMultiSprite = () =>
+const iconsMultiSprite = () =>
 	gulp
 		.src(paths.sprites.iconsMulti)
 		.pipe(
@@ -113,7 +113,9 @@ export const iconsMultiSprite = () =>
 
 		.pipe(gulp.dest(paths.sprites.dest));
 
-export const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);
-export const imagesSpriteWatch = () => gulp.watch(paths.sprites.images, imagesSprite);
-export const iconsMonoSpriteWatch = () => gulp.watch(paths.sprites.iconsMono, iconsMonoSprite);
-export const iconsMultiSpriteWatch = () => gulp.watch(paths.sprites.iconsMulti, iconsMultiSprite);
+const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);
+
+export default sprites;
+export { imagesSprite };
+export { iconsMonoSprite };
+export { iconsMultiSprite };

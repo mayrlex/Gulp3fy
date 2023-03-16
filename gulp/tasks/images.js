@@ -45,5 +45,6 @@ const getImagesWebp = () =>
 		.pipe(webp())
 		.pipe(gulp.dest(paths.images.dest));
 
-export const images = gulp.series(optimizeImages, getImagesWebp);
-export const imagesWatch = () => gulp.watch(paths.images.watch, images);
+const images = gulp.series(optimizeImages, getImagesWebp);
+
+export default images;

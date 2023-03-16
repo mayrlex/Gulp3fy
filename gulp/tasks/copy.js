@@ -7,5 +7,5 @@ const copyFavicons = () => gulp.src(paths.favicon.src).pipe(gulp.dest(paths.favi
 const copyFonts = () => gulp.src(paths.fonts.woff2).pipe(gulp.dest(paths.fonts.dest));
 
 export const copy = gulp.parallel(copyRootFiles, copyResources, copyFavicons, copyFonts);
-export const copyWatch = () => gulp.watch(paths.resources.watch, copyResources);
+export { copyResources };
 export { copyFonts };

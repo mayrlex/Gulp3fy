@@ -1,17 +1,20 @@
 import gulp from 'gulp';
 import { clearDist, clearSrc, clearFonts } from './gulp/tasks/clean.js';
-import { markupCompile, markupWatch } from './gulp/tasks/markup.js';
-import { stylesCompile, stylesWatch } from './gulp/tasks/styles.js';
-import { scriptsBuild, scriptsWatch } from './gulp/tasks/scripts.js';
+import markupCompile from './gulp/tasks/markup.js';
+import stylesCompile from './gulp/tasks/styles.js';
+import scriptsBundle from './gulp/tasks/scripts.js';
 import getFontsWoff2 from './gulp/tasks/fonts.js';
-import { images, imagesWatch } from './gulp/tasks/images.js';
+import images from './gulp/tasks/images.js';
+import sprites from './gulp/tasks/sprites.js';
 import {
-	sprites,
-	imagesSpriteWatch,
-	iconsMonoSpriteWatch,
-	iconsMultiSpriteWatch,
-} from './gulp/tasks/sprites.js';
-import { copy, copyWatch, copyFonts } from './gulp/tasks/copy.js';
+	markupWatch,
+	stylesWatch,
+	scriptsWatch,
+	imagesWatch,
+	spritesWatch,
+	copyResourcesWatch,
+} from './gulp/tasks/watcher.js';
+import { copy, copyFonts } from './gulp/tasks/copy.js';
 import zip from './gulp/tasks/zip.js';
 import server from './gulp/tasks/server.js';
 import config from './gulp/config.js';
@@ -22,15 +25,11 @@ const fonts = gulp.series(getFontsWoff2, clearFonts, copyFonts);
 
 config.task.markup ? [build.push(markupCompile), watch.push(markupWatch)] : null;
 config.task.styles ? [build.push(stylesCompile), watch.push(stylesWatch)] : null;
-config.task.scripts ? [build.push(scriptsBuild), watch.push(scriptsWatch)] : null;
+config.task.scripts ? [build.push(scriptsBundle), watch.push(scriptsWatch)] : null;
 config.task.fonts ? build.push(fonts) : null;
 config.task.images ? [build.push(images), watch.push(imagesWatch)] : null;
-// prettier-ignore
-config.task.sprites ? [
-			build.push(sprites),
-			watch.push(imagesSpriteWatch, iconsMonoSpriteWatch, iconsMultiSpriteWatch)
-		] : null;
-config.task.copy ? [build.push(copy), watch.push(copyWatch)] : null;
+config.task.sprites ? [build.push(sprites), watch.push(spritesWatch)] : null;
+config.task.copy ? [build.push(copy), watch.push(copyResourcesWatch)] : null;
 
 const dev = gulp.series(clearDist, build, gulp.parallel(watch, server));
 const prod = gulp.series(clearDist, build);

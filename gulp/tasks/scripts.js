@@ -4,7 +4,7 @@ import plumber from 'gulp-plumber';
 import config from '../config.js';
 import paths from '../paths.js';
 
-export const scriptsBuild = () =>
+const scriptsBundle = () =>
 	gulp
 		.src(paths.scripts.src)
 
@@ -29,4 +29,4 @@ export const scriptsBuild = () =>
 
 		.pipe(gulp.dest(paths.scripts.dest));
 
-export const scriptsWatch = () => gulp.watch(paths.scripts.watch, scriptsBuild);
+export default scriptsBundle;

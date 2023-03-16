@@ -12,7 +12,7 @@ import postcssPresetEnv from 'postcss-preset-env';
 
 const sass = gulpSass(compiler);
 
-export const stylesCompile = () =>
+const stylesCompile = () =>
 	gulp
 		.src(paths.styles.src, { sourcemaps: config.isDev })
 		.pipe(
@@ -63,4 +63,4 @@ export const stylesCompile = () =>
 		)
 		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }));
 
-export const stylesWatch = () => gulp.watch(paths.styles.watch, stylesCompile);
+export default stylesCompile;

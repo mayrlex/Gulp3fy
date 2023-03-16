@@ -1,5 +1,4 @@
 import gulp from 'gulp';
-import sync from 'browser-sync';
 import plumber from 'gulp-plumber';
 import gulpif from 'gulp-if';
 import versionNumber from 'gulp-version-number';
@@ -20,7 +19,7 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-export const markupCompile = () =>
+const markupCompile = () =>
 	gulp
 		.src(paths.markup.src)
 		.pipe(
@@ -69,16 +68,6 @@ export const markupCompile = () =>
 				})
 			)
 		)
-		.pipe(gulp.dest(paths.markup.dest))
-		.pipe(sync.stream());
+		.pipe(gulp.dest(paths.markup.dest));
 
-export const markupWatch = () => {
-	global.isMarkupWatch = true;
-
-	gulp.watch(paths.markup.watch, markupCompile).on('all', (event, filepath, stats) => {
-		global.emittyChangedFile = {
-			path: filepath,
-			stats,
-		};
-	});
-};
+export default markupCompile;
