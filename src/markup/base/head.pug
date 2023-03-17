@@ -8,82 +8,90 @@
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width, initial-scale=1.0')
 
-if meta.themeColor !== null
+if meta.themeColor && !meta.themeColorLight && !meta.themeColorDark
 	meta(name='theme-color', content=meta.themeColor)
-if meta.themeColorLight !== null && meta.themeColor !== null
-	meta(name='theme-color' media='(prefers-color-scheme: light)' content=meta.themeColorLight)
-if meta.themeColorDark !== null && meta.themeColor !== null
-	meta(name='theme-color' media='(prefers-color-scheme: dark)' content=meta.themeColorDark)
+
+if meta.themeColorLight
+	meta(name='theme-color', media='(prefers-color-scheme: light)', content=meta.themeColorLight)
+
+if meta.themeColorDark
+	meta(name='theme-color', media='(prefers-color-scheme: dark)', content=meta.themeColorDark)
 
 link(rel='stylesheet', href='assets/css/main.css')
 
-- let matchGoogleFonts;
-each item in config.preloadFonts
-	- matchGoogleFonts = item.match('fonts.googleapis.com');
+- let isGoogleFonts;
+each font in config.preloadFonts
+	- isGoogleFonts = font.match('fonts.googleapis.com');
 
-if matchGoogleFonts
+if isGoogleFonts
 	link(rel='preconnect', href='https://fonts.googleapis.com')
-	link(rel='preconnect', href='https://fonts.gstatic.com' crossorigin)
+	link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+
 	each font in config.preloadFonts
 		link(rel='stylesheet', href=font)
 
-if config.preloadFonts !== null && !matchGoogleFonts
+if config.preloadFonts && !isGoogleFonts
 	each font in config.preloadFonts
-		link(rel='preload', href=`assets/fonts/${font}.woff2`, as='font', type='font/woff2', crossorigin)
+		link(
+			rel='preload',
+			href=`assets/fonts/${font}.woff2`,
+			as='font',
+			type='font/woff2',
+			crossorigin
+		)
 
-if page.preloadImages !== null
+if page.preloadImages
 	each image in page.preloadImages
 		link(rel='preload', as='image', href=`assets/images/${image}`)
 
 title= pageTitle
 
-if page.description !== null
+if page.description
 	meta(name='description', content=page.description)
 
-if meta.keywords !== null && !(Array.isArray(meta.keywords) && !meta.keywords.length)
-	meta(name='keywords', content=(Array.isArray(meta.keywords) ? meta.keywords.join(', ') : meta.keywords))
+if meta.keywords.length
+	meta(name='keywords', content=meta.keywords.join(', '))
 
 if config.colorScheme
-	meta(name='color-scheme' content=config.colorScheme)
+	meta(name='color-scheme', content=config.colorScheme)
 
-link(rel='icon' href=`assets/favicon/favicon.ico` sizes='any')
-link(rel='icon' href=`assets/favicon/icon.svg` type='image/svg+xml' )
-link(rel='apple-touch-icon' href=`assets/favicon/apple-touch-icon.png`)
+link(rel='icon', href='assets/favicon/favicon.ico', sizes='any')
+link(rel='icon', href='assets/favicon/icon.svg', type='image/svg+xml')
+link(rel='apple-touch-icon', href='assets/favicon/apple-touch-icon.png')
 
-if meta.googleTranslate !== true
-	meta(name='google' content='notranslate')
-if meta.robots !== null
-	meta(name='robots' content=meta.robots)
-if page.canonical !== null
+meta(name='robots', content='index follow')
+
+if page.canonical
 	link(rel='canonical', href=page.canonical)
+
 link(rel='manifest', href='/manifest.webmanifest')
-if meta.author !== null
+
+if meta.author
 	meta(name='author', content=meta.author)
 
-if meta.og.type !== null && (meta.og.url || meta.og.title || meta.og.description || meta.og.image)
-	meta(property='og:type', content=meta.og.type)
-if meta.og.url !== null
-	meta(property='og:url', content=meta.og.url)
-if meta.og.locale !== null && (meta.og.url || meta.og.title || meta.og.description || meta.og.image)
-	meta(property='og:locale', content=meta.og.locale)
-if meta.og.siteName !== null
-	meta(property='og:site_name', content=meta.og.siteName)
-if meta.og.title !== null
+if meta.ogType
+	meta(property='og:type', content=meta.ogType)
+if page.canonical
+	meta(property='og:url', content=page.canonical)
+if meta.ogLocale
+	meta(property='og:locale', content=meta.ogLocale)
+if config.siteName
+	meta(property='og:site_name', content=config.siteName)
+if pageTitle
 	meta(property='og:title', content=pageTitle)
-if meta.og.description !== null
-	meta(property='og:description', content=meta.og.description)
-if meta.og.image !== null
-	meta(property='og:image', content=meta.og.image)
+if page.description
+	meta(property='og:description', content=page.description)
+if meta.ogImage
+	meta(property='og:image', content=meta.ogImage)
 
-if meta.twitter.card !== null && (meta.twitter.site || meta.twitter.title || meta.twitter.description || meta.twitter.image)
-	meta(property='twitter:card', content=meta.twitter.card)
-if meta.twitterUrl !== null
-	meta(property='twitter:url' content=meta.twitterUrl)
-if meta.twitter.site !== null
-	meta(property='twitter:site', content=meta.twitter.site)
-if meta.twitter.title !== null
+meta(property='twitter:card', content='summary_large_image')
+if page.canonical
+	meta(property='twitter:url', content=page.canonical)
+if config.siteName
+	meta(property='twitter:site', content=`@${config.siteName.toLowerCase().replace(/\s/gi, "_")}`)
+if pageTitle
 	meta(property='twitter:title', content=pageTitle)
-if meta.twitter.description !== null
-	meta(property='twitter:description', content=meta.twitter.description)
-if meta.twitter.image !== null
-	meta(property='twitter:image', content=meta.twitter.image)
+if page.description
+	meta(property='twitter:description', content=page.description)
+if meta.twitterImage
+	meta(property='twitter:image', content=meta.twitterImage)

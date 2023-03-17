@@ -1,4 +1,3 @@
-//- Config & mixin
 include ../base/config.pug
 include ../mixins/**/*.pug
 
@@ -10,33 +9,24 @@ html(lang=page.lang)
 		include ../base/head.pug
 		block styles
 
-	body.body
+	body.page
 		.wrapper
-			if page.header
-				header.header
-					.header__inner.container
-						-
-							let tag;
-							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
+			-
+				let logoTag;
+				page.id !== 0 ? (logoTag = `a href='${page.canonical}'`) : (logoTag = 'div');
 
-						block header
-							include ../layouts/header.pug
+			header.header
+				.header__inner.container
+					block header
+						include ../layouts/header.pug
 
 			main.main
 				block content
 
-			if page.footer
-				footer.footer(role='contentinfo')
-					.footer__inner.container
-						-
-							let tag;
-							page.id !== 0 ? (tag = `a href='${page.canonical}'`) : (tag = 'div');
-
-						block footer
-							include ../layouts/footer.pug
-
-			if page.modal
-				include ../layouts/modal.pug
+			footer.footer
+				.footer__inner.container
+					block footer
+						include ../layouts/footer.pug
 
 		block scripts
 			script(src='assets/js/main.min.js')

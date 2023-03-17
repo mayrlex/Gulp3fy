@@ -3,45 +3,25 @@ extends layouts/layout.pug
 block settings
 	-
 		const page = {
-			id:            0,
-			name:          'Home',
-			description:   null,
-			lang:          'ru',
-			canonical:     '/',
-			header:        false,
-			footer:        false,
-			modal:         false,
-			thumb:         null,
+			id: 0,
+			name: '',
+			description: null,
+			lang: 'ru',
+			canonical: '/',
 			preloadImages: [],
 
 		}
 
 		const meta = {
-			keywords:                        [],
-			author:                          null,
-			themeColor:                      '#ffffff',
-			themeColorLight:                 null,
-			themeColorDark:                  null,
-			googleTranslate:                 true,
-			robots:                          null, // noindex nofollow
-			og: {
-				type:        'website',
-				url:         page.canonical,
-				locale:      'ru_RU',
-				siteName:    config.siteName,
-				title:       true,
-				description: page.description,
-				image:       page.thumb,
-			},
-
-			twitter: {
-				card:        'summary_large_image',
-				url:         page.canonical,
-				site:        config.siteName,
-				title:       true,
-				description: page.description,
-				image:       page.thumb,
-			}
+			keywords: [],
+			author: null,
+			themeColor: 'hsl(0deg 0% 100%)',
+			themeColorLight: null,
+			themeColorDark: null,
+			ogType: 'website',
+			ogLocale: 'ru_RU',
+			ogImage: null, // Image 1200x630
+			twitterImage: null // Image 1024x1024
 		}
 
 block content

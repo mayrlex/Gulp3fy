@@ -1,18 +1,12 @@
 mixin btn(data)
 	-
-		let modsArray = '';
+		let mods = '';
 
-		if(data.mods) {
-			const modsList = data.mods.split(',');
-
-			for (let i = 0; i < modsList.length; i++) {
-				modsArray = `${modsArray} btn__${modsList[i].trim()}`;
-			}
-		}
+		if(data.mods) data.mods.forEach((item) => mods = `${mods} btn__${item.trim()}`)
 
 		const tag  =  data.link ? 'a' : 'button';
 		const link =  data.link ? data.link : null;
 		const type = !data.link ? data.type || 'button' : null;
 
-	#{tag}(class=`btn${modsArray}`, href=link, type=type)&attributes(attributes)= data.text
+	#{tag}(class=`btn${mods}`, href=link, type=type)&attributes(attributes)= data.text
 		block

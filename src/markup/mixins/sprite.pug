@@ -1,8 +1,10 @@
 mixin sprite(data)
-	if !data.image
+	if !data.isImage
 		svg(class=`icon icon-${data.name}`)&attributes(attributes)
-			use(xlink:href=`assets/sprites/${data.multi ? 'icons-multi' : 'icons-mono'}.svg#${data.name}`)
+			use(
+				xlink:href=`assets/sprites/${data.ismulti ? 'icons-multi' : 'icons-mono'}.svg#${data.name}`
+			)
 
-	if data.image
+	if data.isImage
 		svg&attributes(attributes)
 			use(xlink:href=`assets/sprites/images.svg#${data.name}`)
