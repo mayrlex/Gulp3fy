@@ -10,6 +10,7 @@ const imagesSprite = () =>
 			plumber({
 				errorHandler(error) {
 					console.error(error.message);
+					this.emit('end');
 				},
 			})
 		)
@@ -45,6 +46,7 @@ const iconsMonoSprite = () =>
 			plumber({
 				errorHandler(error) {
 					console.error(error.message);
+					this.emit('end');
 				},
 			})
 		)
@@ -77,6 +79,7 @@ const iconsMultiSprite = () =>
 			plumber({
 				errorHandler(error) {
 					console.error(error.message);
+					this.emit('end');
 				},
 			})
 		)

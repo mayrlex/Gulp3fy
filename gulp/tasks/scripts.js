@@ -11,6 +11,7 @@ const scriptsBundle = () =>
 			plumber({
 				errorHandler(error) {
 					console.error(error.message);
+					this.emit('end');
 				},
 			})
 		)
