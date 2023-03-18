@@ -14,7 +14,7 @@ const stylesCompile = () => {
 	const sass = gulpSass(compiler);
 
 	return gulp
-		.src(paths.styles.src, { sourcemaps: config.isDev })
+		.src(paths.styles.input, { sourcemaps: config.isDev })
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -62,7 +62,7 @@ const stylesCompile = () => {
 				})
 			)
 		)
-		.pipe(gulp.dest(paths.styles.dest, { sourcemaps: '.' }));
+		.pipe(gulp.dest(paths.styles.output, { sourcemaps: '.' }));
 };
 
 export default stylesCompile;

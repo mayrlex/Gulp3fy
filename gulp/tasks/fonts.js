@@ -15,6 +15,6 @@ const convertTTFtoWOFF2 = () =>
 			})
 		)
 		.pipe(ttf2woff2())
-		.pipe(gulp.dest(paths.fonts.src));
+		.pipe(gulp.dest(paths.fonts.input));
 
 export default convertTTFtoWOFF2;

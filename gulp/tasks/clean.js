@@ -2,7 +2,7 @@ import { deleteAsync as del } from 'del';
 import config from '../config.js';
 import paths from '../paths.js';
 
-const clearDist = () => del(paths.dest);
+const clearDist = () => del(paths.output);
 const clearSrc = () => {
 	let clearFiles;
 

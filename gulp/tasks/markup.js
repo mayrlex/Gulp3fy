@@ -19,7 +19,7 @@ const markupCompile = () => {
 	const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', { makeVinylFile: true });
 
 	return gulp
-		.src(paths.markup.src)
+		.src(paths.markup.input)
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -66,7 +66,7 @@ const markupCompile = () => {
 				})
 			)
 		)
-		.pipe(gulp.dest(paths.markup.dest));
+		.pipe(gulp.dest(paths.output));
 };
 
 export default markupCompile;

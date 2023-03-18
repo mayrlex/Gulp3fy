@@ -25,9 +25,9 @@ const config = {
 	},
 
 	clean: {
-		start: ['./.git', `${paths.src}/**/.gitkeep`],
+		start: ['./.git', `${paths.input}/**/.gitkeep`],
 		end: ['./node_modules'],
-		fonts: [`${paths.fonts.src}*.*`, `!${paths.fonts.woff2}`],
+		fonts: [`${paths.fonts.input}*.*`, `!${paths.fonts.woff2}`],
 	},
 };
 

@@ -6,39 +6,38 @@ const publicFolder = 'public';
 const projectFolderName = path.basename(path.resolve());
 
 const paths = {
-	src,
-	dest,
+	input: src,
+	output: dest,
 	public: publicFolder,
 
 	markup: {
-		src: `${src}/markup/*.pug`,
-		dest,
+		input: `${src}/markup/*.pug`,
 		watch: `${src}/markup/**/*.pug`,
 		emitty: `${src}/markup`,
 	},
 
 	styles: {
-		src: `${src}/styles/main.scss`,
-		dest: `${dest}/assets/css`,
+		input: `${src}/styles/main.scss`,
+		output: `${dest}/assets/css`,
 		watch: `${src}/styles/**/*.scss`,
 	},
 
 	scripts: {
-		src: `${src}/scripts/main.js`,
-		dest: `${dest}/assets/js`,
+		input: `${src}/scripts/main.js`,
+		output: `${dest}/assets/js`,
 		watch: `${src}/scripts/**/*.js`,
 	},
 
 	fonts: {
-		src: `${publicFolder}/fonts/`,
-		dest: `${dest}/assets/fonts`,
+		input: `${publicFolder}/fonts/`,
+		output: `${dest}/assets/fonts`,
 		ttf: `${publicFolder}/fonts/**/*.ttf`,
 		woff2: `${publicFolder}/fonts/**/*.woff2`,
 	},
 
 	images: {
-		src: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
-		dest: `${dest}/assets/images`,
+		input: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
+		output: `${dest}/assets/images`,
 		watch: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
 		webp: `${publicFolder}/images/**/*.{jpg,jpeg,png}`,
 	},
@@ -47,22 +46,22 @@ const paths = {
 		images: `${publicFolder}/sprite/**/*.svg`,
 		iconsMono: `${publicFolder}/icons/mono/**/*.svg`,
 		iconsMulti: `${publicFolder}/icons/multi/**/*.svg`,
-		dest: `${dest}/assets/sprites`,
+		output: `${dest}/assets/sprites`,
 	},
 
 	favicon: {
-		src: `${publicFolder}/favicon/*.{png,svg,ico}`,
-		dest: `${dest}/assets/favicon/`,
+		input: `${publicFolder}/favicon/*.{png,svg,ico}`,
+		output: `${dest}/assets/favicon/`,
 	},
 
 	resources: {
-		src: [
+		input: [
 			`${publicFolder}/resources/**/*.*`,
 			`!${publicFolder}/resources/manifest.webmanifest`,
 			`!${publicFolder}/resources/robots.txt`,
 		],
 
-		dest: `${dest}/assets/resources/`,
+		output: `${dest}/assets/resources/`,
 		watch: `${publicFolder}/resources/**/*.*`,
 		root: [
 			`${publicFolder}/resources/manifest.webmanifest`,
@@ -78,7 +77,7 @@ const paths = {
 	},
 
 	zip: {
-		dest: `${dest}/**/*.*`,
+		input: `${dest}/**/*.*`,
 		del: `./${projectFolderName}.zip`,
 		root: `./${projectFolderName}.zip`,
 	},

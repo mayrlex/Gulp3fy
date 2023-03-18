@@ -1,10 +1,10 @@
 import gulp from 'gulp';
 import paths from '../paths.js';
 
-const copyRootFiles = () => gulp.src(paths.resources.root).pipe(gulp.dest(paths.dest));
-const copyResources = () => gulp.src(paths.resources.src).pipe(gulp.dest(paths.resources.dest));
-const copyFavicons = () => gulp.src(paths.favicon.src).pipe(gulp.dest(paths.favicon.dest));
-const copyFonts = () => gulp.src(paths.fonts.woff2).pipe(gulp.dest(paths.fonts.dest));
+const copyRootFiles = () => gulp.src(paths.resources.root).pipe(gulp.dest(paths.output));
+const copyResources = () => gulp.src(paths.resources.input).pipe(gulp.dest(paths.resources.output));
+const copyFavicons = () => gulp.src(paths.favicon.input).pipe(gulp.dest(paths.favicon.output));
+const copyFonts = () => gulp.src(paths.fonts.woff2).pipe(gulp.dest(paths.fonts.output));
 
 const copy = gulp.parallel(copyRootFiles, copyResources, copyFavicons, copyFonts);
 

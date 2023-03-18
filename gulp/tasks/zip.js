@@ -8,7 +8,7 @@ const zip = () => {
 	del(paths.zip.del);
 
 	return gulp
-		.src(paths.zip.compiled, {})
+		.src(paths.zip.input, {})
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -18,7 +18,7 @@ const zip = () => {
 			})
 		)
 		.pipe(gzip(paths.zip.root))
-		.pipe(gulp.dest('./'));
+		.pipe(gulp.dest(paths.output));
 };
 
 export default zip;

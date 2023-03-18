@@ -37,7 +37,7 @@ const imagesSprite = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(paths.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.output));
 
 const iconsMonoSprite = () =>
 	gulp
@@ -70,7 +70,7 @@ const iconsMonoSprite = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(paths.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.output));
 
 const iconsMultiSprite = () =>
 	gulp
@@ -110,7 +110,7 @@ const iconsMultiSprite = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(paths.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.output));
 
 const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);
 

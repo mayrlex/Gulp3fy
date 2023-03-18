@@ -6,7 +6,7 @@ import paths from '../paths.js';
 
 const scriptsBundle = () =>
 	gulp
-		.src(paths.scripts.src)
+		.src(paths.scripts.input)
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -25,6 +25,6 @@ const scriptsBundle = () =>
 				devtool: config.isDev ? 'source-map' : undefined,
 			})
 		)
-		.pipe(gulp.dest(paths.scripts.dest));
+		.pipe(gulp.dest(paths.scripts.output));
 
 export default scriptsBundle;

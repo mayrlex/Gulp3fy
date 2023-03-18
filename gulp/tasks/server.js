@@ -5,7 +5,7 @@ import paths from '../paths.js';
 const server = callback => {
 	sync.create().init({
 		server: {
-			baseDir: paths.dest,
+			baseDir: paths.output,
 		},
 
 		files: [
