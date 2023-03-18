@@ -15,7 +15,7 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-const markupCompile = () => {
+const buildMarkup = () => {
 	const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', { makeVinylFile: true });
 
 	return gulp
@@ -69,4 +69,4 @@ const markupCompile = () => {
 		.pipe(gulp.dest(paths.output));
 };
 
-export default markupCompile;
+export default buildMarkup;

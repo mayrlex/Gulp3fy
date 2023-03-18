@@ -10,7 +10,7 @@ import cleanCss from 'gulp-clean-css';
 import config from '../config.js';
 import paths from '../paths.js';
 
-const stylesCompile = () => {
+const buildStyles = () => {
 	const sass = gulpSass(compiler);
 
 	return gulp
@@ -65,4 +65,4 @@ const stylesCompile = () => {
 		.pipe(gulp.dest(paths.styles.output, { sourcemaps: '.' }));
 };
 
-export default stylesCompile;
+export default buildStyles;

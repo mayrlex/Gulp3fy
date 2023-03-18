@@ -1,8 +1,8 @@
 import gulp from 'gulp';
 import { clearDist, clearSrc, clearFonts } from './gulp/tasks/clean.js';
-import markupCompile from './gulp/tasks/markup.js';
-import stylesCompile from './gulp/tasks/styles.js';
-import scriptsBundle from './gulp/tasks/scripts.js';
+import buildMarkup from './gulp/tasks/markup.js';
+import buildStyles from './gulp/tasks/styles.js';
+import buildScripts from './gulp/tasks/scripts.js';
 import convertTTFtoWOFF2 from './gulp/tasks/fonts.js';
 import images from './gulp/tasks/images.js';
 import sprites from './gulp/tasks/sprites.js';
@@ -23,9 +23,9 @@ const tasks = [];
 const watchers = [];
 const fonts = gulp.series(convertTTFtoWOFF2, clearFonts, copyFonts);
 
-if (config.task.markup) tasks.push(markupCompile), watchers.push(markupWatch);
-if (config.task.styles) tasks.push(stylesCompile), watchers.push(stylesWatch);
-if (config.task.scripts) tasks.push(scriptsBundle), watchers.push(scriptsWatch);
+if (config.task.markup) tasks.push(buildMarkup), watchers.push(markupWatch);
+if (config.task.styles) tasks.push(buildStyles), watchers.push(stylesWatch);
+if (config.task.scripts) tasks.push(buildScripts), watchers.push(scriptsWatch);
 if (config.task.fonts) tasks.push(fonts);
 if (config.task.images) tasks.push(images), watchers.push(imagesWatch);
 if (config.task.sprites) tasks.push(sprites), watchers.push(spritesWatch);

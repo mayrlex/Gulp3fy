@@ -4,7 +4,7 @@ import webpack from 'webpack-stream';
 import config from '../config.js';
 import paths from '../paths.js';
 
-const scriptsBundle = () =>
+const buildScripts = () =>
 	gulp
 		.src(paths.scripts.input)
 		.pipe(
@@ -27,4 +27,4 @@ const scriptsBundle = () =>
 		)
 		.pipe(gulp.dest(paths.scripts.output));
 
-export default scriptsBundle;
+export default buildScripts;
