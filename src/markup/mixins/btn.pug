@@ -9,4 +9,3 @@ mixin btn(data)
 		const type = !data.link ? data.type || 'button' : null;
 
 	#{tag}(class=`btn${mods}`, href=link, type=type)&attributes(attributes)= data.text
-		block
