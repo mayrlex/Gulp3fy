@@ -34,7 +34,10 @@ const buildStyles = () => {
 			postcss([
 				postcssPresetEnv({
 					features: {
-						'custom-properties': { preserve: false },
+						clamp: false,
+						'custom-properties': false,
+						'gap-properties': false,
+						'logical-properties-and-values': { preserve: true },
 					},
 				}),
 			])
