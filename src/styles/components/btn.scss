@@ -1,21 +1,13 @@
 @use 'utils/forwards' as *;
-@use 'mixins/adaptive' as *;
 
 .btn {
 	display: inline-flex;
 	align-items: center;
-	overflow: hidden;
+	align-self: start;
 
-	font-size: initial;
-	line-height: inherit;
 	white-space: nowrap;
 	text-align: center;
 	text-overflow: ellipsis;
-	vertical-align: middle;
 
 	cursor: pointer;
-
-	transition: 0.1s;
-
-	user-select: none;
 }

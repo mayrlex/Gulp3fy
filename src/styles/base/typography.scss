@@ -1,12 +1,6 @@
 @use 'utils/forwards' as *;
 
-//? Page
-// ================================
-.body {
-	color: $color;
-	font-weight: $fontWeight;
-	font-size: rem($fontSize);
-	font-family: $fontFamily;
-	line-height: $lineHeight;
+.page {
+	font-size: var(--font-size);
+	font-family: var(--font-family);
 }
-// ================================

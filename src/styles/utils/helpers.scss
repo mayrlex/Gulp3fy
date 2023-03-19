@@ -1,65 +1,35 @@
 @use 'utils/forwards' as *;
 @use 'mixins/media';
 
-//? Global
-// ================================
-.body {
-	background-color: $background;
-}
-
-.main {
-	flex-grow: 1;
+// * Expands the <html> and <body> elements to their full height
+html,
+body {
+	height: 100%;
 }
 
 .wrapper {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	min-height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
 	overflow: hidden;
 }
 
 .container {
-	max-width: rem($container-width);
+	max-width: var(--container-width);
 	margin-right: auto;
 	margin-left: auto;
-	padding-right: rem($offset-width);
-	padding-left: rem($offset-width);
+	padding-right: var(--container-offset);
+	padding-left: var(--container-offset);
 }
-// ================================
 
-//? Utility
-// ================================
+// * Sets 12 column grid
 .grid {
-	display: grid;
-	row-gap: rem($rowGap-min);
-	column-gap: rem($gap);
+	display: flex;
 	grid-template-columns: repeat(12, 1fr);
-
-	@include media.min(md) {
-		row-gap: rem($rowGap-max);
-	}
+	gap: var(--gap);
 }
 
-.cover {
-	position: relative;
-
-	& img {
-		position: absolute;
-		top: 0;
-		left: 0;
-
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-}
-
-.icon {
-	width: $icon-size;
-	height: $icon-size;
-}
-
+// * Visually hides an element
 .visually-hidden {
 	position: absolute;
 
@@ -76,41 +46,15 @@
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 }
-// ================================
-
-//? Appearance
-// ================================
-.divider {
-	width: 100%;
-	height: rem(1);
-
-	background: $black;
-}
-
-.backdrop {
-	position: fixed;
-	inset: 0;
-	z-index: $backdropZIndex;
-
-	background-color: $backdropBg;
-	opacity: 0%;
-
-	transition: opacity 0.3s;
-
-	&.--show {
-		opacity: 50%;
-	}
-}
-
-:focus-visible {
-	box-shadow: 0 0 0 rem($focus-width) $focus-color;
-}
 
 .js-focus-visible :focus:not(.focus-visible) {
 	outline: none;
 }
 
 .focus-visible {
-	box-shadow: 0 0 0 rem($focus-width) $focus-color;
+	box-shadow: 0 0 0 2px var(--color-black);
 }
-// ================================
+
+:focus-visible {
+	box-shadow: 0 0 0 2px var(--color-black);
+}

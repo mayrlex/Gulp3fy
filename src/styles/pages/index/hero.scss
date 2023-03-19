@@ -1,4 +1,5 @@
 @use 'utils/forwards' as *;
+@use 'mixins/media';
 
 .hero {
 	&__inner {
