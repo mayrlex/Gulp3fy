@@ -3,11 +3,11 @@
  * @param {string}  fixedBlockClass - Modifier class for fixed blocks
  */
 
-export default class Lock {
+class ScrollLock {
 	constructor(options) {
 		const defaultOptions = {
 			scrollFix: true,
-			fixedBlockClass: '--fixed',
+			fixedBlockClass: '.fixed',
 		};
 
 		this.options = { ...defaultOptions, ...options };
@@ -44,3 +44,5 @@ export default class Lock {
 		}
 	}
 }
+
+export default ScrollLock;
