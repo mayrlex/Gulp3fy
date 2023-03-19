@@ -37,7 +37,6 @@ const buildStyles = () => {
 						clamp: false,
 						'custom-properties': false,
 						'gap-properties': false,
-						'logical-properties-and-values': { preserve: true },
 					},
 				}),
 			])
