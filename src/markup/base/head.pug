@@ -1,0 +1,97 @@
+-
+	let pageTitle;
+
+	if ( config.siteName &&  page.name) pageTitle = `${config.siteName} — ${page.name}`
+	if (!config.siteName &&  page.name) pageTitle = `${page.name}`
+	if ( config.siteName && !page.name) pageTitle = `${config.siteName}`
+
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1.0')
+
+if meta.themeColor && !meta.themeColorLight && !meta.themeColorDark
+	meta(name='theme-color', content=meta.themeColor)
+
+if meta.themeColorLight
+	meta(name='theme-color', media='(prefers-color-scheme: light)', content=meta.themeColorLight)
+
+if meta.themeColorDark
+	meta(name='theme-color', media='(prefers-color-scheme: dark)', content=meta.themeColorDark)
+
+link(rel='stylesheet', href='assets/css/main.css')
+
+- let isGoogleFonts;
+each font in config.preloadFonts
+	- isGoogleFonts = font.match('fonts.googleapis.com');
+
+if isGoogleFonts
+	link(rel='preconnect', href='https://fonts.googleapis.com')
+	link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin)
+
+	each font in config.preloadFonts
+		link(rel='stylesheet', href=font)
+
+if config.preloadFonts && !isGoogleFonts
+	each font in config.preloadFonts
+		link(
+			rel='preload',
+			href=`assets/fonts/${font}.woff2`,
+			as='font',
+			type='font/woff2',
+			crossorigin
+		)
+
+if page.preloadImages
+	each image in page.preloadImages
+		link(rel='preload', as='image', href=`assets/images/${image}`)
+
+title= pageTitle
+
+if page.description
+	meta(name='description', content=page.description)
+
+if meta.keywords.length
+	meta(name='keywords', content=meta.keywords.join(', '))
+
+if config.colorScheme
+	meta(name='color-scheme', content=config.colorScheme)
+
+link(rel='icon', href='assets/favicon/favicon.ico', sizes='any')
+link(rel='icon', href='assets/favicon/icon.svg', type='image/svg+xml')
+link(rel='apple-touch-icon', href='assets/favicon/apple-touch-icon.png')
+
+meta(name='robots', content='index follow')
+
+if page.canonical
+	link(rel='canonical', href=page.canonical)
+
+link(rel='manifest', href='/manifest.webmanifest')
+
+if meta.author
+	meta(name='author', content=meta.author)
+
+if meta.ogType
+	meta(property='og:type', content=meta.ogType)
+if page.canonical
+	meta(property='og:url', content=page.canonical)
+if meta.ogLocale
+	meta(property='og:locale', content=meta.ogLocale)
+if config.siteName
+	meta(property='og:site_name', content=config.siteName)
+if pageTitle
+	meta(property='og:title', content=pageTitle)
+if page.description
+	meta(property='og:description', content=page.description)
+if meta.ogImage
+	meta(property='og:image', content=meta.ogImage)
+
+meta(property='twitter:card', content='summary_large_image')
+if page.canonical
+	meta(property='twitter:url', content=page.canonical)
+if config.siteName
+	meta(property='twitter:site', content=`@${config.siteName.toLowerCase().replace(/\s/gi, "_")}`)
+if pageTitle
+	meta(property='twitter:title', content=pageTitle)
+if page.description
+	meta(property='twitter:description', content=page.description)
+if meta.twitterImage
+	meta(property='twitter:image', content=meta.twitterImage)

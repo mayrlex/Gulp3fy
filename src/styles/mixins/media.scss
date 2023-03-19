@@ -1,72 +1,40 @@
-@use 'core/variables' as *;
 @use 'functions/convert';
 @use 'sass:map';
 
-//? Min width
-// ================================
-@mixin min($key: lg) {
-	@if map-has-key($breakpoints, $key) {
-		$breakpoint: map.get($breakpoints, $key);
+$_breakpoints: (
+	xs: 0,
+	sm: 576,
+	md: 768,
+	lg: 992,
+	xl: 1200,
+	xxl: 1400,
+);
 
-		@media (min-width: convert.em($breakpoint)) {
-			@content;
-		}
-	} @else {
-		@media (min-width: convert.em($key)) {
-			@content;
-		}
-	}
-}
-// ================================
-
-//? Max width
-// ================================
-@mixin max($key: lg) {
-	@if map-has-key($breakpoints, $key) {
-		$breakpoint: map.get($breakpoints, $key);
-
-		@media (max-width: convert.em($breakpoint - 0.2)) {
-			@content;
-		}
-	} @else {
-		@media (max-width: convert.em($key - 0.2)) {
-			@content;
-		}
-	}
-}
-// ================================
-
-//? Min width & Max width
-// ================================
-@mixin minmax($key1, $key2) {
-	$breakpointMin: map.get($breakpoints, $key1);
-	$breakpointMax: map.get($breakpoints, $key2);
-
-	@if map-has-key($breakpoints, $key1) and map-has-key($breakpoints, $key2) {
-		@media (min-width: convert.em($breakpointMin)) and (max-width: convert.em($breakpointMax - 0.2)) {
-			@content;
-		}
-	} @else if map-has-key($breakpoints, $key1) and not map-has-key($breakpoints, $key2) {
-		@media (min-width: convert.em($breakpointMin)) and (max-width: convert.em($key2 - 0.2)) {
-			@content;
-		}
-	} @else if map-has-key($breakpoints, $key2) and not map-has-key($breakpoints, $key1) {
-		@media (min-width: convert.em($key1)) and (max-width: convert.em($breakpointMax - 0.2)) {
-			@content;
-		}
-	} @else {
-		@media (min-width: convert.em($key1)) and (max-width: convert.em($key2 - 0.2)) {
-			@content;
-		}
-	}
-}
-// ================================
-
-//? Hover
-// ================================
-@mixin hover {
-	@media (any-hover: hover) {
+@mixin min($key) {
+	@media (min-width: convert.em(map.get($_breakpoints, $key))) {
 		@content;
 	}
 }
-// ================================
+
+@mixin max($key) {
+	@media (max-width: convert.em(map.get($_breakpoints, $key) - 0.2)) {
+		@content;
+	}
+}
+
+@mixin minmax($key1, $key2) {
+	$_breakpointMin: convert.em(map.get($_breakpoints, $key1));
+	$_breakpointMax: convert.em(map.get($_breakpoints, $key2) - 0.2);
+
+	@media (min-width: $_breakpointMin) and (max-width: $_breakpointMax) {
+		@content;
+	}
+}
+
+@mixin hover {
+	@media (any-hover: hover) {
+		&:hover {
+			@content;
+		}
+	}
+}

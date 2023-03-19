@@ -1,29 +1,29 @@
 import sync from 'browser-sync';
-import path from '../config/path.js';
-import { serverSettings } from '../../config.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
 const server = callback => {
 	sync.create().init({
 		server: {
-			baseDir: path.dest,
+			baseDir: paths.output,
 		},
 
 		files: [
-			path.server.markup,
-			path.server.styles,
-			path.server.scripts,
+			paths.server.markup,
+			paths.server.styles,
+			paths.server.scripts,
 
 			{
-				match: path.server.images,
+				match: paths.server.images,
 				fn() {
 					this.reload();
 				},
 			},
 		],
 
-		port: serverSettings.port,
-		open: serverSettings.open,
-		notify: serverSettings.notify,
+		port: config.server.port,
+		open: config.server.open,
+		notify: config.server.notify,
 	});
 
 	callback();

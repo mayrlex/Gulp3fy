@@ -1,18 +1,13 @@
 import gulp from 'gulp';
-import sync from 'browser-sync';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import gulpif from 'gulp-if';
-import versionNumber from 'gulp-version-number';
-import pug from 'gulp-pug';
 import { setup as emittySetup } from '@zoxon/emitty';
-import typograph from 'gulp-typograf';
+import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
-import path from '../config/path.js';
-
-const emittyMarkup = emittySetup(path.markup.src.emitty, 'pug', {
-	makeVinylFile: true,
-});
+import typograf from 'gulp-typograf';
+import versionNumber from 'gulp-version-number';
+import config from '../config.js';
+import paths from '../paths.js';
 
 global.isMarkupWatch = false;
 global.emittyChangedFile = {
@@ -20,18 +15,19 @@ global.emittyChangedFile = {
 	stats: null,
 };
 
-export const markupBuild = () =>
-	gulp
-		.src(path.markup.src.main)
-		.pipe(
-			plumber(
-				notify.onError({
-					title: 'PUG',
-					message: 'Error: <%= error.message %>',
-				})
-			)
-		)
+const buildMarkup = () => {
+	const emittyMarkup = emittySetup(paths.markup.emitty, 'pug', { makeVinylFile: true });
 
+	return gulp
+		.src(paths.markup.input)
+		.pipe(
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
+		)
 		.pipe(
 			gulpif(
 				global.isMarkupWatch,
@@ -40,7 +36,7 @@ export const markupBuild = () =>
 		)
 		.pipe(
 			gulpif(
-				path.isDev,
+				config.isDev,
 				pug({
 					pretty: true,
 					verbose: true,
@@ -48,38 +44,29 @@ export const markupBuild = () =>
 				})
 			)
 		)
-		.pipe(gulpif(path.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
+		.pipe(gulpif(config.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
 		.pipe(
-			typograph({
+			typograf({
 				locale: ['ru', 'en-US'],
 			})
 		)
 		.pipe(
 			gulpif(
-				path.isProd,
+				config.isProd,
 				versionNumber({
-					value: '%DT%',
+					value: '%MD5%',
 					append: {
 						key: '_v',
-						cover: 0,
+						cover: 1,
 						to: ['css', 'js'],
 					},
 					output: {
-						file: 'gulp/version.json',
+						file: 'gulp/cache.json',
 					},
 				})
 			)
 		)
-		.pipe(gulp.dest(path.markup.dest))
-		.pipe(sync.stream());
-
-export const markupWatch = () => {
-	global.isMarkupWatch = true;
-
-	gulp.watch(path.markup.watch, markupBuild).on('all', (event, filepath, stats) => {
-		global.emittyChangedFile = {
-			path: filepath,
-			stats,
-		};
-	});
+		.pipe(gulp.dest(paths.output));
 };
+
+export default buildMarkup;

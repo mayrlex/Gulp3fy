@@ -1,0 +1,32 @@
+include ../base/config.pug
+include ../mixins/**/*.pug
+
+block settings
+
+doctype html
+html(lang=page.lang)
+	head
+		include ../base/head.pug
+		block styles
+
+	body.page
+		.wrapper
+			-
+				let logoTag;
+				page.id !== 0 ? (logoTag = `a href='${page.canonical}'`) : (logoTag = 'div');
+
+			header.header
+				.header__inner.container
+					block header
+						include ../layouts/header.pug
+
+			main.main
+				block content
+
+			footer.footer
+				.footer__inner.container
+					block footer
+						include ../layouts/footer.pug
+
+		block scripts
+			script(src='assets/js/main.min.js')

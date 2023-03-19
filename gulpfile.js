@@ -1,41 +1,42 @@
-import   gulp                                 from 'gulp';
-import   clean, { cleanBefore, cleanAfrer }   from './gulp/tasks/clean.js';
-import { markupBuild, markupWatch }           from './gulp/tasks/markup.js';
-import { stylesBuild, stylesWatch }           from './gulp/tasks/styles.js';
-import { scriptsBuild, scriptsWatch }         from './gulp/tasks/scripts.js';
-import   fontsBuild, { fontsTTF, fontsWOFF2 } from './gulp/tasks/fonts.js';
-import { imagesBuild, imagesWatch }           from './gulp/tasks/images.js';
-import { spriteImagesBuild, spriteIconsBuild,
-         spriteEIconsBuild, spritesWatch }    from './gulp/tasks/sprites.js';
-import   faviconsBuild                        from './gulp/tasks/favicon.js';
-import { resourcesBuild, resourcesWatch }     from './gulp/tasks/resources.js';
-import   zip                                  from './gulp/tasks/zip.js';
-import   server                               from './gulp/tasks/server.js';
-import { task }                               from './config.js';
+import gulp from 'gulp';
+import { clearDist, clearSrc, clearFonts } from './gulp/tasks/clean.js';
+import buildMarkup from './gulp/tasks/markup.js';
+import buildStyles from './gulp/tasks/styles.js';
+import buildScripts from './gulp/tasks/scripts.js';
+import convertTTFtoWOFF2 from './gulp/tasks/fonts.js';
+import images from './gulp/tasks/images.js';
+import sprites from './gulp/tasks/sprites.js';
+import {
+	markupWatch,
+	stylesWatch,
+	scriptsWatch,
+	imagesWatch,
+	spritesWatch,
+	copyResourcesWatch,
+} from './gulp/tasks/watcher.js';
+import copy, { copyFonts } from './gulp/tasks/copy.js';
+import zip from './gulp/tasks/zip.js';
+import server from './gulp/tasks/server.js';
+import config from './gulp/config.js';
 
-const build   = [];
-const watch   = [];
-const sprites = task.sprites.images || task.sprites.icons || task.sprites.eIcons;
+const tasks = [];
+const watchers = [];
+const fonts = gulp.series(convertTTFtoWOFF2, clearFonts, copyFonts);
 
-task.markup         ? [build.push(markupBuild),    watch.push(markupWatch)]    : null;
-task.styles         ? [build.push(stylesBuild),    watch.push(stylesWatch)]    : null;
-task.scripts        ? [build.push(scriptsBuild),   watch.push(scriptsWatch)]   : null;
-task.fonts          ?  build.push(fontsBuild)                                  : null;
-task.images         ? [build.push(imagesBuild),    watch.push(imagesWatch)]    : null;
-task.sprites.images ? [build.push(spriteImagesBuild)]                          : null;
-task.sprites.icons  ? [build.push(spriteIconsBuild)]                           : null;
-task.sprites.eIcons ? [build.push(spriteEIconsBuild)]                          : null;
-sprites             ?                              watch.push(spritesWatch)    : null;
-task.favicon        ?  build.push(faviconsBuild)                               : null;
-task.resources      ? [build.push(resourcesBuild), watch.push(resourcesWatch)] : null;
+if (config.task.markup) tasks.push(buildMarkup), watchers.push(markupWatch);
+if (config.task.styles) tasks.push(buildStyles), watchers.push(stylesWatch);
+if (config.task.scripts) tasks.push(buildScripts), watchers.push(scriptsWatch);
+if (config.task.fonts) tasks.push(fonts);
+if (config.task.images) tasks.push(images), watchers.push(imagesWatch);
+if (config.task.sprites) tasks.push(sprites), watchers.push(spritesWatch);
+if (config.task.copy) tasks.push(copy), watchers.push(copyResourcesWatch);
 
-const dev       = gulp.series(clean, build, gulp.parallel(watch, server));
-const prod      = gulp.series(clean, build);
-const archiving = gulp.series(clean, build, zip);
+const dev = gulp.series(clearDist, tasks, gulp.parallel(watchers, server));
+const prod = gulp.series(clearDist, tasks);
+const archiving = gulp.series(clearDist, tasks, zip);
 
 export { dev };
 export { prod };
 export { archiving };
-export { fontsTTF, fontsWOFF2 };
-export { faviconsBuild };
-export { cleanBefore, cleanAfrer };
+export { convertTTFtoWOFF2 };
+export { clearSrc };

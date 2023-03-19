@@ -1,58 +1,27 @@
-extends core/layout.pug
+extends layouts/layout.pug
 
 block settings
 	-
 		const page = {
-			id:            0,
-			name:          'Home',
-			description:   null,
-			lang:          'ru',
-			canonical:     'http://localhost:3300',
-			header:        false,
-			footer:        false,
-			modal:         false,
-			thumb:         null,
+			id: 0,
+			name: '',
+			description: null,
+			lang: 'ru',
+			canonical: '/',
 			preloadImages: [],
 
 		}
 
 		const meta = {
-			keywords:                        [],
-			image:                           page.thumb,
-			author:                          null,
-			ogType:                          'website',
-			ogUrl:                           page.canonical,
-			ogLocale:                        'ru_RU',
-			ogSiteName:                      config.siteName,
-			ogTitle:                         true,
-			ogDescription:                   page.description,
-			ogImage:                         page.thumb,
-			ogImageType:                     null,
-			ogImageWidth:                    null,
-			ogImageHeight:                   null,
-			ogImageAlt:                      null,
-			twitterCard:                     'summary_large_image',
-			twitterUrl:                      page.canonical,
-			twitterSite:                     config.siteName,
-			twitterCreator:                  null,
-			twitterTitle:                    true,
-			twitterDescription:              page.description,
-			twitterImage:                    page.thumb,
-			appleMobileWebAppCapable:        'yes',
-			appleMobileWebAppStatusBarStyle: null,
-			appleMobileWebAppTitle:          true,
-			applicationName:                 null,
-			themeColor:                      '#ffffff',
-			themeColorLight:                 null,
-			themeColorDark:                  null,
-			formatDetection: {
-				address:                     false,
-				date:                        false,
-				email:                       false,
-				telephone:                   false
-			},
-			googleTranslate:                 true,
-			robots:                          null, // noindex nofollow
+			keywords: [],
+			author: null,
+			themeColor: 'hsl(0deg 0% 100%)',
+			themeColorLight: null,
+			themeColorDark: null,
+			ogType: 'website',
+			ogLocale: 'ru_RU',
+			ogImage: null, // Image 1200x630
+			twitterImage: null // Image 1024x1024
 		}
 
 block content

@@ -1,32 +1,32 @@
-//? Vendors
-// ================================
-// @use 'vendors/swiper';
-// ================================
+// *
+// * Vendors
+// *
+@use 'vendors/reset';
 
-//? Core
-// ================================
-@use 'core/fonts';
-@use 'core/reset';
-@use 'core/typography';
-@use 'core/helpers';
-// ================================
+// *
+// * Base
+// *
+@use 'base/fonts';
+@use 'base/typography';
 
-//? Parts
-// ================================
-// @use 'parts/header';
-// @use 'parts/footer';
-// ================================
+// *
+// * Utils
+// *
+@use 'utils/helpers';
 
-//? Components
-// ================================
+// *
+// * Layouts
+// *
+@use 'layouts/header';
+@use 'layouts/footer';
+
+// *
+// * Components
+// *
 // @use 'components/btn';
-// @use 'components/dropdown';
-// @use 'components/modal';
-// ================================
 
-//? Pages & Sections
-// ================================
-//? Index
+// *
+// * Pages & Sections
+// *
 @use 'pages/index';
 @use 'pages/index/hero';
-// ================================

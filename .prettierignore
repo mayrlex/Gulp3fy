@@ -1,5 +1,1 @@
 dist
-config.js
-src/markup/core/head.pug
-src/styles/core/variables.scss
-gulpfile.js

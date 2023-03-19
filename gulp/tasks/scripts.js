@@ -1,33 +1,30 @@
-import webpack from 'webpack-stream';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
-import path from '../config/path.js';
+import webpack from 'webpack-stream';
+import config from '../config.js';
+import paths from '../paths.js';
 
-export const scriptsBuild = () =>
+const buildScripts = () =>
 	gulp
-		.src(path.scripts.src)
-
+		.src(paths.scripts.input)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'JS',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
-
 		.pipe(
 			webpack({
-				mode: path.isProd ? 'production' : 'development',
+				mode: config.mode,
 				output: {
 					filename: 'main.min.js',
 				},
 
-				devtool: !path.isProd ? 'source-map' : false,
+				devtool: config.isDev ? 'source-map' : undefined,
 			})
 		)
+		.pipe(gulp.dest(paths.scripts.output));
 
-		.pipe(gulp.dest(path.scripts.dest));
-
-export const scriptsWatch = () => gulp.watch(path.scripts.watch, scriptsBuild);
+export default buildScripts;

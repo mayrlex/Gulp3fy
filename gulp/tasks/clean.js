@@ -1,10 +1,19 @@
 import { deleteAsync as del } from 'del';
-import path from '../config/path.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
-const clean = () => del(path.dest);
-const cleanBefore = () => del(path.clean.before);
-const cleanAfrer = () => del(path.clean.after);
+const clearDist = () => del(paths.output);
+const clearSrc = () => {
+	let clearFiles;
 
-export default clean;
-export { cleanBefore };
-export { cleanAfrer };
+	if (config.mode === 'clear-start') clearFiles = config.clean.start;
+	if (config.mode === 'clear-end') clearFiles = config.clean.end;
+
+	return del(clearFiles);
+};
+
+const clearFonts = () => del(config.clean.fonts);
+
+export { clearDist };
+export { clearFonts };
+export { clearSrc };

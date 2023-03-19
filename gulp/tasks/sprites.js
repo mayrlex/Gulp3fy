@@ -1,19 +1,18 @@
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import svgSprite from 'gulp-svg-sprite';
-import path from '../config/path.js';
+import paths from '../paths.js';
 
-export const spriteImagesBuild = () =>
+const imagesSprite = () =>
 	gulp
-		.src(path.sprites.src.images)
+		.src(paths.sprites.images)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
 		.pipe(
 			svgSprite({
@@ -38,23 +37,22 @@ export const spriteImagesBuild = () =>
 				},
 			})
 		)
+		.pipe(gulp.dest(paths.sprites.output));
 
-		.pipe(gulp.dest(path.sprites.dest));
-
-export const spriteIconsBuild = () =>
+const iconsMonoSprite = () =>
 	gulp
-		.src(path.sprites.src.icons.main)
+		.src(paths.sprites.iconsMono)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'ICON SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
 		.pipe(
 			svgSprite({
-				mode: { stack: { sprite: '../icons.svg', example: true } },
+				mode: { stack: { sprite: '../icons-mono.svg', example: true } },
 				shape: {
 					transform: [
 						{
@@ -72,24 +70,24 @@ export const spriteIconsBuild = () =>
 				},
 			})
 		)
-		.pipe(gulp.dest(path.sprites.dest));
+		.pipe(gulp.dest(paths.sprites.output));
 
-export const spriteEIconsBuild = () =>
+const iconsMultiSprite = () =>
 	gulp
-		.src(path.sprites.src.icons.exception)
+		.src(paths.sprites.iconsMulti)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'EICONS SPRITES',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
 		.pipe(
 			svgSprite({
 				mode: {
 					stack: {
-						sprite: '../eIcons.svg',
+						sprite: '../icons-multi.svg',
 						example: true,
 					},
 				},
@@ -103,9 +101,7 @@ export const spriteEIconsBuild = () =>
 											attrs: ['class', 'data-name'],
 										},
 									},
-
 									{ removeUselessStrokeAndFill: false },
-
 									{ inlineStyles: true },
 								],
 							},
@@ -114,10 +110,11 @@ export const spriteEIconsBuild = () =>
 				},
 			})
 		)
+		.pipe(gulp.dest(paths.sprites.output));
 
-		.pipe(gulp.dest(path.sprites.dest));
+const sprites = gulp.parallel(imagesSprite, iconsMonoSprite, iconsMultiSprite);
 
-const spritesBuild = gulp.parallel(spriteImagesBuild, spriteIconsBuild, spriteEIconsBuild);
-const spritesWatchPaths = [path.sprites.watch.icons, path.sprites.watch.images];
-
-export const spritesWatch = () => gulp.watch(spritesWatchPaths, spritesBuild);
+export default sprites;
+export { imagesSprite };
+export { iconsMonoSprite };
+export { iconsMultiSprite };

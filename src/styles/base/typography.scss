@@ -1,0 +1,6 @@
+@use 'utils/forwards' as *;
+
+.page {
+	font-size: var(--font-size);
+	font-family: var(--font-family);
+}

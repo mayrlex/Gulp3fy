@@ -1,53 +1,50 @@
 import gulp from 'gulp';
-import webp from 'gulp-webp';
-import imageMin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
-import imageMinWebp from 'imagemin-webp';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
 import changed from 'gulp-changed';
 import gulpif from 'gulp-if';
-import sync from 'browser-sync';
-import path from '../config/path.js';
+import imageMin, { mozjpeg, optipng, svgo } from 'gulp-imagemin';
+import webp from 'gulp-webp';
+import config from '../config.js';
+import paths from '../paths.js';
 
-const imagesCopy = () =>
+const optimizeImages = () =>
 	gulp
-		.src(path.images.src.copy)
+		.src(paths.images.input)
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES: COPY',
-					message: 'Error: <%= error.message %>',
-				})
-			)
-		)
-
-		.pipe(changed(path.images.dest))
-		.pipe(gulpif(path.isProd, imageMin([mozjpeg({ quality: 80 }), optipng(), svgo({})])))
-
-		.pipe(gulp.dest(path.images.dest))
-		.pipe(sync.stream());
-
-const imagesWebp = () =>
-	gulp
-		.src(path.images.src.webp)
-		.pipe(
-			plumber(
-				notify.onError({
-					title: 'IMAGES: WEBP',
-					message: 'Error: <%= error.message %>',
-				})
-			)
-		)
-		.pipe(changed(path.images.dest, { extension: '.webp' }))
-		.pipe(webp())
-		.pipe(
-			imageMin({
-				plugins: [imageMinWebp({ quality: 80 })],
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
 			})
 		)
+		.pipe(changed(paths.images.output))
+		.pipe(
+			gulpif(
+				config.isProd,
+				imageMin([
+					mozjpeg({ quality: 80, progressive: true }),
+					optipng({ optimizationLevel: 2 }),
+					svgo({}),
+				])
+			)
+		)
+		.pipe(gulp.dest(paths.images.output));
 
-		.pipe(gulp.dest(path.images.dest))
-		.pipe(sync.stream());
+const convertImagesToWebp = () =>
+	gulp
+		.src(paths.images.webp)
+		.pipe(
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+				},
+			})
+		)
+		.pipe(changed(paths.images.output, { extension: '.webp' }))
+		.pipe(webp())
+		.pipe(gulp.dest(paths.images.output));
 
-export const imagesBuild = gulp.series(imagesCopy, imagesWebp);
-export const imagesWatch = () => gulp.watch(path.images.watch, imagesBuild);
+const images = gulp.series(optimizeImages, convertImagesToWebp);
+
+export default images;

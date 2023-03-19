@@ -1,54 +1,49 @@
 import gulp from 'gulp';
-import sync from 'browser-sync';
-import autoprefixer from 'gulp-autoprefixer';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
-import gulpif from 'gulp-if';
 import compiler from 'sass';
 import gulpSass from 'gulp-sass';
-import rename from 'gulp-rename';
+import groupMedia from 'gulp-group-css-media-queries';
+import postcss from 'gulp-postcss';
+import postcssPresetEnv from 'postcss-preset-env';
+import gulpif from 'gulp-if';
 import cleanCss from 'gulp-clean-css';
-import media from 'gulp-group-css-media-queries';
-import sassGlob from 'gulp-sass-glob';
-import path from '../config/path.js';
+import config from '../config.js';
+import paths from '../paths.js';
 
-const sass = gulpSass(compiler);
+const buildStyles = () => {
+	const sass = gulpSass(compiler);
 
-export const stylesBuild = () =>
-	gulp
-		.src(path.styles.src, { sourcemaps: path.isDev })
-
+	return gulp
+		.src(paths.styles.input, { sourcemaps: config.isDev })
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'SCSS',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
-		.pipe(sassGlob())
 		.pipe(
 			sass.sync({
-				outputStyle: 'expanded',
+				outputStyle: config.isDev ? 'expanded' : 'compressed',
 				includePaths: ['./node_modules'],
 			})
 		)
-		.pipe(media())
+		.pipe(groupMedia())
 		.pipe(
-			gulpif(
-				path.isProd,
-				autoprefixer({
-					grid: true,
-					overrideBrowserlist: ['last 5 version'],
-					cascade: true,
-				})
-			)
+			postcss([
+				postcssPresetEnv({
+					features: {
+						clamp: false,
+						'custom-properties': false,
+						'gap-properties': false,
+					},
+				}),
+			])
 		)
-
-		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
 		.pipe(
 			gulpif(
-				path.isProd,
+				config.isProd,
 				cleanCss({
 					level: {
 						1: {
@@ -69,9 +64,7 @@ export const stylesBuild = () =>
 				})
 			)
 		)
+		.pipe(gulp.dest(paths.styles.output, { sourcemaps: '.' }));
+};
 
-		.pipe(rename({ extname: '.min.css' }))
-		.pipe(gulp.dest(path.styles.dest, { sourcemaps: '.' }))
-		.pipe(sync.stream());
-
-export const stylesWatch = () => gulp.watch(path.styles.watch, stylesBuild);
+export default buildStyles;

@@ -1,27 +1,24 @@
 import gulp from 'gulp';
+import { deleteAsync as del } from 'del';
 import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
-import { deleteAsync } from 'del';
 import gzip from 'gulp-zip';
-import path from '../config/path.js';
+import paths from '../paths.js';
 
 const zip = () => {
-	deleteAsync(path.zip.del);
+	del(paths.zip.del);
 
 	return gulp
-		.src(path.zip.compiled, {})
+		.src(paths.zip.input, {})
 		.pipe(
-			plumber(
-				notify.onError({
-					title: 'ZIP',
-					message: 'Error: <%= error.message %>',
-				})
-			)
+			plumber({
+				errorHandler(error) {
+					console.error(error.message);
+					this.emit('end');
+				},
+			})
 		)
-
-		.pipe(gzip(path.zip.root))
-
-		.pipe(gulp.dest('./'));
+		.pipe(gzip(paths.zip.root))
+		.pipe(gulp.dest(paths.output));
 };
 
 export default zip;
