@@ -1,7 +1,7 @@
 {
 	"name": "gulp3fy",
 	"version": "2.0.0-beta",
-	"description": "Taskrunner based on gulp + webpack",
+	"description": "Front-End taskrunner (Gulp/Webpack)",
 	"main": "gulpfile.js",
 	"type": "module",
 	"scripts": {

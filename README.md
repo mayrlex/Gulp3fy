@@ -1,1 +1,1 @@
-# Taskrunner based on gulp + webpack
+# Front-End taskrunner (Gulp/Webpack)
