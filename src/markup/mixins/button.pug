@@ -1,11 +1,11 @@
-mixin btn(data)
+mixin button(data)
 	-
 		let mods = '';
 
-		if(data.mods) data.mods.forEach((item) => mods = `${mods} btn__${item.trim()}`)
+		if(data.mods) data.mods.forEach((item) => mods = `${mods} button__${item.trim()}`)
 
 		const tag  =  data.link ? 'a' : 'button';
 		const link =  data.link ? data.link : null;
 		const type = !data.link ? data.type || 'button' : null;
 
-	#{tag}(class=`btn${mods}`, href=link, type=type)&attributes(attributes)= data.text
+	#{tag}(class=`button${mods}`, href=link, type=type)&attributes(attributes)= data.text
