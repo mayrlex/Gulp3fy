@@ -1,13 +1,59 @@
 @use 'sass:math';
 
-@function rem($px) {
-	@return math.div($px, 16) + rem;
+/// * Strip units from values.
+///
+/// @param {value} $num - Value to be stripped.
+/// @return number
+/// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
+
+@function strip-units($num) {
+	@return math.div($num, ($num * 0 + 1));
 }
 
-@function em($px) {
-	@return math.div($px, 16) + em;
+/// * Convert px to rem.
+///
+/// @param {value} $target - Value to convert to rem.
+/// @param {number} $context - The context the conversion is based on. Default: 16
+/// @require {number} strip-units()
+/// @return number
+/// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
+
+@function rem($target, $context: 16) {
+	@if not unitless($target) {
+		$target: strip-units($target);
+	}
+
+	@if not unitless($context) {
+		$context: strip-units($context);
+	}
+
+	@if $target == 0 {
+		@return 0;
+	}
+
+	@return math.div($target, $context) + rem;
 }
 
-@function prc($num1, $num2) {
-	@return math.div($num1, $num2) * 100%;
+/// * Convert px to em.
+///
+/// @param {value} $target - Value to convert to em.
+/// @param {number} $context - The context the conversion is based on. Default: 16
+/// @require {number} strip-units()
+/// @return number
+/// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
+
+@function em($target, $context: 16) {
+	@if not unitless($target) {
+		$target: strip-units($target);
+	}
+
+	@if not unitless($context) {
+		$context: strip-units($context);
+	}
+
+	@if $target == 0 {
+		@return 0;
+	}
+
+	@return math.div($target, $context) + em;
 }
