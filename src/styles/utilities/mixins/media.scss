@@ -10,17 +10,33 @@ $_breakpoints: (
 	xxl: 1400,
 );
 
+/// * @media (min-width: [{numer}em]) {}
+///
+/// @param {value} $key - Breakpoint key
+/// @example @include media.min(lg) {}
+
 @mixin min($key) {
 	@media (min-width: convert.em(map.get($_breakpoints, $key))) {
 		@content;
 	}
 }
 
+/// * @media (max-width: [{numer}em]) {}
+///
+/// @param {value} $key - Breakpoint key
+/// @example @include media.max(lg) {}
+
 @mixin max($key) {
 	@media (max-width: convert.em(map.get($_breakpoints, $key) - 0.2)) {
 		@content;
 	}
 }
+
+/// * @media (min-width: [{numer}em] and max-width: [{numer}em]) {}
+///
+/// @param {value} $key1 - Breakpoint key for min-width
+/// @param {value} $key2 - Breakpoint key for max-width
+/// @example @include media.minmax(md, xl) {}
 
 @mixin minmax($key1, $key2) {
 	$_breakpointMin: convert.em(map.get($_breakpoints, $key1));
@@ -30,6 +46,10 @@ $_breakpoints: (
 		@content;
 	}
 }
+
+/// * @media (any-hover: hover) {}
+///
+/// @example @include media.hover {}
 
 @mixin hover {
 	@media (any-hover: hover) {

@@ -16,14 +16,18 @@
 	padding-left: var(--container-offset);
 }
 
-// * Sets 12 column grid
+/**
+ * * Sets 12 column grid
+ */
 .grid {
 	display: flex;
 	grid-template-columns: repeat(12, 1fr);
 	gap: var(--gap);
 }
 
-// * Visually hides an element
+/**
+ * * Hide element while making it readable for screen readers
+ */
 .visually-hidden {
 	position: absolute;
 

@@ -1,13 +1,21 @@
-// * Expands the <html> and <body> elements to their full height
+/**
+ * * Expands the <html> and <body> elements to their full height
+ */
 html,
 body {
 	height: 100%;
 }
 
-:focus-visible {
-	box-shadow: 0 0 0 2px var(--color-black);
-}
+/**
+ * * Sets the visual border for focused elements with a box-shadow
+ * * 1. With :focus-visible
+ * * 2. If :focus-visible is not supported, the .focus-visible class is added
+ */
 
 .focus-visible {
-	box-shadow: 0 0 0 2px var(--color-black);
+	box-shadow: 0 0 0 2px var(--color-black); /* 2 */
+}
+
+:focus-visible {
+	box-shadow: 0 0 0 2px var(--color-black); /* 1 */
 }
