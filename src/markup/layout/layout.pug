@@ -16,13 +16,13 @@ html(lang=page.lang)
 				page.id !== 0 ? (logoTag = `a href='${page.canonical}'`) : (logoTag = 'div');
 
 			block header
-				include ../layouts/header.pug
+				include ../layout/header.pug
 
 			main.main
 				block content
 
 			block footer
-				include ../layouts/footer.pug
+				include ../layout/footer.pug
 
 		block scripts
 			script(src='assets/js/main.min.js')
