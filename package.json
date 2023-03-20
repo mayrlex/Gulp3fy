@@ -16,8 +16,8 @@
 		"lint:styles:fix": "npm run stylelint -- --fix",
 		"lint:scripts": "eslint src/scripts/**/*.js",
 		"lint:scripts:fix": "npm run lint:scripts -- --fix",
-		"clear:start": "cross-env NODE_ENV=clear-start gulp clearSrc",
-		"clear:end": "cross-env NODE_ENV=clear-end gulp clearSrc"
+		"clear:start": "cross-env NODE_ENV=clear-start gulp clearWorkspace",
+		"clear:end": "cross-env NODE_ENV=clear-end gulp clearWorkspace"
 	},
 	"repository": {
 		"type": "git",

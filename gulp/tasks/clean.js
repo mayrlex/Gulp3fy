@@ -3,7 +3,7 @@ import config from '../config.js';
 import paths from '../paths.js';
 
 const clearDist = () => del(paths.output);
-const clearSrc = () => {
+const clearWorkspace = () => {
 	let clearFiles;
 
 	if (config.mode === 'clear-start') clearFiles = config.clean.start;
@@ -16,4 +16,4 @@ const clearFonts = () => del(config.clean.fonts);
 
 export { clearDist };
 export { clearFonts };
-export { clearSrc };
+export { clearWorkspace };

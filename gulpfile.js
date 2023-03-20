@@ -1,5 +1,5 @@
 import gulp from 'gulp';
-import { clearDist, clearSrc, clearFonts } from './gulp/tasks/clean.js';
+import { clearDist, clearWorkspace, clearFonts } from './gulp/tasks/clean.js';
 import buildMarkup from './gulp/tasks/markup.js';
 import buildStyles from './gulp/tasks/styles.js';
 import buildScripts from './gulp/tasks/scripts.js';
@@ -39,4 +39,4 @@ export { dev };
 export { prod };
 export { archiving };
 export { convertTTFtoWOFF2 };
-export { clearSrc };
+export { clearWorkspace };
