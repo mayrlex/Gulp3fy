@@ -1,0 +1,13 @@
+// * Expands the <html> and <body> elements to their full height
+html,
+body {
+	height: 100%;
+}
+
+:focus-visible {
+	box-shadow: 0 0 0 2px var(--color-black);
+}
+
+.focus-visible {
+	box-shadow: 0 0 0 2px var(--color-black);
+}

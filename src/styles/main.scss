@@ -4,18 +4,16 @@
 @use 'vendors/reset';
 
 // *
-// * Base
+// * Base stuff
 // *
+@use 'base/variables';
+@use 'base/base';
 @use 'base/fonts';
 @use 'base/typography';
+@use 'base/helpers';
 
 // *
-// * Utils
-// *
-@use 'utils/helpers';
-
-// *
-// * Layouts
+// * Layout-related sections
 // *
 @use 'layouts/header';
 @use 'layouts/footer';
@@ -23,10 +21,10 @@
 // *
 // * Components
 // *
-// @use 'components/btn';
+// @use 'components/button';
 
 // *
-// * Pages & Sections
+// * Page/section-specific styles
 // *
 @use 'pages/index';
 @use 'pages/index/hero';

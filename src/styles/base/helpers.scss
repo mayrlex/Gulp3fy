@@ -1,11 +1,5 @@
-@use 'utils/forwards' as *;
-@use 'mixins/media';
-
-// * Expands the <html> and <body> elements to their full height
-html,
-body {
-	height: 100%;
-}
+@use 'utilities/forwards' as *;
+@use 'utilities/mixins/media';
 
 .wrapper {
 	display: grid;
@@ -45,16 +39,4 @@ body {
 
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
-}
-
-.js-focus-visible :focus:not(.focus-visible) {
-	outline: none;
-}
-
-.focus-visible {
-	box-shadow: 0 0 0 2px var(--color-black);
-}
-
-:focus-visible {
-	box-shadow: 0 0 0 2px var(--color-black);
 }
