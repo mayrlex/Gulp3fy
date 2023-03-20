@@ -1,15 +1,15 @@
 {
 	"name": "Gulp3fy",
 	"short_name": "",
-	"description": "Taskrunner based on gulp + webpack",
+	"description": "",
 	"lang": "ru-RU",
 	"dir": "ltr",
 	"start_url": "/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"scope": "/",
-	"theme_color": "#000",
-	"background_color": "#fff",
+	"theme_color": "hsl(0deg 0% 0%)",
+	"background_color": "hsl(0deg 0% 100%)",
 	"icons": [
 		{
 			"src": "assets/favicon/icon-192.png",
