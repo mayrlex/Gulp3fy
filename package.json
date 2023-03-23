@@ -52,6 +52,7 @@
 		"gulp-imagemin": "^8.0.0",
 		"gulp-plumber": "^1.2.1",
 		"gulp-postcss": "^9.0.1",
+		"gulp-pretty-html": "^2.0.10",
 		"gulp-pug": "^5.0.0",
 		"gulp-sass": "^5.1.0",
 		"gulp-svg-sprite": "^1.5.0",

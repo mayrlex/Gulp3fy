@@ -9,7 +9,10 @@ const config = {
 	isDev,
 
 	task: {
-		markup: true,
+		markup: {
+			enable: true,
+			pretty: true,
+		},
 		styles: true,
 		scripts: true,
 		fonts: true,

@@ -23,7 +23,7 @@ const tasks = [];
 const watchers = [];
 const fonts = gulp.series(convertTTFtoWOFF2, clearFonts, copyFonts);
 
-if (config.task.markup) tasks.push(buildMarkup), watchers.push(markupWatch);
+if (config.task.markup.enable) tasks.push(buildMarkup), watchers.push(markupWatch);
 if (config.task.styles) tasks.push(buildStyles), watchers.push(stylesWatch);
 if (config.task.scripts) tasks.push(buildScripts), watchers.push(scriptsWatch);
 if (config.task.fonts) tasks.push(fonts);

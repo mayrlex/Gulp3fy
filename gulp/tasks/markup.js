@@ -4,6 +4,7 @@ import gulpif from 'gulp-if';
 import { setup as emittySetup } from '@zoxon/emitty';
 import pug from 'gulp-pug';
 import pugGlob from 'pug-include-glob';
+import prettyHtml from 'gulp-pretty-html';
 import typograf from 'gulp-typograf';
 import versionNumber from 'gulp-version-number';
 import config from '../config.js';
@@ -34,17 +35,8 @@ const buildMarkup = () => {
 				emittyMarkup.stream(global.emittyChangedFile.path, global.emittyChangedFile.stats)
 			)
 		)
-		.pipe(
-			gulpif(
-				config.isDev,
-				pug({
-					pretty: true,
-					verbose: true,
-					plugins: [pugGlob()],
-				})
-			)
-		)
-		.pipe(gulpif(config.isProd, pug({ verbose: true, plugins: [pugGlob()] })))
+		.pipe(pug({ verbose: true, plugins: [pugGlob()] }))
+		.pipe(gulpif(config.task.markup.pretty, prettyHtml({ indent_inner_html: true })))
 		.pipe(
 			typograf({
 				locale: ['ru', 'en-US'],
