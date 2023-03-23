@@ -9,7 +9,7 @@ import paths from '../paths.js';
 
 const optimizeImages = () =>
 	gulp
-		.src(paths.images.input)
+		.src(`${paths.images.input}/${paths.images.pattern.default}`)
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -33,7 +33,7 @@ const optimizeImages = () =>
 
 const convertImagesToWebp = () =>
 	gulp
-		.src(paths.images.webp)
+		.src(`${paths.images.input}/${paths.images.pattern.webp}`)
 		.pipe(
 			plumber({
 				errorHandler(error) {
@@ -48,3 +48,5 @@ const convertImagesToWebp = () =>
 const images = gulp.series(optimizeImages, convertImagesToWebp);
 
 export default images;
+export { optimizeImages };
+export { convertImagesToWebp };

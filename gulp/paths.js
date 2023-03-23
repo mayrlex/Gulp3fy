@@ -36,10 +36,12 @@ const paths = {
 	},
 
 	images: {
-		input: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
+		input: `${publicFolder}/images/**`,
 		output: `${dest}/assets/images`,
-		watch: `${publicFolder}/images/**/*.{jpg,jpeg,png,svg,gif,webp}`,
-		webp: `${publicFolder}/images/**/*.{jpg,jpeg,png}`,
+		pattern: {
+			default: '*.{jpg,jpeg,png,svg,gif,webp}',
+			webp: '*.{jpg,jpeg,png}',
+		},
 	},
 
 	sprites: {
