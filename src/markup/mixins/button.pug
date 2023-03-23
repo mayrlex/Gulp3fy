@@ -1,11 +1,13 @@
 mixin button(data)
 	-
 		let mods = '';
-
-		if(data.mods) data.mods.forEach((item) => mods = `${mods} button__${item.trim()}`)
-
+		const isArray = Array.isArray(data.mods)
 		const tag  =  data.link ? 'a' : 'button';
-		const link =  data.link ? data.link : null;
 		const type = !data.link ? data.type || 'button' : null;
 
-	#{tag}(class=`button${mods}`, href=link, type=type)&attributes(attributes)= data.text
+		if (isArray)
+			if(data.mods) data.mods.forEach((item) => mods = `${mods} button--${item.trim()}`)
+
+		if (!isArray) mods = ` button--${data.mods}`
+
+	#{tag}(class=`button${mods}`, href=data.link, type=type)&attributes(attributes)= data.text

@@ -53,7 +53,7 @@ $_breakpoints: (
 
 @mixin hover {
 	@media (any-hover: hover) {
-		&:hover {
+		&:hover:not(:active) {
 			@content;
 		}
 	}

@@ -20,7 +20,7 @@
  * * Sets 12 column grid
  */
 .grid {
-	display: flex;
+	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	gap: var(--gap);
 }
