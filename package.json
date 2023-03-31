@@ -33,16 +33,15 @@
 	"dependencies": {
 		"dialog-polyfill": "^0.5.6",
 		"focus-visible": "^5.2.0",
-		"simplebar": "^6.2.1",
-		"swiper": "^9.1.0"
+		"swiper": "^9.1.1"
 	},
 	"devDependencies": {
-		"@prettier/plugin-pug": "^2.4.1",
+		"@prettier/plugin-pug": "^2.4.2",
 		"@zoxon/emitty": "^1.4.2",
-		"browser-sync": "^2.29.0",
+		"browser-sync": "^2.29.1",
 		"cross-env": "^7.0.3",
 		"del": "^7.0.0",
-		"eslint": "^8.36.0",
+		"eslint": "^8.37.0",
 		"globals": "^13.20.0",
 		"gulp": "^4.0.2",
 		"gulp-changed": "^4.0.3",
@@ -62,17 +61,17 @@
 		"gulp-webp": "^4.0.1",
 		"gulp-webpcss": "^1.1.1",
 		"gulp-zip": "^5.1.0",
-		"postcss-preset-env": "^8.0.1",
-		"prettier": "^2.8.4",
+		"postcss-preset-env": "^8.2.0",
+		"prettier": "^2.8.7",
 		"pug-include-glob": "^0.4.3",
-		"pug-lint": "^2.6.0",
-		"sass": "^1.59.3",
+		"pug-lint": "^2.7.0",
+		"sass": "^1.60.0",
 		"stylelint": "^15.3.0",
 		"stylelint-config-standard-scss": "^7.0.1",
 		"stylelint-order": "^6.0.3",
-		"stylelint-scss": "^4.5.0",
+		"stylelint-scss": "^4.6.0",
 		"webp-converter": "2.2.3",
-		"webpack": "^5.76.2",
+		"webpack": "^5.77.0",
 		"webpack-stream": "^7.0.0"
 	}
 }
