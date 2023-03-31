@@ -1,14 +1,10 @@
-mixin image(options)
+mixin picture(options)
 	- const path = 'assets/images';
 
-	if options.type === 'img'
-		img(loading='lazy', src=`${path}/${options.name}`, class=options.class alt=options.alt)&attributes(attributes)
-
-	if options.type !== 'img'
-		picture
-			block
-			source(srcset=`${path}/${options.name.split('.')[0]}.webp`, media=options.media ? `(${options.media})` : null, type='image/webp')
-			img(loading='lazy', src=`${path}/${options.name}`, class=options.class alt=options.alt)&attributes(attributes)
-
-mixin source(options)
-	source(srcset=`${path}/${options.name}.webp`, type='image/webp', media=options.media ? `(${options.media})` : null)
+	picture
+		source(
+			srcset=`${path}/${options.image.split('.')[0]}.webp`,
+			media=options.media ? `(${options.media})` : null,
+			type='image/webp'
+		)
+		img(loading='lazy', src=`${path}/${options.image}`, class=options.class, alt=options.alt)&attributes(attributes)

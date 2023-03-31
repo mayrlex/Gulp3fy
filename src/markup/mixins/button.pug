@@ -5,9 +5,7 @@ mixin button(data)
 		const tag  =  data.link ? 'a' : 'button';
 		const type = !data.link ? data.type || 'button' : null;
 
-		if (isArray)
-			if(data.mods) data.mods.forEach((item) => mods = `${mods} button--${item.trim()}`)
+		if (!isArray && data.mods) mods = ` btn--${data.mods}`
+		if (isArray && data.mods) data.mods.forEach((item) => mods = `${mods} btn--${item.trim()}`)
 
-		if (!isArray) mods = ` button--${data.mods}`
-
-	#{tag}(class=`button${mods}`, href=data.link, type=type)&attributes(attributes)= data.text
+	#{tag}(class=`btn${mods}`, href=data.link, type=type)&attributes(attributes)= data.text

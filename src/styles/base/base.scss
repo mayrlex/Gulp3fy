@@ -7,6 +7,14 @@ body {
 }
 
 /**
+ * * Sets a min width for <body> element and prevents horizontal scrolling
+ */
+body {
+	min-width: 320px;
+	overflow-x: hidden;
+}
+
+/**
  * * Sets the visual border for focused elements with a box-shadow
  * * 1. With :focus-visible
  * * 2. If :focus-visible is not supported, the .focus-visible class is added
