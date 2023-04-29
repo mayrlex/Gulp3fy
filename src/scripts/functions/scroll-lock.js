@@ -7,7 +7,7 @@ class ScrollLock {
 	constructor(options) {
 		const defaultOptions = {
 			scrollFix: true,
-			fixedBlockClass: '.fixed',
+			fixedBlockClass: 'fixed',
 		};
 
 		this.options = { ...defaultOptions, ...options };
