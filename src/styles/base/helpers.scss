@@ -44,3 +44,19 @@
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);
 }
+
+/**
+ * * Set the down offset for the section
+ */
+.section-offset {
+	padding-bottom: var(--section-offset);
+}
+
+/**
+ * * Stretches the image to the entire block while maintaining aspect ratio
+ */
+.cover {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}

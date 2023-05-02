@@ -5,6 +5,7 @@
 	--container-offset: 16px;
 	--container-width: calc(var(--content-width) + (var(--container-offset) * 2));
 	--gap: #{rem(20) rem(20)};
+	--section-offset: #{rem(30)};
 
 	// * Colors
 	--color-white: hsl(0deg 0% 100%);
@@ -16,5 +17,6 @@
 
 	@media (min-width: em(768)) {
 		--gap: #{rem(30)} #{rem(20)};
+		--section-offset: #{rem(50)};
 	}
 }
