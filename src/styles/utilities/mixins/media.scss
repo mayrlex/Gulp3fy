@@ -10,10 +10,11 @@ $_breakpoints: (
 	xxl: 1400,
 );
 
-/// * @media (min-width: [{numer}em]) {}
+/// * @media (min-width: value) {}
 ///
-/// @param {value} $key - Breakpoint key
+/// @param {key|number} $key - Breakpoint key
 /// @example @include media.min(lg) {}
+/// @example @include media.min(992) {}
 
 @mixin min($key) {
 	@media (min-width: convert.em(map.get($_breakpoints, $key))) {
@@ -21,10 +22,11 @@ $_breakpoints: (
 	}
 }
 
-/// * @media (max-width: [{numer}em]) {}
+/// * @media (max-width: value]) {}
 ///
-/// @param {value} $key - Breakpoint key
+/// @param {key|number} $key - Breakpoint key
 /// @example @include media.max(lg) {}
+/// @example @include media.min(992) {}
 
 @mixin max($key) {
 	@media (max-width: convert.em(map.get($_breakpoints, $key) - 0.2)) {
@@ -32,11 +34,12 @@ $_breakpoints: (
 	}
 }
 
-/// * @media (min-width: [{numer}em] and max-width: [{numer}em]) {}
+/// * @media (min-width: value and max-width: value) {}
 ///
-/// @param {value} $key1 - Breakpoint key for min-width
-/// @param {value} $key2 - Breakpoint key for max-width
+/// @param {key|number} $key1 - Breakpoint key at min-width
+/// @param {key|number} $key2 - Breakpoint key at max-width
 /// @example @include media.minmax(md, xl) {}
+/// @example @include media.minmax(768, 1200) {}
 
 @mixin minmax($key1, $key2) {
 	$_breakpointMin: convert.em(map.get($_breakpoints, $key1));

@@ -1,5 +1,5 @@
 /**
- * @param {boolean} scrollFix       - Fix jumping page when scrolling is disabled
+ * @param {boolean} scrollFix       - Turn on/off Scroll Fix
  * @param {string}  fixedBlockClass - Modifier class for fixed blocks
  */
 

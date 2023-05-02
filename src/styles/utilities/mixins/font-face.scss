@@ -1,9 +1,9 @@
 /// * @font-face
 ///
-/// @param {value} $fontName - Font family name
-/// @param {value} $weightName [Regular] - Font weight name
+/// @param {string} $fontName - Font family name
+/// @param {string} $weightName [Regular] - Font weight name
 /// @param {number} $weight [400] - Font weight
-/// @param {value} $style [normal] - Font style
+/// @param {string} $style [normal] - Font style
 /// @example
 /// 	@include font.face(
 /// 		$fontName: Inter,

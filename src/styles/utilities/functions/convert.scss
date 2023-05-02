@@ -2,7 +2,7 @@
 
 /// * Strip units from values.
 ///
-/// @param {value} $num - Value to be stripped.
+/// @param {number|string} $num - Value to be stripped.
 /// @return number
 /// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
 
@@ -12,9 +12,9 @@
 
 /// * Convert px to rem.
 ///
-/// @param {value} $target - Value to convert to rem.
-/// @param {number} $context - The context the conversion is based on. Default: 16
-/// @require {number} strip-units()
+/// @param {number|string} $target - Value to convert to rem.
+/// @param {number|string} $context - The context the conversion is based on. Default: 16
+/// @require {number|string} strip-units()
 /// @return number
 /// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
 
@@ -36,9 +36,9 @@
 
 /// * Convert px to em.
 ///
-/// @param {value} $target - Value to convert to em.
-/// @param {number} $context - The context the conversion is based on. Default: 16
-/// @require {number} strip-units()
+/// @param {number|string} $target - Value to convert to em.
+/// @param {number|string} $context - The context the conversion is based on. Default: 16
+/// @require {number|string} strip-units()
 /// @return number
 /// @source - https://github.com/minamarkham/sassy-starter/blob/master/src/scss/utilities/_functions.scss
 

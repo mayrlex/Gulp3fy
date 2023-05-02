@@ -1,3 +1,8 @@
 @use 'utilities/mixins/font-face' as font;
 
-// @include font.face($fontName: Inter, $weightName: Regular, $weight: 400, $style: normal);
+@include font.face(
+	$fontName: Inter,
+	$weightName: Regular,
+	$weight: 400,
+	$style: normal
+);
